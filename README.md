@@ -1,75 +1,107 @@
-# Concrete Structures Constructability Framework
+# Constructability Framework for Reinforced Concrete Design
 
-A constructability-aware framework for reinforced concrete design.
+A practical, evidence-based framework that helps structural engineers evaluate and improve the constructability of reinforced concrete design decisions during early project stages.
 
-## Overview
+## What is this?
 
-This project develops a structured framework to help structural engineers evaluate and improve the constructability of reinforced concrete design decisions during the early stages of a project. The framework is intended to support more practical, buildable, and safety-conscious design outcomes by incorporating constructability considerations into design-stage thinking.
+Structural design standards like AS 3600 ensure that reinforced concrete structures are safe and serviceable once completed. But structurally compliant designs can still be difficult, costly, or unsafe to construct if design decisions don't adequately consider construction processes, site constraints, material availability, and communication.
+a
+This framework bridges that gap. It provides structured, dimension-based guidance that translates practical construction knowledge into actionable design-stage recommendations — so that constructability issues are identified and resolved when changes are least costly.
 
-The project is based on the idea that structurally compliant designs may still be difficult, inefficient, or unsafe to construct if design decisions do not adequately consider construction processes, site constraints, detailing complexity, material and equipment constraints, and design communication.
+## How it works
 
-## Project Aim
+The framework is organised around **five dimensions** of constructability:
 
-To develop a constructability-aware framework, structured around key dimensions of reinforced concrete design, that enables structural engineers to systematically evaluate and improve the constructability of design decisions during early project stages, and to demonstrate its application through practical design scenarios informed by literature and industry consultation.
+| Dimension | What it covers |
+|---|---|
+| **Safety in Design** | Design decisions affecting the safety of construction workers and other stakeholders |
+| **Detailing** | Reinforcement detailing, slab geometry, and formwork |
+| **Logistics** | Material and equipment availability, site access, and supply chain considerations |
+| **Construction Methods** | System selection, buildability, and construction feasibility |
+| **Design Communication** | Drawing clarity, notation, and communication with contractors |
 
-## Framework Dimensions
+Each dimension contains:
+- **General guidance** — key principles for that area of design
+- **Specific entries** — individual constructability issues with design parameters, threshold-based guidance, recommended actions, evidence, and real-world examples
 
-The framework is structured around five key dimensions:
+### Entry structure
 
-1. **Safety in Design** – design decisions affecting the safety of construction workers and other stakeholders.
-2. **Detailing** – reinforcement detailing, slab geometry, and formwork-related complexity.
-3. **Logistics** – material and equipment availability, site access, and supply chain considerations.
-4. **Construction Methods** – system selection, buildability, and construction feasibility.
-5. **Design Communication** – drawing clarity, notation, and communication with contractors.
+Every entry in the framework follows the same format:
 
-## Methodology
+- **Design Question** — what specific design question is being answered
+- **Design Parameter** — what the engineer can measure, count, or assess from their drawings
+- **Design Guidance** — threshold bands rated as Good practice, Consider, Concern, or Action required
+- **Recommended Actions** — what to do if you're in the concern or action required zone *(optional)*
+- **Background** — why this matters for constructability *(optional)*
+- **Evidence Basis** — how the guidance was established *(optional)*
+- **Examples** — real design drawings tagged as Concern, Acceptable, or Recommended *(optional)*
+- **Site Photos** — photographs showing what these issues look like in practice *(optional)*
 
-The framework is being developed through a combination of:
+Entries are date-stamped and designed to be updated as construction technology and practice evolve.
 
-- literature review,
-- industry input,
-- project outcomes and design scenarios, and
-- iterative refinement.
+## Using the framework
 
-Each dimension is intended to identify a constructability issue, evaluate it against available knowledge inputs, and produce practical guidance. The framework outputs may include recommendations, measurable thresholds, and alternative construction options that can be applied during early design stages.
+### Live site
+The framework is hosted at: **[your-url-here]**
 
-## Intended Output
+Browse by dimension, read the general guidance, then explore specific entries relevant to your design decisions.
 
-The project aims to produce a framework that helps designers move beyond compliance-only thinking by incorporating practical construction knowledge into early decision-making. The framework is intended to support:
+### Running locally
+1. Clone or download this repository
+2. Serve the files using any local web server (e.g. `python -m http.server` or VS Code Live Server)
+3. Open `index.html` in your browser
 
-- earlier identification of constructability issues,
-- improved buildability,
-- reduced redesign during construction,
-- better alignment between design intent and construction practice, and
-- more consistent consideration of safety and practicality in reinforced concrete design.
+> **Note:** Opening index.html directly as a file won't work — browsers block local JSON loading for security. You need a local server or host it online.
 
-## Current Status
+## Repository structure
 
-This repository is being used to progressively develop and document the framework. Current work includes:
+```
+├── index.html          # Framework interface (styling and rendering)
+├── data.json           # All framework content (entries, guidance, thresholds)
+├── images/             # Example drawings and site photographs
+└── README.md
+```
 
-- background research and literature review,
-- definition and refinement of framework dimensions,
-- development of guidance outputs and thresholds,
-- worked examples and practical testing, and
-- preparation for further stakeholder input and later-stage development.
+- **index.html** — the framework shell. Contains all CSS, navigation, and rendering logic. You generally don't need to edit this.
+- **data.json** — all framework content lives here. This is the only file you edit to add, update, or remove entries.
+- **images/** — all photographs and drawings referenced by entries in data.json.
 
-## Repository Contents
+## Contributing
 
-This repository may include:
+### Suggesting an entry
+If you have a constructability issue, design scenario, or practical insight that could benefit the framework, you can submit it via the **[suggestion form](your-google-form-link-here)**.
 
-- project write-ups and proposal material,
-- framework diagrams and figures,
-- worked examples and case-based demonstrations,
-- draft framework outputs,
-- presentation material, and
-- future interface or web-based delivery material.
+Submissions are reviewed before being added to the framework to ensure quality and consistency.
 
-## Important Note
+### Adding an entry directly (maintainers)
+1. Open `data.json`
+2. Find the relevant dimension
+3. Add a new entry object to the `items` array, following the structure of existing entries
+4. Place any images in the `images/` folder with descriptive filenames
+5. Reference images in the entry as `"images/your-filename.jpg"`
+6. Commit and push
 
-This framework is intended to provide supplementary design-stage guidance. It does **not** replace compliance with applicable structural design standards, codes, or professional engineering judgement. Any guidance developed through this project should be applied within compliant design solutions and with appropriate consideration of project-specific conditions.
+### Minimum required fields for a new entry
+- Dimension
+- Entry name
+- Design question
+- Design parameter
+- At least one threshold band
+
+All other fields (background, recommended actions, evidence, examples, site photos) can be added later as evidence builds.
+
+## Context
+
+This framework was developed as a final year engineering project at Deakin University (SEJ441/SEJ446). It is informed by academic literature, industry consultation, and practical project experience in reinforced concrete construction.
+
+The framework draws on the principle — embedded in the [Engineers Australia Code of Ethics (2022)](https://www.engineersaustralia.org.au/publications/code-ethics) — that engineers should practise engineering to foster the health, safety and wellbeing of the community, and incorporate social, health, safety, environmental and economic considerations into the engineering task. In the context of structural design, "the community" includes the construction workers and contractors who must physically build what is designed.
+
+## Important
+
+This framework provides **supplementary design-stage guidance**. It does not replace compliance with structural design standards (e.g. AS 3600), applicable codes, or professional engineering judgement. All guidance should be applied within compliant design solutions and with appropriate consideration of project-specific conditions.
 
 ## Author
 
-**David Harvey**  
-Deakin University  
+**David Harvey**
+Deakin University
 SEJ441 / SEJ446 Final Year Project
