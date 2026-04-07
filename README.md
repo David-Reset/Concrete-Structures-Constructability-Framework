@@ -69,7 +69,7 @@ Browse by dimension, read the general guidance, then explore specific entries re
 ## Contributing
 
 ### Suggesting an entry
-If you have a constructability issue, design scenario, or practical insight that could benefit the framework, you can submit it via the **[suggestion form](your-google-form-link-here)**.
+If you have a constructability issue, design scenario, or practical insight that could benefit the framework, you can submit it via the **[suggestion form](https://forms.gle/5ppQRvJuzWaUkdg89)**.
 
 Submissions are reviewed before being added to the framework to ensure quality and consistency.
 
