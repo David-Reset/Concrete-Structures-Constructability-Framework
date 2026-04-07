@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Constructability Framework — RC Design Guidance</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0f1a; --surface: #111827; --surface-light: #1a2234;
+    --border: #2a3548; --text: #e2e8f0; --text-muted: #8899aa;
+    --accent: #3b82f6; --accent-glow: rgba(59,130,246,0.15);
+    --red: #ef4444; --orange: #f97316; --yellow: #eab308; --green: #22c55e;
+    --red-bg: rgba(239,68,68,0.12); --orange-bg: rgba(249,115,22,0.12);
+    --yellow-bg: rgba(234,179,8,0.1); --green-bg: rgba(34,197,94,0.1);
+  }
+  body { background:var(--bg); color:var(--text); font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif; min-height:100vh; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+  .animate-in { animation:fadeIn 0.3s ease; }
+  ::-webkit-scrollbar{width:6px} ::-webkit-scrollbar-track{background:transparent} ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+  .header{padding:20px 32px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--surface)}
+  .header-left{display:flex;align-items:center;gap:14px}
+  .logo{width:36px;height:36px;background:linear-gradient(135deg,var(--accent),#6366f1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:#fff}
+  .header-title{font-size:16px;font-weight:700;letter-spacing:-0.3px}
+  .header-sub{font-size:11px;color:var(--text-muted)}
+
+  .breadcrumb{padding:10px 32px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;font-size:12px;background:var(--surface)}
+  .breadcrumb-link{color:var(--accent);cursor:pointer} .breadcrumb-link:hover{text-decoration:underline}
+  .breadcrumb-sep{color:var(--text-muted)} .breadcrumb-current{color:var(--text)}
+
+  .content{padding:28px 32px;max-width:900px;margin:0 auto}
+  .section-title{font-size:26px;font-weight:800;letter-spacing:-0.5px;margin-bottom:8px}
+  .section-desc{font-size:14px;color:var(--text-muted);line-height:1.6;max-width:600px}
+
+  .dim-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:24px}
+  .dim-card{padding:20px 22px;background:var(--surface);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s}
+  .dim-card:hover{border-color:var(--accent);background:var(--surface-light)}
+  .dim-icon{font-size:26px;margin-bottom:10px} .dim-name{font-size:15px;font-weight:700;margin-bottom:6px}
+  .dim-desc{font-size:12px;color:var(--text-muted);line-height:1.5;margin-bottom:12px}
+  .dim-count{font-size:11px;color:var(--accent);font-weight:600}
+
+  .back-link{font-size:12px;color:var(--accent);cursor:pointer;margin-bottom:16px;display:inline-flex;align-items:center;gap:6px}
+  .back-link:hover{text-decoration:underline}
+  .dim-header{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+  .dim-header-icon{font-size:30px} .dim-header-title{font-size:24px;font-weight:800;letter-spacing:-0.5px}
+
+  .item-list{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+  .item-row{padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:space-between;transition:all 0.2s}
+  .item-row.available{cursor:pointer} .item-row.available:hover{border-color:var(--accent);background:var(--surface-light)}
+  .item-row.unavailable{opacity:0.45}
+  .item-name{font-size:14px;font-weight:600} .item-meta{font-size:11px;color:var(--text-muted);margin-top:4px}
+  .item-arrow{color:var(--accent);font-size:18px}
+  .item-coming{font-size:10px;color:var(--text-muted);padding:4px 10px;background:var(--surface-light);border-radius:4px;border:1px solid var(--border)}
+
+  .entry-title{font-size:22px;font-weight:800;letter-spacing:-0.3px;margin-bottom:6px}
+  .entry-meta{font-size:12px;color:var(--text-muted);margin-bottom:24px}
+  .question-box{padding:20px 24px;background:var(--accent-glow);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;margin-bottom:28px}
+  .label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
+  .label-accent{color:var(--accent)}
+  .question-text{font-size:15px;color:var(--text);line-height:1.6}
+  .param-box{padding:14px 18px;background:var(--surface-light);border:1px solid var(--border);border-radius:8px;margin-bottom:28px}
+  .param-value{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:var(--accent);margin-top:4px}
+  .consideration-text{font-size:14px;color:var(--text);line-height:1.7;opacity:0.9;margin-bottom:28px}
+
+  .threshold-list{display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
+  .threshold-band{display:flex;gap:16px;padding:14px 18px;border-radius:8px;align-items:flex-start}
+  .threshold-range{min-width:110px;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;padding-top:1px}
+  .threshold-rating{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+  .threshold-guidance{font-size:13px;color:var(--text);line-height:1.6;margin-top:4px;opacity:0.85}
+
+  .alt-list{display:flex;flex-direction:column;gap:6px;margin-bottom:28px}
+  .alt-item{display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--surface-light);border-radius:6px;border:1px solid var(--border)}
+  .alt-num{width:22px;height:22px;border-radius:50%;background:rgba(59,130,246,0.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+  .alt-text{font-size:13px;color:var(--text);opacity:0.9}
+
+  .evidence-box{padding:14px 18px;background:var(--surface-light);border-radius:8px;border:1px solid var(--border)}
+  .evidence-text{font-size:13px;color:var(--text);line-height:1.6;opacity:0.8}
+
+  .date-stamp{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);display:flex;gap:24px}
+  .date-label{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
+  .date-value{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text);margin-top:2px}
+
+  .examples-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;margin-bottom:20px}
+  .example-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+  .example-card img{width:100%;display:block;background:#1e2a3a}
+  .example-caption{padding:12px 14px}
+  .example-tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:3px 8px;border-radius:3px;display:inline-block;margin-bottom:6px}
+  .example-tag.concern{background:var(--red-bg);color:var(--red)}
+  .example-tag.acceptable{background:var(--yellow-bg);color:var(--yellow)}
+  .example-tag.recommended{background:var(--green-bg);color:var(--green)}
+  .example-desc{font-size:12px;color:var(--text);line-height:1.5;opacity:0.85}
+
+  .site-photos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:10px;margin-bottom:28px}
+  .site-photo-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+  .site-photo-card img{width:100%;height:160px;object-fit:cover;display:block;background:#1e2a3a}
+  .site-photo-title{padding:8px 12px;font-size:12px;color:var(--text);opacity:0.85;border-top:1px solid var(--border)}
+
+  @media(max-width:640px){
+    .content{padding:20px 16px} .header{padding:16px} .breadcrumb{padding:10px 16px}
+    .dim-grid{grid-template-columns:1fr} .examples-grid{grid-template-columns:1fr}
+    .site-photos-grid{grid-template-columns:1fr 1fr} .date-stamp{flex-direction:column;gap:8px}
+  }
+</style>
+</head>
+<body>
+<div id="app"><div class="content" style="text-align:center;padding-top:80px;color:var(--text-muted)">Loading framework...</div></div>
+<script>
+// ===== STATE =====
+let dimensions = [];
+let state = { view:'home', dimId:null, itemIndex:null };
+
+// ===== HELPERS =====
+function colorVar(c){const m={green:'--green',orange:'--orange',red:'--red',yellow:'--yellow'};return `var(${m[c]||'--green'})`}
+function bgVar(c){const m={green:'--green-bg',orange:'--orange-bg',red:'--red-bg',yellow:'--yellow-bg'};return `var(${m[c]||'--green-bg'})`}
+function getDim(){return dimensions.find(d=>d.id===state.dimId)}
+function getItem(){const dim=getDim();return dim?dim.items[state.itemIndex]:null}
+
+// ===== LOAD DATA =====
+async function loadData(){
+  try{
+    const resp=await fetch('data.json');
+    const data=await resp.json();
+    dimensions=data.dimensions;
+    render();
+  }catch(e){
+    document.getElementById('app').innerHTML='<div class="content" style="text-align:center;padding-top:80px;color:var(--red)">Error loading framework data. Make sure data.json is in the same folder as this file.</div>';
+  }
+}
+
+// ===== RENDER =====
+function render(){
+  const app=document.getElementById('app');
+  app.innerHTML=renderHeader()+(state.view==='entry'?renderBreadcrumb()+renderEntryDetail():state.view==='dimension'?renderBreadcrumb()+renderDimensionView():renderHomeView());
+}
+
+function renderHeader(){
+  return `<div class="header"><div class="header-left"><div class="logo">C</div><div><div class="header-title">Constructability Framework</div><div class="header-sub">Reinforced Concrete Design Guidance</div></div></div></div>`;
+}
+
+function renderBreadcrumb(){
+  const dim=getDim(),item=getItem();
+  let h='<div class="breadcrumb"><span class="breadcrumb-link" onclick="goHome()">Framework</span>';
+  if(dim){
+    h+='<span class="breadcrumb-sep">›</span>';
+    if(item){h+=`<span class="breadcrumb-link" onclick="goDimension('${dim.id}')">${dim.name}</span><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">${item.name}</span>`}
+    else{h+=`<span class="breadcrumb-current">${dim.name}</span>`}
+  }
+  return h+'</div>';
+}
+
+function renderHomeView(){
+  const cards=dimensions.map(d=>`<div class="dim-card" onclick="goDimension('${d.id}')"><div class="dim-icon">${d.icon}</div><div class="dim-name">${d.name}</div><div class="dim-desc">${d.description}</div><div class="dim-count">${d.items.length} items →</div></div>`).join('');
+  return `<div class="content animate-in"><div style="margin-bottom:24px"><h1 class="section-title">Framework Dimensions</h1><p class="section-desc">Select a constructability dimension to explore general guidance, design entries with threshold-based ratings, and recommended actions for reinforced concrete design decisions.</p></div><div class="dim-grid">${cards}</div></div>`;
+}
+
+function renderDimensionView(){
+  const dim=getDim();
+  const items=dim.items.map((item,i)=>{
+    const cls=item.available?'item-row available':'item-row unavailable';
+    const onclick=item.available?`onclick="goEntry('${dim.id}',${i})"`:'';
+    const right=item.available?`<div style="text-align:right"><div class="item-arrow">→</div>${item.data?`<div class="item-meta">Added ${item.data.dateAdded}</div>`:''}</div>`:'<div class="item-coming">Coming soon</div>';
+    const meta=item.available&&item.data?`<div class="item-meta">Parameter: ${item.data.parameter}</div>`:'';
+    return `<div class="${cls}" ${onclick}><div><div class="item-name">${item.name}</div>${meta}</div>${right}</div>`;
+  }).join('');
+
+  let guidanceHtml='';
+  if(dim.generalGuidance&&dim.generalGuidance.length>0){
+    guidanceHtml=`<div style="margin-top:20px;margin-bottom:24px;padding:18px 22px;background:var(--surface);border:1px solid var(--border);border-radius:10px;"><div class="label" style="margin-bottom:10px">General Guidance</div>${dim.generalGuidance.map(g=>`<div style="display:flex;gap:10px;margin-bottom:8px;align-items:flex-start;"><div style="color:var(--accent);font-size:14px;margin-top:1px;flex-shrink:0;">•</div><div style="font-size:13px;color:var(--text);line-height:1.6;opacity:0.9;">${g}</div></div>`).join('')}</div>`;
+  }
+
+  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">${dim.icon}</span><h1 class="dim-header-title">${dim.name}</h1></div><p class="section-desc">${dim.description}</p>${guidanceHtml}<div class="label">Entries</div><div class="item-list">${items}</div></div>`;
+}
+
+function renderEntryDetail(){
+  const dim=getDim(),item=getItem(),d=item.data;
+
+  const thresholds=d.thresholds.map(t=>`<div class="threshold-band" style="background:${bgVar(t.color)};border:1px solid ${colorVar(t.color)}33;"><div class="threshold-range" style="color:${colorVar(t.color)}">${t.range}</div><div style="flex:1"><div class="threshold-rating" style="color:${colorVar(t.color)}">${t.rating}</div><div class="threshold-guidance">${t.guidance}</div></div></div>`).join('');
+
+  const alts=(d.alternatives||[]).filter(a=>a).map((a,i)=>`<div class="alt-item"><div class="alt-num">${i+1}</div><div class="alt-text">${a}</div></div>`).join('');
+
+  const notesHtml=d.additionalNotes?`<div style="margin-top:12px;padding:12px 16px;background:var(--surface-light);border:1px solid var(--border);border-radius:6px;"><div style="font-size:10px;font-weight:700;color:var(--yellow);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Note</div><div style="font-size:13px;color:var(--text);line-height:1.6;opacity:0.85;">${d.additionalNotes}</div></div>`:'';
+
+  const examplesHtml=d.examples&&d.examples.length>0?`<div style="margin-top:28px"><div class="label">Examples</div><div class="examples-grid">${d.examples.map(ex=>`<div class="example-card">${ex.image?`<img src="${ex.image}" alt="${ex.caption}">`:''}<div class="example-caption"><div class="example-tag ${ex.tag}">${ex.tag==='concern'?'Concern':ex.tag==='acceptable'?'Acceptable':'Recommended'}</div><div class="example-desc">${ex.caption}</div></div></div>`).join('')}</div></div>`:'';
+
+  const photosHtml=d.sitePhotos&&d.sitePhotos.length>0?`<div style="margin-top:20px"><div class="label">Site Photos</div><div class="site-photos-grid">${d.sitePhotos.map(sp=>`<div class="site-photo-card">${sp.image?`<img src="${sp.image}" alt="${sp.title}">`:''}<div class="site-photo-title">${sp.title}</div></div>`).join('')}</div></div>`:'';
+
+  return `<div class="content animate-in">
+    <div class="back-link" onclick="goDimension('${dim.id}')">← Back to ${dim.name}</div>
+    <div class="entry-title">${item.name}</div>
+    <div class="entry-meta">Dimension: ${dim.name} · Reinforced Concrete</div>
+    <div class="question-box"><div class="label label-accent">Design Question</div><div class="question-text">${d.question}</div></div>
+    <div class="param-box"><div class="label">Design Parameter</div><div class="param-value">${d.parameter}</div></div>
+    ${d.consideration?`<div class="label">Background</div><div class="consideration-text">${d.consideration}</div>`:''}
+    <div class="label">Design Guidance</div><div class="threshold-list" style="margin-top:10px">${thresholds}</div>
+    ${notesHtml}
+    ${alts.length>0?`<div class="label" style="margin-top:28px">Recommended Actions</div><div class="alt-list" style="margin-top:10px">${alts}</div>`:''}
+    ${d.evidence?`<div class="evidence-box"><div class="label">Evidence Basis</div><div class="evidence-text">${d.evidence}</div></div>`:''}
+    ${examplesHtml}
+    ${photosHtml}
+    <div class="date-stamp"><div><div class="date-label">Entry Added</div><div class="date-value">${d.dateAdded}</div></div><div><div class="date-label">Last Reviewed</div><div class="date-value">${d.dateReviewed}</div></div></div>
+  </div>`;
+}
+
+// ===== NAVIGATION =====
+function goHome(){state.view='home';state.dimId=null;state.itemIndex=null;render()}
+function goDimension(id){state.view='dimension';state.dimId=id;state.itemIndex=null;render()}
+function goEntry(dimId,idx){state.view='entry';state.dimId=dimId;state.itemIndex=idx;render()}
+
+// ===== INIT =====
+loadData();
+</script>
+</body>
+</html>

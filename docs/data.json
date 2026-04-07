@@ -1,0 +1,357 @@
+{
+  "dimensions": [
+    {
+      "id": "safety",
+      "name": "Safety in Design",
+      "icon": "⚠",
+      "description": "Design decisions affecting the safety of construction workers and other stakeholders",
+      "generalGuidance": [
+        "Consider the top reinforcement mat as a temporary working platform — its spacing directly affects worker safety during concrete placement",
+        "Every detail must be physically executable — if a worker cannot safely access, reach, or work in the space the detail requires, the design must be reconsidered"
+      ],
+      "items": [
+        {
+          "name": "Reinforcement mat fall-through risk",
+          "available": true,
+          "data": {
+            "question": "At what top reinforcement spacing does the risk of a worker falling through or stepping between bars during construction become unacceptable?",
+            "parameter": "Top reinforcement bar spacing (mm)",
+            "consideration": "Top reinforcement mats in suspended slabs temporarily serve as working platforms during construction until concrete is placed. When bar spacing is too wide, workers risk stepping between bars, leading to falls and injuries. The spacing of the top mat directly determines whether it can safely support foot traffic during concrete placement and finishing. Any measures to address fall-through risk must also facilitate concrete placement and not obstruct the pour.",
+            "thresholds": [
+              {
+                "range": "<= 200 mm",
+                "rating": "Good practice",
+                "color": "green",
+                "guidance": "Top mat provides adequate support as a working platform. Workers can walk and kneel on the reinforcement with minimal risk of stepping through. This is the recommended maximum spacing where top mats will be used as working platforms."
+              },
+              {
+                "range": "250 mm",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Significant fall-through risk on larger pours. However, 250 x 250 spacing can be acceptable on very small pours where less than 7 m3 of concrete is being placed, as these are less frantic and more controlled. For example, if the slab thickness is 180 mm, this equates to slabs less than approximately 38 m2. For pours exceeding 7 m3, this spacing should be addressed."
+              },
+              {
+                "range": "300 mm",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "Unacceptable fall-through risk for any mat intended as a working platform. Spacing this wide provides almost no resistance to a misplaced step. 300 mm is the maximum spacing permitted under AS 3600, so greater spacings should not be encountered. If 300 x 300 is specified, it must be addressed before construction proceeds."
+              }
+            ],
+            "alternatives": [
+              "Specify 200 x 200 mm (or closer) top reinforcement spacing - this is the preferred solution and should be the default where top mats will be used as working platforms",
+              "If 250 x 250 spacing is required, assess the concrete pour volume - pours under 7 m3 are generally more controlled and may be acceptable without additional measures",
+              "If 250 x 250 on pours exceeding 7 m3, or if 300 x 300 is specified, add a supplementary layer of top mesh (SL82 or above - SL72 is not rigid enough) to act as both crack control and a fall-through barrier. However, consider the impact on cover and reinforcement congestion - weigh this against simply reducing the primary bar spacing to 200 x 200"
+            ],
+            "evidence": "Site incident report: worker sustained a severe knee injury after stepping through 250 x 250 top reinforcement during slab pour. Supported by Safe Work Australia guidance on falls through openings and gaps in working platforms.",
+            "examples": [
+              {
+                "image": "images/reo-250-spacing.jpg",
+                "tag": "concern",
+                "caption": "Top reinforcement at N12-250 spacing on a 14.26 m3 pour. While the matching top and bottom spacing simplifies detailing, the 250 mm top mat spacing creates unacceptable fall-through risk on a pour of this size."
+              },
+              {
+                "image": "images/reo-250-small-pour.jpg",
+                "tag": "acceptable",
+                "caption": "Top reinforcement at N12-250 spacing on a small balcony pour of approximately 3.8 m3. The small pour volume means conditions are controlled and the 250 mm spacing is acceptable."
+              },
+              {
+                "image": "images/reo-200-spacing.jpg",
+                "tag": "recommended",
+                "caption": "Top reinforcement at N12-200 spacing on a 12.7 m3 pour. Bottom mat at N12-300 is not a concern as it is not used as a working platform. The 200 mm top spacing provides a safe working surface during concrete placement."
+              }
+            ],
+            "sitePhotos": [],
+            "dateAdded": "2026-03-15",
+            "dateReviewed": "2026-03-15"
+          }
+        },
+        { "name": "Temporary works stability", "available": false },
+        { "name": "Edge protection requirements", "available": false }
+      ]
+    },
+    {
+      "id": "detailing",
+      "name": "Detailing",
+      "icon": "✏",
+      "description": "Reinforcement detailing, slab geometry, and formwork",
+      "generalGuidance": [
+        "Prefer consistent reinforcement layouts across top and bottom steel where structurally appropriate - this simplifies ordering, reduces placement errors, and supports safety",
+        "Simplify formwork geometry wherever possible - regular layouts and repetition improve productivity and reduce cost",
+        "Evaluate whether complex geometry is structurally necessary - simpler details that achieve comparable performance are easier to build and less prone to error"
+      ],
+      "items": [
+        {
+          "name": "Suspended slab level changes (folds)",
+          "available": true,
+          "data": {
+            "question": "When a design requires a change in suspended slab levels, at what fold height should the designer consider alternatives to monolithic forming?",
+            "parameter": "Fold depth in suspended slab (mm)",
+            "consideration": "Monolithic forming of deep folds is constrained by the capabilities of standard formwork systems. Beyond a certain depth, forming becomes impractical or cost-prohibitive due to the additional bracing, propping, and custom forming required. Labour increases non-linearly with fold depth.",
+            "thresholds": [
+              {
+                "range": "<= 600 mm",
+                "rating": "Good practice",
+                "color": "green",
+                "guidance": "Can generally be accommodated by standard formwork systems without significant cost or complexity impact. Consistent with 3-5 stair risers within a structure."
+              },
+              {
+                "range": "600 - 1000 mm",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "May be achievable but should be carefully evaluated against alternatives. Formwork complexity and labour increase substantially within this range."
+              },
+              {
+                "range": "> 1000 mm",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "Likely impractical to form monolithically using standard systems. A real project example required a 1050 mm fold in a suspended RC slab. During construction, the detail was found to be impractical due to the difficulty and cost of forming with adequate bracing. The design was revised to incorporate blockwork and separate concrete pours."
+              }
+            ],
+            "alternatives": [
+              "Blockwork infill with separate concrete pours",
+              "PVC permanent formwork solutions",
+              "Redesign to reduce or eliminate the level change where structurally feasible"
+            ],
+            "evidence": "Industry consultation (formwork subcontractors, building contractor), supported by practical project experience. Jarkas (2010) confirms formwork complexity and irregularity significantly affect construction productivity.",
+            "examples": [
+              {
+                "image": "images/fold-original-detail.jpg",
+                "tag": "concern",
+                "caption": "Original detail: 1050 mm monolithic fold in suspended RC slab. Found to be impractical during construction due to difficulty and cost of forming with adequate bracing using conventional formwork."
+              },
+              {
+                "image": "images/fold-revised-detail.jpg",
+                "tag": "recommended",
+                "caption": "Revised detail: blockwork infill with separate concrete pours. Achieves the required change in slab level using standard formwork and conventional construction methods."
+              }
+            ],
+            "sitePhotos": [
+              { "image": "images/fold-site-blockwork.jpg", "title": "Blockwork infill used to achieve level change between upper and lower slabs" },
+              { "image": "images/fold-site-slab-poured.jpg", "title": "Completed upper slab poured on blockwork walls - separate pours replacing monolithic fold" },
+              { "image": "images/fold-site-stairs.jpg", "title": "Concrete stairs formed between levels using conventional formwork within blockwork walls" }
+            ],
+            "dateAdded": "2026-03-10",
+            "dateReviewed": "2026-04-01"
+          }
+        },
+        { "name": "Reinforcement spacing variability", "available": false },
+        { "name": "Beam-slab intersections", "available": false },
+        { "name": "Bar bending complexity", "available": false }
+      ]
+    },
+    {
+      "id": "logistics",
+      "name": "Logistics",
+      "icon": "📦",
+      "description": "Material and equipment availability, site access, and supply chain considerations",
+      "generalGuidance": [
+        "Specify materials that are readily available from multiple suppliers - single-source dependency creates procurement risk and potential delays",
+        "Design within the capabilities of equipment that can realistically access and operate on the site",
+        "Consider site adaptability - materials and details that can be adjusted on site when conditions change reduce program risk"
+      ],
+      "items": [
+        {
+          "name": "Stirrup bar size availability and site adaptability",
+          "available": true,
+          "data": {
+            "question": "Is the specified stirrup bar size readily available from suppliers, and can it be practically adjusted on site if conditions change during construction?",
+            "parameter": "Specified stirrup bar diameter (mm)",
+            "consideration": "Stirrup bar sizes should be readily available from multiple suppliers and, where possible, adaptable on site when conditions change. Footing depths frequently need to increase during construction when adequate bearing material is not found at the design depth. When this occurs, stirrups must be re-bent or additional stirrups fabricated on site. The specified bar size determines both how easily the stirrups can be sourced and how practically they can be adjusted in the field.",
+            "thresholds": [
+              {
+                "range": "N12 and N16",
+                "rating": "Good practice",
+                "color": "green",
+                "guidance": "Available everywhere as stock bar from all major suppliers. Can be purchased individually and bent on site by hand using manual strength, providing maximum flexibility when footing depths change during construction. This is the most adaptable option."
+              },
+              {
+                "range": "R10",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "Available from all major suppliers but typically needs to be pre-fabricated as stirrups rather than purchased as stock bar for site bending. Lead time of 5-10 days if additional or modified stirrups are required. Limited ability to adjust on site without pre-ordering."
+              },
+              {
+                "range": "R6",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Very limited availability in Australia. The large majority of reinforcement suppliers do not stock R6, with supply options effectively limited to one or two suppliers nationally. Not available as a stock item from most sources. Specifying R6 frequently results in a substitution to R10 during construction, adding administrative time for approval."
+              }
+            ],
+            "additionalNotes": "N20 and above: Available as stock bar from most suppliers, however N20 and larger bars cannot be bent on site by hand. A mechanical bar bender is required, which may or may not be available on site. If site adjustment of stirrups is anticipated, confirm equipment availability with the contractor.",
+            "alternatives": [
+              "Where footing depth is likely to change during construction, specify N12 or N16 stirrups. These are available everywhere as stock bar and can be bent on site by hand, providing maximum adaptability when bearing conditions require deeper footings",
+              "Where footing dimensions are uniform and unlikely to change (e.g. footings on piles), specify R6 with the R10 equivalent at adjusted spacing shown alongside on the drawings (e.g. R6-600 or R10-900). This gives the contractor the option to source whichever is available"
+            ],
+            "evidence": "Industry experience - R6 stirrups are commonly substituted with R10 during construction due to limited supplier availability. Major suppliers stock round bar from R10 upward only. Footing depth changes due to variable bearing conditions are a common occurrence on site, and the ability to source and bend replacement stirrups locally is a practical consideration that affects construction program.",
+            "examples": [
+              {
+                "image": "images/r6-only-specified.jpg",
+                "tag": "concern",
+                "caption": "R6-600 stirrups specified with no alternative shown. If R6 cannot be sourced, the contractor must request a substitution, adding administrative time and potential delays."
+              },
+              {
+                "image": "images/r6-or-r10-specified.jpg",
+                "tag": "recommended",
+                "caption": "R6-600 or R10-900 shown on the drawing. The contractor can source whichever is available, eliminating procurement delays and substitution requests."
+              }
+            ],
+            "sitePhotos": [],
+            "dateAdded": "2026-04-02",
+            "dateReviewed": "2026-04-02"
+          }
+        },
+        { "name": "Bar size standardisation", "available": false },
+        { "name": "Equipment access constraints", "available": false },
+        { "name": "Slab depth consistency", "available": false },
+        { "name": "Concrete grade specification", "available": false }
+      ]
+    },
+    {
+      "id": "methods",
+      "name": "Construction Methods",
+      "icon": "🏗",
+      "description": "System selection, buildability, and construction feasibility",
+      "generalGuidance": [
+        "Always consider how a design will actually be built - structurally compliant designs can still be impractical to construct",
+        "Where conventional construction methods are constrained, investigate alternative systems early - changes are least costly at the design stage"
+      ],
+      "items": [
+        {
+          "name": "Off-form concrete walls near obstructions",
+          "available": true,
+          "data": {
+            "question": "When designing concrete walls near site boundaries or obstructions, what clearance is required for conventional formwork, and at what point should alternative wall systems be considered?",
+            "parameter": "Available clearance between back of wall and nearest obstruction (mm)",
+            "consideration": "Conventional off-form concrete walls require double-sided formwork with rear access for placement, bracing, and bolt-up. This assumption breaks down when walls are positioned close to site boundaries, existing fences, retaining walls, or other obstructions. It would be unwise to assume that pressing plywood against an obstruction would effectively restrain concrete, particularly at heights approaching 1000 mm or more. Where rear access is limited, the designer should consider whether conventional formwork is feasible before committing to an off-form concrete design.",
+            "thresholds": [
+              {
+                "range": ">= 1000 mm",
+                "rating": "Good practice",
+                "color": "green",
+                "guidance": "Conventional formwork works comfortably. Full access for formwork placement, bracing, bolt-up, and stripping. Standard construction approach is appropriate."
+              },
+              {
+                "range": "700 - 1000 mm",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "Tolerable for conventional formwork but getting tight. Worth considering whether alternative systems would be simpler and more cost-effective."
+              },
+              {
+                "range": "350 - 700 mm",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Conventional formwork is severely constrained. A person cannot access the space behind the wall in any practical way. At the lower end (around 350 mm), formwork can only be placed and bolted by reaching in at arm's length, and only for walls up to approximately 1200 mm high. This range should trigger serious consideration of alternative wall systems."
+              },
+              {
+                "range": "< 350 mm",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "Conventional formwork cannot be placed, braced, or bolted. An alternative wall system is required. Note that obstructions near the boundary may also introduce complications - for example, removing an existing fence to gain access may create fall hazards if there is a level change on the other side, and adjacent land may not be within the site boundary, limiting options for temporary works."
+              }
+            ],
+            "alternatives": [
+              "Dincel or similar permanent formwork systems that only require single-sided access. Can be rendered to achieve an off-form concrete appearance if required by the client",
+              "Blockwork construction - may be structurally compliant depending on the design requirements (engineer to verify). Can also be rendered to match a concrete finish if aesthetics are a concern",
+              "Reposition the wall forward to provide adequate clearance - however this is typically only viable if the client's brief allows it, as walls are often positioned near boundaries for a reason",
+              "Precast or tilt-up panels - dependent on project scope. For larger projects with crane access this may be logistically feasible. For smaller projects without a crane, an in-situ solution is more realistic"
+            ],
+            "evidence": "Conventional formwork requires rear clearance for bracing and bolt-up access. Project experience: a concrete upturn wall designed as off-form concrete near a site boundary was found to be infeasible during construction due to zero clearance behind the wall and no access to adjacent land. The design was revised to a Dincel permanent formwork system.",
+            "examples": [
+              {
+                "image": "images/wall-detail-original.jpg",
+                "tag": "concern",
+                "caption": "Original design: off-form concrete upturn wall specified directly against the site boundary. No clearance behind for conventional formwork bracing or bolt-up access."
+              },
+              {
+                "image": "images/dincel-installation.jpg",
+                "tag": "recommended",
+                "caption": "Dincel (PVC permanent formwork) system installed to eliminate the requirement for rear bracing in a wall 1000 mm high."
+              }
+            ],
+            "sitePhotos": [
+              { "image": "images/formwork-bracing-1.jpg", "title": "Conventional off-form wall formwork with timber bracing on both sides and coil ties at regular intervals" },
+              { "image": "images/formwork-bracing-2.jpg", "title": "Formwork bracing detail - note the access and clearance required behind the wall for bracing and bolt-up" },
+              { "image": "images/offform-stripped.jpg", "title": "Off-form concrete wall after formwork removal - coil tie holes visible at regular intervals" },
+              { "image": "images/dincel-complete.jpg", "title": "Completed Dincel wall after concrete pour - no rear bracing required during construction" }
+            ],
+            "dateAdded": "2026-04-02",
+            "dateReviewed": "2026-04-02"
+          }
+        },
+        { "name": "RC vs Post-tensioned selection", "available": false },
+        { "name": "Pour sequencing", "available": false }
+      ]
+    },
+    {
+      "id": "communication",
+      "name": "Design Communication",
+      "icon": "📐",
+      "description": "Drawing clarity, notation, and communication with contractors",
+      "generalGuidance": [
+        "Reinforcement callouts should be clear and concise - if a callout needs decoding, critical information may be missed",
+        "Follow consistent drawing conventions - for example, use dashed lines for elements below the section cut to avoid confusion about what is being detailed",
+        "Communicate openly with stakeholders about project deliverables and methodologies early - assumptions made in isolation often lead to constructability issues during construction"
+      ],
+      "items": [
+        {
+          "name": "Reinforcement callout clarity",
+          "available": true,
+          "data": {
+            "question": "Does each reinforcement callout on the drawing communicate a single, clear instruction, or are multiple instructions being combined into one notation?",
+            "parameter": "Readability of reinforcement callout notation",
+            "consideration": "When reinforcement callouts combine multiple instructions into a single notation - such as standard bar spacing, extra bars over columns, and total bar counts - critical information can be missed on site. The more information packed into one callout, the greater the risk that non-obvious elements are overlooked. In practice, it is the additional or non-standard reinforcement (such as extras over columns) that is most likely to be missed, as it is often appended to the end of an already complex callout.",
+            "thresholds": [
+              {
+                "range": "Clear callouts",
+                "rating": "Good practice",
+                "color": "green",
+                "guidance": "Bar size and spacing with extent shown on plan. Laying order noted separately in brackets where helpful. e.g. N12-200 (B1). Every element independently readable at a glance. Extras called out separately with their own callout and extent markers. e.g. 6N16 EXTRA."
+              },
+              {
+                "range": "No laying order",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "Bar size and spacing only, no laying order context. e.g. N12-200. Still clear, but the reader does not know the stacking sequence without checking elsewhere."
+              },
+              {
+                "range": "Count included",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Bar count included in the callout. e.g. 10N12-200. The count is unnecessary - extent markers on the drawing already communicate where bars go. Adding the count clutters the notation without adding practical value on site."
+              },
+              {
+                "range": "Encoded notation",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "Multiple instructions encoded into a single compressed string. e.g. 13N16 10-250+3. Extras or non-standard reinforcement buried within the notation. Critical information is easily missed and was missed during construction in a real project."
+              }
+            ],
+            "alternatives": [
+              "Separate extras into their own callouts on the plan with their own extent markers. For example, show N16-250 for the standard bars and a separate callout 3N16 EXTRA OVER COLUMNS (TYP) with its extent clearly marked",
+              "Use TYPICAL notation so that extras only need to be detailed once on the drawing rather than repeated at every location",
+              "Include a general note such as all extras evenly spaced unless noted otherwise to reduce the amount of information that needs to be conveyed in individual callouts"
+            ],
+            "evidence": "Project experience - additional reinforcement over columns was missed during construction because it was embedded as +3 at the end of a combined callout. The standard reinforcement was placed correctly but the extras were overlooked, requiring identification during inspection and additional placement before the pour could proceed.",
+            "examples": [
+              {
+                "image": "images/callout-poor.jpg",
+                "tag": "concern",
+                "caption": "Poor notation: 13N16 10-250+3 combines total count, spacing, and extras into a single encoded string. The +3 extra bars over columns were missed during construction."
+              },
+              {
+                "image": "images/callout-clear.jpg",
+                "tag": "recommended",
+                "caption": "Clear notation: N12-200 (B1) communicates bar size, spacing, and laying order at a glance. Extras called out separately as 6N16 EXTRA with their own extent markers."
+              }
+            ],
+            "sitePhotos": [],
+            "dateAdded": "2026-04-02",
+            "dateReviewed": "2026-04-02"
+          }
+        },
+        { "name": "Drawing notation clarity", "available": false },
+        { "name": "Detail sheet organisation", "available": false }
+      ]
+    }
+  ]
+}
