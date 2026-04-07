@@ -5,7 +5,6 @@ A practical, evidence-based framework that helps structural engineers evaluate a
 ## What is this?
 
 Structural design standards like AS 3600 ensure that reinforced concrete structures are safe and serviceable once completed. But structurally compliant designs can still be difficult, costly, or unsafe to construct if design decisions don't adequately consider construction processes, site constraints, material availability, and communication.
-a
 This framework bridges that gap. It provides structured, dimension-based guidance that translates practical construction knowledge into actionable design-stage recommendations — so that constructability issues are identified and resolved when changes are least costly.
 
 ## How it works
