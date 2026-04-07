@@ -42,7 +42,7 @@ Entries are date-stamped and designed to be updated as construction technology a
 ## Using the framework
 
 ### Live site
-The framework is hosted at: **[your-url-here]**
+The framework is hosted at: **[(https://david-reset.github.io/Concrete-Structures-Constructability-Framework/)]**
 
 Browse by dimension, read the general guidance, then explore specific entries relevant to your design decisions.
 
