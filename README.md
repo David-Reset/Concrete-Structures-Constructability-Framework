@@ -99,8 +99,12 @@ The framework draws on the principle — embedded in the [Engineers Australia Co
 
 This framework provides **supplementary design-stage guidance**. It does not replace compliance with structural design standards (e.g. AS 3600), applicable codes, or professional engineering judgement. All guidance should be applied within compliant design solutions and with appropriate consideration of project-specific conditions.
 
-## Author
+## Authors
 
 **David Harvey**
-Deakin University
 SEJ441 / SEJ446 Final Year Project
+
+**Kazem Ghabraie**
+Associate Professor
+Deakin University, School of Engineering
+
