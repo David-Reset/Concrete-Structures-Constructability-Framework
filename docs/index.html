@@ -92,15 +92,15 @@
   .example-tag.recommended{background:var(--green-bg);color:var(--green)}
   .example-desc{font-size:12px;color:var(--text);line-height:1.5;opacity:0.85}
 
-  .site-photos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:10px;margin-bottom:28px}
-  .site-photo-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
-  .site-photo-card img{width:100%;height:160px;object-fit:cover;display:block;background:#1e2a3a}
-  .site-photo-title{padding:8px 12px;font-size:12px;color:var(--text);opacity:0.85;border-top:1px solid var(--border)}
+  .supporting-images-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:10px;margin-bottom:28px}
+  .supporting-image-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+  .supporting-image-card img{width:100%;height:160px;object-fit:cover;display:block;background:#1e2a3a}
+  .supporting-image-title{padding:8px 12px;font-size:12px;color:var(--text);opacity:0.85;border-top:1px solid var(--border)}
 
   @media(max-width:640px){
     .content{padding:20px 16px} .header{padding:16px} .breadcrumb{padding:10px 16px}
     .dim-grid{grid-template-columns:1fr} .examples-grid{grid-template-columns:1fr}
-    .site-photos-grid{grid-template-columns:1fr 1fr} .date-stamp{flex-direction:column;gap:8px}
+    .supporting-images-grid{grid-template-columns:1fr 1fr} .date-stamp{flex-direction:column;gap:8px}
   }
 </style>
 </head>
@@ -184,7 +184,7 @@ function renderEntryDetail(){
 
   const examplesHtml=d.examples&&d.examples.length>0?`<div style="margin-top:28px"><div class="label">Examples</div><div class="examples-grid">${d.examples.map(ex=>`<div class="example-card">${ex.image?`<img src="${ex.image}" alt="${ex.caption}">`:''}<div class="example-caption"><div class="example-tag ${ex.tag}">${ex.tag==='concern'?'Concern':ex.tag==='acceptable'?'Acceptable':'Recommended'}</div><div class="example-desc">${ex.caption}</div></div></div>`).join('')}</div></div>`:'';
 
-  const photosHtml=d.sitePhotos&&d.sitePhotos.length>0?`<div style="margin-top:20px"><div class="label">Site Photos</div><div class="site-photos-grid">${d.sitePhotos.map(sp=>`<div class="site-photo-card">${sp.image?`<img src="${sp.image}" alt="${sp.title}">`:''}<div class="site-photo-title">${sp.title}</div></div>`).join('')}</div></div>`:'';
+  const supportingImagesHtml=d.supportingImages&&d.supportingImages.length>0?`<div style="margin-top:20px"><div class="label">Supporting Images</div><div class="supporting-images-grid">${d.supportingImages.map(sp=>`<div class="supporting-image-card">${sp.image?`<img src="${sp.image}" alt="${sp.title}">`:''}<div class="supporting-image-title">${sp.title}</div></div>`).join('')}</div></div>`:'';
 
   return `<div class="content animate-in">
     <div class="back-link" onclick="goDimension('${dim.id}')">← Back to ${dim.name}</div>
@@ -198,7 +198,7 @@ function renderEntryDetail(){
     ${alts.length>0?`<div class="label" style="margin-top:28px">Recommended Actions</div><div class="alt-list" style="margin-top:10px">${alts}</div>`:''}
     ${d.evidence?`<div class="evidence-box"><div class="label">Evidence Basis</div><div class="evidence-text">${d.evidence}</div></div>`:''}
     ${examplesHtml}
-    ${photosHtml}
+    ${supportingImagesHtml}
     <div class="date-stamp"><div><div class="date-label">Entry Added</div><div class="date-value">${d.dateAdded}</div></div><div><div class="date-label">Last Reviewed</div><div class="date-value">${d.dateReviewed}</div></div></div>
   </div>`;
 }
