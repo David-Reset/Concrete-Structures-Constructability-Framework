@@ -60,7 +60,7 @@
                 "caption": "Top reinforcement at N12-200 spacing on a 12.7 m3 pour. Bottom mat at N12-300 is not a concern as it is not used as a working platform. The 200 mm top spacing provides a safe working surface during concrete placement."
               }
             ],
-            "sitePhotos": [],
+            "supportingImages": [],
             "dateAdded": "2026-03-15",
             "dateReviewed": "2026-03-15"
           }
@@ -125,7 +125,7 @@
                 "caption": "Revised detail: blockwork infill with separate concrete pours. Achieves the required change in slab level using standard formwork and conventional construction methods."
               }
             ],
-            "sitePhotos": [
+            "supportingImages": [
               { "image": "images/fold-site-blockwork.jpg", "title": "Blockwork infill used to achieve level change between upper and lower slabs" },
               { "image": "images/fold-site-slab-poured.jpg", "title": "Completed upper slab poured on blockwork walls - separate pours replacing monolithic fold" },
               { "image": "images/fold-site-stairs.jpg", "title": "Concrete stairs formed between levels using conventional formwork within blockwork walls" }
@@ -195,7 +195,7 @@
                 "caption": "R6-600 or R10-900 shown on the drawing. The contractor can source whichever is available, eliminating procurement delays and substitution requests."
               }
             ],
-            "sitePhotos": [],
+            "supportingImages": [],
             "dateAdded": "2026-04-02",
             "dateReviewed": "2026-04-02"
           }
@@ -268,7 +268,7 @@
                 "caption": "Dincel (PVC permanent formwork) system installed to eliminate the requirement for rear bracing in a wall 1000 mm high."
               }
             ],
-            "sitePhotos": [
+            "supportingImages": [
               { "image": "images/formwork-bracing-1.jpg", "title": "Conventional off-form wall formwork with timber bracing on both sides and coil ties at regular intervals" },
               { "image": "images/formwork-bracing-2.jpg", "title": "Formwork bracing detail - note the access and clearance required behind the wall for bracing and bolt-up" },
               { "image": "images/offform-stripped.jpg", "title": "Off-form concrete wall after formwork removal - coil tie holes visible at regular intervals" },
@@ -344,7 +344,7 @@
                 "caption": "Clear notation: N12-200 (B1) communicates bar size, spacing, and laying order at a glance. Extras called out separately as 6N16 EXTRA with their own extent markers."
               }
             ],
-            "sitePhotos": [],
+            "supportingImages": [],
             "dateAdded": "2026-04-02",
             "dateReviewed": "2026-04-02"
           }
