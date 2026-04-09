@@ -41,7 +41,7 @@ Entries are date-stamped and designed to be updated as construction technology a
 ## Using the framework
 
 ### Live site
-The framework is hosted at: **https://david-reset.github.io/Concrete-Structures-Constructability-Framework/**
+The framework is hosted at: <a href="https://david-reset.github.io/Concrete-Structures-Constructability-Framework/" target="_blank"><strong>https://david-reset.github.io/Concrete-Structures-Constructability-Framework/</strong></a>
 
 Browse by dimension, read the general guidance, then explore specific entries relevant to your design decisions.
 
@@ -67,8 +67,19 @@ Browse by dimension, read the general guidance, then explore specific entries re
 
 ## Contributing
 
+### Choosing the right dimension
+
+Each entry belongs to **one dimension only**, based on the **root cause** of the constructability issue — not just where the issue becomes visible.
+
+For example, the "Off-form concrete walls near obstructions" entry sits under **Construction Methods**, not Detailing or Logistics. The wall detailing and site access are relevant, but the root cause is that the designer selected a construction method (conventional off-form concrete) without considering whether the site conditions could support it. If the same issue appeared multiple times across dimensions, the framework would become repetitive and harder to maintain.
+
+When submitting an entry, ask: *what design decision caused this issue?* That points you to the right dimension.
+
 ### Suggesting an entry
-If you have a constructability issue, design scenario, or practical insight that could benefit the framework, you can submit it via the **[suggestion form](https://forms.gle/5ppQRvJuzWaUkdg89)**.
+
+If you have a constructability issue, design scenario, or practical insight that could benefit the framework, you can submit it via the <a href="https://forms.gle/5ppQRvJuzWaUkdg89" target="_blank">suggestion form</a>.
+
+To see what a completed submission looks like, refer to the <a href="examples/Off-form-wall-example.pdf" target="_blank">example submission (PDF)</a> — this is the off-form wall entry as it was submitted through the form.
 
 Submissions are reviewed before being added to the framework to ensure quality and consistency.
 
