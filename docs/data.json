@@ -228,25 +228,25 @@
                 "range": ">= 1000 mm",
                 "rating": "Good practice",
                 "color": "green",
-                "guidance": "Conventional formwork works comfortably. Full access for formwork placement, bracing, bolt-up, and stripping. Standard construction approach is appropriate."
+                "guidance": "Full access for formwork placement, bracing, bolt-up, and stripping. Both coil tie and threaded bar systems feasible."
               },
               {
                 "range": "700 - 1000 mm",
                 "rating": "Consider",
                 "color": "yellow",
-                "guidance": "Tolerable for conventional formwork but getting tight. Worth considering whether alternative systems would be simpler and more cost-effective."
+                "guidance": "Coil tie system feasible but access is tight — a person cannot comfortably work behind the wall. Consider whether alternatives would be simpler."
               },
               {
                 "range": "350 - 700 mm",
                 "rating": "Concern",
                 "color": "orange",
-                "guidance": "Conventional formwork is severely constrained. A person cannot access the space behind the wall in any practical way. At the lower end (around 350 mm), formwork can only be placed and bolted by reaching in at arm's length, and only for walls up to approximately 1200 mm high. This range should trigger serious consideration of alternative wall systems."
+                "guidance": "Coil ties cannot be used (plywood + timbers + bolt = 700 mm minimum). Threaded bar only, tightened by reaching in at arm's length. Only for walls up to ~1200 mm high."
               },
               {
                 "range": "< 350 mm",
                 "rating": "Action required",
                 "color": "red",
-                "guidance": "Conventional formwork cannot be placed, braced, or bolted. An alternative wall system is required. Note that obstructions near the boundary may also introduce complications - for example, removing an existing fence to gain access may create fall hazards if there is a level change on the other side, and adjacent land may not be within the site boundary, limiting options for temporary works."
+                "guidance": "No conventional formwork system can be placed, braced, or bolted."
               }
             ],
             "alternatives": [
@@ -255,7 +255,7 @@
               "Reposition the wall forward to provide adequate clearance - however this is typically only viable if the client's brief allows it, as walls are often positioned near boundaries for a reason",
               "Precast or tilt-up panels - dependent on project scope. For larger projects with crane access this may be logistically feasible. For smaller projects without a crane, an in-situ solution is more realistic"
             ],
-            "evidence": "Conventional formwork requires rear clearance for bracing and bolt-up access. Project experience: a concrete upturn wall designed as off-form concrete near a site boundary was found to be infeasible during construction due to zero clearance behind the wall and no access to adjacent land. The design was revised to a Dincel permanent formwork system.",
+            "evidence": "Conventional formwork requires rear clearance for bracing and bolt-up access. Confirmed through literature + industry consultation: deriving the clearance thresholds. A concrete upturn wall designed as off-form concrete near a site boundary was found to be infeasible during construction due to zero clearance behind the wall and no access to adjacent land. The design was revised to a Dincel permanent formwork system.",
             "examples": [
               {
                 "image": "images/wall-detail-original.jpg",
@@ -269,13 +269,16 @@
               }
             ],
             "supportingImages": [
+              { "image": "images/formwork-literature-example.png", "title": "(Jha, 2012): Conventional timber wall formwork assembly — note the coil ties passing through both faces, requiring access and bracing on both sides of the wall" },
+              { "image": "images/formwork-ties.png", "title": "(Hurd, 2005): Common formwork tie types — one-piece ties snap off after stripping, while internally disconnecting ties allow full removal from the concrete" },
+              { "image": "images/dincel-bracing-1.png", "title": "(Dincel, 2026): Dincel PVC permanent formwork wall panel — diagonal bracing connects externally, eliminating the need for rear-side access and coil ties" },
               { "image": "images/formwork-bracing-1.jpg", "title": "Conventional off-form wall formwork with timber bracing on both sides and coil ties at regular intervals" },
               { "image": "images/formwork-bracing-2.jpg", "title": "Formwork bracing detail - note the access and clearance required behind the wall for bracing and bolt-up" },
               { "image": "images/offform-stripped.jpg", "title": "Off-form concrete wall after formwork removal - coil tie holes visible at regular intervals" },
               { "image": "images/dincel-complete.jpg", "title": "Completed Dincel wall after concrete pour - no rear bracing required during construction" }
             ],
             "dateAdded": "2026-04-02",
-            "dateReviewed": "2026-04-02"
+            "dateReviewed": "2026-04-09"
           }
         },
         { "name": "RC vs Post-tensioned selection", "available": false },
