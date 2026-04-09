@@ -16,7 +16,7 @@
           "data": {
             "question": "At what top reinforcement spacing does the risk of a worker falling through or stepping between bars during construction become unacceptable?",
             "parameter": "Top reinforcement bar spacing (mm)",
-            "consideration": "Top reinforcement mats in suspended slabs temporarily serve as working platforms during construction until concrete is placed. When bar spacing is too wide, workers risk stepping between bars, leading to falls and injuries. The spacing of the top mat directly determines whether it can safely support foot traffic during concrete placement and finishing. Any measures to address fall-through risk must also facilitate concrete placement and not obstruct the pour.",
+            "background": "Top reinforcement mats in suspended slabs temporarily serve as working platforms during construction until concrete is placed. When bar spacing is too wide, workers risk stepping between bars, leading to falls and injuries. The spacing of the top mat directly determines whether it can safely support foot traffic during concrete placement and finishing. Any measures to address fall-through risk must also facilitate concrete placement and not obstruct the pour.",
             "thresholds": [
               {
                 "range": "<= 200 mm",
@@ -86,7 +86,7 @@
           "data": {
             "question": "When a design requires a change in suspended slab levels, at what fold height should the designer consider alternatives to monolithic forming?",
             "parameter": "Fold depth in suspended slab (mm)",
-            "consideration": "Monolithic forming of deep folds is constrained by the capabilities of standard formwork systems. Beyond a certain depth, forming becomes impractical or cost-prohibitive due to the additional bracing, propping, and custom forming required. Labour increases non-linearly with fold depth.",
+            "background": "Monolithic forming of deep folds is constrained by the capabilities of standard formwork systems. Beyond a certain depth, forming becomes impractical or cost-prohibitive due to the additional bracing, propping, and custom forming required. Labour increases non-linearly with fold depth.",
             "thresholds": [
               {
                 "range": "<= 600 mm",
@@ -156,7 +156,7 @@
           "data": {
             "question": "Is the specified stirrup bar size readily available from suppliers, and can it be practically adjusted on site if conditions change during construction?",
             "parameter": "Specified stirrup bar diameter (mm)",
-            "consideration": "Stirrup bar sizes should be readily available from multiple suppliers and, where possible, adaptable on site when conditions change. Footing depths frequently need to increase during construction when adequate bearing material is not found at the design depth. When this occurs, stirrups must be re-bent or additional stirrups fabricated on site. The specified bar size determines both how easily the stirrups can be sourced and how practically they can be adjusted in the field.",
+            "background": "Stirrup bar sizes should be readily available from multiple suppliers and, where possible, adaptable on site when conditions change. Footing depths frequently need to increase during construction when adequate bearing material is not found at the design depth. When this occurs, stirrups must be re-bent or additional stirrups fabricated on site. The specified bar size determines both how easily the stirrups can be sourced and how practically they can be adjusted in the field.",
             "thresholds": [
               {
                 "range": "N12 and N16",
@@ -222,7 +222,7 @@
           "data": {
             "question": "When designing concrete walls near site boundaries or obstructions, what clearance is required for conventional formwork, and at what point should alternative wall systems be considered?",
             "parameter": "Available clearance between back of wall and nearest obstruction (mm)",
-            "consideration": "Conventional off-form concrete walls require double-sided formwork with rear access for placement, bracing, and bolt-up. This assumption breaks down when walls are positioned close to site boundaries, existing fences, retaining walls, or other obstructions. It would be unwise to assume that pressing plywood against an obstruction would effectively restrain concrete, particularly at heights approaching 1000 mm or more. Where rear access is limited, the designer should consider whether conventional formwork is feasible before committing to an off-form concrete design.",
+            "background": "Conventional off-form concrete walls require double-sided formwork with rear access for placement, bracing, and bolt-up. This assumption breaks down when walls are positioned close to site boundaries, existing fences, retaining walls, or other obstructions. It would be unwise to assume that pressing plywood against an obstruction would effectively restrain concrete, particularly at heights approaching 1000 mm or more. Where rear access is limited, the designer should consider whether conventional formwork is feasible before committing to an off-form concrete design.",
             "thresholds": [
               {
                 "range": ">= 1000 mm",
@@ -255,7 +255,7 @@
               "Reposition the wall forward to provide adequate clearance - however this is typically only viable if the client's brief allows it, as walls are often positioned near boundaries for a reason",
               "Precast or tilt-up panels - dependent on project scope. For larger projects with crane access this may be logistically feasible. For smaller projects without a crane, an in-situ solution is more realistic"
             ],
-            "evidence": "Conventional formwork requires rear clearance for bracing and bolt-up access. Confirmed through literature + industry consultation: deriving the clearance thresholds. A concrete upturn wall designed as off-form concrete near a site boundary was found to be infeasible during construction due to zero clearance behind the wall and no access to adjacent land. The design was revised to a Dincel permanent formwork system.",
+            "evidence": "Conventional formwork requires rear clearance for bracing and bolt-up access. Confirmed through literature + industry consultation: deriving the clearance thresholds. A concrete upturn wall designed as off-form concrete near a site boundary was found to be infeasible during construction due to zero clearance behind the wall and no access to adjacent land. The design was revised to a Dincel permanent formwork system.<br><br><strong>References</strong><br>Dincel Structural Walling. (2026). Construction Manual. Dincel Structural Walling.<br>Hurd, M. K. (2005). Formwork for Concrete (7th ed.). American Concrete Institute.<br>Jha, K. N. (2012). Formwork for Concrete Structures. Tata McGraw Hill Education Private Limited.",
             "examples": [
               {
                 "image": "images/wall-detail-original.jpg",
@@ -302,7 +302,7 @@
           "data": {
             "question": "Does each reinforcement callout on the drawing communicate a single, clear instruction, or are multiple instructions being combined into one notation?",
             "parameter": "Readability of reinforcement callout notation",
-            "consideration": "When reinforcement callouts combine multiple instructions into a single notation - such as standard bar spacing, extra bars over columns, and total bar counts - critical information can be missed on site. The more information packed into one callout, the greater the risk that non-obvious elements are overlooked. In practice, it is the additional or non-standard reinforcement (such as extras over columns) that is most likely to be missed, as it is often appended to the end of an already complex callout.",
+            "background": "When reinforcement callouts combine multiple instructions into a single notation - such as standard bar spacing, extra bars over columns, and total bar counts - critical information can be missed on site. The more information packed into one callout, the greater the risk that non-obvious elements are overlooked. In practice, it is the additional or non-standard reinforcement (such as extras over columns) that is most likely to be missed, as it is often appended to the end of an already complex callout.",
             "thresholds": [
               {
                 "range": "Clear callouts",
