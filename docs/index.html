@@ -101,6 +101,14 @@
   .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;display:flex;align-items:center;justify-content:center;cursor:pointer;animation:fadeIn 0.2s ease}
   .lightbox img{max-width:90vw;max-height:90vh;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,0.5)}
 
+  .loc-tag{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;color:var(--text-muted);background:var(--surface-light);border:1px solid var(--border);border-radius:4px;padding:2px 8px;letter-spacing:0.3px}
+  .loc-tag svg{width:10px;height:10px;fill:var(--text-muted);flex-shrink:0}
+  .loc-filter{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:8px}
+  .loc-filter-label{font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+  .loc-filter select{background:var(--surface-light);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:6px 12px;font-size:12px;font-family:'IBM Plex Sans',sans-serif;cursor:pointer;outline:none}
+  .loc-filter select:focus{border-color:var(--accent)}
+  .loc-filter-count{font-size:11px;color:var(--text-muted);margin-left:auto}
+
   @media(max-width:640px){
     .content{padding:20px 16px} .header{padding:16px} .breadcrumb{padding:10px 16px}
     .dim-grid{grid-template-columns:1fr} .examples-grid{grid-template-columns:1fr}
@@ -113,13 +121,37 @@
 <script>
 // ===== STATE =====
 let dimensions = [];
-let state = { view:'home', dimId:null, itemIndex:null };
+let state = { view:'home', dimId:null, itemIndex:null, locationFilter:null };
 
 // ===== HELPERS =====
 function colorVar(c){const m={green:'--green',orange:'--orange',red:'--red',yellow:'--yellow'};return `var(${m[c]||'--green'})`}
 function bgVar(c){const m={green:'--green-bg',orange:'--orange-bg',red:'--red-bg',yellow:'--yellow-bg'};return `var(${m[c]||'--green-bg'})`}
 function getDim(){return dimensions.find(d=>d.id===state.dimId)}
 function getItem(){const dim=getDim();return dim?dim.items[state.itemIndex]:null}
+
+// ===== LOCATION HELPERS =====
+const PIN_SVG='<svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>';
+function locLabel(loc){if(!loc)return'';return loc.state?`${loc.state}, ${loc.country}`:loc.country}
+function locTag(loc){if(!loc)return'';return `<span class="loc-tag">${PIN_SVG} ${locLabel(loc)}</span>`}
+function getLocations(dim){
+  const locs=new Map();
+  dim.items.forEach(item=>{
+    if(item.available&&item.data&&item.data.location){
+      const loc=item.data.location;
+      if(!locs.has(loc.country))locs.set(loc.country,new Set());
+      if(loc.state)locs.get(loc.country).add(loc.state);
+    }
+  });
+  return locs;
+}
+function itemMatchesFilter(item){
+  if(!state.locationFilter)return true;
+  if(!item.available||!item.data||!item.data.location)return !state.locationFilter;
+  const loc=item.data.location;
+  const f=state.locationFilter;
+  if(f.state)return loc.country===f.country&&loc.state===f.state;
+  return loc.country===f.country;
+}
 
 // ===== LOAD DATA =====
 async function loadData(){
@@ -161,12 +193,34 @@ function renderHomeView(){
 
 function renderDimensionView(){
   const dim=getDim();
+  
+  // Build location filter options
+  const locs=getLocations(dim);
+  let filterHtml='';
+  if(locs.size>0){
+    let opts='<option value="">All regions</option>';
+    for(const [country,states] of locs){
+      opts+=`<option value="${country}" ${state.locationFilter&&state.locationFilter.country===country&&!state.locationFilter.state?'selected':''}>${country}</option>`;
+      for(const st of [...states].sort()){
+        const val=`${country}|${st}`;
+        opts+=`<option value="${val}" ${state.locationFilter&&state.locationFilter.state===st?'selected':''}>&nbsp;&nbsp;${st}, ${country}</option>`;
+      }
+    }
+    const matchCount=dim.items.filter(item=>itemMatchesFilter(item)).length;
+    const totalAvail=dim.items.filter(item=>item.available).length;
+    const countText=state.locationFilter?`Showing ${matchCount} of ${totalAvail} entries`:'';
+    filterHtml=`<div class="loc-filter"><div class="loc-filter-label">Region</div><select onchange="setLocationFilter(this.value)">${opts}</select><div class="loc-filter-count">${countText}</div></div>`;
+  }
+
   const items=dim.items.map((item,i)=>{
+    const matches=itemMatchesFilter(item);
+    const hidden=state.locationFilter&&!matches&&item.available?'style="display:none"':'';
     const cls=item.available?'item-row available':'item-row unavailable';
     const onclick=item.available?`onclick="goEntry('${dim.id}',${i})"`:'';
+    const loc=item.available&&item.data&&item.data.location?locTag(item.data.location):'';
     const right=item.available?`<div style="text-align:right"><div class="item-arrow">→</div>${item.data?`<div class="item-meta">Added ${item.data.dateAdded}</div>`:''}</div>`:'<div class="item-coming">Coming soon</div>';
     const meta=item.available&&item.data?`<div class="item-meta">Parameter: ${item.data.parameter}</div>`:'';
-    return `<div class="${cls}" ${onclick}><div><div class="item-name">${item.name}</div>${meta}</div>${right}</div>`;
+    return `<div class="${cls}" ${onclick} ${hidden}><div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><div class="item-name">${item.name}</div>${loc}</div>${meta}</div>${right}</div>`;
   }).join('');
 
   let guidanceHtml='';
@@ -174,7 +228,7 @@ function renderDimensionView(){
     guidanceHtml=`<div style="margin-top:20px;margin-bottom:24px;padding:18px 22px;background:var(--surface);border:1px solid var(--border);border-radius:10px;"><div class="label" style="margin-bottom:10px">General Guidance</div>${dim.generalGuidance.map(g=>`<div style="display:flex;gap:10px;margin-bottom:8px;align-items:flex-start;"><div style="color:var(--accent);font-size:14px;margin-top:1px;flex-shrink:0;">•</div><div style="font-size:13px;color:var(--text);line-height:1.6;opacity:0.9;">${g}</div></div>`).join('')}</div>`;
   }
 
-  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">${dim.icon}</span><h1 class="dim-header-title">${dim.name}</h1></div><p class="section-desc">${dim.description}</p>${guidanceHtml}<div class="label">Entries</div><div class="item-list">${items}</div></div>`;
+  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">${dim.icon}</span><h1 class="dim-header-title">${dim.name}</h1></div><p class="section-desc">${dim.description}</p>${guidanceHtml}${filterHtml}<div class="label">Entries</div><div class="item-list">${items}</div></div>`;
 }
 
 function renderEntryDetail(){
@@ -193,7 +247,7 @@ function renderEntryDetail(){
   return `<div class="content animate-in">
     <div class="back-link" onclick="goDimension('${dim.id}')">← Back to ${dim.name}</div>
     <div class="entry-title">${item.name}</div>
-    <div class="entry-meta">Dimension: ${dim.name} · Reinforced Concrete</div>
+    <div class="entry-meta">Dimension: ${dim.name} · Reinforced Concrete ${d.location?' · '+locTag(d.location):''}</div>
     <div class="question-box"><div class="label label-accent">Design Question</div><div class="question-text">${d.question}</div></div>
     <div class="param-box"><div class="label">Design Parameter</div><div class="param-value">${d.parameter}</div></div>
     ${d.background?`<div class="label">Background</div><div class="consideration-text">${d.background}</div>`:''}
@@ -211,9 +265,15 @@ function renderEntryDetail(){
 function openLightbox(src){const lb=document.createElement('div');lb.className='lightbox';lb.onclick=()=>lb.remove();lb.innerHTML=`<img src="${src}">`;document.body.appendChild(lb)}
 
 // ===== NAVIGATION =====
-function goHome(){state.view='home';state.dimId=null;state.itemIndex=null;render()}
-function goDimension(id){state.view='dimension';state.dimId=id;state.itemIndex=null;render()}
+function goHome(){state.view='home';state.dimId=null;state.itemIndex=null;state.locationFilter=null;render()}
+function goDimension(id){state.view='dimension';state.dimId=id;state.itemIndex=null;state.locationFilter=null;render()}
 function goEntry(dimId,idx){state.view='entry';state.dimId=dimId;state.itemIndex=idx;render()}
+function setLocationFilter(val){
+  if(!val){state.locationFilter=null}
+  else if(val.includes('|')){const[c,s]=val.split('|');state.locationFilter={country:c,state:s}}
+  else{state.locationFilter={country:val}}
+  render();
+}
 
 // ===== INIT =====
 loadData();
