@@ -3,11 +3,11 @@
     {
       "id": "safety",
       "name": "Safety in Design",
-      "icon": "⚠",
+      "icon": "\u26a0",
       "description": "Design decisions affecting the safety of construction workers and other stakeholders",
       "generalGuidance": [
-        "Consider the top reinforcement mat as a temporary working platform — its spacing directly affects worker safety during concrete placement",
-        "Every detail must be physically executable — if a worker cannot safely access, reach, or work in the space the detail requires, the design must be reconsidered"
+        "Consider the top reinforcement mat as a temporary working platform \u2014 its spacing directly affects worker safety during concrete placement",
+        "Every detail must be physically executable \u2014 if a worker cannot safely access, reach, or work in the space the detail requires, the design must be reconsidered"
       ],
       "items": [
         {
@@ -62,17 +62,27 @@
             ],
             "supportingImages": [],
             "dateAdded": "2026-03-15",
-            "dateReviewed": "2026-03-15"
+            "dateReviewed": "2026-03-15",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            }
           }
         },
-        { "name": "Temporary works stability", "available": false },
-        { "name": "Edge protection requirements", "available": false }
+        {
+          "name": "Temporary works stability",
+          "available": false
+        },
+        {
+          "name": "Edge protection requirements",
+          "available": false
+        }
       ]
     },
     {
       "id": "detailing",
       "name": "Detailing",
-      "icon": "✏",
+      "icon": "\u270f",
       "description": "Reinforcement detailing, slab geometry, and formwork",
       "generalGuidance": [
         "Prefer consistent reinforcement layouts across top and bottom steel where structurally appropriate - this simplifies ordering, reduces placement errors, and supports safety",
@@ -126,23 +136,45 @@
               }
             ],
             "supportingImages": [
-              { "image": "images/fold-site-blockwork.jpg", "title": "Blockwork infill used to achieve level change between upper and lower slabs" },
-              { "image": "images/fold-site-slab-poured.jpg", "title": "Completed upper slab poured on blockwork walls - separate pours replacing monolithic fold" },
-              { "image": "images/fold-site-stairs.jpg", "title": "Concrete stairs formed between levels using conventional formwork within blockwork walls" }
+              {
+                "image": "images/fold-site-blockwork.jpg",
+                "title": "Blockwork infill used to achieve level change between upper and lower slabs"
+              },
+              {
+                "image": "images/fold-site-slab-poured.jpg",
+                "title": "Completed upper slab poured on blockwork walls - separate pours replacing monolithic fold"
+              },
+              {
+                "image": "images/fold-site-stairs.jpg",
+                "title": "Concrete stairs formed between levels using conventional formwork within blockwork walls"
+              }
             ],
             "dateAdded": "2026-03-10",
-            "dateReviewed": "2026-04-01"
+            "dateReviewed": "2026-04-01",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            }
           }
         },
-        { "name": "Reinforcement spacing variability", "available": false },
-        { "name": "Beam-slab intersections", "available": false },
-        { "name": "Bar bending complexity", "available": false }
+        {
+          "name": "Reinforcement spacing variability",
+          "available": false
+        },
+        {
+          "name": "Beam-slab intersections",
+          "available": false
+        },
+        {
+          "name": "Bar bending complexity",
+          "available": false
+        }
       ]
     },
     {
       "id": "logistics",
       "name": "Logistics",
-      "icon": "📦",
+      "icon": "\ud83d\udce6",
       "description": "Material and equipment availability, site access, and supply chain considerations",
       "generalGuidance": [
         "Specify materials that are readily available from multiple suppliers - single-source dependency creates procurement risk and potential delays",
@@ -197,19 +229,35 @@
             ],
             "supportingImages": [],
             "dateAdded": "2026-04-02",
-            "dateReviewed": "2026-04-02"
+            "dateReviewed": "2026-04-02",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            }
           }
         },
-        { "name": "Bar size standardisation", "available": false },
-        { "name": "Equipment access constraints", "available": false },
-        { "name": "Slab depth consistency", "available": false },
-        { "name": "Concrete grade specification", "available": false }
+        {
+          "name": "Bar size standardisation",
+          "available": false
+        },
+        {
+          "name": "Equipment access constraints",
+          "available": false
+        },
+        {
+          "name": "Slab depth consistency",
+          "available": false
+        },
+        {
+          "name": "Concrete grade specification",
+          "available": false
+        }
       ]
     },
     {
       "id": "methods",
       "name": "Construction Methods",
-      "icon": "🏗",
+      "icon": "\ud83c\udfd7",
       "description": "System selection, buildability, and construction feasibility",
       "generalGuidance": [
         "Always consider how a design will actually be built - structurally compliant designs can still be impractical to construct",
@@ -234,7 +282,7 @@
                 "range": "700 - 1000 mm",
                 "rating": "Consider",
                 "color": "yellow",
-                "guidance": "Coil tie system feasible but access is tight — a person cannot comfortably work behind the wall. Consider whether alternatives would be simpler."
+                "guidance": "Coil tie system feasible but access is tight \u2014 a person cannot comfortably work behind the wall. Consider whether alternatives would be simpler."
               },
               {
                 "range": "350 - 700 mm",
@@ -269,26 +317,57 @@
               }
             ],
             "supportingImages": [
-              { "image": "images/formwork-literature-example.png", "title": "(Jha, 2012): Conventional timber wall formwork assembly — note the coil ties passing through both faces, requiring access and bracing on both sides of the wall" },
-              { "image": "images/formwork-ties.png", "title": "(Hurd, 2005): Common formwork tie types — one-piece ties snap off after stripping, while internally disconnecting ties allow full removal from the concrete" },
-              { "image": "images/dincel-bracing-1.png", "title": "(Dincel, 2026): Dincel PVC permanent formwork wall panel — diagonal bracing connects externally, eliminating the need for rear-side access and coil ties" },
-              { "image": "images/formwork-bracing-1.jpg", "title": "Conventional off-form wall formwork with timber bracing on both sides and coil ties at regular intervals" },
-              { "image": "images/formwork-bracing-2.jpg", "title": "Formwork bracing detail - note the access and clearance required behind the wall for bracing and bolt-up" },
-              { "image": "images/offform-stripped.jpg", "title": "Off-form concrete wall after formwork removal - coil tie holes visible at regular intervals" },
-              { "image": "images/dincel-complete.jpg", "title": "Completed Dincel wall after concrete pour - no rear bracing required during construction" }
+              {
+                "image": "images/formwork-literature-example.png",
+                "title": "(Jha, 2012): Conventional timber wall formwork assembly \u2014 note the coil ties passing through both faces, requiring access and bracing on both sides of the wall"
+              },
+              {
+                "image": "images/formwork-ties.png",
+                "title": "(Hurd, 2005): Common formwork tie types \u2014 one-piece ties snap off after stripping, while internally disconnecting ties allow full removal from the concrete"
+              },
+              {
+                "image": "images/dincel-bracing-1.png",
+                "title": "(Dincel, 2026): Dincel PVC permanent formwork wall panel \u2014 diagonal bracing connects externally, eliminating the need for rear-side access and coil ties"
+              },
+              {
+                "image": "images/formwork-bracing-1.jpg",
+                "title": "Conventional off-form wall formwork with timber bracing on both sides and coil ties at regular intervals"
+              },
+              {
+                "image": "images/formwork-bracing-2.jpg",
+                "title": "Formwork bracing detail - note the access and clearance required behind the wall for bracing and bolt-up"
+              },
+              {
+                "image": "images/offform-stripped.jpg",
+                "title": "Off-form concrete wall after formwork removal - coil tie holes visible at regular intervals"
+              },
+              {
+                "image": "images/dincel-complete.jpg",
+                "title": "Completed Dincel wall after concrete pour - no rear bracing required during construction"
+              }
             ],
             "dateAdded": "2026-04-02",
-            "dateReviewed": "2026-04-09"
+            "dateReviewed": "2026-04-09",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            }
           }
         },
-        { "name": "RC vs Post-tensioned selection", "available": false },
-        { "name": "Pour sequencing", "available": false }
+        {
+          "name": "RC vs Post-tensioned selection",
+          "available": false
+        },
+        {
+          "name": "Pour sequencing",
+          "available": false
+        }
       ]
     },
     {
       "id": "communication",
       "name": "Design Communication",
-      "icon": "📐",
+      "icon": "\ud83d\udcd0",
       "description": "Drawing clarity, notation, and communication with contractors",
       "generalGuidance": [
         "Reinforcement callouts should be clear and concise - if a callout needs decoding, critical information may be missed",
@@ -349,11 +428,21 @@
             ],
             "supportingImages": [],
             "dateAdded": "2026-04-02",
-            "dateReviewed": "2026-04-02"
+            "dateReviewed": "2026-04-02",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            }
           }
         },
-        { "name": "Drawing notation clarity", "available": false },
-        { "name": "Detail sheet organisation", "available": false }
+        {
+          "name": "Drawing notation clarity",
+          "available": false
+        },
+        {
+          "name": "Detail sheet organisation",
+          "available": false
+        }
       ]
     }
   ]
