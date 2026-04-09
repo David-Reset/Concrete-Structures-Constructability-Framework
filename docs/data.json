@@ -155,7 +155,7 @@
           "available": true,
           "data": {
             "question": "Is the specified stirrup bar size readily available from suppliers, and can it be practically adjusted on site if conditions change during construction?",
-            "parameter": "Specified stirrup bar diameter (mm)",
+            "parameter": "Specified stirrup bar type and diameter (mm)",
             "background": "Stirrup bar sizes should be readily available from multiple suppliers and, where possible, adaptable on site when conditions change. Footing depths frequently need to increase during construction when adequate bearing material is not found at the design depth. When this occurs, stirrups must be re-bent or additional stirrups fabricated on site. The specified bar size determines both how easily the stirrups can be sourced and how practically they can be adjusted in the field.",
             "thresholds": [
               {
