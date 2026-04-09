@@ -196,7 +196,7 @@ function renderEntryDetail(){
     <div class="entry-meta">Dimension: ${dim.name} · Reinforced Concrete</div>
     <div class="question-box"><div class="label label-accent">Design Question</div><div class="question-text">${d.question}</div></div>
     <div class="param-box"><div class="label">Design Parameter</div><div class="param-value">${d.parameter}</div></div>
-    ${d.consideration?`<div class="label">Background</div><div class="consideration-text">${d.consideration}</div>`:''}
+    ${d.background?`<div class="label">Background</div><div class="consideration-text">${d.background}</div>`:''}
     <div class="label">Design Guidance</div><div class="threshold-list" style="margin-top:10px">${thresholds}</div>
     ${notesHtml}
     ${alts.length>0?`<div class="label" style="margin-top:28px">Recommended Actions</div><div class="alt-list" style="margin-top:10px">${alts}</div>`:''}
