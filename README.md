@@ -104,7 +104,7 @@ To see what a completed submission looks like, refer to the <a href="examples/Of
 
 ### Suggesting a change to an existing entry
 
-If you believe an existing entry could be improved — for example, a threshold needs adjusting for your region, you have additional evidence or photographs, or you've identified an error — you can submit a change via the <a href="[your-edit-form-link-here]" target="_blank">edit suggestion form</a>.
+If you believe an existing entry could be improved — for example, a threshold needs adjusting for your region, you have additional evidence or photographs, or you've identified an error — you can submit a change via the <a href="https://forms.gle/xJ5tpUf7zozpkbcg6" target="_blank">edit suggestion form</a>.
 
 All submissions (new entries and edits) are reviewed before being incorporated into the framework to ensure quality, consistency, and adherence to the anonymity standards described above.
 
