@@ -117,6 +117,7 @@
                 "guidance": "Likely impractical to form monolithically using standard systems. A real project example required a 1050 mm fold in a suspended RC slab. During construction, the detail was found to be impractical due to the difficulty and cost of forming with adequate bracing. The design was revised to incorporate blockwork and separate concrete pours."
               }
             ],
+            "additionalNotes": "A monolithic fold may still be the most practical solution where the pour volume is small, the fold length is limited (e.g. a few lineal metres), and splitting the pour would introduce disproportionate costs such as additional pumps, trades, or waterproofing at construction joints. The ratings above reflect general constructability considerations — the designer should weigh these against the full context of their specific design."
             "alternatives": [
               "Blockwork infill with separate concrete pours",
               "PVC permanent formwork solutions",
