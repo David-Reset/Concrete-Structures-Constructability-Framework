@@ -137,6 +137,8 @@ The framework draws on the principle — embedded in the [Engineers Australia Co
 
 This framework provides **supplementary design-stage guidance**. It does not replace compliance with structural design standards (e.g. AS 3600), applicable codes, or professional engineering judgement. All guidance should be applied within compliant design solutions and with appropriate consideration of project-specific conditions.
 
+Framework ratings (Good practice, Consider, Concern, Action required) are intended as prompts for design-stage evaluation, not prohibitions. A rating of 'Action required' may not mean the design cannot proceed — it means the designer should recognise the constructability challenge, consider alternatives, and make an informed decision in the context of their specific project. In some cases, the flagged detail may still be the most practical solution when weighed against the full design context.
+
 ## Authors
 
 **David Harvey**
