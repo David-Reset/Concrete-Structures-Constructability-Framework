@@ -159,7 +159,6 @@ async function loadData(){
     const resp=await fetch('data.json');
     const data=await resp.json();
     dimensions=data.dimensions;
-    render();
   }catch(e){
     document.getElementById('app').innerHTML='<div class="content" style="text-align:center;padding-top:80px;color:var(--red)">Error loading framework data. Make sure data.json is in the same folder as this file.</div>';
   }
@@ -264,10 +263,10 @@ function renderEntryDetail(){
 // ===== LIGHTBOX =====
 function openLightbox(src){const lb=document.createElement('div');lb.className='lightbox';lb.onclick=()=>lb.remove();lb.innerHTML=`<img src="${src}">`;document.body.appendChild(lb)}
 
-// ===== NAVIGATION =====
-function goHome(){state.view='home';state.dimId=null;state.itemIndex=null;state.locationFilter=null;render()}
-function goDimension(id){state.view='dimension';state.dimId=id;state.itemIndex=null;state.locationFilter=null;render()}
-function goEntry(dimId,idx){state.view='entry';state.dimId=dimId;state.itemIndex=idx;render()}
+// ===== HASH-BASED NAVIGATION =====
+function goHome(){window.location.hash=''}
+function goDimension(id){state.locationFilter=null;window.location.hash=id}
+function goEntry(dimId,idx){window.location.hash=dimId+'/'+idx}
 function setLocationFilter(val){
   if(!val){state.locationFilter=null}
   else if(val.includes('|')){const[c,s]=val.split('|');state.locationFilter={country:c,state:s}}
@@ -275,8 +274,26 @@ function setLocationFilter(val){
   render();
 }
 
+function parseHash(){
+  const hash=window.location.hash.replace(/^#\/?/,'');
+  if(!hash){state.view='home';state.dimId=null;state.itemIndex=null;state.locationFilter=null;}
+  else if(hash.includes('/')){
+    const[dimId,idx]=hash.split('/');
+    state.view='entry';state.dimId=dimId;state.itemIndex=parseInt(idx,10);
+  }else{
+    state.view='dimension';state.dimId=hash;state.itemIndex=null;state.locationFilter=null;
+  }
+}
+
+window.addEventListener('hashchange',()=>{parseHash();render()});
+
 // ===== INIT =====
-loadData();
+async function init(){
+  await loadData();
+  parseHash();
+  render();
+}
+init();
 </script>
 </body>
 </html>
