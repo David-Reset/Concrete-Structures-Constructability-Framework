@@ -67,19 +67,19 @@
               },
               {
                 "image": "images/slip-trip-injury-distribution.png",
-                "title": "(Lipscomb et al., 2006): Slip and trip injury distribution from Denver International Airport construction (1989\u20131994) \u2014 lower extremity injuries account for 47.9% of all incidents, and 'slip without fall' events still caused 378 injuries with 66.4% affecting lower extremities"
+                "title": "(Lipscomb et al., 2006): Slip and trip injury data from Denver International Airport construction (1989\u20131994) \u2014 90.5% of 751 incidents were same-level falls or slips without falling, not falls from height. Even slips without a fall caused significant injury, predominantly to lower extremities. On a reinforcement mat, a foot slipping between bars at any spacing can cause the same types of injuries without the worker actually falling through"
               },
               {
                 "image": "images/ptd-concrete-masonry.png",
-                "title": "(National Institute for Occupational Safety and Health, 2024): Prevention through Design controls for concrete and masonry \u2014 recommends specifying 4\u2033 \u00d7 4\u2033 mat mesh or welded wire fabric on top of widely spaced rebar to provide a safer walking surface during concrete pours"
+                "title": "(National Institute for Occupational Safety and Health, 2024): Prevention through Design controls for concrete and masonry \u2014 recommends specifying 4\u2033 \u00d7 4\u2033 (approximately 100 \u00d7 100 mm) mat mesh or welded wire fabric on top of widely spaced rebar to provide a safer walking surface during concrete pours. While 100 \u00d7 100 mm is the NIOSH recommendation, 200 \u00d7 200 mm spacing represents a practical upper limit that still provides reasonable foot support in most conditions"
               },
               {
                 "image": "images/boot-vs-grid-straight.png",
-                "title": "Boot sole fit on reinforcement grids \u2014 normal stance. At 300 mm spacing the 288 mm clear gap exceeds the boot sole length, providing almost no resistance to a misplaced step"
+                "title": "Boot sole fit on reinforcement grids \u2014 normal stance, shown using N12 (12 mm diameter) bars as a common example. At 300 mm spacing the 288 mm clear gap exceeds the boot sole length, providing almost no resistance to a misplaced step"
               },
               {
                 "image": "images/boot-vs-grid-angle.png",
-                "title": "Boot sole fit on reinforcement grids \u2014 angled foot placement. A more realistic walking position significantly reduces effective contact width, increasing fall-through risk even at 250 mm spacing"
+                "title": "Boot sole fit on reinforcement grids \u2014 angled foot placement, shown using N12 (12 mm diameter) bars as a common example. At an angled approach, the 250 mm spacing now presents a clear step-through risk for both the 5th percentile and mean boot sizes"
               }
             ],
             "dateAdded": "2026-03-15",
