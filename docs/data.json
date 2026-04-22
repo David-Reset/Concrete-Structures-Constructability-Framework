@@ -42,7 +42,7 @@
               "If 250 x 250 spacing is required, assess the concrete pour volume - pours under 7 m3 are generally more controlled and may be acceptable without additional measures",
               "If 250 x 250 on pours exceeding 7 m3, or if 300 x 300 is specified, add a supplementary layer of top mesh (SL82 or above - SL72 is not rigid enough) to act as both crack control and a fall-through barrier. However, consider the impact on cover and reinforcement congestion - weigh this against simply reducing the primary bar spacing to 200 x 200"
             ],
-            "evidence": "Site incident report: worker sustained a severe knee injury after stepping through 250 x 250 top reinforcement during slab pour. Supported by Safe Work Australia guidance on falls through openings and gaps in working platforms.",
+            "evidence": "Site incident report: worker sustained a severe knee injury after stepping through 250 x 250 top reinforcement during slab pour. Supported by Safe Work Australia guidance on falls through openings and gaps in working platforms. Boot sole dimensions derived from ADF anthropometric surveys (Blanchonette, 2017). Slip and trip injury data from construction site research demonstrates that even non-fall slip events predominantly injure lower extremities (Lipscomb et al., 2006). Prevention through Design guidance for concrete construction recommends mat mesh over widely spaced rebar as a walking surface control (National Institute for Occupational Safety and Health, 2024).<br><br><strong>References</strong><br>Blanchonette, P. (2017). Australian Defence Force Anthropometry: A Summary of Historic Surveys (DST-Group-GD-0968). Defence Science and Technology Group.<br>Lipscomb, H. J., Glazner, J. E., Bondy, J., Guarini, K., &amp; Lezotte, D. (2006). Injuries from slips and trips in construction. Applied Ergonomics, 37(3), 267\u2013274. https://doi.org/10.1016/j.apergo.2005.07.008<br>National Institute for Occupational Safety and Health. (2024). Prevention through Design Toolkit for the Construction Industry (DHHS (NIOSH) Publication No. 2024-124). U.S. Centers for Disease Control and Prevention. https://doi.org/10.26616/NIOSHPUB2024124",
             "examples": [
               {
                 "image": "images/reo-250-spacing.jpg",
@@ -60,7 +60,28 @@
                 "caption": "Top reinforcement at N12-200 spacing on a 12.7 m3 pour. Bottom mat at N12-300 is not a concern as it is not used as a working platform. The 200 mm top spacing provides a safe working surface during concrete placement."
               }
             ],
-            "supportingImages": [],
+            "supportingImages": [
+              {
+                "image": "images/adf-anthropometric-data.png",
+                "title": "(Blanchonette, 2017): Australian Defence Force foot dimensions from the 1968 Army and 2000 RAN surveys \u2014 mean foot length of 264 mm (Army) and 271 mm (Navy) informed the boot sole sizes used in the fall-through risk analysis"
+              },
+              {
+                "image": "images/slip-trip-injury-distribution.png",
+                "title": "(Lipscomb et al., 2006): Slip and trip injury distribution from Denver International Airport construction (1989\u20131994) \u2014 lower extremity injuries account for 47.9% of all incidents, and 'slip without fall' events still caused 378 injuries with 66.4% affecting lower extremities"
+              },
+              {
+                "image": "images/ptd-concrete-masonry.png",
+                "title": "(National Institute for Occupational Safety and Health, 2024): Prevention through Design controls for concrete and masonry \u2014 recommends specifying 4\u2033 \u00d7 4\u2033 mat mesh or welded wire fabric on top of widely spaced rebar to provide a safer walking surface during concrete pours"
+              },
+              {
+                "image": "images/boot-vs-grid-straight.png",
+                "title": "Boot sole fit on reinforcement grids \u2014 normal stance. At 300 mm spacing the 288 mm clear gap exceeds the boot sole length, providing almost no resistance to a misplaced step"
+              },
+              {
+                "image": "images/boot-vs-grid-angle.png",
+                "title": "Boot sole fit on reinforcement grids \u2014 angled foot placement. A more realistic walking position significantly reduces effective contact width, increasing fall-through risk even at 250 mm spacing"
+              }
+            ],
             "dateAdded": "2026-03-15",
             "dateReviewed": "2026-03-15",
             "location": {
