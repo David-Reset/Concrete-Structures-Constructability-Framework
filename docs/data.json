@@ -3,7 +3,7 @@
     {
       "id": "safety",
       "name": "Safety in Design",
-      "icon": "⚠️",
+      "icon": "👷",
       "description": "Design decisions affecting the safety of construction workers and other stakeholders",
       "generalGuidance": [
         "Consider the top reinforcement mat as a temporary working platform — its spacing directly affects worker safety during concrete placement",
@@ -279,7 +279,7 @@
     {
       "id": "methods",
       "name": "Construction Methods",
-      "icon": "🏗",
+      "icon": "🏗️",
       "description": "System selection, buildability, and construction feasibility",
       "generalGuidance": [
         "Always consider how a design will actually be built - structurally compliant designs can still be impractical to construct",
@@ -389,7 +389,7 @@
     {
       "id": "communication",
       "name": "Design Communication",
-      "icon": "📄",
+      "icon": "📝",
       "description": "Drawing clarity, notation, and communication with contractors",
       "generalGuidance": [
         "Reinforcement callouts should be clear and concise - if a callout needs decoding, critical information may be missed",
