@@ -37,14 +37,14 @@
   .dim-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:24px}
   .dim-card{padding:20px 22px;background:var(--surface);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s}
   .dim-card:hover{border-color:var(--accent);background:var(--surface-light)}
-  .dim-icon{margin-bottom:10px;color:var(--text);opacity:0.9;line-height:0} .dim-name{font-size:15px;font-weight:700;margin-bottom:6px}
+  .dim-icon{font-size:26px;margin-bottom:10px} .dim-name{font-size:15px;font-weight:700;margin-bottom:6px}
   .dim-desc{font-size:12px;color:var(--text-muted);line-height:1.5;margin-bottom:12px}
   .dim-count{font-size:11px;color:var(--accent);font-weight:600}
 
   .back-link{font-size:12px;color:var(--accent);cursor:pointer;margin-bottom:16px;display:inline-flex;align-items:center;gap:6px}
   .back-link:hover{text-decoration:underline}
   .dim-header{display:flex;align-items:center;gap:12px;margin-bottom:8px}
-  .dim-header-icon{color:var(--text);opacity:0.9;line-height:0;display:inline-flex;align-items:center} .dim-header-title{font-size:24px;font-weight:800;letter-spacing:-0.5px}
+  .dim-header-icon{font-size:30px} .dim-header-title{font-size:24px;font-weight:800;letter-spacing:-0.5px}
 
   .item-list{display:flex;flex-direction:column;gap:8px;margin-top:12px}
   .item-row{padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:space-between;transition:all 0.2s}
@@ -185,22 +185,8 @@ function renderBreadcrumb(){
   return h+'</div>';
 }
 
-function dimIcon(id, size){
-  const s = size || 26;
-  const sw = size && size > 28 ? 1.6 : 1.5;
-  const open = `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle">`;
-  const icons = {
-    safety: `${open}<path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
-    detailing: `${open}<path d="M3 21h18"/><path d="M3 21 21 3"/><path d="M3 21V3h18"/><path d="M9 21v-4"/><path d="M15 21v-8"/></svg>`,
-    logistics: `${open}<path d="M2 7 L15 7 L15 17 L2 17 Z"/><path d="M15 10 L19 10 L22 13 L22 17 L15 17"/><circle cx="6" cy="18.5" r="1.6"/><circle cx="17.5" cy="18.5" r="1.6"/></svg>`,
-    methods: `${open}<rect x="2" y="6" width="20" height="8" rx="1"/><path d="M17 14v7"/><path d="M7 14v7"/><path d="M17 3v3"/><path d="M7 3v3"/><path d="M10 14 2.3 6.3"/><path d="m14 6 7.7 7.7"/><path d="m8 6 8 8"/></svg>`,
-    communication: `${open}<path d="M5 3 L15 3 L19 7 L19 21 L5 21 Z"/><path d="M15 3 L15 7 L19 7"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="16" y2="16"/></svg>`,
-  };
-  return icons[id] || '';
-}
-
 function renderHomeView(){
-  const cards=dimensions.map(d=>`<div class="dim-card" onclick="goDimension('${d.id}')"><div class="dim-icon">${dimIcon(d.id, 26)}</div><div class="dim-name">${d.name}</div><div class="dim-desc">${d.description}</div><div class="dim-count">${d.items.length} items →</div></div>`).join('');
+  const cards=dimensions.map(d=>`<div class="dim-card" onclick="goDimension('${d.id}')"><div class="dim-icon">${d.icon}</div><div class="dim-name">${d.name}</div><div class="dim-desc">${d.description}</div><div class="dim-count">${d.items.length} items →</div></div>`).join('');
   return `<div class="content animate-in"><div style="margin-bottom:24px"><h1 class="section-title">Framework Dimensions</h1><p class="section-desc">Select a constructability dimension to explore general guidance, design entries with threshold-based ratings, and recommended actions for reinforced concrete design decisions.</p></div><div class="dim-grid">${cards}</div></div>`;
 }
 
@@ -241,7 +227,7 @@ function renderDimensionView(){
     guidanceHtml=`<div style="margin-top:20px;margin-bottom:24px;padding:18px 22px;background:var(--surface);border:1px solid var(--border);border-radius:10px;"><div class="label" style="margin-bottom:10px">General Guidance</div>${dim.generalGuidance.map(g=>`<div style="display:flex;gap:10px;margin-bottom:8px;align-items:flex-start;"><div style="color:var(--accent);font-size:14px;margin-top:1px;flex-shrink:0;">•</div><div style="font-size:13px;color:var(--text);line-height:1.6;opacity:0.9;">${g}</div></div>`).join('')}</div>`;
   }
 
-  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">${dimIcon(dim.id, 30)}</span><h1 class="dim-header-title">${dim.name}</h1></div><p class="section-desc">${dim.description}</p>${guidanceHtml}${filterHtml}<div class="label">Entries</div><div class="item-list">${items}</div></div>`;
+  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">${dim.icon}</span><h1 class="dim-header-title">${dim.name}</h1></div><p class="section-desc">${dim.description}</p>${guidanceHtml}${filterHtml}<div class="label">Entries</div><div class="item-list">${items}</div></div>`;
 }
 
 function renderEntryDetail(){
