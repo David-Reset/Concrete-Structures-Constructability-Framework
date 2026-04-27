@@ -3,11 +3,11 @@
     {
       "id": "safety",
       "name": "Safety in Design",
-      "icon": "\u26a0",
+      "icon": "⚠",
       "description": "Design decisions affecting the safety of construction workers and other stakeholders",
       "generalGuidance": [
-        "Consider the top reinforcement mat as a temporary working platform \u2014 its spacing directly affects worker safety during concrete placement",
-        "Every detail must be physically executable \u2014 if a worker cannot safely access, reach, or work in the space the detail requires, the design must be reconsidered"
+        "Consider the top reinforcement mat as a temporary working platform — its spacing directly affects worker safety during concrete placement",
+        "Every detail must be physically executable — if a worker cannot safely access, reach, or work in the space the detail requires, the design must be reconsidered"
       ],
       "items": [
         {
@@ -42,7 +42,7 @@
               "If 250 x 250 spacing is required, assess the concrete pour volume - pours under 7 m3 are generally more controlled and may be acceptable without additional measures",
               "If 250 x 250 on pours exceeding 7 m3, or if 300 x 300 is specified, add a supplementary layer of top mesh (SL82 or above - SL72 is not rigid enough) to act as both crack control and a fall-through barrier. However, consider the impact on cover and reinforcement congestion - weigh this against simply reducing the primary bar spacing to 200 x 200"
             ],
-            "evidence": "Site incident report: worker sustained a severe knee injury after stepping through 250 x 250 top reinforcement during slab pour. Supported by Safe Work Australia guidance on falls through openings and gaps in working platforms. Boot sole dimensions derived from ADF anthropometric surveys (Blanchonette, 2017). Slip and trip injury data from construction site research demonstrates that even non-fall slip events predominantly injure lower extremities (Lipscomb et al., 2006). Prevention through Design guidance for concrete construction recommends mat mesh over widely spaced rebar as a walking surface control (National Institute for Occupational Safety and Health, 2024).<br><br><strong>References</strong><br>Blanchonette, P. (2017). Australian Defence Force Anthropometry: A Summary of Historic Surveys (DST-Group-GD-0968). Defence Science and Technology Group.<br>Lipscomb, H. J., Glazner, J. E., Bondy, J., Guarini, K., &amp; Lezotte, D. (2006). Injuries from slips and trips in construction. Applied Ergonomics, 37(3), 267\u2013274. https://doi.org/10.1016/j.apergo.2005.07.008<br>National Institute for Occupational Safety and Health. (2024). Prevention through Design Toolkit for the Construction Industry (DHHS (NIOSH) Publication No. 2024-124). U.S. Centers for Disease Control and Prevention. https://doi.org/10.26616/NIOSHPUB2024124",
+            "evidence": "Site incident report: worker sustained a severe knee injury after stepping through 250 x 250 top reinforcement during slab pour. Supported by Safe Work Australia guidance on falls through openings and gaps in working platforms. Boot sole dimensions derived from ADF anthropometric surveys (Blanchonette, 2017). Slip and trip injury data from construction site research demonstrates that even non-fall slip events predominantly injure lower extremities (Lipscomb et al., 2006). Prevention through Design guidance for concrete construction recommends mat mesh over widely spaced rebar as a walking surface control (National Institute for Occupational Safety and Health, 2024).<br><br><strong>References</strong><br>Blanchonette, P. (2017). Australian Defence Force Anthropometry: A Summary of Historic Surveys (DST-Group-GD-0968). Defence Science and Technology Group.<br>Lipscomb, H. J., Glazner, J. E., Bondy, J., Guarini, K., &amp; Lezotte, D. (2006). Injuries from slips and trips in construction. Applied Ergonomics, 37(3), 267–274. https://doi.org/10.1016/j.apergo.2005.07.008<br>National Institute for Occupational Safety and Health. (2024). Prevention through Design Toolkit for the Construction Industry (DHHS (NIOSH) Publication No. 2024-124). U.S. Centers for Disease Control and Prevention. https://doi.org/10.26616/NIOSHPUB2024124",
             "examples": [
               {
                 "image": "images/reo-250-spacing.jpg",
@@ -63,23 +63,23 @@
             "supportingImages": [
               {
                 "image": "images/adf-anthropometric-data.png",
-                "title": "(Blanchonette, 2017): Australian Defence Force foot dimensions from the 1968 Army and 2000 RAN surveys \u2014 mean foot length of 264 mm (Army) and 271 mm (Navy) informed the boot sole sizes used in the fall-through risk analysis"
+                "title": "(Blanchonette, 2017): Australian Defence Force foot dimensions from the 1968 Army and 2000 RAN surveys — mean foot length of 264 mm (Army) and 271 mm (Navy) informed the boot sole sizes used in the fall-through risk analysis"
               },
               {
                 "image": "images/slip-trip-injury-distribution.png",
-                "title": "(Lipscomb et al., 2006): Slip and trip injury data from Denver International Airport construction (1989\u20131994) \u2014 90.5% of 751 incidents were same-level falls or slips without falling, not falls from height. Even slips without a fall caused significant injury, predominantly to lower extremities. On a reinforcement mat, a foot slipping between bars at any spacing can cause the same types of injuries without the worker actually falling through"
+                "title": "(Lipscomb et al., 2006): Slip and trip injury data from Denver International Airport construction (1989–1994) — 90.5% of 751 incidents were same-level falls or slips without falling, not falls from height. Even slips without a fall caused significant injury, predominantly to lower extremities. On a reinforcement mat, a foot slipping between bars at any spacing can cause the same types of injuries without the worker actually falling through"
               },
               {
                 "image": "images/ptd-concrete-masonry.png",
-                "title": "(National Institute for Occupational Safety and Health, 2024): Prevention through Design controls for concrete and masonry \u2014 recommends specifying 4\u2033 \u00d7 4\u2033 (approximately 100 \u00d7 100 mm) mat mesh or welded wire fabric on top of widely spaced rebar to provide a safer walking surface during concrete pours. While 100 \u00d7 100 mm is the NIOSH recommendation, 200 \u00d7 200 mm spacing represents a practical upper limit that still provides reasonable foot support in most conditions"
+                "title": "(National Institute for Occupational Safety and Health, 2024): Prevention through Design controls for concrete and masonry — recommends specifying 4″ × 4″ (approximately 100 × 100 mm) mat mesh or welded wire fabric on top of widely spaced rebar to provide a safer walking surface during concrete pours. While 100 × 100 mm is the NIOSH recommendation, 200 × 200 mm spacing represents a practical upper limit that still provides reasonable foot support in most conditions"
               },
               {
                 "image": "images/boot-vs-grid-straight.png",
-                "title": "Boot sole fit on reinforcement grids \u2014 normal stance, shown using N12 (12 mm diameter) bars as a common example. At 300 mm spacing the 288 mm clear gap exceeds the boot sole length, providing almost no resistance to a misplaced step"
+                "title": "Boot sole fit on reinforcement grids — normal stance, shown using N12 (12 mm diameter) bars as a common example. At 300 mm spacing the 288 mm clear gap exceeds the boot sole length, providing almost no resistance to a misplaced step"
               },
               {
                 "image": "images/boot-vs-grid-angle.png",
-                "title": "Boot sole fit on reinforcement grids \u2014 angled foot placement, shown using N12 (12 mm diameter) bars as a common example. At an angled approach, the 250 mm spacing now presents a clear step-through risk for both the 5th percentile and mean boot sizes"
+                "title": "Boot sole fit on reinforcement grids — angled foot placement, shown using N12 (12 mm diameter) bars as a common example. At an angled approach, the 250 mm spacing now presents a clear step-through risk for both the 5th percentile and mean boot sizes"
               }
             ],
             "dateAdded": "2026-03-15",
@@ -103,7 +103,7 @@
     {
       "id": "detailing",
       "name": "Detailing",
-      "icon": "\u270f",
+      "icon": "📐",
       "description": "Reinforcement detailing, slab geometry, and formwork",
       "generalGuidance": [
         "Prefer consistent reinforcement layouts across top and bottom steel where structurally appropriate - this simplifies ordering, reduces placement errors, and supports safety",
@@ -196,7 +196,7 @@
     {
       "id": "logistics",
       "name": "Logistics",
-      "icon": "\ud83d\udce6",
+      "icon": "🚚",
       "description": "Material and equipment availability, site access, and supply chain considerations",
       "generalGuidance": [
         "Specify materials that are readily available from multiple suppliers - single-source dependency creates procurement risk and potential delays",
@@ -279,7 +279,7 @@
     {
       "id": "methods",
       "name": "Construction Methods",
-      "icon": "\ud83c\udfd7",
+      "icon": "🏗",
       "description": "System selection, buildability, and construction feasibility",
       "generalGuidance": [
         "Always consider how a design will actually be built - structurally compliant designs can still be impractical to construct",
@@ -304,7 +304,7 @@
                 "range": "700 - 1000 mm",
                 "rating": "Consider",
                 "color": "yellow",
-                "guidance": "Coil tie system feasible but access is tight \u2014 a person cannot comfortably work behind the wall. Consider whether alternatives would be simpler."
+                "guidance": "Coil tie system feasible but access is tight — a person cannot comfortably work behind the wall. Consider whether alternatives would be simpler."
               },
               {
                 "range": "350 - 700 mm",
@@ -341,15 +341,15 @@
             "supportingImages": [
               {
                 "image": "images/formwork-literature-example.png",
-                "title": "(Jha, 2012): Conventional timber wall formwork assembly \u2014 note the coil ties passing through both faces, requiring access and bracing on both sides of the wall"
+                "title": "(Jha, 2012): Conventional timber wall formwork assembly — note the coil ties passing through both faces, requiring access and bracing on both sides of the wall"
               },
               {
                 "image": "images/formwork-ties.png",
-                "title": "(Hurd, 2005): Common formwork tie types \u2014 one-piece ties snap off after stripping, while internally disconnecting ties allow full removal from the concrete"
+                "title": "(Hurd, 2005): Common formwork tie types — one-piece ties snap off after stripping, while internally disconnecting ties allow full removal from the concrete"
               },
               {
                 "image": "images/dincel-bracing-1.png",
-                "title": "(Dincel, 2026): Dincel PVC permanent formwork wall panel \u2014 diagonal bracing connects externally, eliminating the need for rear-side access and coil ties"
+                "title": "(Dincel, 2026): Dincel PVC permanent formwork wall panel — diagonal bracing connects externally, eliminating the need for rear-side access and coil ties"
               },
               {
                 "image": "images/formwork-bracing-1.jpg",
@@ -389,7 +389,7 @@
     {
       "id": "communication",
       "name": "Design Communication",
-      "icon": "\ud83d\udcd0",
+      "icon": "📄",
       "description": "Drawing clarity, notation, and communication with contractors",
       "generalGuidance": [
         "Reinforcement callouts should be clear and concise - if a callout needs decoding, critical information may be missed",
