@@ -104,7 +104,7 @@
       "id": "detailing",
       "name": "Detailing",
       "icon": "📐",
-      "description": "Reinforcement detailing, slab geometry, and formwork",
+      "description": "Standardisation, repetition, and simplification of element detailing",
       "generalGuidance": [
         "Prefer consistent reinforcement layouts across top and bottom steel where structurally appropriate - this simplifies ordering, reduces placement errors, and supports safety",
         "Simplify formwork geometry wherever possible - regular layouts and repetition improve productivity and reduce cost",
@@ -390,7 +390,7 @@
       "id": "communication",
       "name": "Design Communication",
       "icon": "📝",
-      "description": "Drawing clarity, notation, and communication with contractors",
+      "description": "Document clarity, visualisation, and coordination across stakeholders",
       "generalGuidance": [
         "Reinforcement callouts should be clear and concise - if a callout needs decoding, critical information may be missed",
         "Follow consistent drawing conventions - for example, use dashed lines for elements below the section cut to avoid confusion about what is being detailed",
