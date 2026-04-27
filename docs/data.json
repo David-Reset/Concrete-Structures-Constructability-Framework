@@ -3,7 +3,7 @@
     {
       "id": "safety",
       "name": "Safety in Design",
-      "icon": "⚠",
+      "icon": "⚠️",
       "description": "Design decisions affecting the safety of construction workers and other stakeholders",
       "generalGuidance": [
         "Consider the top reinforcement mat as a temporary working platform — its spacing directly affects worker safety during concrete placement",
