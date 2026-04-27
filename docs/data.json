@@ -103,7 +103,7 @@
     {
       "id": "detailing",
       "name": "Detailing",
-      "icon": "✏",
+      "icon": "📐",
       "description": "Standardisation, repetition, and simplification of element detailing",
       "generalGuidance": [
         "Prefer consistent reinforcement layouts across top and bottom steel where structurally appropriate - this simplifies ordering, reduces placement errors, and supports safety",
@@ -196,7 +196,7 @@
     {
       "id": "logistics",
       "name": "Logistics",
-      "icon": "📦",
+      "icon": "🚚",
       "description": "Material and equipment availability, site access, and supply chain considerations",
       "generalGuidance": [
         "Specify materials that are readily available from multiple suppliers - single-source dependency creates procurement risk and potential delays",
@@ -389,7 +389,7 @@
     {
       "id": "communication",
       "name": "Design Communication",
-      "icon": "📐",
+      "icon": "📄",
       "description": "Document clarity, visualisation, and coordination across stakeholders",
       "generalGuidance": [
         "Reinforcement callouts should be clear and concise - if a callout needs decoding, critical information may be missed",
