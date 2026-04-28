@@ -171,7 +171,7 @@ function render(){
 }
 
 function renderHeader(){
-  return `<div class="header"><div class="header-left"><div class="logo">C</div><div><div class="header-title">Constructability Framework</div><div class="header-sub">Reinforced Concrete Design Guidance</div></div></div></div>`;
+  return `<div class="header"><div class="header-left"><div class="logo">C</div><div><div class="header-title">Constructability Framework</div><div class="header-sub">Design Guidance</div></div></div></div>`;
 }
 
 function renderBreadcrumb(){
@@ -187,7 +187,7 @@ function renderBreadcrumb(){
 
 function renderHomeView(){
   const cards=dimensions.map(d=>`<div class="dim-card" onclick="goDimension('${d.id}')"><div class="dim-icon">${d.icon}</div><div class="dim-name">${d.name}</div><div class="dim-desc">${d.description}</div><div class="dim-count">${d.items.length} items →</div></div>`).join('');
-  return `<div class="content animate-in"><div style="margin-bottom:24px"><h1 class="section-title">Framework Dimensions</h1><p class="section-desc">Select a constructability dimension to explore general guidance, design entries with threshold-based ratings, and recommended actions for reinforced concrete design decisions.</p></div><div class="dim-grid">${cards}</div></div>`;
+  return `<div class="content animate-in"><div style="margin-bottom:24px"><h1 class="section-title">Framework Dimensions</h1><p class="section-desc">Select a constructability dimension to explore general guidance, design entries with threshold-based ratings, and recommended actions for design decisions.</p></div><div class="dim-grid">${cards}</div></div>`;
 }
 
 function renderDimensionView(){
