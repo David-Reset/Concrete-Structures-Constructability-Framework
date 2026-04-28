@@ -287,12 +287,12 @@
       ],
       "items": [
         {
-          "name": "Off-form concrete walls near obstructions",
+          "name": "Off-form concrete upturns near obstructions",
           "available": true,
           "data": {
-            "question": "When designing concrete walls near site boundaries or obstructions, what clearance is required for conventional formwork, and at what point should alternative wall systems be considered?",
-            "parameter": "Available clearance between back of wall and nearest obstruction (mm)",
-            "background": "Conventional off-form concrete walls require double-sided formwork with rear access for placement, bracing, and bolt-up. This assumption breaks down when walls are positioned close to site boundaries, existing fences, retaining walls, or other obstructions. It would be unwise to assume that pressing plywood against an obstruction would effectively restrain concrete, particularly at heights approaching 1000 mm or more. Where rear access is limited, the designer should consider whether conventional formwork is feasible before committing to an off-form concrete design.",
+            "question": "When designing concrete upturns near obstructions, what clearance is required for conventional formwork, and at what point should alternative systems be considered?",
+            "parameter": "Available clearance between upturn face and nearest obstruction (mm)",
+            "background": "Conventional off-form concrete upturns require double-sided formwork with rear access for placement, bracing, and bolt-up. This assumption breaks down when upturns are positioned close to existing fences, retaining walls, or other obstructions. It would be unwise to assume that pressing plywood against an obstruction would effectively restrain concrete, particularly at heights approaching 1000 mm or more. Where access is limited, the designer should consider whether conventional formwork is feasible before committing to an off-form concrete design.",
             "thresholds": [
               {
                 "range": ">= 1000 mm",
@@ -304,13 +304,13 @@
                 "range": "700 - 1000 mm",
                 "rating": "Consider",
                 "color": "yellow",
-                "guidance": "Coil tie system feasible but access is tight — a person cannot comfortably work behind the wall. Consider whether alternatives would be simpler."
+                "guidance": "Coil tie system feasible but access is tight — a person cannot comfortably work behind the upturn. Consider whether alternatives would be simpler."
               },
               {
                 "range": "350 - 700 mm",
                 "rating": "Concern",
                 "color": "orange",
-                "guidance": "Coil ties cannot be used (plywood + timbers + bolt = 700 mm minimum). Threaded bar only, tightened by reaching in at arm's length. Only for walls up to ~1200 mm high."
+                "guidance": "Coil ties cannot be used (plywood + timbers + bolt = 700 mm minimum). Threaded bar only, tightened by reaching in at arm's length. Only for upturns/walls up to ~1200 mm high."
               },
               {
                 "range": "< 350 mm",
@@ -330,7 +330,7 @@
               {
                 "image": "images/wall-detail-original.jpg",
                 "tag": "concern",
-                "caption": "Original design: off-form concrete upturn wall specified directly against the site boundary. No clearance behind for conventional formwork bracing or bolt-up access."
+                "caption": "Original design: off-form concrete upturn specified directly against the site boundary. No clearance behind for conventional formwork bracing or bolt-up access."
               },
               {
                 "image": "images/dincel-installation.jpg",
@@ -361,7 +361,7 @@
               },
               {
                 "image": "images/offform-stripped.jpg",
-                "title": "Off-form concrete wall after formwork removal - coil tie holes visible at regular intervals"
+                "title": "Off-form concrete upturn after formwork removal - coil tie holes visible at regular intervals"
               },
               {
                 "image": "images/dincel-complete.jpg",
