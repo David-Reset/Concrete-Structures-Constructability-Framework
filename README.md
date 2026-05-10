@@ -147,3 +147,19 @@ SEJ441 / SEJ446 Final Year Project
 **Kazem Ghabraie**
 Associate Professor
 Deakin University, School of Engineering
+
+## Licence
+
+Copyright (C) 2026 David Harvey
+
+This project is released under two licences to ensure it remains open in perpetuity:
+
+- The **code** (HTML, CSS, JavaScript — principally `index.html`) is licensed under the [GNU Affero General Public License v3.0 (AGPL-3.0)](https://www.gnu.org/licenses/agpl-3.0.html). The full licence text is in [`LICENSE`](LICENSE).
+- The **content** (framework entries in `data.json`, written descriptions, design parameters, guidance text, drawings, and photographs) is licensed under [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/). The notice and attribution details are in [`LICENSE-CONTENT`](LICENSE-CONTENT).
+
+Both are **copyleft** licences. Anyone may use, modify, and redistribute the framework, but any derivative work — including a modified version run as a web service — must remain open under the same terms. Together they ensure the framework cannot be forked, modified, and re-released as a closed or proprietary resource.
+
+When reusing or adapting framework content, please attribute as:
+
+> "Constructability Framework — RC Design Guidance" by David Harvey, licensed under CC BY-SA 4.0.
+> Source: https://github.com/david-reset/Concrete-Structures-Constructability-Framework
