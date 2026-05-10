@@ -161,5 +161,5 @@ Both are **copyleft** licences. Anyone may use, modify, and redistribute the fra
 
 When reusing or adapting framework content, please attribute as:
 
-> "Constructability Framework — RC Design Guidance" by David Harvey, licensed under CC BY-SA 4.0.
+> "Constructability Framework — RC Design Guidance" by David Harvey and Kazem Ghabraie, licensed under CC BY-SA 4.0.
 > Source: https://github.com/david-reset/Concrete-Structures-Constructability-Framework
