@@ -31,8 +31,9 @@ Every entry in the framework follows the same format:
 - **Design Parameter** — what the engineer can measure, count, or assess from their drawings
 - **Design Guidance** — threshold bands rated as Good practice, Consider, Concern, or Action required
 - **Location** — the country and/or state where the evidence was gathered (see [Regional applicability](#regional-applicability))
-- **Recommended Actions** — what to do if you're in the concern or action required zone *(optional)*
 - **Background** — why this matters for constructability *(optional)*
+- **Recommended Actions** — what to do if you're in the concern or action required zone, given as a numbered list of practical options. Each action can be a short instruction or a structured option with a title and longer description *(optional)*
+- **Applicability and Limitations** — defines where the entry applies, lists factors the designer should check before applying the guidance, and provides a closing note framing the rating as a review prompt rather than a prohibition *(optional)*
 - **Evidence Basis** — how the guidance was established *(optional)*
 - **Examples** — real design drawings tagged as Concern, Acceptable, or Recommended *(optional)*
 - **Site Photos** — photographs showing what these issues look like in practice *(optional)*
@@ -125,7 +126,7 @@ All submissions (new entries and edits) are reviewed before being incorporated i
 - At least one threshold band
 - Location (country, and state if applicable)
 
-All other fields (background, recommended actions, evidence, examples, site photos) can be added later as evidence builds.
+All other fields (background, recommended actions, applicability and limitations, evidence, examples, site photos) can be added later as evidence builds.
 
 ## Context
 
@@ -139,14 +140,15 @@ This framework provides **supplementary design-stage guidance**. It does not rep
 
 Framework ratings (Good practice, Consider, Concern, Action required) are intended as prompts for design-stage evaluation, not prohibitions. A rating of 'Action required' may not mean the design cannot proceed — it means the designer should recognise the constructability challenge, consider alternatives, and make an informed decision in the context of their specific project. In some cases, the flagged detail may still be the most practical solution when weighed against the full design context.
 
-## Authors
+## Authors and acknowledgements
 
 **David Harvey**
+Author and copyright holder
 SEJ441 / SEJ446 Final Year Project
 
 **Kazem Ghabraie**
-Associate Professor
-Deakin University, School of Engineering
+Project supervisor
+Associate Professor, Deakin University, School of Engineering
 
 ## Licence
 
@@ -161,5 +163,5 @@ Both are **copyleft** licences. Anyone may use, modify, and redistribute the fra
 
 When reusing or adapting framework content, please attribute as:
 
-> "Constructability Framework — RC Design Guidance" by David Harvey and Kazem Ghabraie, licensed under CC BY-SA 4.0.
+> "Constructability Framework — RC Design Guidance" by David Harvey, licensed under CC BY-SA 4.0.
 > Source: https://github.com/david-reset/Concrete-Structures-Constructability-Framework
