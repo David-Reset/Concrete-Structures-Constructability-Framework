@@ -316,7 +316,7 @@
                 "range": "< 350 mm",
                 "rating": "Action required",
                 "color": "red",
-                "guidance": "No conventional formwork system can be placed, braced, or bolted."
+                "guidance": "Conventional double-sided off-form construction is unlikely to be feasible without redesign, specialist one-sided forming, temporary access from the adjacent side, or an alternative construction system."
               }
             ],
             "alternatives": [
@@ -338,7 +338,7 @@
               }
             ],
             "applicability": {
-              "appliesWhere": "This entry applies to reinforced concrete upturns, nibs, walls or kerbs located close to a boundary, existing structure, fence, retaining wall, service zone or other obstruction, where conventional off-form construction may require access to both sides of the element.",
+              "appliesWhere": "This entry applies to reinforced concrete upturns and walls close to a boundary, existing structure, fence or other obstruction, where conventional off-form construction may require access to both sides of the element.",
               "checks": [
                 {
                   "title": "Upturn height and length",
@@ -346,11 +346,11 @@
                 },
                 {
                   "title": "Adjacent land access",
-                  "description": "Where neighbour-side or rear-side access is legally and practically available, conventional formwork may remain possible. Where access is not available, even moderate clearances may be insufficient for bracing, bolt-up, stripping or inspection."
+                  "description": "If the obstruction is neighbouring land and access is possible and practically available and required permissions are received, conventional formwork may remain possible. Where access is not available, even moderate clearances may be insufficient for bracing, bolt-up, stripping or inspection."
                 },
                 {
                   "title": "Required final finish",
-                  "description": "If an off-form concrete appearance is required, alternatives such as permanent formwork or blockwork may require render, acrylic coating, applied finish or architectural acceptance."
+                  "description": "If an off-form concrete appearance is required, alternatives such as permanent PVC formwork or blockwork may require render, acrylic coating, applied finish or architectural acceptance."
                 },
                 {
                   "title": "Project scale and repetition",
@@ -359,14 +359,6 @@
                 {
                   "title": "Regional availability",
                   "description": "Permanent formwork systems, blockwork labour, precast suppliers, crane access and common site practices vary by region. The location tag should be considered before applying the guidance elsewhere."
-                },
-                {
-                  "title": "Waterproofing and interfaces",
-                  "description": "Changing from monolithic concrete to blockwork, permanent formwork, precast or separate pours may introduce joints and interfaces that require waterproofing, durability checks or additional detailing."
-                },
-                {
-                  "title": "Structural role of the upturn",
-                  "description": "Alternatives must be checked where the upturn has a retaining, load-transfer, durability, impact resistance, fire, acoustic or other structural function."
                 }
               ],
               "note": "Use the rating as a constructability review prompt, not as a blanket prohibition on the design detail. The appropriate response is to confirm the construction method early."
