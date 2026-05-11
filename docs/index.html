@@ -71,9 +71,17 @@
   .threshold-guidance{font-size:13px;color:var(--text);line-height:1.6;margin-top:4px;opacity:0.85}
 
   .alt-list{display:flex;flex-direction:column;gap:6px;margin-bottom:28px}
-  .alt-item{display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--surface-light);border-radius:6px;border:1px solid var(--border)}
-  .alt-num{width:22px;height:22px;border-radius:50%;background:rgba(59,130,246,0.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
-  .alt-text{font-size:13px;color:var(--text);opacity:0.9}
+  .alt-item{display:flex;align-items:flex-start;gap:12px;padding:10px 16px;background:var(--surface-light);border-radius:6px;border:1px solid var(--border)}
+  .alt-num{width:22px;height:22px;border-radius:50%;background:rgba(59,130,246,0.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
+  .alt-text{font-size:13px;color:var(--text);opacity:0.9;line-height:1.6}
+  .alt-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px}
+  .alt-desc{font-size:13px;color:var(--text);opacity:0.85;line-height:1.6}
+
+  .applicability-box{margin-top:28px;margin-bottom:28px;padding:14px 18px;background:var(--yellow-bg);border:1px solid rgba(234,179,8,0.28);border-left:3px solid var(--yellow);border-radius:0 8px 8px 0}
+  .applicability-text{font-size:13px;color:var(--text);line-height:1.6;opacity:0.9;margin-bottom:12px}
+  .applicability-list{display:flex;flex-direction:column;gap:8px}
+  .applicability-item{font-size:13px;color:var(--text);line-height:1.6;opacity:0.9}
+  .applicability-item strong{color:var(--text)}
 
   .evidence-box{padding:14px 18px;background:var(--surface-light);border-radius:8px;border:1px solid var(--border)}
   .evidence-text{font-size:13px;color:var(--text);line-height:1.6;opacity:0.8}
@@ -235,7 +243,26 @@ function renderEntryDetail(){
 
   const thresholds=d.thresholds.map(t=>`<div class="threshold-band" style="background:${bgVar(t.color)};border:1px solid ${colorVar(t.color)}33;"><div class="threshold-range" style="color:${colorVar(t.color)}">${t.range}</div><div style="flex:1"><div class="threshold-rating" style="color:${colorVar(t.color)}">${t.rating}</div><div class="threshold-guidance">${t.guidance}</div></div></div>`).join('');
 
-  const alts=(d.alternatives||[]).filter(a=>a).map((a,i)=>`<div class="alt-item"><div class="alt-num">${i+1}</div><div class="alt-text">${a}</div></div>`).join('');
+  const alts=(d.alternatives||[]).filter(a=>a).map((a,i)=>{
+    if(typeof a==='string'){
+      return `<div class="alt-item"><div class="alt-num">${i+1}</div><div class="alt-text">${a}</div></div>`;
+    }
+    return `<div class="alt-item"><div class="alt-num">${i+1}</div><div class="alt-text"><div class="alt-title">${a.title}</div><div class="alt-desc">${a.description}</div></div></div>`;
+  }).join('');
+
+  const applicabilityHtml=d.applicability?`
+    <div class="applicability-box">
+      <div class="label" style="color:var(--yellow)">Applicability and Limitations</div>
+      ${d.applicability.appliesWhere?`<div class="applicability-text"><strong>Applies where:</strong> ${d.applicability.appliesWhere}</div>`:''}
+      ${d.applicability.checks&&d.applicability.checks.length>0?`
+        <div class="applicability-text" style="margin-bottom:8px"><strong>Check before applying this guidance:</strong></div>
+        <div class="applicability-list">
+          ${d.applicability.checks.map(c=>`<div class="applicability-item"><strong>${c.title}:</strong> ${c.description}</div>`).join('')}
+        </div>
+      `:''}
+      ${d.applicability.note?`<div class="applicability-text" style="margin-top:12px;margin-bottom:0"><strong>Note:</strong> ${d.applicability.note}</div>`:''}
+    </div>
+  `:'';
 
   const notesHtml=d.additionalNotes?`<div style="margin-top:12px;padding:12px 16px;background:var(--surface-light);border:1px solid var(--border);border-radius:6px;"><div style="font-size:10px;font-weight:700;color:var(--yellow);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Note</div><div style="font-size:13px;color:var(--text);line-height:1.6;opacity:0.85;">${d.additionalNotes}</div></div>`:'';
 
@@ -253,6 +280,7 @@ function renderEntryDetail(){
     <div class="label">Design Guidance</div><div class="threshold-list" style="margin-top:10px">${thresholds}</div>
     ${notesHtml}
     ${alts.length>0?`<div class="label" style="margin-top:28px">Recommended Actions</div><div class="alt-list" style="margin-top:10px">${alts}</div>`:''}
+    ${applicabilityHtml}
     ${d.evidence?`<div class="evidence-box"><div class="label">Evidence Basis</div><div class="evidence-text">${d.evidence}</div></div>`:''}
     ${examplesHtml}
     ${supportingImagesHtml}
