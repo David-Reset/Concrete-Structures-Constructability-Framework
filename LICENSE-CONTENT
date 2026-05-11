@@ -1,0 +1,65 @@
+Constructability Framework — RC Design Guidance
+Content licence
+
+Copyright (C) 2026 David Harvey
+
+The non-code content of this repository — including all framework entries
+in data.json, written descriptions, design parameters, guidance text,
+illustrative drawings, photographs, and any other written or visual
+material that constitutes the framework's substantive content — is
+licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License (CC BY-SA 4.0).
+
+You are free to:
+
+    Share — copy and redistribute the material in any medium or format
+    Adapt — remix, transform, and build upon the material
+            for any purpose, even commercially.
+
+Under the following terms:
+
+    Attribution — You must give appropriate credit, provide a link to
+        the licence, and indicate if changes were made. You may do so in
+        any reasonable manner, but not in any way that suggests the
+        licensor endorses you or your use.
+
+    ShareAlike — If you remix, transform, or build upon the material,
+        you must distribute your contributions under the same licence
+        as the original.
+
+    No additional restrictions — You may not apply legal terms or
+        technological measures that legally restrict others from doing
+        anything the licence permits.
+
+The full legal code of the Creative Commons Attribution-ShareAlike 4.0
+International Public License is available at:
+
+    https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+A human-readable summary of the licence is available at:
+
+    https://creativecommons.org/licenses/by-sa/4.0/
+
+----------------------------------------------------------------------
+
+Attribution
+
+When reusing or adapting framework content, please attribute as follows:
+
+    "Constructability Framework — RC Design Guidance" by David Harvey and Kazem Ghabraie,
+    licensed under CC BY-SA 4.0.
+    Source: https://github.com/david-reset/Concrete-Structures-Constructability-Framework
+
+----------------------------------------------------------------------
+
+Relationship to the code licence
+
+The code of this repository (HTML, CSS, JavaScript, and any other
+software components — principally index.html) is licensed separately
+under the GNU Affero General Public License version 3 (AGPL-3.0). The
+full text of that licence is in the LICENSE file.
+
+The two licences together ensure that both the framework's software
+and its content remain open in perpetuity: any modified version,
+including any version hosted as a network service, must remain
+available under the same terms.
