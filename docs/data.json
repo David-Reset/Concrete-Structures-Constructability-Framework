@@ -320,11 +320,57 @@
               }
             ],
             "alternatives": [
-              "Dincel or similar permanent formwork systems that only require single-sided access. Can be rendered to achieve an off-form concrete appearance if required by the client",
-              "Blockwork construction - may be structurally compliant depending on the design requirements (engineer to verify). Can also be rendered to match a concrete finish if aesthetics are a concern",
-              "Reposition the wall forward to provide adequate clearance - however this is typically only viable if the client's brief allows it, as walls are often positioned near boundaries for a reason",
-              "Precast or tilt-up panels - dependent on project scope. For larger projects with crane access this may be logistically feasible. For smaller projects without a crane, an in-situ solution is more realistic"
+              {
+                "title": "Dincel or similar permanent formwork",
+                "description": "Permanent formwork systems can allow construction where rear-side access is not available because the formwork remains in place and does not require conventional stripping from the rear side. These systems can be rendered or finished with an acrylic coating to achieve a concrete-like appearance where required by the client."
+              },
+              {
+                "title": "Blockwork construction",
+                "description": "Blockwork may be structurally suitable depending on the wall function and design requirements. The engineer must verify structural adequacy, durability and any retaining or load-transfer requirements. Blockwork can also be rendered to match a concrete finish where aesthetics are important."
+              },
+              {
+                "title": "Reposition the wall forward",
+                "description": "The wall or upturn may be moved forward to provide adequate working clearance. This is usually only viable where the client brief, boundary constraints, architectural layout and usable floor area allow it, as walls are often placed close to boundaries for a specific reason."
+              },
+              {
+                "title": "Precast or tilt-up panels",
+                "description": "Precast or tilt-up construction may avoid the rear-side formwork access issue, but its suitability depends on project scale, crane access, site logistics and panel geometry. For larger projects with crane access this may be feasible; for smaller projects without a crane, an in-situ or permanent formwork solution may be more realistic."
+              }
             ],
+            "applicability": {
+              "appliesWhere": "This entry applies to reinforced concrete upturns, nibs, walls or kerbs located close to a boundary, existing structure, fence, retaining wall, service zone or other obstruction, where conventional off-form construction may require access to both sides of the element.",
+              "checks": [
+                {
+                  "title": "Upturn height and length",
+                  "description": "A small nib and a taller wall are not the same construction problem. Taller or longer elements increase bracing demand, concrete pressure, access requirements and sequencing constraints."
+                },
+                {
+                  "title": "Adjacent land access",
+                  "description": "Where neighbour-side or rear-side access is legally and practically available, conventional formwork may remain possible. Where access is not available, even moderate clearances may be insufficient for bracing, bolt-up, stripping or inspection."
+                },
+                {
+                  "title": "Required final finish",
+                  "description": "If an off-form concrete appearance is required, alternatives such as permanent formwork or blockwork may require render, acrylic coating, applied finish or architectural acceptance."
+                },
+                {
+                  "title": "Project scale and repetition",
+                  "description": "Specialist systems, precast or tilt-up options may be more practical on larger or repetitive projects than for a short isolated upturn."
+                },
+                {
+                  "title": "Regional availability",
+                  "description": "Permanent formwork systems, blockwork labour, precast suppliers, crane access and common site practices vary by region. The location tag should be considered before applying the guidance elsewhere."
+                },
+                {
+                  "title": "Waterproofing and interfaces",
+                  "description": "Changing from monolithic concrete to blockwork, permanent formwork, precast or separate pours may introduce joints and interfaces that require waterproofing, durability checks or additional detailing."
+                },
+                {
+                  "title": "Structural role of the upturn",
+                  "description": "Alternatives must be checked where the upturn has a retaining, load-transfer, durability, impact resistance, fire, acoustic or other structural function."
+                }
+              ],
+              "note": "Use the rating as a constructability review prompt, not as a blanket prohibition on the design detail. The appropriate response is to confirm the construction method early."
+            },
             "evidence": "Conventional formwork requires rear clearance for bracing and bolt-up access. Confirmed through literature + industry consultation: deriving the clearance thresholds. A concrete upturn wall designed as off-form concrete near a site boundary was found to be infeasible during construction due to zero clearance behind the wall and no access to adjacent land. The design was revised to a Dincel permanent formwork system.<br><br><strong>References</strong><br>Dincel Structural Walling. (2026). Construction Manual. Dincel Structural Walling.<br>Hurd, M. K. (2005). Formwork for Concrete (7th ed.). American Concrete Institute.<br>Jha, K. N. (2012). Formwork for Concrete Structures. Tata McGraw Hill Education Private Limited.",
             "examples": [
               {
