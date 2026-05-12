@@ -292,7 +292,7 @@
           "data": {
             "question": "When designing concrete upturns near obstructions, what clearance is required for conventional formwork, and at what point should alternative systems be considered?",
             "parameter": "Available clearance between upturn face and nearest obstruction (mm)",
-            "background": "Conventional off-form concrete upturns require double-sided formwork with rear access for placement, bracing, and bolt-up. This assumption breaks down when upturns are positioned close to existing fences, retaining walls, or other obstructions. It would be unwise to assume that plywood pressed against an obstruction can adequately restrain wet concrete pressure, particularly for slender upturns once heights exceed approximately 600 mm. Where access is limited, the designer should consider whether conventional formwork is feasible before committing to an off-form concrete design.",
+            "background": "Conventional off-form concrete upturns require practical access to both sides of the formwork for placement, bracing, tying, bolt-up, stripping and inspection. This assumption breaks down when upturns are positioned close to existing fences, retaining walls, boundaries or other obstructions. It would be unwise to assume that plywood pressed against an obstruction can adequately restrain wet concrete pressure, particularly for slender upturns once heights exceed approximately 600 mm. Where access to either side is limited, the designer should consider whether conventional off-form construction is feasible before committing to an off-form concrete design.",
             "thresholds": [
               {
                 "range": ">= 1000 mm",
