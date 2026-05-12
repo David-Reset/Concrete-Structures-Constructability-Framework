@@ -25,18 +25,18 @@ Each dimension contains:
 
 ### Entry structure
 
-Every entry in the framework follows the same format:
+Every entry in the framework follows the same general display format:
 
 - **Design Question** — what specific design question is being answered
+- **Location** — the country and/or state where the evidence was gathered, shown near the entry heading (see [Regional applicability](#regional-applicability))
+- **Background** — why this matters for constructability *(optional)*
 - **Design Parameter** — what the engineer can measure, count, or assess from their drawings
 - **Design Guidance** — threshold bands rated as Good practice, Consider, Concern, or Action required
-- **Location** — the country and/or state where the evidence was gathered (see [Regional applicability](#regional-applicability))
-- **Background** — why this matters for constructability *(optional)*
-- **Recommended Actions** — what to do if you're in the concern or action required zone, given as a numbered list of practical options. Each action can be a short instruction or a structured option with a title and longer description *(optional)*
 - **Applicability and Limitations** — defines where the entry applies, lists factors the designer should check before applying the guidance, and provides a closing note framing the rating as a review prompt rather than a prohibition *(optional)*
+- **Recommended Actions** — what to do if you're in the concern or action required zone, given as a numbered list of practical options. Each action can be a short instruction or a structured option with a title and longer description *(optional)*
 - **Evidence Basis** — how the guidance was established *(optional)*
 - **Examples** — real design drawings tagged as Concern, Acceptable, or Recommended *(optional)*
-- **Site Photos** — photographs showing what these issues look like in practice *(optional)*
+- **Supporting Images** — images, excerpts, diagrams, or site photographs that support the evidence or show what the issue looks like in practice *(optional)*
 
 Entries are date-stamped and designed to be updated as construction technology and practice evolve.
 
