@@ -87,6 +87,28 @@
             "location": {
               "country": "Australia",
               "state": "NSW"
+            },
+            "applicability": {
+              "appliesWhere": "This entry applies to top reinforcement mats in suspended slabs or similar concrete elements where workers are expected to walk, kneel or stand on the reinforcement during concrete placement, vibration, screeding or finishing.",
+              "checks": [
+                {
+                  "title": "Top mat used as a working surface",
+                  "description": "The guidance is intended for reinforcement that workers actually use as a temporary working surface. It should not be automatically applied to bottom reinforcement, wall reinforcement, starter bars, or areas that workers do not need to walk or kneel on during construction."
+                },
+                {
+                  "title": "Pour volume and work intensity",
+                  "description": "The 7 m3 pour volume should be treated as a practical indicator of work intensity, not a hard safety boundary. A small pour can still require closer consideration where access is awkward, the reinforcement is wet or slippery, or workers need to move quickly across the mat."
+                },
+                {
+                  "title": "Structural and detailing constraints",
+                  "description": "Reducing bar spacing or adding supplementary mesh must still be checked against structural requirements, concrete cover, bar layering, reinforcement congestion and concrete placement. The safest constructability solution is the one that can be built safely while still satisfying the structural design intent."
+                },
+                {
+                  "title": "Rating interpretation",
+                  "description": "The 200 mm, 250 mm and 300 mm bands are constructability and safety-in-design review prompts, not statutory limits. A rating of Concern or Action required means the designer should recognise the construction-stage hazard and consider whether the design should be revised, justified or supported by additional controls."
+                }
+              ],
+              "note": "Use this guidance as part of a broader safety-in-design review. It does not replace project-specific risk assessment, contractor methodology, temporary works planning, or compliance with relevant work health and safety requirements."
             }
           }
         },
