@@ -16,7 +16,7 @@
           "data": {
             "question": "At what top reinforcement spacing does the risk of a worker falling through or stepping between bars during construction become unacceptable?",
             "parameter": "Top reinforcement bar spacing (mm)",
-            "background": "Top reinforcement mats in suspended slabs temporarily serve as working platforms during construction until concrete is placed. When bar spacing is too wide, workers risk stepping between bars, leading to falls and injuries. The spacing of the top mat directly determines whether it can safely support foot traffic during concrete placement and finishing. Any measures to address fall-through risk must also facilitate concrete placement and not obstruct the pour.",
+            "background": "Top reinforcement mats in slabs and similar reinforced concrete elements temporarily serve as working surfaces during construction until concrete is placed. When bar spacing is too wide, workers risk stepping between bars, leading to falls and injuries. The spacing of the top mat directly determines whether it can safely support foot traffic during concrete placement and finishing. Any measures to address fall-through risk must also facilitate concrete placement and not obstruct the pour.",
             "thresholds": [
               {
                 "range": "<= 200 mm",
@@ -38,9 +38,18 @@
               }
             ],
             "alternatives": [
-              "Specify 200 x 200 mm (or closer) top reinforcement spacing - this is the preferred solution and should be the default where top mats will be used as working platforms",
-              "If 250 x 250 spacing is required, assess the concrete pour volume - pours under 7 m3 are generally more controlled and may be acceptable without additional measures",
-              "If 250 x 250 on pours exceeding 7 m3, or if 300 x 300 is specified, add a supplementary layer of top mesh (SL82 or above - SL72 is not rigid enough) to act as both crack control and a fall-through barrier. However, consider the impact on cover and reinforcement congestion - weigh this against simply reducing the primary bar spacing to 200 x 200"
+              {
+                "title": "Specify 200 x 200 mm top reinforcement spacing",
+                "description": "Use 200 x 200 mm spacing, or closer, as the preferred solution where the top mat will be used as a working surface during concrete placement. This provides a more supportive surface for workers and avoids relying on supplementary controls."
+              },
+              {
+                "title": "Assess 250 x 250 mm spacing against pour size and site conditions",
+                "description": "Where 250 x 250 mm spacing is proposed, consider the concrete pour volume and construction context. Small pours under approximately 7 m3 are generally more controlled and may be acceptable, while larger pours are more likely to involve faster movement, more workers and higher exposure time."
+              },
+              {
+                "title": "Use supplementary top mesh or reduce the primary spacing",
+                "description": "Where 250 x 250 mm spacing is used on pours exceeding approximately 7 m3, or where 300 x 300 mm spacing is specified, provide an additional layer of top mesh such as SL82 or above to improve the working surface, or revise the primary top reinforcement spacing to 200 x 200 mm. Consider cover, reinforcement congestion and concrete placement before adding supplementary mesh."
+              }
             ],
             "evidence": "Site incident report: worker sustained a severe knee injury after stepping through 250 x 250 top reinforcement during slab pour. Supported by Safe Work Australia guidance on falls through openings and gaps in working platforms. Boot sole dimensions derived from ADF anthropometric surveys (Blanchonette, 2017). Slip and trip injury data from construction site research demonstrates that even non-fall slip events predominantly injure lower extremities (Lipscomb et al., 2006). Prevention through Design guidance for concrete construction recommends mat mesh over widely spaced rebar as a walking surface control (National Institute for Occupational Safety and Health, 2024).<br><br><strong>References</strong><br>Blanchonette, P. (2017). Australian Defence Force Anthropometry: A Summary of Historic Surveys (DST-Group-GD-0968). Defence Science and Technology Group.<br>Lipscomb, H. J., Glazner, J. E., Bondy, J., Guarini, K., &amp; Lezotte, D. (2006). Injuries from slips and trips in construction. Applied Ergonomics, 37(3), 267–274. https://doi.org/10.1016/j.apergo.2005.07.008<br>National Institute for Occupational Safety and Health. (2024). Prevention through Design Toolkit for the Construction Industry (DHHS (NIOSH) Publication No. 2024-124). U.S. Centers for Disease Control and Prevention. https://doi.org/10.26616/NIOSHPUB2024124",
             "examples": [
@@ -89,26 +98,22 @@
               "state": "NSW"
             },
             "applicability": {
-              "appliesWhere": "This entry applies to top reinforcement mats in suspended slabs or similar concrete elements where workers are expected to walk, kneel or stand on the reinforcement during concrete placement, vibration, screeding or finishing.",
+              "appliesWhere": "This entry applies to top reinforcement mats in slabs and similar reinforced concrete elements where workers are expected to walk, kneel or stand on the reinforcement during concrete placement, vibration, screeding or finishing. This includes suspended slabs, slabs-on-ground, raft slabs, balconies, podium slabs and other reinforced concrete pours where the top mat functions as a temporary working surface.",
               "checks": [
                 {
                   "title": "Top mat used as a working surface",
-                  "description": "The guidance is intended for reinforcement that workers actually use as a temporary working surface. It should not be automatically applied to bottom reinforcement, wall reinforcement, starter bars, or areas that workers do not need to walk or kneel on during construction."
+                  "description": "This guidance is primarily concerned with the top reinforcement mat because this is the layer workers walk, kneel or stand on during concrete placement. Bottom reinforcement, wall reinforcement, starter bars and other non-trafficable reinforcement do not create the same working-surface risk. However, designers may still choose to match top and bottom reinforcement spacing where this improves detailing simplicity, ordering, placement consistency or reduces the likelihood of site errors."
                 },
                 {
-                  "title": "Pour volume and work intensity",
-                  "description": "The 7 m3 pour volume should be treated as a practical indicator of work intensity, not a hard safety boundary. A small pour can still require closer consideration where access is awkward, the reinforcement is wet or slippery, or workers need to move quickly across the mat."
+                  "title": "Pour volume is a practical indicator, not a fixed safety boundary",
+                  "description": "The 7 m3 threshold is used as a practical indicator of pour intensity and exposure, not as a statutory or absolute safety limit. A smaller pour may still require closer spacing if access is awkward, the reinforcement is difficult to move across, or workers need to spend extended time on the mat."
                 },
                 {
-                  "title": "Structural and detailing constraints",
-                  "description": "Reducing bar spacing or adding supplementary mesh must still be checked against structural requirements, concrete cover, bar layering, reinforcement congestion and concrete placement. The safest constructability solution is the one that can be built safely while still satisfying the structural design intent."
-                },
-                {
-                  "title": "Rating interpretation",
-                  "description": "The 200 mm, 250 mm and 300 mm bands are constructability and safety-in-design review prompts, not statutory limits. A rating of Concern or Action required means the designer should recognise the construction-stage hazard and consider whether the design should be revised, justified or supported by additional controls."
+                  "title": "Structural and placement requirements remain controlling",
+                  "description": "Any change to reinforcement spacing or addition of supplementary mesh must still satisfy structural design requirements, cover, bar layering, congestion, concrete placement and vibration requirements."
                 }
               ],
-              "note": "Use this guidance as part of a broader safety-in-design review. It does not replace project-specific risk assessment, contractor methodology, temporary works planning, or compliance with relevant work health and safety requirements."
+              "note": "Use the rating as a safety-in-design review prompt, not as a blanket rule. The appropriate response is to consider whether the top mat will function as a working surface and whether the specified spacing creates an avoidable risk during construction."
             }
           }
         },
