@@ -225,7 +225,7 @@ function renderDimensionView(){
     const cls=item.available?'item-row available':'item-row unavailable';
     const onclick=item.available?`onclick="goEntry('${dim.id}',${i})"`:'';
     const loc=item.available&&item.data&&item.data.location?locTag(item.data.location):'';
-    const right=item.available?`<div style="text-align:right"><div class="item-arrow">→</div>${item.data?`<div class="item-meta">Added ${item.data.dateAdded}</div>`:''}</div>`:'<div class="item-coming">Coming soon</div>';
+    const right=item.available?`<div style="text-align:right"><div class="item-arrow">→</div>${item.data?`<div class="item-meta">Reviewed ${item.data.dateReviewed || item.data.dateAdded}</div>`:''}</div>`:'<div class="item-coming">Coming soon</div>';
     const meta=item.available&&item.data?`<div class="item-meta">Parameter: ${item.data.parameter}</div>`:'';
     return `<div class="${cls}" ${onclick} ${hidden}><div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><div class="item-name">${item.name}</div>${loc}</div>${meta}</div>${right}</div>`;
   }).join('');
@@ -284,7 +284,7 @@ function renderEntryDetail(){
     ${d.evidence?`<div class="evidence-box"><div class="label">Evidence Basis</div><div class="evidence-text">${d.evidence}</div></div>`:''}
     ${examplesHtml}
     ${supportingImagesHtml}
-    <div class="date-stamp"><div><div class="date-label">Entry Added</div><div class="date-value">${d.dateAdded}</div></div><div><div class="date-label">Last Reviewed</div><div class="date-value">${d.dateReviewed}</div></div></div>
+    <div class="date-stamp"><div><div class="date-label">Added</div><div class="date-value">${d.dateAdded}</div></div><div><div class="date-label">Reviewed</div><div class="date-value">${d.dateReviewed || d.dateAdded}</div></div></div>
   </div>`;
 }
 
