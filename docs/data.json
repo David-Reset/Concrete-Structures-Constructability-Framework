@@ -165,11 +165,19 @@
                 "guidance": "Likely impractical to form monolithically using standard systems. A real project example required a 1050 mm fold in a suspended RC slab. During construction, the detail was found to be impractical due to the difficulty and cost of forming with adequate bracing. The design was revised to incorporate blockwork and separate concrete pours."
               }
             ],
-            "additionalNotes": "A monolithic fold may still be the most practical solution where the pour volume is small, the fold length is limited (e.g. a few lineal metres), and splitting the pour would introduce disproportionate costs such as additional pumps, trades, or waterproofing at construction joints. The ratings above reflect general constructability considerations — the designer should weigh these against the full context of their specific design.",
             "alternatives": [
-              "Blockwork infill with separate concrete pours",
-              "PVC permanent formwork solutions",
-              "Redesign to reduce or eliminate the level change where structurally feasible"
+              {
+                "title": "Use blockwork infill with separate concrete pours",
+                "description": "Form the level change using blockwork or masonry infill, then pour the concrete elements separately using more conventional formwork. This can be more practical for deep or extended folds where monolithic forming would require excessive custom formwork, bracing and labour. Check structural load transfer, jointing, waterproofing and durability requirements before adopting this option."
+              },
+              {
+                "title": "Use permanent formwork where suitable",
+                "description": "Consider PVC permanent formwork or similar systems where they can simplify the level change and reduce the need for complex temporary formwork. This may be useful where access or stripping is difficult, but the system must be checked for structural suitability, fire and durability requirements, finish expectations and compatibility with the surrounding concrete detail."
+              },
+              {
+                "title": "Redesign to reduce or eliminate the level change",
+                "description": "Review whether the fold depth can be reduced, relocated or removed while still satisfying the architectural, structural and serviceability requirements. Simplifying the slab profile is often the most effective constructability improvement because it reduces custom formwork, reinforcement complexity, sequencing issues and construction risk at the source."
+              }
             ],
             "evidence": "Industry consultation (formwork subcontractors, building contractor), supported by practical project experience. Jarkas (2010) confirms formwork complexity and irregularity significantly affect construction productivity.",
             "examples": [
@@ -203,6 +211,28 @@
             "location": {
               "country": "Australia",
               "state": "NSW"
+            },
+            "applicability": {
+              "appliesWhere": "This entry applies to suspended slabs and similar reinforced concrete elements where a vertical level change is proposed to be formed monolithically as part of the concrete profile.",
+              "checks": [
+                {
+                  "title": "Fold length and pour volume",
+                  "description": "A short local fold is not the same construction problem as a long continuous fold. A deep fold over a few lineal metres may still be manageable, while the same depth over a long length may become impractical due to the extent of custom formwork, bracing and labour required."
+                },
+                {
+                  "title": "Whether splitting the pour creates more complexity",
+                  "description": "Blockwork, permanent formwork, separate pours or construction joints can solve the forming issue, but may introduce extra trades, additional concrete pumps, waterproofing requirements, joint detailing or sequencing constraints. The alternative should be assessed against the full construction sequence, not just the fold depth."
+                },
+                {
+                  "title": "Function of the level change",
+                  "description": "The appropriate response depends on why the level change exists. Architectural set-downs, structural steps, waterproofing zones, fire or acoustic separation, retained fill and support for other elements may each require different detailing and construction methods."
+                },
+                {
+                  "title": "Formwork system and contractor capability",
+                  "description": "The thresholds are constructability prompts based on conventional formwork. Specialist formwork systems, highly repetitive geometry, experienced formwork crews or project-specific access arrangements may change what is practical."
+                }
+              ],
+              "note": "Use the rating as a prompt to review the construction method, not as a rule that monolithic folds above a particular depth are automatically unacceptable. A monolithic fold may still be the most practical solution where the fold length and pour volume are small and the alternatives introduce disproportionate cost or complexity."
             }
           }
         },
