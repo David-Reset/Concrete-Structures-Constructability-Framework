@@ -28,7 +28,7 @@
                 "range": "250 mm",
                 "rating": "Concern",
                 "color": "orange",
-                "guidance": "Significant fall-through risk on larger pours. However, 250 x 250 spacing can be acceptable on very small pours where less than 7 m3 of concrete is being placed, as these are less frantic and more controlled. For example, if the slab thickness is 180 mm, this equates to slabs less than approximately 38 m2. For pours exceeding 7 m3, this spacing should be addressed."
+                "guidance": "Fall-through risk on larger pours and should be addressed. The exception is small, single-truck pours under approximately 7 m3, where the pour is self-paced and conditions are controlled enough that 250 mm spacing is acceptable. For example, if the slab thickness is 180 mm, this equates to slabs less than approximately 38 m2. For pours exceeding 7 m3 (i.e. requiring more than one truck), this spacing should be addressed."
               },
               {
                 "range": "300 mm",
@@ -51,7 +51,7 @@
                 "description": "Where 250 x 250 mm spacing is used on pours exceeding approximately 7 m3, or where 300 x 300 mm spacing is specified, provide an additional layer of top mesh such as SL82 or above to improve the working surface, or revise the primary top reinforcement spacing to 200 x 200 mm. Consider cover, reinforcement congestion and concrete placement before adding supplementary mesh."
               }
             ],
-            "evidence": "Site incident report: worker sustained a severe knee injury after stepping through 250 x 250 top reinforcement during slab pour. Supported by Safe Work Australia guidance on falls through openings and gaps in working platforms. Boot sole dimensions derived from ADF anthropometric surveys (Blanchonette, 2017). Slip and trip injury data from construction site research demonstrates that even non-fall slip events predominantly injure lower extremities (Lipscomb et al., 2006). Prevention through Design guidance for concrete construction recommends mat mesh over widely spaced rebar as a walking surface control (National Institute for Occupational Safety and Health, 2024).<br><br><strong>References</strong><br>Blanchonette, P. (2017). Australian Defence Force Anthropometry: A Summary of Historic Surveys (DST-Group-GD-0968). Defence Science and Technology Group.<br>Lipscomb, H. J., Glazner, J. E., Bondy, J., Guarini, K., &amp; Lezotte, D. (2006). Injuries from slips and trips in construction. Applied Ergonomics, 37(3), 267–274. https://doi.org/10.1016/j.apergo.2005.07.008<br>National Institute for Occupational Safety and Health. (2024). Prevention through Design Toolkit for the Construction Industry (DHHS (NIOSH) Publication No. 2024-124). U.S. Centers for Disease Control and Prevention. https://doi.org/10.26616/NIOSHPUB2024124",
+            "evidence": "Site incident report: worker sustained a severe knee injury after stepping through 250 x 250 top reinforcement during slab pour. Supported by Safe Work Australia guidance on falls through openings and gaps in working platforms. Boot sole dimensions derived from ADF anthropometric surveys (Blanchonette, 2017). Slip and trip injury data from construction site research demonstrates that even non-fall slip events predominantly injure lower extremities (Lipscomb et al., 2006). Prevention through Design guidance for concrete construction recommends mat mesh over widely spaced rebar as a walking surface control (National Institute for Occupational Safety and Health, 2024).<br><br><strong>Pour size threshold (7 m3)</strong><br>The 7 m3 threshold corresponds to the typical capacity of a single concrete truck. Pours within a single truck are generally self-paced and controlled, because the rate of placement is set by the workers screeding and finishing rather than by trucks queueing on site. Pours requiring multiple trucks introduce time pressure to keep up with placement and faster worker movement across the reinforcement mat, increasing exposure time and the likelihood of a misplaced step.<br><br><strong>References</strong><br>Blanchonette, P. (2017). Australian Defence Force Anthropometry: A Summary of Historic Surveys (DST-Group-GD-0968). Defence Science and Technology Group.<br>Lipscomb, H. J., Glazner, J. E., Bondy, J., Guarini, K., &amp; Lezotte, D. (2006). Injuries from slips and trips in construction. Applied Ergonomics, 37(3), 267–274. https://doi.org/10.1016/j.apergo.2005.07.008<br>National Institute for Occupational Safety and Health. (2024). Prevention through Design Toolkit for the Construction Industry (DHHS (NIOSH) Publication No. 2024-124). U.S. Centers for Disease Control and Prevention. https://doi.org/10.26616/NIOSHPUB2024124",
             "examples": [
               {
                 "image": "images/reo-250-spacing.jpg",
@@ -92,7 +92,7 @@
               }
             ],
             "dateAdded": "2026-03-15",
-            "dateReviewed": "2026-03-15",
+            "dateReviewed": "2026-05-13",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -471,7 +471,7 @@
               ],
               "note": "Use the rating as a constructability review prompt, not as a blanket prohibition on the design detail. The appropriate response is to confirm the construction method early."
             },
-            "evidence": "Conventional formwork requires rear clearance for bracing and bolt-up access. Confirmed through literature + industry consultation: deriving the clearance thresholds. A concrete upturn wall designed as off-form concrete near a site boundary was found to be infeasible during construction due to zero clearance behind the wall and no access to adjacent land. The design was revised to a Dincel permanent formwork system.<br><br><strong>References</strong><br>Dincel Structural Walling. (2026). Construction Manual. Dincel Structural Walling.<br>Hurd, M. K. (2005). Formwork for Concrete (7th ed.). American Concrete Institute.<br>Jha, K. N. (2012). Formwork for Concrete Structures. Tata McGraw Hill Education Private Limited.",
+            "evidence": "Conventional formwork requires rear clearance for bracing and bolt-up access. The thresholds are derived from the physical components and working envelopes required for each tie system, cross-referenced with formwork literature (Hurd, 2005; Jha, 2012) and industry consultation.<br><br><strong>700 mm threshold (coil tie minimum)</strong><br>Plywood sheathing (18 mm) + studs and double wales (196 mm) + coil bolt length (310 mm) + hand and tool clearance (~127 mm) + working buffer (~50 mm) = ~700 mm. Below this clearance a coil tie cannot be installed and tightened.<br><br><strong>350 mm threshold (threaded Z-bar minimum)</strong><br>Plywood sheathing (18 mm) + studs and double wales (196 mm) + nut and space to work it on and off (~100 mm, approximately twice nut height to allow the nut to be threaded on and off) = ~314 mm, rounded up to 350 mm to allow practical tolerance on site. The hand drops out of the breakdown because it occupies the same envelope as the nut being tightened, and the working buffer drops out because the operator reaches in at arm's length rather than standing behind the formwork. Below 350 mm a threaded Z-bar cannot be installed and tightened from the rear side.<br><br><strong>1000 mm threshold (full working access)</strong><br>700 mm (coil tie components installed) + ~300 mm working envelope for a person to stand and work behind the formwork = ~1000 mm. Above this clearance both tie systems are feasible and the operator has comfortable working room for bracing, bolt-up, stripping and inspection.<br><br>A concrete upturn wall designed as off-form concrete near a site boundary was found to be infeasible during construction due to zero clearance behind the wall and no access to adjacent land. The design was revised to a Dincel permanent formwork system.<br><br><strong>References</strong><br>Dincel Structural Walling. (2026). Construction Manual. Dincel Structural Walling.<br>Hurd, M. K. (2005). Formwork for Concrete (7th ed.). American Concrete Institute.<br>Jha, K. N. (2012). Formwork for Concrete Structures. Tata McGraw Hill Education Private Limited.",
             "examples": [
               {
                 "image": "images/wall-detail-original.jpg",
@@ -515,7 +515,7 @@
               }
             ],
             "dateAdded": "2026-04-02",
-            "dateReviewed": "2026-04-09",
+            "dateReviewed": "2026-05-13",
             "location": {
               "country": "Australia",
               "state": "NSW"
