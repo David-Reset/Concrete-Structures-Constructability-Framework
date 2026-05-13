@@ -275,8 +275,8 @@ function renderEntryDetail(){
     <div class="entry-title">${item.name}</div>
     <div class="entry-meta">Dimension: ${dim.name} · Reinforced Concrete ${d.location?' · '+locTag(d.location):''}</div>
     <div class="question-box"><div class="label label-accent">Design Question</div><div class="question-text">${d.question}</div></div>
-    <div class="param-box"><div class="label">Design Parameter</div><div class="param-value">${d.parameter}</div></div>
     ${d.background?`<div class="label">Background</div><div class="consideration-text">${d.background}</div>`:''}
+    <div class="param-box"><div class="label">Design Parameter</div><div class="param-value">${d.parameter}</div></div>
     <div class="label">Design Guidance</div><div class="threshold-list" style="margin-top:10px">${thresholds}</div>
     ${notesHtml}
     ${applicabilityHtml}
@@ -284,7 +284,7 @@ function renderEntryDetail(){
     ${d.evidence?`<div class="evidence-box"><div class="label">Evidence Basis</div><div class="evidence-text">${d.evidence}</div></div>`:''}
     ${examplesHtml}
     ${supportingImagesHtml}
-    <div class="date-stamp"><div><div class="date-label">Added</div><div class="date-value">${d.dateAdded}</div></div><div><div class="date-label">Reviewed</div><div class="date-value">${d.dateReviewed || d.dateAdded}</div></div></div>
+    <div class="date-stamp"><div><div class="date-label">Entry Added</div><div class="date-value">${d.dateAdded}</div></div><div><div class="date-label">Last Reviewed</div><div class="date-value">${d.dateReviewed}</div></div></div>
   </div>`;
 }
 
