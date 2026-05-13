@@ -270,22 +270,22 @@
             "background": "Stirrups, ligatures and ties in ground footings are often used not only for structural capacity, but also to hold longitudinal reinforcement in position during fixing, inspection, concrete placement and vibration. This is particularly important in groundworks, where footing or ground beam dimensions may change during construction because of excavation tolerance, founding conditions, pile position, set-out issues or cover requirements. R10 and N12 are generally practical options for ground footings. R10 is commonly used for footing ligatures, while N12 provides greater adaptability where reinforcement may need to be supplemented or adjusted on site. R6 may be structurally adequate in some cases, but can be difficult to source and may lead to substitution issues if no alternative is documented.",
             "thresholds": [
               {
-                "range": "R10 or N12 ties",
+                "range": "R10 or N12",
                 "rating": "Good practice",
                 "color": "green",
-                "guidance": "Practical tie sizes for ground footings and ground beams. R10 is commonly used for footing ligatures, while N12 provides better adaptability where reinforcement may need to be supplemented or adjusted on site. Spacing must still be determined by structural requirements and cage rigidity."
+                "guidance": "Practical tie sizes for ground footings and ground beams. R10 is commonly used for footing ligatures, while N12 provides better adaptability where reinforcement may need to be supplemented or adjusted on site. Spacing must still satisfy structural requirements and provide adequate cage rigidity."
               },
               {
-                "range": "N16 ties",
+                "range": "N16",
                 "rating": "Consider",
                 "color": "yellow",
                 "guidance": "May be suitable where structurally required, but is less practical for site adjustment in groundworks. Avoid using N16 only to reduce the number of ties where R10 or N12 at closer spacing would provide a more practical and adaptable cage."
               },
               {
-                "range": "R6 ties without alternative",
+                "range": "R6",
                 "rating": "Concern",
                 "color": "orange",
-                "guidance": "May be difficult to source and can lead to substitution issues. Where R6 is specified, provide an equivalent R10 option where structurally acceptable."
+                "guidance": "May be difficult to source and can lead to substitution issues if no alternative is documented. Where R6 is specified, provide an equivalent R10 option where structurally acceptable."
               }
             ],
             "applicability": {
@@ -301,11 +301,11 @@
                 },
                 {
                   "title": "Tie spacing and cage rigidity",
-                  "description": "Where structural requirements allow wide tie spacing, cage rigidity should still be considered. CCAA guidance for strip and raft footings states that supports, ligatures and bar chairs are typically spaced at 600-900 mm centres depending on reinforcement rigidity. Contractor consultation for this framework also indicated that footing cages can become noticeably less rigid above approximately 800 mm. Spacing beyond 900 mm should therefore be deliberately checked rather than adopted simply because a larger tie size has sufficient steel area."
+                  "description": "Tie spacing must first satisfy structural design requirements. Where the structural design permits wider spacing, footing tie spacing should generally not exceed 900 mm centres unless specifically justified. CCAA guidance for strip and raft footings identifies 600-900 mm centres as typical spacing for supports, ligatures and bar chairs, depending on reinforcement rigidity. Contractor consultation for this framework also indicated that footing cages can become noticeably less rigid above approximately 800 mm. The 900 mm value should therefore be treated as the practical upper limit for this guidance, not as a target spacing."
                 },
                 {
                   "title": "R10 versus N12",
-                  "description": "Where ties are not governed by structural demand and are mainly required for cage formation, support and reinforcement positioning, an R10 option is often a practical default. For example, documenting an alternative such as R6-600 or R10-900 gives the contractor a readily available equivalent where structurally acceptable. If N12 ties are available or easier to adapt on site, they may also be used at the same structurally acceptable spacing, subject to engineering review."
+                  "description": "Where ties are not governed by high structural demand and are mainly required for cage formation, support and reinforcement positioning, an R6 detail with a documented R10 equivalent is often the most practical approach. For example, documenting R6-600 or R10-900 gives the contractor a readily available alternative if R6 is difficult to source. N12 may also be used where it is already available on site or where additional site-bent reinforcement is needed, provided cover, bend dimensions and fit within the footing are maintained."
                 },
                 {
                   "title": "Local supplier availability",
@@ -320,24 +320,16 @@
             },
             "alternatives": [
               {
-                "title": "Use R10 or N12 as the preferred practical footing tie sizes",
-                "description": "For ground footings and ground beams, use R10 or N12 ties where structurally suitable. R10 is generally practical for standard footing ligatures, while N12 provides better adaptability where reinforcement may need to be supplemented, adjusted or site-bent."
+                "title": "Specify R6 with an R10 equivalent where structurally suitable",
+                "description": "Where R6 ties are structurally adequate, document a readily available R10 equivalent on the drawing, such as R6-600 or R10-900, where appropriate. This keeps the original lightweight detail while giving the contractor a practical alternative if R6 is difficult to source."
               },
               {
-                "title": "Provide an R10 equivalent where R6 is specified",
-                "description": "Where R6 is structurally suitable but availability may be uncertain, show an equivalent R10 option at adjusted spacing on the drawing, such as R6-600 or R10-900, where structurally acceptable. This gives the contractor a practical alternative without needing a substitution request."
+                "title": "Use N12 only where additional adaptability or structural capacity is needed",
+                "description": "N12 may be appropriate where the tie is structurally required, where site-bent supplementary reinforcement may be needed, or where footing dimensions are likely to change. Do not specify N12 by default if R6 or R10 ties provide an adequate and more practical footing cage."
               },
               {
-                "title": "Do not use N16 only to reduce tie numbers",
+                "title": "Avoid using N16 only to reduce tie numbers",
                 "description": "N16 ties may be appropriate where structurally required, but should not be used only to reduce the number of ligatures in groundworks. Where R10 or N12 at closer spacing would provide a more practical, adaptable and stable cage, that option should be preferred."
-              },
-              {
-                "title": "Check cage rigidity where spacing approaches the upper practical range",
-                "description": "Where structural design permits tie spacing toward the upper end of typical footing practice, check that the cage will still hold longitudinal reinforcement in position during fixing, inspection and concrete placement. Spacing above 900 mm should be specifically justified."
-              },
-              {
-                "title": "Allow practical supplementation where footing dimensions change",
-                "description": "Where a footing is locally widened or adjusted, the response may not require custom bending of every ligature. Depending on the design, it may be possible to double up standard ligatures, order additional R10 ligatures or supplement with site-bent N12 bars. The final arrangement should be checked by the engineer."
               }
             ],
             "evidence": "Evidence is based on CCAA guidance for residential strip and raft footings, which identifies 600-900 mm centres as typical spacing for supports, ligatures and bar chairs depending on reinforcement rigidity, supplemented by contractor consultation undertaken for this framework. Industry experience also indicates that R6 ligatures are commonly substituted with R10 during construction due to limited supplier availability.",
