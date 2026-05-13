@@ -535,41 +535,72 @@
           "name": "Reinforcement callout clarity",
           "available": true,
           "data": {
-            "question": "Does each reinforcement callout on the drawing communicate a single, clear instruction, or are multiple instructions being combined into one notation?",
-            "parameter": "Readability of reinforcement callout notation",
-            "background": "When reinforcement callouts combine multiple instructions into a single notation - such as standard bar spacing, extra bars over columns, and total bar counts - critical information can be missed on site. The more information packed into one callout, the greater the risk that non-obvious elements are overlooked. In practice, it is the additional or non-standard reinforcement (such as extras over columns) that is most likely to be missed, as it is often appended to the end of an already complex callout.",
+            "question": "Are reinforcement bar callouts clear enough that bar size, spacing, extent, laying order and additional reinforcement can be understood without missed or misread instructions?",
+            "parameter": "Clarity of reinforcement bar callouts, extent markers, laying order notation and extra reinforcement notes.",
+            "background": "Reinforcement callouts need to be readable by the people fixing, checking and inspecting the reinforcement. A callout may technically contain the required information, but still be poor communication if too much information is compressed into one notation string or if extra bars are not clearly separated from the standard reinforcement. This is particularly important where additional bars are required over columns, supports, slab thickenings, penetrations, openings or other local regions. If extras are buried inside the main callout or encoded into a compressed notation, they can be missed during construction. Clear callouts should show the main reinforcement, extent and extras in a way that is obvious at a glance.",
             "thresholds": [
               {
-                "range": "Clear callouts",
+                "range": "Clean callouts",
                 "rating": "Good practice",
                 "color": "green",
-                "guidance": "Bar size and spacing with extent shown on plan. Laying order noted separately in brackets where helpful. e.g. N12-200 (B1). Every element independently readable at a glance. Extras called out separately with their own callout and extent markers. e.g. 6N16 EXTRA."
+                "guidance": "Bar size and spacing with extent shown on plan. Laying order noted separately in brackets where helpful, e.g. N12-200 (B1). Every element is independently readable at a glance. Extras are called out separately with their own callout and extent markers, e.g. 6N16 EXTRA."
               },
               {
                 "range": "No laying order",
                 "rating": "Consider",
                 "color": "yellow",
-                "guidance": "Bar size and spacing only, no laying order context. e.g. N12-200. Still clear, but the reader does not know the stacking sequence without checking elsewhere."
+                "guidance": "Bar size and spacing only, with no laying order context, e.g. N12-200. Still clear, but the reader does not know the stacking sequence without checking elsewhere."
               },
               {
                 "range": "Count included",
                 "rating": "Concern",
                 "color": "orange",
-                "guidance": "Bar count included in the callout. e.g. 10N12-200. The count is unnecessary - extent markers on the drawing already communicate where bars go. Adding the count clutters the notation without adding practical value on site."
+                "guidance": "Bar count included in the callout, e.g. 10N12-200. The count is unnecessary where extent markers on the drawing already communicate where bars go. Adding the count clutters the notation without adding practical value on site."
               },
               {
                 "range": "Encoded notation",
                 "rating": "Action required",
                 "color": "red",
-                "guidance": "Multiple instructions encoded into a single compressed string. e.g. 13N16 10-250+3. Extras or non-standard reinforcement buried within the notation. Critical information is easily missed and was missed during construction in a real project."
+                "guidance": "Multiple instructions are compressed into a single notation string, e.g. 13N16 10-250+3. Extras or non-standard reinforcement are buried within the notation. Critical information is easily missed and was missed during construction in a real project."
               }
             ],
+            "applicability": {
+              "appliesWhere": "This entry applies to reinforcement bar callouts on structural plans where bar size, spacing, extent, laying order and additional reinforcement need to be communicated clearly.",
+              "checks": [
+                {
+                  "title": "Callout style may vary by office",
+                  "description": "Different offices may use different reinforcement notation styles. This guidance does not require one exact notation system, but the callout should be readable without relying on compressed or hidden instructions."
+                },
+                {
+                  "title": "Extent markers remain important",
+                  "description": "Where bars or extra bars are required, the drawing should clearly show their extent using markers, zones, leaders or similar. A clean callout is only useful if the reader can also tell where the reinforcement starts and stops."
+                },
+                {
+                  "title": "Layering should be clear where it matters",
+                  "description": "Where laying order affects bar placement, the layer should be shown clearly, such as using bracketed notation like B1, rather than being buried in a compressed callout."
+                },
+                {
+                  "title": "Extras should be separately visible",
+                  "description": "Where additional reinforcement is required, the extra bars should be visually separated from the standard reinforcement callout. This reduces the risk that extras are missed because they were hidden inside the main notation."
+                }
+              ],
+              "note": "Use this entry as a communication clarity check, not as a rule that every office must use the exact same notation. The aim is to make reinforcement requirements obvious to the person reading the drawing on site."
+            },
             "alternatives": [
-              "Separate extras into their own callouts on the plan with their own extent markers. For example, show N16-250 for the standard bars and a separate callout 3N16 EXTRA OVER COLUMNS (TYP) with its extent clearly marked",
-              "Use TYPICAL notation so that extras only need to be detailed once on the drawing rather than repeated at every location",
-              "Include a general note such as all extras evenly spaced unless noted otherwise to reduce the amount of information that needs to be conveyed in individual callouts"
+              {
+                "title": "Separate extras into their own callouts",
+                "description": "Separate extras into their own callouts on the plan with their own extent markers. For example, show N16-250 for the standard bars and a separate callout such as 3N16 EXTRA OVER COLUMNS (TYP) with its extent clearly marked."
+              },
+              {
+                "title": "Use typical notation for repeated extras",
+                "description": "Use TYPICAL notation so that repeated extras only need to be detailed once on the drawing rather than repeated at every location. This keeps the drawing cleaner while still making the extra reinforcement requirement clear."
+              },
+              {
+                "title": "Add a general note for repeated spacing rules",
+                "description": "Include a general note such as all extras evenly spaced unless noted otherwise to reduce the amount of information that needs to be conveyed in individual callouts."
+              }
             ],
-            "evidence": "Project experience - additional reinforcement over columns was missed during construction because it was embedded as +3 at the end of a combined callout. The standard reinforcement was placed correctly but the extras were overlooked, requiring identification during inspection and additional placement before the pour could proceed.",
+            "evidence": "Evidence is based on practical project experience where compressed reinforcement notation caused additional reinforcement to be missed during construction. The guidance also reflects constructability review principles: reinforcement information should be easy to read, difficult to overlook and clear enough for fixing and inspection.",
             "examples": [
               {
                 "image": "images/callout-poor.jpg",
@@ -584,7 +615,79 @@
             ],
             "supportingImages": [],
             "dateAdded": "2026-04-02",
-            "dateReviewed": "2026-04-02",
+            "dateReviewed": "2026-05-13",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            }
+          }
+        },
+        {
+          "name": "Details and schedule references",
+          "available": true,
+          "data": {
+            "question": "Are details and schedule references clear enough that footing, beam or reinforcement requirements are unlikely to be misread or missed during construction?",
+            "parameter": "Location of critical dimensions and reinforcement information relative to the section/detail and governing schedule.",
+            "background": "Structural drawings often use details together with schedules to reduce drawing repetition. For example, a drawing may show a footing, edge beam or ground beam detail, while the actual dimensions and reinforcement are controlled by a schedule using a mark such as EB1. This approach is efficient because changes can be made in one schedule rather than across several details. However, schedule-based communication can create a constructability risk when the detail is read without the accompanying schedule. This is especially likely where multiple footing, beam or slab types are used. A reader may interpret the drawn detail as complete, miss the schedule reference, or apply the wrong scheduled dimensions or reinforcement. The preferred approach is not to remove schedules, but to show critical dimensions and reinforcement requirements in both locations where practical: on the detail and in the schedule. Where office convention requires schedule-only communication, the schedule should be made difficult to miss.",
+            "thresholds": [
+              {
+                "range": "Detail + schedule",
+                "rating": "Good practice",
+                "color": "green",
+                "guidance": "Critical dimensions and reinforcement requirements are shown directly on the relevant section/detail and also included in the schedule. This reduces the chance that the detail is misread while still retaining the coordination benefits of a schedule."
+              },
+              {
+                "range": "Schedule-only",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Critical dimensions or reinforcement requirements are shown only in a schedule and not on the section/detail. This can be acceptable under some office conventions, but it increases the chance that the detail is read without the governing schedule. Where schedule-only communication is used, the governing schedule should be shown on the same drawing page as the relevant detail or mark wherever practical."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies where structural elements are communicated using details, marks and schedules, including footings, edge beams, ground beams, slab thickenings, walls or other repeated details.",
+              "checks": [
+                {
+                  "title": "Schedules are not the problem",
+                  "description": "Schedules are useful and should not be removed. The issue is relying on the schedule as the only place where critical information is shown, especially when the schedule is separated from the detail or mark it controls."
+                },
+                {
+                  "title": "Office drafting conventions may limit what can be changed",
+                  "description": "Some workplaces intentionally use details and schedules because it reduces drawing duplication and makes revisions easier. An individual designer may not be able to change that convention. Where this is the case, the aim should be to make the schedule reference as clear and unavoidable as possible."
+                },
+                {
+                  "title": "Same-page schedule preferred where direct detailing is not possible",
+                  "description": "Where critical dimensions or reinforcement cannot be shown directly on the detail, the governing schedule should be shown on the same drawing page as the detail or mark it applies to wherever practical."
+                },
+                {
+                  "title": "Multiple similar marks increase risk",
+                  "description": "The risk is higher where several similar marks are used, such as EB1, because the wrong schedule line can be applied or the drawn detail can be mistaken for the complete requirement."
+                }
+              ],
+              "note": "Use the rating as a drawing coordination prompt. The goal is not to ban schedules, but to reduce the chance that a detail is constructed without the schedule information that actually controls it."
+            },
+            "alternatives": [
+              {
+                "title": "Show information in both locations where possible",
+                "description": "Show critical dimensions and reinforcement directly on the section/detail as well as in the schedule. This gives the reader the information at the point of use while still retaining the schedule for coordination."
+              },
+              {
+                "title": "Put the schedule on the same page where schedule-only is required",
+                "description": "Where office convention requires schedule-only information, place the governing schedule on the same drawing page as the relevant section/detail or mark wherever practical."
+              },
+              {
+                "title": "Make the mark obvious",
+                "description": "Clearly identify the relevant mark, such as EB1, on the plan, detail and schedule. The reader should not need to infer which schedule row applies."
+              },
+              {
+                "title": "Resolve unclear or conflicting information",
+                "description": "If the section/detail and schedule conflict, or if the mark is unclear, revise the documentation before construction rather than relying on site interpretation."
+              }
+            ],
+            "evidence": "Evidence is based on practical project experience and industry consultation, where schedule-based documentation was identified as a source of misunderstanding when the governing schedule was not clearly linked to the relevant detail or mark.",
+            "examples": [],
+            "supportingImages": [],
+            "dateAdded": "2026-05-13",
+            "dateReviewed": "2026-05-13",
             "location": {
               "country": "Australia",
               "state": "NSW"
