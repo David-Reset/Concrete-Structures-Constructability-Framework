@@ -265,35 +265,82 @@
           "name": "Stirrup bar size availability and site adaptability",
           "available": true,
           "data": {
-            "question": "Is the specified stirrup bar size readily available from suppliers, and can it be practically adjusted on site if conditions change during construction?",
-            "parameter": "Specified stirrup bar type and diameter (mm)",
-            "background": "Stirrup bar sizes should be readily available from multiple suppliers and, where possible, adaptable on site when conditions change. Footing depths frequently need to increase during construction when adequate bearing material is not found at the design depth. When this occurs, stirrups must be re-bent or additional stirrups fabricated on site. The specified bar size determines both how easily the stirrups can be sourced and how practically they can be adjusted in the field.",
+            "question": "Is the specified stirrup, ligature or tie size practical for ground footings, considering supplier availability, site adaptability and reinforcement cage stability?",
+            "parameter": "Specified stirrup, ligature or tie bar size in ground footings or ground beams",
+            "background": "Stirrups, ligatures and ties in ground footings are often used not only for structural capacity, but also to hold longitudinal reinforcement in position during fixing, inspection, concrete placement and vibration. This is particularly important in groundworks, where footing or ground beam dimensions may change during construction because of excavation tolerance, founding conditions, pile position, set-out issues or cover requirements. R10 and N12 are generally practical options for ground footings. R10 is commonly used for footing ligatures, while N12 provides greater adaptability where reinforcement may need to be supplemented or adjusted on site. R6 may be structurally adequate in some cases, but can be difficult to source and may lead to substitution issues if no alternative is documented.",
             "thresholds": [
               {
-                "range": "N12 and N16",
+                "range": "R10 or N12 ties",
                 "rating": "Good practice",
                 "color": "green",
-                "guidance": "Available everywhere as stock bar from all major suppliers. Can be purchased individually and bent on site by hand using manual strength, providing maximum flexibility when footing depths change during construction. This is the most adaptable option."
+                "guidance": "Practical tie sizes for ground footings and ground beams. R10 is commonly used for footing ligatures, while N12 provides better adaptability where reinforcement may need to be supplemented or adjusted on site. Spacing must still be determined by structural requirements and cage rigidity."
               },
               {
-                "range": "R10",
+                "range": "N16 ties",
                 "rating": "Consider",
                 "color": "yellow",
-                "guidance": "Available from all major suppliers but typically needs to be pre-fabricated as stirrups rather than purchased as stock bar for site bending. Lead time of 5-10 days if additional or modified stirrups are required. Limited ability to adjust on site without pre-ordering."
+                "guidance": "May be suitable where structurally required, but is less practical for site adjustment in groundworks. Avoid using N16 only to reduce the number of ties where R10 or N12 at closer spacing would provide a more practical and adaptable cage."
               },
               {
-                "range": "R6",
+                "range": "R6 ties without alternative",
                 "rating": "Concern",
                 "color": "orange",
-                "guidance": "Very limited availability in Australia. The large majority of reinforcement suppliers do not stock R6, with supply options effectively limited to one or two suppliers nationally. Not available as a stock item from most sources. Specifying R6 frequently results in a substitution to R10 during construction, adding administrative time for approval."
+                "guidance": "May be difficult to source and can lead to substitution issues. Where R6 is specified, provide an equivalent R10 option where structurally acceptable."
               }
             ],
-            "additionalNotes": "N20 and above: Available as stock bar from most suppliers, however N20 and larger bars cannot be bent on site by hand. A mechanical bar bender is required, which may or may not be available on site. If site adjustment of stirrups is anticipated, confirm equipment availability with the contractor.",
+            "applicability": {
+              "appliesWhere": "This entry applies to reinforced concrete groundworks such as pad footings, strip footings, raft footings, ground beams and pile-supported footings where stirrups, ligatures or ties may need to be sourced, supplemented, adjusted, substituted or doubled up during construction.",
+              "checks": [
+                {
+                  "title": "Groundworks dimensional variability",
+                  "description": "This guidance is most relevant to groundworks, where final footing or ground beam dimensions may need to change during construction due to founding conditions, excavation tolerance, pile position, set-out issues or cover requirements. The same concern is less significant for formed above-ground elements where geometry is usually fixed and controlled before reinforcement is placed."
+                },
+                {
+                  "title": "Structural requirements remain controlling",
+                  "description": "Tie size and spacing must first satisfy structural design requirements. This guidance does not justify increasing tie spacing beyond what is required for shear, torsion, confinement, crack control, bar support, minimum reinforcement, cover or any other structural requirement."
+                },
+                {
+                  "title": "Tie spacing and cage rigidity",
+                  "description": "Where structural requirements allow wide tie spacing, cage rigidity should still be considered. CCAA guidance for strip and raft footings states that supports, ligatures and bar chairs are typically spaced at 600-900 mm centres depending on reinforcement rigidity. Contractor consultation for this framework also indicated that footing cages can become noticeably less rigid above approximately 800 mm. Spacing beyond 900 mm should therefore be deliberately checked rather than adopted simply because a larger tie size has sufficient steel area."
+                },
+                {
+                  "title": "R10 versus N12",
+                  "description": "Where ties are not governed by structural demand and are mainly required for cage formation, support and reinforcement positioning, an R10 option is often a practical default. For example, documenting an alternative such as R6-600 or R10-900 gives the contractor a readily available equivalent where structurally acceptable. If N12 ties are available or easier to adapt on site, they may also be used at the same structurally acceptable spacing, subject to engineering review."
+                },
+                {
+                  "title": "Local supplier availability",
+                  "description": "The availability ratings are based on Australian reinforcement supply conditions and contractor consultation. Designers should confirm local supplier availability before applying the same ratings in other regions."
+                },
+                {
+                  "title": "Structural substitution must be checked",
+                  "description": "Substituting R6 with R10, using N12 instead of R10, changing bar diameter, doubling up ligatures or changing tie spacing must still satisfy structural design requirements, cover, durability and detailing constraints."
+                }
+              ],
+              "note": "Use the rating as a logistics and site-adaptability review prompt, not as a rule that R6, R10, N12 or N16 ties should never be specified. The preferred detail is the one that balances structural adequacy, supplier availability, site adaptability and reinforcement cage rigidity."
+            },
             "alternatives": [
-              "Where footing depth is likely to change during construction, specify N12 or N16 stirrups. These are available everywhere as stock bar and can be bent on site by hand, providing maximum adaptability when bearing conditions require deeper footings",
-              "Where footing dimensions are uniform and unlikely to change (e.g. footings on piles), specify R6 with the R10 equivalent at adjusted spacing shown alongside on the drawings (e.g. R6-600 or R10-900). This gives the contractor the option to source whichever is available"
+              {
+                "title": "Use R10 or N12 as the preferred practical footing tie sizes",
+                "description": "For ground footings and ground beams, use R10 or N12 ties where structurally suitable. R10 is generally practical for standard footing ligatures, while N12 provides better adaptability where reinforcement may need to be supplemented, adjusted or site-bent."
+              },
+              {
+                "title": "Provide an R10 equivalent where R6 is specified",
+                "description": "Where R6 is structurally suitable but availability may be uncertain, show an equivalent R10 option at adjusted spacing on the drawing, such as R6-600 or R10-900, where structurally acceptable. This gives the contractor a practical alternative without needing a substitution request."
+              },
+              {
+                "title": "Do not use N16 only to reduce tie numbers",
+                "description": "N16 ties may be appropriate where structurally required, but should not be used only to reduce the number of ligatures in groundworks. Where R10 or N12 at closer spacing would provide a more practical, adaptable and stable cage, that option should be preferred."
+              },
+              {
+                "title": "Check cage rigidity where spacing approaches the upper practical range",
+                "description": "Where structural design permits tie spacing toward the upper end of typical footing practice, check that the cage will still hold longitudinal reinforcement in position during fixing, inspection and concrete placement. Spacing above 900 mm should be specifically justified."
+              },
+              {
+                "title": "Allow practical supplementation where footing dimensions change",
+                "description": "Where a footing is locally widened or adjusted, the response may not require custom bending of every ligature. Depending on the design, it may be possible to double up standard ligatures, order additional R10 ligatures or supplement with site-bent N12 bars. The final arrangement should be checked by the engineer."
+              }
             ],
-            "evidence": "Industry experience - R6 stirrups are commonly substituted with R10 during construction due to limited supplier availability. Major suppliers stock round bar from R10 upward only. Footing depth changes due to variable bearing conditions are a common occurrence on site, and the ability to source and bend replacement stirrups locally is a practical consideration that affects construction program.",
+            "evidence": "Evidence is based on CCAA guidance for residential strip and raft footings, which identifies 600-900 mm centres as typical spacing for supports, ligatures and bar chairs depending on reinforcement rigidity, supplemented by contractor consultation undertaken for this framework. Industry experience also indicates that R6 ligatures are commonly substituted with R10 during construction due to limited supplier availability.",
             "examples": [
               {
                 "image": "images/r6-only-specified.jpg",
@@ -308,7 +355,7 @@
             ],
             "supportingImages": [],
             "dateAdded": "2026-04-02",
-            "dateReviewed": "2026-04-02",
+            "dateReviewed": "2026-05-13",
             "location": {
               "country": "Australia",
               "state": "NSW"
