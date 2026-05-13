@@ -66,7 +66,7 @@
 
   .threshold-list{display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
   .threshold-band{display:flex;gap:16px;padding:14px 18px;border-radius:8px;align-items:flex-start}
-  .threshold-range{min-width:110px;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;padding-top:1px}
+  .threshold-range{width:125px;min-width:125px;max-width:125px;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;padding-top:1px;line-height:1.35;white-space:normal;overflow-wrap:break-word}
   .threshold-rating{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
   .threshold-guidance{font-size:13px;color:var(--text);line-height:1.6;margin-top:4px;opacity:0.85}
 
@@ -275,8 +275,8 @@ function renderEntryDetail(){
     <div class="entry-title">${item.name}</div>
     <div class="entry-meta">Dimension: ${dim.name} · Reinforced Concrete ${d.location?' · '+locTag(d.location):''}</div>
     <div class="question-box"><div class="label label-accent">Design Question</div><div class="question-text">${d.question}</div></div>
-    ${d.background?`<div class="label">Background</div><div class="consideration-text">${d.background}</div>`:''}
     <div class="param-box"><div class="label">Design Parameter</div><div class="param-value">${d.parameter}</div></div>
+    ${d.background?`<div class="label">Background</div><div class="consideration-text">${d.background}</div>`:''}
     <div class="label">Design Guidance</div><div class="threshold-list" style="margin-top:10px">${thresholds}</div>
     ${notesHtml}
     ${applicabilityHtml}
