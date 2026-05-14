@@ -72,23 +72,23 @@
             "supportingImages": [
               {
                 "image": "images/adf-anthropometric-data.png",
-                "title": "<strong>Blanchonette (2017) - Australian Defence Force foot dimensions</strong><br>Foot length data from the 1968 Army and 2000 RAN anthropometric surveys, with mean foot lengths of 264 mm (Army) and 271 mm (Navy). These dimensions inform the boot sole sizes used in the fall-through risk analysis and provide an objective basis for assessing whether a given reinforcement spacing can realistically support foot placement during concrete placement."
+                "title": "<strong>Blanchonette (2017) - ADF foot dimensions</strong><br>Mean foot lengths of 264 mm (Army 1968) and 271 mm (Navy 2000), used as the basis for the boot sole sizes in this analysis."
               },
               {
                 "image": "images/slip-trip-injury-distribution.png",
-                "title": "<strong>Lipscomb et al. (2006) - construction slip and trip injury distribution</strong><br>Slip and trip injury data from Denver International Airport construction (1989-1994). Of 751 recorded incidents, 90.5% were same-level falls or slips without falling rather than falls from height. Even slips without a fall caused significant injury, predominantly to lower extremities. On a reinforcement mat, a foot slipping between bars at any spacing can cause the same types of injuries without the worker actually falling through."
+                "title": "<strong>Lipscomb et al. (2006) - construction slip and trip injuries</strong><br>Of 751 incidents at Denver International Airport (1989-1994), 90.5% were same-level falls or slips, predominantly injuring lower extremities."
               },
               {
                 "image": "images/ptd-concrete-masonry.png",
-                "title": "<strong>NIOSH (2024) - Prevention through Design controls for concrete and masonry</strong><br>Recommends specifying 4&Prime; &times; 4&Prime; (approximately 100 &times; 100 mm) mat mesh or welded wire fabric on top of widely spaced rebar to provide a safer walking surface during concrete pours. While 100 &times; 100 mm is the NIOSH recommendation, 200 &times; 200 mm spacing represents a practical upper limit that still provides reasonable foot support in most conditions."
+                "title": "<strong>NIOSH (2024) - Prevention through Design controls</strong><br>Recommends 4&Prime; &times; 4&Prime; (approximately 100 &times; 100 mm) mat mesh over widely spaced rebar as a walking surface during concrete pours."
               },
               {
                 "image": "images/boot-vs-grid-straight.png",
-                "title": "<strong>Boot sole fit on reinforcement grids - normal stance</strong><br>Boot sole overlaid on reinforcement grids at varying spacings, shown using N12 (12 mm diameter) bars as a common example. At 300 mm spacing the 288 mm clear gap exceeds the boot sole length, providing almost no resistance to a misplaced step."
+                "title": "<strong>Boot sole fit - normal stance</strong><br>Boot sole overlaid on N12 grids. At 300 mm spacing the 288 mm clear gap exceeds the boot sole length."
               },
               {
                 "image": "images/boot-vs-grid-angle.png",
-                "title": "<strong>Boot sole fit on reinforcement grids - angled foot placement</strong><br>Boot sole overlaid on reinforcement grids at varying spacings, shown using N12 (12 mm diameter) bars as a common example. At an angled approach, the 250 mm spacing now presents a clear step-through risk for both the 5th percentile and mean boot sizes."
+                "title": "<strong>Boot sole fit - angled foot placement</strong><br>At an angled approach, 250 mm spacing presents a step-through risk for both 5th percentile and mean boot sizes."
               }
             ],
             "dateAdded": "2026-03-15",
@@ -199,15 +199,15 @@
             "supportingImages": [
               {
                 "image": "images/fold-site-blockwork.jpg",
-                "title": "Blockwork infill used to achieve level change between upper and lower slabs"
+                "title": "<strong>Blockwork infill replacing monolithic fold</strong><br>Blockwork walls used to achieve the level change between upper and lower slabs."
               },
               {
                 "image": "images/fold-site-slab-poured.jpg",
-                "title": "Completed upper slab poured on blockwork walls - separate pours replacing monolithic fold"
+                "title": "<strong>Upper slab poured on blockwork</strong><br>Completed upper slab bearing on the blockwork walls - separate pours replacing the monolithic fold."
               },
               {
                 "image": "images/fold-site-stairs.jpg",
-                "title": "Concrete stairs formed between levels using conventional formwork within blockwork walls"
+                "title": "<strong>Concrete stairs between levels</strong><br>Stairs formed with conventional formwork within the blockwork walls."
               }
             ],
             "dateAdded": "2026-03-10",
@@ -360,27 +360,27 @@
             "supportingImages": [
               {
                 "image": "images/supplier-selection-relationship-specialised-departments.png",
-                "title": "<strong>Nguyen et al. (2022) - factors influencing supplier selection</strong><br>Survey of 117 Vietnamese construction contractors. Existing supplier relationships were the most common basis for supplier selection (50.4%), followed by price quotations (40.2%), with only 9.4% using a formal analysis method. The accompanying pie shows that 73% of surveyed enterprises had specialised departments involved in supplier selection, indicating that even where relationships dominate the decision, the procurement function is structured rather than ad hoc."
+                "title": "<strong>Nguyen et al. (2022) - factors influencing supplier selection</strong><br>Existing relationships (50.4%) dominated supplier selection ahead of price quotations (40.2%) and formal analysis (9.4%). 73% of surveyed enterprises had a specialised procurement department."
               },
               {
                 "image": "images/supplier-selection-price-delivery-quality.png",
-                "title": "<strong>Nguyen et al. (2022) - importance of supplier selection criteria</strong><br>Mean importance scores on a 1-5 Likert scale across eight criteria. Price (4.4), delivery time (4.2) and product quality (4.1) ranked highest, with services, product resources, supplier capability, rate of damaged products and payment policies all rated lower. The clustering of the top three criteria is consistent with the broader supplier selection literature and indicates which dimensions of supply most directly affect whether a specification can be procured to a project's cost and program."
+                "title": "<strong>Nguyen et al. (2022) - importance of selection criteria</strong><br>Price (4.4), delivery time (4.2) and product quality (4.1) ranked highest on a 1-5 Likert scale across eight criteria."
               },
               {
                 "image": "images/mesh-and-bar-round-bar-stock-lengths.png",
-                "title": "<strong>Mesh &amp; Bar - plain round bar stock</strong><br>The reviewed product information lists R6, R10 and larger plain round bars as 6 m stock lengths. Reinforcing bar processing (scheduling, cutting, bending, tagging and bundling) is shown as a separate service rather than a stock-type product, indicating that pre-formed R6 ligatures would need to be scheduled and bent up from stock bar."
+                "title": "<strong>Mesh &amp; Bar - plain round bar stock</strong><br>R6, R10 and larger plain round bars listed as 6 m stock lengths. Bar processing (cut, bend, tag) shown as a separate service."
               },
               {
                 "image": "images/arc-r6-r10-standard-ligatures.png",
-                "title": "<strong>ARC Reinforcing - R6 and R10 standard ligatures</strong><br>The reviewed product information lists standard 6 mm and 10 mm pre-formed ligatures in multiple rectangular sizes, supplied in packs of 25. This is the clearest reviewed example of R6 ligatures offered as a stock-type product, and shows that R6 pre-formed ligatures are available from some specialist suppliers - but availability depends on the supplier and branch."
+                "title": "<strong>ARC Reinforcing - R6 and R10 standard ligatures</strong><br>Pre-formed R6 and R10 ligatures listed in multiple rectangular sizes, supplied in packs of 25."
               },
               {
                 "image": "images/ausreo-r10-trench-mesh-ligatures.png",
-                "title": "<strong>Ausreo - R10 trench mesh ligatures</strong><br>The reviewed product information lists R10 trench mesh ligatures across a broad range of sizes, supplied in bundles of 10. R6 ligatures are not shown in the reviewed range, even though Ausreo is a major specialist reinforcement processor servicing NSW, VIC and QLD. The breadth of the R10-only ligature range illustrates why R10 is often the more readily available and adaptable ligature size."
+                "title": "<strong>Ausreo - R10 trench mesh ligatures</strong><br>R10 trench mesh ligatures listed across a broad range of sizes in bundles of 10. R6 not shown in the reviewed range."
               },
               {
                 "image": "images/bestbar-round-rebar-stock-sizes.png",
-                "title": "<strong>Best Bar - plain round bar stock</strong><br>The reviewed stock-size table lists round rebar from R10 upward in 6 m lengths, with R6 not shown. This is the clearest example among the reviewed suppliers of R6 being absent from a supplier's standard stock listing, even at the round-bar level, supporting the point that R10 is the more reliably available substitution where structurally acceptable."
+                "title": "<strong>Best Bar - plain round bar stock</strong><br>Round rebar listed from R10 upward in 6 m lengths. R6 not shown in the stock-size table."
               }
             ],
             "dateAdded": "2026-04-02",
@@ -512,31 +512,31 @@
             "supportingImages": [
               {
                 "image": "images/formwork-literature-example.png",
-                "title": "(Jha, 2012): Conventional timber wall formwork assembly — note the coil ties passing through both faces, requiring access and bracing on both sides of the wall"
+                "title": "<strong>Jha (2012) - conventional timber wall formwork</strong><br>Coil ties pass through both faces, requiring access and bracing on both sides of the wall."
               },
               {
                 "image": "images/formwork-ties.png",
-                "title": "(Hurd, 2005): Common formwork tie types — one-piece ties snap off after stripping, while internally disconnecting ties allow full removal from the concrete"
+                "title": "<strong>Hurd (2005) - common formwork tie types</strong><br>One-piece ties snap off after stripping; internally disconnecting ties allow full removal from the concrete."
               },
               {
                 "image": "images/dincel-bracing-1.png",
-                "title": "(Dincel, 2026): Dincel PVC permanent formwork wall panel — diagonal bracing connects externally, eliminating the need for rear-side access and coil ties"
+                "title": "<strong>Dincel (2026) - PVC permanent formwork wall panel</strong><br>Diagonal bracing connects externally, eliminating the need for rear-side access and coil ties."
               },
               {
                 "image": "images/formwork-bracing-1.jpg",
-                "title": "Conventional off-form wall formwork with timber bracing on both sides and coil ties at regular intervals"
+                "title": "<strong>Conventional off-form wall formwork</strong><br>Timber bracing on both sides and coil ties at regular intervals."
               },
               {
                 "image": "images/formwork-bracing-2.jpg",
-                "title": "Formwork bracing detail - note the access and clearance required behind the wall for bracing and bolt-up"
+                "title": "<strong>Formwork bracing detail</strong><br>Access and clearance required behind the wall for bracing and bolt-up."
               },
               {
                 "image": "images/offform-stripped.jpg",
-                "title": "Off-form concrete upturn after formwork removal - coil tie holes visible at regular intervals"
+                "title": "<strong>Off-form concrete upturn after stripping</strong><br>Coil tie holes visible at regular intervals after formwork removal."
               },
               {
                 "image": "images/dincel-complete.jpg",
-                "title": "Completed Dincel wall after concrete pour - no rear bracing required during construction"
+                "title": "<strong>Completed Dincel wall</strong><br>No rear bracing required during construction."
               }
             ],
             "dateAdded": "2026-04-02",
