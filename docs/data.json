@@ -279,13 +279,13 @@
           "data": {
             "question": "Is the specified stirrup, ligature or tie size practical for ground footings, considering supplier availability, site adaptability and reinforcement cage stability?",
             "parameter": "Specified stirrup, ligature or tie bar size in ground footings or ground beams",
-            "background": "Stirrups, ligatures and ties in ground footings are often used not only for structural capacity, but also to hold longitudinal reinforcement in position during fixing, inspection, concrete placement and vibration. This is particularly important in groundworks, where footing or ground beam dimensions may change during construction because of excavation tolerance, founding conditions, pile position, set-out issues or cover requirements. R10 and N12 are generally practical options for ground footings. R10 is commonly used for footing ligatures, while N12 provides greater adaptability where reinforcement may need to be supplemented or adjusted on site. R6 may be structurally adequate in some cases, but can be difficult to source and may lead to substitution issues if no alternative is documented.",
+            "background": "Stirrups, ligatures and ties in ground footings are often used not only for structural capacity, but also to hold longitudinal reinforcement in position during fixing, inspection, concrete placement and vibration. This is particularly important in groundworks, where footing or ground beam dimensions may change during construction because of excavation tolerance, founding conditions, pile position, set-out issues or cover requirements.<br><br>The bar sizes that are practically available for a footing depend on what concrete contractors can obtain through their normal reinforcement supply channels, not only on what is theoretically manufactured. In Australian reinforced concrete construction, N12 is widely used for longitudinal reinforcement, starter bars, supplementary reinforcement, perimeter bars and site-bent reinforcement. This makes N12 a practical option where reinforcement may need to be supplemented, adjusted or bent on site.<br><br>R6 and R10 can perform similar fitment roles in many footing applications, and an R10 tie at wider spacing can often substitute for an R6 tie at closer spacing where structurally acceptable. R10 is generally the more practical footing ligature size because it is more commonly used and more consistently available through reinforcement processors. R6 may be structurally adequate, but it is a narrower-use fitment size and can be more difficult to source. Where R6 is specified without an approved alternative, procurement issues may lead to substitution requests, construction delays or undocumented site changes.",
             "thresholds": [
               {
                 "range": "R10 or N12",
                 "rating": "Good practice",
                 "color": "green",
-                "guidance": "Practical tie sizes for ground footings and ground beams. R10 is commonly used for footing ligatures, while N12 provides better adaptability where reinforcement may need to be supplemented or adjusted on site. Spacing must still satisfy structural requirements and provide adequate cage rigidity."
+                "guidance": "Practical tie sizes for ground footings and ground beams. R10 is commonly used for footing ligatures and is generally more readily available as a standard ligature size, while N12 provides better adaptability where reinforcement may need to be supplemented, bent or adjusted on site. Spacing must still satisfy structural requirements and provide adequate cage rigidity."
               },
               {
                 "range": "N16",
@@ -297,7 +297,7 @@
                 "range": "R6",
                 "rating": "Concern",
                 "color": "orange",
-                "guidance": "May be difficult to source and can lead to substitution issues if no alternative is documented. Where R6 is specified, provide an equivalent R10 option where structurally acceptable."
+                "guidance": "May be structurally adequate, but can be difficult to source as a pre-formed ligature through some normal reinforcement suppliers and can lead to substitution issues if no alternative is documented. Where R6 is specified, provide an equivalent R10 option where structurally acceptable."
               }
             ],
             "applicability": {
@@ -317,11 +317,11 @@
                 },
                 {
                   "title": "R10 versus N12",
-                  "description": "Where ties are not governed by high structural demand and are mainly required for cage formation, support and reinforcement positioning, an R6 detail with a documented R10 equivalent is often the most practical approach. For example, documenting R6-600 or R10-900 gives the contractor a readily available alternative if R6 is difficult to source. N12 may also be used where it is already available on site or where additional site-bent reinforcement is needed, provided cover, bend dimensions and fit within the footing are maintained."
+                  "description": "Where ties are not governed by high structural demand and are mainly required for cage formation, support and reinforcement positioning, an R6 detail with a documented R10 equivalent is often the most practical approach. For example, documenting R6-600 or R10-900 gives the contractor a readily available alternative if R6 is difficult to source. N12 may also be used where it is already available on site, where additional site-bent reinforcement is needed, or where the final footing dimensions may require adjustment, provided cover, bend dimensions and fit within the footing are maintained."
                 },
                 {
                   "title": "Local supplier availability",
-                  "description": "The availability ratings are based on Australian reinforcement supply conditions and contractor consultation. Designers should confirm local supplier availability before applying the same ratings in other regions."
+                  "description": "The availability ratings are based on Australian reinforcement supply conditions, supplier product information and contractor consultation. Designers should confirm local supplier availability before applying the same ratings in other regions, because the practical availability of R6, R10 and N12 depends on what local reinforcement processors stock, routinely fabricate and can deliver within the project timeframe."
                 },
                 {
                   "title": "Structural substitution must be checked",
@@ -344,7 +344,7 @@
                 "description": "N16 ties may be appropriate where structurally required, but should not be used only to reduce the number of ligatures in groundworks. Where R10 or N12 at closer spacing would provide a more practical, adaptable and stable cage, that option should be preferred."
               }
             ],
-            "evidence": "Evidence is based on CCAA guidance for residential strip and raft footings, which identifies 600-900 mm centres as typical spacing for supports, ligatures and bar chairs depending on reinforcement rigidity, supplemented by contractor consultation undertaken for this framework. Industry experience also indicates that R6 ligatures are commonly substituted with R10 during construction due to limited supplier availability.",
+            "evidence": "Evidence is based on CCAA guidance for residential strip and raft footings, which identifies 600-900 mm centres as typical spacing for supports, ligatures and bar chairs depending on reinforcement rigidity, supplemented by contractor consultation undertaken for this framework. Contractor consultation indicates that R6 ligatures are commonly substituted with R10 during construction because R6 is less consistently available through normal reinforcement supply channels.<br><br><strong>Procurement context</strong><br>Concrete contractors in Australia typically source reinforcement through specialist reinforcement processors such as Mesh &amp; Bar, ARC, Ausreo and Best Bar, which cut, bend, fabricate and deliver reinforcement for construction projects. The practical availability of a specified bar size is therefore influenced by what these specialist processors stock, routinely fabricate and can deliver within the required project timeframe.<br><br>Research on construction supplier selection supports the importance of established procurement relationships. Nguyen et al. (2022) found that 50.4% of surveyed contractors selected material suppliers primarily on the basis of existing relationships, with price, delivery time and product quality identified as the most important supplier selection criteria. Although this study is not specific to Australian reinforcement supply, it supports the broader procurement principle that contractors do not usually source each item from the theoretical whole market. They tend to rely on established suppliers who can provide acceptable price, delivery reliability and product quality. For this framework entry, the literature supports the procurement mechanism, while contractor consultation and supplier product information support the specific finding that R10 and N12 are generally more practical than R6 for Australian ground footing work.<br><br><strong>Supplier product information</strong><br>Supplier product information reviewed for this entry shows that availability differs by supplier. Mesh &amp; Bar lists R6, R10 and larger plain round bars as 6 m stock lengths, but reinforcing bar processing is shown separately through scheduling, cutting, bending, tagging and bundling. ARC lists standard 6 mm and 10 mm ligatures in multiple rectangular sizes, showing that R6 ligatures may be available through some specialist reinforcement suppliers. Ausreo lists R10 trench mesh ligatures across a broad range of sizes in bundles of 10, without R6 ligatures shown in the reviewed range. Best Bar lists round rebar from R10 upward in 6 m lengths, with R6 not shown in the reviewed stock-size table. Taken together, this supports the practical guidance that R6 should not be treated as universally available, and that an R10 equivalent should be documented where structurally acceptable.<br><br><strong>References</strong><br>Nguyen, Q. T., Nguyen, H. T. M., Nguyen, V. T., Pham, X. A., Dinh, T. H. &amp; Nguyen, T. T. (2022). How do contractors select material suppliers for construction projects? Evidence from Vietnam. <em>Archives of Civil Engineering, LXVIII</em>(3), 273-288. https://doi.org/10.24425/ace.2022.141885",
             "examples": [
               {
                 "image": "images/r6-only-specified.jpg",
@@ -357,9 +357,34 @@
                 "caption": "R6-600 or R10-900 shown on the drawing. The contractor can source whichever is available, eliminating procurement delays and substitution requests."
               }
             ],
-            "supportingImages": [],
+            "supportingImages": [
+              {
+                "image": "images/supplier-selection-relationship-specialised-departments.png",
+                "title": "(Nguyen et al., 2022): Supplier selection was most commonly influenced by existing supplier relationships, with 50.4% of surveyed contractors selecting suppliers on this basis. The same study also found that 73% of surveyed enterprises had specialised departments involved in supplier selection, supporting the view that material procurement is usually managed through established procurement channels rather than ad hoc sourcing."
+              },
+              {
+                "image": "images/supplier-selection-price-delivery-quality.png",
+                "title": "(Nguyen et al., 2022): Price, delivery time and product quality were the highest-rated supplier selection criteria. This supports the logistics basis of the entry: a bar size that is difficult to obtain through normal reinforcement suppliers can create cost, delivery and substitution risks even if it is structurally adequate."
+              },
+              {
+                "image": "images/mesh-and-bar-round-bar-stock-lengths.png",
+                "title": "Mesh & Bar product information: R6, R10 and larger plain round bars are listed as 6 m stock lengths, while reinforcing bar processing is offered separately through scheduling, cutting, bending, tagging and bundling. This supports the distinction between theoretically available stock bar and immediately available pre-formed ligatures."
+              },
+              {
+                "image": "images/arc-r6-r10-standard-ligatures.png",
+                "title": "ARC product information: standard 6 mm and 10 mm ligatures are listed in multiple rectangular sizes, generally supplied in packs of 25. This shows that R6 ligatures may be available through some specialist reinforcement suppliers, but availability depends on the supplier and branch."
+              },
+              {
+                "image": "images/ausreo-r10-trench-mesh-ligatures.png",
+                "title": "Ausreo product information: R10 trench mesh ligatures are listed across a broad range of sizes and supplied in bundles of 10. The absence of R6 ligatures from this listed range supports the practical finding that R10 is often the more readily available and adaptable ligature size."
+              },
+              {
+                "image": "images/bestbar-round-rebar-stock-sizes.png",
+                "title": "Best Bar product information: round rebar is listed from R10 upward in 6 m lengths, with R6 not shown in the stock-size table. This supports the point that some reinforcement suppliers may not list R6 as a standard stock bar, making R10 a more practical substitution where structurally acceptable."
+              }
+            ],
             "dateAdded": "2026-04-02",
-            "dateReviewed": "2026-05-13",
+            "dateReviewed": "2026-05-14",
             "location": {
               "country": "Australia",
               "state": "NSW"
