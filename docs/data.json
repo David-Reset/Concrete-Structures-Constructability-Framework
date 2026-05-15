@@ -54,7 +54,7 @@
             "evidence": "Site incident report: worker sustained a severe knee injury after stepping through 250 x 250 top reinforcement during slab pour. Supported by Safe Work Australia guidance on falls through openings and gaps in working platforms. Boot sole dimensions derived from ADF anthropometric surveys (Blanchonette, 2017). Slip and trip injury data from construction site research demonstrates that even non-fall slip events predominantly injure lower extremities (Lipscomb et al., 2006). Prevention through Design guidance for concrete construction recommends mat mesh over widely spaced rebar as a walking surface control (National Institute for Occupational Safety and Health, 2024).<br><br><strong>Pour size threshold (7 m3)</strong><br>The 7 m3 threshold corresponds to the typical capacity of a single concrete truck. Pours within a single truck are generally self-paced and controlled, because the rate of placement is set by the workers screeding and finishing rather than by trucks queueing on site. Pours requiring multiple trucks introduce time pressure to keep up with placement and faster worker movement across the reinforcement mat, increasing exposure time and the likelihood of a misplaced step.<br><br><strong>References</strong><br>Blanchonette, P. (2017). Australian Defence Force Anthropometry: A Summary of Historic Surveys (DST-Group-GD-0968). Defence Science and Technology Group.<br>Lipscomb, H. J., Glazner, J. E., Bondy, J., Guarini, K., &amp; Lezotte, D. (2006). Injuries from slips and trips in construction. Applied Ergonomics, 37(3), 267–274. https://doi.org/10.1016/j.apergo.2005.07.008<br>National Institute for Occupational Safety and Health. (2024). Prevention through Design Toolkit for the Construction Industry (DHHS (NIOSH) Publication No. 2024-124). U.S. Centers for Disease Control and Prevention. https://doi.org/10.26616/NIOSHPUB2024124",
             "examples": [
               {
-                "image": "images/reo-250-spacing.jpg",
+                "image": "images/reo-250-spacing.png",
                 "tag": "concern",
                 "caption": "Top reinforcement at N12-250 spacing on a 14.26 m3 pour. While the matching top and bottom spacing simplifies detailing, the 250 mm top mat spacing creates unacceptable fall-through risk on a pour of this size."
               },
@@ -64,7 +64,7 @@
                 "caption": "Top reinforcement at N12-250 spacing on a small balcony pour of approximately 3.8 m3. The small pour volume means conditions are controlled and the 250 mm spacing is acceptable."
               },
               {
-                "image": "images/reo-200-spacing.jpg",
+                "image": "images/reo-200-spacing.png",
                 "tag": "recommended",
                 "caption": "Top reinforcement at N12-200 spacing on a 12.7 m3 pour. Bottom mat at N12-300 is not a concern as it is not used as a working platform. The 200 mm top spacing provides a safe working surface during concrete placement."
               }
