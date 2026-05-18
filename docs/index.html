@@ -1,354 +1,862 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Constructability Framework — RC Design Guidance</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0f1a; --surface: #111827; --surface-light: #1a2234;
-    --border: #2a3548; --text: #e2e8f0; --text-muted: #8899aa;
-    --accent: #3b82f6; --accent-glow: rgba(59,130,246,0.15);
-    --red: #ef4444; --orange: #f97316; --yellow: #eab308; --green: #22c55e;
-    --red-bg: rgba(239,68,68,0.12); --orange-bg: rgba(249,115,22,0.12);
-    --yellow-bg: rgba(234,179,8,0.1); --green-bg: rgba(34,197,94,0.1);
-  }
-  body { background:var(--bg); color:var(--text); font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif; min-height:100vh; }
-  @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
-  .animate-in { animation:fadeIn 0.3s ease; }
-  ::-webkit-scrollbar{width:6px} ::-webkit-scrollbar-track{background:transparent} ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
-
-  .header{padding:20px 32px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--surface)}
-  .header-left{display:flex;align-items:center;gap:14px}
-  .logo{width:36px;height:36px;background:linear-gradient(135deg,var(--accent),#6366f1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:#fff}
-  .header-title{font-size:16px;font-weight:700;letter-spacing:-0.3px}
-  .header-sub{font-size:11px;color:var(--text-muted)}
-
-  .breadcrumb{padding:10px 32px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;font-size:12px;background:var(--surface)}
-  .breadcrumb-link{color:var(--accent);cursor:pointer} .breadcrumb-link:hover{text-decoration:underline}
-  .breadcrumb-sep{color:var(--text-muted)} .breadcrumb-current{color:var(--text)}
-
-  .content{padding:28px 32px;max-width:900px;margin:0 auto}
-  .section-title{font-size:26px;font-weight:800;letter-spacing:-0.5px;margin-bottom:8px}
-  .section-desc{font-size:14px;color:var(--text-muted);line-height:1.6;max-width:600px}
-
-  .dim-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:24px}
-  .dim-card{padding:20px 22px;background:var(--surface);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s}
-  .dim-card:hover{border-color:var(--accent);background:var(--surface-light)}
-  .dim-icon{font-size:26px;margin-bottom:10px} .dim-name{font-size:15px;font-weight:700;margin-bottom:6px}
-  .dim-desc{font-size:12px;color:var(--text-muted);line-height:1.5;margin-bottom:12px}
-  .dim-count{font-size:11px;color:var(--accent);font-weight:600}
-
-  .back-link{font-size:12px;color:var(--accent);cursor:pointer;margin-bottom:16px;display:inline-flex;align-items:center;gap:6px}
-  .back-link:hover{text-decoration:underline}
-  .dim-header{display:flex;align-items:center;gap:12px;margin-bottom:8px}
-  .dim-header-icon{font-size:30px} .dim-header-title{font-size:24px;font-weight:800;letter-spacing:-0.5px}
-
-  .item-list{display:flex;flex-direction:column;gap:8px;margin-top:12px}
-  .item-row{padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:space-between;transition:all 0.2s}
-  .item-row.available{cursor:pointer} .item-row.available:hover{border-color:var(--accent);background:var(--surface-light)}
-  .item-row.unavailable{opacity:0.45}
-  .item-name{font-size:14px;font-weight:600} .item-meta{font-size:11px;color:var(--text-muted);margin-top:4px}
-  .item-arrow{color:var(--accent);font-size:18px}
-  .item-coming{font-size:10px;color:var(--text-muted);padding:4px 10px;background:var(--surface-light);border-radius:4px;border:1px solid var(--border)}
-
-  .entry-title{font-size:22px;font-weight:800;letter-spacing:-0.3px;margin-bottom:6px}
-  .entry-meta{font-size:12px;color:var(--text-muted);margin-bottom:24px}
-  .question-box{padding:20px 24px;background:var(--accent-glow);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;margin-bottom:28px}
-  .label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
-  .label-accent{color:var(--accent)}
-  .question-text{font-size:15px;color:var(--text);line-height:1.6}
-  .param-box{padding:14px 18px;background:var(--surface-light);border:1px solid var(--border);border-radius:8px;margin-bottom:28px}
-  .param-value{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:var(--accent);margin-top:4px}
-  .consideration-text{font-size:14px;color:var(--text);line-height:1.7;opacity:0.9;margin-bottom:28px}
-
-  .threshold-list{display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
-  .threshold-band{display:flex;gap:16px;padding:14px 18px;border-radius:8px;align-items:flex-start}
-  .threshold-range{width:125px;min-width:125px;max-width:125px;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;padding-top:1px;line-height:1.35;white-space:normal;overflow-wrap:break-word}
-  .threshold-rating{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
-  .threshold-guidance{font-size:13px;color:var(--text);line-height:1.6;margin-top:4px;opacity:0.85}
-
-  .alt-list{display:flex;flex-direction:column;gap:6px;margin-bottom:28px}
-  .alt-item{display:flex;align-items:flex-start;gap:12px;padding:10px 16px;background:var(--surface-light);border-radius:6px;border:1px solid var(--border)}
-  .alt-num{width:22px;height:22px;border-radius:50%;background:rgba(59,130,246,0.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
-  .alt-text{font-size:13px;color:var(--text);opacity:0.9;line-height:1.6}
-  .alt-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px}
-  .alt-desc{font-size:13px;color:var(--text);opacity:0.85;line-height:1.6}
-
-  .applicability-box{margin-top:28px;margin-bottom:28px;padding:14px 18px;background:var(--yellow-bg);border:1px solid rgba(234,179,8,0.28);border-left:3px solid var(--yellow);border-radius:0 8px 8px 0}
-  .applicability-text{font-size:13px;color:var(--text);line-height:1.6;opacity:0.9;margin-bottom:12px}
-  .applicability-list{display:flex;flex-direction:column;gap:8px}
-  .applicability-item{font-size:13px;color:var(--text);line-height:1.6;opacity:0.9}
-  .applicability-item strong{color:var(--text)}
-  .applicability-item ul{padding-left:22px;margin:8px 0}
-  .applicability-item li{margin-bottom:6px}
-
-  .worked-example-box{margin-top:8px;margin-bottom:28px;padding:18px 22px;background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.25);border-left:3px solid var(--accent);border-radius:0 8px 8px 0}
-  .worked-example-title{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px}
-  .worked-example-headline{font-size:14px;font-weight:600;color:var(--text);line-height:1.6;margin-bottom:14px}
-  .worked-example-table{width:100%;border-collapse:collapse;margin:10px 0 14px;font-size:13px}
-  .worked-example-table th{text-align:left;padding:8px 10px;background:var(--surface-light);border:1px solid var(--border);color:var(--text);font-weight:700;font-size:12px}
-  .worked-example-table td{padding:8px 10px;border:1px solid var(--border);color:var(--text);opacity:0.9}
-  .worked-example-howto{font-size:13px;color:var(--text);line-height:1.6;opacity:0.9;margin-bottom:4px}
-  .worked-example-howto strong{color:var(--text);opacity:1}
-  .worked-example-assumptions{margin-top:16px;padding-top:14px;border-top:1px solid rgba(59,130,246,0.18)}
-  .worked-example-assumptions-title{font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
-  .worked-example-assumptions ul{padding-left:20px;margin:6px 0;list-style:disc}
-  .worked-example-assumptions li{font-size:12px;color:var(--text);line-height:1.55;opacity:0.75;margin-bottom:4px}
-  .worked-example-assumptions-note{font-size:12px;color:var(--text-muted);line-height:1.55;margin-top:8px;font-style:italic}
-
-  .evidence-box{padding:14px 18px;background:var(--surface-light);border-radius:8px;border:1px solid var(--border)}
-  .evidence-text{font-size:13px;color:var(--text);line-height:1.6;opacity:0.8}
-  .evidence-text ul,.applicability-text ul,.consideration-text ul,.alt-desc ul{padding-left:22px;margin:8px 0}
-  .evidence-text li,.applicability-text li,.consideration-text li,.alt-desc li{margin-bottom:6px}
-
-  .date-stamp{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);display:flex;gap:24px}
-  .date-label{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
-  .date-value{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text);margin-top:2px}
-
-  .examples-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px;margin-bottom:20px}
-  .example-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
-  .example-card img{width:100%;max-height:200px;object-fit:cover;display:block;background:#1e2a3a}
-  .example-caption{padding:14px 16px;background:var(--surface-light);border-top:1px solid var(--border);flex:1}
-  .example-tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:3px 8px;border-radius:3px;display:inline-block;margin-bottom:8px}
-  .example-tag.concern{background:var(--red-bg);color:var(--red)}
-  .example-tag.acceptable{background:var(--yellow-bg);color:var(--yellow)}
-  .example-tag.recommended{background:var(--green-bg);color:var(--green)}
-  .example-desc{font-size:13px;color:var(--text);line-height:1.6;opacity:0.8}
-
-  .supporting-images-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px;margin-bottom:28px;align-items:stretch}
-  .supporting-image-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
-  .supporting-image-card img{width:100%;height:160px;object-fit:cover;display:block;background:#1e2a3a;flex-shrink:0}
-  .supporting-image-title{padding:14px 16px;font-size:13px;color:var(--text);background:var(--surface-light);border-top:1px solid var(--border);line-height:1.6;opacity:0.8;flex:1}
-  .supporting-image-title strong{color:var(--text);font-weight:700;display:block;margin-bottom:6px;opacity:1}
-  .supporting-image-card img,.example-card img{cursor:pointer;transition:opacity 0.2s}
-  .supporting-image-card img:hover,.example-card img:hover{opacity:0.8}
-  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;display:flex;align-items:center;justify-content:center;cursor:pointer;animation:fadeIn 0.2s ease}
-  .lightbox img{max-width:90vw;max-height:90vh;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,0.5)}
-
-  .loc-tag{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;color:var(--text-muted);background:var(--surface-light);border:1px solid var(--border);border-radius:4px;padding:2px 8px;letter-spacing:0.3px}
-  .loc-tag svg{width:10px;height:10px;fill:var(--text-muted);flex-shrink:0}
-  .loc-filter{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:8px}
-  .loc-filter-label{font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
-  .loc-filter select{background:var(--surface-light);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:6px 12px;font-size:12px;font-family:'IBM Plex Sans',sans-serif;cursor:pointer;outline:none}
-  .loc-filter select:focus{border-color:var(--accent)}
-  .loc-filter-count{font-size:11px;color:var(--text-muted);margin-left:auto}
-
-  @media(max-width:640px){
-    .content{padding:20px 16px} .header{padding:16px} .breadcrumb{padding:10px 16px}
-    .dim-grid{grid-template-columns:1fr} .examples-grid{grid-template-columns:1fr}
-    .supporting-images-grid{grid-template-columns:1fr 1fr} .date-stamp{flex-direction:column;gap:8px}
-  }
-</style>
-</head>
-<body>
-<div id="app"><div class="content" style="text-align:center;padding-top:80px;color:var(--text-muted)">Loading framework...</div></div>
-<script>
-// ===== STATE =====
-let dimensions = [];
-let state = { view:'home', dimId:null, itemIndex:null, locationFilter:null };
-
-// ===== HELPERS =====
-function colorVar(c){const m={green:'--green',orange:'--orange',red:'--red',yellow:'--yellow'};return `var(${m[c]||'--green'})`}
-function bgVar(c){const m={green:'--green-bg',orange:'--orange-bg',red:'--red-bg',yellow:'--yellow-bg'};return `var(${m[c]||'--green-bg'})`}
-function getDim(){return dimensions.find(d=>d.id===state.dimId)}
-function getItem(){const dim=getDim();return dim?dim.items[state.itemIndex]:null}
-
-// ===== LOCATION HELPERS =====
-const PIN_SVG='<svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>';
-function locLabel(loc){if(!loc)return'';return loc.state?`${loc.state}, ${loc.country}`:loc.country}
-function locTag(loc){if(!loc)return'';return `<span class="loc-tag">${PIN_SVG} ${locLabel(loc)}</span>`}
-function getLocations(dim){
-  const locs=new Map();
-  dim.items.forEach(item=>{
-    if(item.available&&item.data&&item.data.location){
-      const loc=item.data.location;
-      if(!locs.has(loc.country))locs.set(loc.country,new Set());
-      if(loc.state)locs.get(loc.country).add(loc.state);
+{
+  "dimensions": [
+    {
+      "id": "safety",
+      "name": "Safety in Design",
+      "icon": "👷",
+      "description": "Design decisions affecting the safety of construction workers and other stakeholders",
+      "generalGuidance": [
+        "Consider the top reinforcement mat as a temporary working platform — its spacing directly affects worker safety during concrete placement",
+        "Every detail must be physically executable — if a worker cannot safely access, reach, or work in the space the detail requires, the design must be reconsidered"
+      ],
+      "items": [
+        {
+          "name": "Reinforcement mat fall-through risk",
+          "available": true,
+          "data": {
+            "question": "At what top reinforcement spacing does the risk of a worker falling through or stepping between bars during construction become unacceptable?",
+            "parameter": "Top reinforcement bar spacing (mm)",
+            "background": "Top reinforcement mats in slabs and similar reinforced concrete elements temporarily serve as working surfaces during construction until concrete is placed. When bar spacing is too wide, workers risk stepping between bars, leading to falls and injuries. The spacing of the top mat directly determines whether it can safely support foot traffic during concrete placement and finishing. Any measures to address fall-through risk must also facilitate concrete placement and not obstruct the pour.",
+            "thresholds": [
+              {
+                "range": "<= 200 mm",
+                "rating": "Good practice",
+                "color": "green",
+                "guidance": "Top mat provides adequate support as a working platform. Workers can walk and kneel on the reinforcement with minimal risk of stepping through. This is the recommended maximum spacing where top mats will be used as working platforms."
+              },
+              {
+                "range": "250 mm",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Fall-through risk on larger pours and should be addressed. The exception is small, single-truck pours under approximately 7 m3, where the pour is self-paced and conditions are controlled enough that 250 mm spacing is acceptable. For example, if the slab thickness is 180 mm, this equates to slabs less than approximately 38 m2. For pours exceeding 7 m3 (i.e. requiring more than one truck), this spacing should be addressed."
+              },
+              {
+                "range": "300 mm",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "Unacceptable fall-through risk for any mat intended as a working platform. Spacing this wide provides almost no resistance to a misplaced step. 300 mm is the maximum spacing permitted under AS 3600, so greater spacings should not be encountered. If 300 x 300 is specified, it must be addressed before construction proceeds."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Specify 200 x 200 mm top reinforcement spacing",
+                "description": "Use 200 x 200 mm spacing, or closer, as the preferred solution where the top mat will be used as a working surface during concrete placement. This provides a more supportive surface for workers and avoids relying on supplementary controls."
+              },
+              {
+                "title": "Assess 250 x 250 mm spacing against pour size and site conditions",
+                "description": "Where 250 x 250 mm spacing is proposed, consider the concrete pour volume and construction context. Small pours under approximately 7 m3 are generally more controlled and may be acceptable, while larger pours are more likely to involve faster movement, more workers and higher exposure time."
+              },
+              {
+                "title": "Use supplementary top mesh or reduce the primary spacing",
+                "description": "Where 250 x 250 mm spacing is used on pours exceeding approximately 7 m3, or where 300 x 300 mm spacing is specified, provide an additional layer of top mesh such as SL82 or above to improve the working surface, or revise the primary top reinforcement spacing to 200 x 200 mm. Consider cover, reinforcement congestion and concrete placement before adding supplementary mesh."
+              }
+            ],
+            "evidence": "Site incident report: worker sustained a severe knee injury after stepping through 250 x 250 top reinforcement during slab pour. Supported by Safe Work Australia guidance on falls through openings and gaps in working platforms. Boot sole dimensions derived from ADF anthropometric surveys (Blanchonette, 2017). Slip and trip injury data from construction site research demonstrates that even non-fall slip events predominantly injure lower extremities (Lipscomb et al., 2006). Prevention through Design guidance for concrete construction recommends mat mesh over widely spaced rebar as a walking surface control (National Institute for Occupational Safety and Health, 2024).<br><br><strong>Pour size threshold (7 m3)</strong><br>The 7 m3 threshold corresponds to the typical capacity of a single concrete truck. Pours within a single truck are generally self-paced and controlled, because the rate of placement is set by the workers screeding and finishing rather than by trucks queueing on site. Pours requiring multiple trucks introduce time pressure to keep up with placement and faster worker movement across the reinforcement mat, increasing exposure time and the likelihood of a misplaced step.<br><br><strong>References</strong><br>Blanchonette, P. (2017). Australian Defence Force Anthropometry: A Summary of Historic Surveys (DST-Group-GD-0968). Defence Science and Technology Group.<br>Lipscomb, H. J., Glazner, J. E., Bondy, J., Guarini, K., &amp; Lezotte, D. (2006). Injuries from slips and trips in construction. Applied Ergonomics, 37(3), 267–274. https://doi.org/10.1016/j.apergo.2005.07.008<br>National Institute for Occupational Safety and Health. (2024). Prevention through Design Toolkit for the Construction Industry (DHHS (NIOSH) Publication No. 2024-124). U.S. Centers for Disease Control and Prevention. https://doi.org/10.26616/NIOSHPUB2024124",
+            "examples": [
+              {
+                "image": "images/reo-250-spacing.png",
+                "tag": "concern",
+                "caption": "Top reinforcement at N12-250 spacing on a 14.26 m3 pour. While the matching top and bottom spacing simplifies detailing, the 250 mm top mat spacing creates unacceptable fall-through risk on a pour of this size."
+              },
+              {
+                "image": "images/reo-250-small-pour.jpg",
+                "tag": "acceptable",
+                "caption": "Top reinforcement at N12-250 spacing on a small balcony pour of approximately 3.8 m3. The small pour volume means conditions are controlled and the 250 mm spacing is acceptable."
+              },
+              {
+                "image": "images/reo-200-spacing.png",
+                "tag": "recommended",
+                "caption": "Top reinforcement at N12-200 spacing on a 12.7 m3 pour. Bottom mat at N12-300 is not a concern as it is not used as a working platform. The 200 mm top spacing provides a safe working surface during concrete placement."
+              }
+            ],
+            "supportingImages": [
+              {
+                "image": "images/adf-anthropometric-data.png",
+                "title": "<strong>Blanchonette (2017) - ADF foot dimensions</strong><br>Mean foot lengths of 264 mm (Army 1968) and 271 mm (Navy 2000), used as the basis for the boot sole sizes in this analysis."
+              },
+              {
+                "image": "images/slip-trip-injury-distribution.png",
+                "title": "<strong>Lipscomb et al. (2006) - construction slip and trip injuries</strong><br>Of 751 incidents at Denver International Airport (1989-1994), 90.5% were same-level falls or slips, predominantly injuring lower extremities."
+              },
+              {
+                "image": "images/ptd-concrete-masonry.png",
+                "title": "<strong>NIOSH (2024) - Prevention through Design controls</strong><br>Recommends 4&Prime; &times; 4&Prime; (approximately 100 &times; 100 mm) mat mesh over widely spaced rebar as a walking surface during concrete pours."
+              },
+              {
+                "image": "images/boot-vs-grid-straight.png",
+                "title": "<strong>Boot sole fit - normal stance</strong><br>Boot sole overlaid on N12 grids. At 300 mm spacing the 288 mm clear gap exceeds the boot sole length."
+              },
+              {
+                "image": "images/boot-vs-grid-angle.png",
+                "title": "<strong>Boot sole fit - angled foot placement</strong><br>At an angled approach, 250 mm spacing presents a step-through risk for both 5th percentile and mean boot sizes."
+              }
+            ],
+            "dateAdded": "2026-03-15",
+            "dateReviewed": "2026-05-13",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "applicability": {
+              "appliesWhere": "This entry applies to top reinforcement mats in slabs and similar reinforced concrete elements where workers are expected to walk, kneel or stand on the reinforcement during concrete placement, vibration, screeding or finishing. This includes suspended slabs, slabs-on-ground, raft slabs, balconies, podium slabs and other reinforced concrete pours where the top mat functions as a temporary working surface.",
+              "checks": [
+                {
+                  "title": "Top mat used as a working surface",
+                  "description": "This guidance is primarily concerned with the top reinforcement mat because this is the layer workers walk, kneel or stand on during concrete placement. Bottom reinforcement, wall reinforcement, starter bars and other non-trafficable reinforcement do not create the same working-surface risk. However, designers may still choose to match top and bottom reinforcement spacing where this improves detailing simplicity, ordering, placement consistency or reduces the likelihood of site errors."
+                },
+                {
+                  "title": "Pour volume is a practical indicator, not a fixed safety boundary",
+                  "description": "The 7 m3 threshold is used as a practical indicator of pour intensity and exposure, not as a statutory or absolute safety limit. A smaller pour may still require closer spacing if access is awkward, the reinforcement is difficult to move across, or workers need to spend extended time on the mat."
+                },
+                {
+                  "title": "Structural and placement requirements remain controlling",
+                  "description": "Any change to reinforcement spacing or addition of supplementary mesh must still satisfy structural design requirements, cover, bar layering, congestion, concrete placement and vibration requirements."
+                }
+              ],
+              "note": "Use the rating as a safety-in-design review prompt, not as a blanket rule. The appropriate response is to consider whether the top mat will function as a working surface and whether the specified spacing creates an avoidable risk during construction."
+            }
+          }
+        },
+        {
+          "name": "Temporary works stability",
+          "available": false
+        },
+        {
+          "name": "Edge protection requirements",
+          "available": false
+        }
+      ]
+    },
+    {
+      "id": "detailing",
+      "name": "Detailing",
+      "icon": "📐",
+      "description": "Standardisation, repetition, and simplification of element detailing",
+      "generalGuidance": [
+        "Prefer consistent reinforcement layouts across top and bottom steel where structurally appropriate - this simplifies ordering, reduces placement errors, and supports safety",
+        "Simplify formwork geometry wherever possible - regular layouts and repetition improve productivity and reduce cost",
+        "Evaluate whether complex geometry is structurally necessary - simpler details that achieve comparable performance are easier to build and less prone to error"
+      ],
+      "items": [
+        {
+          "name": "Suspended slab level changes (folds)",
+          "available": true,
+          "data": {
+            "question": "When a design requires a change in suspended slab levels, is monolithic forming or an alternative method (blockwork or permanent formwork with separate pours) the more constructable approach?",
+            "parameter": "Fold depth in suspended slab (mm)",
+            "background": "A change in suspended slab level can be achieved by forming the slab as a monolithic profile (a continuous concrete fold) or by separating the levels using blockwork or permanent formwork with separate pours. Before sizing a fold at all, the designer should consider whether the level change can be eliminated entirely by thickening the slab to a flat soffit; for small setdowns (e.g. &le; 50 mm) this is often the simpler construction outcome. Where a fold is genuinely required, the default constructability-aware approach is generally to use an alternative method rather than monolithic forming, because alternatives use standard trades, standard formwork and conventional construction sequences, while a monolithic fold requires custom edge formwork, additional bracing and propping, and a forming approach that is not part of normal slab construction. The amount of labour required to form a vertical face increases with the depth of that face (Jarkas, 2010), so a monolithic fold becomes progressively more difficult and labour-intensive as depth increases. The thresholds below indicate how strongly alternatives should be preferred at different fold depths, based on formworker feedback about where monolithic forming becomes problematic. Waterproofing is the most common objection to separate pours, but this can generally be managed using a waterstop and standard cold joint detailing and is not usually a reason to abandon the alternative approach.",
+            "thresholds": [
+              {
+                "range": "<= 600 mm",
+                "rating": "Good practice",
+                "color": "green",
+                "guidance": "Monolithic forming can generally be accommodated by standard formwork systems at this depth. Consistent with 3-5 stair risers within a structure. Alternatives (blockwork or permanent formwork with separate pours) are still usually the simpler approach because they use standard trades and standard formwork, but monolithic forming remains a reasonable option at this depth where there is a specific reason for it (e.g. architectural finish, watertight element, or a short isolated fold)."
+              },
+              {
+                "range": "600 - 1000 mm",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Monolithic forming may be achievable but formwork complexity, bracing and labour increase substantially within this range. Alternatives should be strongly preferred unless there is a specific reason for monolithic forming. Where monolithic forming is retained, the fold length, pour volume and formwork access should be reviewed with the contractor before construction."
+              },
+              {
+                "range": "> 1000 mm",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "Monolithic forming is likely impractical using standard formwork systems. A real project example required a 1050 mm fold in a suspended RC slab. During construction, the detail was found to be impractical due to the difficulty and cost of forming with adequate bracing. The design was revised to incorporate blockwork and separate concrete pours. Alternatives should be adopted at this depth unless a specific project condition makes monolithic forming the only viable option, and even then the construction approach should be confirmed with the contractor at the design stage."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Use blockwork infill with separate concrete pours",
+                "description": "Form the level change using blockwork or masonry infill, then pour the concrete elements separately using conventional formwork. This is generally the default constructability-aware approach because it uses standard trades and standard formwork rather than custom edge formwork and bracing. Where the joint needs to be watertight, this can be detailed using a waterstop and appropriate cold joint treatment. Check structural load transfer, jointing, durability and finish requirements before adopting this option. Document this alongside the monolithic detail on the drawing, not as a replacement for it — the contractor selects the method on site based on available trades and formwork, and notifies the engineer prior to construction. Both details should be fully detailed (reinforcement, cold joint treatment, waterstop where required) so the structural design covers whichever path is built."
+              },
+              {
+                "title": "Use permanent formwork (e.g. Dincel) with separate pours",
+                "description": "Use a permanent formwork system (such as Dincel or similar) to form the vertical element of the level change, then pour the slabs separately using conventional formwork. This can be particularly useful where access for stripping is limited or where a stable, self-supporting vertical formwork is preferred. The system should be checked for structural suitability, fire and durability requirements, finish expectations and compatibility with the surrounding concrete detail. Document this alongside the monolithic detail on the drawing, not as a replacement for it — the contractor selects the method on site based on available trades and formwork, and notifies the engineer prior to construction. Both details should be fully detailed (reinforcement, cold joint treatment, waterstop where required) so the structural design covers whichever path is built."
+              },
+              {
+                "title": "Redesign to reduce or eliminate the level change",
+                "description": "Review whether the fold depth can be reduced, relocated or removed while still satisfying the architectural, structural and serviceability requirements. Simplifying the slab profile is often the most effective constructability improvement because it reduces custom formwork, reinforcement complexity, sequencing issues and construction risk at the source."
+              },
+              {
+                "title": "Retain monolithic forming only where specifically justified",
+                "description": "Monolithic forming may still be appropriate where the fold is short and isolated, where a continuous unbroken concrete face is required for architectural reasons, where the element must be watertight and a joint introduces unacceptable risk, or where the structural condition is one in which a cold joint is not appropriate. Where monolithic forming is retained, confirm the construction method with the contractor at the design stage rather than assuming it can be built."
+              }
+            ],
+            "evidence": "This entry is supported by formwork literature, industry consultation and practical project experience.<br><br><strong>Formwork literature.</strong> Jarkas (2010) measures labour productivity for edge formwork as a function of vertical face depth, confirming that the labour required to form a vertical face increases with depth.<br><br><strong>Industry consultation.</strong> On-site consultation with formwork subcontractors and a building contractor identified monolithic folds above approximately 600 mm as becoming progressively more difficult to form using standard panel systems, with blockwork or permanent formwork with separate pours the more common construction outcome.<br><br><strong>Practical project experience.</strong> Two project examples support the entry. A 1050 mm fold in a suspended RC slab was found impractical to form monolithically during construction and was revised to blockwork with separate pours. A drop edge beam — a vertical concrete element subject to the same forming choice — documented both monolithic and blockwork alternatives on the same drawing. The contractor used both on site across different sections of the element. This demonstrates that documenting both methods is good practice — it allowed the contractor to use whichever suited each section.<br><br><strong>References</strong><br>Jarkas, A. M. (2010). Analysis and measurement of buildability factors affecting edge formwork labour productivity. Journal of Engineering Science and Technology Review, 3(1), 142&ndash;150.",
+            "examples": [
+              {
+                "image": "images/fold-original-detail.jpg",
+                "tag": "concern",
+                "caption": "Original detail: 1050 mm monolithic fold in suspended RC slab. Found to be impractical during construction due to difficulty and cost of forming with adequate bracing using conventional formwork."
+              },
+              {
+                "image": "images/fold-revised-detail.jpg",
+                "tag": "recommended",
+                "caption": "Revised detail: blockwork infill with separate concrete pours. Achieves the required change in slab level using standard formwork and conventional construction methods."
+              },
+              {
+                "image": "images/drop-edge-multiple.png",
+                "tag": "recommended",
+                "caption": "Drop edge beam with monolithic (left) and blockwork (right) shown on the same drawing. Contractor used both on site."
+              }
+            ],
+            "supportingImages": [
+              {
+                "image": "images/fold-site-blockwork.jpg",
+                "title": "<strong>Blockwork infill replacing monolithic fold</strong><br>Blockwork walls used to achieve the level change between upper and lower slabs."
+              },
+              {
+                "image": "images/fold-site-slab-poured.jpg",
+                "title": "<strong>Upper slab poured on blockwork</strong><br>Completed upper slab bearing on the blockwork walls - separate pours replacing the monolithic fold."
+              },
+              {
+                "image": "images/fold-site-stairs.jpg",
+                "title": "<strong>Concrete stairs between levels</strong><br>Stairs formed with conventional formwork within the blockwork walls."
+              },
+              {
+                "image": "images/drop-edge-steel.jpg",
+                "title": "<strong>Both methods used on the same drop edge beam</strong><br>Monolithic reinforcement cage in the foreground, with blockwork in place for the adjacent section."
+              }
+            ],
+            "dateAdded": "2026-03-10",
+            "dateReviewed": "2026-05-13",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "applicability": {
+              "appliesWhere": "This entry applies to suspended slabs and similar reinforced concrete elements where a vertical level change is being designed, whether to be formed monolithically as a continuous concrete profile or by alternative methods such as blockwork or permanent formwork with separate pours.",
+              "checks": [
+                {
+                  "title": "Consider eliminating the fold before sizing it",
+                  "description": "The simplest constructability outcome is often no fold at all. For small setdowns (e.g. &le; 50 mm) it is generally easier and cheaper to thicken the slab on the higher side and keep a flat soffit than to introduce a fold and form a vertical face. The extra concrete volume is usually small relative to the construction cost of forming, bracing and finishing a fold, and a flat soffit removes the constructability question entirely. For larger setdowns the trade-off shifts as the extra concrete volume becomes more significant and a separated construction approach (blockwork or permanent formwork with separate pours) is usually more appropriate. The designer needs to make a call based on the area, depth and project context; the point is that eliminating the level change should be considered before choosing how to form it, not after."
+                },
+                {
+                  "title": "Waterproofing is not usually a deal-breaker",
+                  "description": "The most common objection to using separate pours is waterproofing of the cold joint between the two pours. This can generally be managed using a waterstop (PVC, hydrophilic or similar) and appropriate cold joint detailing, and is not usually a reason to retain monolithic forming. Waterproofing should be detailed and specified as part of the alternative, not used as a default justification for monolithic forming."
+                },
+                {
+                  "title": "Fold length and pour volume",
+                  "description": "A short local fold is not the same construction problem as a long continuous fold. A deep fold over a few lineal metres may still be manageable monolithically, while the same depth over a long length is much more likely to require an alternative. The construction effort scales with the area of vertical formwork, not just the depth."
+                },
+                {
+                  "title": "Function of the level change",
+                  "description": "The appropriate response depends on why the level change exists. Architectural set-downs, structural steps, waterproofing zones, fire or acoustic separation, retained fill and support for other elements may each require different detailing. In some cases a continuous unbroken concrete face is required for architectural or watertightness reasons, and monolithic forming may be justified despite the additional construction effort."
+                },
+                {
+                  "title": "Whether the alternative introduces disproportionate complexity",
+                  "description": "Blockwork, permanent formwork or separate pours can introduce extra trades, additional concrete pumps, waterproofing detailing or sequencing constraints. In most cases these are simpler to manage than custom monolithic forming, but the alternative should still be assessed against the full construction sequence rather than assumed to always be simpler."
+                },
+                {
+                  "title": "Formwork system and contractor capability",
+                  "description": "The thresholds reflect conventional formwork and standard contractor capability. Specialist formwork systems, highly repetitive geometry, experienced formwork crews or project-specific access arrangements may change what is practical, and the construction method should be confirmed with the contractor at the design stage."
+                }
+              ],
+              "note": "Use the rating as a prompt to consider alternatives, not as a rule that monolithic forming above a particular depth is automatically unacceptable. A monolithic fold may still be the most practical solution where there is a specific reason for it; the framework's intent is to make sure that monolithic forming is a deliberate decision rather than an unexamined default."
+            }
+          }
+        },
+        {
+          "name": "Flat soffit detailing at minor slab setdowns",
+          "available": true,
+          "data": {
+            "question": "When a slab requires a top setdown, should the adjacent slab zone be locally thickened to maintain a flat soffit instead of creating a soffit fold?",
+            "parameter": "Top setdown depth causing soffit fold (mm)",
+            "background": "Formwork is roughly 49% of concrete-structure labour; concrete operations are roughly 11% (Löfgren et al., 2001). Where a required top setdown could be retained but the matching soffit fold could be avoided by locally thickening the slab, the avoided formwork is usually worth more than the added concrete.<br><br>Top setdowns are often required for wet areas, balconies, falls, thresholds, waterproofing build-ups or finishes. The constructability issue is not the top setdown itself; it is what happens when the slab thickness is kept constant through the setdown, creating a matching step in the soffit. That step becomes a small fold and introduces additional formwork, bracing, reinforcement variation and inspection. Where the top setdown is minor, keeping the soffit flat by locally thickening the adjacent slab zone is usually the simpler construction outcome, and the question is whether the added concrete volume is reasonable.",
+            "thresholds": [
+              {
+                "range": "Flat soffit maintained",
+                "rating": "Good practice",
+                "color": "green",
+                "guidance": "Preferred outcome where structurally and functionally acceptable. The required top setdown is retained, but the adjacent higher slab zone is locally thickened so the soffit stays flat. Formwork and reinforcement detailing remain simple and the constructability question is resolved at the design stage."
+              },
+              {
+                "range": "<= 50 mm",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "Minor soffit fold. Local thickening should be actively considered because it can retain the required top setdown while avoiding a shallow soffit fold. Use the rule of thumb in the worked example below (about 0.6 m³ of concrete per lineal metre of avoided 50 mm fold) to compare added concrete against avoided formwork. Where the added concrete is below this value, flat soffit is the better outcome."
+              },
+              {
+                "range": "50 - 150 mm",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Quantify the trade-off before deciding. Local thickening may still be reasonable for small areas or awkward folds, but added concrete volume, self-weight and reinforcement implications become more significant in this range. The break-even rises with depth (see worked example: about 1.2 m³/lm at 150 mm). Compare the flat-soffit option against forming the fold using project-specific rates where available."
+              },
+              {
+                "range": "> 150 mm",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "Beyond this depth the question is no longer flat soffit vs minor fold; it is how the fold itself is built. Refer to the <em>Suspended slab level changes (folds)</em> entry for guidance on monolithic forming, blockwork or permanent formwork with separate pours."
+              }
+            ],
+            "workedExample": {
+              "title": "Indicative rule of thumb — for consideration only",
+              "caveat": "Numbers below are based on assumed crew rates and typical productivity. They are intended as a first-pass sense-check to support engineering judgement, not a binding rule. Project conditions, pricing, programme or site-specific buildability constraints may justify a different conclusion.",
+              "headline": "For a 50 mm soffit fold, the break-even is about <strong>0.6 m³ of concrete per lineal metre</strong> of avoided fold. For a 150 mm fold, it is about <strong>1.2 m³/lm</strong>. For depths in between, interpolate linearly between these values.",
+              "tableHeaders": ["Soffit fold depth", "Assumed productivity", "Break-even working value"],
+              "tableRows": [
+                ["50 mm", "10 lm/day", "0.6 m³ concrete per lm of avoided fold"],
+                ["150 mm", "5 lm/day", "1.2 m³ concrete per lm of avoided fold"]
+              ],
+              "howToUse": "Multiply the per-metre break-even by the fold length to get the total break-even concrete volume. <strong>If keeping the soffit flat adds an amount of concrete less than or equal to the break-even, local thickening is the more constructable choice.</strong><br><br><em>Worked examples (10 lm of soffit fold each):</em><ul><li><strong>50 mm fold:</strong> 10 × 0.6 = 6.0 m³ break-even. If flat-soffit thickening adds ≤ 6.0 m³, thicken.</li><li><strong>150 mm fold:</strong> 10 × 1.2 = 12.0 m³ break-even. If flat-soffit thickening adds ≤ 12.0 m³, thicken.</li><li><strong>90 mm fold (interpolated):</strong> per-metre value = 0.6 + (40 ÷ 100) × (1.2 − 0.6) = <strong>0.84 m³/lm</strong>; total break-even = 10 × 0.84 = 8.4 m³. If flat-soffit thickening adds ≤ 8.4 m³, thicken.</li></ul>Between 50 mm and 150 mm the break-even rises at about 0.06 m³/lm for every 10 mm of additional fold depth.",
+              "assumptionsTitle": "How these numbers were derived",
+              "assumptions": [
+                "Formwork crew of 2 at $1,500–$2,000/day",
+                "Formwork material, fixings, consumables and waste: +10% (total $1,650–$2,200/day)",
+                "Concrete rate: $320/m³",
+                "Soffit fold productivity: 10 lm/day at 50 mm depth; 5 lm/day at 150 mm depth",
+                "Excluded: GST, reinforcement changes, pumping, finishing, programme impacts, site-specific access"
+              ],
+              "assumptionsNote": "Rough first-pass values based on site-experience assumptions. Replace with project-specific rates where actual pricing is available."
+            },
+            "alternatives": [
+              {
+                "title": "Locally thicken the slab to maintain a flat soffit",
+                "description": "Use where the top setdown is minor and the added concrete volume is reasonable. The required top setdown remains, but the adjacent higher slab zone is thickened so the soffit stays flat."
+              },
+              {
+                "title": "Retain or show the formed soffit fold where the trade-off is not obvious",
+                "description": "Use where both options may be reasonable. The drawing may show the formed fold and also permit local thickening as an option, allowing the contractor to choose the practical approach based on access, formwork setup, pour size and sequencing."
+              },
+              {
+                "title": "Use an alternative construction method for significant folds",
+                "description": "Use where local thickening would add too much concrete or self-weight, or where the fold becomes too deep or complex to treat as a minor detail. Alternatives may include conventional formed folds, separate pours, blockwork, permanent formwork or a revised slab arrangement."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies where a top slab setdown is required and maintaining constant slab thickness would create a soffit fold. It is intended for suspended reinforced concrete slabs and similar elements where the designer is choosing between a formed soffit fold and local thickening of the adjacent slab zone to keep the soffit flat.",
+              "checks": [
+                {
+                  "title": "Top setdown remains required",
+                  "description": "This entry does not recommend removing functional top setdowns. Wet-area setdowns, balcony setdowns, falls, thresholds, waterproofing build-ups and architectural level requirements remain controlling. The review is about the soffit geometry below the setdown."
+                },
+                {
+                  "title": "Structural and detailing effects remain controlling",
+                  "description": "Local thickening must still satisfy structural design requirements, including added self-weight, deflection, punching or shear effects where relevant, reinforcement cover, laps, anchorage, congestion and concrete placement."
+                }
+              ],
+              "note": "Use the rating as a constructability review prompt, not as a blanket rule. The intent is not to remove required top setdowns; it is to avoid creating unnecessary soffit folds where a modest increase in slab thickness would produce a simpler construction outcome."
+            },
+            "evidence": "Evidence is based on practical project experience and formwork/buildability literature.<br><br><strong>Practical project experience.</strong> In the project example, the top setdown remained required, but the revised detail allowed the adjacent slab zone to be locally thickened to maintain a flat soffit and simplify formwork and reinforcement detailing. This demonstrates the intended constructability response: retain the functional top setdown, but avoid the unnecessary soffit fold where practical.<br><br><strong>Formwork and buildability literature.</strong> Löfgren et al. (2001) support the broader principle that minimising material quantity does not necessarily minimise finished construction cost. They identify simplicity and repetition as key principles for efficient construction, and their man-hour breakdown attributes approximately 49% of concrete-structure work to formwork compared with approximately 11% to concrete operations.<br><br><strong>References</strong><br>Löfgren, I., Gylltoft, K., &amp; Kutti, T. (2001). <em>In-situ concrete building - Innovations in Formwork</em>. Department of Structural Engineering, Chalmers University of Technology / Thomas Concrete Group.",
+            "examples": [
+              {
+                "image": "images/slab-setdown-original-detail.png",
+                "tag": "concern",
+                "caption": "Original detail showing a required top setdown while maintaining constant slab thickness. This creates a matching soffit step/fold, adding local formwork and reinforcement detailing complexity."
+              },
+              {
+                "image": "images/slab-setdown-local-thickening-option.png",
+                "tag": "recommended",
+                "caption": "Revised detail retaining the required top setdown but allowing the adjacent slab zone to be locally thickened to the dashed line. This maintains a flat soffit where practical and simplifies formwork and reinforcement detailing."
+              }
+            ],
+            "supportingImages": [
+              {
+                "image": "images/formwork-man-hour-breakdown-lofgren.png",
+                "title": "<strong>Löfgren et al. (2001) - concrete structure man-hour breakdown</strong><br>Approximate man-hour breakdown for a concrete structure, showing formwork as the dominant labour activity at 49%, compared with concrete operations at 11%. Supports reviewing minor soffit folds against flat-soffit alternatives."
+              }
+            ],
+            "dateAdded": "2026-05-18",
+            "dateReviewed": "2026-05-18",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            }
+          }
+        },
+        {
+          "name": "Reinforcement spacing variability",
+          "available": false
+        },
+        {
+          "name": "Beam-slab intersections",
+          "available": false
+        },
+        {
+          "name": "Bar bending complexity",
+          "available": false
+        }
+      ]
+    },
+    {
+      "id": "logistics",
+      "name": "Logistics",
+      "icon": "🚚",
+      "description": "Material and equipment availability, site access, and supply chain considerations",
+      "generalGuidance": [
+        "Specify materials that are readily available from multiple suppliers - single-source dependency creates procurement risk and potential delays",
+        "Design within the capabilities of equipment that can realistically access and operate on the site",
+        "Consider site adaptability - materials and details that can be adjusted on site when conditions change reduce program risk"
+      ],
+      "items": [
+        {
+          "name": "Stirrup bar size availability and site adaptability",
+          "available": true,
+          "data": {
+            "question": "Is the specified stirrup, ligature or tie size practical for ground footings, considering supplier availability, site adaptability and reinforcement cage stability?",
+            "parameter": "Specified stirrup, ligature or tie bar size in ground footings or ground beams",
+            "background": "Stirrups, ligatures and ties in ground footings are often used not only for structural capacity, but also to hold longitudinal reinforcement in position during fixing, inspection, concrete placement and vibration. This is particularly important in groundworks, where footing or ground beam dimensions may change during construction because of excavation tolerance, founding conditions, pile position, set-out issues or cover requirements.<br><br>The bar sizes that are practically available for a footing depend on what concrete contractors can obtain through their normal reinforcement supply channels, not only on what is theoretically manufactured. In Australian reinforced concrete construction, N12 is widely used for longitudinal reinforcement, starter bars, supplementary reinforcement, perimeter bars and site-bent reinforcement. This makes N12 a practical option where reinforcement may need to be supplemented, adjusted or bent on site.<br><br>R6 and R10 can perform similar fitment roles in many footing applications, and an R10 tie at wider spacing can often substitute for an R6 tie at closer spacing where structurally acceptable. R10 is generally the more practical footing ligature size because it is more commonly used and more consistently available through reinforcement processors. R6 may be structurally adequate, but it is a narrower-use fitment size and can be more difficult to source. Where R6 is specified without an approved alternative, procurement issues may lead to substitution requests, construction delays or undocumented site changes.",
+            "thresholds": [
+              {
+                "range": "R10 or N12",
+                "rating": "Good practice",
+                "color": "green",
+                "guidance": "R10 at up to 900 mm centres is the default practical choice for footing ligatures, subject to structural requirements. N12 is preferred where the cage may need site-bent additions or adjustment to suit final excavated dimensions. Closer spacing improves cage rigidity and is encouraged where the cage is heavy or spans further between supports."
+              },
+              {
+                "range": "N16",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "May be suitable where structurally required, but is less practical for site adjustment in groundworks. Avoid using N16 only to reduce the number of ties where R10 or N12 at closer spacing would provide a more practical, adaptable and stable cage."
+              },
+              {
+                "range": "R6",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "May be structurally adequate in some footing applications, but should not be assumed to be universally available. R6 ligatures are stocked by some specialist reinforcement suppliers, but availability is inconsistent compared with R10. Where R6 is specified, provide an equivalent R10 option where structurally acceptable."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to reinforced concrete groundworks such as pad footings, strip footings, raft footings, ground beams and pile-supported footings where stirrups, ligatures or ties may need to be sourced, supplemented, adjusted, substituted or doubled up during construction.",
+              "checks": [
+                {
+                  "title": "Groundworks dimensional variability",
+                  "description": "This guidance is most relevant to groundworks, where final footing or ground beam dimensions may need to change during construction due to founding conditions, excavation tolerance, pile position, set-out issues or cover requirements. The same concern is less significant for formed above-ground elements where geometry is usually fixed and controlled before reinforcement is placed."
+                },
+                {
+                  "title": "Structural requirements remain controlling",
+                  "description": "Tie size and spacing must first satisfy structural design requirements. This guidance does not justify increasing tie spacing beyond what is required for shear, torsion, confinement, crack control, bar support, minimum reinforcement, cover or any other structural requirement."
+                },
+                {
+                  "title": "Tie spacing and cage rigidity",
+                  "description": "Tie spacing must first satisfy structural design requirements. Where the structural design permits wider spacing, footing tie spacing should generally not exceed 900 mm centres unless specifically justified. CCAA guidance for strip and raft footings identifies 600-900 mm centres as typical spacing for supports, ligatures and bar chairs, depending on reinforcement rigidity. Contractor consultation for this framework also indicated that footing cages can become noticeably less rigid above approximately 800 mm. The 900 mm value should therefore be treated as the practical upper limit for this guidance, not as a target spacing."
+                },
+                {
+                  "title": "Choosing between R6, R10 and N12",
+                  "description": "Where ties are not governed by high structural demand and are mainly required for cage formation, support and reinforcement positioning, an R6 detail with a documented R10 equivalent is often the most practical approach. For example, documenting R6-600 or R10-900 gives the contractor a readily available alternative if R6 is difficult to source. N12 may also be used where it is already available on site, where additional site-bent reinforcement is needed, or where footing dimensions are likely to change, provided cover, bend dimensions and fit within the footing are maintained."
+                },
+                {
+                  "title": "Local supplier availability",
+                  "description": "The availability ratings are based on Australian reinforcement supply conditions, contractor consultation, and supplier product information reviewed for Sydney, NSW. The suppliers reviewed were Mesh & Bar, ARC Reinforcing, Ausreo and Best Bar, selected because they are larger reinforcement-specific suppliers/processors with multiple branches, trade service centres or bar processing capability. Designers should confirm local supplier availability before applying the same ratings in other regions."
+                },
+                {
+                  "title": "Structural substitution must be checked",
+                  "description": "Substituting R6 with R10, using N12 instead of R10, changing bar diameter, doubling up ligatures or changing tie spacing must still satisfy structural design requirements, cover, durability and detailing constraints."
+                }
+              ],
+              "note": "Use the rating as a logistics and site-adaptability review prompt, not as a rule that R6, R10, N12 or N16 ties should never be specified. The preferred detail is the one that balances structural adequacy, supplier availability, site adaptability and reinforcement cage rigidity."
+            },
+            "alternatives": [
+              {
+                "title": "Specify R6 with an R10 equivalent where structurally suitable",
+                "description": "Where R6 ties are structurally adequate, document a readily available R10 equivalent on the drawing, such as R6-600 or R10-900, where appropriate. This keeps the original lightweight detail while giving the contractor a practical alternative if R6 is difficult to source."
+              },
+              {
+                "title": "Use N12 only where additional adaptability or structural capacity is needed",
+                "description": "N12 may be appropriate where the tie is structurally required, where site-bent supplementary reinforcement may be needed, or where footing dimensions are likely to change. Do not specify N12 by default if R6 or R10 ties provide an adequate and more practical footing cage."
+              },
+              {
+                "title": "Avoid using N16 only to reduce tie numbers",
+                "description": "N16 ties may be appropriate where structurally required, but should not be used only to reduce the number of ligatures in groundworks. Where R10 or N12 at closer spacing would provide a more practical, adaptable and stable cage, that option should be preferred."
+              }
+            ],
+            "evidence": "Evidence is based on CCAA guidance for residential strip and raft footings, which identifies 600-900 mm centres as typical spacing for supports, ligatures and bar chairs depending on reinforcement rigidity, supplemented by contractor consultation undertaken for this framework. Contractor consultation indicates that R6 ligatures are commonly substituted with R10 during construction because R6 is less consistently available through normal reinforcement supply channels.<br><br><strong>Supplier product information</strong><br>Supplier product information was reviewed from four larger reinforcement-specific suppliers/processors that service Sydney, NSW construction work:<br><br><ul><li><strong>Mesh &amp; Bar</strong> - major offices in Sydney, Melbourne and Brisbane, with regional branches including Newcastle and Wollongong.</li><li><strong>ARC Reinforcing</strong> - 40+ locations from Tasmania to Cairns, with Sydney-area branches including Revesby, Wetherill Park and Narellan.</li><li><strong>Ausreo</strong> - 21 trade service centres across NSW, VIC and QLD, including a Sydney head office, prefabrication and bar processing facility at Wetherill Park.</li><li><strong>Best Bar</strong> - 9 branches across major Australian cities, with its Sydney operation supplying reo bar, mesh and cut-and-bend services from two locations.</li></ul><br>These suppliers were selected because they are larger reinforcement-specific suppliers with multiple branches, trade service centres or bar processing capability. This makes the review more relevant to normal Sydney/NSW trade procurement than a review of single-location suppliers, while still acknowledging that many smaller suppliers may operate locally with narrower stock ranges.<br><br><strong>Supplier review findings</strong><br>The reviewed supplier information shows three practical outcomes:<br><br><ul><li><strong>Two suppliers list pre-formed ligatures as stock-type products.</strong> ARC lists standard 6 mm and 10 mm ligatures in multiple rectangular sizes, while Ausreo lists R10 trench mesh ligatures across a broad range of sizes in bundles of 10.</li><li><strong>Only one reviewed supplier clearly lists R6 pre-formed ligatures.</strong> ARC lists 6 mm ligatures, but Ausreo's reviewed ligature range is R10 only.</li><li><strong>Two suppliers list plain round bar rather than pre-formed ligatures.</strong> Mesh &amp; Bar lists R6, R10 and larger plain round bars as 6 m stock lengths, while Best Bar lists round rebar from R10 upward. In these cases ligatures would need to be scheduled, cut and bent rather than treated as an immediately available pre-formed ligature product.</li></ul><br>Taken together, this supports the practical guidance that R6 should not be treated as universally available as a pre-formed ligature, and that an R10 equivalent should be documented where structurally acceptable. R6 may still be available from some specialist reinforcement suppliers, but availability depends on the supplier, branch, required size and whether the contractor is ordering stock ligatures or scheduling bars to be bent up.<br><br><strong>Procurement context</strong><br>Concrete contractors typically source reinforcement through established supplier relationships and normal trade procurement channels rather than sourcing each item from the entire theoretical market. Research on construction supplier selection supports this procurement logic. Nguyen et al. (2022) found that 50.4% of surveyed contractors selected material suppliers primarily on the basis of existing relationships, and that 73% of surveyed enterprises had specialised departments involved in supplier selection. Price, delivery time and product quality were the highest-rated supplier selection criteria. Although the study is not specific to Australian reinforcement supply, it supports the broader principle that practical material availability is governed by established procurement channels, supplier relationships, delivery time and product quality rather than theoretical manufacture alone.<br><br><strong>References</strong><br>Nguyen, Q. T., Nguyen, H. T. M., Nguyen, V. T., Pham, X. A., Dinh, T. H. &amp; Nguyen, T. T. (2022). How do contractors select material suppliers for construction projects? Evidence from Vietnam. <em>Archives of Civil Engineering, LXVIII</em>(3), 273-288. https://doi.org/10.24425/ace.2022.141885",
+            "examples": [
+              {
+                "image": "images/r6-only-specified.jpg",
+                "tag": "concern",
+                "caption": "R6-600 stirrups specified with no alternative shown. If R6 cannot be sourced, the contractor must request a substitution, adding administrative time and potential delays."
+              },
+              {
+                "image": "images/r6-or-r10-specified.jpg",
+                "tag": "recommended",
+                "caption": "R6-600 or R10-900 shown on the drawing. The contractor can source whichever is available, eliminating procurement delays and substitution requests."
+              }
+            ],
+            "supportingImages": [
+              {
+                "image": "images/supplier-selection-relationship-specialised-departments.png",
+                "title": "<strong>Nguyen et al. (2022) - factors influencing supplier selection</strong><br>Existing relationships (50.4%) dominated supplier selection ahead of price quotations (40.2%) and formal analysis (9.4%). 73% of surveyed enterprises had a specialised procurement department."
+              },
+              {
+                "image": "images/supplier-selection-price-delivery-quality.png",
+                "title": "<strong>Nguyen et al. (2022) - importance of selection criteria</strong><br>Price (4.4), delivery time (4.2) and product quality (4.1) ranked highest on a 1-5 Likert scale across eight criteria."
+              },
+              {
+                "image": "images/mesh-and-bar-round-bar-stock-lengths.png",
+                "title": "<strong>Mesh &amp; Bar - plain round bar stock</strong><br>R6, R10 and larger plain round bars listed as 6 m stock lengths. Bar processing (cut, bend, tag) shown as a separate service."
+              },
+              {
+                "image": "images/arc-r6-r10-standard-ligatures.png",
+                "title": "<strong>ARC Reinforcing - R6 and R10 standard ligatures</strong><br>Pre-formed R6 and R10 ligatures listed in multiple rectangular sizes, supplied in packs of 25."
+              },
+              {
+                "image": "images/ausreo-r10-trench-mesh-ligatures.png",
+                "title": "<strong>Ausreo - R10 trench mesh ligatures</strong><br>R10 trench mesh ligatures listed across a broad range of sizes in bundles of 10. R6 not shown in the reviewed range."
+              },
+              {
+                "image": "images/bestbar-round-rebar-stock-sizes.png",
+                "title": "<strong>Best Bar - plain round bar stock</strong><br>Round rebar listed from R10 upward in 6 m lengths. R6 not shown in the stock-size table."
+              }
+            ],
+            "dateAdded": "2026-04-02",
+            "dateReviewed": "2026-05-14",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            }
+          }
+        },
+        {
+          "name": "Bar size standardisation",
+          "available": false
+        },
+        {
+          "name": "Equipment access constraints",
+          "available": false
+        },
+        {
+          "name": "Slab depth consistency",
+          "available": false
+        },
+        {
+          "name": "Concrete grade specification",
+          "available": false
+        }
+      ]
+    },
+    {
+      "id": "methods",
+      "name": "Construction Methods",
+      "icon": "🏗️",
+      "description": "System selection, buildability, and construction feasibility",
+      "generalGuidance": [
+        "Always consider how a design will actually be built - structurally compliant designs can still be impractical to construct",
+        "Where conventional construction methods are constrained, investigate alternative systems early - changes are least costly at the design stage"
+      ],
+      "items": [
+        {
+          "name": "Off-form concrete upturns near obstructions",
+          "available": true,
+          "data": {
+            "question": "When designing concrete upturns near obstructions, what clearance is required for conventional formwork, and at what point should alternative systems be considered?",
+            "parameter": "Available clearance between upturn face and nearest obstruction (mm)",
+            "background": "Conventional off-form concrete upturns require practical access to both sides of the formwork for placement, bracing, tying, bolt-up, stripping and inspection. This assumption breaks down when upturns are positioned close to existing fences, retaining walls, boundaries or other obstructions. It would be unwise to assume that plywood pressed against an obstruction can adequately restrain wet concrete pressure, particularly for slender upturns once heights exceed approximately 600 mm. Where access to either side is limited, the designer should consider whether conventional off-form construction is feasible before committing to an off-form concrete design.",
+            "thresholds": [
+              {
+                "range": ">= 1000 mm",
+                "rating": "Good practice",
+                "color": "green",
+                "guidance": "Full access for formwork placement, bracing, bolt-up, and stripping. Both coil tie and threaded bar systems feasible."
+              },
+              {
+                "range": "700 - 1000 mm",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "Coil tie system feasible but access is tight — a person cannot comfortably work behind the upturn. Consider whether alternatives would be simpler."
+              },
+              {
+                "range": "350 - 700 mm",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Coil ties cannot be used (plywood + timbers + bolt = 700 mm minimum). Threaded bar only, tightened by reaching in at arm's length. Only for upturns/walls up to ~1200 mm high."
+              },
+              {
+                "range": "< 350 mm",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "Conventional double-sided off-form construction is unlikely to be feasible without redesign, specialist one-sided forming, temporary access from the adjacent side, or an alternative construction system."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Dincel or similar permanent formwork",
+                "description": "Permanent formwork systems can allow construction where rear-side access is not available because the formwork remains in place and does not require conventional stripping from the rear side. These systems can be rendered or finished with an acrylic coating to achieve a concrete-like appearance where required by the client."
+              },
+              {
+                "title": "Blockwork construction",
+                "description": "Blockwork may be structurally suitable depending on the wall function and design requirements. The engineer must verify structural adequacy, durability and any retaining or load-transfer requirements. Blockwork can also be rendered to match a concrete finish where aesthetics are important."
+              },
+              {
+                "title": "Reposition the wall forward",
+                "description": "The wall or upturn may be moved forward to provide adequate working clearance. This is usually only viable where the client brief, boundary constraints, architectural layout and usable floor area allow it, as walls are often placed close to boundaries for a specific reason."
+              },
+              {
+                "title": "Precast or tilt-up panels",
+                "description": "Precast or tilt-up construction may avoid the rear-side formwork access issue, but its suitability depends on project scale, crane access, site logistics and panel geometry. For larger projects with crane access this may be feasible; for smaller projects without a crane, an in-situ or permanent formwork solution may be more realistic."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to reinforced concrete upturns and walls close to a boundary, existing structure, fence or other obstruction, where conventional off-form construction may require access to both sides of the element.",
+              "checks": [
+                {
+                  "title": "Upturn height and length",
+                  "description": "A small nib and a taller wall are not the same construction problem. Taller or longer elements increase bracing demand, concrete pressure, access requirements and sequencing constraints."
+                },
+                {
+                  "title": "Adjacent land access",
+                  "description": "If the obstruction is neighbouring land and access is possible and practically available and required permissions are received, conventional formwork may remain possible. Where access is not available, even moderate clearances may be insufficient for bracing, bolt-up, stripping or inspection."
+                },
+                {
+                  "title": "Required final finish",
+                  "description": "If an off-form concrete appearance is required, alternatives such as permanent PVC formwork or blockwork may require render, acrylic coating, applied finish or architectural acceptance."
+                },
+                {
+                  "title": "Project scale and repetition",
+                  "description": "Specialist systems, precast or tilt-up options may be more practical on larger or repetitive projects than for a short isolated upturn."
+                },
+                {
+                  "title": "Regional availability",
+                  "description": "Permanent formwork systems, blockwork labour, precast suppliers, crane access and common site practices vary by region. The location tag should be considered before applying the guidance elsewhere."
+                }
+              ],
+              "note": "Use the rating as a constructability review prompt, not as a blanket prohibition on the design detail. The appropriate response is to confirm the construction method early."
+            },
+            "evidence": "Conventional formwork requires rear clearance for bracing and bolt-up access. The thresholds are derived from the physical components and working envelopes required for each tie system, cross-referenced with formwork literature (Hurd, 2005; Jha, 2012) and industry consultation.<br><br><strong>700 mm threshold (coil tie minimum)</strong><br>Plywood sheathing (18 mm) + studs and double wales (196 mm) + coil bolt length (310 mm) + hand and tool clearance (~127 mm) + working buffer (~50 mm) = ~700 mm. Below this clearance a coil tie cannot be installed and tightened.<br><br><strong>350 mm threshold (threaded Z-bar minimum)</strong><br>Plywood sheathing (18 mm) + studs and double wales (196 mm) + nut and space to work it on and off (~100 mm, approximately twice nut height to allow the nut to be threaded on and off) = ~314 mm, rounded up to 350 mm to allow practical tolerance on site. The hand drops out of the breakdown because it occupies the same envelope as the nut being tightened, and the working buffer drops out because the operator reaches in at arm's length rather than standing behind the formwork. Below 350 mm a threaded Z-bar cannot be installed and tightened from the rear side.<br><br><strong>1000 mm threshold (full working access)</strong><br>700 mm (coil tie components installed) + ~300 mm working envelope for a person to stand and work behind the formwork = ~1000 mm. Above this clearance both tie systems are feasible and the operator has comfortable working room for bracing, bolt-up, stripping and inspection.<br><br>A concrete upturn wall designed as off-form concrete near a site boundary was found to be infeasible during construction due to zero clearance behind the wall and no access to adjacent land. The design was revised to a Dincel permanent formwork system.<br><br><strong>References</strong><br>Dincel Structural Walling. (2026). Construction Manual. Dincel Structural Walling.<br>Hurd, M. K. (2005). Formwork for Concrete (7th ed.). American Concrete Institute.<br>Jha, K. N. (2012). Formwork for Concrete Structures. Tata McGraw Hill Education Private Limited.",
+            "examples": [
+              {
+                "image": "images/wall-detail-original.jpg",
+                "tag": "concern",
+                "caption": "Original design: off-form concrete upturn specified directly against the site boundary. No clearance behind for conventional formwork bracing or bolt-up access."
+              },
+              {
+                "image": "images/dincel-installation.jpg",
+                "tag": "recommended",
+                "caption": "Dincel (PVC permanent formwork) system installed to eliminate the requirement for rear bracing in a wall 1000 mm high."
+              }
+            ],
+            "supportingImages": [
+              {
+                "image": "images/formwork-literature-example.png",
+                "title": "<strong>Jha (2012) - conventional timber wall formwork</strong><br>Coil ties pass through both faces, requiring access and bracing on both sides of the wall."
+              },
+              {
+                "image": "images/formwork-ties.png",
+                "title": "<strong>Hurd (2005) - common formwork tie types</strong><br>One-piece ties snap off after stripping; internally disconnecting ties allow full removal from the concrete."
+              },
+              {
+                "image": "images/dincel-bracing-1.png",
+                "title": "<strong>Dincel (2026) - PVC permanent formwork wall panel</strong><br>Diagonal bracing connects externally, eliminating the need for rear-side access and coil ties."
+              },
+              {
+                "image": "images/formwork-bracing-1.jpg",
+                "title": "<strong>Conventional off-form wall formwork</strong><br>Timber bracing on both sides and coil ties at regular intervals."
+              },
+              {
+                "image": "images/formwork-bracing-2.jpg",
+                "title": "<strong>Formwork bracing detail</strong><br>Access and clearance required behind the wall for bracing and bolt-up."
+              },
+              {
+                "image": "images/offform-stripped.jpg",
+                "title": "<strong>Off-form concrete upturn after stripping</strong><br>Coil tie holes visible at regular intervals after formwork removal."
+              },
+              {
+                "image": "images/dincel-complete.jpg",
+                "title": "<strong>Completed Dincel wall</strong><br>No rear bracing required during construction."
+              }
+            ],
+            "dateAdded": "2026-04-02",
+            "dateReviewed": "2026-05-13",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            }
+          }
+        },
+        {
+          "name": "RC vs Post-tensioned selection",
+          "available": false
+        },
+        {
+          "name": "Pour sequencing",
+          "available": false
+        }
+      ]
+    },
+    {
+      "id": "communication",
+      "name": "Design Communication",
+      "icon": "📝",
+      "description": "Document clarity, visualisation, and coordination across stakeholders",
+      "generalGuidance": [
+        "Reinforcement callouts should be clear and concise - if a callout needs decoding, critical information may be missed",
+        "Follow consistent drawing conventions - for example, use dashed lines for elements below the section cut to avoid confusion about what is being detailed",
+        "Communicate openly with stakeholders about project deliverables and methodologies early - assumptions made in isolation often lead to constructability issues during construction"
+      ],
+      "items": [
+        {
+          "name": "Reinforcement callout clarity",
+          "available": true,
+          "data": {
+            "question": "Are reinforcement bar callouts clear enough that bar size, spacing, extent, laying order and additional reinforcement can be understood without missed or misread instructions?",
+            "parameter": "Clarity of reinforcement bar callouts, extent markers, laying order notation and extra reinforcement notes.",
+            "background": "Reinforcement callouts need to be readable by the people fixing, checking and inspecting the reinforcement. A callout may technically contain the required information, but still be poor communication if too much information is compressed into one notation string or if extra bars are not clearly separated from the standard reinforcement. This is particularly important where additional bars are required over columns, supports, slab thickenings, penetrations, openings or other local regions. If extras are buried inside the main callout or encoded into a compressed notation, they can be missed during construction. Clear callouts should show the main reinforcement, extent and extras in a way that is obvious at a glance.",
+            "thresholds": [
+              {
+                "range": "Clean callouts",
+                "rating": "Good practice",
+                "color": "green",
+                "guidance": "Bar size and spacing with extent shown on plan. Laying order noted separately in brackets where helpful, e.g. N12-200 (B1). Every element is independently readable at a glance. Extras are called out separately with their own callout and extent markers, e.g. 6N16 EXTRA."
+              },
+              {
+                "range": "No laying order",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "Bar size and spacing only, with no laying order context, e.g. N12-200. Still clear, but the reader does not know the stacking sequence without checking elsewhere."
+              },
+              {
+                "range": "Count included",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Bar count included in the callout, e.g. 10N12-200. The count is unnecessary where extent markers on the drawing already communicate where bars go. Adding the count clutters the notation without adding practical value on site."
+              },
+              {
+                "range": "Encoded notation",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "Multiple instructions are compressed into a single notation string, e.g. 13N16 10-250+3. Extras or non-standard reinforcement are buried within the notation. Critical information is easily missed and was missed during construction in a real project."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to reinforcement bar callouts on structural plans where bar size, spacing, extent, laying order and additional reinforcement need to be communicated clearly.",
+              "checks": [
+                {
+                  "title": "Callout style may vary by office",
+                  "description": "Different offices may use different reinforcement notation styles. This guidance does not require one exact notation system, but the callout should be readable without relying on compressed or hidden instructions."
+                },
+                {
+                  "title": "Extent markers remain important",
+                  "description": "Where bars or extra bars are required, the drawing should clearly show their extent using markers, zones, leaders or similar. A clean callout is only useful if the reader can also tell where the reinforcement starts and stops."
+                },
+                {
+                  "title": "Layering should be clear where it matters",
+                  "description": "Where laying order affects bar placement, the layer should be shown clearly, such as using bracketed notation like B1, rather than being buried in a compressed callout."
+                },
+                {
+                  "title": "Extras should be separately visible",
+                  "description": "Where additional reinforcement is required, the extra bars should be visually separated from the standard reinforcement callout. This reduces the risk that extras are missed because they were hidden inside the main notation."
+                }
+              ],
+              "note": "Use this entry as a communication clarity check, not as a rule that every office must use the exact same notation. The aim is to make reinforcement requirements obvious to the person reading the drawing on site."
+            },
+            "alternatives": [
+              {
+                "title": "Separate extras into their own callouts",
+                "description": "Separate extras into their own callouts on the plan with their own extent markers. For example, show N16-250 for the standard bars and a separate callout such as 3N16 EXTRA OVER COLUMNS (TYP) with its extent clearly marked."
+              },
+              {
+                "title": "Use typical notation for repeated extras",
+                "description": "Use TYPICAL notation so that repeated extras only need to be detailed once on the drawing rather than repeated at every location. This keeps the drawing cleaner while still making the extra reinforcement requirement clear."
+              },
+              {
+                "title": "Add a general note for repeated spacing rules",
+                "description": "Include a general note such as all extras evenly spaced unless noted otherwise to reduce the amount of information that needs to be conveyed in individual callouts."
+              }
+            ],
+            "evidence": "Evidence is based on practical project experience where compressed reinforcement notation caused additional reinforcement to be missed during construction. The guidance also reflects constructability review principles: reinforcement information should be easy to read, difficult to overlook and clear enough for fixing and inspection.",
+            "examples": [
+              {
+                "image": "images/callout-poor.jpg",
+                "tag": "concern",
+                "caption": "Poor notation: 13N16 10-250+3 combines total count, spacing, and extras into a single encoded string. The +3 extra bars over columns were missed during construction."
+              },
+              {
+                "image": "images/callout-clear.jpg",
+                "tag": "recommended",
+                "caption": "Clear notation: N12-200 (B1) communicates bar size, spacing, and laying order at a glance. Extras called out separately as 6N16 EXTRA with their own extent markers."
+              }
+            ],
+            "supportingImages": [],
+            "dateAdded": "2026-04-02",
+            "dateReviewed": "2026-05-13",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            }
+          }
+        },
+        {
+          "name": "Details and schedule references",
+          "available": true,
+          "data": {
+            "question": "Are details and schedule references clear enough that footing, beam or reinforcement requirements are unlikely to be misread or missed during construction?",
+            "parameter": "Location of critical dimensions and reinforcement information relative to the section/detail and governing schedule.",
+            "background": "Structural drawings often use details together with schedules to reduce drawing repetition. For example, a drawing may show a footing, edge beam or ground beam detail, while the actual dimensions and reinforcement are controlled by a schedule using a mark such as EB1. This approach is efficient because changes can be made in one schedule rather than across several details. However, schedule-based communication can create a constructability risk when the detail is read without the accompanying schedule. This is especially likely where multiple footing, beam or slab types are used. A reader may interpret the drawn detail as complete, miss the schedule reference, or apply the wrong scheduled dimensions or reinforcement. The preferred approach is not to remove schedules, but to show critical dimensions and reinforcement requirements in both locations where practical: on the detail and in the schedule. Where office convention requires schedule-only communication, the schedule should be made difficult to miss.",
+            "thresholds": [
+              {
+                "range": "Detail + schedule",
+                "rating": "Good practice",
+                "color": "green",
+                "guidance": "Critical dimensions and reinforcement requirements are shown directly on the relevant section/detail and also included in the schedule. This reduces the chance that the detail is misread while still retaining the coordination benefits of a schedule."
+              },
+              {
+                "range": "Schedule-only",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Critical dimensions or reinforcement requirements are shown only in a schedule and not on the section/detail. This can be acceptable under some office conventions, but it increases the chance that the detail is read without the governing schedule. Where schedule-only communication is used, the governing schedule should be shown on the same drawing page as the relevant detail or mark wherever practical."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies where structural elements are communicated using details, marks and schedules, including footings, edge beams, ground beams, slab thickenings, walls or other repeated details.",
+              "checks": [
+                {
+                  "title": "Schedules are not the problem",
+                  "description": "Schedules are useful and should not be removed. The issue is relying on the schedule as the only place where critical information is shown, especially when the schedule is separated from the detail or mark it controls."
+                },
+                {
+                  "title": "Office drafting conventions may limit what can be changed",
+                  "description": "Some workplaces intentionally use details and schedules because it reduces drawing duplication and makes revisions easier. An individual designer may not be able to change that convention. Where this is the case, the aim should be to make the schedule reference as clear and unavoidable as possible."
+                },
+                {
+                  "title": "Same-page schedule preferred where direct detailing is not possible",
+                  "description": "Where critical dimensions or reinforcement cannot be shown directly on the detail, the governing schedule should be shown on the same drawing page as the detail or mark it applies to wherever practical."
+                },
+                {
+                  "title": "Multiple similar marks increase risk",
+                  "description": "The risk is higher where several similar marks are used, such as EB1, because the wrong schedule line can be applied or the drawn detail can be mistaken for the complete requirement."
+                }
+              ],
+              "note": "Use the rating as a drawing coordination prompt. The goal is not to ban schedules, but to reduce the chance that a detail is constructed without the schedule information that actually controls it."
+            },
+            "alternatives": [
+              {
+                "title": "Show information in both locations where possible",
+                "description": "Show critical dimensions and reinforcement directly on the section/detail as well as in the schedule. This gives the reader the information at the point of use while still retaining the schedule for coordination."
+              },
+              {
+                "title": "Put the schedule on the same page where schedule-only is required",
+                "description": "Where office convention requires schedule-only information, place the governing schedule on the same drawing page as the relevant section/detail or mark wherever practical."
+              },
+              {
+                "title": "Make the mark obvious",
+                "description": "Clearly identify the relevant mark, such as EB1, on the plan, detail and schedule. The reader should not need to infer which schedule row applies."
+              },
+              {
+                "title": "Resolve unclear or conflicting information",
+                "description": "If the section/detail and schedule conflict, or if the mark is unclear, revise the documentation before construction rather than relying on site interpretation."
+              }
+            ],
+            "evidence": "Evidence is based on practical project experience and industry consultation, where schedule-based documentation was identified as a source of misunderstanding when the governing schedule was not clearly linked to the relevant detail or mark.",
+            "examples": [],
+            "supportingImages": [],
+            "dateAdded": "2026-05-13",
+            "dateReviewed": "2026-05-13",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            }
+          }
+        },
+        {
+          "name": "Drawing notation clarity",
+          "available": false
+        },
+        {
+          "name": "Detail sheet organisation",
+          "available": false
+        }
+      ]
     }
-  });
-  return locs;
+  ]
 }
-function itemMatchesFilter(item){
-  if(!state.locationFilter)return true;
-  if(!item.available||!item.data||!item.data.location)return !state.locationFilter;
-  const loc=item.data.location;
-  const f=state.locationFilter;
-  if(f.state)return loc.country===f.country&&loc.state===f.state;
-  return loc.country===f.country;
-}
-
-// ===== LOAD DATA =====
-async function loadData(){
-  try{
-    const resp=await fetch('data.json');
-    const data=await resp.json();
-    dimensions=data.dimensions;
-  }catch(e){
-    document.getElementById('app').innerHTML='<div class="content" style="text-align:center;padding-top:80px;color:var(--red)">Error loading framework data. Make sure data.json is in the same folder as this file.</div>';
-  }
-}
-
-// ===== RENDER =====
-function render(){
-  const app=document.getElementById('app');
-  app.innerHTML=renderHeader()+(state.view==='entry'?renderBreadcrumb()+renderEntryDetail():state.view==='dimension'?renderBreadcrumb()+renderDimensionView():renderHomeView());
-}
-
-function renderHeader(){
-  return `<div class="header"><div class="header-left"><div class="logo">C</div><div><div class="header-title">Constructability Framework</div><div class="header-sub">Design Guidance</div></div></div></div>`;
-}
-
-function renderBreadcrumb(){
-  const dim=getDim(),item=getItem();
-  let h='<div class="breadcrumb"><span class="breadcrumb-link" onclick="goHome()">Framework</span>';
-  if(dim){
-    h+='<span class="breadcrumb-sep">›</span>';
-    if(item){h+=`<span class="breadcrumb-link" onclick="goDimension('${dim.id}')">${dim.name}</span><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">${item.name}</span>`}
-    else{h+=`<span class="breadcrumb-current">${dim.name}</span>`}
-  }
-  return h+'</div>';
-}
-
-function renderHomeView(){
-  const cards=dimensions.map(d=>`<div class="dim-card" onclick="goDimension('${d.id}')"><div class="dim-icon">${d.icon}</div><div class="dim-name">${d.name}</div><div class="dim-desc">${d.description}</div><div class="dim-count">${d.items.length} items →</div></div>`).join('');
-  return `<div class="content animate-in"><div style="margin-bottom:24px"><h1 class="section-title">Framework Dimensions</h1><p class="section-desc">Select a constructability dimension to explore general guidance, design entries with threshold-based ratings, and recommended actions for design decisions.</p></div><div class="dim-grid">${cards}</div></div>`;
-}
-
-function renderDimensionView(){
-  const dim=getDim();
-  
-  // Build location filter options
-  const locs=getLocations(dim);
-  let filterHtml='';
-  if(locs.size>0){
-    let opts='<option value="">All regions</option>';
-    for(const [country,states] of locs){
-      opts+=`<option value="${country}" ${state.locationFilter&&state.locationFilter.country===country&&!state.locationFilter.state?'selected':''}>${country}</option>`;
-      for(const st of [...states].sort()){
-        const val=`${country}|${st}`;
-        opts+=`<option value="${val}" ${state.locationFilter&&state.locationFilter.state===st?'selected':''}>&nbsp;&nbsp;${st}, ${country}</option>`;
-      }
-    }
-    const matchCount=dim.items.filter(item=>itemMatchesFilter(item)).length;
-    const totalAvail=dim.items.filter(item=>item.available).length;
-    const countText=state.locationFilter?`Showing ${matchCount} of ${totalAvail} entries`:'';
-    filterHtml=`<div class="loc-filter"><div class="loc-filter-label">Region</div><select onchange="setLocationFilter(this.value)">${opts}</select><div class="loc-filter-count">${countText}</div></div>`;
-  }
-
-  const items=dim.items.map((item,i)=>{
-    const matches=itemMatchesFilter(item);
-    const hidden=state.locationFilter&&!matches&&item.available?'style="display:none"':'';
-    const cls=item.available?'item-row available':'item-row unavailable';
-    const onclick=item.available?`onclick="goEntry('${dim.id}',${i})"`:'';
-    const loc=item.available&&item.data&&item.data.location?locTag(item.data.location):'';
-    const right=item.available?`<div style="text-align:right"><div class="item-arrow">→</div>${item.data?`<div class="item-meta">Reviewed ${item.data.dateReviewed || item.data.dateAdded}</div>`:''}</div>`:'<div class="item-coming">Coming soon</div>';
-    const meta=item.available&&item.data?`<div class="item-meta">Parameter: ${item.data.parameter}</div>`:'';
-    return `<div class="${cls}" ${onclick} ${hidden}><div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><div class="item-name">${item.name}</div>${loc}</div>${meta}</div>${right}</div>`;
-  }).join('');
-
-  let guidanceHtml='';
-  if(dim.generalGuidance&&dim.generalGuidance.length>0){
-    guidanceHtml=`<div style="margin-top:20px;margin-bottom:24px;padding:18px 22px;background:var(--surface);border:1px solid var(--border);border-radius:10px;"><div class="label" style="margin-bottom:10px">General Guidance</div>${dim.generalGuidance.map(g=>`<div style="display:flex;gap:10px;margin-bottom:8px;align-items:flex-start;"><div style="color:var(--accent);font-size:14px;margin-top:1px;flex-shrink:0;">•</div><div style="font-size:13px;color:var(--text);line-height:1.6;opacity:0.9;">${g}</div></div>`).join('')}</div>`;
-  }
-
-  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">${dim.icon}</span><h1 class="dim-header-title">${dim.name}</h1></div><p class="section-desc">${dim.description}</p>${guidanceHtml}${filterHtml}<div class="label">Entries</div><div class="item-list">${items}</div></div>`;
-}
-
-function renderEntryDetail(){
-  const dim=getDim(),item=getItem(),d=item.data;
-
-  const thresholds=d.thresholds.map(t=>`<div class="threshold-band" style="background:${bgVar(t.color)};border:1px solid ${colorVar(t.color)}33;"><div class="threshold-range" style="color:${colorVar(t.color)}">${t.range}</div><div style="flex:1"><div class="threshold-rating" style="color:${colorVar(t.color)}">${t.rating}</div><div class="threshold-guidance">${t.guidance}</div></div></div>`).join('');
-
-  const alts=(d.alternatives||[]).filter(a=>a).map((a,i)=>{
-    if(typeof a==='string'){
-      return `<div class="alt-item"><div class="alt-num">${i+1}</div><div class="alt-text">${a}</div></div>`;
-    }
-    return `<div class="alt-item"><div class="alt-num">${i+1}</div><div class="alt-text"><div class="alt-title">${a.title}</div><div class="alt-desc">${a.description}</div></div></div>`;
-  }).join('');
-
-  const applicabilityHtml=d.applicability?`
-    <div class="applicability-box">
-      <div class="label" style="color:var(--yellow)">Applicability and Limitations</div>
-      ${d.applicability.appliesWhere?`<div class="applicability-text"><strong>Applies where:</strong> ${d.applicability.appliesWhere}</div>`:''}
-      ${d.applicability.checks&&d.applicability.checks.length>0?`
-        <div class="applicability-text" style="margin-bottom:8px"><strong>Check before applying this guidance:</strong></div>
-        <div class="applicability-list">
-          ${d.applicability.checks.map(c=>`<div class="applicability-item"><strong>${c.title}:</strong> ${c.description}</div>`).join('')}
-        </div>
-      `:''}
-      ${d.applicability.note?`<div class="applicability-text" style="margin-top:12px;margin-bottom:0"><strong>Note:</strong> ${d.applicability.note}</div>`:''}
-    </div>
-  `:'';
-
-  const notesHtml=d.additionalNotes?`<div style="margin-top:12px;padding:12px 16px;background:var(--surface-light);border:1px solid var(--border);border-radius:6px;"><div style="font-size:10px;font-weight:700;color:var(--yellow);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Note</div><div style="font-size:13px;color:var(--text);line-height:1.6;opacity:0.85;">${d.additionalNotes}</div></div>`:'';
-
-  const workedExampleHtml=d.workedExample?(()=>{
-    const we=d.workedExample;
-    const tableHtml=we.tableHeaders&&we.tableRows?`<table class="worked-example-table"><thead><tr>${we.tableHeaders.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${we.tableRows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>`:'';
-    const assumptionsHtml=we.assumptions&&we.assumptions.length>0?`<div class="worked-example-assumptions"><div class="worked-example-assumptions-title">${we.assumptionsTitle||'How these numbers were derived'}</div><ul>${we.assumptions.map(a=>`<li>${a}</li>`).join('')}</ul>${we.assumptionsNote?`<div class="worked-example-assumptions-note">${we.assumptionsNote}</div>`:''}</div>`:'';
-    return `<div class="worked-example-box"><div class="worked-example-title">${we.title||'Worked example'}</div>${we.headline?`<div class="worked-example-headline">${we.headline}</div>`:''}${tableHtml}${we.howToUse?`<div class="worked-example-howto"><strong>How to use it:</strong> ${we.howToUse}</div>`:''}${assumptionsHtml}</div>`;
-  })():'';
-
-  const examplesHtml=d.examples&&d.examples.length>0?`<div style="margin-top:28px"><div class="label">Examples</div><div class="examples-grid">${d.examples.map(ex=>`<div class="example-card">${ex.image?`<img src="${ex.image}" alt="${ex.caption}" onclick="openLightbox('${ex.image}')">`:''}<div class="example-caption"><div class="example-tag ${ex.tag}">${ex.tag==='concern'?'Concern':ex.tag==='acceptable'?'Acceptable':'Recommended'}</div><div class="example-desc">${ex.caption}</div></div></div>`).join('')}</div></div>`:'';
-
-  const supportingImagesHtml=d.supportingImages&&d.supportingImages.length>0?`<div style="margin-top:20px"><div class="label">Supporting Images</div><div class="supporting-images-grid">${d.supportingImages.map(sp=>`<div class="supporting-image-card">${sp.image?`<img src="${sp.image}" alt="${sp.title}" onclick="openLightbox('${sp.image}')">`:''}<div class="supporting-image-title">${sp.title}</div></div>`).join('')}</div></div>`:'';
-
-  return `<div class="content animate-in">
-    <div class="back-link" onclick="goDimension('${dim.id}')">← Back to ${dim.name}</div>
-    <div class="entry-title">${item.name}</div>
-    <div class="entry-meta">Dimension: ${dim.name} · Reinforced Concrete ${d.location?' · '+locTag(d.location):''}</div>
-    <div class="question-box"><div class="label label-accent">Design Question</div><div class="question-text">${d.question}</div></div>
-    ${d.background?`<div class="label">Background</div><div class="consideration-text">${d.background}</div>`:''}
-    <div class="param-box"><div class="label">Design Parameter</div><div class="param-value">${d.parameter}</div></div>
-    <div class="label">Design Guidance</div><div class="threshold-list" style="margin-top:10px">${thresholds}</div>
-    ${notesHtml}
-    ${workedExampleHtml}
-    ${applicabilityHtml}
-    ${alts.length>0?`<div class="label" style="margin-top:28px">Recommended Actions</div><div class="alt-list" style="margin-top:10px">${alts}</div>`:''}
-    ${d.evidence?`<div class="evidence-box"><div class="label">Evidence Basis</div><div class="evidence-text">${d.evidence}</div></div>`:''}
-    ${examplesHtml}
-    ${supportingImagesHtml}
-    <div class="date-stamp"><div><div class="date-label">Entry Added</div><div class="date-value">${d.dateAdded}</div></div><div><div class="date-label">Last Reviewed</div><div class="date-value">${d.dateReviewed}</div></div></div>
-  </div>`;
-}
-
-// ===== LIGHTBOX =====
-function openLightbox(src){const lb=document.createElement('div');lb.className='lightbox';lb.onclick=()=>lb.remove();lb.innerHTML=`<img src="${src}">`;document.body.appendChild(lb)}
-
-// ===== HASH-BASED NAVIGATION =====
-function goHome(){window.location.hash=''}
-function goDimension(id){state.locationFilter=null;window.location.hash=id}
-function goEntry(dimId,idx){window.location.hash=dimId+'/'+idx}
-function setLocationFilter(val){
-  if(!val){state.locationFilter=null}
-  else if(val.includes('|')){const[c,s]=val.split('|');state.locationFilter={country:c,state:s}}
-  else{state.locationFilter={country:val}}
-  render();
-}
-
-function parseHash(){
-  const hash=window.location.hash.replace(/^#\/?/,'');
-  if(!hash){state.view='home';state.dimId=null;state.itemIndex=null;state.locationFilter=null;}
-  else if(hash.includes('/')){
-    const[dimId,idx]=hash.split('/');
-    state.view='entry';state.dimId=dimId;state.itemIndex=parseInt(idx,10);
-  }else{
-    state.view='dimension';state.dimId=hash;state.itemIndex=null;state.locationFilter=null;
-  }
-}
-
-window.addEventListener('hashchange',()=>{parseHash();render()});
-
-// ===== INIT =====
-async function init(){
-  await loadData();
-  parseHash();
-  render();
-}
-init();
-</script>
-</body>
-</html>
