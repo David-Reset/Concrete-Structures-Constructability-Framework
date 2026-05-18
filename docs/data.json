@@ -263,33 +263,52 @@
           "data": {
             "question": "When a slab requires a top setdown, should the adjacent slab zone be locally thickened to maintain a flat soffit instead of creating a soffit fold?",
             "parameter": "Top setdown depth causing soffit fold (mm)",
-            "background": "Top setdowns are often required for wet areas, balconies, falls, thresholds, waterproofing build-ups or finishes. The constructability issue is not the top setdown itself. The issue occurs when the slab thickness is kept constant through the setdown, creating a matching step in the soffit. That soffit step becomes a small fold and can introduce additional formwork work, bracing changes, reinforcement variation, inspection requirements and coordination. Where the top setdown is minor, the more constructable option may be to keep the required top setdown but locally thicken the adjacent higher slab zone so the soffit remains flat.",
+            "background": "Formwork is roughly 49% of concrete-structure labour; concrete operations are roughly 11% (Löfgren et al., 2001). Where a required top setdown could be retained but the matching soffit fold could be avoided by locally thickening the slab, the avoided formwork is usually worth more than the added concrete.<br><br>Top setdowns are often required for wet areas, balconies, falls, thresholds, waterproofing build-ups or finishes. The constructability issue is not the top setdown itself; it is what happens when the slab thickness is kept constant through the setdown, creating a matching step in the soffit. That step becomes a small fold and introduces additional formwork, bracing, reinforcement variation and inspection. Where the top setdown is minor, keeping the soffit flat by locally thickening the adjacent slab zone is usually the simpler construction outcome, and the question is whether the added concrete volume is reasonable.",
             "thresholds": [
               {
                 "range": "Flat soffit maintained",
                 "rating": "Good practice",
                 "color": "green",
-                "guidance": "Preferred where structurally and functionally acceptable. The required top setdown is retained, but the adjacent higher slab zone is thickened so the soffit remains flat. This avoids a soffit fold and simplifies formwork and reinforcement detailing."
+                "guidance": "Preferred outcome where structurally and functionally acceptable. The required top setdown is retained, but the adjacent higher slab zone is locally thickened so the soffit stays flat. Formwork and reinforcement detailing remain simple and the constructability question is resolved at the design stage."
               },
               {
                 "range": "<= 50 mm",
                 "rating": "Consider",
                 "color": "yellow",
-                "guidance": "Minor top setdown. Local thickening should be actively considered because it can retain the required top setdown while avoiding a shallow soffit fold. Use the indicative break-even sense-check below to compare added concrete against avoided formwork labour."
+                "guidance": "Minor soffit fold. Local thickening should be actively considered because it can retain the required top setdown while avoiding a shallow soffit fold. Use the rule of thumb in the worked example below (about 0.6 m³ of concrete per lineal metre of avoided 50 mm fold) to compare added concrete against avoided formwork. Where the added concrete is below this value, flat soffit is the better outcome."
               },
               {
                 "range": "50 - 150 mm",
                 "rating": "Concern",
                 "color": "orange",
-                "guidance": "Quantify the trade-off before deciding. Local thickening may still be reasonable for small areas or awkward folds, but added concrete volume, self-weight and reinforcement implications become more important. Compare the flat-soffit option against forming the fold."
+                "guidance": "Quantify the trade-off before deciding. Local thickening may still be reasonable for small areas or awkward folds, but added concrete volume, self-weight and reinforcement implications become more significant in this range. The break-even rises with depth (see worked example: about 1.2 m³/lm at 150 mm). Compare the flat-soffit option against forming the fold using project-specific rates where available."
               },
               {
                 "range": "> 150 mm",
                 "rating": "Action required",
                 "color": "red",
-                "guidance": "Treat as a significant fold or slab depth transition. Local thickening may still be possible in isolated areas, but should not be assumed. Consider forming the fold or using an alternative construction method such as separate pours, blockwork, permanent formwork or a revised slab arrangement."
+                "guidance": "Beyond this depth the question is no longer flat soffit vs minor fold; it is how the fold itself is built. Refer to the <em>Suspended slab level changes (folds)</em> entry for guidance on monolithic forming, blockwork or permanent formwork with separate pours."
               }
             ],
+            "workedExample": {
+              "title": "Rule of thumb — avoided fold vs added concrete",
+              "headline": "For a 50 mm soffit fold, keeping the soffit flat is worth it if it adds less than about <strong>0.6 m³ of concrete per lineal metre</strong> of avoided fold. For a 150 mm fold, the break-even is about <strong>1.2 m³/lm</strong>.",
+              "tableHeaders": ["Soffit fold depth", "Assumed productivity", "Break-even working value"],
+              "tableRows": [
+                ["50 mm", "10 lm/day", "0.6 m³ concrete per lm of avoided fold"],
+                ["150 mm", "5 lm/day", "1.2 m³ concrete per lm of avoided fold"]
+              ],
+              "howToUse": "Use 0.6 m³/lm for a 50 mm fold and 1.2 m³/lm for a 150 mm fold. For depths in between, interpolate. For example, 10 lm of 50 mm soffit fold is roughly equivalent to 10 × 0.6 = 6.0 m³ of concrete. If keeping the soffit flat adds less than that, local thickening is worth serious consideration.",
+              "assumptionsTitle": "How these numbers were derived",
+              "assumptions": [
+                "Formwork crew of 2 at $1,500–$2,000/day",
+                "Formwork material, fixings, consumables and waste: +10% (total $1,650–$2,200/day)",
+                "Concrete rate: $320/m³",
+                "Soffit fold productivity: 10 lm/day at 50 mm depth; 5 lm/day at 150 mm depth",
+                "Excluded: GST, reinforcement changes, pumping, finishing, programme impacts, site-specific access"
+              ],
+              "assumptionsNote": "Rough first-pass values based on site-experience assumptions. Replace with project-specific rates where actual pricing is available."
+            },
             "alternatives": [
               {
                 "title": "Locally thicken the slab to maintain a flat soffit",
@@ -314,10 +333,6 @@
                 {
                   "title": "Structural and detailing effects remain controlling",
                   "description": "Local thickening must still satisfy structural design requirements, including added self-weight, deflection, punching or shear effects where relevant, reinforcement cover, laps, anchorage, congestion and concrete placement."
-                },
-                {
-                  "title": "Indicative break-even sense-check",
-                  "description": "These numbers are rough only and are based on site-experience assumptions. They are included to give the engineer a first-pass feel for the trade-off between added concrete and avoided soffit-fold formwork. They should be replaced with project-specific rates where actual pricing is available.<br><br><strong>Assumptions used</strong><ul><li>Formwork crew: 2 formworkers.</li><li>Crew cost: $1,500-$2,000/day.</li><li>Formwork material, fixings, consumables and waste allowance: +10%.</li><li>Total indicative formwork allowance: $1,650-$2,200/day.</li><li>Concrete rate: $320/m3.</li><li>50 mm soffit fold productivity: 10 lineal metres/day.</li><li>150 mm soffit fold productivity: 5 lineal metres/day.</li><li>GST, reinforcement changes, pumping, finishing, programme impacts and site-specific access constraints are excluded.</li></ul><br><strong>Resulting working values</strong><table style=\"width:100%;border-collapse:collapse;margin-top:8px;margin-bottom:10px\"><tr><th style=\"text-align:left;border:1px solid #2a3548;padding:6px\">Soffit fold depth</th><th style=\"text-align:left;border:1px solid #2a3548;padding:6px\">Assumed productivity</th><th style=\"text-align:left;border:1px solid #2a3548;padding:6px\">Simple working value</th></tr><tr><td style=\"border:1px solid #2a3548;padding:6px\">50 mm</td><td style=\"border:1px solid #2a3548;padding:6px\">10 lm/day</td><td style=\"border:1px solid #2a3548;padding:6px\">0.6 m3 concrete per lm of avoided fold</td></tr><tr><td style=\"border:1px solid #2a3548;padding:6px\">150 mm</td><td style=\"border:1px solid #2a3548;padding:6px\">5 lm/day</td><td style=\"border:1px solid #2a3548;padding:6px\">1.2 m3 concrete per lm of avoided fold</td></tr></table><strong>How to use it</strong><br>Use 0.6 m3/lm for a 50 mm fold and 1.2 m3/lm for a 150 mm fold. For depths between 50 mm and 150 mm, interpolate between the two values. For example, 10 lm of 50 mm soffit fold is roughly equivalent to 10 x 0.6 = 6.0 m3 of concrete. If keeping the soffit flat adds less than roughly 6.0 m3 of concrete, local thickening is worth serious consideration."
                 }
               ],
               "note": "Use the rating as a constructability review prompt, not as a blanket rule. The intent is not to remove required top setdowns; it is to avoid creating unnecessary soffit folds where a modest increase in slab thickness would produce a simpler construction outcome."
