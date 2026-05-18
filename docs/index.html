@@ -82,6 +82,22 @@
   .applicability-list{display:flex;flex-direction:column;gap:8px}
   .applicability-item{font-size:13px;color:var(--text);line-height:1.6;opacity:0.9}
   .applicability-item strong{color:var(--text)}
+  .applicability-item ul{padding-left:22px;margin:8px 0}
+  .applicability-item li{margin-bottom:6px}
+
+  .worked-example-box{margin-top:8px;margin-bottom:28px;padding:18px 22px;background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.25);border-left:3px solid var(--accent);border-radius:0 8px 8px 0}
+  .worked-example-title{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px}
+  .worked-example-headline{font-size:14px;font-weight:600;color:var(--text);line-height:1.6;margin-bottom:14px}
+  .worked-example-table{width:100%;border-collapse:collapse;margin:10px 0 14px;font-size:13px}
+  .worked-example-table th{text-align:left;padding:8px 10px;background:var(--surface-light);border:1px solid var(--border);color:var(--text);font-weight:700;font-size:12px}
+  .worked-example-table td{padding:8px 10px;border:1px solid var(--border);color:var(--text);opacity:0.9}
+  .worked-example-howto{font-size:13px;color:var(--text);line-height:1.6;opacity:0.9;margin-bottom:4px}
+  .worked-example-howto strong{color:var(--text);opacity:1}
+  .worked-example-assumptions{margin-top:16px;padding-top:14px;border-top:1px solid rgba(59,130,246,0.18)}
+  .worked-example-assumptions-title{font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+  .worked-example-assumptions ul{padding-left:20px;margin:6px 0;list-style:disc}
+  .worked-example-assumptions li{font-size:12px;color:var(--text);line-height:1.55;opacity:0.75;margin-bottom:4px}
+  .worked-example-assumptions-note{font-size:12px;color:var(--text-muted);line-height:1.55;margin-top:8px;font-style:italic}
 
   .evidence-box{padding:14px 18px;background:var(--surface-light);border-radius:8px;border:1px solid var(--border)}
   .evidence-text{font-size:13px;color:var(--text);line-height:1.6;opacity:0.8}
@@ -269,6 +285,13 @@ function renderEntryDetail(){
 
   const notesHtml=d.additionalNotes?`<div style="margin-top:12px;padding:12px 16px;background:var(--surface-light);border:1px solid var(--border);border-radius:6px;"><div style="font-size:10px;font-weight:700;color:var(--yellow);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Note</div><div style="font-size:13px;color:var(--text);line-height:1.6;opacity:0.85;">${d.additionalNotes}</div></div>`:'';
 
+  const workedExampleHtml=d.workedExample?(()=>{
+    const we=d.workedExample;
+    const tableHtml=we.tableHeaders&&we.tableRows?`<table class="worked-example-table"><thead><tr>${we.tableHeaders.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${we.tableRows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>`:'';
+    const assumptionsHtml=we.assumptions&&we.assumptions.length>0?`<div class="worked-example-assumptions"><div class="worked-example-assumptions-title">${we.assumptionsTitle||'How these numbers were derived'}</div><ul>${we.assumptions.map(a=>`<li>${a}</li>`).join('')}</ul>${we.assumptionsNote?`<div class="worked-example-assumptions-note">${we.assumptionsNote}</div>`:''}</div>`:'';
+    return `<div class="worked-example-box"><div class="worked-example-title">${we.title||'Worked example'}</div>${we.headline?`<div class="worked-example-headline">${we.headline}</div>`:''}${tableHtml}${we.howToUse?`<div class="worked-example-howto"><strong>How to use it:</strong> ${we.howToUse}</div>`:''}${assumptionsHtml}</div>`;
+  })():'';
+
   const examplesHtml=d.examples&&d.examples.length>0?`<div style="margin-top:28px"><div class="label">Examples</div><div class="examples-grid">${d.examples.map(ex=>`<div class="example-card">${ex.image?`<img src="${ex.image}" alt="${ex.caption}" onclick="openLightbox('${ex.image}')">`:''}<div class="example-caption"><div class="example-tag ${ex.tag}">${ex.tag==='concern'?'Concern':ex.tag==='acceptable'?'Acceptable':'Recommended'}</div><div class="example-desc">${ex.caption}</div></div></div>`).join('')}</div></div>`:'';
 
   const supportingImagesHtml=d.supportingImages&&d.supportingImages.length>0?`<div style="margin-top:20px"><div class="label">Supporting Images</div><div class="supporting-images-grid">${d.supportingImages.map(sp=>`<div class="supporting-image-card">${sp.image?`<img src="${sp.image}" alt="${sp.title}" onclick="openLightbox('${sp.image}')">`:''}<div class="supporting-image-title">${sp.title}</div></div>`).join('')}</div></div>`:'';
@@ -282,6 +305,7 @@ function renderEntryDetail(){
     <div class="param-box"><div class="label">Design Parameter</div><div class="param-value">${d.parameter}</div></div>
     <div class="label">Design Guidance</div><div class="threshold-list" style="margin-top:10px">${thresholds}</div>
     ${notesHtml}
+    ${workedExampleHtml}
     ${applicabilityHtml}
     ${alts.length>0?`<div class="label" style="margin-top:28px">Recommended Actions</div><div class="alt-list" style="margin-top:10px">${alts}</div>`:''}
     ${d.evidence?`<div class="evidence-box"><div class="label">Evidence Basis</div><div class="evidence-text">${d.evidence}</div></div>`:''}
