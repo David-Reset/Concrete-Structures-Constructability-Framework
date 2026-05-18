@@ -291,14 +291,15 @@
               }
             ],
             "workedExample": {
-              "title": "Rule of thumb — avoided fold vs added concrete",
-              "headline": "For a 50 mm soffit fold, keeping the soffit flat is worth it if it adds less than about <strong>0.6 m³ of concrete per lineal metre</strong> of avoided fold. For a 150 mm fold, the break-even is about <strong>1.2 m³/lm</strong>.",
+              "title": "Indicative rule of thumb — for consideration only",
+              "caveat": "Numbers below are based on assumed crew rates and typical productivity. They are intended as a first-pass sense-check to support engineering judgement, not a binding rule. Project conditions, pricing, programme or site-specific buildability constraints may justify a different conclusion.",
+              "headline": "For a 50 mm soffit fold, the break-even is about <strong>0.6 m³ of concrete per lineal metre</strong> of avoided fold. For a 150 mm fold, it is about <strong>1.2 m³/lm</strong>. For depths in between, interpolate linearly between these values.",
               "tableHeaders": ["Soffit fold depth", "Assumed productivity", "Break-even working value"],
               "tableRows": [
                 ["50 mm", "10 lm/day", "0.6 m³ concrete per lm of avoided fold"],
                 ["150 mm", "5 lm/day", "1.2 m³ concrete per lm of avoided fold"]
               ],
-              "howToUse": "Use 0.6 m³/lm for a 50 mm fold and 1.2 m³/lm for a 150 mm fold. For depths in between, interpolate. For example, 10 lm of 50 mm soffit fold is roughly equivalent to 10 × 0.6 = 6.0 m³ of concrete. If keeping the soffit flat adds less than that, local thickening is worth serious consideration.",
+              "howToUse": "Multiply the per-metre break-even by the fold length to get the total break-even concrete volume. <strong>If keeping the soffit flat adds an amount of concrete less than or equal to the break-even, local thickening is the more constructable choice.</strong><br><br><em>Worked examples (10 lm of soffit fold each):</em><ul><li><strong>50 mm fold:</strong> 10 × 0.6 = 6.0 m³ break-even. If flat-soffit thickening adds ≤ 6.0 m³, thicken.</li><li><strong>150 mm fold:</strong> 10 × 1.2 = 12.0 m³ break-even. If flat-soffit thickening adds ≤ 12.0 m³, thicken.</li><li><strong>90 mm fold (interpolated):</strong> per-metre value = 0.6 + (40 ÷ 100) × (1.2 − 0.6) = <strong>0.84 m³/lm</strong>; total break-even = 10 × 0.84 = 8.4 m³. If flat-soffit thickening adds ≤ 8.4 m³, thicken.</li></ul>Between 50 mm and 150 mm the break-even rises at about 0.06 m³/lm for every 10 mm of additional fold depth.",
               "assumptionsTitle": "How these numbers were derived",
               "assumptions": [
                 "Formwork crew of 2 at $1,500–$2,000/day",
