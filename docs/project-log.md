@@ -4,7 +4,7 @@ Running log of project progress, decisions, and key discussions. Updated after e
 
 ---
 
-## Week 2 — 04 March 2026
+## Week 1 — 04 March 2026
 
 **Meeting:** David Harvey, Kazem Ghabraie | MSTeams, 10am
 
@@ -97,20 +97,224 @@ Running log of project progress, decisions, and key discussions. Updated after e
 
 ---
 
-## Weeks 5–11 — Summary of ongoing progress
+## Week 5 — 01 April 2026
 
-*Note: detailed fortnightly progress updates were submitted through the unit's progress update system. This log will continue with weekly entries from this point forward.*
+**Meeting:** David Harvey, Kazem Ghabraie | Zoom, 10am
 
-Key milestones completed during this period:
-- AT1 (Initial Proposal) submitted — Week 5
-- Framework concept refined and five dimensions confirmed
-- Informal stakeholder engagement commenced
-- AT2 (Oral Presentation) delivered — Week 9
-- Framework feasibility demonstrated through worked examples (slab fold, wall clearance, stirrup availability, reinforcement callout clarity)
-- Website interface developed and deployed on GitHub Pages
-- Contribution mechanism established (Google Forms for new entries and edit suggestions)
-- Regional location tagging (country and state) added to framework architecture
-- Date stamping (submitted and reviewed) added to all entries
+**Discussed:**
+- Refinement of the project proposal and visual framework.
+- Terminology change from **Material Availability** to **Logistics**, because the dimension needed to cover broader supply, access, equipment and procurement issues rather than only whether a material exists.
+- Application of the framework across different project sizes, including small residential-style examples such as driveways and stairs.
+- Use of risk-assessment style thinking for comparing design alternatives.
+- Need for the framework to evolve as construction practices, labour markets, technology and regional practices change.
+
+**Decisions:**
+- Rename the framework dimension from **Material Availability** to **Logistics**.
+- Treat the framework as dynamic and updateable rather than a fixed checklist.
+- Include small and medium project examples in the presentation to show that constructability issues occur outside large commercial projects.
+
+**Actions:**
+- Update the framework diagram and written material to use **Logistics** instead of **Material Availability** (DH).
+- Explore a risk-assessment / rating chart approach for evaluating constructability alternatives (DH).
+- Add project-scale examples to the presentation (DH).
+- Explain how the framework can evolve over time as construction methods change (DH).
+
+---
+
+## Week 6 — 08 April 2026
+
+**Meeting:** David Harvey, Kazem Ghabraie | Zoom, 10am
+
+**Discussed:**
+- Root-cause classification as the rule for entering problems into the framework.
+- The off-form concrete wall / upturn near obstruction example, including how the same issue could appear to involve logistics, detailing and safety, but should be classified by its primary root cause.
+- Development of a four-level rating structure: **Good practice**, **Consider**, **Concern**, and **Action required**.
+- Website prototype hosted through GitHub, with entries rendered as a practical online framework rather than as a static document.
+- Form-based contribution and edit system so future contributors can submit new entries without needing direct coding access.
+- Need to demonstrate one coded entry for each of the five framework dimensions for the oral presentation.
+
+**Decisions:**
+- Use root-cause classification so each entry sits in one primary framework dimension.
+- Use four threshold / rating bands across entries, while allowing different kinds of evidence depending on the entry.
+- Continue developing the framework as a GitHub-hosted web resource with a contribution pathway.
+
+**Actions:**
+- Write the root-cause classification rationale for the off-form concrete wall / upturn entry (DH).
+- Finalise and tune clearance threshold numbers for the off-form concrete wall / upturn entry, ideally with site personnel input where possible (DH).
+- Complete one fully coded framework entry for each dimension: Safety in Design, Detailing, Logistics, Construction Methods and Design Communication (DH).
+- Finalise research methodology details, including interview approach and target participants (DH).
+- Host the framework website on GitHub as a public repository (DH).
+- Write contributor instructions for the GitHub repository, including how entries and images are to be added (DH).
+- Include a visual summary of the five framework dimensions in the written report (DH).
+
+---
+
+## Week 7 — 15 April 2026
+
+**Meeting:** David Harvey, Kazem Ghabraie | Zoom, 10am
+
+**Discussed:**
+- GitHub repository demonstration, including separated code files, README material, regional information and framework data handling.
+- Populating framework entries with supporting literature and supplier evidence.
+- Copyright concerns around using images, drawings and figures from published construction references.
+- Form-based entry and edit system for future framework contributors.
+- Assignment 2 presentation planning, including a live demonstration of the GitHub platform.
+- Formal interview direction for SEJ446, including builders, contractors and engineers.
+
+**Decisions:**
+- Avoid relying on copyrighted book images unless use is cleared; recreate drawings or use publicly available / self-produced material where possible.
+- Keep the live website demonstration as a central part of the presentation because it shows feasibility more directly than slides alone.
+- Continue developing framework entries with explicit literature, supplier or project-experience support.
+
+**Actions:**
+- Follow up with copyright officers regarding use of book images and published drawings (DH / KG).
+- Send the draft presentation to Kazem for review (DH).
+- Practise the presentation timing to fit the 10-minute limit (DH).
+- Complete literature backing for five entries, one per dimension, for the SEJ441 presentation (DH).
+- Continue preparing formal interviews with builders, contractors and engineers for SEJ446 (DH).
+
+---
+
+## Week 8 — 23 April 2026
+
+**Meeting:** David Harvey, Kazem Ghabraie | Zoom, 10am
+
+**Discussed:**
+- Literature research progress for the five framework entries, with copyright considerations in mind.
+- Whether the five framework dimensions are comprehensive across all construction types or shaped specifically by reinforced concrete.
+- Possible future expansion of the framework beyond reinforced concrete to structural steel and timber.
+- Engineering ethics framing — present the Code of Ethics as a positive professional responsibility rather than as an obligation that engineers overlook.
+- Presentation refinements: simplify slides, introduce the framework earlier, demonstrate the platform live, prepare notes and rehearse.
+
+**Decisions:**
+- Keep the current project scope focused on reinforced concrete, while acknowledging that the framework structure could later be expanded to other materials.
+- Present the framework as material-agnostic in concept but demonstrated through reinforced concrete during SEJ441 / SEJ446.
+- Reframe the ethics discussion around professional duty, continuous learning and the responsibility to use engineering knowledge for community benefit.
+
+**Actions:**
+- Research literature on the five constructability dimensions and whether they extend beyond reinforced concrete (DH).
+- Remove unnecessary slides and demonstrate the framework online during the feasibility section (DH).
+- Reframe the ethics section around professional responsibility under the Engineers Australia Code of Ethics (DH).
+- Consider moving ethics content earlier in the presentation (DH).
+- Prepare presentation notes and rehearse multiple times before delivery (DH).
+
+---
+
+## Week 8 — 29 April 2026
+
+**Meeting:** David Harvey, Kazem Ghabraie | Zoom, 10am
+
+**Discussed:**
+- Full practice run of the SEJ441 academic justification presentation.
+- Copyright concerns regarding engineering drawings and the need to recreate originals or use clearly permissible public / self-produced content.
+- Need to introduce the five framework dimensions earlier in the presentation.
+- Need to avoid language suggesting the methodology is still being developed when the approach has already been established.
+- Anticipated panel questions on website functionality, the link between construction statistics and the framework, and the SEJ446 interview approach.
+- SEJ446 interview cohort confirmed in principle: three contractors and five engineers.
+
+**Decisions:**
+- Recreate engineering drawings where possible rather than copying directly from protected sources.
+- Revise presentation flow so the project aim and five framework dimensions are clear before the feasibility demonstration.
+- Present the project plan as specific remaining tasks, not as vague ongoing methodology work.
+
+**Actions:**
+- Double-check copyright rules for publicly available engineering drawings with Astrid (DH).
+- Recreate drawings rather than copy directly (DH).
+- Complete the academic justification work while avoiding copyrighted material where possible (DH).
+- Add a clear explanation of the five framework dimensions to the presentation (DH).
+- Read the project aim fully during the presentation (DH).
+- Revise the project plan slide to focus on specific tasks (DH).
+- Prepare answers about website functionality, incident statistics, and the interview approach (DH).
+- Give another practice presentation to Kazem before the Friday deadline (DH).
+
+---
+
+## Week 9 — 06 May 2026
+
+**Meeting:** David Harvey, Kazem Ghabraie | Zoom, 10am
+
+**Discussed:**
+- Final preparation for the SEJ441 academic justification presentation.
+- Presentation feedback process — written panel feedback will be the primary document for the academic justification, rather than AI-captured notes.
+- Framework updates already made for the presentation: explanations of the five dimensions added and content trimmed to fit the 10-minute window.
+- Framework intent — the aim is for engineers to internalise the five constructability dimensions, not only to consult the framework after a problem appears.
+- Importance of constructability in design practice, including how poor design quality can lead to designs being rejected or repriced.
+- Communication failures between engineers and builders, including practical site examples from David's experience.
+- Engineering Code of Ethics — continuous learning and stepping outside the comfort zone as part of professional duty.
+- Academic justification framing — treat it as a “tender” document that demonstrates the framework's value.
+
+**Decisions:**
+- Use written panel feedback as the authoritative feedback source for the academic justification.
+- Frame the academic justification around demonstrating value and feasibility, not simply describing completed work.
+- Keep the framework intent focused on improving design thinking and questioning behaviour.
+
+**Actions:**
+- Make notes during the presentation when markers provide feedback (DH).
+- Rehearse again on Thursday and Friday morning before the presentation (DH).
+- Start the academic justification immediately after the presentation is complete (DH).
+- Let Kazem know how the presentation went (DH).
+- Reschedule the next meeting to Tuesday 12 May due to Kazem's conflict (KG / DH).
+
+---
+
+## Week 10 — 12 May 2026
+
+**Meeting:** David Harvey, Kazem Ghabraie | Zoom, 10am
+
+**Discussed:**
+- Addition of **Applicability and limitations** sections to framework entries, especially where professional judgement applies and thresholds are not absolute rules.
+- Suggested ordering change: place **Applicability and limitations** before **Recommended actions** so users understand when the entry applies before choosing a response.
+- Specific framework updates to the off-form upturn / rear clearance entry, including applicability and limitations for upturn height and rear clearance requirements.
+- Ethical considerations for SEJ446 interviews — confirm whether formal Deakin ethics approval or exemption is required before scheduling interviews.
+- Open-source licensing for the framework, including separate treatment of code and content.
+- Academic justification structure — three main knowledge inputs: literature, project outcomes and construction input, with feasibility as the highest-weighted section.
+- Target audience refined as experienced design engineers with limited site experience.
+- CPD / “lunch and learn” possibilities through Engineers Australia.
+- Site observation on structural steel detailing: columns may need to avoid continuity stiffeners until beams are installed, because premature stiffeners can prevent assembly; also discussed timber connection detailing as a parallel future-framework example.
+
+**Decisions:**
+- Add **Applicability and limitations** to all existing framework entries.
+- Move **Applicability and limitations** before **Recommended actions** in the entry structure.
+- Make it clear that ratings and thresholds are review prompts, not automatic prohibitions.
+- Maintain separate licences for the code and content. Final documented position: code under **AGPL-3.0** and framework content under **CC BY-SA 4.0**, so both remain open and copyleft.
+- Prioritise the academic justification feasibility section and integrate written panel feedback directly into the report.
+
+**Actions:**
+- Update the entry template and all existing entries to include **Applicability and limitations** before **Recommended actions** (DH).
+- Review licensing options and document the final licensing position clearly in the README / licence files (DH).
+- Send remaining portfolio documents to Kazem for signature (DH).
+- Continue drafting the academic justification, focusing first on the feasibility section and response to feedback (DH).
+- Send updated licensing documentation to Kazem for review (DH).
+- Confirm ethics approval / exemption requirements for SEJ446 interviews through the appropriate Deakin process (KG / DH).
+- Explore potential Engineers Australia CPD opportunities for the framework (KG).
+
+---
+
+## Week 11 — 19 May 2026
+
+**Project update / document consolidation:** Academic justification, project management portfolio and framework documentation refinement.
+
+**Discussed / developed:**
+- Consolidated the response to presentation feedback in the academic justification.
+- Added **Applicability and limitations** as a standard field in the framework entry template, alongside design question, background, design parameter, threshold bands, recommended actions and evidence basis.
+- Strengthened the explanation that threshold bands are evidence-informed review prompts rather than pass/fail compliance rules.
+- Explicitly positioned the framework against BIM and AI: the framework is complementary because it prompts the engineer to ask the right constructability question, while BIM and AI typically detect, score, generate or evaluate after inputs are supplied.
+- Expanded the feasibility study around five preliminary entries: reinforcement mat fall-through risk, stirrup bar size availability, off-form concrete upturns near obstructions, suspended slab level changes / folds, and reinforcement callout clarity.
+- Strengthened the SEJ446 methodology with contractor and designer consultation templates mapped to framework fields.
+- Added planned future platform improvements, including entry-level feedback buttons and structured forms for “useful”, “needs review”, “suggest an edit” or “submit a project example”.
+- Reconfirmed the limitations of the current project stage: preliminary entries, regional applicability, variable evidence quality and need for validation through SEJ446 consultation.
+
+**Decisions:**
+- Treat the existing framework as a feasibility-stage prototype with preliminary entries, not a fully validated design standard.
+- Keep all entries transparent about evidence basis, region, limitations and professional judgement requirements.
+- Use SEJ446 to test threshold realism with contractors and usability with design engineers before expanding the framework further.
+- Retain reviewed contribution rather than open comments, so submitted project examples and feedback can be checked for quality, anonymity and confidentiality before inclusion.
+
+**Actions:**
+- Finalise the academic justification with the updated framework structure and feedback response (DH).
+- Ensure the project management portfolio aligns with the current framework architecture, licensing position, consultation plan and Gantt chart (DH).
+- Continue preparing SEJ446 interview material and ethics / approval confirmation (DH).
+- Plan future entry expansion, with emphasis on entries that can be supported by literature, project outcomes or structured construction input (DH).
 
 ---
 
