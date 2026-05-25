@@ -876,26 +876,39 @@
     "icon": "🧭",
     "tagline": "New here? Start with this. What the framework is, how to read an entry, and how the ratings are meant to be used.",
     "intro": "This framework helps you evaluate and improve the constructability of reinforced concrete design decisions during the early design stages, when changes are least costly. It is <strong>supplementary design-stage guidance</strong> &mdash; it does not replace AS 3600, applicable codes, or your own professional engineering judgement. Apply it within compliant design solutions and with consideration of project-specific conditions.",
-    "judgement": {
-      "title": "Read this first — how the ratings are meant to be used",
-      "points": [
+    "whatIs": {
+      "title": "What is this framework?",
+      "intro": "Structural designers work under two parallel obligations. This framework sits squarely on one side of that split &mdash; it does not help you comply with the codes, and it is not a compliance-checking tool. It helps with the professional duty that compliance alone does not cover: designing in a way that can actually, safely be built.",
+      "columns": [
         {
-          "lead": "Ratings are prompts, not prohibitions.",
-          "text": "Good practice, Consider, Concern and Action required are prompts for design-stage evaluation. An <strong>Action required</strong> rating does not necessarily mean the design cannot proceed &mdash; it means recognise the constructability challenge, consider the alternatives, and make an informed decision for your project. Sometimes the flagged detail is still the most practical solution when weighed against the full design context."
+          "kind": "compliance",
+          "heading": "Compliance",
+          "sub": "What your design must be",
+          "items": [
+            "AS 1170 &mdash; design actions",
+            "AS 3600 &mdash; concrete structures",
+            "National Construction Code / BCA",
+            "Compliance-checking software"
+          ],
+          "foot": "Already well served by codes, standards and checking tools. This is <strong>not</strong> what the framework does."
         },
         {
-          "lead": "Engineering judgement stays with you.",
-          "text": "Thresholds reflect typical conditions and conventional practice. Your project may justify a different conclusion. The framework informs the decision; it does not make it for you."
-        },
-        {
-          "lead": "Check applicability before acting on a rating.",
-          "text": "Most entries list where they apply and what to confirm first. Read the Applicability and Limitations section before treating a rating as settled."
-        },
-        {
-          "lead": "Constructability is regional.",
-          "text": "Each entry is tagged with the location where its evidence was gathered. That is a record of provenance, not a claim that it applies only there. Judge relevance to your own context, and use the region filter within each dimension."
+          "kind": "duty",
+          "heading": "Professional duty",
+          "sub": "How you must practise",
+          "items": [
+            "Engineers Australia Code of Ethics",
+            "WHS Act &mdash; designer duty for construction-stage risk",
+            "Designing for how the structure gets built"
+          ],
+          "foot": "Principles, not decision-point tools &mdash; until now there has been little that turns this duty into specific design-stage guidance."
         }
-      ]
+      ],
+      "framework": {
+        "label": "This framework",
+        "text": "Translates construction knowledge into specific, design-stage guidance so the duty side becomes something you can actually act on at the decision point &mdash; applied within compliant design solutions, never instead of them."
+      },
+      "caption": "Compliance tells you what the design must be. The framework helps with the other half of the job: whether what you have drawn can be built safely and practically."
     },
     "dimensionsGuide": {
       "title": "The five dimensions",
@@ -928,6 +941,27 @@
         }
       ],
       "note": "Many issues touch more than one dimension. Use the dimension to ask: what design decision caused the constructability issue?"
+    },
+    "judgement": {
+      "title": "Read this first — how the ratings are meant to be used",
+      "points": [
+        {
+          "lead": "Ratings are prompts, not prohibitions.",
+          "text": "Good practice, Consider, Concern and Action required are prompts for design-stage evaluation. An <strong>Action required</strong> rating does not necessarily mean the design cannot proceed &mdash; it means recognise the constructability challenge, consider the alternatives, and make an informed decision for your project. Sometimes the flagged detail is still the most practical solution when weighed against the full design context."
+        },
+        {
+          "lead": "Engineering judgement stays with you.",
+          "text": "Thresholds reflect typical conditions and conventional practice. Your project may justify a different conclusion. The framework informs the decision; it does not make it for you."
+        },
+        {
+          "lead": "Check applicability before acting on a rating.",
+          "text": "Most entries list where they apply and what to confirm first. Read the Applicability and Limitations section before treating a rating as settled."
+        },
+        {
+          "lead": "Constructability is regional.",
+          "text": "Each entry is tagged with the location where its evidence was gathered. That is a record of provenance, not a claim that it applies only there. Judge relevance to your own context, and use the region filter within each dimension."
+        }
+      ]
     },
     "ratingLegend": {
       "title": "The four ratings",
