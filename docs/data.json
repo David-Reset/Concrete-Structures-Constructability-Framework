@@ -875,10 +875,10 @@
     "title": "How to use this framework",
     "icon": "🧭",
     "tagline": "New here? Start with this. What the framework is, how to read an entry, and how the ratings are meant to be used.",
-    "intro": "This framework helps you evaluate and improve the constructability of reinforced concrete design decisions during the early design stages, when changes are least costly. It is <strong>supplementary design-stage guidance</strong> &mdash; it does not replace AS 3600, applicable codes, or your own professional engineering judgement. Apply it within compliant design solutions and with consideration of project-specific conditions.",
+    "intro": "Use this framework as a design-stage review tool. Browse the entries to see how real design decisions can create or eliminate constructability issues. Use the thresholds, examples and recommended actions to inform your own engineering judgement &mdash; not as fixed answers, but as prompts for thinking through how your design will actually be built.",
     "whatIs": {
       "title": "What is this framework?",
-      "intro": "Structural designers work under two parallel obligations. This framework sits squarely on one side of that split &mdash; it does not help you comply with the codes, and it is not a compliance-checking tool. <strong>The framework helps with the professional duty that compliance alone does not cover</strong>: designing in a way that can actually, safely be built.",
+      "intro": "Structural designers work under two parallel obligations. This framework sits squarely on one side of that split &mdash; it does not help you comply with the codes, and it is not a compliance-checking tool. <strong>The framework helps with the professional duty that compliance alone does not cover</strong>: designing in a way that can be built safely and practically.",
       "columns": [
         {
           "kind": "compliance",
