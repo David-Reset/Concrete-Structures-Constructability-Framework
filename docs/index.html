@@ -559,7 +559,7 @@ function parseHash(){
   }
 }
 
-window.addEventListener('hashchange',()=>{parseHash();render()});
+window.addEventListener('hashchange',()=>{parseHash();render();window.scrollTo({top:0,left:0,behavior:'auto'});});
 
 // ===== INIT =====
 async function init(){
