@@ -294,10 +294,22 @@
               "title": "Indicative rule of thumb — for consideration only",
               "caveat": "Numbers below are based on assumed crew rates and typical productivity. They are intended as a first-pass sense-check to support engineering judgement, not a binding rule. Project conditions, pricing, programme or site-specific buildability constraints may justify a different conclusion.",
               "headline": "For a 50 mm soffit fold, the break-even is about <strong>0.6 m³ of concrete per lineal metre</strong> of avoided fold. For a 150 mm fold, it is about <strong>1.2 m³/lm</strong>. For depths in between, interpolate linearly between these values.",
-              "tableHeaders": ["Soffit fold depth", "Assumed productivity", "Break-even working value"],
+              "tableHeaders": [
+                "Soffit fold depth",
+                "Assumed productivity",
+                "Break-even working value"
+              ],
               "tableRows": [
-                ["50 mm", "10 lm/day", "0.6 m³ concrete per lm of avoided fold"],
-                ["150 mm", "5 lm/day", "1.2 m³ concrete per lm of avoided fold"]
+                [
+                  "50 mm",
+                  "10 lm/day",
+                  "0.6 m³ concrete per lm of avoided fold"
+                ],
+                [
+                  "150 mm",
+                  "5 lm/day",
+                  "1.2 m³ concrete per lm of avoided fold"
+                ]
               ],
               "howToUse": "Multiply the per-metre break-even by the fold length to get the total break-even concrete volume. <strong>If keeping the soffit flat adds an amount of concrete less than or equal to the break-even, local thickening is the more constructable choice.</strong><br><br><em>Worked examples (10 lm of soffit fold each):</em><ul><li><strong>50 mm fold:</strong> 10 × 0.6 = 6.0 m³ break-even. If flat-soffit thickening adds ≤ 6.0 m³, thicken.</li><li><strong>150 mm fold:</strong> 10 × 1.2 = 12.0 m³ break-even. If flat-soffit thickening adds ≤ 12.0 m³, thicken.</li><li><strong>90 mm fold (interpolated):</strong> per-metre value = 0.6 + (40 ÷ 100) × (1.2 − 0.6) = <strong>0.84 m³/lm</strong>; total break-even = 10 × 0.84 = 8.4 m³. If flat-soffit thickening adds ≤ 8.4 m³, thicken.</li></ul>Between 50 mm and 150 mm the break-even rises at about 0.06 m³/lm for every 10 mm of additional fold depth.",
               "assumptionsTitle": "How these numbers were derived",
@@ -885,6 +897,38 @@
         }
       ]
     },
+    "dimensionsGuide": {
+      "title": "The five dimensions",
+      "intro": "The framework is organised by the root cause of the constructability issue. An issue may affect several parts of construction, but each entry is placed under the dimension that best explains the design decision that created it.",
+      "items": [
+        {
+          "dimId": "safety",
+          "rootCause": "The design decision creates an avoidable safety risk during construction, inspection, access, temporary use, or other construction-stage activities.",
+          "question": "Does this design create a safety risk for the people who have to build, access, inspect, or work around it?"
+        },
+        {
+          "dimId": "detailing",
+          "rootCause": "The issue comes from the way the element is shaped, reinforced, repeated, standardised, simplified, or detailed.",
+          "question": "Is the constructability problem caused by the detail itself?"
+        },
+        {
+          "dimId": "logistics",
+          "rootCause": "The issue comes from material availability, supplier access, procurement, site access, equipment access, storage, or handling constraints.",
+          "question": "Can the required materials, equipment, and access realistically be provided for this design?"
+        },
+        {
+          "dimId": "methods",
+          "rootCause": "The design assumes a construction method, system, sequence, or forming approach that may not suit the site conditions or project constraints.",
+          "question": "Has the design assumed a construction method that may not actually be feasible?"
+        },
+        {
+          "dimId": "communication",
+          "rootCause": "The issue comes from unclear drawings, notation, schedules, references, coordination, or transfer of information between stakeholders.",
+          "question": "Could the design intent be missed, misunderstood, or built differently because of how it is communicated?"
+        }
+      ],
+      "note": "Many issues touch more than one dimension. Use the dimension to ask: what design decision caused the constructability issue?"
+    },
     "ratingLegend": {
       "title": "The four ratings",
       "intro": "Every entry rates your design against four levels. The colours are consistent across the whole framework.",
@@ -925,11 +969,11 @@
         },
         {
           "label": "Design Parameter",
-          "caption": "What you measure, count, choose or assess from your own drawings. This is your input to the entry."
+          "caption": "The project-specific condition checked by the entry. It may be measured from drawings, confirmed from site conditions, selected by the designer, checked with suppliers, or judged from the documentation."
         },
         {
           "label": "Design Guidance",
-          "caption": "Threshold bands that rate your parameter value as Good practice, Consider, Concern or Action required. This is the heart of the entry."
+          "caption": "Threshold bands or described states that rate the project condition as Good practice, Consider, Concern or Action required. This is the heart of the entry."
         },
         {
           "label": "Applicability and Limitations",
@@ -943,18 +987,18 @@
       "moreFields": "Entries may also include a <strong>Background</strong> (why the issue matters), an <strong>Evidence Basis</strong> (how the guidance was established, with references), and <strong>Examples</strong> and <strong>Supporting Images</strong> &mdash; real, de-identified drawings and site photographs showing the issue in practice."
     },
     "trace": {
-      "title": "How an entry works: value → band → action",
-      "intro": "Every entry runs the same way. Take a value from your drawing, find the band it falls in, read the rating, and act on it. Using the off-form upturn entry as a worked example:",
+      "title": "How an entry works: condition → band → response",
+      "intro": "Every entry runs the same way. Identify the relevant project condition, compare it with the threshold bands or described states, read the rating, and decide the appropriate response. Using the off-form upturn entry as a worked example:",
       "steps": [
         {
-          "label": "Your value",
+          "label": "Project condition",
           "value": "Clearance = 500 mm",
-          "sub": "measured from your drawing (the Design Parameter)"
+          "sub": "checked from the drawing, survey, site boundary, existing obstruction, or site conditions"
         },
         {
           "label": "Falls in band",
           "value": "350 – 700 mm",
-          "sub": "locate your value in the threshold list",
+          "sub": "compare the condition with the threshold list",
           "color": "orange"
         },
         {
@@ -964,19 +1008,19 @@
           "color": "orange"
         },
         {
-          "label": "So you",
+          "label": "Response",
           "value": "Consider alternatives",
           "sub": "go to Recommended Actions — permanent formwork, blockwork, reposition, or precast"
         }
       ]
     },
     "shapes": {
-      "title": "The parameter isn't always a number",
-      "intro": "The logic is always the same &mdash; <strong>value → band → action</strong> &mdash; but what you read off your drawing changes from entry to entry. It might be measured, chosen, or judged.",
+      "title": "The condition is not always a number",
+      "intro": "The logic is always the same &mdash; <strong>condition → band → response</strong> &mdash; but the condition checked by an entry can come from different places. It might be measured from drawings, confirmed from site conditions, selected by the designer, checked with suppliers, or judged from the documentation.",
       "items": [
         {
           "shape": "Measured",
-          "desc": "You read a number off the drawing (here, bar spacing in mm) and find the range it falls in.",
+          "desc": "You read a number from the design documentation (here, bar spacing in mm) and find the range it falls in.",
           "entryRef": {
             "dimId": "safety",
             "name": "Reinforcement mat fall-through risk"
@@ -984,7 +1028,7 @@
         },
         {
           "shape": "Chosen",
-          "desc": "You compare options rather than a number — here, the bar type you have specified for the tie.",
+          "desc": "You compare a specified choice rather than a number — here, the bar type selected for the tie.",
           "entryRef": {
             "dimId": "logistics",
             "name": "Stirrup bar size availability and site adaptability"
@@ -992,7 +1036,7 @@
         },
         {
           "shape": "Judged",
-          "desc": "There is no number at all — you assess your drawing against described states, from clearest to least clear.",
+          "desc": "There is no number at all — you assess the documentation against described states, from clearest to least clear.",
           "entryRef": {
             "dimId": "communication",
             "name": "Reinforcement callout clarity"
