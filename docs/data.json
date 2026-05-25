@@ -878,7 +878,7 @@
     "intro": "This framework helps you evaluate and improve the constructability of reinforced concrete design decisions during the early design stages, when changes are least costly. It is <strong>supplementary design-stage guidance</strong> &mdash; it does not replace AS 3600, applicable codes, or your own professional engineering judgement. Apply it within compliant design solutions and with consideration of project-specific conditions.",
     "whatIs": {
       "title": "What is this framework?",
-      "intro": "Structural designers work under two parallel obligations. This framework sits squarely on one side of that split &mdash; it does not help you comply with the codes, and it is not a compliance-checking tool. It helps with the professional duty that compliance alone does not cover: designing in a way that can actually, safely be built.",
+      "intro": "Structural designers work under two parallel obligations. This framework sits squarely on one side of that split &mdash; it does not help you comply with the codes, and it is not a compliance-checking tool. <strong>The framework helps with the professional duty that compliance alone does not cover</strong>: designing in a way that can actually, safely be built.",
       "columns": [
         {
           "kind": "compliance",
@@ -887,10 +887,13 @@
           "items": [
             "AS 1170 &mdash; design actions",
             "AS 3600 &mdash; concrete structures",
-            "National Construction Code / BCA",
-            "Compliance-checking software"
+            "National Construction Code / BCA"
           ],
-          "foot": "Already well served by codes, standards and checking tools. This is <strong>not</strong> what the framework does."
+          "foot": "Clearly defined and enforceable &mdash; and a design can be checked against the codes.",
+          "card": {
+            "label": "Compliance software",
+            "text": "Software already exists to check a design against the standards and codes. The compliance side of the job is well supported &mdash; this is <strong>not</strong> what the framework does."
+          }
         },
         {
           "kind": "duty",
@@ -901,13 +904,13 @@
             "WHS Act &mdash; designer duty for construction-stage risk",
             "Designing for how the structure gets built"
           ],
-          "foot": "Principles, not decision-point tools &mdash; until now there has been little that turns this duty into specific design-stage guidance."
+          "foot": "Principles, not decision-point tools &mdash; until now there has been little that turns this duty into specific design-stage guidance.",
+          "card": {
+            "label": "This framework",
+            "text": "Translates construction knowledge into specific, design-stage guidance so the duty side becomes something you can actually act on at the decision point &mdash; applied within compliant design solutions, never instead of them."
+          }
         }
       ],
-      "framework": {
-        "label": "This framework",
-        "text": "Translates construction knowledge into specific, design-stage guidance so the duty side becomes something you can actually act on at the decision point &mdash; applied within compliant design solutions, never instead of them."
-      },
       "caption": "Compliance tells you what the design must be. The framework helps with the other half of the job: whether what you have drawn can be built safely and practically."
     },
     "dimensionsGuide": {
