@@ -903,27 +903,27 @@
       "items": [
         {
           "dimId": "safety",
-          "rootCause": "The design creates an avoidable construction-stage safety risk.",
+          "rootCause": "The design creates an avoidable safety risk during construction.",
           "question": "Could this design create a safety risk for the people who build, access, inspect or work around it?"
         },
         {
           "dimId": "detailing",
-          "rootCause": "The issue comes from the shape, reinforcement layout, repetition, standardisation or complexity of the detail.",
+          "rootCause": "The issue comes from the shape, layout or complexity of the detail.",
           "question": "Is the constructability problem caused by the detail itself?"
         },
         {
           "dimId": "logistics",
-          "rootCause": "The issue comes from material availability, supplier access, procurement, site access or equipment constraints.",
+          "rootCause": "The issue comes from procurement, site access or equipment constraints.",
           "question": "Can the required materials, equipment and access be realistically provided?"
         },
         {
           "dimId": "methods",
-          "rootCause": "The design assumes a construction method, sequence or system that may not suit the project conditions.",
+          "rootCause": "The design assumes a method, or system that may not suit the project.",
           "question": "Has the design assumed a method that may not actually be feasible?"
         },
         {
           "dimId": "communication",
-          "rootCause": "The issue comes from unclear drawings, notation, schedules, references or coordination.",
+          "rootCause": "The issue comes from unclear drawings, notations or references.",
           "question": "Could the design intent be missed, misunderstood or built differently?"
         }
       ],
