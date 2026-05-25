@@ -200,11 +200,18 @@
   .whatis-col.duty .whatis-items li::before{background:var(--accent)}
   .whatis-foot{font-size:12px;color:var(--text-muted);line-height:1.55;margin-top:auto;padding-top:12px;border-top:1px solid var(--border)}
   .whatis-foot strong{color:var(--text)}
-  .whatis-payoff{margin-top:auto;padding-top:12px;border-top:1px solid rgba(59,130,246,0.3)}
+  .whatis-payoff{margin-top:auto;padding-top:12px;border-top:1px solid var(--border)}
+  .whatis-payoff.duty{border-top-color:rgba(59,130,246,0.3)}
   .whatis-foot-lead{font-size:12px;color:var(--text-muted);line-height:1.55;margin-bottom:12px}
-  .whatis-framework{padding:14px 16px;background:linear-gradient(135deg,rgba(59,130,246,0.2),rgba(99,102,241,0.09));border:1px solid var(--accent);border-radius:8px}
-  .whatis-framework-badge{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#fff;background:var(--accent);padding:4px 11px;border-radius:20px;margin-bottom:9px}
-  .whatis-framework-text{font-size:13px;color:var(--text);line-height:1.6}
+  .whatis-card{padding:14px 16px;border-radius:8px}
+  .whatis-card.compliance{background:var(--surface-light);border:1px solid var(--border)}
+  .whatis-card.duty{background:linear-gradient(135deg,rgba(59,130,246,0.2),rgba(99,102,241,0.09));border:1px solid var(--accent)}
+  .whatis-card-badge{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 11px;border-radius:20px;margin-bottom:9px}
+  .whatis-card.compliance .whatis-card-badge{color:var(--text-muted);background:var(--surface);border:1px solid var(--border)}
+  .whatis-card.duty .whatis-card-badge{color:#fff;background:var(--accent)}
+  .whatis-card-text{font-size:13px;color:var(--text);line-height:1.6}
+  .whatis-card.compliance .whatis-card-text{opacity:0.82}
+  .whatis-card-text strong{color:var(--text)}
   .whatis-caption{font-size:13px;color:var(--text);line-height:1.6;opacity:0.9;margin-top:14px;padding:14px 18px;background:var(--surface-light);border:1px solid var(--border);border-radius:8px}
 
     .shape-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:10px 0 8px}
@@ -352,18 +359,14 @@ function renderGuideView(){
   const g=guide;
   let html=`<div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">${g.icon}</span><h1 class="dim-header-title">${g.title}</h1></div><p class="section-desc">${g.intro}</p>`;
 
-  // What is the framework — two obligations, framework nested INSIDE the duty column
+  // What is the framework — two obligations, each side ending in its own tool card
   if(g.whatIs){
     const w=g.whatIs;
-    const fwCard=w.framework?`<div class="whatis-framework"><div class="whatis-framework-badge">${w.framework.label}</div><div class="whatis-framework-text">${w.framework.text}</div></div>`:'';
     const cols=(w.columns||[]).map(c=>{
       const items=(c.items||[]).map(i=>`<li>${i}</li>`).join('');
-      let payoff='';
-      if(c.kind==='duty'){
-        payoff=`<div class="whatis-payoff">${c.foot?`<div class="whatis-foot-lead">${c.foot}</div>`:''}${fwCard}</div>`;
-      }else if(c.foot){
-        payoff=`<div class="whatis-foot">${c.foot}</div>`;
-      }
+      const card=c.card?`<div class="whatis-card ${c.kind}"><div class="whatis-card-badge">${c.card.label}</div><div class="whatis-card-text">${c.card.text}</div></div>`:'';
+      const lead=c.foot?`<div class="whatis-foot-lead">${c.foot}</div>`:'';
+      const payoff=(c.foot||c.card)?`<div class="whatis-payoff ${c.kind}">${lead}${card}</div>`:'';
       return `<div class="whatis-col ${c.kind}"><div class="whatis-heading">${c.heading}</div><div class="whatis-sub">${c.sub}</div><ul class="whatis-items">${items}</ul>${payoff}</div>`;
     }).join('');
     html+=`<div class="label" style="margin-top:30px">${w.title}</div><p class="guide-sub">${w.intro}</p><div class="whatis-grid">${cols}</div>`;
