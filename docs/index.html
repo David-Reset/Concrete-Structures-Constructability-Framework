@@ -179,12 +179,12 @@
 
 
   .dimension-guide-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:10px 0 8px}
-  .dimension-guide-card{padding:16px 18px;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:flex;flex-direction:column;min-height:230px}
-  .dimension-guide-icon{font-size:24px;margin-bottom:8px}
-  .dimension-guide-name{font-size:14px;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:8px}
-  .dimension-guide-label{font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:1.2px;color:var(--accent);margin-bottom:4px}
-  .dimension-guide-text{font-size:12px;color:var(--text);line-height:1.55;opacity:0.85;margin-bottom:12px}
-  .dimension-guide-question{font-size:12px;color:var(--text-muted);line-height:1.55;margin-top:auto;padding-top:10px;border-top:1px solid var(--border)}
+  .dimension-guide-card{padding:16px 18px;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:grid;grid-template-rows:32px 48px 18px 104px auto;min-height:300px}
+  .dimension-guide-icon{font-size:24px;margin-bottom:0;align-self:start}
+  .dimension-guide-name{font-size:14px;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:0;align-self:start}
+  .dimension-guide-label{font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:1.2px;color:var(--accent);margin-bottom:0;align-self:start}
+  .dimension-guide-text{font-size:12px;color:var(--text);line-height:1.55;opacity:0.85;margin-bottom:0;align-self:start}
+  .dimension-guide-question{font-size:12px;color:var(--text-muted);line-height:1.55;margin-top:0;padding-top:14px;border-top:1px solid var(--border);align-self:start}
 
     .shape-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:10px 0 8px}
   .shape-card{padding:16px 18px;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:flex;flex-direction:column}
