@@ -903,28 +903,28 @@
       "items": [
         {
           "dimId": "safety",
-          "rootCause": "The design decision creates an avoidable safety risk during construction, inspection, access, temporary use, or other construction-stage activities.",
-          "question": "Does this design create a safety risk for the people who have to build, access, inspect, or work around it?"
+          "rootCause": "The design creates an avoidable construction-stage safety risk.",
+          "question": "Could this design create a safety risk for the people who build, access, inspect or work around it?"
         },
         {
           "dimId": "detailing",
-          "rootCause": "The issue comes from the way the element is shaped, reinforced, repeated, standardised, simplified, or detailed.",
+          "rootCause": "The issue comes from the shape, reinforcement layout, repetition, standardisation or complexity of the detail.",
           "question": "Is the constructability problem caused by the detail itself?"
         },
         {
           "dimId": "logistics",
-          "rootCause": "The issue comes from material availability, supplier access, procurement, site access, equipment access, storage, or handling constraints.",
-          "question": "Can the required materials, equipment, and access realistically be provided for this design?"
+          "rootCause": "The issue comes from material availability, supplier access, procurement, site access or equipment constraints.",
+          "question": "Can the required materials, equipment and access be realistically provided?"
         },
         {
           "dimId": "methods",
-          "rootCause": "The design assumes a construction method, system, sequence, or forming approach that may not suit the site conditions or project constraints.",
-          "question": "Has the design assumed a construction method that may not actually be feasible?"
+          "rootCause": "The design assumes a construction method, sequence or system that may not suit the project conditions.",
+          "question": "Has the design assumed a method that may not actually be feasible?"
         },
         {
           "dimId": "communication",
-          "rootCause": "The issue comes from unclear drawings, notation, schedules, references, coordination, or transfer of information between stakeholders.",
-          "question": "Could the design intent be missed, misunderstood, or built differently because of how it is communicated?"
+          "rootCause": "The issue comes from unclear drawings, notation, schedules, references or coordination.",
+          "question": "Could the design intent be missed, misunderstood or built differently?"
         }
       ],
       "note": "Many issues touch more than one dimension. Use the dimension to ask: what design decision caused the constructability issue?"
