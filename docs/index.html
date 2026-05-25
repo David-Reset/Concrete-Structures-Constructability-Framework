@@ -140,10 +140,67 @@
   .loc-filter select:focus{border-color:var(--accent)}
   .loc-filter-count{font-size:11px;color:var(--text-muted);margin-left:auto}
 
+  /* ===== GUIDE CARD (home grid) ===== */
+  .guide-card{position:relative;background:linear-gradient(135deg,rgba(59,130,246,0.13),rgba(99,102,241,0.06));border-color:rgba(59,130,246,0.45)}
+  .guide-card:hover{border-color:var(--accent);background:linear-gradient(135deg,rgba(59,130,246,0.2),rgba(99,102,241,0.1))}
+  .guide-pill{position:absolute;top:14px;right:14px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#fff;background:var(--accent);padding:3px 9px;border-radius:20px}
+  .guide-card .dim-count{color:var(--accent)}
+
+  /* ===== GUIDE VIEW ===== */
+  .guide-sub{font-size:13px;color:var(--text-muted);line-height:1.6;max-width:660px;margin:6px 0 14px}
+  .guide-callout{margin-top:22px;padding:18px 22px;background:var(--yellow-bg);border:1px solid rgba(234,179,8,0.28);border-left:3px solid var(--yellow);border-radius:0 8px 8px 0}
+  .guide-point{margin-bottom:14px} .guide-point:last-child{margin-bottom:0}
+  .guide-point-lead{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
+  .guide-point-text{font-size:13px;color:var(--text);line-height:1.6;opacity:0.9}
+
+  .legend-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:10px 0 8px}
+  .legend-item{display:flex;gap:12px;padding:14px 16px;border-radius:8px;align-items:flex-start}
+  .legend-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-top:3px}
+  .legend-rating{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+  .legend-meaning{font-size:13px;color:var(--text);line-height:1.55;opacity:0.85}
+
+  .anatomy-block{display:grid;grid-template-columns:240px 1fr;gap:22px;align-items:start;margin-bottom:12px;padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:10px}
+  .anatomy-side{display:flex;gap:10px;align-items:flex-start}
+  .anatomy-num{width:24px;height:24px;border-radius:50%;background:var(--accent-glow);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;font-family:'JetBrains Mono',monospace}
+  .anatomy-field{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px}
+  .anatomy-caption{font-size:12px;color:var(--text-muted);line-height:1.55}
+  .anatomy-component{min-width:0}
+  .guide-more{font-size:13px;color:var(--text);line-height:1.65;opacity:0.9;margin-top:6px;padding:14px 18px;background:var(--surface-light);border:1px solid var(--border);border-radius:8px}
+  .guide-link,.shape-link{color:var(--accent);cursor:pointer;font-weight:600;white-space:nowrap}
+  .guide-link:hover,.shape-link:hover{text-decoration:underline}
+
+  .trace-flow{display:flex;align-items:stretch;gap:10px;margin:10px 0 8px;flex-wrap:wrap}
+  .trace-step{flex:1;min-width:150px;padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:8px}
+  .trace-step-label{font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:6px}
+  .trace-step-value{font-size:15px;font-weight:700;color:var(--text);margin-bottom:5px;line-height:1.3}
+  .trace-step-sub{font-size:12px;color:var(--text-muted);line-height:1.5}
+  .trace-arrow{display:flex;align-items:center;color:var(--accent);font-size:20px;font-weight:700}
+
+  .shape-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:10px 0 8px}
+  .shape-card{padding:16px 18px;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:flex;flex-direction:column}
+  .shape-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);background:var(--accent-glow);padding:3px 10px;border-radius:4px;align-self:flex-start;margin-bottom:10px}
+  .shape-param{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:8px}
+  .shape-desc{font-size:12px;color:var(--text-muted);line-height:1.55;margin-bottom:12px}
+  .shape-thresholds{gap:6px;margin-bottom:14px}
+  .shape-thresholds .threshold-band{padding:9px 12px;align-items:center}
+  .shape-thresholds .threshold-range{width:auto;min-width:0;max-width:none;font-size:12px}
+  .shape-thresholds .threshold-rating{font-size:9px}
+  .shape-link{margin-top:auto;font-size:12px}
+
+  .faq-list{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+  .faq-item{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+  .faq-q{padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:14px;cursor:pointer;font-size:14px;font-weight:600;color:var(--text)}
+  .faq-q:hover{background:var(--surface-light)}
+  .faq-chevron{color:var(--accent);font-size:20px;font-weight:400;flex-shrink:0;line-height:1}
+  .faq-a{display:none;padding:0 18px 16px;font-size:13px;color:var(--text);line-height:1.65;opacity:0.85}
+  .faq-a.open{display:block}
+
   @media(max-width:640px){
     .content{padding:20px 16px} .header{padding:16px} .breadcrumb{padding:10px 16px}
     .dim-grid{grid-template-columns:1fr} .examples-grid{grid-template-columns:1fr}
     .supporting-images-grid{grid-template-columns:1fr 1fr} .date-stamp{flex-direction:column;gap:8px}
+    .legend-grid{grid-template-columns:1fr} .shape-grid{grid-template-columns:1fr}
+    .anatomy-block{grid-template-columns:1fr;gap:12px} .trace-arrow{transform:rotate(90deg);width:100%;justify-content:center}
   }
 </style>
 </head>
@@ -152,6 +209,7 @@
 <script>
 // ===== STATE =====
 let dimensions = [];
+let guide = null;
 let state = { view:'home', dimId:null, itemIndex:null, locationFilter:null };
 
 // ===== HELPERS =====
@@ -190,6 +248,7 @@ async function loadData(){
     const resp=await fetch('data.json');
     const data=await resp.json();
     dimensions=data.dimensions;
+    guide=data.guide||null;
   }catch(e){
     document.getElementById('app').innerHTML='<div class="content" style="text-align:center;padding-top:80px;color:var(--red)">Error loading framework data. Make sure data.json is in the same folder as this file.</div>';
   }
@@ -198,7 +257,7 @@ async function loadData(){
 // ===== RENDER =====
 function render(){
   const app=document.getElementById('app');
-  app.innerHTML=renderHeader()+(state.view==='entry'?renderBreadcrumb()+renderEntryDetail():state.view==='dimension'?renderBreadcrumb()+renderDimensionView():renderHomeView());
+  app.innerHTML=renderHeader()+(state.view==='guide'?renderBreadcrumb()+renderGuideView():state.view==='entry'?renderBreadcrumb()+renderEntryDetail():state.view==='dimension'?renderBreadcrumb()+renderDimensionView():renderHomeView());
 }
 
 function renderHeader(){
@@ -208,6 +267,7 @@ function renderHeader(){
 function renderBreadcrumb(){
   const dim=getDim(),item=getItem();
   let h='<div class="breadcrumb"><span class="breadcrumb-link" onclick="goHome()">Framework</span>';
+  if(state.view==='guide'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">'+(guide?guide.title:'Guide')+'</span></div>';}
   if(dim){
     h+='<span class="breadcrumb-sep">›</span>';
     if(item){h+=`<span class="breadcrumb-link" onclick="goDimension('${dim.id}')">${dim.name}</span><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">${item.name}</span>`}
@@ -218,7 +278,97 @@ function renderBreadcrumb(){
 
 function renderHomeView(){
   const cards=dimensions.map(d=>`<div class="dim-card" onclick="goDimension('${d.id}')"><div class="dim-icon">${d.icon}</div><div class="dim-name">${d.name}</div><div class="dim-desc">${d.description}</div><div class="dim-count">${d.items.length} items →</div></div>`).join('');
-  return `<div class="content animate-in"><div style="margin-bottom:24px"><h1 class="section-title">Framework Dimensions</h1><p class="section-desc">Select a constructability dimension to explore general guidance, design entries with threshold-based ratings, and recommended actions for design decisions.</p></div><div class="dim-grid">${cards}</div></div>`;
+  const guideCard=guide?`<div class="dim-card guide-card" onclick="goGuide()"><div class="guide-pill">Start here</div><div class="dim-icon">${guide.icon}</div><div class="dim-name">${guide.title}</div><div class="dim-desc">${guide.tagline}</div><div class="dim-count">Open guide →</div></div>`:'';
+  return `<div class="content animate-in"><div style="margin-bottom:24px"><h1 class="section-title">Framework Dimensions</h1><p class="section-desc">Select a constructability dimension to explore general guidance, design entries with threshold-based ratings, and recommended actions for design decisions.</p></div><div class="dim-grid">${guideCard}${cards}</div></div>`;
+}
+
+// ===== GUIDE (how-to-use) =====
+function findEntry(dimId,name){
+  const dim=dimensions.find(d=>d.id===dimId);
+  if(!dim)return null;
+  const index=dim.items.findIndex(it=>it.name===name);
+  if(index<0)return null;
+  return {dim,item:dim.items[index],index};
+}
+// The fragments below mirror the markup used in renderEntryDetail so the guide
+// shows the genuine live entry components rather than stale screenshots.
+function gThresholds(d,compact){
+  return d.thresholds.map(t=>`<div class="threshold-band" style="background:${bgVar(t.color)};border:1px solid ${colorVar(t.color)}33;"><div class="threshold-range" style="color:${colorVar(t.color)}">${t.range}</div><div style="flex:1"><div class="threshold-rating" style="color:${colorVar(t.color)}">${t.rating}</div>${compact?'':`<div class="threshold-guidance">${t.guidance}</div>`}</div></div>`).join('');
+}
+function gActions(d){
+  return (d.alternatives||[]).filter(a=>a).map((a,i)=>{
+    if(typeof a==='string')return `<div class="alt-item"><div class="alt-num">${i+1}</div><div class="alt-text">${a}</div></div>`;
+    return `<div class="alt-item"><div class="alt-num">${i+1}</div><div class="alt-text"><div class="alt-title">${a.title}</div><div class="alt-desc">${a.description}</div></div></div>`;
+  }).join('');
+}
+function gApplicability(d){
+  if(!d.applicability)return '';
+  const a=d.applicability;
+  return `<div class="applicability-box" style="margin-top:0;margin-bottom:0"><div class="label" style="color:var(--yellow)">Applicability and Limitations</div>${a.appliesWhere?`<div class="applicability-text"><strong>Applies where:</strong> ${a.appliesWhere}</div>`:''}${a.checks&&a.checks.length>0?`<div class="applicability-text" style="margin-bottom:8px"><strong>Check before applying this guidance:</strong></div><div class="applicability-list">${a.checks.map(c=>`<div class="applicability-item"><strong>${c.title}:</strong> ${c.description}</div>`).join('')}</div>`:''}${a.note?`<div class="applicability-text" style="margin-top:12px;margin-bottom:0"><strong>Note:</strong> ${a.note}</div>`:''}</div>`;
+}
+function gAnatomyBlock(n,field,inner){
+  return `<div class="anatomy-block"><div class="anatomy-side"><div class="anatomy-num">${n}</div><div><div class="anatomy-field">${field.label}</div><div class="anatomy-caption">${field.caption}</div></div></div><div class="anatomy-component">${inner}</div></div>`;
+}
+function toggleFaq(i){
+  const a=document.getElementById('faq-a-'+i),c=document.getElementById('faq-chev-'+i);
+  if(!a)return;
+  const open=a.classList.toggle('open');
+  if(c)c.textContent=open?'–':'+';
+}
+
+function renderGuideView(){
+  if(!guide)return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><p class="section-desc">Guide content not found. Make sure data.json includes a "guide" object.</p></div>`;
+  const g=guide;
+  let html=`<div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">${g.icon}</span><h1 class="dim-header-title">${g.title}</h1></div><p class="section-desc">${g.intro}</p>`;
+
+  // Engineering-judgement callout, placed up front so it cannot be missed
+  if(g.judgement){
+    html+=`<div class="guide-callout"><div class="label" style="color:var(--yellow)">${g.judgement.title}</div>${g.judgement.points.map(p=>`<div class="guide-point"><div class="guide-point-lead">${p.lead}</div><div class="guide-point-text">${p.text}</div></div>`).join('')}</div>`;
+  }
+
+  // Rating legend in the four live colours
+  if(g.ratingLegend){
+    html+=`<div class="label" style="margin-top:32px">${g.ratingLegend.title}</div><p class="guide-sub">${g.ratingLegend.intro}</p><div class="legend-grid">${g.ratingLegend.items.map(it=>`<div class="legend-item" style="background:${bgVar(it.color)};border:1px solid ${colorVar(it.color)}33"><div class="legend-dot" style="background:${colorVar(it.color)}"></div><div><div class="legend-rating" style="color:${colorVar(it.color)}">${it.rating}</div><div class="legend-meaning">${it.meaning}</div></div></div>`).join('')}</div>`;
+  }
+
+  // Anatomy of a real entry, rendered from live components
+  if(g.anatomy){
+    const a=g.anatomy,ref=a.entryRef,found=findEntry(ref.dimId,ref.name),ad=found?found.item.data:null;
+    html+=`<div class="label" style="margin-top:36px">${a.title}</div><p class="guide-sub">${a.intro}</p>`;
+    if(ad){
+      const f=a.fields;
+      html+=gAnatomyBlock(1,f[0],`<div class="question-box" style="margin-bottom:0"><div class="label label-accent">Design Question</div><div class="question-text">${ad.question}</div></div>`);
+      html+=gAnatomyBlock(2,f[1],`<div class="param-box" style="margin-bottom:0"><div class="label">Design Parameter</div><div class="param-value">${ad.parameter}</div></div>`);
+      html+=gAnatomyBlock(3,f[2],`<div class="label">Design Guidance</div><div class="threshold-list" style="margin-top:10px;margin-bottom:0">${gThresholds(ad,false)}</div>`);
+      html+=gAnatomyBlock(4,f[3],gApplicability(ad));
+      html+=gAnatomyBlock(5,f[4],`<div class="label">Recommended Actions</div><div class="alt-list" style="margin-top:10px;margin-bottom:0">${gActions(ad)}</div>`);
+      html+=`<div class="guide-more">${a.moreFields} ${found?`<span class="guide-link" onclick="goEntry('${ref.dimId}',${found.index})">Open the full entry →</span>`:''}</div>`;
+    }else{
+      html+=`<p class="guide-sub">Reference entry not found in data.json.</p>`;
+    }
+  }
+
+  // value -> band -> action trace
+  if(g.trace){
+    const steps=g.trace.steps.map((s,i)=>`<div class="trace-step" style="${s.color?`background:${bgVar(s.color)};border-color:${colorVar(s.color)}66`:''}"><div class="trace-step-label">${s.label}</div><div class="trace-step-value" style="${s.color?`color:${colorVar(s.color)}`:''}">${s.value}</div><div class="trace-step-sub">${s.sub}</div></div>${i<g.trace.steps.length-1?'<div class="trace-arrow">→</div>':''}`).join('');
+    html+=`<div class="label" style="margin-top:36px">${g.trace.title}</div><p class="guide-sub">${g.trace.intro}</p><div class="trace-flow">${steps}</div>`;
+  }
+
+  // The parameter takes different shapes (numeric / categorical / qualitative)
+  if(g.shapes){
+    const cards=g.shapes.items.map(s=>{
+      const found=findEntry(s.entryRef.dimId,s.entryRef.name),sd=found?found.item.data:null;
+      return `<div class="shape-card"><div class="shape-tag">${s.shape}</div><div class="shape-param">${sd?sd.parameter:''}</div><div class="shape-desc">${s.desc}</div><div class="threshold-list shape-thresholds">${sd?gThresholds(sd,true):''}</div>${found?`<div class="shape-link" onclick="goEntry('${s.entryRef.dimId}',${found.index})">See full entry →</div>`:''}</div>`;
+    }).join('');
+    html+=`<div class="label" style="margin-top:36px">${g.shapes.title}</div><p class="guide-sub">${g.shapes.intro}</p><div class="shape-grid">${cards}</div>`;
+  }
+
+  // FAQ accordion
+  if(g.faq){
+    html+=`<div class="label" style="margin-top:36px">${g.faq.title}</div><div class="faq-list">${g.faq.items.map((f,i)=>`<div class="faq-item"><div class="faq-q" onclick="toggleFaq(${i})"><span>${f.q}</span><span class="faq-chevron" id="faq-chev-${i}">+</span></div><div class="faq-a" id="faq-a-${i}">${f.a}</div></div>`).join('')}</div>`;
+  }
+
+  return `<div class="content animate-in">${html}</div>`;
 }
 
 function renderDimensionView(){
@@ -324,6 +474,7 @@ function openLightbox(src){const lb=document.createElement('div');lb.className='
 
 // ===== HASH-BASED NAVIGATION =====
 function goHome(){window.location.hash=''}
+function goGuide(){window.location.hash='guide'}
 function goDimension(id){state.locationFilter=null;window.location.hash=id}
 function goEntry(dimId,idx){window.location.hash=dimId+'/'+idx}
 function setLocationFilter(val){
@@ -336,6 +487,7 @@ function setLocationFilter(val){
 function parseHash(){
   const hash=window.location.hash.replace(/^#\/?/,'');
   if(!hash){state.view='home';state.dimId=null;state.itemIndex=null;state.locationFilter=null;}
+  else if(hash==='guide'){state.view='guide';state.dimId=null;state.itemIndex=null;state.locationFilter=null;}
   else if(hash.includes('/')){
     const[dimId,idx]=hash.split('/');
     state.view='entry';state.dimId=dimId;state.itemIndex=parseInt(idx,10);
