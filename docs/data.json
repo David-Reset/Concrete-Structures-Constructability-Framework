@@ -1090,27 +1090,35 @@
       "items": [
         {
           "q": "Does an 'Action required' rating mean I can't use the detail?",
-          "a": "No. It is a prompt to recognise the constructability challenge, consider the alternatives, and make an informed decision. In some cases the flagged detail is still the most practical solution when weighed against the full design context."
+          "a": "No. An <strong>Action required</strong> rating means the design decision should be deliberately reviewed before construction. It does not automatically mean the detail is prohibited or cannot proceed. In some cases, the flagged detail may still be the most practical solution when considered against the full project context."
+        },
+        {
+          "q": "Does this help me understand design codes or Australian Standards?",
+          "a": "No. This framework is not a code guide or compliance tool. It does not explain AS 3600 or determine whether a design satisfies Australian Standards. It is design guidance for the professional-duty side of engineering: helping designers recognise how design decisions may affect construction safety, practicality, logistics, methods and communication."
+        },
+        {
+          "q": "Do all entries have the same level of evidence behind them?",
+          "a": "No. Entries are informed by different combinations of literature, standards, supplier information, project outcomes, industry input and site experience. Some entries are supported by several evidence sources, while others may rely on a narrower evidence base. Read the Evidence Basis section to understand how the thresholds were derived and how much confidence to place in the guidance."
         },
         {
           "q": "An entry is tagged 'NSW, Australia'. Can I use it elsewhere?",
-          "a": "The tag records where the evidence was gathered &mdash; it is provenance, not a restriction. Material availability, labour practices and conventions vary by region, so judge whether the guidance is relevant to your context. Thresholds may differ elsewhere, and you may eventually see region-specific versions of the same entry side by side."
+          "a": "Yes, but use judgement. The location tag records where the evidence or practical knowledge behind the entry was gathered. It is provenance, not a restriction. Material availability, labour practices, equipment access and construction conventions vary between regions, so users should judge whether the guidance is relevant to their own project context."
         },
         {
-          "q": "Does this replace AS 3600 or my engineering judgement?",
-          "a": "No. It is supplementary design-stage guidance, applied within code-compliant solutions and alongside professional judgement. Structural design requirements always remain controlling."
-        },
-        {
-          "q": "Why are some entries greyed out as 'Coming soon'?",
-          "a": "The framework grows as evidence builds. Listed-but-unavailable entries are planned topics. An entry can start with the minimum required fields and gain background, evidence and examples over time."
+          "q": "How is this different from BIM or AI design tools?",
+          "a": "BIM and AI tools can support coordination, modelling, checking, optimisation and faster design production. This framework works earlier: it helps the engineer question the design decision before it becomes locked in. It asks whether the chosen detail, method, material or assumption is appropriate for the way the structure will actually be built. The focus is the decision itself, not only the review of a developing model."
         },
         {
           "q": "Can I suggest a new entry or a change to an existing one?",
-          "a": "Yes. There are suggestion forms for both new entries and edits to existing entries (see the project README). Please de-identify any real project examples &mdash; no project, company, designer or client names &mdash; before submitting."
+          "a": "Yes. The framework is designed to grow through new entries and edits to existing guidance. Suggestions should describe the constructability issue, the design condition that triggers it, the recommended response, and any supporting evidence or example. You can suggest a <a href=\"https://forms.gle/5ppQRvJuzWaUkdg89\" target=\"_blank\">new entry</a> or suggest a <a href=\"https://forms.gle/xJ5tpUf7zozpkbcg6\" target=\"_blank\">change to an existing entry</a>."
         },
         {
-          "q": "Why show real drawings? Isn't that sensitive?",
-          "a": "Examples are shown as learning opportunities to improve future practice, never as criticism. All examples are de-identified, with only the design detail relevant to the constructability issue shown."
+          "q": "Are suggested entries or edits added automatically?",
+          "a": "No. Suggested entries and edits are reviewed before they are added to the framework. Submissions need to be relevant to constructability, de-identified, and supported by enough information to explain the design issue, the condition being checked, the recommended response and the evidence behind it."
+        },
+        {
+          "q": "Why show real drawings or site photographs? Isn't that sensitive?",
+          "a": "Real examples make constructability issues easier to understand, but they are included as learning examples, not criticism of any designer, contractor, project or client. Project names, company names, site locations and identifying information should be removed before examples are included in the framework."
         }
       ]
     }
