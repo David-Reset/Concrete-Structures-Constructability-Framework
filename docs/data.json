@@ -923,8 +923,8 @@
         },
         {
           "dimId": "communication",
-          "rootCause": "The issue comes from unclear drawings, notations or references.",
-          "question": "Could the design intent be missed, misunderstood or built differently?"
+          "rootCause": "The issue comes from unclear drawings, notation or references.",
+          "question": "Could the design intent be missed or misunderstood?"
         }
       ],
       "note": "Many issues touch more than one dimension. Use the dimension to ask: what design decision caused the constructability issue?"
