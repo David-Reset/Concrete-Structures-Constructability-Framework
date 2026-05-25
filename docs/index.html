@@ -178,13 +178,32 @@
 
 
 
-  .dimension-guide-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:10px 0 8px}
-  .dimension-guide-card{padding:16px 18px;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:flex;flex-direction:column;min-height:280px}
+  .dimension-guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:10px 0 8px}
+  .dimension-guide-card{padding:16px 18px;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:flex;flex-direction:column}
   .dimension-guide-icon{font-size:24px;margin-bottom:8px;line-height:1}
-  .dimension-guide-name{font-size:14px;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:22px;min-height:38px}
-  .dimension-guide-label{font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:1.2px;color:var(--accent);margin-bottom:10px}
-  .dimension-guide-text{font-size:12px;color:var(--text);line-height:1.55;opacity:0.85;margin-bottom:0;min-height:95px}
-  .dimension-guide-question{font-size:12px;color:var(--text-muted);line-height:1.55;margin-top:0;padding-top:14px;border-top:1px solid var(--border)}
+  .dimension-guide-name{font-size:14px;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:14px}
+  .dimension-guide-label{font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted);margin-bottom:8px}
+  .dimension-guide-text{font-size:12px;color:var(--text);line-height:1.55;opacity:0.8;margin-bottom:0}
+  .dimension-guide-question{font-size:13px;color:var(--text);font-weight:600;line-height:1.5;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+
+  /* ===== WHAT IS THE FRAMEWORK (two obligations) ===== */
+  .whatis-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0 0}
+  .whatis-col{padding:18px 20px;border-radius:10px;display:flex;flex-direction:column;border:1px solid var(--border)}
+  .whatis-col.compliance{background:var(--surface);opacity:0.78}
+  .whatis-col.duty{background:rgba(59,130,246,0.06);border-color:rgba(59,130,246,0.35)}
+  .whatis-heading{font-size:16px;font-weight:800;letter-spacing:-0.2px;color:var(--text);margin-bottom:2px}
+  .whatis-col.duty .whatis-heading{color:var(--accent)}
+  .whatis-sub{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted);margin-bottom:14px}
+  .whatis-items{list-style:none;padding:0;margin:0 0 14px;display:flex;flex-direction:column;gap:8px}
+  .whatis-items li{font-size:13px;color:var(--text);line-height:1.5;opacity:0.92;padding-left:18px;position:relative}
+  .whatis-items li::before{content:'';position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--text-muted)}
+  .whatis-col.duty .whatis-items li::before{background:var(--accent)}
+  .whatis-foot{font-size:12px;color:var(--text-muted);line-height:1.55;margin-top:auto;padding-top:12px;border-top:1px solid var(--border)}
+  .whatis-foot strong{color:var(--text)}
+  .whatis-framework{margin-top:12px;padding:16px 20px;background:linear-gradient(135deg,rgba(59,130,246,0.16),rgba(99,102,241,0.07));border:1px solid var(--accent);border-radius:10px;display:flex;gap:14px;align-items:flex-start}
+  .whatis-framework-badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#fff;background:var(--accent);padding:5px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+  .whatis-framework-text{font-size:13px;color:var(--text);line-height:1.6}
+  .whatis-caption{font-size:13px;color:var(--text);line-height:1.6;opacity:0.9;margin-top:14px;padding:14px 18px;background:var(--surface-light);border:1px solid var(--border);border-radius:8px}
 
     .shape-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:10px 0 8px}
   .shape-card{padding:16px 18px;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:flex;flex-direction:column}
@@ -209,7 +228,7 @@
     .content{padding:20px 16px} .header{padding:16px} .breadcrumb{padding:10px 16px}
     .dim-grid{grid-template-columns:1fr} .examples-grid{grid-template-columns:1fr}
     .supporting-images-grid{grid-template-columns:1fr 1fr} .date-stamp{flex-direction:column;gap:8px}
-    .legend-grid{grid-template-columns:1fr} .shape-grid{grid-template-columns:1fr} .dimension-guide-grid{grid-template-columns:1fr}
+    .legend-grid{grid-template-columns:1fr} .shape-grid{grid-template-columns:1fr} .dimension-guide-grid{grid-template-columns:1fr} .whatis-grid{grid-template-columns:1fr}
     .anatomy-block{grid-template-columns:1fr;gap:12px} .trace-arrow{transform:rotate(90deg);width:100%;justify-content:center}
   }
 </style>
@@ -331,21 +350,30 @@ function renderGuideView(){
   const g=guide;
   let html=`<div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">${g.icon}</span><h1 class="dim-header-title">${g.title}</h1></div><p class="section-desc">${g.intro}</p>`;
 
-  // Engineering-judgement callout, placed up front so it cannot be missed
-  if(g.judgement){
-    html+=`<div class="guide-callout"><div class="label" style="color:var(--yellow)">${g.judgement.title}</div>${g.judgement.points.map(p=>`<div class="guide-point"><div class="guide-point-lead">${p.lead}</div><div class="guide-point-text">${p.text}</div></div>`).join('')}</div>`;
+  // What is the framework — two obligations, framework on the duty side
+  if(g.whatIs){
+    const w=g.whatIs;
+    const cols=(w.columns||[]).map(c=>`<div class="whatis-col ${c.kind}"><div class="whatis-heading">${c.heading}</div><div class="whatis-sub">${c.sub}</div><ul class="whatis-items">${(c.items||[]).map(i=>`<li>${i}</li>`).join('')}</ul>${c.foot?`<div class="whatis-foot">${c.foot}</div>`:''}</div>`).join('');
+    html+=`<div class="label" style="margin-top:30px">${w.title}</div><p class="guide-sub">${w.intro}</p><div class="whatis-grid">${cols}</div>`;
+    if(w.framework){html+=`<div class="whatis-framework"><div class="whatis-framework-badge">${w.framework.label}</div><div class="whatis-framework-text">${w.framework.text}</div></div>`;}
+    if(w.caption){html+=`<div class="whatis-caption">${w.caption}</div>`;}
   }
 
-
-  // Five dimensions / root-cause explanation
+  // Five dimensions / root-cause explanation — routing first, before the rating mechanics
   if(g.dimensionsGuide){
     const cards=g.dimensionsGuide.items.map(it=>{
       const dim=dimensions.find(d=>d.id===it.dimId);
       if(!dim)return '';
       return `<div class="dimension-guide-card"><div class="dimension-guide-icon">${dim.icon}</div><div class="dimension-guide-name">${dim.name}</div><div class="dimension-guide-label">Root cause</div><div class="dimension-guide-text">${it.rootCause}</div><div class="dimension-guide-question">${it.question}</div></div>`;
     }).join('');
-    html+=`<div class="label" style="margin-top:32px">${g.dimensionsGuide.title}</div><p class="guide-sub">${g.dimensionsGuide.intro}</p><div class="dimension-guide-grid">${cards}</div>${g.dimensionsGuide.note?`<div class="guide-more">${g.dimensionsGuide.note}</div>`:''}`;
+    html+=`<div class="label" style="margin-top:36px">${g.dimensionsGuide.title}</div><p class="guide-sub">${g.dimensionsGuide.intro}</p><div class="dimension-guide-grid">${cards}</div>${g.dimensionsGuide.note?`<div class="guide-more">${g.dimensionsGuide.note}</div>`:''}`;
   }
+
+  // Engineering-judgement callout, placed up front so it cannot be missed
+  if(g.judgement){
+    html+=`<div class="guide-callout"><div class="label" style="color:var(--yellow)">${g.judgement.title}</div>${g.judgement.points.map(p=>`<div class="guide-point"><div class="guide-point-lead">${p.lead}</div><div class="guide-point-text">${p.text}</div></div>`).join('')}</div>`;
+  }
+
 
   // Rating legend in the four live colours
   if(g.ratingLegend){
