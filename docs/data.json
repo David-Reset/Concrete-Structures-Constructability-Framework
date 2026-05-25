@@ -858,5 +858,176 @@
         }
       ]
     }
-  ]
+  ],
+  "guide": {
+    "title": "How to use this framework",
+    "icon": "🧭",
+    "tagline": "New here? Start with this. What the framework is, how to read an entry, and how the ratings are meant to be used.",
+    "intro": "This framework helps you evaluate and improve the constructability of reinforced concrete design decisions during the early design stages, when changes are least costly. It is <strong>supplementary design-stage guidance</strong> &mdash; it does not replace AS 3600, applicable codes, or your own professional engineering judgement. Apply it within compliant design solutions and with consideration of project-specific conditions.",
+    "judgement": {
+      "title": "Read this first — how the ratings are meant to be used",
+      "points": [
+        {
+          "lead": "Ratings are prompts, not prohibitions.",
+          "text": "Good practice, Consider, Concern and Action required are prompts for design-stage evaluation. An <strong>Action required</strong> rating does not necessarily mean the design cannot proceed &mdash; it means recognise the constructability challenge, consider the alternatives, and make an informed decision for your project. Sometimes the flagged detail is still the most practical solution when weighed against the full design context."
+        },
+        {
+          "lead": "Engineering judgement stays with you.",
+          "text": "Thresholds reflect typical conditions and conventional practice. Your project may justify a different conclusion. The framework informs the decision; it does not make it for you."
+        },
+        {
+          "lead": "Check applicability before acting on a rating.",
+          "text": "Most entries list where they apply and what to confirm first. Read the Applicability and Limitations section before treating a rating as settled."
+        },
+        {
+          "lead": "Constructability is regional.",
+          "text": "Each entry is tagged with the location where its evidence was gathered. That is a record of provenance, not a claim that it applies only there. Judge relevance to your own context, and use the region filter within each dimension."
+        }
+      ]
+    },
+    "ratingLegend": {
+      "title": "The four ratings",
+      "intro": "Every entry rates your design against four levels. The colours are consistent across the whole framework.",
+      "items": [
+        {
+          "rating": "Good practice",
+          "color": "green",
+          "meaning": "The recommended approach for typical conditions. No constructability concern expected."
+        },
+        {
+          "rating": "Consider",
+          "color": "yellow",
+          "meaning": "Generally acceptable, but worth a second look against your specific conditions."
+        },
+        {
+          "rating": "Concern",
+          "color": "orange",
+          "meaning": "Likely to create constructability difficulty. Review it and weigh the alternatives."
+        },
+        {
+          "rating": "Action required",
+          "color": "red",
+          "meaning": "A constructability challenge to deliberately address before construction. A prompt to evaluate and decide — not an automatic prohibition."
+        }
+      ]
+    },
+    "anatomy": {
+      "title": "Anatomy of an entry",
+      "intro": "Every entry follows the same layout. Below is a real entry from the framework &mdash; <strong>Off-form concrete upturns near obstructions</strong> &mdash; with each field labelled. These are the live entry components, not screenshots, so they always match what you see in the framework itself.",
+      "entryRef": {
+        "dimId": "methods",
+        "name": "Off-form concrete upturns near obstructions"
+      },
+      "fields": [
+        {
+          "label": "Design Question",
+          "caption": "The specific question the entry answers. If this is your question, the entry is relevant to your decision."
+        },
+        {
+          "label": "Design Parameter",
+          "caption": "What you measure, count, choose or assess from your own drawings. This is your input to the entry."
+        },
+        {
+          "label": "Design Guidance",
+          "caption": "Threshold bands that rate your parameter value as Good practice, Consider, Concern or Action required. This is the heart of the entry."
+        },
+        {
+          "label": "Applicability and Limitations",
+          "caption": "Where the entry applies, what to check before relying on it, and a reminder that the rating is a review prompt — not a rule."
+        },
+        {
+          "label": "Recommended Actions",
+          "caption": "Practical options to consider if you land in Concern or Action required. A starting point for the decision, not a fixed instruction."
+        }
+      ],
+      "moreFields": "Entries may also include a <strong>Background</strong> (why the issue matters), an <strong>Evidence Basis</strong> (how the guidance was established, with references), and <strong>Examples</strong> and <strong>Supporting Images</strong> &mdash; real, de-identified drawings and site photographs showing the issue in practice."
+    },
+    "trace": {
+      "title": "How an entry works: value → band → action",
+      "intro": "Every entry runs the same way. Take a value from your drawing, find the band it falls in, read the rating, and act on it. Using the off-form upturn entry as a worked example:",
+      "steps": [
+        {
+          "label": "Your value",
+          "value": "Clearance = 500 mm",
+          "sub": "measured from your drawing (the Design Parameter)"
+        },
+        {
+          "label": "Falls in band",
+          "value": "350 – 700 mm",
+          "sub": "locate your value in the threshold list",
+          "color": "orange"
+        },
+        {
+          "label": "Rating",
+          "value": "Concern",
+          "sub": "coil ties can't be used; threaded bar only, tightened at arm's length",
+          "color": "orange"
+        },
+        {
+          "label": "So you",
+          "value": "Consider alternatives",
+          "sub": "go to Recommended Actions — permanent formwork, blockwork, reposition, or precast"
+        }
+      ]
+    },
+    "shapes": {
+      "title": "The parameter isn't always a number",
+      "intro": "The logic is always the same &mdash; <strong>value → band → action</strong> &mdash; but what you read off your drawing changes from entry to entry. It might be measured, chosen, or judged.",
+      "items": [
+        {
+          "shape": "Measured",
+          "desc": "You read a number off the drawing (here, bar spacing in mm) and find the range it falls in.",
+          "entryRef": {
+            "dimId": "safety",
+            "name": "Reinforcement mat fall-through risk"
+          }
+        },
+        {
+          "shape": "Chosen",
+          "desc": "You compare options rather than a number — here, the bar type you have specified for the tie.",
+          "entryRef": {
+            "dimId": "logistics",
+            "name": "Stirrup bar size availability and site adaptability"
+          }
+        },
+        {
+          "shape": "Judged",
+          "desc": "There is no number at all — you assess your drawing against described states, from clearest to least clear.",
+          "entryRef": {
+            "dimId": "communication",
+            "name": "Reinforcement callout clarity"
+          }
+        }
+      ]
+    },
+    "faq": {
+      "title": "FAQ",
+      "items": [
+        {
+          "q": "Does an 'Action required' rating mean I can't use the detail?",
+          "a": "No. It is a prompt to recognise the constructability challenge, consider the alternatives, and make an informed decision. In some cases the flagged detail is still the most practical solution when weighed against the full design context."
+        },
+        {
+          "q": "An entry is tagged 'NSW, Australia'. Can I use it elsewhere?",
+          "a": "The tag records where the evidence was gathered &mdash; it is provenance, not a restriction. Material availability, labour practices and conventions vary by region, so judge whether the guidance is relevant to your context. Thresholds may differ elsewhere, and you may eventually see region-specific versions of the same entry side by side."
+        },
+        {
+          "q": "Does this replace AS 3600 or my engineering judgement?",
+          "a": "No. It is supplementary design-stage guidance, applied within code-compliant solutions and alongside professional judgement. Structural design requirements always remain controlling."
+        },
+        {
+          "q": "Why are some entries greyed out as 'Coming soon'?",
+          "a": "The framework grows as evidence builds. Listed-but-unavailable entries are planned topics. An entry can start with the minimum required fields and gain background, evidence and examples over time."
+        },
+        {
+          "q": "Can I suggest a new entry or a change to an existing one?",
+          "a": "Yes. There are suggestion forms for both new entries and edits to existing entries (see the project README). Please de-identify any real project examples &mdash; no project, company, designer or client names &mdash; before submitting."
+        },
+        {
+          "q": "Why show real drawings? Isn't that sensitive?",
+          "a": "Examples are shown as learning opportunities to improve future practice, never as criticism. All examples are de-identified, with only the design detail relevant to the constructability issue shown."
+        }
+      ]
+    }
+  }
 }
