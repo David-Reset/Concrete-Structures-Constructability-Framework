@@ -1034,7 +1034,7 @@
         {
           "label": "Project condition",
           "value": "Clearance = 500 mm",
-          "sub": "checked from the drawing, survey, site boundary, existing obstruction, or site conditions"
+          "sub": "measured between the upturn face and the nearest boundary or permanent obstruction"
         },
         {
           "label": "Falls in band",
