@@ -261,96 +261,58 @@
           "name": "Flat soffit detailing at minor slab setdowns",
           "available": true,
           "data": {
-            "question": "When a slab requires a top setdown, should the adjacent slab zone be locally thickened to maintain a flat soffit instead of creating a soffit fold?",
-            "parameter": "Top setdown depth causing soffit fold (mm)",
-            "background": "Formwork is roughly 49% of concrete-structure labour; concrete operations are roughly 11% (Löfgren et al., 2001). Where a required top setdown could be retained but the matching soffit fold could be avoided by locally thickening the slab, the avoided formwork is usually worth more than the added concrete.<br><br>Top setdowns are often required for wet areas, balconies, falls, thresholds, waterproofing build-ups or finishes. The constructability issue is not the top setdown itself; it is what happens when the slab thickness is kept constant through the setdown, creating a matching step in the soffit. That step becomes a small fold and introduces additional formwork, bracing, reinforcement variation and inspection. Where the top setdown is minor, keeping the soffit flat by locally thickening the adjacent slab zone is usually the simpler construction outcome, and the question is whether the added concrete volume is reasonable.",
+            "question": "When a slab needs a top setdown (e.g. for wet areas), should the soffit be folded to follow it, or should the slab be poured to the higher level with the top stepped down to keep the soffit flat?",
+            "parameter": "Top setdown depth (mm)",
+            "background": "Top setdowns are often required for wet areas, balconies, falls, thresholds or waterproofing build-ups. The setdown itself is required and is not the issue. The constructability question is what happens to the soffit. If the slab is poured at the setdown thickness throughout and stepped up around it, the soffit folds to follow the setdown, introducing additional formwork, bracing, reinforcement variation and inspection. The alternative is to pour the slab up to the higher level and step the top down over the setdown zone, so the setdown zone keeps its required thickness while the surrounding slab is simply a little thicker and the soffit stays flat.<br><br>For example, a slab that needs to be 200 thick with four wet areas can be poured 250 throughout, with the top stepped down 50 over the wet areas. The wet areas are still 200 where it matters, the rest of the slab is 250, and the soffit is dead flat. The extra concrete in the surrounding zone is not a penalty to be justified — it gives a flat soffit and a thicker, simpler slab. Formwork dominates concrete-structure labour (roughly 49% versus roughly 11% for concrete operations — Löfgren et al., 2001), so keeping the soffit flat is generally worth the extra concrete. As the setdown depth grows, the extra concrete needed to keep the soffit flat across the whole slab grows with it, and at some point following the fold makes more sense. There is no fixed number for where that point sits — it depends on the slab.",
             "thresholds": [
               {
-                "range": "Flat soffit maintained",
+                "range": "<= 50 mm",
                 "rating": "Good practice",
                 "color": "green",
-                "guidance": "Preferred outcome where structurally and functionally acceptable. The required top setdown is retained, but the adjacent higher slab zone is locally thickened so the soffit stays flat. Formwork and reinforcement detailing remain simple and the constructability question is resolved at the design stage."
+                "guidance": "Pour the slab up to the higher level and step the top down over the setdown zone, keeping the soffit flat. The setdown zone keeps its required thickness; the surrounding slab is simply a little thicker. At this depth the extra concrete is minor and almost always worth it to avoid a soffit fold and keep a clean, flat formwork run."
               },
               {
-                "range": "<= 50 mm",
-                "rating": "Consider",
-                "color": "yellow",
-                "guidance": "Minor soffit fold. Local thickening should be actively considered because it can retain the required top setdown while avoiding a shallow soffit fold. Use the rule of thumb in the worked example below (about 0.6 m³ of concrete per lineal metre of avoided 50 mm fold) to compare added concrete against avoided formwork. Where the added concrete is below this value, flat soffit is the better outcome."
-              },
-              {
-                "range": "50 - 150 mm",
+                "range": "50 - 100 mm",
                 "rating": "Concern",
                 "color": "orange",
-                "guidance": "Quantify the trade-off before deciding. Local thickening may still be reasonable for small areas or awkward folds, but added concrete volume, self-weight and reinforcement implications become more significant in this range. The break-even rises with depth (see worked example: about 1.2 m³/lm at 150 mm). Compare the flat-soffit option against forming the fold using project-specific rates where available."
+                "guidance": "Stepping the top down to keep the soffit flat is often still the better outcome, but the extra concrete is no longer trivial and starts to depend on the slab. A small slab with a reasonable setdown area is a clear case to keep the soffit flat; a large slab where the setdown covers only a small part of the area means a lot of extra concrete to flatten a small zone. Weigh the volume of extra concrete against the length of fold avoided."
               },
               {
-                "range": "> 150 mm",
+                "range": "> 100 mm",
                 "rating": "Action required",
                 "color": "red",
-                "guidance": "Beyond this depth the question is no longer flat soffit vs minor fold; it is how the fold itself is built. Refer to the <em>Suspended slab level changes (folds)</em> entry for guidance on monolithic forming, blockwork or permanent formwork with separate pours."
+                "guidance": "The added depth needed to keep the soffit flat is now significant across the slab, and this is really a level change rather than a minor setdown. Refer to the <em>Suspended slab level changes (folds)</em> entry for guidance on monolithic forming, blockwork or permanent formwork with separate pours."
               }
             ],
-            "workedExample": {
-              "title": "Indicative rule of thumb — for consideration only",
-              "caveat": "Numbers below are based on assumed crew rates and typical productivity. They are intended as a first-pass sense-check to support engineering judgement, not a binding rule. Project conditions, pricing, programme or site-specific buildability constraints may justify a different conclusion.",
-              "headline": "For a 50 mm soffit fold, the break-even is about <strong>0.6 m³ of concrete per lineal metre</strong> of avoided fold. For a 150 mm fold, it is about <strong>1.2 m³/lm</strong>. For depths in between, interpolate linearly between these values.",
-              "tableHeaders": [
-                "Soffit fold depth",
-                "Assumed productivity",
-                "Break-even working value"
-              ],
-              "tableRows": [
-                [
-                  "50 mm",
-                  "10 lm/day",
-                  "0.6 m³ concrete per lm of avoided fold"
-                ],
-                [
-                  "150 mm",
-                  "5 lm/day",
-                  "1.2 m³ concrete per lm of avoided fold"
-                ]
-              ],
-              "howToUse": "Multiply the per-metre break-even by the fold length to get the total break-even concrete volume. <strong>If keeping the soffit flat adds an amount of concrete less than or equal to the break-even, local thickening is the more constructable choice.</strong><br><br><em>Worked examples (10 lm of soffit fold each):</em><ul><li><strong>50 mm fold:</strong> 10 × 0.6 = 6.0 m³ break-even. If flat-soffit thickening adds ≤ 6.0 m³, thicken.</li><li><strong>150 mm fold:</strong> 10 × 1.2 = 12.0 m³ break-even. If flat-soffit thickening adds ≤ 12.0 m³, thicken.</li><li><strong>90 mm fold (interpolated):</strong> per-metre value = 0.6 + (40 ÷ 100) × (1.2 − 0.6) = <strong>0.84 m³/lm</strong>; total break-even = 10 × 0.84 = 8.4 m³. If flat-soffit thickening adds ≤ 8.4 m³, thicken.</li></ul>Between 50 mm and 150 mm the break-even rises at about 0.06 m³/lm for every 10 mm of additional fold depth.",
-              "assumptionsTitle": "How these numbers were derived",
-              "assumptions": [
-                "Formwork crew of 2 at $1,500–$2,000/day",
-                "Formwork material, fixings, consumables and waste: +10% (total $1,650–$2,200/day)",
-                "Concrete rate: $320/m³",
-                "Soffit fold productivity: 10 lm/day at 50 mm depth; 5 lm/day at 150 mm depth",
-                "Excluded: GST, reinforcement changes, pumping, finishing, programme impacts, site-specific access"
-              ],
-              "assumptionsNote": "Rough first-pass values based on site-experience assumptions. Replace with project-specific rates where actual pricing is available."
-            },
             "alternatives": [
               {
-                "title": "Locally thicken the slab to maintain a flat soffit",
-                "description": "Use where the top setdown is minor and the added concrete volume is reasonable. The required top setdown remains, but the adjacent higher slab zone is thickened so the soffit stays flat."
+                "title": "Pour to the higher level and step the top down",
+                "description": "Pour the slab up to the higher level and step the top down over the setdown zone so the soffit stays flat. The setdown zone keeps its required thickness; the surrounding slab is simply a little thicker. Best where the setdown is shallow and the slab is not so large that flattening adds an unreasonable amount of concrete."
               },
               {
-                "title": "Retain or show the formed soffit fold where the trade-off is not obvious",
-                "description": "Use where both options may be reasonable. The drawing may show the formed fold and also permit local thickening as an option, allowing the contractor to choose the practical approach based on access, formwork setup, pour size and sequencing."
+                "title": "Show both options and let the contractor choose",
+                "description": "Where it is not obvious whether flattening or following the fold is better, the drawing can show the formed soffit fold and also permit stepping the top down, letting the contractor choose based on access, formwork setup, pour size and sequencing."
               },
               {
-                "title": "Use an alternative construction method for significant folds",
-                "description": "Use where local thickening would add too much concrete or self-weight, or where the fold becomes too deep or complex to treat as a minor detail. Alternatives may include conventional formed folds, separate pours, blockwork, permanent formwork or a revised slab arrangement."
+                "title": "Treat it as a level change for deeper setdowns",
+                "description": "Where the setdown is deep enough that keeping the soffit flat would add a significant amount of concrete across the slab, stop treating it as a minor setdown and treat it as a level change. Refer to the Suspended slab level changes (folds) entry for monolithic forming, separate pours, blockwork or permanent formwork."
               }
             ],
             "applicability": {
-              "appliesWhere": "This entry applies where a top slab setdown is required and maintaining constant slab thickness would create a soffit fold. It is intended for suspended reinforced concrete slabs and similar elements where the designer is choosing between a formed soffit fold and local thickening of the adjacent slab zone to keep the soffit flat.",
+              "appliesWhere": "This entry applies to suspended reinforced concrete slabs and similar elements where a top setdown is required and the designer is choosing between following it with a soffit fold or stepping the top down to keep the soffit flat.",
               "checks": [
                 {
-                  "title": "Top setdown remains required",
-                  "description": "This entry does not recommend removing functional top setdowns. Wet-area setdowns, balcony setdowns, falls, thresholds, waterproofing build-ups and architectural level requirements remain controlling. The review is about the soffit geometry below the setdown."
+                  "title": "The setdown stays required",
+                  "description": "This entry is about soffit geometry only. Wet-area, balcony, threshold, falls and waterproofing setdowns remain exactly as designed. The question is only whether the soffit beneath them follows the setdown as a fold or stays flat with the top stepped down."
                 },
                 {
-                  "title": "Structural and detailing effects remain controlling",
-                  "description": "Local thickening must still satisfy structural design requirements, including added self-weight, deflection, punching or shear effects where relevant, reinforcement cover, laps, anchorage, congestion and concrete placement."
+                  "title": "It depends on the slab, not a ratio",
+                  "description": "The decision turns on how much extra concrete keeping the soffit flat actually adds, compared with the length of fold avoided. That is an absolute comparison, not a percentage. A small slab with a reasonable setdown area is an easy case to keep flat; a large slab where the setdown covers only a small part of the area means a lot of extra concrete to flatten a small zone, and following the fold may be the better call even at a shallow depth. There is no fixed area or percentage threshold — it depends on the volume of extra concrete relative to the length of fold avoided."
                 }
               ],
-              "note": "Use the rating as a constructability review prompt, not as a blanket rule. The intent is not to remove required top setdowns; it is to avoid creating unnecessary soffit folds where a modest increase in slab thickness would produce a simpler construction outcome."
+              "note": "Use the bands as a prompt, not a rule. Below 50 mm, keeping the soffit flat is almost always sensible. Between 50 and 100 mm it is a genuine judgement that turns on slab size. Above 100 mm, treat it as a level change. The thicker slab that comes from keeping the soffit flat is generally a benefit, not a penalty."
             },
-            "evidence": "Evidence is based on practical project experience and formwork/buildability literature.<br><br><strong>Practical project experience.</strong> In the project example, the top setdown remained required, but the revised detail allowed the adjacent slab zone to be locally thickened to maintain a flat soffit and simplify formwork and reinforcement detailing. This demonstrates the intended constructability response: retain the functional top setdown, but avoid the unnecessary soffit fold where practical.<br><br><strong>Formwork and buildability literature.</strong> Löfgren et al. (2001) support the broader principle that minimising material quantity does not necessarily minimise finished construction cost. They identify simplicity and repetition as key principles for efficient construction, and their man-hour breakdown attributes approximately 49% of concrete-structure work to formwork compared with approximately 11% to concrete operations.<br><br><strong>References</strong><br>Löfgren, I., Gylltoft, K., &amp; Kutti, T. (2001). <em>In-situ concrete building - Innovations in Formwork</em>. Department of Structural Engineering, Chalmers University of Technology / Thomas Concrete Group.",
+            "evidence": "Evidence is based on practical project experience and formwork/buildability literature.<br><br><strong>Practical project experience.</strong> In the project example, the top setdown remained required, but the revised detail poured the slab up to the higher level and stepped the top down to maintain a flat soffit, simplifying formwork and reinforcement detailing. This demonstrates the intended constructability response: retain the functional top setdown, but avoid an unnecessary soffit fold where practical.<br><br><strong>Formwork and buildability literature.</strong> Löfgren et al. (2001) support the broader principle that minimising material quantity does not necessarily minimise finished construction cost. They identify simplicity and repetition as key principles for efficient construction, and their man-hour breakdown attributes approximately 49% of concrete-structure work to formwork compared with approximately 11% to concrete operations. This is the basis for treating the extra concrete from a flat soffit as generally worthwhile against the formwork it avoids.<br><br><strong>References</strong><br>Löfgren, I., Gylltoft, K., &amp; Kutti, T. (2001). <em>In-situ concrete building - Innovations in Formwork</em>. Department of Structural Engineering, Chalmers University of Technology / Thomas Concrete Group.",
             "examples": [
               {
                 "image": "images/slab-setdown-original-detail.png",
@@ -360,7 +322,7 @@
               {
                 "image": "images/slab-setdown-local-thickening-option.png",
                 "tag": "recommended",
-                "caption": "Revised detail retaining the required top setdown but allowing the adjacent slab zone to be locally thickened to the dashed line. This maintains a flat soffit where practical and simplifies formwork and reinforcement detailing."
+                "caption": "Revised detail retaining the required top setdown but pouring the slab up to the higher level and stepping the top down. This maintains a flat soffit and simplifies formwork and reinforcement detailing."
               }
             ],
             "supportingImages": [
