@@ -1101,6 +1101,10 @@
           "a": "No. Entries are informed by different combinations of literature, supplier information, project outcomes, industry input and site experience. Some entries are supported by several evidence sources, while others may rely on a narrower evidence base. Read the Evidence Basis section to understand how the thresholds were derived and how much confidence to place in the guidance."
         },
         {
+          "q": "Does the framework help with constructability or buildability?",
+          "a": "Both terms are relevant. <strong>Buildability</strong> usually refers to how readily a design can be physically built. <strong>Constructability</strong> is broader: it includes buildability, but also considers how construction knowledge is integrated into design decisions, including safety, sequencing, logistics, methods, documentation and project constraints. This framework uses <strong>constructability</strong> because it is concerned with more than whether a detail can be built &mdash; it is concerned with whether design decisions support safe, practical and efficient construction."
+        },
+        {
           "q": "An entry is tagged 'NSW, Australia'. Can I use it elsewhere?",
           "a": "Yes, but use judgement. The location tag records where the evidence or practical knowledge behind the entry was gathered. It is provenance, not a restriction. Material availability, labour practices, equipment access and construction conventions vary between regions, so users should judge whether the guidance is relevant to their own project context."
         },
