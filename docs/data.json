@@ -327,6 +327,14 @@
             ],
             "supportingImages": [
               {
+                "image": "images/wet-area-setdown-plan.png",
+                "title": "<strong>Wet-area setdowns shown on plan</strong><br>A 250 slab with the wet areas (dotted) set down to 200 MIN. The surrounding slab is poured thicker so the wet-area low point still meets the plan thickness, exactly the case described in this entry."
+              },
+              {
+                "image": "images/wet-area-setdown-section.png",
+                "title": "<strong>Typical wet-area set-down detail (section)</strong><br>The top surface steps down and falls to the outlet (up to 50 MAX) while the soffit stays flat. The slab is not less than the plan thickness at the low point, and Z-bars match and lap the slab reinforcement."
+              },
+              {
                 "image": "images/formwork-man-hour-breakdown-lofgren.png",
                 "title": "<strong>Löfgren et al. (2001) - concrete structure man-hour breakdown</strong><br>Approximate man-hour breakdown for a concrete structure, showing formwork as the dominant labour activity at 49%, compared with concrete operations at 11%. Supports reviewing minor soffit folds against flat-soffit alternatives."
               }
