@@ -878,7 +878,7 @@
     "intro": "Use this framework as a design-stage review tool. Browse the entries to see how real design decisions can create or eliminate constructability issues. Use the thresholds, examples and recommended actions to inform your own engineering judgement &mdash; not as fixed answers, but as prompts for thinking through how your design will actually be built.",
     "whatIs": {
       "title": "What is this framework?",
-      "intro": "Structural designers work under two parallel obligations. This framework sits squarely on one side of that split &mdash; it does not help you comply with the codes, and it is not a compliance-checking tool. <strong>The framework helps with the professional duty that compliance alone does not cover</strong>: designing in a way that can be built safely and practically.",
+      "intro": "Structural designers operate under two parallel bodies of obligation: <em>compliance</em> and <em>professional duty</em>. This framework helps with <strong><em>professional duty</em></strong>, not <strong><em>compliance</em></strong>. It does not help you check codes, interpret Australian Standards, or determine whether a design is structurally adequate. It helps designers think about whether what they have drawn can be built safely and practically.",
       "columns": [
         {
           "kind": "compliance",
