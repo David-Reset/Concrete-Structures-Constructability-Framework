@@ -892,7 +892,7 @@
           "foot": "Clearly defined and enforceable &mdash; and a design can be checked against the codes.",
           "card": {
             "label": "Compliance software",
-            "text": "Software already exists to check a design against the  and codes. The compliance side of the job is well supported &mdash; this is <strong>not</strong> what the framework does."
+            "text": "Software already exists to check whether a design satisfies standards and codes. The compliance side of the job is well supported by established tools and processes &mdash; this is <strong>not</strong> what the framework does."
           }
         },
         {
@@ -907,7 +907,7 @@
           "foot": "Principles, not decision-point tools &mdash; until now there has been little that turns this duty into specific design-stage guidance.",
           "card": {
             "label": "This framework",
-            "text": "Translates construction knowledge into specific, design-stage guidance so the duty side becomes something you can actually act on at the decision point &mdash; applied within compliant design solutions, never instead of them."
+            "text": "Translates construction knowledge into design-stage guidance so professional duty can be considered at the decision point. It helps designers think about how a design will be built &mdash; not whether it complies."
           }
         }
       ],
