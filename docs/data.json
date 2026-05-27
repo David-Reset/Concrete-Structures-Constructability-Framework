@@ -736,7 +736,7 @@
                 "description": "Include a general note such as all extras evenly spaced unless noted otherwise to reduce the amount of information that needs to be conveyed in individual callouts."
               }
             ],
-            "evidence": "Evidence is based on practical project experience where compressed reinforcement notation caused additional reinforcement to be missed during construction. The guidance also reflects constructability review principles: reinforcement information should be easy to read, difficult to overlook and clear enough for fixing and inspection.",
+            "evidence": "This entry is led by practical project experience and supported by general human-factors research on visual clutter and information overload. The literature explains <em>why</em> dense or buried notation is easy to misread, but does not study reinforcement callouts directly, so the bands below are reasoned rather than measured.<br><br><strong>Practical project experience.</strong> On a real project, compressed reinforcement notation caused additional reinforcement to be missed during construction. Extras encoded inside a single notation string were overlooked rather than read as a separate requirement.<br><br><strong>Why it happens &mdash; clutter and overload.</strong> The guiding principle is that a reader should be given what they need to place the bar correctly, and little more; information beyond that adds visual competition without adding decision value. Rosenholtz, Li and Nakano (2007) show that as a display becomes more cluttered, a target item becomes harder to find &mdash; excess or disorganised items cause crowding and degrade visual search &mdash; and that displays can be designed to reduce this. The same effect explains why a low-salience item such as a small &lsquo;+3&rsquo; of extra bars is easily missed when crowded by surrounding characters. Information-overload research points the same way: the number of information cues is the most commonly cited driver of overload, and overload increases the time taken to interpret information and the likelihood of confusion (Speier, Valacich &amp; Vessey, 1999). A callout that compresses count, spacing, layer and extras into one string is overload at the scale of a single notation. Both bodies of work concern displays and decisions in general rather than engineering drawings, so they support the principle, not the specific notation here.<br><br><strong>Evidence gap.</strong> No study examined here tests how reinforcement callouts in particular are read on site, especially by steel fixers, who may have no formal design training and are decoding notation quickly under site conditions. This is a genuine gap: the cognitive mechanism is well established, but its specific application to reinforcement notation rests on project experience and reasoning rather than direct evidence. The thresholds should be weighed accordingly.<br><br><strong>References</strong><br>Rosenholtz, R., Li, Y., &amp; Nakano, L. (2007). Measuring visual clutter. <em>Journal of Vision, 7</em>(2):17, 1&ndash;22. https://doi.org/10.1167/7.2.17<br>Speier, C., Valacich, J. S., &amp; Vessey, I. (1999). The influence of task interruption on individual decision making: An information overload perspective. <em>Decision Sciences, 30</em>(2), 337&ndash;360. https://doi.org/10.1111/j.1540-5915.1999.tb01613.x",
             "examples": [
               {
                 "image": "images/callout-poor.jpg",
@@ -749,9 +749,14 @@
                 "caption": "Clear notation: N12-200 (B1) communicates bar size, spacing, and laying order at a glance. Extras called out separately as 6N16 EXTRA with their own extent markers."
               }
             ],
-            "supportingImages": [],
+            "supportingImages": [
+              {
+                "image": "images/reinforcement-clutter.png",
+                "title": "<strong>Rosenholtz et al. (2007) - visual clutter and search difficulty</strong><br>A target is easy to find among a few well-separated items (top), but much harder once the same items are crowded together (bottom). This illustrates the mechanism behind the entry: a low-salience item, such as a small extra-bar note, is easily missed when buried in a dense notation string. The figure illustrates the general principle; it is not specific to reinforcement drawings."
+              }
+            ],
             "dateAdded": "2026-04-02",
-            "dateReviewed": "2026-05-13",
+            "dateReviewed": "2026-05-27",
             "location": {
               "country": "Australia",
               "state": "NSW"
