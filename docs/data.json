@@ -427,6 +427,99 @@
           }
         },
         {
+          "name": "Drip grooves on exposed soffit edges",
+          "available": true,
+          "data": {
+            "question": "On exposed soffit edges where a drip groove is required, has the groove been detailed at the design stage with reinforcement cover maintained from the root of the groove &mdash; rather than left as a site rectification or drawn without coordinating cover?",
+            "parameter": "Treatment of drip grooves on exposed soffit edges (detailed with cover maintained at design stage / drawn without cover coordination / omitted and left to site).",
+            "background": "A drip groove (also called a drip, throat or water check) is a small recess formed in the underside of a projecting concrete edge so that water running off the top or face cannot track back along the soffit to a wall or face below. Without it, run-off spreads across the soffit and causes staining and prolonged dampness on the element beneath. The water-shedding function is not the constructability issue, and not every soffit needs a groove. The constructability issue is twofold, and both parts belong at the design stage.<br><br>First, a drip groove is a <em>formed</em> feature. It is created by a fillet or former fixed to the soffit formwork before the pour. Once the slab is cast and the formwork stripped, the groove cannot be added without cutting or grinding it into hardened concrete close to the reinforcement &mdash; a rectification operation that is slow, inconsistent, and risks the very cover it is meant to protect. Providing the groove in the design is the difference between a formed detail and a site rework.<br><br>Second, the groove eats into the soffit cover. Cover to the bottom reinforcement is normally measured to the soffit face; a groove cut into that face reduces the concrete between the bar and the deepest point (the root) of the groove. The cover must therefore be maintained measured from the root of the groove, not from the original soffit. The usual way to achieve this is to position the groove clear of the bars, offset any bar that would otherwise sit above it, or relocate the reinforcement layers so the affected bar keeps its cover. The example detail in this entry does exactly this: the groove is drawn on the section with an explicit instruction to maintain 50 mm cover, so the cover requirement travels with the groove rather than being left to chance.",
+            "thresholds": [
+              {
+                "range": "Detailed, cover kept",
+                "rating": "Good practice",
+                "color": "green",
+                "guidance": "The drip groove is shown on the relevant section at the design stage, with the specified cover explicitly maintained from the root of the groove &mdash; the bars positioned, offset or layered so the cover is not breached. The groove is a deliberate, coordinated detail rather than something added later."
+              },
+              {
+                "range": "Cover not coordinated",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "A drip groove is shown, but the cover to the nearest bar has not been coordinated with it. The groove root encroaches on the cover zone, so the detail as drawn either breaches the specified cover or forces a site query and change. Position the groove clear of the bars, or relocate the affected reinforcement, so cover is kept measured from the root of the groove."
+              },
+              {
+                "range": "Omitted, left to site",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "No drip groove is provided where the exposed soffit edge needs one. Correcting this after the pour means cutting or grinding a groove into hardened concrete next to the reinforcement &mdash; a rectification that is slow, inconsistent and risks the cover the groove is meant to protect. Where a groove is required, detail it at the design stage. (Where the soffit is protected or internal, or the runoff is handled another way, no groove may be needed &mdash; that is a deliberate decision, not this case.)"
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to exposed external soffit edges of formed reinforced concrete elements where water running off the top or face can track back along the underside to a wall, face or element below &mdash; slab and balcony edges, the base of upstands and upturns, copings, sills, hobs, projecting bands and similar. It applies where a drip groove is formed into the soffit, as distinct from an applied drip strip fixed after stripping.",
+              "checks": [
+                {
+                  "title": "Cover is measured from the root of the groove",
+                  "description": "The controlling point for durability cover shifts from the soffit face to the deepest point of the groove. Maintain the specified cover measured from the root of the groove, not the original soffit. Where a bar would otherwise sit above the groove, offset that bar or relocate the reinforcement layer so the affected bar moves clear and keeps its cover."
+                },
+                {
+                  "title": "Decide it at the design stage",
+                  "description": "A formed groove must be set in the formwork before the pour. It cannot be added to a stripped soffit without cutting hardened concrete close to the reinforcement, which is a rectification, not a finishing operation. Providing the groove in the design avoids that rework and keeps control of the cover."
+                },
+                {
+                  "title": "Not every soffit needs one",
+                  "description": "Internal or protected soffits, or edges where runoff is handled by a flashing, overhang or applied finish, may not need a formed groove. The rating is a prompt where a groove is required and the cover needs coordinating &mdash; not a rule that every soffit edge must be grooved."
+                },
+                {
+                  "title": "Groove size and position",
+                  "description": "Coordinate the groove geometry with the bar layout, chairs and cover. Detailing convention treats the drip groove as a small standard recess set a short distance in from the edge; practitioner guidance for water shedding suggests a downstand of around 50 mm or more, or an applied strip of roughly 20&ndash;25 mm where a formed groove is not used. Confirm the size against the project's durability cover."
+                },
+                {
+                  "title": "Exposure classification drives the cover",
+                  "description": "The soffit cover the groove must preserve is set by the element's exposure classification under AS 3600. An exterior balcony or podium soffit can require a higher cover than an internal element, so the cover the groove must keep is element-specific. Confirm the controlling cover before fixing the groove geometry."
+                }
+              ],
+              "note": "Use the rating as a detailing-coordination prompt, not a rule that every soffit edge must be grooved. Good practice is to detail a required groove at the design stage with the cover maintained from its root; the failure modes are leaving it to a site rectification, or drawing it without coordinating the cover."
+            },
+            "alternatives": [
+              {
+                "title": "Detail the groove on the section and call up the cover",
+                "description": "Show the drip groove on the relevant section and add an explicit instruction to maintain the specified cover (for example, &lsquo;drip groove &mdash; maintain 50 mm cover&rsquo;), as in the example detail. This keeps the cover requirement attached to the groove at the point of use, so whoever fixes the reinforcement and sets out the former sees both together."
+              },
+              {
+                "title": "Coordinate the reinforcement with the groove",
+                "description": "Position the groove clear of the bars where possible. Where a bar would sit above the groove, offset that bar or relocate the reinforcement layers so the affected bar moves away from the groove and keeps its cover measured from the root. Where neither is practical, locally increase the edge thickness or lower the bar so the groove sits within the cover zone."
+              },
+              {
+                "title": "Provide the groove in the design, not on site",
+                "description": "Detail the groove so it is formed in the pour, not cut afterwards. Adding a groove to hardened concrete is a rectification that is slow, inconsistent and risks the cover and the reinforcement. Deciding it at the design stage is the whole point: it converts a potential site rework into a formed detail."
+              },
+              {
+                "title": "Use an applied drip strip where a formed groove is impractical",
+                "description": "Where a formed groove would compromise cover or is difficult to form, a continuous PVC or aluminium drip strip fixed to the soffit edge sheds water without cutting into the cover. This should be specified explicitly &mdash; material, durability, fixing and position &mdash; not assumed, and its appearance and maintenance accepted as part of the choice."
+              }
+            ],
+            "evidence": "This entry is led by practical project experience and supported by reinforced concrete detailing literature, standard detailing convention, and drip-edge performance testing. The literature establishes why a drip groove must be coordinated with cover and why its geometry matters; the design-stage and rectification points rest on the detailing logic and project experience described.<br><br><strong>Practical project experience.</strong> The example detail shows a drip groove formed at a slab and upturn edge with an explicit instruction to maintain 50 mm cover on the section. This is the intended constructability response: the groove is detailed at the design stage and the cover requirement is coordinated with it, rather than the groove being left to site or drawn without checking cover.<br><br><strong>Reinforced concrete detailing literature.</strong> Guidance on recommended details for reinforced concrete construction notes that drip grooves along a slab soffit edge can reduce the cover to the longitudinal reinforcement, and that cover is maintained either by offsetting the bars that cross the groove or by relocating the reinforcement layers so the affected bar is moved clear of the groove. This is the direct basis for treating cover coordination, rather than the groove itself, as the constructability issue.<br><br><strong>Standard detailing convention.</strong> Drip grooves appear as standardised section details, with a defined size and a set offset from the edge, in bridge and structural detailing manuals, where the groove is drawn on the section rather than left to site interpretation. This supports detailing the groove &mdash; and the cover it must preserve &mdash; directly on the section. The detailing manuals reviewed for this point were international rather than Australian, but the convention is widely used; in Australian practice, builder waterproofing guidance similarly treats the drip groove in the soffit as a standard feature of balcony, hob and upstand detailing.<br><br><strong>Drip-edge performance.</strong> Controlled testing of drip-edge profiles found that geometry measurably affects how evenly water is shed off an edge rather than tracking back along the surface below, and that the profile must also hold its shape and resist exposure. This supports treating the groove as a functional detail worth resolving deliberately rather than as an afterthought, while noting that the testing concerned metal sill and flashing drip edges rather than formed concrete grooves.<br><br><strong>Cover is durability-driven.</strong> Under AS 3600, the soffit cover the groove must preserve is set by the element's exposure classification, and an exterior balcony or podium soffit can require a higher cover than an internal element. The groove therefore has to be coordinated against an element-specific cover, not a single default value.<br><br><strong>References</strong><br>STRUCTURE magazine. <em>Recommended Details for Reinforced Concrete Construction.</em> structuremag.org.<br>Construction Canada. (2018). <em>The effectiveness of different drip edge designs.</em> constructioncanada.net.<br>Standards Australia. (2018). <em>AS 3600:2018 Concrete Structures.</em> Standards Australia.",
+            "examples": [
+              {
+                "image": "images/no-drip-groove.png",
+                "tag": "concern",
+                "caption": "Concern: an exposed cantilevered soffit edge at a driveway/garage entry is shown without a drip groove. Where runoff can reach this edge, water may track back along the underside and stain or wet the face below. If a groove is required, it should be detailed before the pour rather than left as a site rectification."
+              },
+              {
+                "image": "images/drip-groove-shown.png",
+                "tag": "recommended",
+                "caption": "Recommended: the drip groove is shown on the section at the exposed soffit edge, with an explicit instruction to maintain 50 mm cover. The groove is coordinated with the reinforcement and formed as part of the concrete detail, rather than cut or added after stripping."
+              }
+            ],
+            "dateAdded": "2026-06-02",
+            "dateReviewed": "2026-06-02",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "supportingImages": []
+          }
+        },
+        {
           "name": "Reinforcement spacing variability",
           "available": false
         },
