@@ -516,7 +516,12 @@
               "country": "Australia",
               "state": "NSW"
             },
-            "supportingImages": []
+            "supportingImages": [
+              {
+                "image": "images/drip-groove-detailing.png",
+                "title": "<strong>SRIA Technical Note 5 - detailing at drip grooves</strong><br>Figure 20 shows that a drip groove can reduce soffit cover if no allowance is made. The recommended solutions either provide cover from the root of the groove or avoid cutting into the cover zone. The accompanying notes state that, where a drip groove is used, bottom bar supports should be increased and that insufficient cover can lead to cracking and steel corrosion."
+              }
+            ]
           }
         },
         {
