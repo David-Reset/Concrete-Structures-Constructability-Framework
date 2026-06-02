@@ -409,7 +409,7 @@
               {
                 "image": "images/chamfer-noted.png",
                 "tag": "recommended",
-                "caption": "Recommended documentation approach: a general concrete note requires edges to be chamfered 20 x 20 and re-entrant angles filleted 20 x 20 unless specified otherwise. This avoids cluttering every section while still making the formed-edge treatment clear."
+                "caption": "Recommended documentation approach: a general concrete note, similar to C2, requires edges to be chamfered 20 x 20 unless specified otherwise. This avoids cluttering every section while still making the formed-edge treatment clear."
               }
             ],
             "supportingImages": [
