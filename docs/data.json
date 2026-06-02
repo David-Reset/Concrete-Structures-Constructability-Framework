@@ -118,6 +118,93 @@
           }
         },
         {
+          "name": "Confined-space entry at pier and shaft bases",
+          "available": true,
+          "data": {
+            "question": "When a pier or shaft is connected to rock or otherwise completed at its base, does the detail require a worker to enter the excavation to install it, or can the work be done from the surface?",
+            "parameter": "Whether the pier or shaft base detail requires a worker to enter the excavation to install it (judged: completed from the surface &mdash; base fixing not designed out &mdash; entry into the shaft required).",
+            "background": "Piers and bored piles, including those socketed into rock, are normally reinforced by fabricating the reinforcement cage at ground level and lowering it into the bore by crane, splicing longer cages at the casing top as they are lowered. Worked this way, nobody needs to enter the shaft. A confined-space entry arises when the base detail cannot be completed from the surface and instead requires a worker to go down &mdash; most commonly to drill and grout starter bars or dowels into the rock at the bottom of the pier, or to make a connection by hand at the base.<br><br>A deep, narrow excavation with restricted entry and exit is the classic setting for a confined space. Under the WHS Regulations a confined space is not defined by its dimensions but by its hazards: an enclosed or partially enclosed space, not intended to be occupied, where there is a risk from an unsafe oxygen level, airborne contaminants, or engulfment. Such spaces can develop an oxygen-deficient or contaminated atmosphere, and their restricted access makes escape and rescue difficult &mdash; which is why confined-space work carries mandatory controls and remains a recurring cause of work-related death.<br><br>This is a design decision before it is a site procedure. The most effective control in the hierarchy is to eliminate the need to enter, and for a pier base that is usually achievable at the drawing board: socket the pier into the rock and run continuous reinforcement so the connection is made by the socket and a surface-placed cage, use couplers or cast-in connections rather than hand-fixing at depth, or select a pier system (such as a continuous flight auger pile, where the cage is plunged from the surface) that needs no entry. The contractor still controls how any confined space that does remain is managed; the designer controls whether the detail forces the entry in the first place.",
+            "thresholds": [
+              {
+                "range": "Completed from the surface",
+                "rating": "Good practice",
+                "color": "green",
+                "guidance": "The pier or shaft is detailed so the base is completed without anyone entering the excavation. Where the pier connects to rock, this is typically achieved by socketing the pier into the rock and running continuous reinforcement, so the connection is made by the socket and a cage placed from the surface. The reinforcement is fabricated at ground level and lowered as a unit, or spliced at the casing top as it descends. The design has eliminated the need to enter &mdash; the most effective control &mdash; rather than relying on the site to manage an entry."
+              },
+              {
+                "range": "Base fixing not designed out",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "The base detail relies on a fixing operation at the bottom of the shaft &mdash; commonly drilling and grouting starter bars or dowels into the rock &mdash; rather than a socket plus continuous reinforcement. A base operation of this kind tends to draw a worker into the pier excavation to complete it, and it has not been deliberately designed out. Review whether the same fixity can be achieved by socketing the pier and running continuous reinforcement, or by another surface-placed connection, so the work stays out of the shaft."
+              },
+              {
+                "range": "Entry into the shaft required",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "As drawn, the base detail cannot be installed without a worker entering a deep, narrow excavation that is, or is likely to be, a confined space. The design has created a confined-space entry &mdash; among the highest-risk activities in construction, with an oxygen-deficient or contaminated atmosphere, engulfment, and difficult rescue all in play. Deliberately review whether the detail can be re-arranged to remove the entry. If entry genuinely cannot be avoided, treat it as a documented, deliberate decision and communicate the residual risk to the contractor &mdash; not as an unrecognised by-product of the detail."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to piers, bored piles, bucket piers, shafts and similar deep, narrow excavations where the design specifies work at the base &mdash; such as connecting the pier to rock, fixing starter bars or dowels, or making a base connection &mdash; and where that work could require a worker to enter the excavation. It is concerned with the design decision that determines whether entry is needed, not with the procedures for entering a confined space once one exists.",
+              "checks": [
+                {
+                  "title": "The design decision, not the entry procedure",
+                  "description": "This entry is about whether the detail forces a worker into the excavation, which is a design matter. How a confined space is then classified, permitted, ventilated, monitored and managed is the contractor&rsquo;s responsibility under their own systems. The designer&rsquo;s duty is to remove the need to enter so far as is reasonably practicable; the contractor&rsquo;s duty to manage any space that remains applies regardless. Both duties coexist."
+                },
+                {
+                  "title": "A confined space is judged, not measured",
+                  "description": "A shaft is not a confined space merely because it is deep. Under the WHS Regulations the classification depends on the structure and the specific circumstances &mdash; whether there is a risk from an unsafe atmosphere or engulfment and whether entry and exit are restricted. A shallow, open, well-ventilated excavation that a person can freely walk into and out of may not be a confined space. Use judgement rather than a depth cut-off."
+                },
+                {
+                  "title": "Standard piling already avoids entry",
+                  "description": "For most bored piers the reinforcement cage is prefabricated and lowered or spliced from the surface, so entry is the exception rather than the rule. This entry targets the specific base details that break that pattern &mdash; rock-socket dowels, hand-made base connections, or base preparation that must be done by a person at depth."
+                },
+                {
+                  "title": "Some base work may be genuinely unavoidable",
+                  "description": "Certain situations &mdash; hand-excavated piers, some rock-socket or remediation details, or inspection and clean-out requirements &mdash; may have no practical surface alternative. The rating is a prompt, not a prohibition. &lsquo;Action required&rsquo; means review the detail and, if entry must remain, plan for it and communicate it, not that the detail cannot be used."
+                }
+              ],
+              "note": "Use the rating as a safety-in-design prompt. The aim is to ask whether the base detail forces a worker into the excavation and whether a surface method would remove that need &mdash; not to rule out any particular pier type."
+            },
+            "alternatives": [
+              {
+                "title": "Socket the pier and run continuous reinforcement",
+                "description": "Where the pier connects to rock, make the connection by socketing the pier into the rock and carrying continuous reinforcement from the socket up into the element above, so the fixity comes from the socket and a surface-placed cage rather than from bars fixed at the base. This is the detail shown in the recommended example."
+              },
+              {
+                "title": "Replace base fixing with couplers or cast-in connections",
+                "description": "Where a discrete connection is needed at the base, design it so it forms part of the lowered cage &mdash; using couplers, cast-in dowels, or lapping arranged within the prefabricated cage &mdash; rather than relying on starter bars drilled and grouted by hand at the bottom of the shaft."
+              },
+              {
+                "title": "Consider a pier system that needs no entry",
+                "description": "Where ground conditions allow, consider a system such as a continuous flight auger (CFA) pile, where the reinforcement cage is plunged into the fresh concrete from the surface, or a cased bored pile with a crane-lowered cage. The choice of pier system is itself a design decision that can remove the need to enter."
+              },
+              {
+                "title": "If entry cannot be removed, identify and communicate it",
+                "description": "Where no surface method is practical, treat the entry as a deliberate decision rather than an oversight. Record the residual confined-space risk and pass it to the client and principal contractor &mdash; for example in the designer&rsquo;s written safety report &mdash; so the entry is planned, permitted and resourced rather than discovered on site."
+              }
+            ],
+            "evidence": "This entry rests on the safety-in-design duty and the hierarchy of control, applied to a specific pier-base detail. The design-stage logic is well established in the literature; the band states below are a judged application of that logic to pier and shaft details, not a measured threshold.<br><br><strong>Design decisions influence construction safety.</strong> Behm (2005) reviewed 224 construction fatality investigations and found that around 42% were linked to the design-for-construction-safety concept &mdash; that is, a different design decision could have eliminated or reduced the hazard before it reached site. The finding was subsequently validated by an expert panel (Gambatese, Behm &amp; Rajendran, 2008). A pier detail that forces entry into a deep, narrow excavation is exactly the kind of upstream decision this research concerns.<br><br><strong>Confined-space work is a recurring cause of death.</strong> Selman et al. (2017) identified 59 work-related confined-space fatalities in Australia over 2000&ndash;2012, a rate comparable to other industrialised countries, and Selman et al. (2018) found the leading mechanisms to be toxic or oxygen-deficient atmospheres, fire and explosion, engulfment, and physical hazards &mdash; with restricted entry and exit making rescue difficult and, at times, multiplying the fatalities when others attempt a rescue. This is why the confined-space duties carry mandatory controls.<br><br><strong>Eliminating the need to enter is the most effective control.</strong> The model Confined Spaces Code of Practice places eliminating the need to enter a confined space at the top of the hierarchy of control. The model Safe Design of Structures Code of Practice puts the same principle on the designer: eliminate risks by designing-in or designing-out features, giving as its own example that designing components for pre-fabrication on the ground can avoid working at height and so eliminate the risk of falls. Pre-assembling and lowering a pier cage so that no one enters the shaft is the direct analogue. Where a residual risk remains, WHS Regulation 295 requires the designer to give the person who commissions the work a written report of hazards the design poses to those who will carry out the construction work. This approach is consistent with the Prevention through Design guidance drawn on elsewhere in this framework (National Institute for Occupational Safety and Health, 2024).<br><br><strong>References</strong><br>Behm, M. (2005). Linking construction fatalities to the design for construction safety concept. <em>Safety Science, 43</em>(8), 589&ndash;611. https://doi.org/10.1016/j.ssci.2005.04.002<br>Gambatese, J. A., Behm, M., &amp; Rajendran, S. (2008). Design&rsquo;s role in construction accident causality and prevention: Perspectives from an expert panel. <em>Safety Science, 46</em>(4), 675&ndash;691.<br>Safe Work Australia. (2024). <em>Model Code of Practice: Confined spaces</em>.<br>Safe Work Australia. (2024). <em>Model Code of Practice: Safe design of structures</em>.<br>Selman, J., Spickett, J., Jansz, J., &amp; Mullins, B. (2017). Work-related traumatic fatal injuries involving confined spaces in Australia, 2000&ndash;2012. <em>Journal of Health, Safety and Environment, 33</em>(2).<br>Selman, J., Spickett, J., Jansz, J., &amp; Mullins, B. (2018). An investigation into the rate and mechanism of incident of work-related confined space fatalities. <em>Safety Science, 109</em>, 333&ndash;343.<br>National Institute for Occupational Safety and Health. (2024). Prevention through Design Toolkit for the Construction Industry (DHHS (NIOSH) Publication No. 2024-124). U.S. Centers for Disease Control and Prevention. https://doi.org/10.26616/NIOSHPUB2024124",
+            "examples": [
+              {
+                "image": "images/pier-drill-starters.png",
+                "tag": "concern",
+                "caption": "A suspended spa slab on reinforced bored or bucket piers (5N12 vertical with R10&ndash;200 ties), where the connection to the sandstone is made by drilling and grouting a single N28 galvanised starter bar 300 mm into the bedrock at the base of each pier. The drill-and-grout operation sits at the bottom of the pier shaft and tends to require a worker to enter the excavation to complete it. The same fixity into rock could be achieved by socketing the pier and running continuous reinforcement, keeping the work at the surface."
+              },
+              {
+                "image": "images/pier-socketed.png",
+                "tag": "recommended",
+                "caption": "Piers 450 mm in diameter socketed a minimum of 150 mm into rock, supporting the slab over (with 3N12 extra each way at the top over each pier). The connection to rock is made by the socket itself rather than by bars fixed at the base, so the pier can be reinforced with a cage placed from the surface and nobody needs to enter the shaft to drill or grout into the bedrock."
+              }
+            ],
+            "dateAdded": "2026-06-02",
+            "dateReviewed": "2026-06-02",
+            "location": {
+              "country": "Australia"
+            }
+          }
+        },
+        {
           "name": "Temporary works stability",
           "available": false
         },
