@@ -58,6 +58,8 @@
   .entry-meta{font-size:12px;color:var(--text-muted);margin-bottom:24px}
   .question-box{padding:20px 24px;background:var(--accent-glow);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;margin-bottom:28px}
   .label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
+  .img-hint{font-size:11px;color:var(--text-muted);opacity:0.75;margin:-2px 0 10px;display:flex;align-items:center;gap:5px}
+  .img-hint svg{width:12px;height:12px;fill:var(--text-muted);flex-shrink:0}
   .label-accent{color:var(--accent)}
   .question-text{font-size:15px;color:var(--text);line-height:1.6}
   .param-box{padding:14px 18px;background:var(--surface-light);border:1px solid var(--border);border-radius:8px;margin-bottom:28px}
@@ -525,9 +527,10 @@ function renderEntryDetail(){
     return `<div class="worked-example-box"><div class="worked-example-title">${we.title||'Worked example'}</div>${we.caveat?`<div class="worked-example-caveat">${we.caveat}</div>`:''}${we.headline?`<div class="worked-example-headline">${we.headline}</div>`:''}${tableHtml}${we.howToUse?`<div class="worked-example-howto"><strong>How to use it:</strong> ${we.howToUse}</div>`:''}${assumptionsHtml}</div>`;
   })():'';
 
-  const examplesHtml=d.examples&&d.examples.length>0?`<div style="margin-top:28px"><div class="label">Examples</div><div class="examples-grid${d.examples.length===1?' imgs-1':d.examples.length===2?' imgs-2':''}">${d.examples.map(ex=>`<div class="example-card">${ex.image?`<img src="${ex.image}" alt="${ex.caption}" onclick="openLightbox('${ex.image}')">`:''}<div class="example-caption"><div class="example-tag ${ex.tag}">${ex.tag==='concern'?'Concern':ex.tag==='acceptable'?'Acceptable':'Recommended'}</div><div class="example-desc">${ex.caption}</div></div></div>`).join('')}</div></div>`:'';
+  const imgHint=`<div class="img-hint"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14zm.5-7v2H8v2H6V9H4V7h2V5h2v2z"/></svg> Click any image to enlarge</div>`;
+  const examplesHtml=d.examples&&d.examples.length>0?`<div style="margin-top:28px"><div class="label">Examples</div>${imgHint}<div class="examples-grid${d.examples.length===1?' imgs-1':d.examples.length===2?' imgs-2':''}">${d.examples.map(ex=>`<div class="example-card">${ex.image?`<img src="${ex.image}" alt="${ex.caption}" onclick="openLightbox('${ex.image}')">`:''}<div class="example-caption"><div class="example-tag ${ex.tag}">${ex.tag==='concern'?'Concern':ex.tag==='acceptable'?'Acceptable':'Recommended'}</div><div class="example-desc">${ex.caption}</div></div></div>`).join('')}</div></div>`:'';
 
-  const supportingImagesHtml=d.supportingImages&&d.supportingImages.length>0?`<div style="margin-top:20px"><div class="label">Supporting Images</div><div class="supporting-images-grid${d.supportingImages.length===1?' imgs-1':d.supportingImages.length===2?' imgs-2':''}">${d.supportingImages.map(sp=>`<div class="supporting-image-card">${sp.image?`<img src="${sp.image}" alt="${sp.title}" onclick="openLightbox('${sp.image}')">`:''}<div class="supporting-image-title">${sp.title}</div></div>`).join('')}</div></div>`:'';
+  const supportingImagesHtml=d.supportingImages&&d.supportingImages.length>0?`<div style="margin-top:20px"><div class="label">Supporting Images</div>${imgHint}<div class="supporting-images-grid${d.supportingImages.length===1?' imgs-1':d.supportingImages.length===2?' imgs-2':''}">${d.supportingImages.map(sp=>`<div class="supporting-image-card">${sp.image?`<img src="${sp.image}" alt="${sp.title}" onclick="openLightbox('${sp.image}')">`:''}<div class="supporting-image-title">${sp.title}</div></div>`).join('')}</div></div>`:'';
 
   return `<div class="content animate-in">
     <div class="back-link" onclick="goDimension('${dim.id}')">← Back to ${dim.name}</div>
