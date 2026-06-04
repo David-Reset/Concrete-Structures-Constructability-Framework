@@ -1120,43 +1120,119 @@
           }
         },
         {
-          "name": "Curing method vs. strength relied upon",
-          "available": false,
-          "draft": true,
+          "name": "Curing shortfall in suspended slabs and beams",
+          "available": true,
           "_status": "NEAR-COMPLETE — fully reasoned and sourced; review then flip available:true. (Supersedes the standalone curing-entry-draft.json.)",
           "data": {
-            "question": "When the design relies on the specified 28-day compressive strength, has the curing the element will realistically receive on site been considered — or has the specified strength been assumed to arrive regardless of whether the element is actually cured?",
-            "parameter": "The curing regime the element will realistically receive on site (continuous moist / an effective barrier held for ~7 days / short or interrupted / none), and the proportion of the specified strength that regime is expected to deliver.",
-            "background": "Concrete reaches its specified strength only if cement hydration is allowed to continue, and hydration needs moisture retained in the surface zone during the early days after the pour. The specified 28-day strength is a laboratory figure, measured on specimens kept continuously moist. The strength the structure actually develops depends on the curing the element receives in the field.<br><br>This is where a quiet gap opens between the drawing and the site. Continuous water curing &mdash; ponding, continuous sprinkling, kept-wet hessian &mdash; is the most effective regime, but it is rarely sustained in practice on a suspended slab or a vertical face: the water runs off, the surface is too large, and the program does not wait. What actually happens is a sprayed curing compound, a sheet of plastic, formwork left in place, or, too often, nothing at all. Each of those delivers a different fraction of the strength the design is counting on.<br><br>The constructability issue is therefore not whether curing is required &mdash; it is &mdash; but whether the strength the design relies on will actually be there once the element is cured the way it really will be cured. A slab designed for 32 MPa that is left to dry can develop only around half of its continuously-cured strength. The point of this entry is to put that number in front of the designer at design stage, so the choice is made deliberately: specify a curing method that will genuinely be executed and will achieve the strength, or recognise the shortfall and allow for it.",
+            "question": "When the design relies on the specified compressive strength of a thin suspended slab or beam, has it been recognised that the curing these elements actually receive on site is routinely inadequate &mdash; and has the strength been chosen accordingly &mdash; or is the full specified grade assumed to arrive regardless?",
+            "parameter": "For shallow elements (suspended slabs and beams), the compressive strength relied upon in design relative to the specified grade: where proper curing is unlikely to be carried out, design at the standard grade one step below the grade specified and called up for supply.",
+            "background": "The specified strength (f&prime;<sub>c</sub>) is a laboratory figure, confirmed on cylinders kept continuously moist under standard conditions. The strength that ends up in the structure is lower, because in-place concrete is placed, compacted and &mdash; critically &mdash; cured under site conditions rather than laboratory ones.<br><br>For suspended slabs and beams this gap is at its widest. These are <em>shallow</em> elements: the unformed top surface is a large fraction of their total surface area, so they lose moisture readily and depend heavily on curing to reach their potential strength. Walls and columns, with far less exposed surface relative to volume, are much less sensitive.<br><br>The problem is that on real sites these elements are routinely not cured properly. Nobody ponds or continuously water-cures a suspended slab; at best a compound or sheeting is applied, and often nothing is. Industry and regulators both report this as common (see Evidence Basis). So the realistic position for a thin slab or beam is not &lsquo;properly cured&rsquo; &mdash; it is &lsquo;poorly cured&rsquo;, and the measured strength penalty for that, drawn from field data on exactly these elements, averages 23% (see the table below).<br><br>The constructability response is to stop assuming the full specified strength will arrive, and instead design the element at the strength it will realistically reach. Conveniently, the standard grade ladder steps down by almost exactly this penalty, so the rule is simply: <strong>design one standard grade below the grade you specify and call up for supply</strong> &mdash; specify 40 and design 32; specify 32 and design 25.<br><br>This costs very little where it doesn&rsquo;t matter and protects you where it does. A slab&rsquo;s bending capacity is governed by the reinforcement, so the lower grade barely changes it. The penalty bites instead in punching shear and deflection &mdash; both of which scale with the square root of strength &mdash; and those are exactly the checks that govern thin flat plates and flat slabs. Relying on 40 while the slab realistically delivers around 31 does not mean the slab fails; it means the margin you believe you have is quietly eroded, and on a punching- or deflection-governed element that margin is what is protecting you. If that shortfall surfaces after the building is occupied, it shows up as cracking, excessive deflection or a punching concern &mdash; problems that are expensive and disruptive to remediate. Designing one grade down is a near-free hedge against that ongoing cost.",
             "thresholds": [
               {
-                "range": "Continuous moist / sustained curing (kept moist or sealed ~7 days+)",
+                "range": "Shallow element designed one grade below specified, reduced grade carried through punching and deflection",
                 "rating": "Good practice",
                 "color": "green",
-                "guidance": "The most effective regime. The element can be expected to approach its full continuously-cured strength. Realistic where forms stay on through curing, or ponding / kept-wet hessian can genuinely be maintained — less common on suspended slabs and vertical faces."
+                "guidance": "On suspended slabs and beams, the design uses the standard grade one step below the specified grade (e.g. specify 40, design 32), and that reduced grade is carried through the punching-shear and deflection checks. The specified grade is still shown on the drawings for supply and acceptance."
               },
               {
-                "range": "Effective barrier ~7 days (compound applied promptly and intact, sheeting kept sealed, or forms left on)",
+                "range": "Full specified strength used, but element not strength-critical OR curing verified",
                 "rating": "Consider",
                 "color": "yellow",
-                "guidance": "Practical and commonly achievable. Expect roughly 80% of continuously-cured strength as an order of magnitude. Usually acceptable where the design margin covers it and the barrier is genuinely applied promptly and kept intact through following trades."
+                "guidance": "Full specified strength is used in design, but either the element is not strength-critical (bending-governed, with generous punching and deflection margins), or effective curing is specified as a verified hold point and genuinely assured. Acceptable &mdash; but where curing is not verified, the hedge against a site shortfall has been given up."
               },
               {
-                "range": "Short or interrupted curing (~3 days, or barrier disturbed / dried early)",
+                "range": "Full specified strength relied upon on a punching- or deflection-governed thin slab, no curing assurance",
                 "rating": "Concern",
                 "color": "orange",
-                "guidance": "Expect roughly 60% of continuously-cured strength. Review whether the relied-on strength is still met. Once curing stops and the surface dries, strength gain effectively stops and does not fully recover when curing resumes."
+                "guidance": "The full specified strength is relied upon on a punching- or deflection-governed thin flat plate or flat slab, with no curing assurance and no allowance for the realistic shortfall. The design is leaning on strength that may not be there."
               },
               {
-                "range": "No effective curing / element left to dry",
+                "range": "As Concern, and the governing check is tight at convergence",
                 "rating": "Action required",
                 "color": "red",
-                "guidance": "Concrete left to dry can develop only around half of its continuously-cured strength, and the cover zone is hit hardest. In-situ strength may fall well below the specified value. Either ensure a curing method that will actually be applied, or design for the realistic shortfall."
+                "guidance": "As above, and the governing check is already tight at convergence &mdash; a strength-dependent reduction of around 12% would push punching shear or deflection past its limit. Either design one grade down, or make effective curing a documented, verified hold point before relying on the full grade."
               }
             ],
-            "_evidenceAngle": "DONE — see drafted evidence below. Headline: PCA (Kosmatka et al., Design and Control of Concrete Mixtures): air-dried ~50% of continuously-cured strength, ~60% at 3 days, ~80% at 7 days. Corroboration: 10-22% reductions moist vs air across studies; one experiment 17.8 MPa air vs 30.5 MPa moist (~40% gap); classic textbook case up to 58% at 6 months.",
-            "evidence": "This entry rests on the well-established curing-strength relationship, consistent across many independent studies, plus the practical observation that idealised water curing is rarely sustained on suspended and vertical elements. Direction and rough magnitude are strongly supported; the exact fraction is mix- and site-specific.<br><br><strong>Strength vs. curing.</strong> The widely-reproduced relationship (Portland Cement Association, <em>Design and Control of Concrete Mixtures</em>) is that concrete allowed to dry in air develops only about 50% of the strength of continuously-cured concrete, about 60% if cured three days, and about 80% if cured seven days &mdash; and that once curing stops and the surface dries, strength gain effectively stops.<br><br><strong>Corroboration.</strong> Independent experiments report the same direction and similar magnitude: roughly 10-22% reductions between continuously moist-cured and air-cured concrete, larger under poor conditions — one study recording air-cured 28-day strength near 17.8 MPa against about 30.5 MPa moist-cured (~40% gap), and a classic textbook comparison reaching as much as 58% at six months.<br><br><strong>Practical basis.</strong> Continuous water curing is most effective but hard to sustain on suspended slabs and vertical faces, where these elements instead get a compound, sheeting, forms left on, or nothing — which is why the curing assumption belongs in the design decision.<br><br><strong>Limitations.</strong> Figures are from controlled cube/cylinder testing and indicate scale and direction, not a project prediction; actual outcomes depend on mix, w/c ratio, binder, temperature, humidity, geometry and how promptly/completely curing is applied.<br><br><strong>References</strong><br>Kosmatka, S. H., Kerkhoff, B., &amp; Panarese, W. C. <em>Design and Control of Concrete Mixtures</em> (EB001). Portland Cement Association.<br>Plus corroborating experimental studies on curing condition/period and compressive strength development (multiple, international).",
-            "_homeNote": "Placed in Construction Methods (relying on a strength without ensuring the curing to achieve it). Could move to Detailing as a specification issue — your call.",
+            "workedExample": {
+              "title": "Strength relied upon vs. specified — shallow elements",
+              "caveat": "Applies to poorly cured shallow elements (suspended slabs and beams). The 0.77 factor is a measured average across studies, not a precise prediction for a given pour &mdash; see Applicability and Limitations.",
+              "headline": "Poorly cured shallow elements average 77% of the strength of properly cured ones (ACI 214.4R). The standard grade ladder steps down by almost the same amount, so design one grade below what you specify:",
+              "tableHeaders": [
+                "Specified &amp; called up for supply",
+                "Realistic in-place (&times; 0.77)",
+                "Adopt in design (standard grade)"
+              ],
+              "tableRows": [
+                [
+                  "40 MPa",
+                  "30.8 MPa",
+                  "32 MPa"
+                ],
+                [
+                  "32 MPa",
+                  "24.6 MPa",
+                  "25 MPa"
+                ],
+                [
+                  "25 MPa",
+                  "19.3 MPa",
+                  "20 MPa"
+                ]
+              ],
+              "howToUse": "Keep specifying the grade everyone expects (commonly 40 MPa for suspended slabs here), so supply and acceptance are unaffected and nothing on the drawings looks unusual. In the structural model, analyse the shallow elements at the next grade down. The adopted grade is the nearest standard step at or below the 0.77 figure, so it captures roughly a 20&ndash;22% reduction; the last couple of percent sits within the general design margins.",
+              "assumptionsTitle": "How these numbers were derived",
+              "assumptions": [
+                "0.77 factor: ACI 214.4R reports that cores from poorly cured shallow elements average 77% of companion cores from properly cured elements, across ages of 28, 56, 91 and 365 days (Bartlett and MacGregor, pooling four studies).",
+                "Realistic in-place column = specified grade &times; 0.77.",
+                "Adopted grade = the nearest standard grade at or below the realistic in-place figure, chosen because it already exists in design software and on the supply schedule."
+              ],
+              "assumptionsNote": "This factor is specific to shallow elements (slabs and beams). Walls and columns lose only about 10% to poor curing and must not be derated this way."
+            },
+            "applicability": {
+              "appliesWhere": "Suspended slabs and beams &mdash; shallow elements with a large unformed surface area relative to volume &mdash; whose design relies on the specified compressive strength, and where proper curing is unlikely to be carried out on site.",
+              "checks": [
+                {
+                  "title": "This is the poorly-cured case, and verified curing is the escape hatch",
+                  "description": "The 23% penalty is the gap between poorly cured and properly cured elements. If effective curing (a curing compound, sheeting, or formwork retained for the required period) is specified as a documented hold point and genuinely verified, the element can be designed at its full specified grade. The derating is the price of assuming curing will not happen; assuring curing buys it back."
+                },
+                {
+                  "title": "Apply to shallow elements only, not walls or columns",
+                  "description": "The same source shows walls and columns lose only about 10% to poor curing, because their exposed surface is a small fraction of their volume. Do not knock a grade off a column on this basis &mdash; it is a slab-and-beam rule."
+                },
+                {
+                  "title": "Carry the reduced grade through punching and deflection, not just flexure",
+                  "description": "Bending capacity is reinforcement-governed and barely moves with grade. Punching-shear capacity and elastic modulus both scale with &radic;f&prime;<sub>c</sub> (about an 11&ndash;12% reduction going from 40 to 32), and poor curing additionally increases creep and shrinkage. The reduced grade matters most precisely where thin flat slabs are usually governed."
+                },
+                {
+                  "title": "Blended (low-carbon) mixes are more curing-sensitive",
+                  "description": "Fly-ash and slag mixes depend on sustained curing more than plain cement, so the assumption that curing will not happen is more consequential, not less, as binders get greener. The 0.77 is a reasonable central figure, but the real penalty for a given pour depends on the mix, the weather, the element geometry and how much curing actually occurred."
+                }
+              ],
+              "note": "Keep specifying the grade required for the design intent and durability on the drawings &mdash; this rule changes the strength you <em>analyse</em> with, not the grade you call up for supply and acceptance. It is a deliberate, unstated design conservatism, not a substitute for specifying or pursuing proper curing."
+            },
+            "alternatives": [
+              {
+                "title": "Design shallow strength-critical elements one grade down",
+                "description": "For suspended slabs and beams where punching or deflection governs, analyse at the standard grade one step below the specified grade (specify 40, design 32; specify 32, design 25). Keep the specified grade on the drawings for supply and acceptance."
+              },
+              {
+                "title": "Carry the reduced grade through the governing checks",
+                "description": "Apply the lower grade specifically to punching shear and deflection (and to modulus, creep and shrinkage for serviceability), where the &radic;f&prime;<sub>c</sub> dependence makes a ~12% shortfall actually bite. Flexural design can stay at the specified grade, since it is reinforcement-governed."
+              },
+              {
+                "title": "Or assure curing and use the full grade",
+                "description": "If you would rather not derate, specify effective curing (compound, sheeting, or retained formwork for the required period) as a documented hold point and verify it. Verified curing returns the element to the &lsquo;properly cured&rsquo; case and justifies the full specified strength."
+              },
+              {
+                "title": "Specify a curing method that will actually be applied",
+                "description": "Whatever design grade is chosen, default the specification to the method that will realistically be executed on a suspended slab &mdash; a curing compound applied promptly, or sheeting kept sealed &mdash; rather than water curing that will be quietly substituted. This narrows the gap the derating is protecting against."
+              }
+            ],
+            "evidence": "<strong>Magnitude of the penalty (research-backed).</strong> ACI 214.4R-03, <em>Guide for Obtaining Cores and Interpreting Compressive Strength Results</em>, reports that the in-place strength of slabs and beams is more sensitive to curing than that of walls or columns, because the unformed top surface is a large fraction of the total surface area. Drawing on four studies, it states that cores from poorly cured shallow elements average 77% of companion cores from properly cured elements, consistently at ages of 28, 56, 91 and 365 days (Bartlett and MacGregor, 1996b). The same source notes the loss for walls and columns is only about 10%. The 23% figure used here is therefore measured field data on exactly the element type this entry covers &mdash; not an acceptance threshold and not an assumption.<br><br><strong>That the penalty is actually incurred (qualitative, but from authoritative sources).</strong> Cement Concrete &amp; Aggregates Australia states that, in practice, concrete is often not purposefully cured or is cured for only a very short period, and calls this poor practice that stops the concrete reaching its full strength and durability. Access Canberra building inspectors report curing problems on several building sites, specifically floor slabs both on-grade and suspended, with builders frequently unaware of the curing requirements shown on the drawings. A regulator and an industry body independently describe inadequate curing of slabs as common.<br><br><strong>What we cannot claim.</strong> The <em>magnitude</em> of the penalty is well supported. The <em>frequency</em> with which slabs are inadequately cured is not: the available sources use words like &lsquo;often&rsquo;, &lsquo;many&rsquo; and &lsquo;several sites&rsquo;, and there is no empirical dataset quantifying what proportion of slabs are poorly cured. This entry treats inadequate curing as the realistic default for thin suspended slabs on the basis of that qualitative regulator-and-industry evidence and consistent practitioner experience &mdash; a defensible working assumption, not a measured rate.<br><br><strong>Limitations of the figure.</strong> The 0.77 factor is an average across pooled studies, not a prediction for a particular pour; the actual penalty depends on the mix (blended binders are more sensitive), the weather, the element geometry and how much curing was actually done. The grade-down rule is a conservative design choice that lands on a convenient standard grade, not a precise calculation of in-place strength.<br><br><strong>References</strong><br>ACI 214.4R-03, <em>Guide for Obtaining Cores and Interpreting Compressive Strength Results</em>, American Concrete Institute (citing Bartlett, F. M., and MacGregor, J. G., 1996b, &lsquo;Statistical Analysis of the Compressive Strength of Concrete in Structures&rsquo;, ACI Materials Journal, V. 93, No. 2, pp. 158&ndash;168).<br>Cement Concrete &amp; Aggregates Australia, <em>Guide to Concrete Construction</em>, Part V, Section 15 &mdash; Curing.<br>Access Canberra, Construction Note 2023/03 &mdash; <em>Concrete curing requirements</em>.",
+            "examples": [],
+            "supportingImages": [],
+            "dateAdded": "2026-06-05",
+            "dateReviewed": "2026-06-05",
             "location": {
               "country": "Australia"
             }
