@@ -622,18 +622,6 @@
           }
         },
         {
-          "name": "Beam-slab intersections",
-          "available": false,
-          "draft": true,
-          "_flag": "WEAKEST SURVIVOR — framed below as buildability/fit, not rebar congestion. Cut if it still reads generic.",
-          "data": {
-            "question": "At beam-slab junctions, do the beam and slab depths, drops and bar layers resolve into a soffit and cage that can actually be formed and poured cleanly — or does the junction force awkward form transitions and a hard-to-place, hard-to-vibrate congestion point?",
-            "parameter": "Geometry and reinforcement layering at beam-slab junctions, assessed for formability of the soffit transition and placeability of the cage at the intersection.",
-            "_evidenceAngle": "Keep ONLY if framed around formwork transition + pour access at the junction (buildability), explicitly NOT generic rebar congestion (which the framework avoids). If no distinct angle firms up, cut. Possible practice reference: formwork guidance on soffit transitions; SRIA detailing on bar layering at junctions for the consequence, not the clause.",
-            "_thresholdSketch": "Good: clean soffit transition, placeable cage. Concern: awkward form transition or tight pour access. Action required: junction that cannot be formed/poured without bespoke forming or a recognised honeycomb risk."
-          }
-        },
-        {
           "name": "Hand-bendable bar sizes for slab reinforcement",
           "available": false,
           "draft": true,
@@ -1190,10 +1178,10 @@
           "available": false,
           "draft": true,
           "data": {
-            "question": "For walls, has a stay-in-place / permanent-formwork or reinforced-masonry system been considered where it would cut trades and formwork cycles — or has conventional formed RC been chosen by default without weighing the strip-and-clean and form-hire it carries?",
-            "parameter": "Wall system choice (conventional formed RC vs stay-in-place / permanent formwork vs reinforced masonry), weighed for trades, formwork cycles and finish requirements.",
-            "_evidenceAngle": "Method-selection root cause, same family as the off-form wall entry. Buildability claim: permanent-formwork and masonry systems remove form stripping/cleaning and separate form hire vs formed RC. Keep generic (don't name proprietary products — anonymity/licensing). Evidence is thinner and more commercial here — flag that honestly; look for any independent productivity comparison rather than supplier claims.",
-            "_thresholdSketch": "Frame as: where wall repetition + finish allow, weigh permanent-formwork/masonry for trade and cycle savings; where high off-form finish or specific structural demands govern, formed RC may remain right."
+            "question": "Has the wall system (conventional formed RC, stay-in-place / permanent formwork, or reinforced masonry) been chosen to suit how the wall can actually be built on this site &mdash; above all whether both faces can be accessed and stripped &mdash; rather than defaulting to two-sided formed RC where that is not practical?",
+            "parameter": "Wall system selection against site buildability: chiefly access for stripping (both faces accessible vs single-sided / restricted), element repetition, and the required surface finish.",
+            "_evidenceAngle": "SELECTION entry (when to use each), not a generic 'fewer trades' claim. The sharpest, best-supported pivot is ACCESS: where the back face cannot be reached to strip a form &mdash; blindside basement walls, walls tight to a boundary or existing structure, retaining walls against an excavation face, and repetitive linear edge runs such as crash barriers / parapets &mdash; permanent / single-sided / stay-in-place formwork moves from 'an alternative' to clearly preferable, because two-sided formed RC physically cannot be stripped there. Practice sources are consistent: permanent formwork is best where access is limited and stripping is impractical; single-sided formwork is specifically for foundation/retaining walls where a second form cannot be deployed; blindside systems form walls within inches of an existing structure. Conventional formed RC stays preferable for high off-form finish and intricate/complex shapes (SIP has shape/structural limitations). Reinforced masonry (blockwork) suits low-rise boundary/retaining walls where a masonry trade is economical and no form hire is wanted. CRASH BARRIERS: the instinct holds on the logic (repetitive linear run + awkward edge access + no strip) &mdash; treat as an example to confirm with a barrier-specific source, not yet a sourced claim. CAUTIONS to bake in: higher upfront cost; accredited-installer warranties; polymer faces force a rethink of waterproofing/coatings/cladding; tall unfilled PVC walls behave like a sail in wind (a real erection hazard). Keep GENERIC &mdash; do not endorse proprietary products. Source leads: Architecture & Design (AU) permanent-formwork pros/cons; one-sided/blindside formwork suppliers for the access logic; seek an independent productivity/selection comparison to lift above supplier claims.",
+            "_thresholdSketch": "Good practice: system matched to access + finish (single-sided/permanent where the back face cannot be stripped; formed RC where two-sided access and a high finish are needed). Consider: either could work — weigh repetition, finish, trade availability, upfront cost. Concern: two-sided formed RC specified where back-face access is genuinely restricted. Action required: a wall that cannot be formed and stripped two-sided as drawn, with no permanent/single-sided system considered."
           }
         },
         {
