@@ -206,11 +206,25 @@
         },
         {
           "name": "Temporary works stability",
-          "available": false
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "Does the permanent design provide what the structure needs to stand safely while it is only part-built — propping points, lateral restraint, a stable erection sequence — or does stability rely on elements that are not yet in place?",
+            "parameter": "Whether the design identifies how the partly-built structure is held stable during construction (props, bracing, pour/erection sequence) before the permanent load path is complete.",
+            "_evidenceAngle": "Safety-in-design + the principle that a structure stable when finished can be unstable mid-build (a slab relying on a wall not yet cast, a frame needing the floor diaphragm for stability). Anchor to design-for-construction-safety literature (Behm 2005, already cited in the confined-space entry) for the design-influences-safety link; corroborate with temporary-works guidance on the construction condition being a distinct load case.",
+            "_thresholdSketch": "Good: stable at every stage with permanent elements / clearly-flagged temp props. Concern: stability depends on an element installed later, not flagged. Action required: a credible collapse mechanism exists during a normal build sequence with nothing in the design addressing it."
+          }
         },
         {
           "name": "Edge protection requirements",
-          "available": false
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "Have the perimeter and penetration edges been designed so fall protection can be installed and anchored — cast-in points, a slab edge that takes a barrier — rather than leaving crews to improvise edge protection on a detail that does not accommodate it?",
+            "parameter": "Whether exposed edges, slab perimeters and large penetrations are designed to accept and anchor fall protection (cast-in sockets, suitable edge thickness/upstand).",
+            "_evidenceAngle": "Falls are a leading construction fatality category; designing-in anchorage/edge that suits proprietary edge protection removes an improvisation hazard. Same safety-in-design hierarchy-of-control basis as the confined-space and fall-through entries; corroborate with fall-from-height statistics for the scale of the hazard.",
+            "_thresholdSketch": "Good: edges accept standard edge protection / cast-in anchors shown. Concern: edge protection possible only by improvisation. Action required: detail actively prevents safe fall protection (e.g. thin or sloped edge with no anchorage)."
+          }
         }
       ]
     },
@@ -608,16 +622,60 @@
           }
         },
         {
-          "name": "Reinforcement spacing variability",
-          "available": false
-        },
-        {
           "name": "Beam-slab intersections",
-          "available": false
+          "available": false,
+          "draft": true,
+          "_flag": "WEAKEST SURVIVOR — framed below as buildability/fit, not rebar congestion. Cut if it still reads generic.",
+          "data": {
+            "question": "At beam-slab junctions, do the beam and slab depths, drops and bar layers resolve into a soffit and cage that can actually be formed and poured cleanly — or does the junction force awkward form transitions and a hard-to-place, hard-to-vibrate congestion point?",
+            "parameter": "Geometry and reinforcement layering at beam-slab junctions, assessed for formability of the soffit transition and placeability of the cage at the intersection.",
+            "_evidenceAngle": "Keep ONLY if framed around formwork transition + pour access at the junction (buildability), explicitly NOT generic rebar congestion (which the framework avoids). If no distinct angle firms up, cut. Possible practice reference: formwork guidance on soffit transitions; SRIA detailing on bar layering at junctions for the consequence, not the clause.",
+            "_thresholdSketch": "Good: clean soffit transition, placeable cage. Concern: awkward form transition or tight pour access. Action required: junction that cannot be formed/poured without bespoke forming or a recognised honeycomb risk."
+          }
         },
         {
-          "name": "Bar bending complexity",
-          "available": false
+          "name": "Hand-bendable bar sizes for slab reinforcement",
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "For slab reinforcement that may need to be cranked, offset or adjusted on site, has a bar size that can be bent on site with a proper hand bending tool (N12, N16) been specified — or does the specified size (N20 and above) force machine bending or pre-bent supply and remove that site adaptability?",
+            "parameter": "Specified diameter of slab main and secondary reinforcement where on-site bending or adjustment may be required (N12 / N16 vs N20 and above).",
+            "_evidenceAngle": "Construction-practice evidence, not a standards argument. BRANZ Build (site-bending of reinforcing steel): traditional long-handled manual benders bend up to ~16 mm, with ~12 mm the largest comfortably hand-bent; a common hand bender tops out at 16 mm. So N12/N16 retain on-site bendability with proper tooling; N20+ generally need a machine or pre-bending. CRITICAL nuance to keep in mind (Australian Reinforcement Handbook / SRIA): on-site cold bending must use a proper bar-bending tool — NOT pulling against a concrete edge, sledgehammering, or using a pipe, which damages the bar, cuts ductility and can break it. The entry recommends choosing a bendable SIZE, never crude bending, and respecting minimum bend pin diameters. Distinct from the existing Logistics 'Stirrup bar size availability' entry (that is ground-footing stirrups/ties + supplier availability + cage stability; this is suspended-slab main bars + the hand-bend threshold).",
+            "_thresholdSketch": "Good practice: N12/N16 where site bending/adjustment is foreseeable. Consider: N16 at the larger end of comfortable hand bending. Concern: N20 specified where site adaptability is likely needed — machine bend or pre-bend required. Action required: large bars specified into a detail that realistically depends on site adjustment."
+          }
+        },
+        {
+          "name": "Beam soffit formwork proportions",
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "On suspended beams, do the width and depth balance against standard form-panel modules — with neither dimension much exceeding the other and depth kept within easily-formed limits — or has a deep, narrow section been set that needs tall one-sided side-forms with extra ties and propping?",
+            "parameter": "Suspended beam width and depth relative to standard formwork panel sizes and to each other (balanced and within ~1.2 m preferred; deep narrow sections flagged).",
+            "_evidenceAngle": "Pure buildability / form-reuse argument in the same style as the off-form upturn entry — no standards content. Thresholds derived from physical form components, panel modules and the propping/access envelope a deep side-form demands. Practice references: formwork good-practice guides (Hurd, ACI SP-4; CIRIA / Concrete Society formwork guidance) as how-you-build-forms sources, not codes. Origin: project brief noting 1.2 x 1.8 panels, wanting width+depth roughly equal, neither exceeding the other, ideally ≤ ~1.2 m.",
+            "_thresholdSketch": "Good: width+depth balanced, within standard panel reuse, depth ≤ ~1.2 m. Consider: one dimension moderately larger. Concern: deep narrow section needing tall one-sided forms + extra ties. Action required: section that cannot be formed from standard panels without bespoke falsework."
+          }
+        },
+        {
+          "name": "Waterproofing buildability",
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "Does the concrete provide the geometry waterproofing actually needs — set-downs, falls to drainage, upstand heights, and termination room at penetrations and junctions — or is a membrane expected to perform on a flat slab with no falls and no room to turn up and terminate?",
+            "parameter": "Whether wet-area and external slabs provide the set-downs, falls, upstands and termination clearances a membrane needs (provided at design stage / drawn without coordination / left to site).",
+            "_evidenceAngle": "Detailing root cause: the membrane can only work if the concrete gives it falls and terminations; fixing this after the pour means grinding falls or building up topping. Same shape as the drip-groove entry (a formed feature must be resolved before the pour). Practice references: AIW (Australian Institute of Waterproofing) and membrane-manufacturer detailing guidance; corroborate with the prevalence of waterproofing as a defect/rework category in building-defect studies.",
+            "_thresholdSketch": "Good: falls, set-downs, upstands and terminations detailed. Concern: membrane required but slab is flat / no termination room. Action required: detail forces post-pour grinding or topping build-up to create falls."
+          }
+        },
+        {
+          "name": "Repetition and the formwork learning curve",
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "Across the building, how many distinct formwork / element configurations has the design created — does the floor plate and detailing repeat enough for crews to climb the learning curve, or does near-constant variation reset the crew to slow, first-time output on every element?",
+            "parameter": "Number of distinct (non-repeating) formwork or element configurations across the structure relative to the number of elements — i.e. how much the design repeats vs varies.",
+            "_evidenceAngle": "Best indirect-evidence candidate in the set. Wright's learning curve (T. P. Wright, 1936, Factors Affecting the Cost of Airplanes, Journal of the Aeronautical Sciences) — unit labour time falls a fixed percentage each time cumulative output doubles — is canonical in manufacturing economics and applies directly to repeated formwork pours and repeated details. Same move as using Rosenholtz (visual clutter) for the callout entry: borrow a well-established law from an adjacent field to explain a construction effect. Reinforces the dimension's stated theme (standardisation, repetition, simplification).",
+            "_thresholdSketch": "Good: high repetition, few unique configurations. Consider: moderate variation. Concern: many one-off configurations limiting any learning effect. Action required: near-constant variation across elements that could have been standardised."
+          }
         }
       ]
     },
@@ -751,20 +809,37 @@
           }
         },
         {
-          "name": "Bar size standardisation",
-          "available": false
-        },
-        {
           "name": "Equipment access constraints",
-          "available": false
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "Has the foundation / element been chosen so it can be installed with equipment that can actually reach and operate on this site — for example a pile type an excavator-mounted attachment can install — rather than one that assumes a large dedicated rig the site cannot accommodate or afford to mobilise?",
+            "parameter": "Match between the installation equipment a design implies (e.g. dedicated piling rig) and what the site can realistically accommodate (access, headroom, mobilisation), including whether an excavator-based method is viable.",
+            "_evidenceAngle": "Logistics root cause: design commits the site to equipment it can't get in or justify. Direct link to the screw-pile entry — screw piles can be installed with an excavator, avoiding a dedicated rig (industry sources). Use installer/contractor practice sources for the equipment envelopes (access width, headroom, mobilisation cost), the way the off-form entry uses formwork working envelopes.",
+            "_thresholdSketch": "Good: installable with equipment the site can accommodate. Consider: feasible but constrained access. Concern: assumes equipment that barely fits / costly to mobilise. Action required: implied equipment cannot access the site as designed."
+          }
         },
         {
           "name": "Slab depth consistency",
-          "available": false
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "Do the suspended slabs share a consistent depth across the floor and up the building — letting one set of formwork and shoring cycle and reshore cleanly — or do varying depths fragment the formwork system and reshoring into many one-off setups?",
+            "parameter": "Number of distinct suspended-slab depths across the floor plate and up the building.",
+            "_evidenceAngle": "Buildability + reuse, no standards content. Consistent depth lets a single formwork/shoring set cycle and reshore (ties to the PT formwork-cycling entry and the learning-curve entry). Practice references: formwork/shoring cycling literature on reshore stacking needing matching levels. Pairs naturally with the repetition entry.",
+            "_thresholdSketch": "Good: one (or few) slab depths. Consider: a couple of depths. Concern: many depths fragmenting formwork/reshoring. Action required: depth varies so much a cycling system can't be sustained."
+          }
         },
         {
           "name": "Concrete grade specification",
-          "available": false
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "How many different concrete grades has the design specified across the project — is the number kept low enough for clean ordering, batching and placement, or do many closely-spaced grades multiply supply, QA and wrong-pour risk for little structural gain?",
+            "parameter": "Number of distinct concrete grades specified across the project relative to need.",
+            "_evidenceAngle": "Logistics/buildability: each extra grade is a separate order, batch, delivery and test stream, and a wrong-pour opportunity, often for marginal structural benefit. Standards in the back of mind (don't drop below what an element needs); the point is rationalising the count. Practice references: ready-mix supply / site QA literature on order and placement error with many mixes; corroborate with error-rate / variety literature.",
+            "_thresholdSketch": "Good: few, well-separated grades. Consider: several grades. Concern: many closely-spaced grades. Action required: grade proliferation with high wrong-pour risk and little structural justification."
+          }
         }
       ]
     },
@@ -1047,7 +1122,90 @@
         },
         {
           "name": "Pour sequencing",
-          "available": false
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "Has a workable pour and joint sequence been considered in the design — pour sizes, construction-joint locations and order that suit a day's pour and the available access — or are joint positions and pour extents left entirely to site to resolve?",
+            "parameter": "Whether pour extents and construction-joint locations are coordinated in the design to suit realistic pour sizes, access and sequence.",
+            "_evidenceAngle": "Buildability: pour size, joint location and order drive how the structure is actually built; placing buildable joints in the design beats leaving them to site. Practice references: concrete placement / construction-joint guidance (CCAA / formwork literature) for the consequence; corroborate with the cost-influence (MacLeamy) principle that resolving this early is cheaper than on site.",
+            "_thresholdSketch": "Good: buildable pour/joint scheme considered. Concern: pour extents imply impractical single pours / no joint guidance. Action required: sequence with no feasible buildable resolution as drawn."
+          }
+        },
+        {
+          "name": "Curing method vs. strength relied upon",
+          "available": false,
+          "draft": true,
+          "_status": "NEAR-COMPLETE — fully reasoned and sourced; review then flip available:true. (Supersedes the standalone curing-entry-draft.json.)",
+          "data": {
+            "question": "When the design relies on the specified 28-day compressive strength, has the curing the element will realistically receive on site been considered — or has the specified strength been assumed to arrive regardless of whether the element is actually cured?",
+            "parameter": "The curing regime the element will realistically receive on site (continuous moist / an effective barrier held for ~7 days / short or interrupted / none), and the proportion of the specified strength that regime is expected to deliver.",
+            "background": "Concrete reaches its specified strength only if cement hydration is allowed to continue, and hydration needs moisture retained in the surface zone during the early days after the pour. The specified 28-day strength is a laboratory figure, measured on specimens kept continuously moist. The strength the structure actually develops depends on the curing the element receives in the field.<br><br>This is where a quiet gap opens between the drawing and the site. Continuous water curing &mdash; ponding, continuous sprinkling, kept-wet hessian &mdash; is the most effective regime, but it is rarely sustained in practice on a suspended slab or a vertical face: the water runs off, the surface is too large, and the program does not wait. What actually happens is a sprayed curing compound, a sheet of plastic, formwork left in place, or, too often, nothing at all. Each of those delivers a different fraction of the strength the design is counting on.<br><br>The constructability issue is therefore not whether curing is required &mdash; it is &mdash; but whether the strength the design relies on will actually be there once the element is cured the way it really will be cured. A slab designed for 32 MPa that is left to dry can develop only around half of its continuously-cured strength. The point of this entry is to put that number in front of the designer at design stage, so the choice is made deliberately: specify a curing method that will genuinely be executed and will achieve the strength, or recognise the shortfall and allow for it.",
+            "thresholds": [
+              {
+                "range": "Continuous moist / sustained curing (kept moist or sealed ~7 days+)",
+                "rating": "Good practice",
+                "color": "green",
+                "guidance": "The most effective regime. The element can be expected to approach its full continuously-cured strength. Realistic where forms stay on through curing, or ponding / kept-wet hessian can genuinely be maintained — less common on suspended slabs and vertical faces."
+              },
+              {
+                "range": "Effective barrier ~7 days (compound applied promptly and intact, sheeting kept sealed, or forms left on)",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "Practical and commonly achievable. Expect roughly 80% of continuously-cured strength as an order of magnitude. Usually acceptable where the design margin covers it and the barrier is genuinely applied promptly and kept intact through following trades."
+              },
+              {
+                "range": "Short or interrupted curing (~3 days, or barrier disturbed / dried early)",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Expect roughly 60% of continuously-cured strength. Review whether the relied-on strength is still met. Once curing stops and the surface dries, strength gain effectively stops and does not fully recover when curing resumes."
+              },
+              {
+                "range": "No effective curing / element left to dry",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "Concrete left to dry can develop only around half of its continuously-cured strength, and the cover zone is hit hardest. In-situ strength may fall well below the specified value. Either ensure a curing method that will actually be applied, or design for the realistic shortfall."
+              }
+            ],
+            "_evidenceAngle": "DONE — see drafted evidence below. Headline: PCA (Kosmatka et al., Design and Control of Concrete Mixtures): air-dried ~50% of continuously-cured strength, ~60% at 3 days, ~80% at 7 days. Corroboration: 10-22% reductions moist vs air across studies; one experiment 17.8 MPa air vs 30.5 MPa moist (~40% gap); classic textbook case up to 58% at 6 months.",
+            "evidence": "This entry rests on the well-established curing-strength relationship, consistent across many independent studies, plus the practical observation that idealised water curing is rarely sustained on suspended and vertical elements. Direction and rough magnitude are strongly supported; the exact fraction is mix- and site-specific.<br><br><strong>Strength vs. curing.</strong> The widely-reproduced relationship (Portland Cement Association, <em>Design and Control of Concrete Mixtures</em>) is that concrete allowed to dry in air develops only about 50% of the strength of continuously-cured concrete, about 60% if cured three days, and about 80% if cured seven days &mdash; and that once curing stops and the surface dries, strength gain effectively stops.<br><br><strong>Corroboration.</strong> Independent experiments report the same direction and similar magnitude: roughly 10-22% reductions between continuously moist-cured and air-cured concrete, larger under poor conditions — one study recording air-cured 28-day strength near 17.8 MPa against about 30.5 MPa moist-cured (~40% gap), and a classic textbook comparison reaching as much as 58% at six months.<br><br><strong>Practical basis.</strong> Continuous water curing is most effective but hard to sustain on suspended slabs and vertical faces, where these elements instead get a compound, sheeting, forms left on, or nothing — which is why the curing assumption belongs in the design decision.<br><br><strong>Limitations.</strong> Figures are from controlled cube/cylinder testing and indicate scale and direction, not a project prediction; actual outcomes depend on mix, w/c ratio, binder, temperature, humidity, geometry and how promptly/completely curing is applied.<br><br><strong>References</strong><br>Kosmatka, S. H., Kerkhoff, B., &amp; Panarese, W. C. <em>Design and Control of Concrete Mixtures</em> (EB001). Portland Cement Association.<br>Plus corroborating experimental studies on curing condition/period and compressive strength development (multiple, international).",
+            "_homeNote": "Placed in Construction Methods (relying on a strength without ensuring the curing to achieve it). Could move to Detailing as a specification issue — your call.",
+            "location": {
+              "country": "Australia"
+            }
+          }
+        },
+        {
+          "name": "Bored concrete piles vs. screw piles",
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "On a lightly-to-moderately loaded foundation, has the program and site-disruption advantage of screw piles been weighed against bored concrete piles — or has the pile type been chosen on capacity alone, without considering same-day loading, no spoil, and no curing wait?",
+            "parameter": "Foundation loading and site constraints, used to weigh screw piles (fast, no spoil, no curing wait, excavator-installable) against bored concrete piles (higher capacity, spoil + curing).",
+            "_evidenceAngle": "Programme/buildability, like the PT entry. Direction strongly supported by industry sources: screw piles install in hours, no curing delay (same-day load), no spoil to cart, and can be installed with an excavator rather than a dedicated rig; bored piers favoured for heavy loads / deep sand. For the framework standard, anchor authority to a geotechnical reference (Perko, Helical Piles: A Practical Guide to Design and Installation, 2009) and use installer sources only to corroborate direction (as the PT entry uses supplier literature). Keep the honest counter-case so it stays a 'weigh this' entry. Links to the Equipment access entry.",
+            "_thresholdSketch": "Good/Consider by loading + site: light loads + tight/sensitive access → weigh screw piles strongly. Heavy loads / deep sand → bored may govern. Frame as weigh-the-program-advantage, not a rule."
+          }
+        },
+        {
+          "name": "Stay-in-place formwork and masonry wall systems",
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "For walls, has a stay-in-place / permanent-formwork or reinforced-masonry system been considered where it would cut trades and formwork cycles — or has conventional formed RC been chosen by default without weighing the strip-and-clean and form-hire it carries?",
+            "parameter": "Wall system choice (conventional formed RC vs stay-in-place / permanent formwork vs reinforced masonry), weighed for trades, formwork cycles and finish requirements.",
+            "_evidenceAngle": "Method-selection root cause, same family as the off-form wall entry. Buildability claim: permanent-formwork and masonry systems remove form stripping/cleaning and separate form hire vs formed RC. Keep generic (don't name proprietary products — anonymity/licensing). Evidence is thinner and more commercial here — flag that honestly; look for any independent productivity comparison rather than supplier claims.",
+            "_thresholdSketch": "Frame as: where wall repetition + finish allow, weigh permanent-formwork/masonry for trade and cycle savings; where high off-form finish or specific structural demands govern, formed RC may remain right."
+          }
+        },
+        {
+          "name": "Void-former slab vs. thick raft",
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "Where a thick raft is proposed, has a void-former (biaxial) suspended slab on piles been weighed against it — considering not just concrete volume but the buildability of a large, thick pour and its heat-of-hydration cracking risk?",
+            "parameter": "Foundation/slab system where a thick raft is proposed, assessed against a void-former slab for pour buildability, self-weight and early thermal cracking.",
+            "_evidenceAngle": "Strongest tie is the mass-concrete THERMAL angle (more rigorous than 'uses less concrete'): a thick raft is a large heat-of-hydration pour prone to early thermal cracking, hard to build well; a biaxial void slab sidesteps the thick-pour problem and cuts self-weight. Practice reference: CIRIA C660 (controlling early-age thermal cracking) as a construction-practice guide, NOT a code clause. Keep the AS mass-concrete provisions in the back of mind only.",
+            "_thresholdSketch": "Good/Consider by pour thickness + thermal risk: thin/normal → fine. Concern: thick raft with real thermal-cracking control burden. Action required: very thick pour where a void slab would clearly ease buildability — weigh it."
+          }
         }
       ]
     },
@@ -1248,11 +1406,37 @@
         },
         {
           "name": "Drawing notation clarity",
-          "available": false
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "Is the notation on the drawings legible and unambiguous at the scale and density the builder actually reads it — or do abbreviations, overlapping text and low contrast make callouts easy to misread?",
+            "parameter": "Legibility and unambiguity of drawing notation at working scale and density (abbreviation load, text overlap, contrast).",
+            "_evidenceAngle": "Sits alongside the existing 'Reinforcement callout clarity' entry but broader (all notation). Same indirect human-factors basis: visual clutter degrades search (Rosenholtz, Li & Nakano 2007) and information-cue overload slows and worsens interpretation. Make sure it does not just duplicate the callout entry — frame around general notation legibility.",
+            "_thresholdSketch": "Good: legible, low-ambiguity notation. Concern: dense/abbreviation-heavy notation easy to misread. Action required: notation a competent reader is likely to misinterpret at working scale."
+          }
         },
         {
           "name": "Detail sheet organisation",
-          "available": false
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "Are details organised and located so the builder can find the one they need when they need it — grouped logically, near their reference, consistently keyed — or are they scattered so the reader hunts across sheets to assemble one detail?",
+            "parameter": "Whether details are organised and located for retrieval (logical grouping, proximity to reference, consistent keying) vs scattered across sheets.",
+            "_evidenceAngle": "Pairs with the existing 'Details and schedule references' entry; same construction-communication basis (Foroughi Sabzevar et al. 2025 — non-self-contained docs that send the reader chasing across sheets are a top-ranked source of site confusion). Frame around organisation/findability, not cross-referencing per se, to stay distinct.",
+            "_thresholdSketch": "Good: details findable and logically grouped. Concern: scattered details needing cross-sheet assembly. Action required: organisation that reliably sends the reader hunting and inviting wrong-detail use."
+          }
+        },
+        {
+          "name": "Model-based (3D) coordination vs 2D-only documentation",
+          "available": false,
+          "draft": true,
+          "_status": "STRONG EVIDENCE ALREADY FOUND — high-priority to finish.",
+          "data": {
+            "question": "For a geometrically complex or congested element, is coordination carried in a 3D / model-based form that the builder can interrogate — or is it left to 2D sections alone, where clashes and fit problems surface only on site?",
+            "parameter": "Whether complex / congested elements are coordinated and communicated in 3D (model-based) rather than 2D drawings alone.",
+            "_evidenceAngle": "Best-evidenced new communication entry. Quantified: Won et al. (2016) — BIM clash detection prevented ~2.5% of construction waste on Korean high-rise; Autodesk — up to 40% fewer RFIs and 90%+ of coordination conflicts eliminated before work. Conceptual anchor: the MacLeamy / cost-influence curve (ability to influence cost high early; cost of changes rises later) — the same indirect-but-authoritative move as Rosenholtz for the callout entry. None of it is a compliance argument.",
+            "_thresholdSketch": "Good: complex/congested zones coordinated in 3D. Consider: 2D with good sections for moderate complexity. Concern: high complexity carried in 2D only. Action required: congested junction where 2D cannot show fit and clashes are likely."
+          }
         }
       ]
     }
