@@ -1111,10 +1111,177 @@
           "available": false,
           "draft": true,
           "data": {
-            "question": "Has a workable pour and joint sequence been considered in the design — pour sizes, construction-joint locations and order that suit a day's pour and the available access — or are joint positions and pour extents left entirely to site to resolve?",
-            "parameter": "Whether pour extents and construction-joint locations are coordinated in the design to suit realistic pour sizes, access and sequence.",
-            "_evidenceAngle": "Buildability: pour size, joint location and order drive how the structure is actually built; placing buildable joints in the design beats leaving them to site. Practice references: concrete placement / construction-joint guidance (CCAA / formwork literature) for the consequence; corroborate with the cost-influence (MacLeamy) principle that resolving this early is cheaper than on site.",
-            "_thresholdSketch": "Good: buildable pour/joint scheme considered. Concern: pour extents imply impractical single pours / no joint guidance. Action required: sequence with no feasible buildable resolution as drawn."
+            "question": "Has the pour sequence been anticipated in the design — large work deliberately staged with intended construction-joint / pour-break locations shown, and small related elements grouped to reduce the number of separate pours — or is the number and location of pours left entirely to site to resolve?",
+            "parameter": "The extent of each intended single continuous pour implied by the construction-joint layout (plan area / volume), assessed against what can realistically be placed before the concrete already down begins to set — and whether the staging has been anticipated in the design rather than left to site.",
+            "background": "How a structure is broken into pours is usually treated as a site decision, but the design largely sets it. The number of pours is squeezed from two directions, and the controlling factor on both is timing.<br><br><strong>Why large work must be split.</strong> A single \"monolithic\" pour has a ceiling set by a race: the placing rate has to keep the advancing face live across the whole pour before the concrete already placed reaches initial set. Lose that race and an unplanned cold joint forms inside a pour that was meant to be continuous. Initial set is on the order of 1&ndash;3 hours (commonly specified as roughly 90 minutes, less in hot weather), so the practical limit on a single pour is approximately the placing rate multiplied by the time to initial set. There is no universal maximum pour size in the literature &mdash; it is project-specific because it depends on the placement method &mdash; which is why CCAA guidance leaves the maximum placement size to be determined with the contractor from the anticipated rate of placement. The lever that moves the ceiling is supply rate (more pumps, or a set-retarding admixture to widen the window).<br><br><strong>Why small work should be consolidated.</strong> Every separate pour carries fixed overhead &mdash; a pour day, joint preparation, and often a separate pump or crew mobilisation and inspection. For small or scattered ground-bearing work, splitting into many pours inflates that overhead, so the designer should look to group elements into fewer placements where structurally acceptable (for example a small number of ground-bearing piers or footings poured together with the slab over them). Consolidation pays while the combined pour still fits a single realistic supply run; once it grows past that, the set-time ceiling re-asserts itself and splitting returns.<br><br><strong>The design decision.</strong> The two ends are the same physics read in opposite directions, and in both cases the design is the cheapest place to resolve it. Where work has to be staged, the designer can locate the breaks deliberately &mdash; on a sound plane, with continuity steel and any waterstop detailed &mdash; and show the intended pour-break location on the drawings, rather than leaving the contractor to improvise a joint in the field. Showing the intended break also lets the first stage be used as a working platform: the contractor can pour one stage, form and fix steel off it, then pour the next once the first has gained enough strength to carry the construction load.<br><br>This entry is about pour size and grouping. The separate question of vertical members that cannot be poured monolithically with the slab they support (columns and walls) is covered in <em>Casting suspended members on freshly placed columns and walls</em>.",
+            "thresholds": [
+              {
+                "range": "Sequence anticipated and buildable as drawn",
+                "rating": "Good practice",
+                "color": "green",
+                "guidance": "Pour extents implied by the design are achievable in a single continuous placement at a realistic rate; or, where work must be staged or grouped, the design has anticipated it — intended pour-break / construction-joint locations are shown and small related elements are consolidated. The sequence is buildable without site having to resolve it."
+              },
+              {
+                "range": "Near the single-pour limit, or staging implied but not shown",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "Pour sizes sit near the practical single-placement limit, or the design clearly implies staging without indicating where the breaks fall. Confirm an achievable placement rate with the contractor and show the intended pour-break locations and detail, so the joints land where the designer wants them rather than wherever placement happens to stop."
+              },
+              {
+                "range": "Oversized single pours, or many avoidable small pours, with no staging shown",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "The layout implies a single continuous pour beyond what one realistic supply run can place before initial set, with no construction joints shown — or, at the other end, isolated elements split into many separate pours with no consolidation considered. The number and location of pours is effectively left to site. Stage the large work with shown breaks, or group the small work, and confirm with the contractor."
+              },
+              {
+                "range": "No feasible buildable sequence as drawn",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "The sequence has no practical resolution as drawn — for example a monolithic pour that cannot be placed before initial set at any realistic rate and where no structurally acceptable joint location exists for the break it would force. Re-examine the layout, joint locations, supply provision (additional pumps, retarder) or element sizing so a buildable sequence exists before the design is issued."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Show the intended pour-break / construction-joint locations on the drawings",
+                "description": "Where work will be staged, locate the breaks in the design on a sound plane and show them on the drawings with the standard construction-joint detail (continuity reinforcement, and a waterstop where the joint must be watertight). Australian practice already expects construction joints to be used only where shown or specifically approved, so showing them lets the designer place them advantageously rather than leaving the contractor to locate them in the field."
+              },
+              {
+                "title": "Stage large pours and build off the first stage",
+                "description": "For work too large for one placement, design it to be poured in stages — pour one stage, form and fix reinforcement off the completed concrete, then pour the next. Allow for the first stage to gain enough strength to carry the construction load before building off it; rushing this can crack the partially cured concrete."
+              },
+              {
+                "title": "Consolidate small ground-bearing elements into a single pour",
+                "description": "Where only a small number of ground-bearing elements are involved (for example piers or footings under a slab-on-ground), consider pouring them together with the slab over them rather than as separate operations, to cut pour days, joint preparation and mobilisations. This applies to ground-bearing work only — it does not extend to vertical members supporting suspended concrete (see the related entry)."
+              },
+              {
+                "title": "Increase supply rate or retard the set where a joint is undesirable",
+                "description": "Where it is preferable to avoid a joint in a large element, the single-pour window can be widened by bringing additional supply (more pumps / higher placing rate) or by using a set-retarding admixture to delay initial set. Both push out the size that can be placed continuously; confirm the approach with the contractor and concrete supplier."
+              },
+              {
+                "title": "Coordinate pour sizes with the contractor at design stage",
+                "description": "The realistic maximum pour size is project-specific and depends on the placement method, access and finishing constraints. Confirm achievable pour sizes and placement rate with the contractor early, and let the day's placement terminate to coincide with planned joints where possible."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to reinforced concrete elements — slabs, rafts, large footings, walls and similar — where the extent of a single pour and the location of construction joints affect how the work is actually built. It is concerned with pour size and grouping, not with the structural detailing of the joint itself.",
+              "checks": [
+                {
+                  "title": "Placement method and achievable rate",
+                  "description": "The single-pour ceiling is the placing rate multiplied by the time to initial set. A line pump, a boom pump and direct discharge give very different rates, so the realistic pour size depends on what the contractor will actually use. Confirm rather than assume."
+                },
+                {
+                  "title": "Set window — weather, mix and admixtures",
+                  "description": "Initial set is faster in hot weather and slower with retarders or in cold conditions. The same pour that is comfortable in mild weather may force an unplanned cold joint on a hot day, and a retarder can widen the window where a larger continuous pour is wanted."
+                },
+                {
+                  "title": "Access and finishing constraints",
+                  "description": "Site access, reach and the finishing operations required can limit how much can be placed and finished in one continuous operation, independently of the set-time ceiling."
+                },
+                {
+                  "title": "Structural joint-location rules",
+                  "description": "Where breaks are introduced, their location is still governed by the structural rules for construction joints (single plane, appropriate position relative to shear and moment, continuity of reinforcement). Pour-size convenience does not override these."
+                },
+                {
+                  "title": "Vertical members supporting suspended concrete",
+                  "description": "The consolidation guidance is scoped to ground-bearing elements. Columns and walls that support a suspended slab or beam are a separate case and must not simply be grouped into the slab pour — see the related entry."
+                }
+              ],
+              "note": "Use the rating as a constructability review prompt, not a prohibition. The intent is that pour size and sequence are a deliberate, shown design decision rather than something the contractor has to resolve on the day."
+            },
+            "evidence": "This entry is supported by Australian concrete-placement guidance, the established relationship between placing rate and initial set, drawing-convention practice, and the design-stage cost-of-change principle.<br><br><strong>No universal pour-size limit; the limit is a timing relationship.</strong> CCAA Technical Note 63 (Joints in Concrete Buildings) directs that construction-joint locations be determined in conjunction with the contractor, who defines the maximum size of placement possible on the project from the anticipated rate of placement and finishing constraints, with the day's placement terminating to coincide with joints where possible. The controlling physical limit is timing: a cold joint forms when the advancing face is not covered before the previously placed concrete reaches initial set, so the maximum continuous pour is approximately the placing rate multiplied by the time to initial set. This is corroborated by CCAA Guide to Concrete Construction (handling, placing and compaction), which attributes cold joints to slow placement, delayed delivery and lifts that are too thick.<br><br><strong>Consolidation overhead.</strong> Each separate pour carries fixed cost in pour days, joint preparation and mobilisation, so reducing the pour count benefits small or scattered work up to the point where the combined placement exceeds a single realistic supply run.<br><br><strong>Resolve in design.</strong> Construction joints are conventionally permitted only where shown on the drawings or specifically approved, so locating and showing intended breaks at design stage lets the designer place them advantageously rather than leaving them to the field — consistent with the general cost-of-change (MacLeamy) principle that constructability is cheapest to resolve early.<br><br><strong>References</strong><br>Cement Concrete &amp; Aggregates Australia (CCAA). (2004). <em>Technical Note 63: Joints in Concrete Buildings</em>.<br>Cement Concrete &amp; Aggregates Australia (CCAA). (2020). <em>Guide to Concrete Construction</em> (Handling and Placing; Compaction).<br>Standards Australia. <em>AS 1379 Specification and supply of concrete</em>; <em>AS 3600 Concrete structures</em>.",
+            "dateAdded": "2026-06-05",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "_status": "DRAFT — not live (available:false). Full content prepared for later review. On review: (1) consider whether a worked single-pour-size example (placing rate x set time) should be added; (2) confirm exact CCAA TN63 / GTCC clause references and add a real de-identified project example of a staged or consolidated pour; (3) confirm AS 3600 construction-joint clause reference."
+          }
+        },
+        {
+          "name": "Casting suspended members on freshly placed columns and walls",
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "When a suspended slab or beam is supported by a column or wall, has the design allowed for the supporting member to be poured separately and stopped at the soffit — or does the detail imply a monolithic pour in which the slab is cast onto column or wall concrete that is still settling?",
+            "parameter": "Height of the continuous freshly placed vertical concrete beneath a suspended member — i.e. the depth of the column or wall lift that supports a slab or beam cast onto it (mm). Beams, bands and upturns that are part of the horizontal floor system are out of scope and are cast monolithically with the slab as normal.",
+            "background": "Fresh concrete bleeds and settles for the first few hours after placing, as the solids consolidate and water rises. In a tall vertical member this settlement accumulates over the height of the pour, and the top of the column or wall subsides noticeably while the concrete is still plastic.<br><br><strong>Why a monolithic column/wall-to-slab pour cracks.</strong> If a suspended slab or beam is cast continuously onto a column or wall in the same operation, the slab concrete at the junction begins to stiffen and span between its forms while the supporting member underneath is still settling. The subsiding support drags the partly stiffened slab concrete at the interface, and a settlement crack — or a void — forms at the column or wall head. That junction is the load-transfer point, so it is the worst possible place to build in a defect, and bracing does not prevent it: bracing holds the formwork, but the cracking comes from what the fresh concrete inside is doing, not from instability of the forms.<br><br><strong>The fix is a short delay, not days.</strong> The settlement being waited out is the plastic phase, which is essentially complete once the concrete is no longer plastic — on the order of 1 to 2 hours, not days. The practical solution is therefore to stop the column or wall at the slab/beam soffit, allow the vertical concrete to become non-plastic, then place the slab separately, with continuity reinforcement carried through the junction. Note that even when the two are poured the same day, this is still a construction joint at the soffit — the column or wall is not genuinely cast monolithically into the slab.<br><br><strong>Scope and what is excluded.</strong> This applies to vertical members that support suspended concrete — columns and walls under a slab or beam. It does not apply to elements that are part of the horizontal floor system itself: beams, band beams and upturns are normally cast monolithically with the slab and stay out of scope (only unusually deep transfer members warrant separate consideration). It also does not apply to ground-bearing piers or footings under a slab-on-ground: nothing suspended is resting on settling concrete there, so there is no forced joint and those elements can be consolidated into the slab pour (see <em>Pour sequencing</em>). A separate, longer delay (a day or more) is sometimes specified on tall buildings to let columns shorten before the floor is placed — that is a column-shortening consideration, not the plastic-settlement issue addressed here.",
+            "thresholds": [
+              {
+                "range": "<= 150 mm",
+                "rating": "Good practice",
+                "color": "green",
+                "guidance": "Only minor vertical concrete is involved — an upturn, kerb or thickening that is part of the floor system. Settlement is negligible and the element is cast monolithically with the slab as normal. The issue does not arise."
+              },
+              {
+                "range": "150 - 500 mm",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "A shallow vertical element. If it is part of the floor system (a band or deeper upturn), monolithic placement remains appropriate. If it is acting as a discrete support carrying a suspended member, confirm whether settlement at the junction is tolerable or whether a soffit break is warranted."
+              },
+              {
+                "range": "500 - 1500 mm",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "A genuine vertical support lift carrying suspended concrete. If the detail implies a monolithic pour with the slab or beam, settlement at the head can crack the load-transfer junction. Detail the member to stop at the soffit and place the supported member separately, allowing the vertical concrete to become non-plastic first."
+              },
+              {
+                "range": "> 1500 mm",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "Full-storey columns or walls supporting a suspended slab or beam. A monolithic pour will accumulate substantial plastic settlement at the head and risk cracking at the junction. Do not detail as a monolithic column/wall-to-slab pour: stop at the soffit, carry continuity reinforcement through, and place the supported member separately after the short plastic-settlement delay."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Stop the column or wall at the soffit, with a planned construction joint",
+                "description": "Detail the supporting member to terminate at the underside of the slab or beam it supports, with a construction joint at the soffit and continuity reinforcement carried through the junction. This keeps the load-transfer joint clean and planned rather than letting a settlement crack form there."
+              },
+              {
+                "title": "Sequence the supported member after a short plastic-settlement delay",
+                "description": "Place the column or wall first and allow it to become non-plastic (broadly 1 to 2 hours, depending on mix, temperature and admixtures) before placing the slab or beam onto it. This lets the vertical concrete release its bleed water and settle before it has to act as a support."
+              },
+              {
+                "title": "Distinguish floor-system elements from vertical supports",
+                "description": "Beams, band beams and upturns that form part of the horizontal floor system are cast monolithically with the slab and are not affected. Reserve the soffit-break treatment for vertical members (columns, walls) that support suspended concrete, so the rule is not over-applied to ordinary beam-slab interfaces."
+              },
+              {
+                "title": "Consolidate freely where the element is ground-bearing",
+                "description": "Where the vertical element is a pier or footing under a slab-on-ground — supporting nothing suspended — there is no settlement-cracking concern and no forced joint. Such elements can be poured together with the slab (see Pour sequencing) rather than separately."
+              },
+              {
+                "title": "Remediate an unplanned monolithic pour",
+                "description": "If a monolithic column/wall-to-slab pour has occurred, the interface can be revibrated while the concrete is still plastic to re-knit it. Once the supporting concrete has set, the junction should be treated as a cold joint — cleaned and prepared, with additional reinforcement across it as required."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to reinforced concrete columns and walls that support a suspended slab or beam, where the design or detail could be built as a monolithic vertical-member-to-slab pour. It does not apply to elements that are part of the horizontal floor system (beams, bands, upturns), nor to ground-bearing piers and footings under a slab-on-ground.",
+              "checks": [
+                {
+                  "title": "Floor-system element or vertical support?",
+                  "description": "The key distinction is whether the concrete is part of the floor spanning horizontally (cast monolithically with the slab) or a vertical member carrying the floor (stopped at the soffit). Mis-classifying a beam as a support would wrongly introduce joints; mis-classifying a column as floor concrete builds in the settlement crack."
+                },
+                {
+                  "title": "Height of the vertical lift",
+                  "description": "Settlement accumulates over the depth of fresh vertical concrete, so the taller the column or wall lift, the larger the consequence and the more important the soffit break. Short stubs settle little; full-storey members settle a lot."
+                },
+                {
+                  "title": "Mix, temperature and admixtures",
+                  "description": "Bleed characteristics and the length of the plastic phase depend on the mix, the temperature and any retarders. These affect how long the supporting member must stand before the slab is placed, not whether the break is needed."
+                },
+                {
+                  "title": "Congestion and grade at the junction",
+                  "description": "Column/wall-to-slab junctions are often heavily congested and may involve a higher-grade vertical member than the slab. Both make a clean monolithic placement harder and reinforce the case for a planned soffit joint."
+                }
+              ],
+              "note": "Use the rating as a review prompt. The corrective action — a soffit construction joint plus a short delay before the supported member is placed — is standard, low-cost practice; the purpose of the entry is to make sure a monolithic pour is not detailed or assumed without recognising the settlement-cracking consequence."
+            },
+            "evidence": "This entry is framed around the plastic-settlement cracking mechanism and its remediation, with codified construction provisions as corroboration.<br><br><strong>The cracking mechanism.</strong> Plastic settlement cracking arises while concrete is still plastic, as the solids consolidate and bleed water rises. Where a deep section settles beneath a member that is restrained or that has begun to stiffen and span, the differential movement cracks the interface. The column- or wall-to-slab junction is the classic structural instance: a suspended member cast onto a still-settling vertical support cracks at the head. This is distinct from plastic shrinkage cracking (surface drying) and is documented in standard concrete-technology references and early-age cracking guidance.<br><br><strong>Codified corroboration.</strong> The provision that members supported by columns and walls should not be cast until the concrete in the vertical support is no longer plastic is long established — ACI 318 states it explicitly, and its commentary attributes the required delay to bleeding and settlement of the plastic concrete in the supporting member. AS 3600 carries an equivalent requirement within its construction-joint provisions (exact clause to be confirmed on review).<br><br><strong>The delay timeframe.</strong> Practice specifications that schedule this sequence put the delay at roughly 1 to 2 hours — for example bridge construction specifications direct that the column or wall concrete be placed to the underside of the cap and a delay of about 1 to 2 hours elapse before the member above is placed, to permit water release and consolidation of the vertical concrete. This confirms the wait is a matter of hours (the plastic phase), not days.<br><br><strong>References</strong><br>ACI Committee 318. <em>Building Code Requirements for Structural Concrete (ACI 318)</em> — provision on members supported by columns and walls, and commentary.<br>Neville, A. M. <em>Properties of Concrete</em> — bleeding and plastic settlement.<br>Cement Concrete &amp; Aggregates Australia (CCAA). <em>Concrete Basics</em> / early-age cracking guidance.<br>Standards Australia. <em>AS 3600 Concrete structures</em> (equivalent construction provision — clause to confirm).<br>Bridge construction specifications (e.g. Texas DOT Item 420; Minnesota DOT Bridge Construction Manual) — 1&ndash;2 hour settlement delay between a vertical member and the member cast above (practice corroboration).",
+            "dateAdded": "2026-06-05",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "_status": "DRAFT — not live (available:false). New entry, created alongside the reframed Pour sequencing entry. On review: (1) do a focused pass for the dedicated plastic-settlement-cracking and remediation literature (Neville; concrete-technology texts; CCAA early-age cracking) and cite precisely; (2) confirm the exact AS 3600 construction-joint clause and the current ACI 318 clause number; (3) consider whether the dimension should be Detailing rather than Construction Methods (currently Methods, on root-cause = construction sequence); (4) add a de-identified example/photograph of settlement cracking at a junction if one becomes available."
           }
         },
         {
