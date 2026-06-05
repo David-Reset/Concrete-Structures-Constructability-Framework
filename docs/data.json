@@ -1129,25 +1129,25 @@
             "background": "The specified strength (f&prime;<sub>c</sub>) is a laboratory figure, confirmed on cylinders kept continuously moist under standard conditions. The strength that ends up in the structure is lower, because in-place concrete is placed, compacted and &mdash; critically &mdash; cured under site conditions rather than laboratory ones.<br><br>For suspended slabs and beams this gap is at its widest. These are <em>shallow</em> elements: the unformed top surface is a large fraction of their total surface area, so they lose moisture readily and depend heavily on curing to reach their potential strength. Walls and columns, with far less exposed surface relative to volume, are much less sensitive.<br><br>The problem is that on real sites these elements are routinely not cured properly. Nobody ponds or continuously water-cures a suspended slab; at best a compound or sheeting is applied, and often nothing is. Industry and regulators both report this as common (see Evidence Basis). So the realistic position for a thin slab or beam is not &lsquo;properly cured&rsquo; &mdash; it is &lsquo;poorly cured&rsquo;, and the measured strength penalty for that, drawn from field data on exactly these elements, averages 23% (see the table below).<br><br>The constructability response is to stop assuming the full specified strength will arrive, and instead design the element at the strength it will realistically reach. Conveniently, the standard grade ladder steps down by almost exactly this penalty, so the rule is simply: <strong>design one standard grade below the grade you specify and call up for supply</strong> &mdash; specify 40 and design 32; specify 32 and design 25.<br><br>This costs very little where it doesn&rsquo;t matter and protects you where it does. A slab&rsquo;s bending capacity is governed by the reinforcement, so the lower grade barely changes it. The penalty bites instead in punching shear and deflection &mdash; both of which scale with the square root of strength &mdash; and those are exactly the checks that govern thin flat plates and flat slabs. Relying on 40 while the slab realistically delivers around 31 does not mean the slab fails; it means the margin you believe you have is quietly eroded, and on a punching- or deflection-governed element that margin is what is protecting you. If that shortfall surfaces after the building is occupied, it shows up as cracking, excessive deflection or a punching concern &mdash; problems that are expensive and disruptive to remediate. Designing one grade down is a near-free hedge against that ongoing cost.",
             "thresholds": [
               {
-                "range": "Shallow element designed one grade below specified, reduced grade carried through punching and deflection",
+                "range": "Designed one grade down",
                 "rating": "Good practice",
                 "color": "green",
                 "guidance": "On suspended slabs and beams, the design uses the standard grade one step below the specified grade (e.g. specify 40, design 32), and that reduced grade is carried through the punching-shear and deflection checks. The specified grade is still shown on the drawings for supply and acceptance."
               },
               {
-                "range": "Full specified strength used, but element not strength-critical OR curing verified",
+                "range": "Full grade, curing assured",
                 "rating": "Consider",
                 "color": "yellow",
                 "guidance": "Full specified strength is used in design, but either the element is not strength-critical (bending-governed, with generous punching and deflection margins), or effective curing is specified as a verified hold point and genuinely assured. Acceptable &mdash; but where curing is not verified, the hedge against a site shortfall has been given up."
               },
               {
-                "range": "Full specified strength relied upon on a punching- or deflection-governed thin slab, no curing assurance",
+                "range": "Full grade assumed",
                 "rating": "Concern",
                 "color": "orange",
                 "guidance": "The full specified strength is relied upon on a punching- or deflection-governed thin flat plate or flat slab, with no curing assurance and no allowance for the realistic shortfall. The design is leaning on strength that may not be there."
               },
               {
-                "range": "As Concern, and the governing check is tight at convergence",
+                "range": "No margin for shortfall",
                 "rating": "Action required",
                 "color": "red",
                 "guidance": "As above, and the governing check is already tight at convergence &mdash; a strength-dependent reduction of around 12% would push punching shear or deflection past its limit. Either design one grade down, or make effective curing a documented, verified hold point before relying on the full grade."
