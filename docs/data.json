@@ -1179,7 +1179,7 @@
                   "20 MPa"
                 ]
               ],
-              "howToUse": "Keep specifying the grade everyone expects (commonly 40 MPa for suspended slabs here), so supply and acceptance are unaffected and nothing on the drawings looks unusual. In the structural model, analyse the shallow elements at the next grade down. The adopted grade is the nearest standard step at or below the 0.77 figure, so it captures roughly a 20&ndash;22% reduction; the last couple of percent sits within the general design margins.",
+              "howToUse": "Keep specifying the grade everyone expects (commonly 40 MPa for suspended slabs), so supply and acceptance are unaffected and nothing on the drawings looks unusual. In the structural model, analyse the shallow elements at the next grade down. The adopted grade is the nearest standard step at or below the 0.77 figure, so it captures roughly a 20&ndash;22% reduction; the last couple of percent sits within the general design margins.",
               "assumptionsTitle": "How these numbers were derived",
               "assumptions": [
                 "0.77 factor: ACI 214.4R reports that cores from poorly cured shallow elements average 77% of companion cores from properly cured elements, across ages of 28, 56, 91 and 365 days, citing Bartlett and MacGregor (1996).",
