@@ -1830,7 +1830,7 @@
           "caption": "Practical options to consider if you land in Concern or Action required. A starting point for the decision, not a fixed instruction."
         }
       ],
-      "moreFields": "Entries may also include a <strong>Background</strong> (why the issue matters), an <strong>Evidence Basis</strong> (how the guidance was established, with references), and <strong>Examples</strong> and <strong>Supporting Images</strong> &mdash; real, de-identified drawings and site photographs showing the issue in practice."
+      "moreFields": "Entries may also include a <strong>Background</strong> (why the issue matters), an <strong>Evidence Basis</strong> (how the guidance was established, with references), and <strong>Examples</strong> and <strong>Supporting Images</strong> &mdash; real, de-identified drawings and site photographs showing the issue in practice. Some entries also link to <strong>Related Entries</strong> &mdash; other entries worth considering alongside this one."
     },
     "trace": {
       "title": "How an entry works: condition → band → response",
