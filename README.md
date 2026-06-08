@@ -37,6 +37,7 @@ Every entry in the framework follows the same general display format:
 - **Evidence Basis** — how the guidance was established *(optional)*
 - **Examples** — real design drawings tagged as Concern, Acceptable, or Recommended *(optional)*
 - **Supporting Images** — images, excerpts, diagrams, or site photographs that support the evidence or show what the issue looks like in practice *(optional)*
+- **Related Entries** — links to other entries worth considering alongside this one (e.g. a chamfer detail and a drip groove on the same formed edge). Each link can carry a short note explaining why the other entry is relevant *(optional)*
 
 Entries are date-stamped and designed to be updated as construction technology and practice evolve.
 
@@ -97,6 +98,8 @@ For example, the "Off-form concrete walls near obstructions" entry sits under **
 
 When submitting an entry, ask: *what design decision caused this issue?* That points you to the right dimension.
 
+Issues often touch more than one area even though each entry lives in a single dimension. Rather than duplicating an entry across dimensions, the framework links related entries together — so a designer reading one is pointed to the others worth considering, without the same issue being maintained in several places. See [Related entries](#related-entries-cross-references) below.
+
 ### Suggesting a new entry
 
 If you have a constructability issue, design scenario, or practical insight that could benefit the framework, you can submit it via the <a href="https://forms.gle/5ppQRvJuzWaUkdg89" target="_blank">new entry suggestion form</a>.
@@ -117,6 +120,26 @@ All submissions (new entries and edits) are reviewed before being incorporated i
 5. Place any images in the `images/` folder with descriptive filenames
 6. Reference images in the entry as `"images/your-filename.jpg"`
 7. Commit and push
+
+### Related entries (cross-references)
+
+An entry can point to others that a designer should consider alongside it. Add a `relatedEntries` array to the entry's `data` object:
+
+```json
+"relatedEntries": [
+  {
+    "dimId": "detailing",
+    "name": "Drip grooves on exposed soffit edges",
+    "note": "Both are edge treatments on the same formed face — coordinate them so the chamfer and drip groove don't clash."
+  }
+]
+```
+
+- Each link references the target by `dimId` and `name` (not by position), so links survive entries being reordered.
+- `note` is optional — a short sentence explaining why the other entry is relevant. If omitted, just the link is shown.
+- An entry can list as many related entries as needed, including entries in other dimensions.
+- **Author each link once.** Links are automatically two-way: if entry A lists entry B, then entry B will also show A, without B needing a `relatedEntries` field of its own. There is no need — and you should avoid — adding the same pairing on both sides, as it will only drift out of sync. Add a link on both sides only if you genuinely want a *different* note in each direction.
+- Links to entries that are not yet `available` are silently skipped, so you can author a link ahead of the target entry going live without producing a dead link.
 
 ### Minimum required fields for a new entry
 - Dimension
