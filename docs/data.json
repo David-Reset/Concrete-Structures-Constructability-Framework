@@ -278,130 +278,92 @@
           }
         },
         {
-          "name": "Pour staging for programme: consolidate or split",
+          "name": "Optional pour breaks to keep concrete trades flowing",
           "available": true,
           "draft": false,
           "_status": "REBUILT — reframed from pour-size limit to programme/crew-continuity; large vs small defined by repetition. Evidence directional pending quantified figures.",
           "data": {
-            "question": "Has the number and staging of pours been matched to the project's repetition &mdash; consolidated into as few placements as practical where the work is one-off or non-repetitive, and deliberately staged with buildable, well-timed pour-break locations enabled where repetition lets split pours keep the trades working continuously &mdash; or has the pour count been left unconsidered at design stage?",
-            "parameter": "The number of pours implied by the design, judged against the project's repetition (the count of substantially similar pour cycles &mdash; e.g. typical suspended floors, or repeated similar bays): minimise pours where repetition is low; provide buildable, timed pour-break locations that protect crew continuity where repetition is high.",
-            "background": "How a structure is broken into pours is usually treated as a site decision, but the design sets the options &mdash; and the right <em>number</em> of pours is not fixed. It flips with the project. The deciding factor is not pour size or strength: for ordinary building elements a continuous placement is rarely the binding constraint, and arbitrary caps on placement size are actively discouraged (see Evidence Basis). The real driver is the construction programme &mdash; specifically, whether splitting the work lets the trades keep working.<br><br><strong>Low-repetition work &mdash; consolidate.</strong> On a one-off slab or a handful of scattered footings, every separate pour carries fixed overhead: a pour day, joint preparation, a pump mobilisation, an inspection. There is nothing downstream for a freed-up crew to move into, so an extra pour is close to pure cost. Here the design should minimise the number of pours &mdash; group ground-bearing elements into a single placement where structurally acceptable, and where a small number of isolated vertical concrete elements would otherwise force their own pour, consider substituting a steel member (for example a steel hollow-section column) erected dry, deleting the pour cycle altogether.<br><br><strong>Repetitive work &mdash; split to keep the trades moving.</strong> On a multistorey with many similar floors, or a structure of repeated bays, the calculation inverts. Splitting a pour reduces the <em>batch size</em>, and smaller batches let trades flow continuously instead of queuing behind one large cycle. Rather than form &rarr; fix &rarr; pour &rarr; <em>wait for set</em> &rarr; repeat, the job runs as interleaved streams: the formworkers are always forming, the steelfixers always fixing, the pour crew always pouring &mdash; each in a different zone. This is the core idea of takt and location-based scheduling. The concrete frame is usually the one activity that <em>cannot</em> be made continuous (it has to set), which is exactly why giving it its own staged rhythm is what frees the trades around it.<br><br><strong>Crew continuity is the prize.</strong> A specialised crew that repeats one function continuously is at its most efficient; break that flow and the efficiency is lost. A crew stood down may demobilise to other work and return on an uncertain timeline, with remobilisation cost on top. Keeping the trades on site and moving is what compresses the programme.<br><br><strong>The economics are lopsided.</strong> A pour break adds a <em>bounded, one-off</em> cost &mdash; joint preparation, a little continuity steel, a waterstop where it must be watertight, perhaps an extra pour day. Programme time is a <em>recurring</em> cost: time-related preliminaries (supervision, plant, site establishment) accrue every day the job runs. So the comparison that matters is not the break against the cost of its materials, but the break against the project's <em>daily</em> time-related cost &mdash; which on a mid-size project runs into the tens of thousands. A sequencing decision that saves weeks therefore dwarfs the cost of the breaks that enabled it. Material price is close to irrelevant here; timing is everything.<br><br><strong>The design decision.</strong> The designer's job is not to dictate the number of pours &mdash; placing rate, crew and finishing are the contractor's to judge &mdash; but to make sure a sensible, buildable break is <em>possible and shown as an option</em> where the programme could benefit: located on a sound plane, with continuity reinforcement and a waterstop where wet, so the contractor can choose to run interleaved streams. Where the work is non-repetitive, the same judgement runs the other way &mdash; keep it whole.<br><br>This entry is about <em>how many pours and where</em>, driven by programme. It is related to but distinct from: the formwork-cycling gain on repeated floors (see <em>Conventional RC vs post-tensioned</em>) and the formwork learning curve (see <em>Repetition and the formwork learning curve</em>), which are the same continuity logic seen through the formwork; the crack-control and structural role of joints, a separate mechanism; and vertical members that cannot be cast monolithically with the slab they support (see <em>Casting suspended members on freshly placed columns and walls</em>). A restraint-driven break (a pour strip against cores or long runs) is a further, separate reason to split that can coincide with the programme case.",
+            "question": "On repetitive suspended concrete, has an optional pour-break (construction-joint) location been shown and detailed at design stage, so the contractor can stage the work and keep the forming and fixing crews moving &mdash; rather than the structure defaulting to a single continuous pour because a break was never offered?",
+            "parameter": "Whether the design enables an optional pour break where it would help the programme. On repetitive suspended concrete, has a buildable construction-joint location been shown as an option and detailed, or has the matter been left unconsidered so the work defaults to one continuous pour? Judged from the documentation &mdash; not from a pour count or a placement-size limit.",
+            "background": "Once the groundworks are complete, a suspended concrete structure is built through three repeating trades: <strong>formwork</strong>, <strong>steel fixing</strong> and <strong>concrete placing</strong>. These may be three separate subcontractors or a single company, but the labour is dominated by formwork, and forming and fixing are the activities you most want to keep running without interruption. Placing is different by nature &mdash; concrete is poured and then has to set, so the placing crew is always going to come and go in bursts.<br><br>The problem this entry addresses is what a single large pour does to the other two trades. With one pour per floor (or per large area), the formworkers and steelfixers finish their zone and then have nothing in front of them until that pour has set and been struck &mdash; so they stop and wait too, dragged down to the tempo of the one activity that cannot be made continuous. A crew with no work in front of it does not wait around: it demobilises to another job, and getting it back depends on <em>that</em> crew's availability, not yours. The waiting and the remobilisation are real programme cost, and because formwork is the largest share of the labour, the formwork crew is the one you most need to retain.<br><br>A planned pour break splits the floor (or area) into zones. While the first zone cures, the formworkers move to the next zone and keep forming, the steelfixers keep fixing behind them, and the placing crew comes in periodically to pour each zone as it is ready &mdash; which is exactly the rhythm placing wants anyway. The continuous trades stay continuous; only the discontinuous one stays discontinuous. This is the workflow idea behind takt and location-based planning, and Figure 9-4 (Frandson, 2019) shows it directly: splitting a sequence of repeating activities into more zones sharply reduces the time to complete the sequence, with the gain greatest when many activities follow one another.<br><br><strong>This is only worth doing where the work repeats.</strong> The benefit comes entirely from a freed-up crew having similar work to flow into &mdash; more floors, more bays, more zones. On a one-off slab or a small, non-repetitive structure there is nothing downstream to move to, so a break saves nothing and only adds an unnecessary joint. Those decisions belong to the contractor; the designer should not be adding breaks to small work.<br><br><strong>The design decision.</strong> A structural pour break is a construction joint, and the contractor cannot simply introduce one &mdash; it needs the engineer's design and sign-off. So if the design shows no break, one of two things happens on a repetitive job: the contractor raises it mid-construction and the engineer details it reactively under programme pressure, or &mdash; more often &mdash; the contractor assumes a break is not available, prices and builds a single continuous pour, and the programme benefit is silently lost. The fix is small and best done while the design is open: show an optional pour-break location on a structurally sound plane, marked clearly as optional, with a typical joint detail (continuity reinforcement, and a waterstop where the element is watertight). The contractor can then choose to stage the work or pour through &mdash; but the option exists, located and detailed properly, without anyone having to come back to the engineer for it.<br><br>This entry is about <em>whether an optional pour break is enabled at design stage to protect crew continuity</em> on repetitive concrete. It is related to but distinct from the formwork-cycling gain on repeated floors (see <em>Conventional RC vs post-tensioned</em>) and the formwork learning curve (see <em>Repetition and the formwork learning curve</em>), which are the same continuity logic seen through the formwork; and from the structural and crack-control role of joints, which is a separate mechanism. Substituting a steel member for an isolated vertical concrete element to delete a pour cycle is a related material choice handled in its own entry (see <em>Structural steel vs concrete for isolated vertical members</em>).",
             "thresholds": [
               {
-                "range": "1 &mdash; one-off",
+                "range": "Optional break shown",
                 "rating": "Good practice",
                 "color": "green",
-                "guidance": "Non-repetitive work with nothing downstream for a freed crew to flow into. Minimise the pour count: group ground-bearing elements into single placements where structurally acceptable, and consider substituting a steel member (e.g. an SHS column) for an isolated vertical concrete element to delete a pour cycle. Leave the number and location of any remaining pours to the contractor unless watertightness forces a deliberate, detailed joint. Splitting wins little here."
+                "guidance": "On repetitive suspended concrete where the trades could flow, the design shows an optional pour-break location, clearly marked as optional, on a structurally sound plane, with a construction-joint detail referenced (continuity reinforcement; waterstop where the element is wet). The contractor can stage the work &mdash; keeping formworkers and steelfixers moving through zones while each pour cures &mdash; or pour through. The decision has been made with the design open, so no one needs to return to the engineer for it."
               },
               {
-                "range": "2&ndash;4 cycles",
+                "range": "No break shown",
                 "rating": "Consider",
                 "color": "yellow",
-                "guidance": "Low repetition. Consolidation usually still wins, but the flow benefit is beginning to appear. If a trade can genuinely cycle across the repeats, evaluate enabling one optional break; otherwise keep pours few. Confirm an achievable placement rate and sequence with the contractor rather than assuming."
-              },
-              {
-                "range": "5&ndash;10 cycles",
-                "rating": "Concern",
-                "color": "orange",
-                "guidance": "Enough repetition that split pours can feed continuous crew flow. The design should actively enable optional, well-timed pour breaks &mdash; shown on a sound plane, with continuity steel and a waterstop where wet &mdash; so the contractor can interleave the trades. Not enabling them risks the trades idling through each cycle and forgoes real programme saving. Time the breaks to the trade cycle, not to a size limit."
-              },
-              {
-                "range": "&gt; 10 cycles",
-                "rating": "Action required",
-                "color": "red",
-                "guidance": "Highly repetitive structure: crew continuity is the dominant programme lever. Set the design up so the contractor can run interleaved pour streams &mdash; buildable, timed break locations provided as options. Failing to provide them leaves major programme value unrealised (potentially weeks to months at the project's daily time-related cost). This is the regime where pour staging should be planned at design stage, in coordination with the contractor."
+                "guidance": "The work repeats enough that staging could keep the trades flowing, but no optional break is shown. Because a structural break needs the engineer's sign-off, this resolves one of two ways: the contractor raises it mid-job and the joint is designed reactively under programme pressure, or &mdash; more often &mdash; the contractor assumes it is unavailable and builds one continuous pour, and the programme benefit is silently lost. Consider showing an optional break before issue. One-off or small non-repetitive work sits outside this entry &mdash; leave it to the contractor and do not add unnecessary breaks."
               }
             ],
             "alternatives": [
               {
-                "title": "Match the pour count to the project's repetition",
-                "description": "Make the number of pours a deliberate design decision keyed to repetition: consolidate into as few placements as practical on one-off or low-repetition work; provide staged, optional breaks on repetitive work so split pours can keep the trades moving. Repetition (count of similar pour cycles) is the operational definition of 'large vs small' for this decision &mdash; not floor area or contract value, which are only proxies."
-              },
-              {
-                "title": "On small / one-off work, substitute steel to delete a pour",
-                "description": "Where a small number of isolated vertical concrete elements would force their own pour and sequencing penalty, consider a steel member (e.g. a steel hollow-section column) erected dry instead. This removes a whole form&ndash;pour&ndash;cure&ndash;strike cycle and its fixed overhead, which is disproportionate on a job with no repetition to absorb it."
-              },
-              {
-                "title": "Where splitting helps, show buildable optional break locations",
-                "description": "Locate potential pour breaks on a sound plane and show them as options, with continuity reinforcement detailed and a waterstop where the joint must be watertight. Showing the intended break lets the designer place it advantageously and lets the contractor choose to run interleaved streams &mdash; rather than improvising a joint in the field or being unable to split at all."
-              },
-              {
-                "title": "Time the breaks to the trade cycle; confirm with the contractor",
-                "description": "The benefit comes from rhythm, not from the break itself. Coordinate where pours can stop so the formwork, fixing and placing crews can each work a different zone continuously. Confirm achievable placement rate, crew and finishing with the contractor early; the realistic maximum continuous pour is project-specific and theirs to judge."
-              },
-              {
-                "title": "Weigh the break against time-related cost, not material cost",
-                "description": "Assess a proposed split on the project's daily time-related cost (preliminaries, plant, supervision), not on the price of the extra concrete or joint. A bounded one-off break cost is easily justified by a programme saving of even a few days on a project burning tens of thousands per day."
+                "title": "Show an optional pour-break location, with a detail",
+                "description": "On repetitive suspended concrete, mark a buildable pour-break (construction-joint) location on the relevant plan, clearly labelled as optional, and reference a typical joint detail: continuity reinforcement, a sound joint plane, and a waterstop where the element is watertight. Doing this while the design is open lets the engineer place the break advantageously and lets the contractor choose to stage the work and run the trades continuously &mdash; without having to come back for a sign-off mid-construction. Do not add breaks to one-off or small non-repetitive work, where the contractor is better placed to decide."
               }
             ],
             "applicability": {
-              "appliesWhere": "Reinforced-concrete building structures where the number and staging of pours is a design-influenceable decision. It is concerned with how many pours and where, driven by the construction programme &mdash; not with the structural detailing of the joint itself, nor with crack-control (contraction-joint) spacing, which is a separate mechanism.",
+              "appliesWhere": "Repetitive reinforced-concrete suspended structures (multiple similar floors, bays or zones) where the number and staging of pours can be influenced at design stage, and where keeping the forming and fixing trades working continuously would shorten the programme. It concerns whether an optional pour break is enabled &mdash; not the structural detailing of the joint itself, nor crack-control (contraction-joint) spacing, which are separate matters. One-off or small non-repetitive work is out of scope.",
               "checks": [
                 {
-                  "title": "Repetition / continuity potential",
-                  "description": "Count the substantially similar pour cycles (floors, bays, zones). High repetition favours splitting to feed continuous trade flow; low repetition favours consolidation. This count is the governing variable &mdash; more so than floor area or project value."
+                  "title": "Does the work actually repeat?",
+                  "description": "Count the substantially similar pour cycles (floors, bays, zones). The benefit exists only where a freed-up crew has matching work to flow into. Low repetition means there is nothing downstream to move to, so leave the work whole."
                 },
                 {
-                  "title": "Can the trades actually flow?",
-                  "description": "Splitting only pays if a freed-up crew has similar downstream work to move into at a matching pace. A single large slab with no repetition behind it offers nothing to flow into, so the split saves nothing."
+                  "title": "Which trades are you keeping continuous?",
+                  "description": "Forming and fixing are the activities worth keeping continuous; placing is discontinuous by nature and comes in bursts regardless. Formwork is also the largest single share of the labour, so retaining the formwork crew is the main prize."
+                },
+                {
+                  "title": "Is the break location sound and buildable?",
+                  "description": "An optional break is only useful if it sits on a structurally sound plane with workable access and a sensible detail. A break shown in a poor location is not a usable option."
                 },
                 {
                   "title": "Watertightness",
-                  "description": "If a split introduces a construction joint in a watertight element, it becomes a leakage path. Locate it deliberately on a sound plane and detail a waterstop. On small jobs this is the main reason to care where a break falls."
-                },
-                {
-                  "title": "Is placement actually the constraint?",
-                  "description": "Usually it is not. Confirm the continuous-pour size achievable at a realistic placing rate; for ordinary building slabs this rarely binds before programme considerations do. Do not split for size alone."
+                  "description": "Where the break falls in a watertight element it becomes a potential leakage path; locate it deliberately and detail a waterstop. This is the main case where the break location genuinely matters structurally."
                 },
                 {
                   "title": "Regional joint detail",
-                  "description": "The construction-joint detail (continuity steel, waterstop, surface preparation) varies by region and specification. This entry concerns the decision to stage, not the local detailing of the joint."
+                  "description": "Construction-joint detailing (continuity steel, waterstop, surface preparation) varies by region and specification. This entry concerns the decision to enable a break, not the local detailing of the joint."
                 }
-              ]
+              ],
+              "note": "Use the rating as a constructability prompt at design stage, not a requirement to split. The aim is to make a beneficial option available where the work repeats &mdash; and to avoid adding unnecessary breaks where it does not."
             },
-            "workedExample": {
-              "title": "Illustrative — programme vs break cost",
-              "caveat": "Order-of-magnitude only, built from one observed project plus general time-related-cost data. Not a controlled study and not a prediction; actual savings depend on the baseline cycle, the number of repeats, and whether the trades can in fact flow. Treat as a sense of scale, not a figure to design to.",
-              "headline": "On a repetitive multistorey, splitting each floor into two interleaved pours let the formwork, fixing and placing crews each work continuously in a different zone — running the build as two parallel timelines instead of one stop-start cycle. The observed outcome was roughly a 2-month programme saving.",
-              "tableHeaders": [
-                "Item",
-                "Single-pour cycle",
-                "Split (interleaved) cycle"
-              ],
-              "tableRows": [
-                [
-                  "Crew pattern",
-                  "Form, fix, pour, wait for set, then repeat — trades idle in turn",
-                  "Each trade always working a different zone"
-                ],
-                [
-                  "Added cost of split",
-                  "—",
-                  "Bounded: extra joints, continuity steel, waterstop if wet, pour days"
-                ],
-                [
-                  "Programme effect",
-                  "Baseline",
-                  "≈ 2 months saved (observed, repetitive frame)"
-                ],
-                [
-                  "Value of that time",
-                  "—",
-                  "≈ 2 months × ~$50k/day time-related cost ≫ break cost"
-                ]
-              ],
-              "howToUse": "Use it to frame the comparison, not to size a saving. The point is the asymmetry: the break's cost is bounded and one-off, while programme time is recurring — so on repetitive work even a modest per-cycle saving, multiplied across the repeats, swamps the cost of the breaks that enabled it.",
-              "assumptionsTitle": "Where these numbers come from",
-              "assumptions": [
-                "The ~2-month saving is a single observed project (a repetitive frame split deliberately by the contractor), not a generalisable figure.",
-                "The ~$50k/day is consistent with published time-related project cost (e.g. a $50M / 3-year project ≈ $45,662/day).",
-                "The saving assumes genuine continuity — that freed crews had matching downstream work to flow into on every cycle."
-              ],
-              "assumptionsNote": "Replace these with figures from a documented takt / LBMS case study to make the claim quantified rather than illustrative."
-            },
-            "evidence": "<strong>Pour size rarely forces a split.</strong> Industry guidance holds that there is no arbitrary maximum placement size; the limit is set by supply, crew and finishing, and large continuous placements are routine. ACI 302 has stated since 1980 that capping placement size achieves no better shrinkage result, costs more and adds time. So for ordinary building elements the decision is not driven by a size ceiling.<br><br><strong>Continuity and batch size (the mechanism).</strong> Takt and location-based scheduling aim to keep trades flowing at one rhythm by reducing batch size; case studies of Location-Based Management report improved workflow, crew balancing and fewer interruptions, and note that the concrete structure is often the one task that cannot be made continuous, for technical (set-time) reasons. Splitting a pour is the lever that reduces batch size for the structure so the surrounding trades can flow.<br><br><strong>Crew continuity and its cost.</strong> The disruption literature recognises the efficiency a specialised crew gains from continuously repeating one function, and the demobilisation / remobilisation cost of breaking that continuity.<br><br><strong>The economics.</strong> Project cost frameworks distinguish fixed from recurring time-related preliminaries; the latter accrue with duration independent of the permanent works, so programme time dominates a bounded one-off break cost. A published per-day project value (~$45,662/day on a $50M / 3-year job) anchors the order of magnitude.<br><br><strong>Steel substitution on small jobs.</strong> Reinforced concrete is a linear wet-trade process (form, pour, cure, strike); a steel member erected dry avoids that cycle, and filled hollow-steel-section members are cited among hybrids that avoid wet trades to save time.<br><br><strong>Limitations.</strong> Most of the continuity evidence is general lean-construction theory rather than a controlled study isolating the effect of splitting a specific pour, and the quantified saving here rests on a single observed project. The directional case is well supported; a quantified threshold would need figures from a documented takt / LBMS case study.<br><br><strong>References</strong><br>Frandson, A. &amp; Tommelein, I. D. <em>Takt Time Planning as a Work Structuring Method to Improve Construction Work Flow.</em> (IGLC / UC Berkeley).<br>Kenley, R. &amp; Seppänen, O. (2010). <em>Location-Based Management for Construction: Planning, Scheduling and Control.</em><br>Tommelein et al. / LBMS case studies, <em>Construction Management and Economics.</em><br>Lean Construction Institute &mdash; Takt Time.<br>Long International &mdash; <em>The Effects of Disruption on Construction Projects.</em><br><em>The True Cost of Project Delay</em> (industry white paper).<br>ACI 302.1R / CCS-1 &mdash; slab-on-ground placement size.<br>Building Design+Construction &mdash; hybrid steel / hollow-steel-section members.",
+            "evidence": "<strong>Workflow and zoning (the mechanism).</strong> Takt and location-based planning improve construction workflow by breaking repetitive work into zones so trades flow continuously at one rhythm rather than queuing behind a single large activity. Frandson (2019) shows this directly: for a sequence of repeating activities, increasing the number of zones sharply reduces the time to complete the sequence, and the reduction is greatest when many activities follow one another (Figure 9-4). The concrete frame is typically the one activity that cannot be made continuous, because it has to set &mdash; which is why giving it a staged rhythm is what lets the surrounding trades keep moving.<br><br><strong>Formwork dominates the labour.</strong> Published man-hour breakdowns for concrete structures put formwork as the largest single activity (around half of the labour) and concrete placing as a small fraction (see <em>Flat soffit detailing at minor slab setdowns</em>, which uses L&ouml;fgren et al., 2001). Keeping the formwork crew working continuously is therefore the main programme prize, and losing that crew to another job is the cost a planned break avoids.<br><br><strong>Crew continuity.</strong> A specialised crew is most efficient when it repeats one function without interruption; breaking that flow forfeits the efficiency and adds demobilisation and remobilisation cost, with the crew's return depending on its own availability elsewhere.<br><br><strong>Scope of the evidence.</strong> Figure 9-4 is a model of sequence duration against zoning, not a concrete-placement rule; it supports the programme logic of staging, not any specific joint mechanics or a quantified pour count. The decision to enable an optional break is a design-stage judgement keyed to repetition, drawn from lean-construction theory and practical experience rather than a controlled study isolating the effect of one pour break.<br><br><strong>References</strong><br>Frandson, A. (2019). <em>Takt Time Planning as a Work Structuring Method to Improve Construction Work Flow.</em> PhD dissertation, University of California, Berkeley (Figure 9-4).<br>L&ouml;fgren, A. et al. (2001) &mdash; concrete structure man-hour breakdown (cited in <em>Flat soffit detailing at minor slab setdowns</em>).",
             "dateAdded": "2026-06-08",
-            "dateReviewed": "2026-06-08",
+            "dateReviewed": "2026-06-09",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "supportingImages": [
+              {
+                "image": "images/effect-of-zones.png",
+                "title": "<strong>Frandson (2019), Figure 9-4 &mdash; effect of the number of zones on sequence duration</strong><br>The time to complete a repeating activity sequence falls sharply as the work is split into more zones, and the gain grows with the number of activities in the sequence. It supports the programme logic behind staging a concrete pour into zones &mdash; keeping the forming and fixing trades flowing &mdash; rather than any concrete-placement rule. Reproduced from A. Frandson, <em>Takt Time Planning as a Work Structuring Method to Improve Construction Work Flow</em>, PhD dissertation, UC Berkeley, 2019."
+              }
+            ]
+          }
+        },
+        {
+          "name": "Structural steel vs concrete for isolated vertical members",
+          "available": false,
+          "data": {
+            "question": "Where a small number of isolated vertical members (columns, posts or piers) would otherwise be cast in reinforced concrete, should a structural steel member be used instead to delete a separate form&ndash;fix&ndash;pour&ndash;cure&ndash;strike cycle and its fixed overhead?",
+            "parameter": "Whether an isolated, low-repetition vertical concrete member justifies its own pour cycle, or whether a steel member erected dry would remove that cycle &mdash; judged against the member's repetition, the material of the surrounding structure, and the connection, fire, durability, finish and cost requirements of a steel alternative.",
+            "background": "Reinforced concrete is a linear wet-trade process: form, fix, pour, cure, strike. For a one-off or isolated vertical member &mdash; a single column, a few posts, an isolated pier &mdash; that whole cycle carries fixed overhead (a pour day, a pump or crane visit, joint preparation, an inspection) that is disproportionate to the work, because there is no repetition to absorb it. A structural steel member, erected dry, can delete the pour cycle altogether and is often installed faster and out of sequence with the concrete trades. A concrete-filled steel hollow section is one hybrid that keeps a concrete look or capacity while avoiding the wet forming cycle.<br><br>The decision is a genuine trade-off, not an automatic substitution. It turns on the member's repetition (repetitive columns may form and cycle efficiently in concrete), what the rest of the structure is built from (introducing a single steel element into an otherwise concrete frame brings its own coordination and trade-attendance cost), and the steel-specific requirements: connection design to adjacent concrete, fire rating or encasement, corrosion protection and finish, and relative material and erection cost.<br><br>This idea was previously folded into the pour-staging entry but is a distinct material-choice question, so it lives here. It is related to <em>Optional pour breaks to keep concrete trades flowing</em> (both are about removing or rescheduling pour cycles to protect the programme) and to <em>Casting suspended members on freshly placed columns and walls</em> (vertical members that cannot be cast monolithically with the slab they support).",
+            "thresholds": [],
+            "alternatives": [],
+            "applicability": {
+              "appliesWhere": "Isolated or low-repetition vertical concrete members where a structural steel alternative is structurally viable and where the concrete pour cycle for that member carries disproportionate fixed overhead. Not intended for repetitive columns that form and cycle efficiently in concrete, nor for cases where fire, durability or architectural requirements clearly favour concrete.",
+              "checks": [],
+              "note": "PLACEHOLDER &mdash; not yet live. Spun out of the pour-staging entry. To complete: define thresholds (likely a judged decision on repetition and surrounding-structure material), recommended actions, evidence (RC as a wet-trade cycle; hybrid / concrete-filled steel hollow sections avoiding wet trades), and any worked example or site photographs."
+            },
+            "evidence": "",
+            "dateAdded": "2026-06-09",
+            "dateReviewed": "2026-06-09",
             "location": {
               "country": "Australia",
               "state": "NSW"
