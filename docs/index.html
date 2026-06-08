@@ -110,6 +110,17 @@
   .evidence-text ul,.applicability-text ul,.consideration-text ul,.alt-desc ul{padding-left:22px;margin:8px 0}
   .evidence-text li,.applicability-text li,.consideration-text li,.alt-desc li{margin-bottom:6px}
 
+  .related-list{display:flex;flex-direction:column;gap:8px;margin-top:10px;margin-bottom:28px}
+  .related-card{display:block;text-align:left;width:100%;padding:14px 18px;background:var(--surface);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.2s}
+  .related-card:hover{border-color:var(--accent);background:var(--surface-light)}
+  .related-top{display:flex;align-items:center;gap:10px;justify-content:space-between}
+  .related-name-wrap{display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-width:0}
+  .related-name{font-size:14px;font-weight:600;color:var(--text)}
+  .related-dim{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;color:var(--text-muted);background:var(--surface-light);border:1px solid var(--border);border-radius:4px;padding:2px 8px;letter-spacing:0.3px}
+  .related-dim span.ico{font-size:11px;line-height:1}
+  .related-arrow{color:var(--accent);font-size:18px;flex-shrink:0}
+  .related-note{font-size:12px;color:var(--text);line-height:1.6;opacity:0.8;margin-top:8px}
+
   .date-stamp{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);display:flex;gap:24px}
   .date-label{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
   .date-value{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text);margin-top:2px}
@@ -273,6 +284,41 @@ function colorVar(c){const m={green:'--green',orange:'--orange',red:'--red',yell
 function bgVar(c){const m={green:'--green-bg',orange:'--orange-bg',red:'--red-bg',yellow:'--yellow-bg'};return `var(${m[c]||'--green-bg'})`}
 function getDim(){return dimensions.find(d=>d.id===state.dimId)}
 function getItem(){const dim=getDim();return dim?dim.items[state.itemIndex]:null}
+
+// ===== RELATED ENTRIES =====
+// Resolves a {dimId, name} reference to a live, available entry (or null).
+function resolveRef(ref){
+  const dim=dimensions.find(d=>d.id===ref.dimId);
+  if(!dim)return null;
+  const index=dim.items.findIndex(it=>it.name===ref.name);
+  if(index<0)return null;
+  const item=dim.items[index];
+  if(!item.available)return null;
+  return {dimId:dim.id,index,name:item.name,dimName:dim.name,dimIcon:dim.icon};
+}
+// Combines links authored on this entry (forward) with links that point AT it
+// from any other entry (reverse), so a relationship only needs to be written once.
+function getRelatedEntries(curDimId,curName,curData){
+  const out=[],seen=new Set();
+  const add=(ref,note)=>{
+    const r=resolveRef(ref);
+    if(!r)return;
+    const key=r.dimId+'/'+r.index;
+    if(key===curDimId+'/'+state.itemIndex||seen.has(key))return;
+    seen.add(key);
+    out.push(Object.assign(r,{note:note||''}));
+  };
+  (curData.relatedEntries||[]).forEach(ref=>add(ref,ref.note));
+  dimensions.forEach(dim=>dim.items.forEach(it=>{
+    if(!it.available||!it.data||!it.data.relatedEntries)return;
+    it.data.relatedEntries.forEach(ref=>{
+      if(ref.dimId===curDimId&&ref.name===curName){
+        add({dimId:dim.id,name:it.name},ref.note);
+      }
+    });
+  }));
+  return out;
+}
 
 // ===== LOCATION HELPERS =====
 const PIN_SVG='<svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>';
@@ -530,6 +576,9 @@ function renderEntryDetail(){
   const imgHint=`<div class="img-hint"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14zm.5-7v2H8v2H6V9H4V7h2V5h2v2z"/></svg> Click any image to enlarge</div>`;
   const examplesHtml=d.examples&&d.examples.length>0?`<div style="margin-top:28px"><div class="label">Examples</div>${imgHint}<div class="examples-grid${d.examples.length===1?' imgs-1':d.examples.length===2?' imgs-2':''}">${d.examples.map(ex=>`<div class="example-card">${ex.image?`<img src="${ex.image}" alt="${ex.caption}" onclick="openLightbox('${ex.image}')">`:''}<div class="example-caption"><div class="example-tag ${ex.tag}">${ex.tag==='concern'?'Concern':ex.tag==='acceptable'?'Acceptable':'Recommended'}</div><div class="example-desc">${ex.caption}</div></div></div>`).join('')}</div></div>`:'';
 
+  const related=getRelatedEntries(dim.id,item.name,d);
+  const relatedHtml=related.length>0?`<div style="margin-top:28px"><div class="label">Related Entries</div><div class="related-list">${related.map(r=>`<div class="related-card" onclick="goEntry('${r.dimId}',${r.index})"><div class="related-top"><div class="related-name-wrap"><span class="related-name">${r.name}</span><span class="related-dim"><span class="ico">${r.dimIcon}</span>${r.dimName}</span></div><div class="related-arrow">→</div></div>${r.note?`<div class="related-note">${r.note}</div>`:''}</div>`).join('')}</div></div>`:'';
+
   const supportingImagesHtml=d.supportingImages&&d.supportingImages.length>0?`<div style="margin-top:20px"><div class="label">Supporting Images</div>${imgHint}<div class="supporting-images-grid${d.supportingImages.length===1?' imgs-1':d.supportingImages.length===2?' imgs-2':''}">${d.supportingImages.map(sp=>`<div class="supporting-image-card">${sp.image?`<img src="${sp.image}" alt="${sp.title}" onclick="openLightbox('${sp.image}')">`:''}<div class="supporting-image-title">${sp.title}</div></div>`).join('')}</div></div>`:'';
 
   return `<div class="content animate-in">
@@ -547,6 +596,7 @@ function renderEntryDetail(){
     ${d.evidence?`<div class="evidence-box"><div class="label">Evidence Basis</div><div class="evidence-text">${d.evidence}</div></div>`:''}
     ${examplesHtml}
     ${supportingImagesHtml}
+    ${relatedHtml}
     <div class="date-stamp"><div><div class="date-label">Entry Added</div><div class="date-value">${d.dateAdded}</div></div><div><div class="date-label">Last Reviewed</div><div class="date-value">${d.dateReviewed}</div></div></div>
   </div>`;
 }
