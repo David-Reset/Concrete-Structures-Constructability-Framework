@@ -904,7 +904,14 @@
             "location": {
               "country": "Australia",
               "state": "NSW"
-            }
+            },
+            "relatedEntries": [
+              {
+                "dimId": "detailing",
+                "name": "Drip grooves on exposed soffit edges",
+                "note": "Both are edge treatments on the same exposed formed face. A chamfer and a drip groove sit close together at slab and beam edges, so detail them as a pair \u2014 coordinate their positions and confirm neither compromises cover or the formwork build-up."
+              }
+            ]
           }
         },
         {
