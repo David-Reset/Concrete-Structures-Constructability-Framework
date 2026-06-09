@@ -38,6 +38,7 @@ Every entry in the framework follows the same general display format:
 - **Examples** — real design drawings tagged as Concern, Acceptable, or Recommended *(optional)*
 - **Supporting Images** — images, excerpts, diagrams, or site photographs that support the evidence or show what the issue looks like in practice *(optional)*
 - **Related Entries** — links to other entries worth considering alongside this one (e.g. a chamfer detail and a drip groove on the same formed edge). Each link can carry a short note explaining why the other entry is relevant *(optional)*
+- **Search keywords** — extra words a searcher might type that aren't already written in the entry (synonyms, trade jargon, abbreviations), used to help the entry surface in search *(optional)*
 
 Entries are date-stamped and designed to be updated as construction technology and practice evolve.
 
@@ -57,6 +58,11 @@ As the framework grows and receives contributions from different regions, users 
 The framework is hosted at: <a href="https://david-reset.github.io/Concrete-Structures-Constructability-Framework/" target="_blank"><strong>https://david-reset.github.io/Concrete-Structures-Constructability-Framework/</strong></a>
 
 Browse by dimension, read the general guidance, then explore specific entries relevant to your design decisions. Use the region filter within each dimension to focus on entries relevant to your location.
+
+### Searching
+The home page has a search box that looks across **all five dimensions at once**. Describe your design problem in plain language — for example "wall close to a boundary", "stirrup size", or "curing" — and the framework returns the entries that best match, ranked with the strongest match first. You can also narrow results to a region.
+
+Search is **automatic**: it reads the text already written in each entry (the name, design question, background and guidance) and matches your words against it. You don't need to know an entry's name, and nothing has to be tagged for an entry to be found. Rarer, more specific words (such as "boundary" or "stirrup") count for more than common ones (such as "wall" or "concrete"), and weak, incidental matches are dropped so results stay relevant. Maintainers can optionally reinforce this with [search keywords](#search-keywords-optional) on individual entries.
 
 ### Running locally
 1. Clone or download this repository
@@ -120,7 +126,8 @@ All submissions (new entries and edits) are reviewed before being incorporated i
 5. Include the `location` field: `"location": {"country": "Australia", "state": "NSW"}` — use just `country` if the evidence applies nationally, or include `state` if it is region-specific
 6. Place any images in the `images/` folder with descriptive filenames
 7. Reference images in the entry as `"images/your-filename.jpg"`
-8. Commit and push
+8. *(Optional)* Add a `keywords` array of search terms that aren't already in the entry text (see [Search keywords](#search-keywords-optional))
+9. Commit and push
 
 ### Related entries (cross-references)
 
@@ -141,6 +148,23 @@ An entry can point to others that a designer should consider alongside it. Add a
 - **Author each link once.** Links are automatically two-way: if entry A lists entry B, then entry B will also show A, without B needing a `relatedEntries` field of its own. There is no need — and you should avoid — adding the same pairing on both sides, as it will only drift out of sync. Add a link on both sides only if you genuinely want a *different* note in each direction.
 - Links to entries that are not yet `available` are silently skipped, so you can author a link ahead of the target entry going live without producing a dead link.
 
+### Search keywords (optional)
+
+Search already works automatically on the text written in an entry, so most entries need nothing extra. The optional `keywords` field is a top-up: a place to add words a searcher might type that the entry doesn't already contain.
+
+Add a keyword only if **both** of these are true:
+
+1. **Someone would actually type it** when looking for this entry — a real term people use (including trade slang and regional words like "reo"), an abbreviation, a common misspelling, or the plain-language way someone describes the problem before they know the formal name.
+2. **It isn't already in the entry's written text** (name, question or background). If the word is already there, the search finds the entry anyway and the keyword does nothing.
+
+```json
+"keywords": ["upstand", "nib", "kerb", "reo size", "single-sided formwork"]
+```
+
+A couple of extra pointers:
+- Don't bother with very common words like "concrete", "slab" or "design" — they appear in almost every entry, so they won't help anyone find *this* one (and can pull it into unrelated searches).
+- A handful per entry is plenty. The best time to add a keyword is when you notice a search that *should* have found the entry but didn't.
+
 ### Minimum required fields for a new entry
 - Dimension
 - Stable `id` (lowercase hyphenated slug)
@@ -150,7 +174,7 @@ An entry can point to others that a designer should consider alongside it. Add a
 - At least one threshold band
 - Location (country, and state if applicable)
 
-All other fields (background, recommended actions, applicability and limitations, evidence, examples, site photos) can be added later as evidence builds.
+All other fields (background, recommended actions, applicability and limitations, evidence, examples, site photos, search keywords) can be added later as evidence builds.
 
 ## Context
 
