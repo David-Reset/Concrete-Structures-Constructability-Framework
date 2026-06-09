@@ -162,6 +162,28 @@
   .loc-filter select{background:var(--surface-light);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:6px 12px;font-size:12px;font-family:'IBM Plex Sans',sans-serif;cursor:pointer;outline:none}
   .loc-filter select:focus{border-color:var(--accent)}
   .loc-filter-count{font-size:11px;color:var(--text-muted);margin-left:auto}
+  .search-bar{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:0 14px;transition:border-color .2s,box-shadow .2s}
+  .search-bar:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+  .search-icon{width:18px;height:18px;fill:var(--text-muted);flex-shrink:0}
+  .search-input{flex:1;min-width:0;background:transparent;border:none;outline:none;color:var(--text);font-family:inherit;font-size:15px;padding:14px 0}
+  .search-input::placeholder{color:var(--text-muted)}
+  .search-clear{width:22px;height:22px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--surface-light);color:var(--text-muted);font-size:11px;cursor:pointer;flex-shrink:0;border:1px solid transparent}
+  .search-clear:hover{color:var(--text);border-color:var(--border)}
+  .search-region-wrap{display:flex;align-items:center;gap:10px;margin-top:10px}
+  .search-region-label{font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:1px}
+  .search-region{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:6px 12px;font-size:12px;font-family:inherit;cursor:pointer;outline:none}
+  .search-region:focus{border-color:var(--accent)}
+  .search-count{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin:20px 0 10px}
+  .search-list .search-result{align-items:flex-start}
+  .search-result-main{flex:1;min-width:0;margin-right:12px}
+  .search-result-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .search-snippet{font-size:12.5px;color:var(--text-muted);line-height:1.6;margin-top:7px}
+  .search-hl{color:var(--text);background:var(--accent-glow);border-radius:3px;padding:0 2px;font-weight:600}
+  .search-empty{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-top:18px;text-align:center}
+  .search-empty-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px}
+  .search-empty-sub{font-size:13px;color:var(--text-muted);line-height:1.7;max-width:480px;margin:0 auto}
+  .search-empty-link{color:var(--accent);cursor:pointer;font-weight:600}
+  .search-empty-link:hover{text-decoration:underline}
 
   /* ===== GUIDE CARD (home grid) ===== */
   .guide-card{position:relative;background:linear-gradient(135deg,rgba(59,130,246,0.13),rgba(99,102,241,0.06));border-color:rgba(59,130,246,0.45)}
@@ -278,6 +300,8 @@
 let dimensions = [];
 let guide = null;
 let state = { view:'home', dimId:null, itemId:null, locationFilter:null };
+let searchQuery='';
+let searchRegion=null;
 
 // ===== HELPERS =====
 function colorVar(c){const m={green:'--green',orange:'--orange',red:'--red',yellow:'--yellow'};return `var(${m[c]||'--green'})`}
@@ -346,6 +370,153 @@ function itemMatchesFilter(item){
   return loc.country===f.country;
 }
 
+// ===== SEARCH =====
+// Words too common to be useful as search terms.
+const SEARCH_STOP=new Set("a an the of to in on for and or with at by is are be do does should i my we you it this that what when where how near not no use using need want can could would there then than into onto over under as if it's".split(' '));
+// Bridge between the words a searcher types and the words an entry uses. Extend freely.
+const SEARCH_SYN={
+  rebar:'reinforcement bar',rebars:'reinforcement bar',bars:'bar reinforcement',
+  mesh:'mat reinforcement',shutter:'formwork',shuttering:'formwork',form:'formwork',
+  boundary:'boundary obstruction fence',fence:'fence obstruction boundary',wall:'wall upturn',
+  falling:'fall',fell:'fall',reuse:'cycle reuse repeated',reusing:'cycle reuse repeated',
+  pt:'post-tensioned',rc:'reinforced concrete',column:'column vertical',hole:'void opening penetration',
+  gap:'clearance gap',spacing:'clearance spacing',pour:'pour placement placing',cure:'curing',
+  cracking:'crack cracking',stirrups:'stirrup'
+};
+function searchTokens(q){
+  const raw=(q||'').toLowerCase().match(/[a-z0-9][a-z0-9\-]*/g)||[];
+  const terms=new Set();
+  raw.forEach(t=>{
+    if(t.length<2||SEARCH_STOP.has(t))return;
+    terms.add(t);
+    (SEARCH_SYN[t]||'').split(' ').forEach(s=>{if(s)terms.add(s);});
+  });
+  return [...terms];
+}
+function matchesRegion(it,f){
+  if(!f)return true;
+  if(!it.data||!it.data.location)return false;
+  const loc=it.data.location;
+  // A state filter also surfaces country-level entries (per the framework's regional model).
+  if(f.state)return loc.country===f.country&&(loc.state===f.state||!loc.state);
+  return loc.country===f.country;
+}
+// Returns [text, weight, isSnippetSource] for each searchable field of an entry.
+function entryFields(it,dim){
+  const da=it.data||{};
+  const thr=(da.thresholds||[]).map(t=>t.guidance||'').join(' ');
+  const alts=(da.alternatives||[]).map(a=>typeof a==='string'?a:((a.title||'')+' '+(a.description||''))).join(' ');
+  return [
+    [it.name,5,false],
+    [da.question||'',4,true],
+    [(da.keywords||[]).join(' '),4,false],
+    [da.parameter||'',2,true],
+    [da.background||'',2,true],
+    [dim.name,2,false],
+    [thr,1,true],
+    [alts,1,true],
+    [locLabel(da.location),1,false]
+  ];
+}
+function runSearch(q){
+  const terms=searchTokens(q);
+  if(!terms.length)return [];
+  const termRes=terms.map(t=>new RegExp('\\b'+escRe(t)));
+  const out=[];
+  dimensions.forEach(dim=>dim.items.forEach(it=>{
+    if(!it.available||!it.data)return;
+    if(!matchesRegion(it,searchRegion))return;
+    const fields=entryFields(it,dim).map(f=>[f[0].toLowerCase(),f[1],f[2],f[0]]);
+    let score=0,matchedTerms=0;
+    termRes.forEach(re=>{
+      let hit=false;
+      fields.forEach(([low,w])=>{if(re.test(low)){score+=w;hit=true;}});
+      if(hit)matchedTerms++;
+    });
+    if(score>0){
+      out.push({dimId:dim.id,id:it.id,name:it.name,dimName:dim.name,dimIcon:dim.icon,
+                location:it.data.location||null,
+                score:score+matchedTerms*3,   // reward matching more distinct query words
+                snippet:buildSnippet(fields,terms)});
+    }
+  }));
+  out.sort((a,b)=>b.score-a.score);
+  return out;
+}
+function buildSnippet(fields,terms){
+  const res=terms.map(t=>new RegExp('\\b'+escRe(t)));
+  for(const [low,w,isSrc,orig] of fields){
+    if(!isSrc||!orig)continue;
+    let pos=-1;
+    res.forEach(re=>{const m=re.exec(low);if(m&&(pos<0||m.index<pos))pos=m.index;});
+    if(pos<0)continue;
+    const start=Math.max(0,pos-60),end=Math.min(orig.length,pos+100);
+    const s=(start>0?'… ':'')+orig.slice(start,end).trim()+(end<orig.length?' …':'');
+    return highlightTerms(s,terms);
+  }
+  return '';
+}
+function escRe(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+function highlightTerms(text,terms){
+  let out=text;
+  [...terms].sort((a,b)=>b.length-a.length).forEach(t=>{
+    out=out.replace(new RegExp('\\b('+escRe(t)+')','ig'),'<span class="search-hl">$1</span>');
+  });
+  return out;
+}
+function escAttr(s){return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
+function searchRegionOptions(){
+  const locs=new Map();
+  dimensions.forEach(dim=>dim.items.forEach(it=>{
+    if(it.available&&it.data&&it.data.location){
+      const l=it.data.location;
+      if(!locs.has(l.country))locs.set(l.country,new Set());
+      if(l.state)locs.get(l.country).add(l.state);
+    }
+  }));
+  let opts='<option value="">All regions</option>';
+  for(const [country,states] of locs){
+    const csel=searchRegion&&searchRegion.country===country&&!searchRegion.state?'selected':'';
+    opts+=`<option value="${country}" ${csel}>${country}</option>`;
+    for(const st of [...states].sort()){
+      const ssel=searchRegion&&searchRegion.country===country&&searchRegion.state===st?'selected':'';
+      opts+=`<option value="${country}|${st}" ${ssel}>&nbsp;&nbsp;${st}, ${country}</option>`;
+    }
+  }
+  return opts;
+}
+function renderSearchResults(){
+  const q=searchQuery.trim();
+  if(!q)return '';
+  const res=runSearch(q);
+  if(!res.length){
+    return `<div class="search-empty"><div class="search-empty-title">No entries match “${escAttr(q)}”${searchRegion?' in this region':''}.</div><div class="search-empty-sub">Try fewer or different words${searchRegion?', widen the region,':''} or browse the dimensions below. If the framework doesn't cover this yet, you can <span class="search-empty-link" onclick="goSuggest()">suggest a new entry</span>.</div></div>`;
+  }
+  const rows=res.map(r=>`<div class="item-row available search-result" onclick="goEntry('${r.dimId}','${r.id}')"><div class="search-result-main"><div class="search-result-top"><span class="item-name">${r.name}</span><span class="related-dim"><span class="ico">${r.dimIcon}</span>${r.dimName}</span>${r.location?locTag(r.location):''}</div>${r.snippet?`<div class="search-snippet">${r.snippet}</div>`:''}</div><div class="item-arrow">→</div></div>`).join('');
+  return `<div class="search-count">${res.length} ${res.length===1?'entry':'entries'} found</div><div class="item-list search-list">${rows}</div>`;
+}
+function onSearchInput(v){
+  searchQuery=v;
+  const has=v.trim().length>0;
+  const panel=document.getElementById('search-results');if(panel)panel.innerHTML=renderSearchResults();
+  const grid=document.getElementById('dim-grid-wrap');if(grid)grid.style.display=has?'none':'';
+  const clr=document.getElementById('search-clear');if(clr)clr.style.display=v?'flex':'none';
+  const reg=document.getElementById('search-region-wrap');if(reg)reg.style.display=has?'flex':'none';
+}
+function onSearchRegion(v){
+  if(!v)searchRegion=null;
+  else if(v.includes('|')){const[c,s]=v.split('|');searchRegion={country:c,state:s};}
+  else searchRegion={country:v};
+  const panel=document.getElementById('search-results');if(panel)panel.innerHTML=renderSearchResults();
+}
+function clearSearch(){
+  searchQuery='';searchRegion=null;
+  const inp=document.getElementById('search-input');if(inp){inp.value='';inp.focus();}
+  const reg=document.getElementById('search-region');if(reg)reg.value='';
+  onSearchInput('');
+}
+function goSuggest(){window.open('https://forms.gle/5ppQRvJuzWaUkdg89','_blank');}
+
 // ===== LOAD DATA =====
 async function loadData(){
   try{
@@ -391,7 +562,13 @@ function renderBreadcrumb(){
 function renderHomeView(){
   const cards=dimensions.map(d=>`<div class="dim-card" onclick="goDimension('${d.id}')"><div class="dim-icon">${d.icon}</div><div class="dim-name">${d.name}</div><div class="dim-desc">${d.description}</div><div class="dim-count">${d.items.length} items →</div></div>`).join('');
   const guideCard=guide?`<div class="dim-card guide-card" onclick="goGuide()"><div class="guide-pill">Start here</div><div class="dim-icon">${guide.icon}</div><div class="dim-name">${guide.title}</div><div class="dim-desc">${guide.tagline}</div><div class="dim-count">Open guide →</div></div>`:'';
-  return `<div class="content animate-in"><div style="margin-bottom:24px"><h1 class="section-title">Framework Dimensions</h1><p class="section-desc">Select a constructability dimension to explore general guidance, design entries with threshold-based ratings, and recommended actions for design decisions.</p></div><div class="dim-grid">${guideCard}${cards}</div></div>`;
+  const has=searchQuery.trim().length>0;
+  const searchIcon='<svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z"/></svg>';
+  const searchHero=`<div class="search-hero">
+    <div class="search-bar">${searchIcon}<input id="search-input" class="search-input" type="text" autocomplete="off" spellcheck="false" placeholder="Describe your design problem — e.g. “wall close to a boundary”, “stirrup size”, “curing”" value="${escAttr(searchQuery)}" oninput="onSearchInput(this.value)"><div id="search-clear" class="search-clear" style="display:${searchQuery?'flex':'none'}" onclick="clearSearch()">✕</div></div>
+    <div id="search-region-wrap" class="search-region-wrap" style="display:${has?'flex':'none'}"><span class="search-region-label">Narrow to region</span><select id="search-region" class="search-region" onchange="onSearchRegion(this.value)">${searchRegionOptions()}</select></div>
+  </div>`;
+  return `<div class="content animate-in"><div style="margin-bottom:18px"><h1 class="section-title">Find constructability guidance</h1><p class="section-desc">Describe your design problem to search across all five dimensions — or browse the dimensions below.</p></div>${searchHero}<div id="search-results">${renderSearchResults()}</div><div id="dim-grid-wrap" style="display:${has?'none':''}"><div style="margin:28px 0 8px"><div class="label">Browse by dimension</div></div><div class="dim-grid">${guideCard}${cards}</div></div></div>`;
 }
 
 // ===== GUIDE (how-to-use) =====
