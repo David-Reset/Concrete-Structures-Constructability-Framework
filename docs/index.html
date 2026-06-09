@@ -277,43 +277,45 @@
 // ===== STATE =====
 let dimensions = [];
 let guide = null;
-let state = { view:'home', dimId:null, itemIndex:null, locationFilter:null };
+let state = { view:'home', dimId:null, itemId:null, locationFilter:null };
 
 // ===== HELPERS =====
 function colorVar(c){const m={green:'--green',orange:'--orange',red:'--red',yellow:'--yellow'};return `var(${m[c]||'--green'})`}
 function bgVar(c){const m={green:'--green-bg',orange:'--orange-bg',red:'--red-bg',yellow:'--yellow-bg'};return `var(${m[c]||'--green-bg'})`}
 function getDim(){return dimensions.find(d=>d.id===state.dimId)}
-function getItem(){const dim=getDim();return dim?dim.items[state.itemIndex]:null}
+function getItem(){const dim=getDim();return dim?dim.items.find(it=>it.id===state.itemId)||null:null}
+// Stable id helper — must match the slug rule used when ids are authored in data.json.
+function slugify(s){return (s||'').toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'')}
 
 // ===== RELATED ENTRIES =====
-// Resolves a {dimId, name} reference to a live, available entry (or null).
+// Resolves an {id} reference to a live, available entry (or null), searching all dimensions.
 function resolveRef(ref){
-  const dim=dimensions.find(d=>d.id===ref.dimId);
-  if(!dim)return null;
-  const index=dim.items.findIndex(it=>it.name===ref.name);
-  if(index<0)return null;
-  const item=dim.items[index];
-  if(!item.available)return null;
-  return {dimId:dim.id,index,name:item.name,dimName:dim.name,dimIcon:dim.icon};
+  for(const dim of dimensions){
+    const item=dim.items.find(it=>it.id===ref.id);
+    if(item){
+      if(!item.available)return null;
+      return {dimId:dim.id,id:item.id,name:item.name,dimName:dim.name,dimIcon:dim.icon};
+    }
+  }
+  return null;
 }
 // Combines links authored on this entry (forward) with links that point AT it
 // from any other entry (reverse), so a relationship only needs to be written once.
-function getRelatedEntries(curDimId,curName,curData){
+function getRelatedEntries(curId,curData){
   const out=[],seen=new Set();
   const add=(ref,note)=>{
     const r=resolveRef(ref);
     if(!r)return;
-    const key=r.dimId+'/'+r.index;
-    if(key===curDimId+'/'+state.itemIndex||seen.has(key))return;
-    seen.add(key);
+    if(r.id===curId||seen.has(r.id))return;
+    seen.add(r.id);
     out.push(Object.assign(r,{note:note||''}));
   };
   (curData.relatedEntries||[]).forEach(ref=>add(ref,ref.note));
   dimensions.forEach(dim=>dim.items.forEach(it=>{
     if(!it.available||!it.data||!it.data.relatedEntries)return;
     it.data.relatedEntries.forEach(ref=>{
-      if(ref.dimId===curDimId&&ref.name===curName){
-        add({dimId:dim.id,name:it.name},ref.note);
+      if(ref.id===curId){
+        add({id:it.id},ref.note);
       }
     });
   }));
@@ -351,6 +353,14 @@ async function loadData(){
     const data=await resp.json();
     dimensions=data.dimensions;
     guide=data.guide||null;
+    // Safety net: guarantee every entry has a unique id even if one was omitted in data.json.
+    const seenIds=new Set();
+    dimensions.forEach(dim=>dim.items.forEach(it=>{
+      if(!it.id)it.id=slugify(it.name);
+      let base=it.id,n=2;
+      while(seenIds.has(it.id)){it.id=base+'-'+n;n++;}
+      seenIds.add(it.id);
+    }));
   }catch(e){
     document.getElementById('app').innerHTML='<div class="content" style="text-align:center;padding-top:80px;color:var(--red)">Error loading framework data. Make sure data.json is in the same folder as this file.</div>';
   }
@@ -385,12 +395,12 @@ function renderHomeView(){
 }
 
 // ===== GUIDE (how-to-use) =====
-function findEntry(dimId,name){
-  const dim=dimensions.find(d=>d.id===dimId);
-  if(!dim)return null;
-  const index=dim.items.findIndex(it=>it.name===name);
-  if(index<0)return null;
-  return {dim,item:dim.items[index],index};
+function findEntryById(id){
+  for(const dim of dimensions){
+    const item=dim.items.find(it=>it.id===id);
+    if(item)return {dim,item};
+  }
+  return null;
 }
 // The fragments below mirror the markup used in renderEntryDetail so the guide
 // shows the genuine live entry components rather than stale screenshots.
@@ -460,7 +470,7 @@ function renderGuideView(){
 
   // Anatomy of a real entry, rendered from live components
   if(g.anatomy){
-    const a=g.anatomy,ref=a.entryRef,found=findEntry(ref.dimId,ref.name),ad=found?found.item.data:null;
+    const a=g.anatomy,ref=a.entryRef,found=findEntryById(ref.id),ad=found?found.item.data:null;
     html+=`<div class="label" style="margin-top:36px">${a.title}</div><p class="guide-sub">${a.intro}</p>`;
     if(ad){
       const f=a.fields;
@@ -469,7 +479,7 @@ function renderGuideView(){
       html+=gAnatomyBlock(3,f[2],`<div class="label">Design Guidance</div><div class="threshold-list" style="margin-top:10px;margin-bottom:0">${gThresholds(ad,false)}</div>`);
       html+=gAnatomyBlock(4,f[3],gApplicability(ad));
       html+=gAnatomyBlock(5,f[4],`<div class="label">Recommended Actions</div><div class="alt-list" style="margin-top:10px;margin-bottom:0">${gActions(ad)}</div>`);
-      html+=`<div class="guide-more">${a.moreFields} ${found?`<span class="guide-link" onclick="goEntry('${ref.dimId}',${found.index})">Open the full entry →</span>`:''}</div>`;
+      html+=`<div class="guide-more">${a.moreFields} ${found?`<span class="guide-link" onclick="goEntry('${found.dim.id}','${found.item.id}')">Open the full entry →</span>`:''}</div>`;
     }else{
       html+=`<p class="guide-sub">Reference entry not found in data.json.</p>`;
     }
@@ -484,8 +494,8 @@ function renderGuideView(){
   // The parameter takes different shapes (numeric / categorical / qualitative)
   if(g.shapes){
     const cards=g.shapes.items.map(s=>{
-      const found=findEntry(s.entryRef.dimId,s.entryRef.name),sd=found?found.item.data:null;
-      return `<div class="shape-card"><div class="shape-tag">${s.shape}</div><div class="shape-param">${sd?sd.parameter:''}</div><div class="shape-desc">${s.desc}</div><div class="threshold-list shape-thresholds">${sd?gThresholds(sd,true):''}</div>${found?`<div class="shape-link" onclick="goEntry('${s.entryRef.dimId}',${found.index})">See full entry →</div>`:''}</div>`;
+      const found=findEntryById(s.entryRef.id),sd=found?found.item.data:null;
+      return `<div class="shape-card"><div class="shape-tag">${s.shape}</div><div class="shape-param">${sd?sd.parameter:''}</div><div class="shape-desc">${s.desc}</div><div class="threshold-list shape-thresholds">${sd?gThresholds(sd,true):''}</div>${found?`<div class="shape-link" onclick="goEntry('${found.dim.id}','${found.item.id}')">See full entry →</div>`:''}</div>`;
     }).join('');
     html+=`<div class="label" style="margin-top:36px">${g.shapes.title}</div><p class="guide-sub">${g.shapes.intro}</p><div class="shape-grid">${cards}</div>`;
   }
@@ -523,7 +533,7 @@ function renderDimensionView(){
     const matches=itemMatchesFilter(item);
     const hidden=state.locationFilter&&!matches&&item.available?'style="display:none"':'';
     const cls=item.available?'item-row available':'item-row unavailable';
-    const onclick=item.available?`onclick="goEntry('${dim.id}',${i})"`:'';
+    const onclick=item.available?`onclick="goEntry('${dim.id}','${item.id}')"`:'';
     const loc=item.available&&item.data&&item.data.location?locTag(item.data.location):'';
     const right=item.available?`<div style="text-align:right"><div class="item-arrow">→</div>${item.data?`<div class="item-meta">Reviewed ${item.data.dateReviewed || item.data.dateAdded}</div>`:''}</div>`:'<div class="item-coming">Coming soon</div>';
     const meta=item.available&&item.data?`<div class="item-meta">Parameter: ${item.data.parameter}</div>`:'';
@@ -539,7 +549,11 @@ function renderDimensionView(){
 }
 
 function renderEntryDetail(){
-  const dim=getDim(),item=getItem(),d=item.data;
+  const dim=getDim(),item=getItem();
+  if(!dim||!item||!item.available||!item.data){
+    return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><p class="section-desc">Entry not found — it may have been renamed or removed. <span class="breadcrumb-link" onclick="goHome()">Return to the framework home →</span></p></div>`;
+  }
+  const d=item.data;
 
   const thresholds=d.thresholds.map(t=>`<div class="threshold-band" style="background:${bgVar(t.color)};border:1px solid ${colorVar(t.color)}33;"><div class="threshold-range" style="color:${colorVar(t.color)}">${t.range}</div><div style="flex:1"><div class="threshold-rating" style="color:${colorVar(t.color)}">${t.rating}</div><div class="threshold-guidance">${t.guidance}</div></div></div>`).join('');
 
@@ -576,8 +590,8 @@ function renderEntryDetail(){
   const imgHint=`<div class="img-hint"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14zm.5-7v2H8v2H6V9H4V7h2V5h2v2z"/></svg> Click any image to enlarge</div>`;
   const examplesHtml=d.examples&&d.examples.length>0?`<div style="margin-top:28px"><div class="label">Examples</div>${imgHint}<div class="examples-grid${d.examples.length===1?' imgs-1':d.examples.length===2?' imgs-2':''}">${d.examples.map(ex=>`<div class="example-card">${ex.image?`<img src="${ex.image}" alt="${ex.caption}" onclick="openLightbox('${ex.image}')">`:''}<div class="example-caption"><div class="example-tag ${ex.tag}">${ex.tag==='concern'?'Concern':ex.tag==='acceptable'?'Acceptable':'Recommended'}</div><div class="example-desc">${ex.caption}</div></div></div>`).join('')}</div></div>`:'';
 
-  const related=getRelatedEntries(dim.id,item.name,d);
-  const relatedHtml=related.length>0?`<div style="margin-top:28px"><div class="label">Related Entries</div><div class="related-list">${related.map(r=>`<div class="related-card" onclick="goEntry('${r.dimId}',${r.index})"><div class="related-top"><div class="related-name-wrap"><span class="related-name">${r.name}</span><span class="related-dim"><span class="ico">${r.dimIcon}</span>${r.dimName}</span></div><div class="related-arrow">→</div></div>${r.note?`<div class="related-note">${r.note}</div>`:''}</div>`).join('')}</div></div>`:'';
+  const related=getRelatedEntries(item.id,d);
+  const relatedHtml=related.length>0?`<div style="margin-top:28px"><div class="label">Related Entries</div><div class="related-list">${related.map(r=>`<div class="related-card" onclick="goEntry('${r.dimId}','${r.id}')"><div class="related-top"><div class="related-name-wrap"><span class="related-name">${r.name}</span><span class="related-dim"><span class="ico">${r.dimIcon}</span>${r.dimName}</span></div><div class="related-arrow">→</div></div>${r.note?`<div class="related-note">${r.note}</div>`:''}</div>`).join('')}</div></div>`:'';
 
   const supportingImagesHtml=d.supportingImages&&d.supportingImages.length>0?`<div style="margin-top:20px"><div class="label">Supporting Images</div>${imgHint}<div class="supporting-images-grid${d.supportingImages.length===1?' imgs-1':d.supportingImages.length===2?' imgs-2':''}">${d.supportingImages.map(sp=>`<div class="supporting-image-card">${sp.image?`<img src="${sp.image}" alt="${sp.title}" onclick="openLightbox('${sp.image}')">`:''}<div class="supporting-image-title">${sp.title}</div></div>`).join('')}</div></div>`:'';
 
@@ -608,7 +622,7 @@ function openLightbox(src){const lb=document.createElement('div');lb.className='
 function goHome(){window.location.hash=''}
 function goGuide(){window.location.hash='guide'}
 function goDimension(id){state.locationFilter=null;window.location.hash=id}
-function goEntry(dimId,idx){window.location.hash=dimId+'/'+idx}
+function goEntry(dimId,id){window.location.hash=dimId+'/'+id}
 function setLocationFilter(val){
   if(!val){state.locationFilter=null}
   else if(val.includes('|')){const[c,s]=val.split('|');state.locationFilter={country:c,state:s}}
@@ -618,13 +632,20 @@ function setLocationFilter(val){
 
 function parseHash(){
   const hash=window.location.hash.replace(/^#\/?/,'');
-  if(!hash){state.view='home';state.dimId=null;state.itemIndex=null;state.locationFilter=null;}
-  else if(hash==='guide'){state.view='guide';state.dimId=null;state.itemIndex=null;state.locationFilter=null;}
+  if(!hash){state.view='home';state.dimId=null;state.itemId=null;state.locationFilter=null;}
+  else if(hash==='guide'){state.view='guide';state.dimId=null;state.itemId=null;state.locationFilter=null;}
   else if(hash.includes('/')){
-    const[dimId,idx]=hash.split('/');
-    state.view='entry';state.dimId=dimId;state.itemIndex=parseInt(idx,10);
+    const[dimId,seg]=hash.split('/');
+    const dim=dimensions.find(d=>d.id===dimId);
+    let id=decodeURIComponent(seg||'');
+    // Legacy support: old position-based links (e.g. #methods/3) still resolve.
+    if(dim&&/^\d+$/.test(id)&&!dim.items.some(it=>it.id===id)){
+      const byIndex=dim.items[parseInt(id,10)];
+      if(byIndex)id=byIndex.id;
+    }
+    state.view='entry';state.dimId=dimId;state.itemId=id;
   }else{
-    state.view='dimension';state.dimId=hash;state.itemIndex=null;state.locationFilter=null;
+    state.view='dimension';state.dimId=hash;state.itemId=null;state.locationFilter=null;
   }
 }
 
