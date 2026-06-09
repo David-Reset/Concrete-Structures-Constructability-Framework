@@ -17,6 +17,20 @@
           "data": {
             "question": "When designing concrete upturns near obstructions, what clearance is required for conventional formwork, and at what point should alternative systems be considered?",
             "parameter": "Available clearance between upturn face and nearest obstruction (mm)",
+            "keywords": [
+              "upstand",
+              "nib",
+              "kerb",
+              "curb",
+              "parapet",
+              "blade wall",
+              "single-sided formwork",
+              "one-sided form",
+              "tight access",
+              "no room to form",
+              "property line",
+              "up against wall"
+            ],
             "background": "Conventional off-form concrete upturns require practical access to both sides of the formwork for placement, bracing, tying, bolt-up, stripping and inspection. This assumption breaks down when upturns are positioned close to existing fences, retaining walls, boundaries or other obstructions. It would be unwise to assume that plywood pressed against an obstruction can adequately restrain wet concrete pressure, particularly for slender upturns once heights exceed approximately 600 mm. Where access to either side is limited, the designer should consider whether conventional off-form construction is feasible before committing to an off-form concrete design.",
             "thresholds": [
               {
@@ -146,6 +160,18 @@
           "data": {
             "question": "On a multi-storey building with repeated suspended floors, has the construction-cycle and formwork-quantity advantage of post-tensioning been weighed in the slab system choice — or has the choice between conventional RC and post-tensioned been made on structural grounds (spans, depth) alone?",
             "parameter": "Number of repeated suspended floors over which the slab system (conventional RC or post-tensioned) will be cycled.",
+            "keywords": [
+              "prestressed",
+              "PT slab",
+              "band beam",
+              "flat slab",
+              "floor cycle time",
+              "reuse formwork",
+              "formwork reuse",
+              "high-rise",
+              "tower",
+              "slab type selection"
+            ],
             "background": "The choice between a conventionally reinforced (RC) slab and a post-tensioned (PT) slab is usually discussed in structural terms &mdash; span, depth, deflection and load. This entry is not about those structural drivers, which remain controlling. It is about a construction-method consequence of the choice that is easy to overlook at design stage: how the slab system affects the rate at which formwork can be cycled up a multi-storey building, and how much formwork has to be on site to do it.<br><br>Multi-storey concrete construction works by cycling a limited number of formwork and shoring sets up the building, rather than buying a new set for every floor. The faster each floor's forms can be released and lifted to the floor above, the fewer sets are needed and the faster the structure rises. The key point is that what is released early is the <em>soffit formwork and plywood</em> &mdash; the expensive, reusable forming surface &mdash; while the back-props (reshores) stay in place and carry construction load down through several slabs below. Back-propping for an extended period is normal and acceptable; the constructability gain comes from freeing the <em>forms</em>, not from removing the shoring.<br><br>A post-tensioned slab supports this earlier release. With draped tendons, stressing balances part of the slab's self-weight, which unloads the forms and shores supporting it and produces a load distribution through the temporary works that is different from a conventionally reinforced slab. Kajewski (1998), measuring shore loads on a real multi-level PT building, found that this allows the slab pour cycle to be shortened and makes PT slabs well suited to reshoring. In the scenario modelled, the cycle could be reduced from 7 days to 4 days on the factor-of-safety criterion alone (a saving of 3 days per slab), but because PT slabs carry very little conventional reinforcement they can be damaged if loaded by the slab above before they have been stressed. Allowing each slab to be stressed before it is loaded limits the practical cycle to 5 days &mdash; still a saving of about 2 days per slab. The practical figure to design around is therefore approximately 2 days per slab (conservative), with up to 3 days achievable where earlier stressing is possible.<br><br>On a single suspended floor a 2-day saving is minor and would rarely drive the system choice. The point of this entry is that the saving repeats on every floor: across many floors it compounds into a significant programme saving, and the reduced number of formwork sets needed to maintain the cycle is itself a cost and logistics benefit. The more the floor plate repeats up the building, the more the construction-cycle and formwork-quantity advantage of PT should be weighed alongside the structural factors &mdash; not treated as an afterthought once the structural system has already been fixed.",
             "thresholds": [
               {
@@ -288,6 +314,16 @@
           "data": {
             "question": "On repetitive suspended concrete, has an optional pour-break (construction-joint) location been shown and detailed at design stage, so the contractor can stage the work and keep the forming and fixing crews moving &mdash; rather than the structure defaulting to a single continuous pour because a break was never offered?",
             "parameter": "Whether the design enables an optional pour break where it would help the programme.",
+            "keywords": [
+              "day joint",
+              "pour sequence",
+              "pour size",
+              "kicker",
+              "staging",
+              "sequencing",
+              "concreting programme",
+              "keep crews moving"
+            ],
             "background": "Once the groundworks are complete, a suspended concrete structure is usually built through three repeating site activities: <strong>formwork</strong>, <strong>reinforcement fixing</strong> and <strong>concrete placing</strong>. These activities do not behave the same way. Formwork and reinforcement fixing benefit from continuous flow: the crew finishes one zone, moves to the next, and keeps repeating the same operation. Concrete placing is different. It happens in short bursts, then the concrete has to gain enough strength before the next dependent work can proceed.<br><br>The constructability problem arises where a large floor or repeated area is treated as one single pour. The formwork and reinforcement crews may complete their work, but then have no next zone available while the concrete is placed, cures and is stripped. A crew with no work in front of it will not necessarily wait on site. The formwork crew may be moved to another job, and once that happens the programme is no longer controlled only by when the concrete is ready &mdash; it also depends on when that crew can return. That creates waiting, remobilisation and sequencing risk, and it matters because formwork is usually the largest labour component of an in-situ concrete structure.<br><br>An optional pour break gives the contractor a planned way to split the floor or repeated area into zones. While one zone is being poured or gaining strength, the formwork crew can move ahead to the next zone and the reinforcement crew can follow. The concrete placing crew still comes and goes in bursts, but the forming and fixing work is no longer forced to stop behind one large pour. This is the programme logic behind the entry: the design does not need to dictate the final pour sequence, but it should not remove a sensible staging option where the work clearly repeats.<br><br>This is only useful where there is somewhere for the crews to go. On repeated floors, repeated bays or a large floor plate that can sensibly be divided into zones, an optional pour break may help maintain crew continuity. On a small one-off slab, an isolated area, or work that does not repeat, a break may add a construction joint without creating any real programme benefit. In those cases the contractor should usually be left to pour the work in the most practical way.<br><br>The design issue is that a pour break is also a construction joint. It cannot be treated as a casual site decision if reinforcement continuity, shear transfer, durability, watertightness or crack control are affected. If no acceptable break location is shown, the contractor may either request one during construction, when the programme is already under pressure, or simply assume that no break is available and price/build the work as one continuous pour. Showing an optional pour-break location during design keeps the decision open: the contractor can stage the work if it helps the programme, or pour through if that is simpler, but the joint location and detail have already been considered by the engineer.",
             "thresholds": [
               {
@@ -475,6 +511,18 @@
           "data": {
             "question": "When the design relies on the specified compressive strength of a thin suspended slab or beam, has the curing shortfall that commonly occurs on site been allowed for &mdash; by designing one standard grade below the grade specified for supply &mdash; or is the full specified grade assumed to arrive regardless?",
             "parameter": "For shallow elements (suspended slabs and beams), the compressive strength relied upon in design relative to the specified grade: where effective curing is not verified, design at the standard grade one step below the grade specified and called up for supply.",
+            "keywords": [
+              "under-cured",
+              "poor curing",
+              "strength loss",
+              "concrete grade",
+              "downgrade grade",
+              "characteristic strength",
+              "curing regime",
+              "MPa",
+              "drying out",
+              "thin slab strength"
+            ],
             "background": "The specified compressive strength is verified using standard-cured cylinders, not by assuming that the in-place slab or beam has experienced the same curing environment. The strength that ends up in the structure is affected by how the concrete is placed, compacted and &mdash; critically &mdash; cured under site conditions.<br><br>For suspended slabs and beams this gap is at its widest. These are <em>shallow</em> elements: the unformed top surface is a large fraction of their total surface area, so they lose moisture readily and depend heavily on curing to reach their potential strength. Walls and columns, with far less exposed surface relative to volume, are much less sensitive.<br><br>The practical problem is that curing of these elements is often inadequate or unverified. Suspended slabs are rarely ponded or continuously water-cured; at best a compound or sealed sheeting is applied, and in many cases curing is brief or not deliberately carried out. Industry guidance and regulator observations both identify this as a real site-practice issue (see Evidence Basis). So the realistic design question for a thin slab or beam is not simply &lsquo;what grade is specified?&rsquo; but &lsquo;what strength is likely to be present if curing is poor?&rsquo;<br><br>ACI 214.4R reports that cores from poorly cured shallow elements average 77% of companion cores from properly cured elements. The constructability response is to stop assuming the full specified strength will arrive, and instead design the element at the strength it will realistically reach where curing is not verified. Conveniently, the standard grade ladder steps down by almost exactly this penalty, so the practical rule is: <strong>design one standard grade below the grade you specify and call up for supply</strong> &mdash; specify 40 and design 32; specify 32 and design 25.<br><br>This costs very little where it does not matter and protects the designer where it does. A slab&rsquo;s bending capacity is usually governed by the reinforcement, so the lower grade barely changes it. The penalty bites instead in punching shear and deflection &mdash; both of which scale with the square root of strength &mdash; and those are exactly the checks that govern thin flat plates and flat slabs. Relying on 40 while the slab realistically delivers around 31 does not necessarily mean the slab fails; it means the margin believed to exist is quietly eroded. On a punching- or deflection-governed element, that margin is what is protecting the design.<br><br>This is why the issue belongs in a constructability framework, not only in a compliance discussion. If the shortfall surfaces after the slab is built and occupied, it can appear as cracked floor finishes, cracked toppings or tiles, excessive deflection, ponding, serviceability complaints, or a punching-shear concern requiring structural assessment. Those outcomes create cost, disruption, investigation, sequencing problems and possible remediation work after construction, when the options are far more limited. Designing one grade down, or verifying curing when the full grade is relied upon, is a low-cost design-stage control against a potentially high-cost construction and post-construction problem.",
             "thresholds": [
               {
@@ -635,6 +683,16 @@
           "data": {
             "question": "When a design requires a change in suspended slab levels, is monolithic forming or an alternative method (blockwork or permanent formwork with separate pours) the more constructable approach?",
             "parameter": "Fold depth in suspended slab (mm)",
+            "keywords": [
+              "slab step",
+              "step in slab",
+              "level difference",
+              "split level",
+              "drop in slab",
+              "raised slab",
+              "change in level",
+              "downstand"
+            ],
             "background": "A change in suspended slab level can be achieved by forming the slab as a monolithic profile (a continuous concrete fold) or by separating the levels using blockwork or permanent formwork with separate pours. Before sizing a fold at all, the designer should consider whether the level change can be eliminated entirely by thickening the slab to a flat soffit; for small setdowns (e.g. &le; 50 mm) this is often the simpler construction outcome. Where a fold is genuinely required, the default constructability-aware approach is generally to use an alternative method rather than monolithic forming, because alternatives use standard trades, standard formwork and conventional construction sequences, while a monolithic fold requires custom edge formwork, additional bracing and propping, and a forming approach that is not part of normal slab construction. The amount of labour required to form a vertical face increases with the depth of that face (Jarkas, 2010), so a monolithic fold becomes progressively more difficult and labour-intensive as depth increases. The thresholds below indicate how strongly alternatives should be preferred at different fold depths, based on formworker feedback about where monolithic forming becomes problematic. Waterproofing is the most common objection to separate pours, but this can generally be managed using a waterstop and standard cold joint detailing and is not usually a reason to abandon the alternative approach.",
             "thresholds": [
               {
@@ -755,6 +813,16 @@
           "data": {
             "question": "When a slab needs a top setdown (e.g. for wet areas), should the soffit be folded to follow it, or should the slab be poured to the higher level with the top stepped down to keep the soffit flat?",
             "parameter": "Top setdown depth (mm)",
+            "keywords": [
+              "recess",
+              "rebate",
+              "sunken slab",
+              "wet area setdown",
+              "shower recess",
+              "keep soffit flat",
+              "flat ceiling",
+              "ceiling line"
+            ],
             "background": "Top setdowns are often required for wet areas, balconies, falls, thresholds or waterproofing build-ups. The setdown itself is required and is not the issue. The constructability question is what happens to the soffit. If the slab is poured at the setdown thickness throughout and stepped up around it, the soffit folds to follow the setdown, introducing additional formwork, bracing, reinforcement variation and inspection. The alternative is to pour the slab up to the higher level and step the top down over the setdown zone, so the setdown zone keeps its required thickness while the surrounding slab is simply a little thicker and the soffit stays flat.<br><br>For example, a slab that needs to be 200 thick with four wet areas can be poured 250 throughout, with the top stepped down 50 over the wet areas. The wet areas are still 200 where it matters, the rest of the slab is 250, and the soffit is dead flat. The extra concrete in the surrounding zone is not a penalty to be justified — it gives a flat soffit and a thicker, simpler slab. Formwork dominates concrete-structure labour (roughly 49% versus roughly 11% for concrete operations — Löfgren et al., 2001), so keeping the soffit flat is generally worth the extra concrete. As the setdown depth grows, the extra concrete needed to keep the soffit flat across the whole slab grows with it, and at some point following the fold makes more sense. There is no fixed number for where that point sits — it depends on the slab.",
             "thresholds": [
               {
@@ -846,6 +914,15 @@
           "data": {
             "question": "On exposed external 90&deg; corners of formed concrete, has a chamfer been specified, or has the sharp corner been left as an unconsidered default?",
             "parameter": "Treatment of exposed external 90&deg; corners on formed concrete (chamfered or not chamfered).",
+            "keywords": [
+              "bevel",
+              "splay",
+              "pencil round",
+              "chamfer strip",
+              "corner protection",
+              "sharp edge",
+              "spalling corner"
+            ],
             "background": "Wherever two formed concrete surfaces meet at an external 90&deg; angle, the resulting corner (technically called an &lsquo;arris&rsquo;) is fragile. Sharp corners are vulnerable to chipping during formwork stripping, handling, transport, impact in service, and even later trades working nearby. A chipped corner is irregular, unintended and obvious, and looks worse than a deliberate chamfer would have. Sharp corners at body-contact height (column corners, upturn tops, exposed nibs near walkways) are also a contact-injury concern for trades, occupants and people on ladders.<br><br>The default constructability response is to specify a small chamfer (typically 15&ndash;25 mm) on exposed external corners using a triangular chamfer strip in the formwork. The size is not what matters; what matters is that a chamfer is specified at all, so the corner is deliberately formed rather than left sharp by default.<br><br>It is reasonable for an architect to remove a chamfer where they want a sharper visual line, or to use an alternative such as a fine silicone bead in the formwork to produce a very small radius. The point of this entry is not to prohibit either option, but to make sure the corner treatment is a <em>deliberate</em> decision &mdash; chamfer specified by the engineer as the default, removed only if the architect actively chooses to take on the appearance and chip-risk consequences.<br><br>The recommended way to document the chamfer is through a general drawing note that makes a chamfer the default for all external corners (e.g. &lsquo;all external concrete corners chamfered 20 x 20 unless noted otherwise&rsquo;), rather than calling a chamfer on every individual detail. Where the architect or designer has decided not to chamfer a specific corner, the location is marked &lsquo;NCF&rsquo; (No Chamfer or Fillet) on the relevant detail. This keeps the drawing clean, makes the engineer&rsquo;s default position unambiguous, and forces deviations to be deliberate, located and visible.",
             "thresholds": [
               {
@@ -932,6 +1009,15 @@
           "data": {
             "question": "On exposed soffit edges where a drip groove is required, has the groove been detailed at the design stage with reinforcement cover maintained from the root of the groove &mdash; rather than left as a site rectification or drawn without coordinating cover?",
             "parameter": "Treatment of drip grooves on exposed soffit edges (detailed with cover maintained at design stage / drawn without cover coordination / omitted and left to site).",
+            "keywords": [
+              "drip edge",
+              "weather groove",
+              "anti-capillary groove",
+              "drip bead",
+              "drip detail",
+              "underside groove",
+              "slab edge drip"
+            ],
             "background": "A drip groove (also called a drip, throat or water check) is a small recess formed in the underside of a projecting concrete edge so that water running off the top or face cannot track back along the soffit to a wall or face below. Without it, run-off spreads across the soffit and causes staining and prolonged dampness on the element beneath. The water-shedding function is not the constructability issue, and not every soffit needs a groove. The constructability issue is twofold, and both parts belong at the design stage.<br><br>First, a drip groove is a <em>formed</em> feature. It is created by a fillet or former fixed to the soffit formwork before the pour. Once the slab is cast and the formwork stripped, the groove cannot be added without cutting or grinding it into hardened concrete close to the reinforcement &mdash; a rectification operation that is slow, inconsistent, and risks the very cover it is meant to protect. Providing the groove in the design is the difference between a formed detail and a site rework.<br><br>Second, the groove eats into the soffit cover. Cover to the bottom reinforcement is normally measured to the soffit face; a groove cut into that face reduces the concrete between the bar and the deepest point (the root) of the groove. The cover must therefore be maintained measured from the root of the groove, not from the original soffit. The usual way to achieve this is to position the groove clear of the bars, offset any bar that would otherwise sit above it, or relocate the reinforcement layers so the affected bar keeps its cover. The recommended example in this entry does exactly this: the groove is drawn on the section with an explicit instruction to maintain 50 mm cover, so the cover requirement travels with the groove rather than being left to chance.",
             "thresholds": [
               {
@@ -1088,6 +1174,17 @@
           "data": {
             "question": "Is the specified stirrup, ligature or tie size practical for ground footings, considering supplier availability, site adaptability and reinforcement cage stability?",
             "parameter": "Specified stirrup, ligature or tie bar size in ground footings or ground beams",
+            "keywords": [
+              "fitment",
+              "link",
+              "shear link",
+              "R bar",
+              "rebar size",
+              "reo size",
+              "standard bar size",
+              "off-the-shelf bar",
+              "footing cage"
+            ],
             "background": "Stirrups, ligatures and ties in ground footings are often used not only for structural capacity, but also to hold longitudinal reinforcement in position during fixing, inspection, concrete placement and vibration. This is particularly important in groundworks, where footing or ground beam dimensions may change during construction because of excavation tolerance, founding conditions, pile position, set-out issues or cover requirements.<br><br>The bar sizes that are practically available for a footing depend on what concrete contractors can obtain through their normal reinforcement supply channels, not only on what is theoretically manufactured. In Australian reinforced concrete construction, N12 is widely used for longitudinal reinforcement, starter bars, supplementary reinforcement, perimeter bars and site-bent reinforcement. This makes N12 a practical option where reinforcement may need to be supplemented, adjusted or bent on site.<br><br>R6 and R10 can perform similar fitment roles in many footing applications, and an R10 tie at wider spacing can often substitute for an R6 tie at closer spacing where structurally acceptable. R10 is generally the more practical footing ligature size because it is more commonly used and more consistently available through reinforcement processors. R6 may be structurally adequate, but it is a narrower-use fitment size and can be more difficult to source. Where R6 is specified without an approved alternative, procurement issues may lead to substitution requests, construction delays or undocumented site changes.",
             "thresholds": [
               {
@@ -1255,6 +1352,16 @@
           "data": {
             "question": "At what top reinforcement spacing does the risk of a worker falling through or stepping between bars during construction become unacceptable?",
             "parameter": "Top reinforcement bar spacing (mm)",
+            "keywords": [
+              "fall through",
+              "trip hazard",
+              "top mat spacing",
+              "working platform",
+              "gap between bars",
+              "walking on reo",
+              "fall prevention",
+              "leg through bars"
+            ],
             "background": "Top reinforcement mats in slabs and similar reinforced concrete elements temporarily serve as working surfaces during construction until concrete is placed. When bar spacing is too wide, workers risk stepping between bars, leading to falls and injuries. The spacing of the top mat directly determines whether it can safely support foot traffic during concrete placement and finishing. Any measures to address fall-through risk must also facilitate concrete placement and not obstruct the pour.",
             "thresholds": [
               {
@@ -1363,6 +1470,15 @@
           "data": {
             "question": "When a pier or shaft is connected to rock or otherwise completed at its base, does the detail require a worker to enter the excavation to install it, or can the work be done from the surface?",
             "parameter": "Whether the pier or shaft base detail requires a worker to enter the excavation to install it (judged: socket into rock &mdash; cast from the top &mdash; entry into shaft).",
+            "keywords": [
+              "pile cage",
+              "bored pier",
+              "work from surface",
+              "enter the shaft",
+              "descend into excavation",
+              "ventilation",
+              "base of pile"
+            ],
             "background": "Piers and bored piles, including those socketed into rock, are normally reinforced by fabricating the reinforcement cage at ground level and lowering it into the bore by crane, splicing longer cages at the casing top as they are lowered. Worked this way, nobody needs to enter the shaft. A confined-space entry arises when the base detail cannot be completed from the surface and instead requires a worker to go down &mdash; most commonly to drill and grout starter bars or dowels into the rock at the bottom of the pier, or to make a connection by hand at the base.<br><br>A deep, narrow excavation with restricted entry and exit is the classic setting for a confined space. Under the WHS Regulations a confined space is not defined by its dimensions but by its hazards: an enclosed or partially enclosed space, not intended to be occupied, where there is a risk from an unsafe oxygen level, airborne contaminants, or engulfment. Such spaces can develop an oxygen-deficient or contaminated atmosphere, and their restricted access makes escape and rescue difficult &mdash; which is why confined-space work carries mandatory controls and remains a recurring cause of work-related death.<br><br>This is a design decision before it is a site procedure. The most effective control in the hierarchy is to eliminate the need to enter, and for a pier base that is usually achievable at the drawing board: socket the pier into the rock and run continuous reinforcement so the connection is made by the socket and a surface-placed cage, use couplers or cast-in connections rather than hand-fixing at depth, or select a pier system (such as a continuous flight auger pile, where the cage is plunged from the surface) that needs no entry. The contractor still controls how any confined space that does remain is managed; the designer controls whether the detail forces the entry in the first place.",
             "thresholds": [
               {
@@ -1486,6 +1602,16 @@
           "data": {
             "question": "Are reinforcement bar callouts clear enough that bar size, spacing, extent, laying order and additional reinforcement can be understood without missed or misread instructions?",
             "parameter": "Clarity of reinforcement bar callouts, extent markers, laying order notation and extra reinforcement notes.",
+            "keywords": [
+              "rebar callout",
+              "reo callout",
+              "bar annotation",
+              "drawing clarity",
+              "legible detailing",
+              "ambiguous notation",
+              "misread bars",
+              "bar labelling"
+            ],
             "background": "Reinforcement callouts need to be readable by the people fixing, checking and inspecting the reinforcement. A callout may technically contain the required information, but still be poor communication if too much information is compressed into one notation string or if extra bars are not clearly separated from the standard reinforcement. This is particularly important where additional bars are required over columns, supports, slab thickenings, penetrations, openings or other local regions. If extras are buried inside the main callout or encoded into a compressed notation, they can be missed during construction. Clear callouts should show the main reinforcement, extent and extras in a way that is obvious at a glance.",
             "thresholds": [
               {
@@ -1583,6 +1709,16 @@
           "data": {
             "question": "Are details and schedule references clear enough that footing, beam or reinforcement requirements are unlikely to be misread or missed during construction?",
             "parameter": "Location of critical dimensions and reinforcement information relative to the section/detail and governing schedule.",
+            "keywords": [
+              "schedule mark",
+              "member mark",
+              "cross-reference",
+              "footing schedule",
+              "beam schedule",
+              "drawing coordination",
+              "tag reference",
+              "find dimensions"
+            ],
             "background": "Structural drawings often use details together with schedules to reduce drawing repetition. For example, a drawing may show a footing, edge beam or ground beam detail, while the actual dimensions and reinforcement are controlled by a schedule using a mark such as EB1. This approach is efficient because changes can be made in one schedule rather than across several details. However, schedule-based communication can create a constructability risk when the detail is read without the accompanying schedule. This is especially likely where multiple footing, beam or slab types are used. A reader may interpret the drawn detail as complete, miss the schedule reference, or apply the wrong scheduled dimensions or reinforcement. The preferred approach is not to remove schedules, but to show critical dimensions and reinforcement requirements in both locations where practical: on the detail and in the schedule. Where office convention requires schedule-only communication, the schedule should be made difficult to miss. Where the governing schedule is missed, or the wrong scheduled line is applied, the realistic outcome is a clarification RFI, rework, or an undocumented site change, each carrying cost and delay (Tilley, Wyatt &amp; Mohamed, 1997).",
             "thresholds": [
               {
