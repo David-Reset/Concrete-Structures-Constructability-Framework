@@ -11,6 +11,7 @@
       ],
       "items": [
         {
+          "id": "off-form-concrete-upturns-near-obstructions",
           "name": "Off-form concrete upturns near obstructions",
           "available": true,
           "data": {
@@ -139,6 +140,7 @@
           }
         },
         {
+          "id": "conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors",
           "name": "Conventional RC vs post-tensioned: formwork cycling on repeated floors",
           "available": true,
           "data": {
@@ -278,6 +280,7 @@
           }
         },
         {
+          "id": "optional-pour-breaks-to-keep-concrete-trades-flowing",
           "name": "Optional pour breaks to keep concrete trades flowing",
           "available": true,
           "draft": false,
@@ -352,6 +355,7 @@
           }
         },
         {
+          "id": "structural-steel-vs-concrete-for-isolated-vertical-members",
           "name": "Structural steel vs concrete for isolated vertical members",
           "available": false,
           "data": {
@@ -376,6 +380,7 @@
           }
         },
         {
+          "id": "casting-suspended-members-on-freshly-placed-columns-and-walls",
           "name": "Casting suspended members on freshly placed columns and walls",
           "available": false,
           "draft": true,
@@ -463,6 +468,7 @@
           }
         },
         {
+          "id": "curing-shortfall-in-suspended-slabs-and-beams",
           "name": "Curing shortfall in suspended slabs and beams",
           "available": true,
           "_status": "REVIEWED — references corrected and wording tightened; available entry.",
@@ -574,6 +580,7 @@
           }
         },
         {
+          "id": "bored-concrete-piles-vs-screw-piles",
           "name": "Bored concrete piles vs. screw piles",
           "available": false,
           "draft": true,
@@ -585,6 +592,7 @@
           }
         },
         {
+          "id": "stay-in-place-formwork-and-masonry-wall-systems",
           "name": "Stay-in-place formwork and masonry wall systems",
           "available": false,
           "draft": true,
@@ -596,6 +604,7 @@
           }
         },
         {
+          "id": "void-former-slab-vs-thick-raft",
           "name": "Void-former slab vs. thick raft",
           "available": false,
           "draft": true,
@@ -620,6 +629,7 @@
       ],
       "items": [
         {
+          "id": "suspended-slab-level-changes-folds",
           "name": "Suspended slab level changes (folds)",
           "available": true,
           "data": {
@@ -739,6 +749,7 @@
           }
         },
         {
+          "id": "flat-soffit-detailing-at-minor-slab-setdowns",
           "name": "Flat soffit detailing at minor slab setdowns",
           "available": true,
           "data": {
@@ -829,6 +840,7 @@
           }
         },
         {
+          "id": "chamfered-exposed-external-corners",
           "name": "Chamfered exposed external corners",
           "available": true,
           "data": {
@@ -907,14 +919,14 @@
             },
             "relatedEntries": [
               {
-                "dimId": "detailing",
-                "name": "Drip grooves on exposed soffit edges",
-                "note": "Both are edge treatments on the same exposed formed face. A chamfer and a drip groove sit close together at slab and beam edges, so detail them as a pair \u2014 coordinate their positions and confirm neither compromises cover or the formwork build-up."
+                "id": "drip-grooves-on-exposed-soffit-edges",
+                "note": "Both are edge treatments on the same exposed formed face. A chamfer and a drip groove sit close together at slab and beam edges, so detail them as a pair — coordinate their positions and confirm neither compromises cover or the formwork build-up."
               }
             ]
           }
         },
         {
+          "id": "drip-grooves-on-exposed-soffit-edges",
           "name": "Drip grooves on exposed soffit edges",
           "available": true,
           "data": {
@@ -1009,6 +1021,7 @@
           }
         },
         {
+          "id": "hand-bendable-bar-sizes-for-slab-reinforcement",
           "name": "Hand-bendable bar sizes for slab reinforcement",
           "available": false,
           "draft": true,
@@ -1020,6 +1033,7 @@
           }
         },
         {
+          "id": "beam-soffit-formwork-proportions",
           "name": "Beam soffit formwork proportions",
           "available": false,
           "draft": true,
@@ -1031,6 +1045,7 @@
           }
         },
         {
+          "id": "waterproofing-buildability",
           "name": "Waterproofing buildability",
           "available": false,
           "draft": true,
@@ -1042,6 +1057,7 @@
           }
         },
         {
+          "id": "repetition-and-the-formwork-learning-curve",
           "name": "Repetition and the formwork learning curve",
           "available": false,
           "draft": true,
@@ -1066,6 +1082,7 @@
       ],
       "items": [
         {
+          "id": "stirrup-bar-size-availability-and-site-adaptability",
           "name": "Stirrup bar size availability and site adaptability",
           "available": true,
           "data": {
@@ -1184,6 +1201,7 @@
           }
         },
         {
+          "id": "equipment-access-constraints",
           "name": "Equipment access constraints",
           "available": false,
           "draft": true,
@@ -1195,6 +1213,7 @@
           }
         },
         {
+          "id": "slab-depth-consistency",
           "name": "Slab depth consistency",
           "available": false,
           "draft": true,
@@ -1206,6 +1225,7 @@
           }
         },
         {
+          "id": "concrete-grade-specification",
           "name": "Concrete grade specification",
           "available": false,
           "draft": true,
@@ -1229,6 +1249,7 @@
       ],
       "items": [
         {
+          "id": "reinforcement-mat-fall-through-risk",
           "name": "Reinforcement mat fall-through risk",
           "available": true,
           "data": {
@@ -1336,6 +1357,7 @@
           }
         },
         {
+          "id": "confined-space-entry-at-pier-and-shaft-bases",
           "name": "Confined-space entry at pier and shaft bases",
           "available": true,
           "data": {
@@ -1421,6 +1443,7 @@
           }
         },
         {
+          "id": "temporary-works-stability",
           "name": "Temporary works stability",
           "available": false,
           "draft": true,
@@ -1432,6 +1455,7 @@
           }
         },
         {
+          "id": "edge-protection-requirements",
           "name": "Edge protection requirements",
           "available": false,
           "draft": true,
@@ -1456,6 +1480,7 @@
       ],
       "items": [
         {
+          "id": "reinforcement-callout-clarity",
           "name": "Reinforcement callout clarity",
           "available": true,
           "data": {
@@ -1552,6 +1577,7 @@
           }
         },
         {
+          "id": "details-and-schedule-references",
           "name": "Details and schedule references",
           "available": true,
           "data": {
@@ -1640,6 +1666,7 @@
           }
         },
         {
+          "id": "drawing-notation-clarity",
           "name": "Drawing notation clarity",
           "available": false,
           "draft": true,
@@ -1651,6 +1678,7 @@
           }
         },
         {
+          "id": "detail-sheet-organisation",
           "name": "Detail sheet organisation",
           "available": false,
           "draft": true,
@@ -1662,6 +1690,7 @@
           }
         },
         {
+          "id": "model-based-3d-coordination-vs-2d-only-documentation",
           "name": "Model-based (3D) coordination vs 2D-only documentation",
           "available": false,
           "draft": true,
@@ -1805,8 +1834,7 @@
       "title": "Anatomy of an entry",
       "intro": "Every entry follows the same layout. Below is a real entry from the framework &mdash; <strong>Off-form concrete upturns near obstructions</strong> &mdash; with each field labelled. These are the live entry components, not screenshots, so they always match what you see in the framework itself.",
       "entryRef": {
-        "dimId": "methods",
-        "name": "Off-form concrete upturns near obstructions"
+        "id": "off-form-concrete-upturns-near-obstructions"
       },
       "fields": [
         {
@@ -1868,24 +1896,21 @@
           "shape": "Measured",
           "desc": "You read a number from the design documentation (here, bar spacing in mm) and find the range it falls in.",
           "entryRef": {
-            "dimId": "safety",
-            "name": "Reinforcement mat fall-through risk"
+            "id": "reinforcement-mat-fall-through-risk"
           }
         },
         {
           "shape": "Chosen",
           "desc": "You compare a specified choice rather than a number — here, the bar type selected for the tie.",
           "entryRef": {
-            "dimId": "logistics",
-            "name": "Stirrup bar size availability and site adaptability"
+            "id": "stirrup-bar-size-availability-and-site-adaptability"
           }
         },
         {
           "shape": "Judged",
           "desc": "There is no number at all — you assess the documentation against described states, from clearest to least clear.",
           "entryRef": {
-            "dimId": "communication",
-            "name": "Reinforcement callout clarity"
+            "id": "reinforcement-callout-clarity"
           }
         }
       ]
