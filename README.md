@@ -31,7 +31,7 @@ Every entry in the framework follows the same general display format:
 - **Location** — the country and/or state where the evidence was gathered, shown near the entry heading (see [Regional applicability](#regional-applicability))
 - **Background** — why this matters for constructability *(optional)*
 - **Design Parameter** — what the engineer can measure, count, or assess from their drawings
-- **Design Guidance** — threshold bands rated as Good practice, Consider, Concern, or Action required
+- **Design Guidance** — threshold bands rated as Best practice, Consider, Concern, or Action required
 - **Applicability and Limitations** — defines where the entry applies, lists factors the designer should check before applying the guidance, and provides a closing note framing the rating as a review prompt rather than a prohibition *(optional)*
 - **Recommended Actions** — what to do if you're in the concern or action required zone, given as a numbered list of practical options. Each action can be a short instruction or a structured option with a title and longer description *(optional)*
 - **Evidence Basis** — how the guidance was established *(optional)*
@@ -186,7 +186,7 @@ The framework draws on the principle — embedded in the [Engineers Australia Co
 
 This framework provides **supplementary design-stage guidance**. It does not replace compliance with structural design standards (e.g. AS 3600), applicable codes, or professional engineering judgement. All guidance should be applied within compliant design solutions and with appropriate consideration of project-specific conditions.
 
-Framework ratings (Good practice, Consider, Concern, Action required) are intended as prompts for design-stage evaluation, not prohibitions. A rating of 'Action required' may not mean the design cannot proceed — it means the designer should recognise the constructability challenge, consider alternatives, and make an informed decision in the context of their specific project. In some cases, the flagged detail may still be the most practical solution when weighed against the full design context.
+Framework ratings (Best practice, Consider, Concern, Action required) are intended as prompts for design-stage evaluation, not prohibitions. A rating of 'Action required' may not mean the design cannot proceed — it means the designer should recognise the constructability challenge, consider alternatives, and make an informed decision in the context of their specific project. In some cases, the flagged detail may still be the most practical solution when weighed against the full design context.
 
 ## Authors and acknowledgements
 
