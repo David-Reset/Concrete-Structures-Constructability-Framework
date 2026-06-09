@@ -35,7 +35,7 @@
             "thresholds": [
               {
                 "range": ">= 1000 mm",
-                "rating": "Good practice",
+                "rating": "Best practice",
                 "color": "green",
                 "guidance": "Full access for formwork placement, bracing, bolt-up, and stripping. Both coil tie and threaded bar systems feasible."
               },
@@ -176,7 +176,7 @@
             "thresholds": [
               {
                 "range": "1 floor",
-                "rating": "Good practice",
+                "rating": "Best practice",
                 "color": "green",
                 "guidance": "A single suspended floor. The cycle saving (~2 days) does not repeat, so it rarely drives the slab system choice on its own. Decide on structural, cost and other project grounds; the construction-cycle advantage of PT is not a significant factor at this scale."
               },
@@ -328,7 +328,7 @@
             "thresholds": [
               {
                 "range": "Optional break shown",
-                "rating": "Good practice",
+                "rating": "Best practice",
                 "color": "green",
                 "guidance": "On repetitive suspended concrete where the trades could flow, the design shows an optional pour-break location, clearly marked as optional, on a structurally sound plane, with a construction-joint detail referenced (continuity reinforcement; waterstop where the element is wet). The contractor can stage the work &mdash; keeping formworkers and steelfixers moving through zones while each pour cures &mdash; or pour through. The decision has been made with the design open, so no one needs to return to the engineer for it."
               },
@@ -427,7 +427,7 @@
             "thresholds": [
               {
                 "range": "<= 150 mm",
-                "rating": "Good practice",
+                "rating": "Best practice",
                 "color": "green",
                 "guidance": "Only minor vertical concrete is involved — an upturn, kerb or thickening that is part of the floor system. Settlement is negligible and the element is cast monolithically with the slab as normal. The issue does not arise."
               },
@@ -527,9 +527,9 @@
             "thresholds": [
               {
                 "range": "Designed one grade down",
-                "rating": "Good practice",
+                "rating": "Best practice",
                 "color": "green",
-                "guidance": "On suspended slabs and beams, the design uses the standard grade one step below the specified grade (e.g. specify 40, design 32), and that reduced grade is carried through the punching-shear and deflection checks. The specified grade is still shown on the drawings for supply, durability and acceptance. This is the default good-practice position where effective curing is not verified."
+                "guidance": "On suspended slabs and beams, the design uses the standard grade one step below the specified grade (e.g. specify 40, design 32), and that reduced grade is carried through the punching-shear and deflection checks. The specified grade is still shown on the drawings for supply, durability and acceptance. This is the default best-practice position where effective curing is not verified."
               },
               {
                 "range": "Full grade, curing assured",
@@ -648,7 +648,7 @@
             "question": "Has the wall system (conventional formed RC, stay-in-place / permanent formwork, or reinforced masonry) been chosen to suit how the wall can actually be built on this site &mdash; above all whether both faces can be accessed and stripped &mdash; rather than defaulting to two-sided formed RC where that is not practical?",
             "parameter": "Wall system selection against site buildability: chiefly access for stripping (both faces accessible vs single-sided / restricted), element repetition, and the required surface finish.",
             "_evidenceAngle": "SELECTION entry (when to use each), not a generic 'fewer trades' claim. The sharpest, best-supported pivot is ACCESS: where the back face cannot be reached to strip a form &mdash; blindside basement walls, walls tight to a boundary or existing structure, retaining walls against an excavation face, and repetitive linear edge runs such as crash barriers / parapets &mdash; permanent / single-sided / stay-in-place formwork moves from 'an alternative' to clearly preferable, because two-sided formed RC physically cannot be stripped there. Practice sources are consistent: permanent formwork is best where access is limited and stripping is impractical; single-sided formwork is specifically for foundation/retaining walls where a second form cannot be deployed; blindside systems form walls within inches of an existing structure. Conventional formed RC stays preferable for high off-form finish and intricate/complex shapes (SIP has shape/structural limitations). Reinforced masonry (blockwork) suits low-rise boundary/retaining walls where a masonry trade is economical and no form hire is wanted. CRASH BARRIERS: the instinct holds on the logic (repetitive linear run + awkward edge access + no strip) &mdash; treat as an example to confirm with a barrier-specific source, not yet a sourced claim. CAUTIONS to bake in: higher upfront cost; accredited-installer warranties; polymer faces force a rethink of waterproofing/coatings/cladding; tall unfilled PVC walls behave like a sail in wind (a real erection hazard). Keep GENERIC &mdash; do not endorse proprietary products. Source leads: Architecture & Design (AU) permanent-formwork pros/cons; one-sided/blindside formwork suppliers for the access logic; seek an independent productivity/selection comparison to lift above supplier claims.",
-            "_thresholdSketch": "Good practice: system matched to access + finish (single-sided/permanent where the back face cannot be stripped; formed RC where two-sided access and a high finish are needed). Consider: either could work — weigh repetition, finish, trade availability, upfront cost. Concern: two-sided formed RC specified where back-face access is genuinely restricted. Action required: a wall that cannot be formed and stripped two-sided as drawn, with no permanent/single-sided system considered."
+            "_thresholdSketch": "Best practice: system matched to access + finish (single-sided/permanent where the back face cannot be stripped; formed RC where two-sided access and a high finish are needed). Consider: either could work — weigh repetition, finish, trade availability, upfront cost. Concern: two-sided formed RC specified where back-face access is genuinely restricted. Action required: a wall that cannot be formed and stripped two-sided as drawn, with no permanent/single-sided system considered."
           }
         },
         {
@@ -697,7 +697,7 @@
             "thresholds": [
               {
                 "range": "<= 600 mm",
-                "rating": "Good practice",
+                "rating": "Best practice",
                 "color": "green",
                 "guidance": "Monolithic forming can generally be accommodated by standard formwork systems at this depth. Consistent with 3-5 stair risers within a structure. Alternatives (blockwork or permanent formwork with separate pours) are still usually the simpler approach because they use standard trades and standard formwork, but monolithic forming remains a reasonable option at this depth where there is a specific reason for it (e.g. architectural finish, watertight element, or a short isolated fold)."
               },
@@ -732,7 +732,7 @@
                 "description": "Monolithic forming may still be appropriate where the fold is short and isolated, where a continuous unbroken concrete face is required for architectural reasons, where the element must be watertight and a joint introduces unacceptable risk, or where the structural condition is one in which a cold joint is not appropriate. Where monolithic forming is retained, confirm the construction method with the contractor at the design stage rather than assuming it can be built."
               }
             ],
-            "evidence": "This entry is supported by formwork literature, industry consultation and practical project experience.<br><br><strong>Formwork literature.</strong> Jarkas (2010) measures labour productivity for edge formwork as a function of vertical face depth, confirming that the labour required to form a vertical face increases with depth.<br><br><strong>Industry consultation.</strong> On-site consultation with formwork subcontractors and a building contractor identified monolithic folds above approximately 600 mm as becoming progressively more difficult to form using standard panel systems, with blockwork or permanent formwork with separate pours the more common construction outcome.<br><br><strong>Practical project experience.</strong> Two project examples support the entry. A 1050 mm fold in a suspended RC slab was found impractical to form monolithically during construction and was revised to blockwork with separate pours. A drop edge beam — a vertical concrete element subject to the same forming choice — documented both monolithic and blockwork alternatives on the same drawing. The contractor used both on site across different sections of the element. This demonstrates that documenting both methods is good practice — it allowed the contractor to use whichever suited each section.<br><br><strong>References</strong><br>Jarkas, A. M. (2010). Analysis and measurement of buildability factors affecting edge formwork labour productivity. Journal of Engineering Science and Technology Review, 3(1), 142&ndash;150.",
+            "evidence": "This entry is supported by formwork literature, industry consultation and practical project experience.<br><br><strong>Formwork literature.</strong> Jarkas (2010) measures labour productivity for edge formwork as a function of vertical face depth, confirming that the labour required to form a vertical face increases with depth.<br><br><strong>Industry consultation.</strong> On-site consultation with formwork subcontractors and a building contractor identified monolithic folds above approximately 600 mm as becoming progressively more difficult to form using standard panel systems, with blockwork or permanent formwork with separate pours the more common construction outcome.<br><br><strong>Practical project experience.</strong> Two project examples support the entry. A 1050 mm fold in a suspended RC slab was found impractical to form monolithically during construction and was revised to blockwork with separate pours. A drop edge beam — a vertical concrete element subject to the same forming choice — documented both monolithic and blockwork alternatives on the same drawing. The contractor used both on site across different sections of the element. This demonstrates that documenting both methods is best practice — it allowed the contractor to use whichever suited each section.<br><br><strong>References</strong><br>Jarkas, A. M. (2010). Analysis and measurement of buildability factors affecting edge formwork labour productivity. Journal of Engineering Science and Technology Review, 3(1), 142&ndash;150.",
             "examples": [
               {
                 "image": "images/fold-original-detail.jpg",
@@ -827,7 +827,7 @@
             "thresholds": [
               {
                 "range": "<= 50 mm",
-                "rating": "Good practice",
+                "rating": "Best practice",
                 "color": "green",
                 "guidance": "Pour the slab up to the higher level and step the top down over the setdown zone, keeping the soffit flat. The setdown zone keeps its required thickness; the surrounding slab is simply a little thicker. At this depth the extra concrete is minor and almost always worth it to avoid a soffit fold and keep a clean, flat formwork run."
               },
@@ -927,7 +927,7 @@
             "thresholds": [
               {
                 "range": "Chamfered",
-                "rating": "Good practice",
+                "rating": "Best practice",
                 "color": "green",
                 "guidance": "A chamfer (typically 15&ndash;25 mm) is specified on exposed external 90&deg; corners. The corner has been deliberately formed rather than left sharp by default. The size is not critical; specifying the chamfer at all is what matters."
               },
@@ -958,7 +958,7 @@
                   "description": "The safety argument is strongest for corners at body-contact height (column corners up to about shoulder height, upturn tops, nibs at walkway level). It applies less to corners well above or below human reach, although chip resistance and aesthetics still apply."
                 }
               ],
-              "note": "Use the rating as a prompt to make the corner treatment a deliberate decision, not a rule against sharp arrises. Good practice is to specify a chamfer by default; removing it is allowed but should be a documented choice."
+              "note": "Use the rating as a prompt to make the corner treatment a deliberate decision, not a rule against sharp arrises. Best practice is to specify a chamfer by default; removing it is allowed but should be a documented choice."
             },
             "alternatives": [
               {
@@ -1022,7 +1022,7 @@
             "thresholds": [
               {
                 "range": "Detailed, cover kept",
-                "rating": "Good practice",
+                "rating": "Best practice",
                 "color": "green",
                 "guidance": "The drip groove is shown on the relevant section at the design stage, with the specified cover explicitly maintained from the root of the groove &mdash; the bars positioned, offset or layered so the cover is not breached. The groove is a deliberate, coordinated detail rather than something added later."
               },
@@ -1063,7 +1063,7 @@
                   "description": "The soffit cover the groove must preserve is set by the element's exposure classification under AS 3600. An exterior balcony or podium soffit can require a higher cover than an internal element, so the cover the groove must keep is element-specific. Confirm the controlling cover before fixing the groove geometry."
                 }
               ],
-              "note": "Use the rating as a detailing-coordination prompt, not a rule that every soffit edge must be grooved. Good practice is to detail a required groove at the design stage with the cover maintained from its root; the failure modes are leaving it to a site rectification, or drawing it without coordinating the cover."
+              "note": "Use the rating as a detailing-coordination prompt, not a rule that every soffit edge must be grooved. Best practice is to detail a required groove at the design stage with the cover maintained from its root; the failure modes are leaving it to a site rectification, or drawing it without coordinating the cover."
             },
             "alternatives": [
               {
@@ -1115,7 +1115,7 @@
             "question": "For slab reinforcement that may need to be cranked, offset or adjusted on site, has a bar size that can be bent on site with a proper hand bending tool (N12, N16) been specified — or does the specified size (N20 and above) force machine bending or pre-bent supply and remove that site adaptability?",
             "parameter": "Specified diameter of slab main and secondary reinforcement where on-site bending or adjustment may be required (N12 / N16 vs N20 and above).",
             "_evidenceAngle": "Construction-practice evidence, not a standards argument. BRANZ Build (site-bending of reinforcing steel): traditional long-handled manual benders bend up to ~16 mm, with ~12 mm the largest comfortably hand-bent; a common hand bender tops out at 16 mm. So N12/N16 retain on-site bendability with proper tooling; N20+ generally need a machine or pre-bending. CRITICAL nuance to keep in mind (Australian Reinforcement Handbook / SRIA): on-site cold bending must use a proper bar-bending tool — NOT pulling against a concrete edge, sledgehammering, or using a pipe, which damages the bar, cuts ductility and can break it. The entry recommends choosing a bendable SIZE, never crude bending, and respecting minimum bend pin diameters. Distinct from the existing Logistics 'Stirrup bar size availability' entry (that is ground-footing stirrups/ties + supplier availability + cage stability; this is suspended-slab main bars + the hand-bend threshold).",
-            "_thresholdSketch": "Good practice: N12/N16 where site bending/adjustment is foreseeable. Consider: N16 at the larger end of comfortable hand bending. Concern: N20 specified where site adaptability is likely needed — machine bend or pre-bend required. Action required: large bars specified into a detail that realistically depends on site adjustment."
+            "_thresholdSketch": "Best practice: N12/N16 where site bending/adjustment is foreseeable. Consider: N16 at the larger end of comfortable hand bending. Concern: N20 specified where site adaptability is likely needed — machine bend or pre-bend required. Action required: large bars specified into a detail that realistically depends on site adjustment."
           }
         },
         {
@@ -1126,7 +1126,7 @@
           "data": {
             "question": "On suspended beams, do the width and depth balance against standard form-panel modules — with neither dimension much exceeding the other and depth kept within easily-formed limits — or has a deep, narrow section been set that needs tall one-sided side-forms with extra ties and propping?",
             "parameter": "Suspended beam width and depth relative to standard formwork panel sizes and to each other (balanced and within ~1.2 m preferred; deep narrow sections flagged).",
-            "_evidenceAngle": "Pure buildability / form-reuse argument in the same style as the off-form upturn entry — no standards content. Thresholds derived from physical form components, panel modules and the propping/access envelope a deep side-form demands. Practice references: formwork good-practice guides (Hurd, ACI SP-4; CIRIA / Concrete Society formwork guidance) as how-you-build-forms sources, not codes. Origin: project brief noting 1.2 x 1.8 panels, wanting width+depth roughly equal, neither exceeding the other, ideally ≤ ~1.2 m.",
+            "_evidenceAngle": "Pure buildability / form-reuse argument in the same style as the off-form upturn entry — no standards content. Thresholds derived from physical form components, panel modules and the propping/access envelope a deep side-form demands. Practice references: formwork best-practice guides (Hurd, ACI SP-4; CIRIA / Concrete Society formwork guidance) as how-you-build-forms sources, not codes. Origin: project brief noting 1.2 x 1.8 panels, wanting width+depth roughly equal, neither exceeding the other, ideally ≤ ~1.2 m.",
             "_thresholdSketch": "Good: width+depth balanced, within standard panel reuse, depth ≤ ~1.2 m. Consider: one dimension moderately larger. Concern: deep narrow section needing tall one-sided forms + extra ties. Action required: section that cannot be formed from standard panels without bespoke falsework."
           }
         },
@@ -1189,7 +1189,7 @@
             "thresholds": [
               {
                 "range": "R10 or N12",
-                "rating": "Good practice",
+                "rating": "Best practice",
                 "color": "green",
                 "guidance": "R10 at up to 900 mm centres is the default practical choice for footing ligatures, subject to structural requirements. N12 is preferred where the cage may need site-bent additions or adjustment to suit final excavated dimensions. Closer spacing improves cage rigidity and is encouraged where the cage is heavy or spans further between supports."
               },
@@ -1366,7 +1366,7 @@
             "thresholds": [
               {
                 "range": "<= 200 mm",
-                "rating": "Good practice",
+                "rating": "Best practice",
                 "color": "green",
                 "guidance": "Top mat provides adequate support as a working platform. Workers can walk and kneel on the reinforcement with minimal risk of stepping through. This is the recommended maximum spacing where top mats will be used as working platforms."
               },
@@ -1483,7 +1483,7 @@
             "thresholds": [
               {
                 "range": "Socket into rock",
-                "rating": "Good practice",
+                "rating": "Best practice",
                 "color": "green",
                 "guidance": "The base is completed without anyone entering the excavation, and socketing into rock achieves this at any depth, which makes it the default. The connection comes from the socket and a reinforcement cage placed from the surface &mdash; fabricated at ground level and lowered as a unit, or spliced at the casing top as it descends &mdash; so there is no bar-fixing to do at the bottom of the hole. The design has eliminated the need to enter, which is the most effective control, rather than relying on the site to manage an entry."
               },
@@ -1616,7 +1616,7 @@
             "thresholds": [
               {
                 "range": "Clean callouts",
-                "rating": "Good practice",
+                "rating": "Best practice",
                 "color": "green",
                 "guidance": "Bar size and spacing with extent shown on plan. Laying order noted separately in brackets where helpful, e.g. N12-200 (B1). Every element is independently readable at a glance. Extras are called out separately with their own callout and extent markers, e.g. 6N16 EXTRA."
               },
@@ -1723,7 +1723,7 @@
             "thresholds": [
               {
                 "range": "Detail + schedule",
-                "rating": "Good practice",
+                "rating": "Best practice",
                 "color": "green",
                 "guidance": "Critical dimensions and reinforcement requirements are shown directly on the relevant section/detail and also included in the schedule. This reduces the chance that the detail is misread while still retaining the coordination benefits of a schedule."
               },
@@ -1920,7 +1920,7 @@
       "points": [
         {
           "lead": "Ratings are prompts, not prohibitions.",
-          "text": "Good practice, Consider, Concern and Action required are prompts for design-stage evaluation. An <strong>Action required</strong> rating does not necessarily mean the design cannot proceed &mdash; it means recognise the constructability challenge, consider the alternatives, and make an informed decision for your project. Sometimes the flagged detail is still the most practical solution when weighed against the full design context."
+          "text": "Best practice, Consider, Concern and Action required are prompts for design-stage evaluation. An <strong>Action required</strong> rating does not necessarily mean the design cannot proceed &mdash; it means recognise the constructability challenge, consider the alternatives, and make an informed decision for your project. Sometimes the flagged detail is still the most practical solution when weighed against the full design context."
         },
         {
           "lead": "Engineering judgement stays with you.",
@@ -1945,7 +1945,7 @@
       "intro": "Every entry rates your design against four levels. The colours are consistent across the whole framework.",
       "items": [
         {
-          "rating": "Good practice",
+          "rating": "Best practice",
           "color": "green",
           "meaning": "The recommended approach for typical conditions. No constructability concern expected."
         },
@@ -1983,7 +1983,7 @@
         },
         {
           "label": "Design Guidance",
-          "caption": "Threshold bands or described states that rate the project condition as Good practice, Consider, Concern or Action required. This is the heart of the entry."
+          "caption": "Threshold bands or described states that rate the project condition as Best practice, Consider, Concern or Action required. This is the heart of the entry."
         },
         {
           "label": "Applicability and Limitations",
