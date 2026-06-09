@@ -116,10 +116,11 @@ All submissions (new entries and edits) are reviewed before being incorporated i
 1. Open `data.json`
 2. Find the relevant dimension
 3. Add a new entry object to the `items` array, following the structure of existing entries
-4. Include the `location` field: `"location": {"country": "Australia", "state": "NSW"}` — use just `country` if the evidence applies nationally, or include `state` if it is region-specific
-5. Place any images in the `images/` folder with descriptive filenames
-6. Reference images in the entry as `"images/your-filename.jpg"`
-7. Commit and push
+4. Give the entry a stable `id`: a lowercase, hyphenated slug derived from the name (e.g. `"id": "drip-grooves-on-exposed-soffit-edges"`). This is the entry's permanent address — it appears in the entry's URL (`#dimId/id`) and is how other entries cross-reference it. **Once an entry is live, never change its `id`**, as doing so breaks shared links, bookmarks, and cross-references. The display `name` can change freely; the `id` should not. (If you omit it, the site will auto-generate one from the name, but setting it explicitly is strongly preferred.)
+5. Include the `location` field: `"location": {"country": "Australia", "state": "NSW"}` — use just `country` if the evidence applies nationally, or include `state` if it is region-specific
+6. Place any images in the `images/` folder with descriptive filenames
+7. Reference images in the entry as `"images/your-filename.jpg"`
+8. Commit and push
 
 ### Related entries (cross-references)
 
@@ -128,14 +129,13 @@ An entry can point to others that a designer should consider alongside it. Add a
 ```json
 "relatedEntries": [
   {
-    "dimId": "detailing",
-    "name": "Drip grooves on exposed soffit edges",
+    "id": "drip-grooves-on-exposed-soffit-edges",
     "note": "Both are edge treatments on the same formed face — coordinate them so the chamfer and drip groove don't clash."
   }
 ]
 ```
 
-- Each link references the target by `dimId` and `name` (not by position), so links survive entries being reordered.
+- Each link references the target by its stable `id` (not by position or display name), so links survive entries being reordered **and** renamed.
 - `note` is optional — a short sentence explaining why the other entry is relevant. If omitted, just the link is shown.
 - An entry can list as many related entries as needed, including entries in other dimensions.
 - **Author each link once.** Links are automatically two-way: if entry A lists entry B, then entry B will also show A, without B needing a `relatedEntries` field of its own. There is no need — and you should avoid — adding the same pairing on both sides, as it will only drift out of sync. Add a link on both sides only if you genuinely want a *different* note in each direction.
@@ -143,6 +143,7 @@ An entry can point to others that a designer should consider alongside it. Add a
 
 ### Minimum required fields for a new entry
 - Dimension
+- Stable `id` (lowercase hyphenated slug)
 - Entry name
 - Design question
 - Design parameter
