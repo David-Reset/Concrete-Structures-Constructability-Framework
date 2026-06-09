@@ -407,15 +407,15 @@ function entryFields(it,dim){
   const thr=(da.thresholds||[]).map(t=>t.guidance||'').join(' ');
   const alts=(da.alternatives||[]).map(a=>typeof a==='string'?a:((a.title||'')+' '+(a.description||''))).join(' ');
   return [
-    [it.name,5,false],
-    [da.question||'',4,true],
-    [(da.keywords||[]).join(' '),4,false],
-    [da.parameter||'',2,true],
-    [da.background||'',2,true],
-    [dim.name,2,false],
-    [thr,1,true],
-    [alts,1,true],
-    [locLabel(da.location),1,false]
+    [cleanText(it.name),5,false],
+    [cleanText(da.question||''),4,true],
+    [cleanText((da.keywords||[]).join(' ')),4,false],
+    [cleanText(da.parameter||''),2,true],
+    [cleanText(da.background||''),2,true],
+    [cleanText(dim.name),2,false],
+    [cleanText(thr),1,true],
+    [cleanText(alts),1,true],
+    [cleanText(locLabel(da.location)),1,false]
   ];
 }
 function runSearch(q){
@@ -452,7 +452,7 @@ function buildSnippet(fields,terms){
     if(pos<0)continue;
     const start=Math.max(0,pos-60),end=Math.min(orig.length,pos+100);
     const s=(start>0?'… ':'')+orig.slice(start,end).trim()+(end<orig.length?' …':'');
-    return highlightTerms(s,terms);
+    return highlightTerms(escHtml(s),terms);
   }
   return '';
 }
@@ -465,6 +465,12 @@ function highlightTerms(text,terms){
   return out;
 }
 function escAttr(s){return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
+// --- snippet text hygiene: entry fields contain HTML (<br>,<em>,<strong>) + entities ---
+function stripTags(s){return (s||'').replace(/<[^>]*>/g,' ');}
+const SEARCH_ENT={'&nbsp;':' ','&amp;':'&','&lt;':'<','&gt;':'>','&mdash;':'\u2014','&ndash;':'\u2013','&le;':'\u2264','&ge;':'\u2265','&times;':'\u00d7','&deg;':'\u00b0','&rsquo;':'\u2019','&lsquo;':'\u2018','&prime;':'\u2032','&radic;':'\u221a','&ouml;':'\u00f6'};
+function decodeEnt(s){return (s||'').replace(/&[a-z]+;|&#\d+;/g,m=>SEARCH_ENT[m]||m);}
+function cleanText(s){return decodeEnt(stripTags(s)).replace(/\s+/g,' ').trim();}
+function escHtml(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function searchRegionOptions(){
   const locs=new Map();
   dimensions.forEach(dim=>dim.items.forEach(it=>{
@@ -492,7 +498,7 @@ function renderSearchResults(){
   if(!res.length){
     return `<div class="search-empty"><div class="search-empty-title">No entries match “${escAttr(q)}”${searchRegion?' in this region':''}.</div><div class="search-empty-sub">Try fewer or different words${searchRegion?', widen the region,':''} or browse the dimensions below. If the framework doesn't cover this yet, you can <span class="search-empty-link" onclick="goSuggest()">suggest a new entry</span>.</div></div>`;
   }
-  const rows=res.map(r=>`<div class="item-row available search-result" onclick="goEntry('${r.dimId}','${r.id}')"><div class="search-result-main"><div class="search-result-top"><span class="item-name">${r.name}</span><span class="related-dim"><span class="ico">${r.dimIcon}</span>${r.dimName}</span>${r.location?locTag(r.location):''}</div>${r.snippet?`<div class="search-snippet">${r.snippet}</div>`:''}</div><div class="item-arrow">→</div></div>`).join('');
+  const rows=res.map(r=>`<div class="item-row available search-result" onclick="goEntry('${r.dimId}','${r.id}')"><div class="search-result-main"><div class="search-result-top"><span class="item-name">${escHtml(r.name)}</span><span class="related-dim"><span class="ico">${r.dimIcon}</span>${escHtml(r.dimName)}</span>${r.location?locTag(r.location):''}</div>${r.snippet?`<div class="search-snippet">${r.snippet}</div>`:''}</div><div class="item-arrow">→</div></div>`).join('');
   return `<div class="search-count">${res.length} ${res.length===1?'entry':'entries'} found</div><div class="item-list search-list">${rows}</div>`;
 }
 function onSearchInput(v){
