@@ -372,7 +372,7 @@ function itemMatchesFilter(item){
 
 // ===== SEARCH =====
 // Words too common to be useful as search terms.
-const SEARCH_STOP=new Set("a an the of to in on for and or with at by is are be do does should i my we you it this that what when where how near not no use using need want can could would there then than into onto over under as if it's".split(' '));
+const SEARCH_STOP=new Set("a an the of to in on for and or with at by is are be do does should i my we you it this that what when where how near not no use using need want can could would there then than into onto over under through via as if it's".split(' '));
 // Bridge between the words a searcher types and the words an entry uses. Extend freely.
 const SEARCH_SYN={
   rebar:'reinforcement bar',rebars:'reinforcement bar',bars:'bar reinforcement',
@@ -383,15 +383,18 @@ const SEARCH_SYN={
   gap:'clearance gap',spacing:'clearance spacing',pour:'pour placement placing',cure:'curing',
   cracking:'crack cracking',stirrups:'stirrup'
 };
-function searchTokens(q){
+// Each meaningful word the user types becomes a "concept" group: the word plus its synonyms.
+// An entry "covers" a concept if it matches any word in that group.
+function searchConcepts(q){
   const raw=(q||'').toLowerCase().match(/[a-z0-9][a-z0-9\-]*/g)||[];
-  const terms=new Set();
+  const groups=[];
   raw.forEach(t=>{
     if(t.length<2||SEARCH_STOP.has(t))return;
-    terms.add(t);
-    (SEARCH_SYN[t]||'').split(' ').forEach(s=>{if(s)terms.add(s);});
+    const variants=new Set([t]);
+    (SEARCH_SYN[t]||'').split(' ').forEach(s=>{if(s)variants.add(s);});
+    groups.push([...variants]);
   });
-  return [...terms];
+  return groups;
 }
 function matchesRegion(it,f){
   if(!f)return true;
@@ -419,29 +422,42 @@ function entryFields(it,dim){
   ];
 }
 function runSearch(q){
-  const terms=searchTokens(q);
-  if(!terms.length)return [];
-  const termRes=terms.map(t=>new RegExp('\\b'+escRe(t)));
-  const out=[];
+  const groups=searchConcepts(q);
+  if(!groups.length)return [];
+  const flat=[...new Set(groups.flat())];
+  const reOf={}; flat.forEach(t=>reOf[t]=new RegExp('\\b'+escRe(t)));
+  // Pass 1: collect candidate entries and document frequency for each term.
+  const docs=[]; const df={}; flat.forEach(t=>df[t]=0);
   dimensions.forEach(dim=>dim.items.forEach(it=>{
     if(!it.available||!it.data)return;
     if(!matchesRegion(it,searchRegion))return;
-    const fields=entryFields(it,dim).map(f=>[f[0].toLowerCase(),f[1],f[2],f[0]]);
-    let score=0,matchedTerms=0;
-    termRes.forEach(re=>{
-      let hit=false;
-      fields.forEach(([low,w])=>{if(re.test(low)){score+=w;hit=true;}});
-      if(hit)matchedTerms++;
-    });
-    if(score>0){
-      out.push({dimId:dim.id,id:it.id,name:it.name,dimName:dim.name,dimIcon:dim.icon,
-                location:it.data.location||null,
-                score:score+matchedTerms*3,   // reward matching more distinct query words
-                snippet:buildSnippet(fields,terms)});
-    }
+    const fields=entryFields(it,dim).map(f=>[f[0].toLowerCase(),f[1],f[2],f[0]]); // [low,weight,isSrc,orig]
+    const combined=fields.map(f=>f[0]).join(' ');
+    flat.forEach(t=>{if(reOf[t].test(combined))df[t]++;});
+    docs.push({it,dim,fields});
   }));
-  out.sort((a,b)=>b.score-a.score);
-  return out;
+  const N=docs.length||1;
+  // IDF: a term in few entries (e.g. "stirrup") counts far more than a common one (e.g. "wall").
+  const idf={}; flat.forEach(t=>idf[t]=Math.log(1+N/(1+df[t])));
+  // Pass 2: score each entry by its best match per concept, weighted by field and rarity.
+  const matched=[];
+  docs.forEach(({it,dim,fields})=>{
+    let score=0,coverage=0;
+    groups.forEach(group=>{
+      let best=0;
+      group.forEach(t=>{
+        fields.forEach(([low,fw])=>{if(reOf[t].test(low)){const v=fw*idf[t];if(v>best)best=v;}});
+      });
+      if(best>0){score+=best;coverage++;}
+    });
+    if(coverage>0)matched.push({dimId:dim.id,id:it.id,name:it.name,dimName:dim.name,dimIcon:dim.icon,
+      location:it.data.location||null,coverage,score,snippet:buildSnippet(fields,flat)});
+  });
+  if(!matched.length)return [];
+  matched.sort((a,b)=>b.score-a.score||b.coverage-a.coverage);
+  // Relevance floor: drop entries scoring well below the best match (keep the top one always).
+  const top=matched[0].score;
+  return matched.filter((r,i)=>i===0||r.score>=top*0.30);
 }
 function buildSnippet(fields,terms){
   const res=terms.map(t=>new RegExp('\\b'+escRe(t)));
