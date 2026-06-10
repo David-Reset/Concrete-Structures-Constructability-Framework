@@ -142,6 +142,28 @@
   .entry-btn .ico{font-size:15px}
   .entry-actions-hint{flex-basis:100%;font-size:11px;color:var(--text-muted);line-height:1.5;margin-top:4px}
 
+  .suggest-banner{margin-top:16px;padding:18px 22px;background:var(--accent-glow);border:1px solid var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;transition:all 0.2s}
+  .suggest-banner:hover{background:rgba(59,130,246,0.22)}
+  .suggest-banner-title{font-size:15px;font-weight:700;color:var(--text)}
+  .suggest-banner-sub{font-size:12px;color:var(--text-muted);line-height:1.5;margin-top:3px;max-width:560px}
+  .suggest-banner-btn{flex-shrink:0;font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap}
+
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn 0.2s ease}
+  .modal{background:var(--surface);border:1px solid var(--border);border-radius:12px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;padding:26px 28px;animation:fadeIn 0.25s ease}
+  .modal-title{font-size:19px;font-weight:800;letter-spacing:-0.3px;margin-bottom:14px}
+  .modal-dim{font-size:13px;color:var(--text);background:var(--accent-glow);border:1px solid var(--accent);border-radius:8px;padding:10px 14px;margin-bottom:16px;line-height:1.5}
+  .modal-body{font-size:13.5px;color:var(--text);line-height:1.65}
+  .modal-body p{margin-bottom:12px;opacity:0.92}
+  .modal-body ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin:0 0 14px}
+  .modal-body li{position:relative;padding-left:20px;opacity:0.92}
+  .modal-body li::before{content:'';position:absolute;left:4px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .modal-link{color:var(--accent);cursor:pointer;font-weight:600}
+  .modal-link:hover{text-decoration:underline}
+  .modal-fineprint{font-size:11.5px;color:var(--text-muted);border-top:1px solid var(--border);padding-top:12px;margin-bottom:0}
+  .modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
+  .entry-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .entry-btn.primary:hover{background:#2f6fd6;border-color:#2f6fd6}
+
   .examples-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px;margin-bottom:20px}
   .examples-grid.imgs-1{grid-template-columns:1fr}
   .examples-grid.imgs-2{grid-template-columns:repeat(2,1fr)}
@@ -554,7 +576,73 @@ function clearSearch(){
   const reg=document.getElementById('search-region');if(reg)reg.value='';
   onSearchInput('');
 }
-function goSuggest(){window.open('https://forms.gle/5ppQRvJuzWaUkdg89','_blank');}
+// ===== SUGGEST A NEW ENTRY (homepage / dimension pages) =====
+// NOTE: `base` must be the NEW Submission form's PUBLIC /viewform URL.
+// Until that's supplied it falls back to the old suggest form below.
+// To enable dimension pre-fill, set `dimField` to the dimension question's
+// entry ID (from a "Get pre-filled link" with a dimension selected). The
+// dimOptions labels MUST match the form's dropdown text exactly.
+const SUBMIT={
+  base:'https://docs.google.com/forms/d/e/1FAIpQLSdRkltPd-q5WRI_QFTWrsY-EGn0QlG2uf9zQtB_lYyQhSlq-Q/viewform',
+  dimField:'entry.794898151', // dimension dropdown — prefill value must match option text exactly
+  dimOptions:{
+    methods:'Construction Methods',
+    detailing:'Detailing',
+    logistics:'Logistics',
+    safety:'Safety in Design',
+    communication:'Design Communication'
+  }
+};
+function submitFormUrl(dimId){
+  let url=SUBMIT.base;
+  if(dimId&&SUBMIT.dimField&&SUBMIT.dimOptions[dimId]){
+    const sep=url.includes('?')?'&':'?usp=pp_url&';
+    url+=sep+SUBMIT.dimField+'='+encodeURIComponent(SUBMIT.dimOptions[dimId]);
+  }
+  return url;
+}
+// goSuggest opens the in-app guidance panel first (optionally noting a dimension);
+// the panel's Continue button is what actually opens the Google Form.
+function goSuggest(dimId){showSuggestPanel(dimId);}
+function openSuggestForm(dimId){closeSuggestPanel();window.open(submitFormUrl(dimId),'_blank');}
+function firstExampleEntry(){
+  for(const dm of dimensions){for(const it of dm.items){if(it.available&&it.data)return{dimId:dm.id,id:it.id,name:it.name};}}
+  return null;
+}
+function openExampleEntry(){const ex=firstExampleEntry();if(ex)window.open(entryUrl(ex.dimId,ex.id),'_blank');}
+function closeSuggestPanel(){const m=document.querySelector('.modal-overlay');if(m)m.remove();}
+function showSuggestPanel(dimId){
+  closeSuggestPanel();
+  const dimName=dimId&&dimensions.find(d=>d.id===dimId);
+  const dimNote=dimName?`<div class="modal-dim">This suggestion will be filed under <strong>${dimName.name}</strong>.${SUBMIT.dimField?' The form opens with that dimension already selected.':''}</div>`:'';
+  const ex=firstExampleEntry();
+  const exampleLine=ex?`<li>Not sure how an entry should look? <span class="modal-link" onclick="openExampleEntry()">See an example entry</span> (opens in a new tab).</li>`:'';
+  const notSureLine=dimId?'':`<li><strong>Not sure which dimension?</strong> Choose “Not sure” and do your best with everything else — a reviewer will place it in the right dimension by root cause.</li>`;
+  const dimArg=dimId?`'${dimId}'`:'';
+  const overlay=document.createElement('div');
+  overlay.className='modal-overlay';
+  overlay.onclick=closeSuggestPanel;
+  overlay.innerHTML=`<div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-title">Before you suggest an entry</div>
+    ${dimNote}
+    <div class="modal-body">
+      <p>A good entry is a <strong>specific, design-stage issue that can be checked from drawings, specifications or design decisions</strong> — not a broad topic. For example: “drip grooves on exposed soffit edges”, not “waterproofing”.</p>
+      <ul>
+        <li>Choose the dimension by the <strong>root cause</strong> of the issue, not just where the problem shows up on site.</li>
+        ${notSureLine}
+        <li><strong>De-identify everything.</strong> No project, company, client or designer names, site addresses or title blocks — in text or images.</li>
+        <li>You don't need every field. <strong>Submit what you know</strong>; the framework team reviews, edits and structures each entry before publishing.</li>
+        ${exampleLine}
+      </ul>
+      <p class="modal-fineprint">Submissions are reviewed before publishing and, if used, released under the framework's CC BY-SA licence.</p>
+    </div>
+    <div class="modal-actions">
+      <button class="entry-btn" onclick="closeSuggestPanel()">Cancel</button>
+      <button class="entry-btn primary" onclick="openSuggestForm(${dimArg})">Continue to the form →</button>
+    </div>
+  </div>`;
+  document.body.appendChild(overlay);
+}
 
 // ===== PRE-FILLED FORMS (per-entry comment / edit) =====
 // Field IDs come from each form's "Get pre-filled link". nameField = Entry name,
@@ -638,7 +726,7 @@ function renderHomeView(){
     <div class="search-bar">${searchIcon}<input id="search-input" class="search-input" type="text" autocomplete="off" spellcheck="false" placeholder="Describe your design problem — e.g. “wall close to a boundary”, “stirrup size”, “curing”" value="${escAttr(searchQuery)}" oninput="onSearchInput(this.value)"><div id="search-clear" class="search-clear" style="display:${searchQuery?'flex':'none'}" onclick="clearSearch()">✕</div></div>
     <div id="search-region-wrap" class="search-region-wrap" style="display:${has?'flex':'none'}"><span class="search-region-label">Narrow to region</span><select id="search-region" class="search-region" onchange="onSearchRegion(this.value)">${searchRegionOptions()}</select></div>
   </div>`;
-  return `<div class="content animate-in"><div style="margin-bottom:18px"><h1 class="section-title">Find constructability guidance</h1><p class="section-desc">Describe your design problem to search across all five dimensions — or browse the dimensions below.</p></div>${searchHero}<div id="search-results">${renderSearchResults()}</div><div id="dim-grid-wrap" style="display:${has?'none':''}"><div style="margin:28px 0 8px"><div class="label">Browse by dimension</div></div><div class="dim-grid">${guideCard}${cards}</div></div></div>`;
+  return `<div class="content animate-in"><div style="margin-bottom:18px"><h1 class="section-title">Find constructability guidance</h1><p class="section-desc">Describe your design problem to search across all five dimensions — or browse the dimensions below.</p></div>${searchHero}<div id="search-results">${renderSearchResults()}</div><div id="dim-grid-wrap" style="display:${has?'none':''}"><div style="margin:28px 0 8px"><div class="label">Browse by dimension</div></div><div class="dim-grid">${guideCard}${cards}</div><div class="suggest-banner" onclick="goSuggest()"><div class="suggest-banner-text"><div class="suggest-banner-title">Don't see your issue?</div><div class="suggest-banner-sub">Suggest a new constructability entry — every submission is reviewed and structured by the framework team.</div></div><div class="suggest-banner-btn">Suggest an entry →</div></div></div></div>`;
 }
 
 // ===== GUIDE (how-to-use) =====
@@ -792,7 +880,7 @@ function renderDimensionView(){
     guidanceHtml=`<div style="margin-top:20px;margin-bottom:24px;padding:18px 22px;background:var(--surface);border:1px solid var(--border);border-radius:10px;"><div class="label" style="margin-bottom:10px">General Guidance</div>${dim.generalGuidance.map(g=>`<div style="display:flex;gap:10px;margin-bottom:8px;align-items:flex-start;"><div style="color:var(--accent);font-size:14px;margin-top:1px;flex-shrink:0;">•</div><div style="font-size:13px;color:var(--text);line-height:1.6;opacity:0.9;">${g}</div></div>`).join('')}</div>`;
   }
 
-  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">${dim.icon}</span><h1 class="dim-header-title">${dim.name}</h1></div><p class="section-desc">${dim.description}</p>${guidanceHtml}${filterHtml}<div class="label">Entries</div><div class="item-list">${items}</div></div>`;
+  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">${dim.icon}</span><h1 class="dim-header-title">${dim.name}</h1></div><p class="section-desc">${dim.description}</p>${guidanceHtml}${filterHtml}<div class="label">Entries</div><div class="item-list">${items}</div><div class="suggest-banner" onclick="goSuggest('${dim.id}')"><div class="suggest-banner-text"><div class="suggest-banner-title">Missing something in ${dim.name}?</div><div class="suggest-banner-sub">Suggest a new entry for this dimension — the form opens filed under ${dim.name}.</div></div><div class="suggest-banner-btn">Suggest an entry →</div></div></div>`;
 }
 
 // Renders approved comments stored on the entry (d.comments). Tolerant of missing
