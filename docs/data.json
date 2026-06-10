@@ -1332,64 +1332,6 @@
             "_evidenceAngle": "Logistics/buildability: each extra grade is a separate order, batch, delivery and test stream, and a wrong-pour opportunity, often for marginal structural benefit. Standards in the back of mind (don't drop below what an element needs); the point is rationalising the count. Practice references: ready-mix supply / site QA literature on order and placement error with many mixes; corroborate with error-rate / variety literature.",
             "_thresholdSketch": "Good: few, well-separated grades. Consider: several grades. Concern: many closely-spaced grades. Action required: grade proliferation with high wrong-pour risk and little structural justification."
           }
-        },
-        {
-          "id": "rock-socket-depth-for-residential-bored-piers",
-          "name": "Rock socket depth for residential bored piers",
-          "available": true,
-          "data": {
-            "question": "When specifying bored piers on small residential sites, has the required rock socket depth been checked against the equipment that is likely to be available on site, or has a deep socket been specified that may require a piling rig or specialist drilling method?",
-            "parameter": "Required rock socket depth into competent rock for bored concrete piers on small residential sites, considered together with expected pier depth and likely drilling equipment.",
-            "keywords": [],
-            "background": "Bored concrete piers are common on residential projects, and designers often specify that the pier be socketed into rock to achieve founding, lateral resistance or uplift capacity. The issue is not whether socketing is structurally useful. The issue is whether the specified socket depth can realistically be drilled using the equipment likely to be used on a small site.\n\nOn many standard residential sites, shallow piers are drilled by an excavator-mounted auger or similar small drilling setup, not a dedicated piling rig. This is especially likely where the expected pier depth is modest, such as less than about 2.5 m. These machines may be able to found on rock and form a shallow rock socket, but they are not necessarily suited to drilling a long socket into competent rock.\n\nA short socket, such as around 150 mm into rock, may be achievable as part of normal residential pier construction. A deeper socket, such as 500 mm into rock, can change the construction problem. It may require coring, rock augers, a larger drilling rig, specialist subcontractor attendance, additional time, or redesign once the contractor confirms the available equipment. On a small job, that extra mobilisation cost can be disproportionate to the pier itself.\n\nThe design-stage problem is that the socket depth is often shown as a simple detail note, but it directly affects equipment choice, cost and programme. If the designer needs a deep socket for structural reasons, that may be acceptable, but it should be deliberate and understood early. If the socket is only a default note, it may create avoidable construction cost or a site query. The aim is to match the required socket depth to the likely drilling method before the drawings are issued.",
-            "thresholds": [
-              {
-                "rating": "Best practice",
-                "color": "green",
-                "range": "",
-                "guidance": "Piers are founded on rock or socketed only shallowly, with a socket depth that is realistic for the expected residential drilling equipment. As a guide, a shallow socket of around 150 mm into competent rock is generally a more buildable residential detail than a deep rock socket. The required socket depth is clearly shown and matches the equipment expected on site."
-              },
-              {
-                "rating": "Consider",
-                "color": "yellow",
-                "range": "",
-                "guidance": "A moderate socket is specified, or the socket depth is not clearly distinguished from the founding requirement. The design may still be practical, but the designer should confirm whether the expected contractor equipment can drill the socket into the anticipated rock strength without specialist mobilisation."
-              },
-              {
-                "rating": "Concern",
-                "color": "orange",
-                "range": "",
-                "guidance": "A deep rock socket is specified on a small residential project where the expected pier depth is less than about 2.5 m and a piling rig is unlikely to be mobilised. The socket may still be structurally valid, but it may not match the equipment likely to be used for the job."
-              },
-              {
-                "rating": "Action required",
-                "color": "red",
-                "range": "",
-                "guidance": "A deep rock socket, such as around 500 mm or more into competent rock, is specified as a default requirement on a small residential site without confirming drilling method, rock strength, access, rig availability or cost impact. Review whether the socket depth is structurally necessary, whether a shallower socket is acceptable, or whether the project needs to allow for specialist drilling equipment."
-              }
-            ],
-            "alternatives": [
-              "Review whether the specified socket depth is structurally required or has been carried forward as a default detail.",
-              "Where the pier only needs to found on competent rock, consider specifying founding into rock with a shallow nominal socket rather than a deep socket.",
-              "Where a deeper socket is structurally required, make this clear on the drawings and allow for the likely drilling method, access and cost implication.",
-              "For small residential projects, discuss the proposed socket depth with a local pier contractor or builder before issue, particularly where the expected pier depth is less than about 2.5 m.",
-              "If rock conditions are uncertain, provide a detail that allows the socket requirement to be confirmed after excavation or geotechnical inspection rather than forcing a deep socket everywhere."
-            ],
-            "applicability": {
-              "appliesWhere": "This entry applies to bored concrete piers for small residential or low-rise projects where piers are expected to be relatively shallow and are likely to be drilled using small equipment rather than a dedicated piling rig. It is most relevant where the detail specifies socketing into rock and the socket depth may affect drilling method, cost or programme.",
-              "checks": [],
-              "note": "This entry does not argue against rock socketing where it is structurally required. Deep sockets may be necessary for lateral load, uplift, slope stability, retaining actions, poor rock quality or other geotechnical requirements.\n\nThe guidance depends on local equipment availability, access, rock strength and contractor practice. A 500 mm socket may be routine for a piling contractor with the right rig, but disproportionate for a small residential pier contractor using smaller equipment.\n\nThe designer should check the geotechnical report, expected rock strength, pier loads, access constraints, available drilling equipment and whether the project scale justifies specialist mobilisation.\n\nThis entry is not about hand entry into pier holes or confined-space work. It is about drilling method and socket depth."
-            },
-            "evidence": "This entry is based on practical residential design and construction experience in NSW. The key observation is that small residential bored piers are often drilled with smaller equipment, while deeper sockets into competent rock may require specialist piling equipment, coring or additional mobilisation. The entry should be checked against contractor feedback and geotechnical practice before being published.",
-            "examples": [],
-            "supportingImages": [],
-            "dateAdded": "2026-06-10",
-            "dateReviewed": "2026-06-10",
-            "location": {
-              "country": "Australia",
-              "state": "NSW"
-            }
-          }
         }
       ]
     },
@@ -2150,8 +2092,5 @@
         }
       ]
     }
-  },
-  "_processed": [
-    "6/10/2026 12:45:13"
-  ]
+  }
 }
