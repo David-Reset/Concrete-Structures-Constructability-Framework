@@ -38,6 +38,7 @@ Every entry in the framework follows the same general display format:
 - **Examples** — real design drawings tagged as Concern, Acceptable, or Recommended *(optional)*
 - **Supporting Images** — images, excerpts, diagrams, or site photographs that support the evidence or show what the issue looks like in practice *(optional)*
 - **Related Entries** — links to other entries worth considering alongside this one (e.g. a chamfer detail and a drip groove on the same formed edge). Each link can carry a short note explaining why the other entry is relevant *(optional)*
+- **Comments** — short community notes, observations, questions, or regional feedback left by readers and shown beneath the entry. Comments are reviewed and de-identified before they appear, and are shown anonymously by default *(optional)*
 - **Search keywords** — extra words a searcher might type that aren't already written in the entry (synonyms, trade jargon, abbreviations), used to help the entry surface in search *(optional)*
 
 Entries are date-stamped and designed to be updated as construction technology and practice evolve.
@@ -75,13 +76,15 @@ Search is **automatic**: it reads the text already written in each entry (the na
 
 ```
 ├── index.html          # Framework interface (styling and rendering)
-├── data.json           # All framework content (entries, guidance, thresholds)
+├── data.json           # All framework content (entries, guidance, thresholds, comments)
+├── review.html         # Maintainer review console (turns form responses into data.json)
 ├── images/             # Example drawings and site photographs
 └── README.md
 ```
 
 - **index.html** — the framework shell. Contains all CSS, navigation, and rendering logic. You generally don't need to edit this.
-- **data.json** — all framework content lives here. This is the only file you edit to add, update, or remove entries. Each entry includes a `location` field specifying the country and optionally the state where the evidence was gathered.
+- **data.json** — all framework content lives here. For routine additions you no longer hand-edit this file: the review console (`review.html`) reads the form responses and writes the updated file for you (see [Reviewing and publishing submissions](#reviewing-and-publishing-submissions-maintainers)). You can still edit it directly for advanced changes such as cross-references. Each entry includes a `location` field specifying the country and optionally the state where the evidence was gathered. The file also carries a hidden `_processed` key that the review console uses to remember which form responses it has already handled; the live site ignores it.
+- **review.html** — a standalone, browser-based tool for maintainers. It runs entirely on your own machine (nothing is uploaded), turns the Google Form responses into properly structured entries, comments, and edits, and lets you review and de-identify each one before exporting an updated `data.json`.
 - **images/** — all photographs and drawings referenced by entries in data.json.
 
 ## Ethics and anonymity
@@ -108,30 +111,49 @@ Issues often touch more than one area even though each entry lives in a single d
 
 ### Suggesting a new entry
 
-If you have a constructability issue, design scenario, or practical insight that could benefit the framework, you can submit it via the <a href="https://forms.gle/5ppQRvJuzWaUkdg89" target="_blank">new entry suggestion form</a>.
+If you have a constructability issue, design scenario, or practical insight that could benefit the framework, you can submit it via the <a href="https://docs.google.com/forms/d/e/1FAIpQLSdRkltPd-q5WRI_QFTWrsY-EGn0QlG2uf9zQtB_lYyQhSlq-Q/viewform" target="_blank">new entry suggestion form</a>. You can also reach it from the **"Suggest an entry"** button on the home page and at the foot of each dimension page (the dimension button pre-selects that dimension for you).
 
 To see what a completed submission looks like, refer to the <a href="examples/Off-form-wall-example.pdf" target="_blank">example submission (PDF)</a> — this is the off-form wall entry as it was submitted through the form.
 
 ### Suggesting a change to an existing entry
 
-If you believe an existing entry could be improved — for example, a threshold needs adjusting for your region, you have additional evidence or photographs, or you've identified an error — you can submit a change via the <a href="https://forms.gle/xJ5tpUf7zozpkbcg6" target="_blank">edit suggestion form</a>.
+If you believe an existing entry could be improved — for example, a threshold needs adjusting for your region, you have additional evidence or photographs, or you've identified an error — you can submit a change via the <a href="https://docs.google.com/forms/d/e/1FAIpQLSdTRRqO41OKp3Lxwz5CqVHL-B7IpAhitqnGqBWXYl1lmtizZA/viewform" target="_blank">edit suggestion form</a>, or via the **"Suggest a change"** button at the bottom of the entry itself (which opens the form already linked to that entry).
 
-All submissions (new entries and edits) are reviewed before being incorporated into the framework to ensure quality, consistency, and adherence to the anonymity standards described above.
+### Leaving a comment on an entry
 
-### Adding an entry directly (maintainers)
-1. Open `data.json`
-2. Find the relevant dimension
-3. Add a new entry object to the `items` array, following the structure of existing entries
-4. Give the entry a stable `id`: a lowercase, hyphenated slug derived from the name (e.g. `"id": "drip-grooves-on-exposed-soffit-edges"`). This is the entry's permanent address — it appears in the entry's URL (`#dimId/id`) and is how other entries cross-reference it. **Once an entry is live, never change its `id`**, as doing so breaks shared links, bookmarks, and cross-references. The display `name` can change freely; the `id` should not. (If you omit it, the site will auto-generate one from the name, but setting it explicitly is strongly preferred.)
-5. Include the `location` field: `"location": {"country": "Australia", "state": "NSW"}` — use just `country` if the evidence applies nationally, or include `state` if it is region-specific
-6. Place any images in the `images/` folder with descriptive filenames
-7. Reference images in the entry as `"images/your-filename.jpg"`
-8. *(Optional)* Add a `keywords` array of search terms that aren't already in the entry text (see [Search keywords](#search-keywords-optional))
-9. Commit and push
+To share a practical observation, a question, or regional feedback on a specific entry — without proposing a formal change — use the **"Add a comment"** button at the bottom of the entry, or the <a href="https://docs.google.com/forms/d/e/1FAIpQLScAywdw3JvZLIvUXrrGGxKNk60BZGkV3s5Mtx_QsEsZkI0WGw/viewform" target="_blank">comment form</a> directly. Approved comments are shown beneath the entry, anonymously by default.
+
+All submissions — new entries, edits, and comments — are reviewed before being incorporated into the framework to ensure quality, consistency, and adherence to the anonymity standards described above. Nothing submitted through a form appears on the site automatically.
+
+### Reviewing and publishing submissions (maintainers)
+
+Form responses never go live on their own — nothing user-submitted is published until a maintainer has reviewed and de-identified it. This is handled by the **review console** (`review.html`), a self-contained tool that runs entirely in your browser (nothing is uploaded). It turns the raw form responses into properly structured entries, edits, and comments, lets you check and clean each one, and exports an updated `data.json`.
+
+1. In Google Forms, open each form's **Responses** tab and download the responses as CSV (**⋮ → Download responses (.csv)**). You may have up to three CSVs — new entries, edits, and comments.
+2. Open `review.html` in your browser (you can just double-click it — it works offline and uploads nothing).
+3. Load the current `data.json`, then drag in the response CSV(s) — one, two, or all three, in any order. The console detects each form type automatically from the column headers and skips any response you've already processed. A **Loaded files** list shows what's in, and you can unload any file with its **×**.
+4. Work through each item:
+   - **New entries** arrive pre-filled and structured. Pick the dimension (if the submitter chose "Not sure"), confirm the auto-generated stable `id` (it warns if the id already exists), fill the `range` for each threshold band, add search keywords, and attach any de-identified images. A live preview beside each field shows exactly how it will look on the site.
+   - **Edits** show the proposed change next to the live entry, so you apply it in place.
+   - **Comments** show the parsed comment to approve, tidy, or skip; the displayed name follows the submitter's choice (or "Anonymous").
+5. **De-identify as you go** — remove any project, company, client, or designer names, site addresses, or title blocks from text and images.
+6. Accept or reject each item, then click **Download updated data.json**.
+7. Add any new image files to the `images/` folder, then commit and push the updated `data.json` (and images).
+
+Formatting is built in so you never need to write HTML: type normally, press Enter for line breaks, and use the **B** / **I** buttons or **Ctrl/⌘+B** / **Ctrl/⌘+I** to bold or italicise. The console also records which responses it has handled (via the hidden `_processed` key in `data.json`), so re-loading the same CSV later won't import anything twice.
+
+### Editing data.json directly
+
+For changes the review console doesn't cover — adding cross-references between entries, bulk edits, or fixing a small typo — you can still edit `data.json` by hand. Each entry is a JSON object inside its dimension's `items` array. A few rules to keep in mind:
+
+- **Stable `id`** — every entry has a permanent `id`: a lowercase, hyphenated slug derived from the name (e.g. `"id": "drip-grooves-on-exposed-soffit-edges"`). This is the entry's permanent address — it appears in the entry's URL (`#dimId/id`) and is how other entries cross-reference it. **Once an entry is live, never change its `id`**, as doing so breaks shared links, bookmarks, and cross-references. The display `name` can change freely; the `id` should not.
+- **`location`** — `"location": {"country": "Australia", "state": "NSW"}`; use just `country` if the evidence applies nationally, or include `state` if it is region-specific.
+- **Images** — place files in the `images/` folder with descriptive filenames and reference them as `"images/your-filename.jpg"`. Keep filenames unique (the review console warns you if a name is already in use).
+- Leave the `_processed` key alone — it belongs to the review console.
 
 ### Related entries (cross-references)
 
-An entry can point to others that a designer should consider alongside it. Add a `relatedEntries` array to the entry's `data` object:
+Cross-references are added by editing `data.json` directly — the review console doesn't manage them. An entry can point to others that a designer should consider alongside it. Add a `relatedEntries` array to the entry's `data` object:
 
 ```json
 "relatedEntries": [
@@ -150,7 +172,7 @@ An entry can point to others that a designer should consider alongside it. Add a
 
 ### Search keywords (optional)
 
-Search already works automatically on the text written in an entry, so most entries need nothing extra. The optional `keywords` field is a top-up: a place to add words a searcher might type that the entry doesn't already contain.
+Search already works automatically on the text written in an entry, so most entries need nothing extra. The optional `keywords` field is a top-up: a place to add words a searcher might type that the entry doesn't already contain. You set these in the review console's **Search keywords** field when publishing an entry (or by hand in `data.json`); the guidance below applies either way.
 
 Add a keyword only if **both** of these are true:
 
