@@ -1979,8 +1979,8 @@
           "text": "Thresholds reflect typical conditions and conventional practice. Your project may justify a different conclusion. The framework informs the decision; it does not make it for you."
         },
         {
-          "lead": "Consider the strength of the evidence.",
-          "text": "Entries are informed by different combinations of literature, industry input, project outcomes and site experience. Some entries are supported by multiple sources, while others rely on a narrower evidence base. Read the Evidence Basis and consider how the thresholds were derived before deciding how much confidence to place in the guidance. The entry may still capture useful construction knowledge, but the strength of the evidence should affect how heavily you rely on it."
+          "lead": "Consider the evidence support.",
+          "text": "Each entry has an <strong>Evidence support</strong> rating: High, Medium or Low. This rating describes how much supporting information sits behind the entry, not whether the issue is important or whether the recommendation must be followed. High-support entries are backed by a stronger mix of sources, examples or direct evidence. Low-support entries are still useful prompts, but they are more likely to benefit from further evidence, project examples, regional feedback or review."
         },
         {
           "lead": "Check applicability before acting on a rating.",
@@ -2046,7 +2046,7 @@
           "caption": "Practical options to consider if you land in Concern or Action required. A starting point for the decision, not a fixed instruction."
         }
       ],
-      "moreFields": "Entries may also include a <strong>Background</strong> (why the issue matters), an <strong>Evidence Basis</strong> (how the guidance was established, with references), and <strong>Examples</strong> and <strong>Supporting Images</strong> &mdash; real, de-identified drawings and site photographs showing the issue in practice. Some entries also link to <strong>Related Entries</strong> &mdash; other entries worth considering alongside this one."
+      "moreFields": "Entries may also include a <strong>Background</strong> (why the issue matters), an <strong>Evidence Basis</strong> (how the guidance was established, with references), and <strong>Evidence Support</strong> (a Low, Medium or High indicator showing how much supporting information sits behind the entry). Entries may also include <strong>Examples</strong> and <strong>Supporting Images</strong> &mdash; real, de-identified drawings and site photographs showing the issue in practice. Some entries also link to <strong>Related Entries</strong> &mdash; other entries worth considering alongside this one."
     },
     "trace": {
       "title": "How an entry works: condition → band → response",
@@ -2116,7 +2116,7 @@
         },
         {
           "q": "Do all entries have the same level of evidence behind them?",
-          "a": "No. Entries are informed by different combinations of literature, supplier information, project outcomes, industry input and site experience. Some entries are supported by several evidence sources, while others may rely on a narrower evidence base. Read the Evidence Basis section to understand how the thresholds were derived and how much confidence to place in the guidance."
+          "a": "No. Entries are informed by different combinations of literature, supplier information, project outcomes, industry input and site experience. The <strong>Evidence support</strong> rating gives a quick indication of how much supporting information sits behind an entry: High, Medium or Low.<br><br>This rating does not say whether the constructability issue is important, and it does not replace engineering judgement. It simply shows how mature the evidence base is. A low-support entry may still be a useful design prompt, but it is a stronger candidate for further review, added examples, regional feedback or stronger references. Inside each entry, read the <strong>Evidence Basis</strong> and <strong>Evidence Support</strong> note to understand how the guidance was derived."
         },
         {
           "q": "Does the framework help with constructability or buildability?",
