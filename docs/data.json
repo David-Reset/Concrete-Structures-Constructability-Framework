@@ -533,7 +533,7 @@
         {
           "id": "structural-steel-vs-concrete-for-isolated-vertical-members",
           "name": "Structural steel vs concrete for isolated vertical members",
-          "available": true,
+          "available": false,
           "data": {
             "question": "Where a small number of isolated vertical members (columns, posts or piers) would otherwise be cast in reinforced concrete, should a structural steel member be used instead to delete a separate form&ndash;fix&ndash;pour&ndash;cure&ndash;strike cycle and its fixed overhead?",
             "parameter": "Whether an isolated, low-repetition vertical concrete member justifies its own pour cycle, or whether a steel member erected dry would remove that cycle &mdash; judged against the member's repetition, the material of the surrounding structure, and the connection, fire, durability, finish and cost requirements of a steel alternative.",
