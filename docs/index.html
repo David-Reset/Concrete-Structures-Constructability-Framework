@@ -227,6 +227,8 @@
   .search-result-main{flex:1;min-width:0;margin-right:12px}
   .search-result-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .search-snippet{font-size:12.5px;color:var(--text-muted);line-height:1.6;margin-top:7px}
+  .search-result-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}
+  .search-result-meta .item-meta{margin-top:0}
   .search-hl{color:var(--text);background:var(--accent-glow);border-radius:3px;padding:0 2px;font-weight:600}
   .search-empty{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-top:18px;text-align:center}
   .search-empty-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px}
@@ -505,7 +507,7 @@ function runSearch(q){
       if(best>0){score+=best;coverage++;}
     });
     if(coverage>0)matched.push({dimId:dim.id,id:it.id,name:it.name,dimName:dim.name,dimIcon:dim.icon,
-      location:it.data.location||null,coverage,score,snippet:buildSnippet(fields,flat)});
+      location:it.data.location||null,evidenceSupport:it.data.evidenceSupport||null,dateReviewed:it.data.dateReviewed||it.data.dateAdded||'',coverage,score,snippet:buildSnippet(fields,flat)});
   });
   if(!matched.length)return [];
   matched.sort((a,b)=>b.score-a.score||b.coverage-a.coverage);
@@ -568,7 +570,7 @@ function renderSearchResults(){
   if(!res.length){
     return `<div class="search-empty"><div class="search-empty-title">No entries match “${escAttr(q)}”${searchRegion?' in this region':''}.</div><div class="search-empty-sub">Try fewer or different words${searchRegion?', widen the region,':''} or browse the dimensions below. If the framework doesn't cover this yet, you can <span class="search-empty-link" onclick="goSuggest()">suggest a new entry</span>.</div></div>`;
   }
-  const rows=res.map(r=>`<div class="item-row available search-result" onclick="goEntry('${r.dimId}','${r.id}')"><div class="search-result-main"><div class="search-result-top"><span class="item-name">${escHtml(r.name)}</span><span class="related-dim"><span class="ico">${r.dimIcon}</span>${escHtml(r.dimName)}</span>${r.location?locTag(r.location):''}</div>${r.snippet?`<div class="search-snippet">${r.snippet}</div>`:''}</div><div class="item-arrow">→</div></div>`).join('');
+  const rows=res.map(r=>{const support=r.evidenceSupport?evidenceSupportPill({evidenceSupport:r.evidenceSupport}):'';const reviewed=r.dateReviewed?`<div class="item-meta">Reviewed ${r.dateReviewed}</div>`:'';const extra=(support||reviewed)?`<div class="search-result-meta">${support}${reviewed}</div>`:'';return `<div class="item-row available search-result" onclick="goEntry('${r.dimId}','${r.id}')"><div class="search-result-main"><div class="search-result-top"><span class="item-name">${escHtml(r.name)}</span><span class="related-dim"><span class="ico">${r.dimIcon}</span>${escHtml(r.dimName)}</span>${r.location?locTag(r.location):''}</div>${r.snippet?`<div class="search-snippet">${r.snippet}</div>`:''}${extra}</div><div class="item-arrow">→</div></div>`}).join('');
   return `<div class="search-count">${res.length} ${res.length===1?'entry':'entries'} found</div><div class="item-list search-list">${rows}</div>`;
 }
 function onSearchInput(v){
