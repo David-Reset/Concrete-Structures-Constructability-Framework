@@ -236,6 +236,24 @@
   .search-empty-link{color:var(--accent);cursor:pointer;font-weight:600}
   .search-empty-link:hover{text-decoration:underline}
 
+
+  /* ===== EVIDENCE SUPPORT INDEX ===== */
+  .evidence-filter{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:22px 0 18px}
+  .evidence-filter-btn{padding:8px 12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text-muted);font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;transition:all .2s}
+  .evidence-filter-btn:hover{border-color:var(--accent);color:var(--text);background:var(--surface-light)}
+  .evidence-filter-btn.active{border-color:var(--accent);background:var(--accent-glow);color:var(--text)}
+  .evidence-summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0 8px}
+  .evidence-summary-card{padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s}
+  .evidence-summary-card:hover{border-color:var(--accent);background:var(--surface-light)}
+  .evidence-summary-card.active{border-color:var(--accent);background:var(--accent-glow)}
+  .evidence-summary-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:6px}
+  .evidence-summary-count{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:800;color:var(--text)}
+  .evidence-summary-note{font-size:12px;color:var(--text-muted);line-height:1.45;margin-top:4px}
+  .evidence-index-result{align-items:flex-start}
+  .evidence-index-main{flex:1;min-width:0;margin-right:12px}
+  .evidence-index-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .evidence-index-meta{font-size:12px;color:var(--text-muted);line-height:1.6;margin-top:7px}
+
   /* ===== GUIDE CARD (home grid) ===== */
   .guide-card{position:relative;background:linear-gradient(135deg,rgba(59,130,246,0.13),rgba(99,102,241,0.06));border-color:rgba(59,130,246,0.45)}
   .guide-card:hover{border-color:var(--accent);background:linear-gradient(135deg,rgba(59,130,246,0.2),rgba(99,102,241,0.1))}
@@ -339,7 +357,7 @@
     .examples-grid.imgs-1 .example-card,.supporting-images-grid.imgs-1 .supporting-image-card{flex-direction:column}
     .examples-grid.imgs-1 .example-card img,.supporting-images-grid.imgs-1 .supporting-image-card img{width:100%;max-width:100%}
     .examples-grid.imgs-1 .example-caption,.supporting-images-grid.imgs-1 .supporting-image-title{border-left:none;border-top:1px solid var(--border)}
-    .legend-grid{grid-template-columns:1fr} .shape-grid{grid-template-columns:1fr} .dimension-guide-grid{grid-template-columns:1fr} .whatis-grid{grid-template-columns:1fr}
+    .legend-grid{grid-template-columns:1fr} .shape-grid{grid-template-columns:1fr} .dimension-guide-grid{grid-template-columns:1fr} .whatis-grid{grid-template-columns:1fr} .evidence-summary-grid{grid-template-columns:1fr 1fr}
     .anatomy-block{grid-template-columns:1fr;gap:12px} .trace-arrow{transform:rotate(90deg);width:100%;justify-content:center}
   }
 </style>
@@ -350,7 +368,7 @@
 // ===== STATE =====
 let dimensions = [];
 let guide = null;
-let state = { view:'home', dimId:null, itemId:null, locationFilter:null };
+let state = { view:'home', dimId:null, itemId:null, locationFilter:null, evidenceFilter:'all' };
 let searchQuery='';
 let searchRegion=null;
 
@@ -715,7 +733,7 @@ async function loadData(){
 // ===== RENDER =====
 function render(){
   const app=document.getElementById('app');
-  app.innerHTML=renderHeader()+(state.view==='guide'?renderBreadcrumb()+renderGuideView():state.view==='entry'?renderBreadcrumb()+renderEntryDetail():state.view==='dimension'?renderBreadcrumb()+renderDimensionView():renderHomeView());
+  app.innerHTML=renderHeader()+(state.view==='guide'?renderBreadcrumb()+renderGuideView():state.view==='evidence'?renderBreadcrumb()+renderEvidenceSupportView():state.view==='entry'?renderBreadcrumb()+renderEntryDetail():state.view==='dimension'?renderBreadcrumb()+renderDimensionView():renderHomeView());
 }
 
 function renderHeader(){
@@ -725,7 +743,8 @@ function renderHeader(){
 function renderBreadcrumb(){
   const dim=getDim(),item=getItem();
   let h='<div class="breadcrumb"><span class="breadcrumb-link" onclick="goHome()">Framework</span>';
-  if(state.view==='guide'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">'+(guide?guide.title:'Guide')+'</span></div>';}
+  if(state.view==='guide'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">'+(guide?guide.title:'Guide')+'</span></div>'; }
+  if(state.view==='evidence'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Evidence support index</span></div>';}
   if(dim){
     h+='<span class="breadcrumb-sep">›</span>';
     if(item){h+=`<span class="breadcrumb-link" onclick="goDimension('${dim.id}')">${dim.name}</span><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">${item.name}</span>`}
@@ -737,13 +756,61 @@ function renderBreadcrumb(){
 function renderHomeView(){
   const cards=dimensions.map(d=>`<div class="dim-card" onclick="goDimension('${d.id}')"><div class="dim-icon">${d.icon}</div><div class="dim-name">${d.name}</div><div class="dim-desc">${d.description}</div><div class="dim-count">${d.items.length} items →</div></div>`).join('');
   const guideCard=guide?`<div class="dim-card guide-card" onclick="goGuide()"><div class="guide-pill">Start here</div><div class="dim-icon">${guide.icon}</div><div class="dim-name">${guide.title}</div><div class="dim-desc">${guide.tagline}</div><div class="dim-count">Open guide →</div></div>`:'';
+  const evCounts=evidenceSupportCounts();
+  const evidenceCard=`<div class="dim-card" onclick="goEvidenceSupport('all')"><div class="dim-icon">📊</div><div class="dim-name">Evidence support index</div><div class="dim-desc">View entries across all dimensions by evidence support level and find entries that could be strengthened.</div><div class="dim-count">${evCounts.all} entries →</div></div>`;
   const has=searchQuery.trim().length>0;
   const searchIcon='<svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z"/></svg>';
   const searchHero=`<div class="search-hero">
     <div class="search-bar">${searchIcon}<input id="search-input" class="search-input" type="text" autocomplete="off" spellcheck="false" placeholder="Describe your design problem — e.g. “wall close to a boundary”, “stirrup size”, “curing”" value="${escAttr(searchQuery)}" oninput="onSearchInput(this.value)"><div id="search-clear" class="search-clear" style="display:${searchQuery?'flex':'none'}" onclick="clearSearch()">✕</div></div>
     <div id="search-region-wrap" class="search-region-wrap" style="display:${has?'flex':'none'}"><span class="search-region-label">Narrow to region</span><select id="search-region" class="search-region" onchange="onSearchRegion(this.value)">${searchRegionOptions()}</select></div>
   </div>`;
-  return `<div class="content animate-in"><div style="margin-bottom:18px"><h1 class="section-title">Find constructability guidance</h1><p class="section-desc">Describe your design problem to search across all five dimensions — or browse the dimensions below.</p></div>${searchHero}<div id="search-results">${renderSearchResults()}</div><div id="dim-grid-wrap" style="display:${has?'none':''}"><div style="margin:28px 0 8px"><div class="label">Browse by dimension</div></div><div class="dim-grid">${guideCard}${cards}</div><div class="suggest-banner" onclick="goSuggest()"><div class="suggest-banner-text"><div class="suggest-banner-title">Don't see your issue?</div><div class="suggest-banner-sub">Suggest a new constructability entry — every submission is reviewed and structured by the framework team.</div></div><div class="suggest-banner-btn">Suggest an entry →</div></div></div></div>`;
+  return `<div class="content animate-in"><div style="margin-bottom:18px"><h1 class="section-title">Find constructability guidance</h1><p class="section-desc">Describe your design problem to search across all five dimensions — or browse the dimensions below.</p></div>${searchHero}<div id="search-results">${renderSearchResults()}</div><div id="dim-grid-wrap" style="display:${has?'none':''}"><div style="margin:28px 0 8px"><div class="label">Browse by dimension</div></div><div class="dim-grid">${guideCard}${evidenceCard}${cards}</div><div class="suggest-banner" onclick="goSuggest()"><div class="suggest-banner-text"><div class="suggest-banner-title">Don't see your issue?</div><div class="suggest-banner-sub">Suggest a new constructability entry — every submission is reviewed and structured by the framework team.</div></div><div class="suggest-banner-btn">Suggest an entry →</div></div></div></div>`;
+}
+
+
+// ===== EVIDENCE SUPPORT INDEX =====
+function allAvailableEntries(){
+  const out=[];
+  dimensions.forEach(dim=>dim.items.forEach(it=>{
+    if(it.available&&it.data){out.push({dim,item:it,data:it.data});}
+  }));
+  return out;
+}
+function evidenceSupportCounts(){
+  const counts={all:0,high:0,medium:0,low:0};
+  allAvailableEntries().forEach(e=>{
+    const level=evidenceSupportLevel(e.data);
+    counts.all++;
+    if(counts[level]!==undefined)counts[level]++;
+  });
+  return counts;
+}
+function setEvidenceFilter(level){state.evidenceFilter=level||'all';render();}
+function renderEvidenceSupportView(){
+  const counts=evidenceSupportCounts();
+  const active=state.evidenceFilter||'all';
+  const labels={all:'All',high:'High',medium:'Medium',low:'Low'};
+  const notes={
+    all:'Every live entry',
+    high:'Most mature support',
+    medium:'Useful, but can strengthen',
+    low:'Highest priority to strengthen'
+  };
+  const order=['all','high','medium','low'];
+  const summary=order.map(level=>`<div class="evidence-summary-card ${active===level?'active':''}" onclick="setEvidenceFilter('${level}')"><div class="evidence-summary-label">${labels[level]}</div><div class="evidence-summary-count">${counts[level]}</div><div class="evidence-summary-note">${notes[level]}</div></div>`).join('');
+  const buttons=order.map(level=>`<button class="evidence-filter-btn ${active===level?'active':''}" onclick="setEvidenceFilter('${level}')">${labels[level]} (${counts[level]})</button>`).join('');
+  const filtered=allAvailableEntries().filter(e=>active==='all'||evidenceSupportLevel(e.data)===active);
+  const rows=filtered.map(e=>{
+    const dim=e.dim,it=e.item,d=e.data;
+    const reviewed=d.dateReviewed||d.dateAdded||'';
+    const loc=d.location?locTag(d.location):'';
+    const support=evidenceSupportPill(d);
+    const right=`<div style="text-align:right;flex-shrink:0"><div class="item-arrow">→</div>${reviewed?`<div class="item-meta">Reviewed ${reviewed}</div>`:''}</div>`;
+    return `<div class="item-row available evidence-index-result" onclick="goEntry('${dim.id}','${it.id}')"><div class="evidence-index-main"><div class="evidence-index-top"><span class="item-name">${escHtml(it.name)}</span><span class="related-dim"><span class="ico">${dim.icon}</span>${escHtml(dim.name)}</span>${loc}</div><div class="evidence-index-meta">Parameter: ${d.parameter}</div><div class="search-result-meta">${support}</div></div>${right}</div>`;
+  }).join('');
+  const shown=filtered.length;
+  const suffix=active==='all'?'all evidence support levels':`${labels[active]} evidence support`;
+  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">📊</span><h1 class="dim-header-title">Evidence support index</h1></div><p class="section-desc">View live entries across all dimensions by Evidence Support level. This is mainly a transparency and maintenance view: low and medium support entries are the easiest places to add stronger references, examples or regional feedback.</p><div class="evidence-summary-grid">${summary}</div><div class="evidence-filter">${buttons}</div><div class="label">${shown} ${shown===1?'entry':'entries'} — ${suffix}</div><div class="item-list">${rows}</div></div>`;
 }
 
 // ===== GUIDE (how-to-use) =====
@@ -999,6 +1066,7 @@ function openLightbox(src){const lb=document.createElement('div');lb.className='
 // ===== HASH-BASED NAVIGATION =====
 function goHome(){window.location.hash=''}
 function goGuide(){window.location.hash='guide'}
+function goEvidenceSupport(level){state.evidenceFilter=level||'all';window.location.hash='evidence-support';if(state.view==='evidence')render();}
 function goDimension(id){state.locationFilter=null;window.location.hash=id}
 function goEntry(dimId,id){window.location.hash=dimId+'/'+id}
 function setLocationFilter(val){
@@ -1012,6 +1080,7 @@ function parseHash(){
   const hash=window.location.hash.replace(/^#\/?/,'');
   if(!hash){state.view='home';state.dimId=null;state.itemId=null;state.locationFilter=null;}
   else if(hash==='guide'){state.view='guide';state.dimId=null;state.itemId=null;state.locationFilter=null;}
+  else if(hash==='evidence-support'){state.view='evidence';state.dimId=null;state.itemId=null;state.locationFilter=null;if(!state.evidenceFilter)state.evidenceFilter='all';}
   else if(hash.includes('/')){
     const[dimId,seg]=hash.split('/');
     const dim=dimensions.find(d=>d.id===dimId);
