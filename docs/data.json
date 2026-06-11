@@ -1899,10 +1899,10 @@
     "title": "How to use this framework",
     "icon": "🧭",
     "tagline": "New here? Start with this. What the framework is, how to read an entry, and how the ratings are meant to be used.",
-    "intro": "Use this framework in two ways. First, as a searchable library of constructability entries: browse or search for a design decision and read the relevant guidance, thresholds, examples and evidence. Second, as a project review tool: save relevant entries to a review list and export them as a project-specific constructability checklist. Use the framework to inform your own engineering judgement &mdash; not as fixed answers, but as prompts for thinking through how your design will actually be built.",
+    "intro": "Use this framework in two ways. First, as a searchable library of constructability entries: browse or search for a design decision and read the relevant guidance, thresholds, examples and evidence. Second, as a project checklist tool: save relevant entries to a project checklist and export them as a project-specific constructability checklist. Use the framework to inform your own engineering judgement &mdash; not as fixed answers, but as prompts for thinking through how your design will actually be built.",
     "whatIs": {
       "title": "What is this framework?",
-      "intro": "Structural designers operate under two parallel bodies of obligation: <em>compliance</em> and <em>professional duty</em>. This framework helps with <strong><em>professional duty</em></strong>. It does not help you check codes, interpret Australian Standards, or determine whether a design is structurally adequate. It helps designers think about whether what they have drawn can be built safely and practically, and it now supports both single-entry review and project-specific review lists.",
+      "intro": "Structural designers operate under two parallel bodies of obligation: <em>compliance</em> and <em>professional duty</em>. This framework helps with <strong><em>professional duty</em></strong>. It does not help you check codes, interpret Australian Standards, or determine whether a design is structurally adequate. It helps designers think about whether what they have drawn can be built safely and practically, and it supports both single-entry use and project-specific constructability checklists.",
       "columns": [
         {
           "kind": "compliance",
@@ -1982,7 +1982,7 @@
         },
         {
           "lead": "Consider the evidence support.",
-          "text": "Each entry has an <strong>Evidence support</strong> rating: High, Medium or Low. This rating describes how much supporting information sits behind the entry, not whether the issue is important or whether the recommendation must be followed. High-support entries are backed by a stronger mix of sources, examples or direct evidence. Low-support entries are still useful prompts, but they are more likely to benefit from further evidence, project examples, regional feedback or review. You can also open the <strong>Evidence Support Index</strong> from the home page to see which entries are strongly supported and which are still early-stage prompts."
+          "text": "Each entry has an <strong>Evidence support</strong> rating: High, Medium or Low. This rating describes how much supporting information sits behind the entry, not whether the issue is important or whether the recommendation must be followed. High-support entries are backed by a stronger mix of sources, examples or direct evidence. Low-support entries are still useful prompts, but they are more likely to benefit from further evidence, project examples, regional feedback or review."
         },
         {
           "lead": "Check applicability before acting on a rating.",
@@ -2048,7 +2048,7 @@
           "caption": "Practical options to consider if you land in Concern or Action required. A starting point for the decision, not a fixed instruction."
         }
       ],
-      "moreFields": "Entries may also include a <strong>Background</strong> (why the issue matters), an <strong>Evidence Basis</strong> (how the guidance was established, with references), and <strong>Evidence Support</strong> (a Low, Medium or High indicator showing how much supporting information sits behind the entry). Entries may also include <strong>Examples</strong> and <strong>Supporting Images</strong> &mdash; real, de-identified drawings and site photographs showing the issue in practice. Some entries also link to <strong>Related Entries</strong> &mdash; other entries worth considering alongside this one. At the bottom of each live entry you can add the entry to a <strong>Review List</strong>, suggest a change, or add a reviewed comment."
+      "moreFields": "Entries may also include a <strong>Background</strong> (why the issue matters), an <strong>Evidence Basis</strong> (how the guidance was established, with references), and <strong>Evidence Support</strong> (a Low, Medium or High indicator showing how much supporting information sits behind the entry). Entries may also include <strong>Examples</strong> and <strong>Supporting Images</strong> &mdash; real, de-identified drawings and site photographs showing the issue in practice. Some entries also link to <strong>Related Entries</strong> &mdash; other entries worth considering alongside this one. At the bottom of each live entry you can add the entry to a <strong>Project checklist</strong>, suggest a change, or add a reviewed comment."
     },
     "trace": {
       "title": "How an entry works: condition → band → response",
@@ -2113,7 +2113,7 @@
           "a": "No. An <strong>Action required</strong> rating means the design decision should be deliberately reviewed before construction. It does not automatically mean the detail is prohibited or cannot proceed. In some cases, the flagged detail may still be the most practical solution when considered against the full project context."
         },
         {
-          "q": "Does this help me understand design codes or Australian Standards?",
+          "q": "Does this help me understand design codes or Australian ?",
           "a": "No. This framework is not a code guide or compliance tool. It does not explain AS 3600 or determine whether a design satisfies Australian Standards. It is design guidance for the professional-duty side of engineering: helping designers recognise how design decisions may affect construction safety, practicality, logistics, methods and communication."
         },
         {
@@ -2133,84 +2133,18 @@
           "a": "BIM and AI tools can support coordination, modelling, checking, optimisation and faster design production. This framework works earlier: it helps the engineer question the design decision before it becomes locked in. It asks whether the chosen detail, method, material or assumption is appropriate for the way the structure will actually be built. The focus is the decision itself, not only the review of a developing model."
         },
         {
-          "q": "What is the review list for?",
-          "a": "The review list lets you collect framework entries that are relevant to a particular project. Instead of reading entries one by one and losing track of them, you can save the checks you want to apply and export them as a project-specific constructability review checklist."
-        },
-        {
-          "q": "Is my review list public?",
-          "a": "No. The review list is stored locally in your browser. It does not require login and is not published to the framework. If you clear your browser data or use a different device, the list may not be there."
-        },
-        {
-          "q": "In the review list, what is the project purpose field for?",
-          "a": "The project purpose field appears in the exported PDF/checklist and can be edited to suit the project or audience. It explains why the selected entries are being reviewed and helps frame the export as a constructability review aid rather than a compliance certificate or formal sign-off."
-        },
-        {
-          "q": "What is the difference between a comment and a suggested change?",
-          "a": "A <strong>comment</strong> is a practical observation, question or regional note that may be shown beneath an entry. A <strong>suggested change</strong> is a request to alter the entry itself &mdash; for example by correcting wording, changing a threshold, adding evidence, or improving a recommended action."
-        },
-        {
-          "q": "Do comments appear automatically?",
-          "a": "No. Comments are reviewed and de-identified before they appear. This keeps the framework useful and protects contributors, projects, clients and designers from being identified through submitted examples or observations."
-        },
-        {
           "q": "Can I suggest a new entry or a change to an existing one?",
-          "a": "Yes. You can suggest a new entry where the framework does not yet cover an issue, suggest a change where an existing entry needs correction or improvement, or add a comment where you want to share a practical observation or regional note without changing the entry itself. Suggestions should be de-identified and should include enough context to explain the design issue, the condition being checked, the recommended response, and any supporting evidence or example."
+          "a": "Yes. The framework is designed to grow through new entries and edits to existing guidance. Suggestions should describe the constructability issue, the design condition that triggers it, the recommended response, and any supporting evidence or example. You can suggest a <a href=\"https://forms.gle/5ppQRvJuzWaUkdg89\" target=\"_blank\">new entry</a> or suggest a <a href=\"https://forms.gle/xJ5tpUf7zozpkbcg6\" target=\"_blank\">change to an existing entry</a>."
         },
         {
-          "q": "Are suggested entries, edits or comments added automatically?",
-          "a": "No. Suggested entries, suggested changes and comments are reviewed before they are added to the framework. Submissions need to be relevant to constructability, de-identified, and clear enough to understand the design issue or feedback. Nothing submitted through a form appears on the site automatically."
+          "q": "Are suggested entries or edits added automatically?",
+          "a": "No. Suggested entries and edits are reviewed before they are added to the framework. Submissions need to be relevant to constructability, de-identified, and supported by enough information to explain the design issue, the condition being checked, the recommended response and the evidence behind it."
         },
         {
           "q": "Why show real drawings or site photographs? Isn't that sensitive?",
           "a": "Real examples make constructability issues easier to understand, but they are included as learning examples, not criticism of any designer, contractor, project or client. Project names, company names, site locations and identifying information should be removed before examples are included in the framework."
         }
       ]
-    },
-    "projectReview": {
-      "title": "Using the framework on a project",
-      "intro": "The framework can be used as more than a reference library. When you are reviewing a real project, you can collect the entries that matter to that job into a private review list and export them as a project-specific checklist.",
-      "steps": [
-        {
-          "label": "Find relevant entries",
-          "value": "Search or browse",
-          "sub": "Use the search box, dimension pages and region filter to find entries that match the design decisions on your project."
-        },
-        {
-          "label": "Build a project list",
-          "value": "Add to review list",
-          "sub": "Open a relevant entry and add it to the review list. The list stays in your browser and does not require login."
-        },
-        {
-          "label": "Describe the review",
-          "value": "Name and purpose",
-          "sub": "Give the list a project name and edit the project purpose field so the exported checklist explains what the review is being used for."
-        },
-        {
-          "label": "Use the output",
-          "value": "Copy or export",
-          "sub": "Export the selected entries as a checklist or PDF. The output is a constructability review aid, not a compliance certificate or formal sign-off."
-        }
-      ],
-      "note": "The review list is intended to turn selected framework entries into a project-specific constructability review checklist. It is local to the browser, temporary by nature, and should be treated as a prompt for design review rather than proof that a project complies with any standard."
-    },
-    "contributing": {
-      "title": "Contributing feedback",
-      "intro": "The framework is designed to improve over time. Use the contribution pathway that matches what you are trying to do.",
-      "items": [
-        {
-          "label": "Suggest a new entry",
-          "text": "Use this when the framework does not yet cover the constructability issue. A useful suggestion describes the design decision, the project condition that triggers the issue, and any practical example or evidence behind it."
-        },
-        {
-          "label": "Suggest a change",
-          "text": "Use this when an existing entry should be corrected, clarified or strengthened. This can include better evidence, adjusted thresholds, regional feedback, additional examples, or a clearer recommended action."
-        },
-        {
-          "label": "Add a comment",
-          "text": "Use this for a practical observation, question or regional note that should sit beneath an entry without changing the entry itself."
-        }
-      ],
-      "note": "Suggested entries, suggested changes and comments do not appear automatically. They are reviewed and de-identified before being added to the framework."
     }
   },
   "_processed": []
