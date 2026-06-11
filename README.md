@@ -35,6 +35,7 @@ Every entry in the framework follows the same general display format:
 - **Applicability and Limitations** — defines where the entry applies, lists factors the designer should check before applying the guidance, and provides a closing note framing the rating as a review prompt rather than a prohibition *(optional)*
 - **Recommended Actions** — what to do if you're in the concern or action required zone, given as a numbered list of practical options. Each action can be a short instruction or a structured option with a title and longer description *(optional)*
 - **Evidence Basis** — how the guidance was established *(optional)*
+- **Evidence Support** — a Low, Medium, or High indicator showing how much supporting information sits behind the entry. This does not rate whether the constructability issue is important or whether the guidance is mandatory; it indicates how mature and well-supported the entry currently is *(optional)*
 - **Examples** — real design drawings tagged as Concern, Acceptable, or Recommended *(optional)*
 - **Supporting Images** — images, excerpts, diagrams, or site photographs that support the evidence or show what the issue looks like in practice *(optional)*
 - **Related Entries** — links to other entries worth considering alongside this one (e.g. a chamfer detail and a drip groove on the same formed edge). Each link can carry a short note explaining why the other entry is relevant *(optional)*
@@ -42,6 +43,18 @@ Every entry in the framework follows the same general display format:
 - **Search keywords** — extra words a searcher might type that aren't already written in the entry (synonyms, trade jargon, abbreviations), used to help the entry surface in search *(optional)*
 
 Entries are date-stamped and designed to be updated as construction technology and practice evolve.
+
+### Evidence support
+
+Entries may include an **Evidence Support** rating: Low, Medium, or High. This rating describes the amount and maturity of supporting information behind the entry. It does not judge whether the constructability issue is important, and it does not make the design guidance mandatory.
+
+- **High** — supported by multiple relevant sources and/or strong practical examples. The mechanism and thresholds are reasonably well justified.
+- **Medium** — supported by some literature, guidance, industry consultation, or project examples, but part of the guidance still relies on judgement or limited evidence.
+- **Low** — early-stage support, usually based mainly on practical observation, a single example, or reasoning. The entry may still be useful as a design prompt, but would benefit from further evidence, examples, or regional review.
+
+On dimension pages, Evidence Support is shown only as a compact rating beneath the design parameter so users can quickly see which entries are more developed and which may benefit from strengthening. Inside an entry, the same rating is shown near the bottom of the page with a short explanation of why that level was assigned.
+
+Evidence Support is intended to make the framework more transparent. A low-support entry is not automatically wrong, and a high-support entry is not a substitute for engineering judgement.
 
 ### Regional applicability
 
@@ -148,6 +161,7 @@ For changes the review console doesn't cover — adding cross-references between
 
 - **Stable `id`** — every entry has a permanent `id`: a lowercase, hyphenated slug derived from the name (e.g. `"id": "drip-grooves-on-exposed-soffit-edges"`). This is the entry's permanent address — it appears in the entry's URL (`#dimId/id`) and is how other entries cross-reference it. **Once an entry is live, never change its `id`**, as doing so breaks shared links, bookmarks, and cross-references. The display `name` can change freely; the `id` should not.
 - **`location`** — `"location": {"country": "Australia", "state": "NSW"}`; use just `country` if the evidence applies nationally, or include `state` if it is region-specific.
+- **`evidenceSupport`** — optional but recommended for live entries. Use `level` as `low`, `medium`, or `high`, with a short `summary` explaining the rating. Example: `"evidenceSupport": {"level": "medium", "summary": "Supported by workflow literature and practical programme logic, but thresholds would benefit from further project examples."}`.
 - **Images** — place files in the `images/` folder with descriptive filenames and reference them as `"images/your-filename.jpg"`. Keep filenames unique (the review console warns you if a name is already in use).
 - Leave the `_processed` key alone — it belongs to the review console.
 
