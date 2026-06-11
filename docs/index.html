@@ -1206,6 +1206,13 @@ function renderGuideView(){
     html+=`<div class="label" style="margin-top:36px">${g.trace.title}</div><p class="guide-sub">${g.trace.intro}</p><div class="trace-flow">${steps}</div>`;
   }
 
+  // Project review list workflow
+  if(g.projectReview){
+    const pr=g.projectReview;
+    const steps=(pr.steps||[]).map((s,i)=>`<div class="trace-step"><div class="trace-step-label">${s.label}</div><div class="trace-step-value">${s.value}</div><div class="trace-step-sub">${s.sub}</div></div>${i<(pr.steps||[]).length-1?'<div class="trace-arrow">→</div>':''}`).join('');
+    html+=`<div class="label" style="margin-top:36px">${pr.title}</div><p class="guide-sub">${pr.intro}</p><div class="trace-flow">${steps}</div>${pr.note?`<div class="guide-more">${pr.note}</div>`:''}`;
+  }
+
   // The parameter takes different shapes (numeric / categorical / qualitative)
   if(g.shapes){
     const cards=g.shapes.items.map(s=>{
@@ -1213,6 +1220,13 @@ function renderGuideView(){
       return `<div class="shape-card"><div class="shape-tag">${s.shape}</div><div class="shape-param">${sd?sd.parameter:''}</div><div class="shape-desc">${s.desc}</div><div class="threshold-list shape-thresholds">${sd?gThresholds(sd,true):''}</div>${found?`<div class="shape-link" onclick="goEntry('${found.dim.id}','${found.item.id}')">See full entry →</div>`:''}</div>`;
     }).join('');
     html+=`<div class="label" style="margin-top:36px">${g.shapes.title}</div><p class="guide-sub">${g.shapes.intro}</p><div class="shape-grid">${cards}</div>`;
+  }
+
+  // Contribution pathways
+  if(g.contributing){
+    const c=g.contributing;
+    const cards=(c.items||[]).map(it=>`<div class="dimension-guide-card"><div class="dimension-guide-label">${it.label}</div><div class="dimension-guide-text">${it.text}</div></div>`).join('');
+    html+=`<div class="label" style="margin-top:36px">${c.title}</div><p class="guide-sub">${c.intro}</p><div class="dimension-guide-grid">${cards}</div>${c.note?`<div class="guide-more">${c.note}</div>`:''}`;
   }
 
   // FAQ accordion
