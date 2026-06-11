@@ -403,119 +403,6 @@
           }
         },
         {
-          "id": "structural-steel-vs-concrete-for-isolated-vertical-members",
-          "name": "Structural steel vs concrete for isolated vertical members",
-          "available": false,
-          "data": {
-            "question": "Where a small number of isolated vertical members (columns, posts or piers) would otherwise be cast in reinforced concrete, should a structural steel member be used instead to delete a separate form&ndash;fix&ndash;pour&ndash;cure&ndash;strike cycle and its fixed overhead?",
-            "parameter": "Whether an isolated, low-repetition vertical concrete member justifies its own pour cycle, or whether a steel member erected dry would remove that cycle &mdash; judged against the member's repetition, the material of the surrounding structure, and the connection, fire, durability, finish and cost requirements of a steel alternative.",
-            "background": "Reinforced concrete is a linear wet-trade process: form, fix, pour, cure, strike. For a one-off or isolated vertical member &mdash; a single column, a few posts, an isolated pier &mdash; that whole cycle carries fixed overhead (a pour day, a pump or crane visit, joint preparation, an inspection) that is disproportionate to the work, because there is no repetition to absorb it. A structural steel member, erected dry, can delete the pour cycle altogether and is often installed faster and out of sequence with the concrete trades. A concrete-filled steel hollow section is one hybrid that keeps a concrete look or capacity while avoiding the wet forming cycle.<br><br>The decision is a genuine trade-off, not an automatic substitution. It turns on the member's repetition (repetitive columns may form and cycle efficiently in concrete), what the rest of the structure is built from (introducing a single steel element into an otherwise concrete frame brings its own coordination and trade-attendance cost), and the steel-specific requirements: connection design to adjacent concrete, fire rating or encasement, corrosion protection and finish, and relative material and erection cost.<br><br>This idea was previously folded into the pour-staging entry but is a distinct material-choice question, so it lives here. It is related to <em>Optional pour breaks to keep concrete trades flowing</em> (both are about removing or rescheduling pour cycles to protect the programme) and to <em>Casting suspended members on freshly placed columns and walls</em> (vertical members that cannot be cast monolithically with the slab they support).",
-            "thresholds": [],
-            "alternatives": [],
-            "applicability": {
-              "appliesWhere": "Isolated or low-repetition vertical concrete members where a structural steel alternative is structurally viable and where the concrete pour cycle for that member carries disproportionate fixed overhead. Not intended for repetitive columns that form and cycle efficiently in concrete, nor for cases where fire, durability or architectural requirements clearly favour concrete.",
-              "checks": [],
-              "note": "PLACEHOLDER &mdash; not yet live. Spun out of the pour-staging entry. To complete: define thresholds (likely a judged decision on repetition and surrounding-structure material), recommended actions, evidence (RC as a wet-trade cycle; hybrid / concrete-filled steel hollow sections avoiding wet trades), and any worked example or site photographs."
-            },
-            "evidence": "",
-            "dateAdded": "2026-06-09",
-            "dateReviewed": "2026-06-09",
-            "location": {
-              "country": "Australia",
-              "state": "NSW"
-            },
-            "supportingImages": []
-          }
-        },
-        {
-          "id": "casting-suspended-members-on-freshly-placed-columns-and-walls",
-          "name": "Casting suspended members on freshly placed columns and walls",
-          "available": false,
-          "draft": true,
-          "data": {
-            "question": "When a suspended slab or beam is supported by a column or wall, has the design allowed for the supporting member to be poured separately and stopped at the soffit — or does the detail imply a monolithic pour in which the slab is cast onto column or wall concrete that is still settling?",
-            "parameter": "Height of the continuous freshly placed vertical concrete beneath a suspended member — i.e. the depth of the column or wall lift that supports a slab or beam cast onto it (mm). Beams, bands and upturns that are part of the horizontal floor system are out of scope and are cast monolithically with the slab as normal.",
-            "background": "Fresh concrete bleeds and settles for the first few hours after placing, as the solids consolidate and water rises. In a tall vertical member this settlement accumulates over the height of the pour, and the top of the column or wall subsides noticeably while the concrete is still plastic.<br><br><strong>Why a monolithic column/wall-to-slab pour cracks.</strong> If a suspended slab or beam is cast continuously onto a column or wall in the same operation, the slab concrete at the junction begins to stiffen and span between its forms while the supporting member underneath is still settling. The subsiding support drags the partly stiffened slab concrete at the interface, and a settlement crack — or a void — forms at the column or wall head. That junction is the load-transfer point, so it is the worst possible place to build in a defect, and bracing does not prevent it: bracing holds the formwork, but the cracking comes from what the fresh concrete inside is doing, not from instability of the forms.<br><br><strong>The fix is a short delay, not days.</strong> The settlement being waited out is the plastic phase, which is essentially complete once the concrete is no longer plastic — on the order of 1 to 2 hours, not days. The practical solution is therefore to stop the column or wall at the slab/beam soffit, allow the vertical concrete to become non-plastic, then place the slab separately, with continuity reinforcement carried through the junction. Note that even when the two are poured the same day, this is still a construction joint at the soffit — the column or wall is not genuinely cast monolithically into the slab.<br><br><strong>Scope and what is excluded.</strong> This applies to vertical members that support suspended concrete — columns and walls under a slab or beam. It does not apply to elements that are part of the horizontal floor system itself: beams, band beams and upturns are normally cast monolithically with the slab and stay out of scope (only unusually deep transfer members warrant separate consideration). It also does not apply to ground-bearing piers or footings under a slab-on-ground: nothing suspended is resting on settling concrete there, so there is no forced joint and those elements can be consolidated into the slab pour (see <em>Pour sequencing</em>). A separate, longer delay (a day or more) is sometimes specified on tall buildings to let columns shorten before the floor is placed — that is a column-shortening consideration, not the plastic-settlement issue addressed here.",
-            "thresholds": [
-              {
-                "range": "<= 150 mm",
-                "rating": "Best practice",
-                "color": "green",
-                "guidance": "Only minor vertical concrete is involved — an upturn, kerb or thickening that is part of the floor system. Settlement is negligible and the element is cast monolithically with the slab as normal. The issue does not arise."
-              },
-              {
-                "range": "150 - 500 mm",
-                "rating": "Consider",
-                "color": "yellow",
-                "guidance": "A shallow vertical element. If it is part of the floor system (a band or deeper upturn), monolithic placement remains appropriate. If it is acting as a discrete support carrying a suspended member, confirm whether settlement at the junction is tolerable or whether a soffit break is warranted."
-              },
-              {
-                "range": "500 - 1500 mm",
-                "rating": "Concern",
-                "color": "orange",
-                "guidance": "A genuine vertical support lift carrying suspended concrete. If the detail implies a monolithic pour with the slab or beam, settlement at the head can crack the load-transfer junction. Detail the member to stop at the soffit and place the supported member separately, allowing the vertical concrete to become non-plastic first."
-              },
-              {
-                "range": "> 1500 mm",
-                "rating": "Action required",
-                "color": "red",
-                "guidance": "Full-storey columns or walls supporting a suspended slab or beam. A monolithic pour will accumulate substantial plastic settlement at the head and risk cracking at the junction. Do not detail as a monolithic column/wall-to-slab pour: stop at the soffit, carry continuity reinforcement through, and place the supported member separately after the short plastic-settlement delay."
-              }
-            ],
-            "alternatives": [
-              {
-                "title": "Stop the column or wall at the soffit, with a planned construction joint",
-                "description": "Detail the supporting member to terminate at the underside of the slab or beam it supports, with a construction joint at the soffit and continuity reinforcement carried through the junction. This keeps the load-transfer joint clean and planned rather than letting a settlement crack form there."
-              },
-              {
-                "title": "Sequence the supported member after a short plastic-settlement delay",
-                "description": "Place the column or wall first and allow it to become non-plastic (broadly 1 to 2 hours, depending on mix, temperature and admixtures) before placing the slab or beam onto it. This lets the vertical concrete release its bleed water and settle before it has to act as a support."
-              },
-              {
-                "title": "Distinguish floor-system elements from vertical supports",
-                "description": "Beams, band beams and upturns that form part of the horizontal floor system are cast monolithically with the slab and are not affected. Reserve the soffit-break treatment for vertical members (columns, walls) that support suspended concrete, so the rule is not over-applied to ordinary beam-slab interfaces."
-              },
-              {
-                "title": "Consolidate freely where the element is ground-bearing",
-                "description": "Where the vertical element is a pier or footing under a slab-on-ground — supporting nothing suspended — there is no settlement-cracking concern and no forced joint. Such elements can be poured together with the slab (see Pour sequencing) rather than separately."
-              },
-              {
-                "title": "Remediate an unplanned monolithic pour",
-                "description": "If a monolithic column/wall-to-slab pour has occurred, the interface can be revibrated while the concrete is still plastic to re-knit it. Once the supporting concrete has set, the junction should be treated as a cold joint — cleaned and prepared, with additional reinforcement across it as required."
-              }
-            ],
-            "applicability": {
-              "appliesWhere": "This entry applies to reinforced concrete columns and walls that support a suspended slab or beam, where the design or detail could be built as a monolithic vertical-member-to-slab pour. It does not apply to elements that are part of the horizontal floor system (beams, bands, upturns), nor to ground-bearing piers and footings under a slab-on-ground.",
-              "checks": [
-                {
-                  "title": "Floor-system element or vertical support?",
-                  "description": "The key distinction is whether the concrete is part of the floor spanning horizontally (cast monolithically with the slab) or a vertical member carrying the floor (stopped at the soffit). Mis-classifying a beam as a support would wrongly introduce joints; mis-classifying a column as floor concrete builds in the settlement crack."
-                },
-                {
-                  "title": "Height of the vertical lift",
-                  "description": "Settlement accumulates over the depth of fresh vertical concrete, so the taller the column or wall lift, the larger the consequence and the more important the soffit break. Short stubs settle little; full-storey members settle a lot."
-                },
-                {
-                  "title": "Mix, temperature and admixtures",
-                  "description": "Bleed characteristics and the length of the plastic phase depend on the mix, the temperature and any retarders. These affect how long the supporting member must stand before the slab is placed, not whether the break is needed."
-                },
-                {
-                  "title": "Congestion and grade at the junction",
-                  "description": "Column/wall-to-slab junctions are often heavily congested and may involve a higher-grade vertical member than the slab. Both make a clean monolithic placement harder and reinforce the case for a planned soffit joint."
-                }
-              ],
-              "note": "Use the rating as a review prompt. The corrective action — a soffit construction joint plus a short delay before the supported member is placed — is standard, low-cost practice; the purpose of the entry is to make sure a monolithic pour is not detailed or assumed without recognising the settlement-cracking consequence."
-            },
-            "evidence": "This entry is framed around the plastic-settlement cracking mechanism and its remediation, with codified construction provisions as corroboration.<br><br><strong>The cracking mechanism.</strong> Plastic settlement cracking arises while concrete is still plastic, as the solids consolidate and bleed water rises. Where a deep section settles beneath a member that is restrained or that has begun to stiffen and span, the differential movement cracks the interface. The column- or wall-to-slab junction is the classic structural instance: a suspended member cast onto a still-settling vertical support cracks at the head. This is distinct from plastic shrinkage cracking (surface drying) and is documented in standard concrete-technology references and early-age cracking guidance.<br><br><strong>Codified corroboration.</strong> The provision that members supported by columns and walls should not be cast until the concrete in the vertical support is no longer plastic is long established — ACI 318 states it explicitly, and its commentary attributes the required delay to bleeding and settlement of the plastic concrete in the supporting member. AS 3600 carries an equivalent requirement within its construction-joint provisions (exact clause to be confirmed on review).<br><br><strong>The delay timeframe.</strong> Practice specifications that schedule this sequence put the delay at roughly 1 to 2 hours — for example bridge construction specifications direct that the column or wall concrete be placed to the underside of the cap and a delay of about 1 to 2 hours elapse before the member above is placed, to permit water release and consolidation of the vertical concrete. This confirms the wait is a matter of hours (the plastic phase), not days.<br><br><strong>References</strong><br>ACI Committee 318. <em>Building Code Requirements for Structural Concrete (ACI 318)</em> — provision on members supported by columns and walls, and commentary.<br>Neville, A. M. <em>Properties of Concrete</em> — bleeding and plastic settlement.<br>Cement Concrete &amp; Aggregates Australia (CCAA). <em>Concrete Basics</em> / early-age cracking guidance.<br>Standards Australia. <em>AS 3600 Concrete structures</em> (equivalent construction provision — clause to confirm).<br>Bridge construction specifications (e.g. Texas DOT Item 420; Minnesota DOT Bridge Construction Manual) — 1&ndash;2 hour settlement delay between a vertical member and the member cast above (practice corroboration).",
-            "dateAdded": "2026-06-05",
-            "location": {
-              "country": "Australia",
-              "state": "NSW"
-            },
-            "_status": "DRAFT — not live (available:false). New entry, created alongside the reframed Pour sequencing entry. On review: (1) do a focused pass for the dedicated plastic-settlement-cracking and remediation literature (Neville; concrete-technology texts; CCAA early-age cracking) and cite precisely; (2) confirm the exact AS 3600 construction-joint clause and the current ACI 318 clause number; (3) consider whether the dimension should be Detailing rather than Construction Methods (currently Methods, on root-cause = construction sequence); (4) add a de-identified example/photograph of settlement cracking at a junction if one becomes available."
-          }
-        },
-        {
           "id": "curing-shortfall-in-suspended-slabs-and-beams",
           "name": "Curing shortfall in suspended slabs and beams",
           "available": true,
@@ -641,6 +528,121 @@
               "level": "high",
               "summary": "Supported by research on in-place strength reduction in poorly cured shallow elements, together with industry and regulator evidence that curing is often inadequate or unverified."
             }
+          }
+        },
+        {
+          "id": "structural-steel-vs-concrete-for-isolated-vertical-members",
+          "name": "Structural steel vs concrete for isolated vertical members",
+          "available": true,
+          "data": {
+            "question": "Where a small number of isolated vertical members (columns, posts or piers) would otherwise be cast in reinforced concrete, should a structural steel member be used instead to delete a separate form&ndash;fix&ndash;pour&ndash;cure&ndash;strike cycle and its fixed overhead?",
+            "parameter": "Whether an isolated, low-repetition vertical concrete member justifies its own pour cycle, or whether a steel member erected dry would remove that cycle &mdash; judged against the member's repetition, the material of the surrounding structure, and the connection, fire, durability, finish and cost requirements of a steel alternative.",
+            "background": "Reinforced concrete is a linear wet-trade process: form, fix, pour, cure, strike. For a one-off or isolated vertical member &mdash; a single column, a few posts, an isolated pier &mdash; that whole cycle carries fixed overhead (a pour day, a pump or crane visit, joint preparation, an inspection) that is disproportionate to the work, because there is no repetition to absorb it. A structural steel member, erected dry, can delete the pour cycle altogether and is often installed faster and out of sequence with the concrete trades. A concrete-filled steel hollow section is one hybrid that keeps a concrete look or capacity while avoiding the wet forming cycle.<br><br>The decision is a genuine trade-off, not an automatic substitution. It turns on the member's repetition (repetitive columns may form and cycle efficiently in concrete), what the rest of the structure is built from (introducing a single steel element into an otherwise concrete frame brings its own coordination and trade-attendance cost), and the steel-specific requirements: connection design to adjacent concrete, fire rating or encasement, corrosion protection and finish, and relative material and erection cost.<br><br>This idea was previously folded into the pour-staging entry but is a distinct material-choice question, so it lives here. It is related to <em>Optional pour breaks to keep concrete trades flowing</em> (both are about removing or rescheduling pour cycles to protect the programme) and to <em>Casting suspended members on freshly placed columns and walls</em> (vertical members that cannot be cast monolithically with the slab they support).",
+            "thresholds": [],
+            "alternatives": [],
+            "applicability": {
+              "appliesWhere": "Isolated or low-repetition vertical concrete members where a structural steel alternative is structurally viable and where the concrete pour cycle for that member carries disproportionate fixed overhead. Not intended for repetitive columns that form and cycle efficiently in concrete, nor for cases where fire, durability or architectural requirements clearly favour concrete.",
+              "checks": [],
+              "note": "PLACEHOLDER &mdash; not yet live. Spun out of the pour-staging entry. To complete: define thresholds (likely a judged decision on repetition and surrounding-structure material), recommended actions, evidence (RC as a wet-trade cycle; hybrid / concrete-filled steel hollow sections avoiding wet trades), and any worked example or site photographs."
+            },
+            "evidence": "",
+            "dateAdded": "2026-06-09",
+            "dateReviewed": "2026-06-09",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "supportingImages": [],
+            "keywords": [],
+            "examples": []
+          }
+        },
+        {
+          "id": "casting-suspended-members-on-freshly-placed-columns-and-walls",
+          "name": "Casting suspended members on freshly placed columns and walls",
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "When a suspended slab or beam is supported by a column or wall, has the design allowed for the supporting member to be poured separately and stopped at the soffit — or does the detail imply a monolithic pour in which the slab is cast onto column or wall concrete that is still settling?",
+            "parameter": "Height of the continuous freshly placed vertical concrete beneath a suspended member — i.e. the depth of the column or wall lift that supports a slab or beam cast onto it (mm). Beams, bands and upturns that are part of the horizontal floor system are out of scope and are cast monolithically with the slab as normal.",
+            "background": "Fresh concrete bleeds and settles for the first few hours after placing, as the solids consolidate and water rises. In a tall vertical member this settlement accumulates over the height of the pour, and the top of the column or wall subsides noticeably while the concrete is still plastic.<br><br><strong>Why a monolithic column/wall-to-slab pour cracks.</strong> If a suspended slab or beam is cast continuously onto a column or wall in the same operation, the slab concrete at the junction begins to stiffen and span between its forms while the supporting member underneath is still settling. The subsiding support drags the partly stiffened slab concrete at the interface, and a settlement crack — or a void — forms at the column or wall head. That junction is the load-transfer point, so it is the worst possible place to build in a defect, and bracing does not prevent it: bracing holds the formwork, but the cracking comes from what the fresh concrete inside is doing, not from instability of the forms.<br><br><strong>The fix is a short delay, not days.</strong> The settlement being waited out is the plastic phase, which is essentially complete once the concrete is no longer plastic — on the order of 1 to 2 hours, not days. The practical solution is therefore to stop the column or wall at the slab/beam soffit, allow the vertical concrete to become non-plastic, then place the slab separately, with continuity reinforcement carried through the junction. Note that even when the two are poured the same day, this is still a construction joint at the soffit — the column or wall is not genuinely cast monolithically into the slab.<br><br><strong>Scope and what is excluded.</strong> This applies to vertical members that support suspended concrete — columns and walls under a slab or beam. It does not apply to elements that are part of the horizontal floor system itself: beams, band beams and upturns are normally cast monolithically with the slab and stay out of scope (only unusually deep transfer members warrant separate consideration). It also does not apply to ground-bearing piers or footings under a slab-on-ground: nothing suspended is resting on settling concrete there, so there is no forced joint and those elements can be consolidated into the slab pour (see <em>Pour sequencing</em>). A separate, longer delay (a day or more) is sometimes specified on tall buildings to let columns shorten before the floor is placed — that is a column-shortening consideration, not the plastic-settlement issue addressed here.",
+            "thresholds": [
+              {
+                "range": "<= 150 mm",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "Only minor vertical concrete is involved — an upturn, kerb or thickening that is part of the floor system. Settlement is negligible and the element is cast monolithically with the slab as normal. The issue does not arise."
+              },
+              {
+                "range": "150 - 500 mm",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "A shallow vertical element. If it is part of the floor system (a band or deeper upturn), monolithic placement remains appropriate. If it is acting as a discrete support carrying a suspended member, confirm whether settlement at the junction is tolerable or whether a soffit break is warranted."
+              },
+              {
+                "range": "500 - 1500 mm",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "A genuine vertical support lift carrying suspended concrete. If the detail implies a monolithic pour with the slab or beam, settlement at the head can crack the load-transfer junction. Detail the member to stop at the soffit and place the supported member separately, allowing the vertical concrete to become non-plastic first."
+              },
+              {
+                "range": "> 1500 mm",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "Full-storey columns or walls supporting a suspended slab or beam. A monolithic pour will accumulate substantial plastic settlement at the head and risk cracking at the junction. Do not detail as a monolithic column/wall-to-slab pour: stop at the soffit, carry continuity reinforcement through, and place the supported member separately after the short plastic-settlement delay."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Stop the column or wall at the soffit, with a planned construction joint",
+                "description": "Detail the supporting member to terminate at the underside of the slab or beam it supports, with a construction joint at the soffit and continuity reinforcement carried through the junction. This keeps the load-transfer joint clean and planned rather than letting a settlement crack form there."
+              },
+              {
+                "title": "Sequence the supported member after a short plastic-settlement delay",
+                "description": "Place the column or wall first and allow it to become non-plastic (broadly 1 to 2 hours, depending on mix, temperature and admixtures) before placing the slab or beam onto it. This lets the vertical concrete release its bleed water and settle before it has to act as a support."
+              },
+              {
+                "title": "Distinguish floor-system elements from vertical supports",
+                "description": "Beams, band beams and upturns that form part of the horizontal floor system are cast monolithically with the slab and are not affected. Reserve the soffit-break treatment for vertical members (columns, walls) that support suspended concrete, so the rule is not over-applied to ordinary beam-slab interfaces."
+              },
+              {
+                "title": "Consolidate freely where the element is ground-bearing",
+                "description": "Where the vertical element is a pier or footing under a slab-on-ground — supporting nothing suspended — there is no settlement-cracking concern and no forced joint. Such elements can be poured together with the slab (see Pour sequencing) rather than separately."
+              },
+              {
+                "title": "Remediate an unplanned monolithic pour",
+                "description": "If a monolithic column/wall-to-slab pour has occurred, the interface can be revibrated while the concrete is still plastic to re-knit it. Once the supporting concrete has set, the junction should be treated as a cold joint — cleaned and prepared, with additional reinforcement across it as required."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to reinforced concrete columns and walls that support a suspended slab or beam, where the design or detail could be built as a monolithic vertical-member-to-slab pour. It does not apply to elements that are part of the horizontal floor system (beams, bands, upturns), nor to ground-bearing piers and footings under a slab-on-ground.",
+              "checks": [
+                {
+                  "title": "Floor-system element or vertical support?",
+                  "description": "The key distinction is whether the concrete is part of the floor spanning horizontally (cast monolithically with the slab) or a vertical member carrying the floor (stopped at the soffit). Mis-classifying a beam as a support would wrongly introduce joints; mis-classifying a column as floor concrete builds in the settlement crack."
+                },
+                {
+                  "title": "Height of the vertical lift",
+                  "description": "Settlement accumulates over the depth of fresh vertical concrete, so the taller the column or wall lift, the larger the consequence and the more important the soffit break. Short stubs settle little; full-storey members settle a lot."
+                },
+                {
+                  "title": "Mix, temperature and admixtures",
+                  "description": "Bleed characteristics and the length of the plastic phase depend on the mix, the temperature and any retarders. These affect how long the supporting member must stand before the slab is placed, not whether the break is needed."
+                },
+                {
+                  "title": "Congestion and grade at the junction",
+                  "description": "Column/wall-to-slab junctions are often heavily congested and may involve a higher-grade vertical member than the slab. Both make a clean monolithic placement harder and reinforce the case for a planned soffit joint."
+                }
+              ],
+              "note": "Use the rating as a review prompt. The corrective action — a soffit construction joint plus a short delay before the supported member is placed — is standard, low-cost practice; the purpose of the entry is to make sure a monolithic pour is not detailed or assumed without recognising the settlement-cracking consequence."
+            },
+            "evidence": "This entry is framed around the plastic-settlement cracking mechanism and its remediation, with codified construction provisions as corroboration.<br><br><strong>The cracking mechanism.</strong> Plastic settlement cracking arises while concrete is still plastic, as the solids consolidate and bleed water rises. Where a deep section settles beneath a member that is restrained or that has begun to stiffen and span, the differential movement cracks the interface. The column- or wall-to-slab junction is the classic structural instance: a suspended member cast onto a still-settling vertical support cracks at the head. This is distinct from plastic shrinkage cracking (surface drying) and is documented in standard concrete-technology references and early-age cracking guidance.<br><br><strong>Codified corroboration.</strong> The provision that members supported by columns and walls should not be cast until the concrete in the vertical support is no longer plastic is long established — ACI 318 states it explicitly, and its commentary attributes the required delay to bleeding and settlement of the plastic concrete in the supporting member. AS 3600 carries an equivalent requirement within its construction-joint provisions (exact clause to be confirmed on review).<br><br><strong>The delay timeframe.</strong> Practice specifications that schedule this sequence put the delay at roughly 1 to 2 hours — for example bridge construction specifications direct that the column or wall concrete be placed to the underside of the cap and a delay of about 1 to 2 hours elapse before the member above is placed, to permit water release and consolidation of the vertical concrete. This confirms the wait is a matter of hours (the plastic phase), not days.<br><br><strong>References</strong><br>ACI Committee 318. <em>Building Code Requirements for Structural Concrete (ACI 318)</em> — provision on members supported by columns and walls, and commentary.<br>Neville, A. M. <em>Properties of Concrete</em> — bleeding and plastic settlement.<br>Cement Concrete &amp; Aggregates Australia (CCAA). <em>Concrete Basics</em> / early-age cracking guidance.<br>Standards Australia. <em>AS 3600 Concrete structures</em> (equivalent construction provision — clause to confirm).<br>Bridge construction specifications (e.g. Texas DOT Item 420; Minnesota DOT Bridge Construction Manual) — 1&ndash;2 hour settlement delay between a vertical member and the member cast above (practice corroboration).",
+            "dateAdded": "2026-06-05",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "_status": "DRAFT — not live (available:false). New entry, created alongside the reframed Pour sequencing entry. On review: (1) do a focused pass for the dedicated plastic-settlement-cracking and remediation literature (Neville; concrete-technology texts; CCAA early-age cracking) and cite precisely; (2) confirm the exact AS 3600 construction-joint clause and the current ACI 318 clause number; (3) consider whether the dimension should be Detailing rather than Construction Methods (currently Methods, on root-cause = construction sequence); (4) add a de-identified example/photograph of settlement cracking at a junction if one becomes available."
           }
         },
         {
@@ -2144,5 +2146,6 @@
         }
       ]
     }
-  }
+  },
+  "_processed": []
 }
