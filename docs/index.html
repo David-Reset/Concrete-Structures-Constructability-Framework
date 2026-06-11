@@ -237,6 +237,44 @@
   .search-empty-link:hover{text-decoration:underline}
 
 
+
+
+  /* ===== REVIEW LIST ===== */
+  .header-actions{display:flex;align-items:center;gap:10px}
+  .review-header-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;background:var(--surface-light);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;transition:all .2s}
+  .review-header-btn:hover{border-color:var(--accent);background:var(--accent-glow)}
+  .review-count-pill{font-family:'JetBrains Mono',monospace;font-size:10px;color:#fff;background:var(--accent);border-radius:999px;padding:2px 7px;min-width:20px;text-align:center}
+  .review-list-panel{margin-top:22px}
+  .review-name-card{padding:18px 20px;background:var(--surface);border:1px solid var(--border);border-radius:10px;margin:18px 0 14px}
+  .review-name-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .review-name-input{flex:1;min-width:240px;background:var(--surface-light);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:14px;font-family:inherit;outline:none}
+  .review-name-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+  .review-purpose-textarea{width:100%;min-height:92px;resize:vertical;background:var(--surface-light);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:14px;font-family:inherit;line-height:1.55;outline:none}
+  .review-purpose-textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+  .review-name-help{font-size:12px;color:var(--text-muted);line-height:1.55;margin-top:10px}
+  .review-field-gap{margin-top:16px}
+  .review-card{padding:16px 18px;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:flex;gap:14px;justify-content:space-between;align-items:flex-start}
+  .review-card-main{flex:1;min-width:0}
+  .review-card-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:7px}
+  .review-card-meta{font-size:12px;color:var(--text-muted);line-height:1.65}
+  .review-card-question{font-size:13px;color:var(--text);line-height:1.6;opacity:.9;margin:8px 0 6px}
+  .review-export-card{padding:16px 18px;background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.28);border-radius:10px;margin:14px 0}
+  .review-export-title{font-size:13px;font-weight:800;color:var(--text);margin-bottom:10px}
+  .review-export-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .review-export-item{padding:12px 14px;background:var(--surface);border:1px solid var(--border);border-radius:8px}
+  .review-export-item strong{display:block;font-size:12px;color:var(--text);margin-bottom:5px}
+  .review-export-item span{display:block;font-size:11.5px;color:var(--text-muted);line-height:1.55}
+  .review-card-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;flex-shrink:0}
+  .review-empty{padding:28px 24px;background:var(--surface);border:1px solid var(--border);border-radius:10px;text-align:center;margin-top:16px}
+  .review-empty-title{font-size:16px;font-weight:800;color:var(--text);margin-bottom:7px}
+  .review-empty-sub{font-size:13px;color:var(--text-muted);line-height:1.65;max-width:560px;margin:0 auto}
+  .review-actions-bar{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+  .entry-topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+  .entry-topbar .back-link{margin-bottom:0}
+  .entry-top-review-btn{white-space:nowrap}
+  .entry-btn.danger:hover{border-color:var(--red);background:var(--red-bg)}
+  .entry-btn.added{border-color:rgba(34,197,94,0.45);background:rgba(34,197,94,0.08);color:var(--green)}
+
   /* ===== EVIDENCE SUPPORT INDEX ===== */
   .evidence-filter{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:22px 0 18px}
   .evidence-filter-btn{padding:8px 12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text-muted);font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;transition:all .2s}
@@ -351,13 +389,13 @@
   .faq-a a:hover{color:#bfdbfe}
 
   @media(max-width:640px){
-    .content{padding:20px 16px} .header{padding:16px} .breadcrumb{padding:10px 16px}
+    .content{padding:20px 16px} .header{padding:16px;gap:12px;align-items:flex-start} .header-actions{width:100%;justify-content:flex-start} .breadcrumb{padding:10px 16px}
     .dim-grid{grid-template-columns:1fr} .examples-grid,.examples-grid.imgs-1,.examples-grid.imgs-2{grid-template-columns:1fr}
     .supporting-images-grid,.supporting-images-grid.imgs-1,.supporting-images-grid.imgs-2{grid-template-columns:1fr} .date-stamp{flex-direction:column;gap:8px}
     .examples-grid.imgs-1 .example-card,.supporting-images-grid.imgs-1 .supporting-image-card{flex-direction:column}
     .examples-grid.imgs-1 .example-card img,.supporting-images-grid.imgs-1 .supporting-image-card img{width:100%;max-width:100%}
     .examples-grid.imgs-1 .example-caption,.supporting-images-grid.imgs-1 .supporting-image-title{border-left:none;border-top:1px solid var(--border)}
-    .legend-grid{grid-template-columns:1fr} .shape-grid{grid-template-columns:1fr} .dimension-guide-grid{grid-template-columns:1fr} .whatis-grid{grid-template-columns:1fr} .evidence-summary-grid{grid-template-columns:1fr 1fr}
+    .review-export-grid{grid-template-columns:1fr} .legend-grid{grid-template-columns:1fr} .shape-grid{grid-template-columns:1fr} .dimension-guide-grid{grid-template-columns:1fr} .whatis-grid{grid-template-columns:1fr} .evidence-summary-grid{grid-template-columns:1fr 1fr}
     .anatomy-block{grid-template-columns:1fr;gap:12px} .trace-arrow{transform:rotate(90deg);width:100%;justify-content:center}
   }
 </style>
@@ -701,6 +739,261 @@ function entryUrl(dimId,id){
   const base=(location.origin+location.pathname).replace(/index\.html$/,'');
   return base+'#'+dimId+'/'+id;
 }
+
+
+// ===== REVIEW LIST =====
+const REVIEW_LIST_KEY='constructabilityReviewList.v1';
+const DEFAULT_REVIEW_PURPOSE='This checklist contains constructability framework entries selected for review on this project. Each item is a design-stage prompt, not a compliance assessment or formal sign-off. Open the full entry for thresholds, applicability, recommended actions and evidence.';
+function defaultReviewList(){return {name:'',purpose:DEFAULT_REVIEW_PURPOSE,ids:[],updated:''};}
+function getReviewList(){
+  try{
+    const parsed=JSON.parse(localStorage.getItem(REVIEW_LIST_KEY));
+    if(!parsed)return defaultReviewList();
+    // Legacy support if an early prototype stored only an array of ids.
+    if(Array.isArray(parsed))return {name:'',purpose:DEFAULT_REVIEW_PURPOSE,ids:parsed,updated:''};
+    return {name:parsed.name||'',purpose:(parsed.purpose!==undefined?parsed.purpose:DEFAULT_REVIEW_PURPOSE),ids:Array.isArray(parsed.ids)?parsed.ids:[],updated:parsed.updated||''};
+  }catch(e){return defaultReviewList();}
+}
+function saveReviewList(list){
+  const cleanIds=[...new Set((list.ids||[]).filter(Boolean))];
+  const clean={name:list.name||'',purpose:(list.purpose!==undefined?list.purpose:DEFAULT_REVIEW_PURPOSE),ids:cleanIds,updated:new Date().toISOString().slice(0,10)};
+  localStorage.setItem(REVIEW_LIST_KEY,JSON.stringify(clean));
+  return clean;
+}
+function reviewCount(){return getReviewList().ids.length;}
+function isInReviewList(id){return getReviewList().ids.includes(id);}
+function setReviewListName(v){const list=getReviewList();list.name=v;saveReviewList(list);}
+function setReviewListPurpose(v){const list=getReviewList();list.purpose=v;saveReviewList(list);}
+function addToReviewList(id){const list=getReviewList();if(!list.ids.includes(id))list.ids.push(id);saveReviewList(list);render();}
+function removeFromReviewList(id){const list=getReviewList();list.ids=list.ids.filter(x=>x!==id);saveReviewList(list);render();}
+function toggleReviewList(id){isInReviewList(id)?removeFromReviewList(id):addToReviewList(id);}
+function goReviewList(){window.location.hash='review-list';}
+function resolveEntryId(id){
+  for(const dim of dimensions){
+    const item=dim.items.find(it=>it.id===id);
+    if(item&&item.available&&item.data)return {dim,item,data:item.data};
+  }
+  return null;
+}
+function reviewItems(){return getReviewList().ids.map(id=>resolveEntryId(id)).filter(Boolean);}
+function reviewItemButton(id){
+  const added=isInReviewList(id);
+  return `<button class="entry-btn entry-top-review-btn ${added?'added':''}" onclick="toggleReviewList('${id}')"><span class="ico">${added?'✓':'＋'}</span> ${added?'Remove entry from review list':'Add entry to review list'}</button>`;
+}
+function copyTextFallback(text){
+  const ta=document.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy');alert('Checklist copied to clipboard.');}catch(e){alert('Could not copy automatically. The checklist text will open in a prompt.');prompt('Copy checklist:',text);}
+  ta.remove();
+}
+function reviewExportRows(){
+  return reviewItems().map(({dim,item,data})=>({
+    title:cleanText(item.name),
+    dimension:cleanText(dim.name),
+    question:cleanText(data.question||''),
+    parameter:cleanText(data.parameter||''),
+    url:entryUrl(dim.id,item.id)
+  }));
+}
+function reviewExportTitle(){
+  const list=getReviewList();
+  return list.name&&list.name.trim()?cleanText(list.name.trim()):'Untitled review list';
+}
+function reviewExportDate(){return new Date().toISOString().slice(0,10);}
+function reviewExportPurpose(){const p=(getReviewList().purpose||'').trim();return cleanText(p||DEFAULT_REVIEW_PURPOSE);}
+function safeFileName(name,ext){
+  const base=(name||'constructability-review-checklist').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'').slice(0,70)||'constructability-review-checklist';
+  return base+'.'+ext;
+}
+function buildReviewChecklistText(){
+  const rows=reviewExportRows();
+  const title=reviewExportTitle();
+  const parts=[
+    `Constructability Review Checklist`,
+    ``,
+    `Project/list: ${title}`,
+    `Generated: ${reviewExportDate()}`,
+    `Selected entries: ${rows.length}`,
+    ``,
+    `Purpose: ${reviewExportPurpose()}`,
+    ``
+  ];
+  rows.forEach((r,i)=>{
+    parts.push(`${i+1}. [ ] ${r.title}`);
+    parts.push(`Dimension: ${r.dimension}`);
+    parts.push(`Review question: ${r.question}`);
+    parts.push(`Design parameter: ${r.parameter}`);
+    parts.push(`Framework entry: ${r.url}`);
+    parts.push(``);
+  });
+  return parts.join('\n');
+}
+function buildReviewChecklistMarkdown(){
+  const rows=reviewExportRows();
+  const title=reviewExportTitle();
+  const parts=[
+    `# Constructability Review Checklist`,
+    ``,
+    `**Project/list:** ${title}`,
+    ``,
+    `**Generated:** ${reviewExportDate()}  `,
+    `**Selected entries:** ${rows.length}`,
+    ``,
+    reviewExportPurpose(),
+    ``
+  ];
+  rows.forEach((r,i)=>{
+    parts.push(`## ${i+1}. ${r.title}`);
+    parts.push(``);
+    parts.push(`- [ ] Relevant to project`);
+    parts.push(`- [ ] Reviewed on drawings`);
+    parts.push(`- [ ] Action required`);
+    parts.push(`- [ ] Not applicable`);
+    parts.push(``);
+    parts.push(`**Dimension:** ${r.dimension}`);
+    parts.push(``);
+    parts.push(`**Review question:**  `);
+    parts.push(r.question);
+    parts.push(``);
+    parts.push(`**Design parameter:**  `);
+    parts.push(r.parameter);
+    parts.push(``);
+    parts.push(`[Open full framework entry](${r.url})`);
+    parts.push(``);
+  });
+  return parts.join('\n');
+}
+function copyReviewChecklist(){
+  if(!reviewItems().length){alert('Your review list is empty.');return;}
+  const text=buildReviewChecklistText();
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(()=>alert('Review checklist copied to clipboard.')).catch(()=>copyTextFallback(text));}
+  else copyTextFallback(text);
+}
+function downloadTextFile(filename,text,mime){
+  const blob=new Blob([text],{type:mime||'text/plain;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=filename;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},0);
+}
+function downloadReviewMarkdown(){
+  if(!reviewItems().length){alert('Your review list is empty.');return;}
+  downloadTextFile(safeFileName(reviewExportTitle(),'md'),buildReviewChecklistMarkdown(),'text/markdown;charset=utf-8');
+}
+function pdfTextClean(s){
+  return cleanText(s||'').replace(/[“”]/g,'"').replace(/[‘’]/g,"'").replace(/[–—]/g,'-').replace(/≤/g,'<=').replace(/≥/g,'>=').replace(/×/g,'x').replace(/°/g,' deg').replace(/…/g,'...').replace(/[^\x09\x0A\x0D\x20-\x7E]/g,'');
+}
+function pdfEscape(s){return pdfTextClean(s).replace(/\\/g,'\\\\').replace(/\(/g,'\\(').replace(/\)/g,'\\)');}
+function makePdf(lines,annotations){
+  const enc=new TextEncoder();
+  const objects=[];
+  function obj(s){objects.push(s);return objects.length;}
+  obj('<< /Type /Catalog /Pages 2 0 R >>');
+  obj('PAGES_PLACEHOLDER');
+  const font1=obj('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>');
+  const font2=obj('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>');
+  const pageIds=[];
+  const contentByPage=new Map();
+  lines.forEach(l=>{if(!contentByPage.has(l.page))contentByPage.set(l.page,[]);contentByPage.get(l.page).push(l);});
+  const annByPage=new Map();
+  annotations.forEach(a=>{if(!annByPage.has(a.page))annByPage.set(a.page,[]);annByPage.get(a.page).push(a);});
+  const pageCount=Math.max(...lines.map(l=>l.page),0)+1;
+  for(let p=0;p<pageCount;p++){
+    const annIds=[];
+    (annByPage.get(p)||[]).forEach(a=>{
+      const w=Math.max(80,Math.min(495,(a.text||'').length*5.2));
+      annIds.push(obj(`<< /Type /Annot /Subtype /Link /Rect [${a.x} ${a.y-3} ${a.x+w} ${a.y+11}] /Border [0 0 0] /A << /S /URI /URI (${pdfEscape(a.url)}) >> >>`));
+    });
+    const stream=(contentByPage.get(p)||[]).map(l=>{
+      const f=l.bold?'/F2':'/F1';
+      const colour=l.color?`${l.color} rg `:'';
+      const textOp=`BT ${f} ${l.size} Tf 1 0 0 1 ${l.x.toFixed(1)} ${l.y.toFixed(1)} Tm (${pdfEscape(l.text)}) Tj ET`;
+      const w=Math.max(20,Math.min(495,(l.text||'').length*l.size*0.48));
+      const underline=l.underline?`\nq ${l.color||'0 0 0'} RG 0.7 w ${l.x.toFixed(1)} ${(l.y-2).toFixed(1)} m ${(l.x+w).toFixed(1)} ${(l.y-2).toFixed(1)} l S Q`:'';
+      return l.color?`q ${colour}${textOp} Q${underline}`:`${textOp}${underline}`;
+    }).join('\n');
+    const contentId=obj(`<< /Length ${enc.encode(stream).length} >>\nstream\n${stream}\nendstream`);
+    const annotsStr=annIds.length?` /Annots [${annIds.map(id=>id+' 0 R').join(' ')}]`:'';
+    const pageId=obj(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 ${font1} 0 R /F2 ${font2} 0 R >> >> /Contents ${contentId} 0 R${annotsStr} >>`);
+    pageIds.push(pageId);
+  }
+  objects[1]=`<< /Type /Pages /Kids [${pageIds.map(id=>id+' 0 R').join(' ')}] /Count ${pageIds.length} >>`;
+  let pdf='%PDF-1.4\n';
+  const offsets=[0];
+  objects.forEach((o,i)=>{offsets[i+1]=enc.encode(pdf).length;pdf+=`${i+1} 0 obj\n${o}\nendobj\n`;});
+  const xref=enc.encode(pdf).length;
+  pdf+=`xref\n0 ${objects.length+1}\n0000000000 65535 f \n`;
+  for(let i=1;i<=objects.length;i++)pdf+=String(offsets[i]).padStart(10,'0')+' 00000 n \n';
+  pdf+=`trailer\n<< /Size ${objects.length+1} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF`;
+  return new Blob([enc.encode(pdf)],{type:'application/pdf'});
+}
+function downloadReviewPdf(){
+  const rows=reviewExportRows();
+  if(!rows.length){alert('Your review list is empty.');return;}
+  const lines=[],ann=[];
+  const margin=50,bottom=52,width=495;
+  let page=0,y=792;
+  function newPage(){page++;y=792;}
+  function addLine(text,size=10,bold=false,indent=0,gap=14,linkUrl='',opts={}){
+    if(y<bottom+gap)newPage();
+    const x=margin+indent;
+    lines.push({page,x,y,text,size,bold,color:opts.color||'',underline:!!opts.underline});
+    if(linkUrl)ann.push({page,x,y,text,url:linkUrl});
+    y-=gap;
+  }
+  function wrap(text,size=10,indent=0){
+    const maxChars=Math.max(24,Math.floor((width-indent)/(size*0.48)));
+    const words=pdfTextClean(text).split(/\s+/).filter(Boolean);
+    const out=[];let cur='';
+    words.forEach(w=>{if((cur+' '+w).trim().length>maxChars){if(cur)out.push(cur);cur=w;}else cur=(cur+' '+w).trim();});
+    if(cur)out.push(cur);
+    return out;
+  }
+  function addWrapped(label,text,size=10,indent=0){
+    if(label)addLine(label,size,true,indent,13);
+    wrap(text,size,indent).forEach(l=>addLine(l,size,false,indent,13));
+    y-=4;
+  }
+  addLine('Constructability Review Checklist',18,true,0,24);
+  addLine('Project/list: '+reviewExportTitle(),11,true,0,16);
+  addLine('Generated: '+reviewExportDate()+'    Selected entries: '+rows.length,10,false,0,18);
+  addWrapped('Purpose',reviewExportPurpose(),10,0);
+  y-=4;
+  rows.forEach((r,i)=>{
+    if(y<165)newPage();
+    addLine((i+1)+'. [ ] '+r.title,13,true,0,18);
+    addLine('Dimension: '+r.dimension,10,false,14,14);
+    addWrapped('Review question:',r.question,10,14);
+    addWrapped('Design parameter:',r.parameter,10,14);
+    addLine('Open full framework entry',10,false,14,18,r.url,{color:'0 0.25 0.85',underline:true});
+    y-=8;
+  });
+  const blob=makePdf(lines,ann);
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=safeFileName(reviewExportTitle(),'pdf');
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},0);
+}
+function clearReviewList(){
+  if(!reviewCount())return;
+  if(confirm('Clear all entries from this review list?')){const list=getReviewList();list.ids=[];saveReviewList(list);render();}
+}
+function renderReviewListView(){
+  const list=getReviewList();
+  const rows=reviewItems();
+  const missing=list.ids.length-rows.length;
+  const name=escAttr(list.name||'');
+  const purpose=escAttr((list.purpose!==undefined?list.purpose:DEFAULT_REVIEW_PURPOSE)||'');
+  const cards=rows.map(({dim,item,data})=>{
+    return `<div class="review-card"><div class="review-card-main"><div class="review-card-title">${escHtml(item.name)}</div><div class="review-card-meta"><strong>Dimension:</strong> ${escHtml(dim.name)}</div><div class="review-card-question"><strong>Review question:</strong><br>${data.question||''}</div><div class="review-card-meta"><strong>Design parameter:</strong> ${data.parameter||''}</div></div><div class="review-card-actions"><button class="entry-btn" onclick="goEntry('${dim.id}','${item.id}')">Open entry →</button><button class="entry-btn danger" onclick="removeFromReviewList('${item.id}')">Remove</button></div></div>`;
+  }).join('');
+  const empty=`<div class="review-empty"><div class="review-empty-title">Your review list is empty.</div><div class="review-empty-sub">Open any live entry and use <strong>Add to review list</strong>. The list stays in this browser and can be exported as a project checklist later.</div></div>`;
+  const exportHelp=`<div class="review-export-card"><div class="review-export-title">Export options</div><div class="review-export-grid"><div class="review-export-item"><strong>Copy review checklist</strong><span>Copies a plain-text checklist to the clipboard, ready to paste into an email, meeting note, design review or QA record.</span></div><div class="review-export-item"><strong>Download PDF</strong><span>Downloads a professional checklist document with the selected entries, review questions, design parameters and clickable framework links.</span></div><div class="review-export-item"><strong>Download Markdown</strong><span>Downloads an editable .md checklist for GitHub, Notion, Obsidian, project notes or later conversion into another document.</span></div></div></div>`;
+  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to framework</div><div class="dim-header"><span class="dim-header-icon">📋</span><h1 class="dim-header-title">My review list</h1></div><p class="section-desc">Collect the entries that apply to a particular project, give the list a useful name, then export a project-specific constructability review checklist.</p><div class="review-name-card"><div class="label">List name</div><div class="review-name-row"><input class="review-name-input" value="${name}" placeholder="e.g. 12 Smith Street — structural review" oninput="setReviewListName(this.value)"></div><div class="review-name-help">Stored only in this browser. Do not put confidential project information here if you plan to copy/share the checklist.</div><div class="review-field-gap"><div class="label">Purpose</div><textarea class="review-purpose-textarea" oninput="setReviewListPurpose(this.value)">${purpose}</textarea><div class="review-name-help">This purpose statement is shown in the copied checklist, PDF and Markdown exports. The default text explains that the list is a project review aid, not a compliance assessment; you can update it to suit your project or audience.</div></div></div>${exportHelp}<div class="review-actions-bar"><button class="entry-btn primary" onclick="copyReviewChecklist()">Copy review checklist</button><button class="entry-btn" onclick="downloadReviewPdf()">Download PDF</button><button class="entry-btn" onclick="downloadReviewMarkdown()">Download Markdown</button><button class="entry-btn danger" onclick="clearReviewList()">Clear list</button></div>${missing>0?`<div class="review-name-help">${missing} saved entry ${missing===1?'id was':'ids were'} not found in the current data and ${missing===1?'has':'have'} been hidden.</div>`:''}<div class="item-list review-list-panel">${cards||empty}</div></div>`;
+}
 function prefillUrl(form,name,link){
   return form.base+'?usp=pp_url'
     +'&'+form.nameField+'='+encodeURIComponent(name)
@@ -733,18 +1026,20 @@ async function loadData(){
 // ===== RENDER =====
 function render(){
   const app=document.getElementById('app');
-  app.innerHTML=renderHeader()+(state.view==='guide'?renderBreadcrumb()+renderGuideView():state.view==='evidence'?renderBreadcrumb()+renderEvidenceSupportView():state.view==='entry'?renderBreadcrumb()+renderEntryDetail():state.view==='dimension'?renderBreadcrumb()+renderDimensionView():renderHomeView());
+  app.innerHTML=renderHeader()+(state.view==='guide'?renderBreadcrumb()+renderGuideView():state.view==='evidence'?renderBreadcrumb()+renderEvidenceSupportView():state.view==='review'?renderBreadcrumb()+renderReviewListView():state.view==='entry'?renderBreadcrumb()+renderEntryDetail():state.view==='dimension'?renderBreadcrumb()+renderDimensionView():renderHomeView());
 }
 
 function renderHeader(){
-  return `<div class="header"><div class="header-left"><div class="logo">C</div><div><div class="header-title">Constructability Framework</div><div class="header-sub">Design Guidance</div></div></div></div>`;
+  const count=reviewCount();
+  return `<div class="header"><div class="header-left" onclick="goHome()" style="cursor:pointer"><div class="logo">C</div><div><div class="header-title">Constructability Framework</div><div class="header-sub">Design Guidance</div></div></div><div class="header-actions"><button class="review-header-btn" onclick="goReviewList()">📋 Review list <span class="review-count-pill">${count}</span></button></div></div>`;
 }
 
 function renderBreadcrumb(){
   const dim=getDim(),item=getItem();
   let h='<div class="breadcrumb"><span class="breadcrumb-link" onclick="goHome()">Framework</span>';
   if(state.view==='guide'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">'+(guide?guide.title:'Guide')+'</span></div>'; }
-  if(state.view==='evidence'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Evidence support index</span></div>';}
+  if(state.view==='evidence'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Evidence support index</span></div>'; }
+  if(state.view==='review'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">My review list</span></div>';}
   if(dim){
     h+='<span class="breadcrumb-sep">›</span>';
     if(item){h+=`<span class="breadcrumb-link" onclick="goDimension('${dim.id}')">${dim.name}</span><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">${item.name}</span>`}
@@ -758,6 +1053,7 @@ function renderHomeView(){
   const guideCard=guide?`<div class="dim-card guide-card" onclick="goGuide()"><div class="guide-pill">Start here</div><div class="dim-icon">${guide.icon}</div><div class="dim-name">${guide.title}</div><div class="dim-desc">${guide.tagline}</div><div class="dim-count">Open guide →</div></div>`:'';
   const evCounts=evidenceSupportCounts();
   const evidenceBanner=`<div class="suggest-banner evidence-index-banner" onclick="goEvidenceSupport('all')"><div class="suggest-banner-text"><div class="suggest-banner-title">Evidence support index</div><div class="suggest-banner-sub">View all ${evCounts.all} live entries by evidence support level — High, Medium or Low.</div></div><div class="suggest-banner-btn">View index →</div></div>`;
+  const reviewList=getReviewList();
   const has=searchQuery.trim().length>0;
   const searchIcon='<svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z"/></svg>';
   const searchHero=`<div class="search-hero">
@@ -1034,7 +1330,7 @@ function renderEntryDetail(){
   const supportingImagesHtml=d.supportingImages&&d.supportingImages.length>0?`<div style="margin-top:20px"><div class="label">Supporting Images</div>${imgHint}<div class="supporting-images-grid${d.supportingImages.length===1?' imgs-1':d.supportingImages.length===2?' imgs-2':''}">${d.supportingImages.map(sp=>`<div class="supporting-image-card">${sp.image?`<img src="${sp.image}" alt="${sp.title}" onclick="openLightbox('${sp.image}')">`:''}<div class="supporting-image-title">${sp.title}</div></div>`).join('')}</div></div>`:'';
 
   return `<div class="content animate-in">
-    <div class="back-link" onclick="goDimension('${dim.id}')">← Back to ${dim.name}</div>
+    <div class="entry-topbar"><div class="back-link" onclick="goDimension('${dim.id}')">← Back to ${dim.name}</div>${reviewItemButton(item.id)}</div>
     <div class="entry-title">${item.name}</div>
     <div class="entry-meta">Dimension: ${dim.name} · Reinforced Concrete ${d.location?' · '+locTag(d.location):''}</div>
     <div class="question-box"><div class="label label-accent">Design Question</div><div class="question-text">${d.question}</div></div>
@@ -1081,6 +1377,7 @@ function parseHash(){
   if(!hash){state.view='home';state.dimId=null;state.itemId=null;state.locationFilter=null;}
   else if(hash==='guide'){state.view='guide';state.dimId=null;state.itemId=null;state.locationFilter=null;}
   else if(hash==='evidence-support'){state.view='evidence';state.dimId=null;state.itemId=null;state.locationFilter=null;if(!state.evidenceFilter)state.evidenceFilter='all';}
+  else if(hash==='review-list'){state.view='review';state.dimId=null;state.itemId=null;state.locationFilter=null;}
   else if(hash.includes('/')){
     const[dimId,seg]=hash.split('/');
     const dim=dimensions.find(d=>d.id===dimId);
