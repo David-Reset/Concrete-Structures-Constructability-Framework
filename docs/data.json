@@ -150,6 +150,10 @@
             "location": {
               "country": "Australia",
               "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "high",
+              "summary": "Supported by formwork literature, industry consultation, physical formwork component dimensions, and a real project example."
             }
           }
         },
@@ -302,7 +306,11 @@
                 "image": "images/pt-shore-load-balancing.png",
                 "title": "<strong>Why post-tensioning unloads the formwork &mdash; Kajewski (2005)</strong><br>This figure is included because it shows the mechanism the whole entry depends on: why a PT slab can release its forms earlier than a conventional one. In a freshly cast slab (a), the formwork and shoring carry essentially the entire self-weight &mdash; a load ratio of 1.0 in the shores and 0.0 in the slab. When draped tendons are stressed, the post-tensioning balances part of the self-weight and the slab lifts to carry that portion itself, unloading the shores by the balanced amount: at full balancing (b) the ratio is 1.0 in the slab and 0.0 in the shores, and at 80% balancing (c) it is 0.8 in the slab and 0.2 in the shores. That unloading of the temporary works is what lets the soffit forms be struck and cycled to the floor above sooner, while the reshores stay in place &mdash; the source of the per-floor saving in this entry."
               }
-            ]
+            ],
+            "evidenceSupport": {
+              "level": "high",
+              "summary": "Supported by Australian academic research with site measurement, a peer-reviewed paper, industry sources, and a clearly explained formwork-cycling mechanism. The exact thresholds remain scenario-based."
+            }
           }
         },
         {
@@ -387,7 +395,11 @@
                 "image": "images/effect-of-zones.png",
                 "title": "<strong>Frandson (2019), Figure 9-4 &mdash; effect of the number of zones on sequence duration</strong><br>The time to complete a repeating activity sequence falls sharply as the work is split into more zones, and the gain grows with the number of activities in the sequence. It supports the programme logic behind staging a concrete pour into zones &mdash; keeping the forming and fixing trades flowing &mdash; rather than any concrete-placement rule. Reproduced from A. Frandson, <em>Takt Time Planning as a Work Structuring Method to Improve Construction Work Flow</em>, PhD dissertation, UC Berkeley, 2019."
               }
-            ]
+            ],
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Supported by workflow literature and labour-breakdown data, but the threshold bands rely partly on practical programme logic and would benefit from further project examples or regional feedback."
+            }
           }
         },
         {
@@ -624,6 +636,10 @@
             "dateReviewed": "2026-06-05",
             "location": {
               "country": "Australia"
+            },
+            "evidenceSupport": {
+              "level": "high",
+              "summary": "Supported by research on in-place strength reduction in poorly cured shallow elements, together with industry and regulator evidence that curing is often inadequate or unverified."
             }
           }
         },
@@ -803,6 +819,10 @@
                 }
               ],
               "note": "Use the rating as a prompt to consider alternatives, not as a rule that monolithic forming above a particular depth is automatically unacceptable. A monolithic fold may still be the most practical solution where there is a specific reason for it; the framework's intent is to make sure that monolithic forming is a deliberate decision rather than an unexamined default."
+            },
+            "evidenceSupport": {
+              "level": "high",
+              "summary": "Supported by formwork productivity literature, contractor consultation, and real project examples where monolithic folds were revised or alternatives were documented."
             }
           }
         },
@@ -904,6 +924,10 @@
             "location": {
               "country": "Australia",
               "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Supported by practical project examples and labour/productivity logic, but the thresholds depend on slab-specific judgement about extra concrete volume versus formwork simplification."
             }
           }
         },
@@ -999,7 +1023,11 @@
                 "id": "drip-grooves-on-exposed-soffit-edges",
                 "note": "Both are edge treatments on the same exposed formed face. A chamfer and a drip groove sit close together at slab and beam edges, so detail them as a pair — coordinate their positions and confirm neither compromises cover or the formwork build-up."
               }
-            ]
+            ],
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Supported by concrete detailing guidance, drawing practice, and practical constructability logic, but the evidence base is relatively narrow and thresholds are deliberately simple."
+            }
           }
         },
         {
@@ -1103,7 +1131,11 @@
                 "image": "images/drip-groove-detailing.png",
                 "title": "<strong>SRIA Technical Note 5 - detailing at drip grooves</strong><br>Figure 20 (shown for an external beam soffit) shows that a drip groove can reduce soffit cover if no allowance is made. The recommended solutions either provide cover from the root of the groove or avoid cutting into the cover zone. The accompanying notes state that, where a drip groove is used, bottom bar supports should be increased and that insufficient cover can lead to cracking and steel corrosion."
               }
-            ]
+            ],
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Supported by SRIA detailing guidance and project examples showing the cover-coordination issue, but the evidence base is focused and would benefit from further field examples."
+            }
           }
         },
         {
@@ -1294,6 +1326,10 @@
             "location": {
               "country": "Australia",
               "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "high",
+              "summary": "Supported by supplier availability review, contractor input, practical groundworks logic, and clear reinforcement cage stability and site-adaptability considerations."
             }
           }
         },
@@ -1460,6 +1496,10 @@
                 }
               ],
               "note": "Use the rating as a safety-in-design review prompt, not as a blanket rule. The appropriate response is to consider whether the top mat will function as a working surface and whether the specified spacing creates an avoidable risk during construction."
+            },
+            "evidenceSupport": {
+              "level": "high",
+              "summary": "Supported by safety-in-design literature, anthropometric/boot-size reasoning, practical site experience, and a clear worker fall-through mechanism."
             }
           }
         },
@@ -1555,7 +1595,11 @@
                 "image": "images/fatalities-slide-in.png",
                 "title": "<strong>Mechanisms of traumatic confined-space fatalities in Australia, 2000&ndash;2012.</strong> Selman et al. (2017) identified 59 work-related confined-space fatalities, including four deaths from slide or cave-in mechanisms. This supports treating worker entry into deep pier excavations as a serious construction-stage safety risk that should be eliminated or reduced through design where practicable."
               }
-            ]
+            ],
+            "evidenceSupport": {
+              "level": "high",
+              "summary": "Supported by WHS duties and reporting requirements, confined-space guidance, fatality literature, and a clear safety-in-design elimination principle."
+            }
           }
         },
         {
@@ -1699,6 +1743,10 @@
             "location": {
               "country": "Australia",
               "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Supported by drawing examples and visual-search / communication literature, but the thresholds remain partly judgement-based and would benefit from further designer and contractor feedback."
             }
           }
         },
@@ -1798,6 +1846,10 @@
             "location": {
               "country": "Australia",
               "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Supported by practical drawing examples and design-communication logic, but the evidence base is mainly practice-based and would benefit from further external literature or user feedback."
             }
           }
         },
