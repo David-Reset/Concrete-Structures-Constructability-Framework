@@ -308,8 +308,8 @@
               }
             ],
             "evidenceSupport": {
-              "level": "high",
-              "summary": "Supported by Australian academic research with site measurement, a peer-reviewed paper, industry sources, and a clearly explained formwork-cycling mechanism. The exact thresholds remain scenario-based."
+              "level": "medium",
+              "summary": "The post-tensioning effect on formwork cycling is well supported by measured shore-load research (Kajewski) and a peer-reviewed paper, but the per-floor saving comes from a single modelled scenario and the floor-count bands are a reasoned judgement about when the compounding saving becomes material, so the thresholds a user acts on are indicative rather than evidenced."
             }
           }
         },
@@ -1135,8 +1135,8 @@
               }
             ],
             "evidenceSupport": {
-              "level": "medium",
-              "summary": "Supported by SRIA detailing guidance and project examples showing the cover-coordination issue, but the evidence base is focused and would benefit from further field examples."
+              "level": "high",
+              "summary": "The cover-coordination issue and the recommended detailing response are directly supported by authoritative SRIA guidance (Technical Note 5), which addresses drip grooves specifically, together with project examples. The parameter is categorical, so the recommended call rather than a numeric band is what the evidence needs to support, and it does."
             }
           }
         },
