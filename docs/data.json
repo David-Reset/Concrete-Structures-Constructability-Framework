@@ -558,91 +558,162 @@
           }
         },
         {
-          "id": "casting-suspended-members-on-freshly-placed-columns-and-walls",
-          "name": "Casting suspended members on freshly placed columns and walls",
-          "available": false,
-          "draft": true,
+          "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
+          "name": "Pour sequencing for deep vertical concrete elements at slab interfaces (example: walls/columns/piles)",
+          "available": true,
+          "draft": false,
           "data": {
-            "question": "When a suspended slab or beam is supported by a column or wall, has the design allowed for the supporting member to be poured separately and stopped at the soffit — or does the detail imply a monolithic pour in which the slab is cast onto column or wall concrete that is still settling?",
-            "parameter": "Height of the continuous freshly placed vertical concrete beneath a suspended member — i.e. the depth of the column or wall lift that supports a slab or beam cast onto it (mm). Beams, bands and upturns that are part of the horizontal floor system are out of scope and are cast monolithically with the slab as normal.",
-            "background": "Fresh concrete bleeds and settles for the first few hours after placing, as the solids consolidate and water rises. In a tall vertical member this settlement accumulates over the height of the pour, and the top of the column or wall subsides noticeably while the concrete is still plastic.<br><br><strong>Why a monolithic column/wall-to-slab pour cracks.</strong> If a suspended slab or beam is cast continuously onto a column or wall in the same operation, the slab concrete at the junction begins to stiffen and span between its forms while the supporting member underneath is still settling. The subsiding support drags the partly stiffened slab concrete at the interface, and a settlement crack — or a void — forms at the column or wall head. That junction is the load-transfer point, so it is the worst possible place to build in a defect, and bracing does not prevent it: bracing holds the formwork, but the cracking comes from what the fresh concrete inside is doing, not from instability of the forms.<br><br><strong>The fix is a short delay, not days.</strong> The settlement being waited out is the plastic phase, which is essentially complete once the concrete is no longer plastic — on the order of 1 to 2 hours, not days. The practical solution is therefore to stop the column or wall at the slab/beam soffit, allow the vertical concrete to become non-plastic, then place the slab separately, with continuity reinforcement carried through the junction. Note that even when the two are poured the same day, this is still a construction joint at the soffit — the column or wall is not genuinely cast monolithically into the slab.<br><br><strong>Scope and what is excluded.</strong> This applies to vertical members that support suspended concrete — columns and walls under a slab or beam. It does not apply to elements that are part of the horizontal floor system itself: beams, band beams and upturns are normally cast monolithically with the slab and stay out of scope (only unusually deep transfer members warrant separate consideration). It also does not apply to ground-bearing piers or footings under a slab-on-ground: nothing suspended is resting on settling concrete there, so there is no forced joint and those elements can be consolidated into the slab pour (see <em>Pour sequencing</em>). A separate, longer delay (a day or more) is sometimes specified on tall buildings to let columns shorten before the floor is placed — that is a column-shortening consideration, not the plastic-settlement issue addressed here.",
+            "question": "Where a slab, beam, ground beam or pile cap is cast against or above a deep vertical concrete element, has the design made the intended pour sequence clear and considered plastic settlement, construction-joint and water-ingress risks?",
+            "parameter": "Depth difference between the slab or horizontal member and the deeper vertical concrete element at the interface (mm).",
+            "keywords": [
+              "plastic settlement",
+              "differential settlement",
+              "pour sequence",
+              "pour break",
+              "construction joint",
+              "starter bars",
+              "wall to slab",
+              "column to slab",
+              "pile cap",
+              "ground beam",
+              "drop edge beam",
+              "downstand beam",
+              "deep edge beam",
+              "monolithic pour",
+              "bleeding concrete"
+            ],
+            "background": "Fresh concrete continues to settle while it is still plastic. In shallow or uniform slab sections this movement is usually small, but it can become significant where a much deeper vertical concrete section is cast against a thinner slab or horizontal member.<br><br>This entry is not intended to suggest that normal monolithic beam-and-slab construction is poor practice. Integral beams, band beams, drop panels, slab thickenings and drop edge beams are commonly poured with slabs. The issue is whether the design recognises the scale of differential plastic settlement where the vertical depth becomes large.<br><br>For full-height walls, columns and deep piers or piles, the usual constructability response is to pour the vertical element separately, stop it at the intended joint or soffit, and show starter bars, laps, couplers or continuity reinforcement as required.<br><br>For deep drop edge beams, downstand beams or slab-on-ground edge conditions, a separate pour may not always be the best response. A construction joint near ground level, external exposure or a retaining condition can introduce water ingress risk. In those cases, a controlled monolithic pour may be preferable, provided settlement, compaction, vibration, possible revibration and reinforcement congestion are considered.<br><br>Additional reinforcement is not a substitute for pour sequence. Trimmer bars at a re-entrant corner help control hardened-concrete tensile cracking. Plastic settlement occurs while the concrete is still fresh, before the reinforcement is acting in the normal hardened-concrete way. Reinforcement can also restrain settlement and contribute to cracking or bleed-water pockets around bars.",
             "thresholds": [
               {
-                "range": "<= 150 mm",
+                "range": "Clear pour strategy",
                 "rating": "Best practice",
                 "color": "green",
-                "guidance": "Only minor vertical concrete is involved — an upturn, kerb or thickening that is part of the floor system. Settlement is negligible and the element is cast monolithically with the slab as normal. The issue does not arise."
+                "guidance": "The intended pour sequence is clear. For walls, columns, piers and piles, this normally means the vertical element is poured separately to the intended joint or soffit, with starter bars, laps, couplers or continuity reinforcement shown as required. For deep drop edge beams, downstand beams, slab thickenings, pile caps or ground beams, this may mean a monolithic pour is deliberately retained, with the construction method able to manage settlement, compaction and water ingress risk."
               },
               {
-                "range": "150 - 500 mm",
+                "range": "Unclear or accidental monolithic pour",
                 "rating": "Consider",
                 "color": "yellow",
-                "guidance": "A shallow vertical element. If it is part of the floor system (a band or deeper upturn), monolithic placement remains appropriate. If it is acting as a discrete support carrying a suspended member, confirm whether settlement at the junction is tolerable or whether a soffit break is warranted."
-              },
-              {
-                "range": "500 - 1500 mm",
-                "rating": "Concern",
-                "color": "orange",
-                "guidance": "A genuine vertical support lift carrying suspended concrete. If the detail implies a monolithic pour with the slab or beam, settlement at the head can crack the load-transfer junction. Detail the member to stop at the soffit and place the supported member separately, allowing the vertical concrete to become non-plastic first."
-              },
-              {
-                "range": "> 1500 mm",
-                "rating": "Action required",
-                "color": "red",
-                "guidance": "Full-storey columns or walls supporting a suspended slab or beam. A monolithic pour will accumulate substantial plastic settlement at the head and risk cracking at the junction. Do not detail as a monolithic column/wall-to-slab pour: stop at the soffit, carry continuity reinforcement through, and place the supported member separately after the short plastic-settlement delay."
+                "guidance": "A deep vertical concrete element is shown monolithic with a much shallower slab or horizontal member, but the pour strategy is unclear. This is especially relevant where a full-height wall, column, pier or pile appears to be poured at the same time as the slab, beam, ground beam or pile cap above; or where a deep drop edge beam or downstand beam is shown without recognition of plastic settlement, compaction, revibration or water-ingress implications."
               }
             ],
+            "workedExample": {
+              "title": "Worked example — indicative differential plastic movement",
+              "caveat": "The table applies an indicative plastic settlement range of 0.005–0.02 mm/mm to common concrete depths. It assumes a 150 mm slab and estimates the differential movement between the slab and the deeper vertical section. Values are indicative only and show scale, not exact site movement.",
+              "headline": "A few millimetres at a slab thickening can become tens of millimetres at a wall, column, pile or deep edge condition.",
+              "tableHeaders": [
+                "Deeper concrete section",
+                "Indicative differential plastic movement compared with 150 mm slab",
+                "Practical meaning"
+              ],
+              "tableRows": [
+                [
+                  "300 mm",
+                  "1–3 mm",
+                  "Minor thickening. Usually handled by normal placement and vibration."
+                ],
+                [
+                  "600 mm",
+                  "2–9 mm",
+                  "Deep beam or local thickening. Settlement at the transition should be considered."
+                ],
+                [
+                  "1000 mm",
+                  "4–17 mm",
+                  "Large beam, edge beam or pier head. Monolithic pour may still be suitable, but settlement control matters."
+                ],
+                [
+                  "1600 mm",
+                  "7–29 mm",
+                  "Large drop edge beam. Do not assume it behaves like a normal slab edge; balance settlement risk against water-ingress risk from any joint."
+                ],
+                [
+                  "2400 mm",
+                  "11–45 mm",
+                  "Storey-height wall, column or deep vertical element. Separate vertical pour should normally be expected."
+                ],
+                [
+                  "2700 mm",
+                  "13–51 mm",
+                  "Typical wall or column height. Same-time pouring with the slab above should require a deliberate reviewed method."
+                ],
+                [
+                  "3000 mm",
+                  "14–57 mm",
+                  "High wall/column lift or deep vertical element. Show a separate pour unless a specific construction method is agreed."
+                ]
+              ],
+              "howToUse": "Compare the depth of the deeper concrete section with the slab or horizontal member it is being cast against. Use the estimated differential movement to decide whether the design should show a separate pour, or whether a deliberate monolithic pour with settlement control is the better construction method. The table is a constructability prompt, not a structural deflection calculation.",
+              "assumptionsTitle": "How these numbers were derived",
+              "assumptions": [
+                "Published settlement range used: 0.005–0.02 mm/mm of concrete depth, reported for concrete slab depths in the approximate 300–1000 mm range.",
+                "Assumed slab thickness: 150 mm.",
+                "Indicative differential movement = (deeper concrete section depth − 150 mm slab depth) × 0.005 to 0.02.",
+                "Values above 1000 mm extrapolate the published range to show the scale of the mechanism at common wall, column and deep edge-beam heights; they are not predictions of exact movement on site."
+              ],
+              "assumptionsNote": "Actual behaviour depends on mix design, slump, bleeding, placement rate, vibration, reinforcement congestion, formwork geometry, temperature and timing. The worked example shows why depth difference matters; it does not create a code limit."
+            },
             "alternatives": [
               {
-                "title": "Stop the column or wall at the soffit, with a planned construction joint",
-                "description": "Detail the supporting member to terminate at the underside of the slab or beam it supports, with a construction joint at the soffit and continuity reinforcement carried through the junction. This keeps the load-transfer joint clean and planned rather than letting a settlement crack form there."
+                "title": "Show the intended pour sequence clearly",
+                "description": "Make the construction method obvious on the drawings. Where the vertical element is to be poured separately, stop it at the intended construction joint or soffit and show starter bars, laps, couplers or continuity reinforcement into the slab, beam, ground beam or pile cap above."
               },
               {
-                "title": "Sequence the supported member after a short plastic-settlement delay",
-                "description": "Place the column or wall first and allow it to become non-plastic (broadly 1 to 2 hours, depending on mix, temperature and admixtures) before placing the slab or beam onto it. This lets the vertical concrete release its bleed water and settle before it has to act as a support."
+                "title": "Pour deep vertical supports separately where practical",
+                "description": "For walls, columns, piers and piles, detail the vertical element as a separate pour where practical. This allows the vertical concrete to settle and stop being plastic before the slab, beam, ground beam or pile cap above is placed."
               },
               {
-                "title": "Distinguish floor-system elements from vertical supports",
-                "description": "Beams, band beams and upturns that form part of the horizontal floor system are cast monolithically with the slab and are not affected. Reserve the soffit-break treatment for vertical members (columns, walls) that support suspended concrete, so the rule is not over-applied to ordinary beam-slab interfaces."
+                "title": "Do not automatically introduce joints into deep edge beams",
+                "description": "For deep drop edge beams, downstand beams and slab thickenings, review whether a controlled monolithic pour is better than a construction joint that may create water ingress risk, particularly near ground level, exposed edges, retaining conditions or wet areas."
               },
               {
-                "title": "Consolidate freely where the element is ground-bearing",
-                "description": "Where the vertical element is a pier or footing under a slab-on-ground — supporting nothing suspended — there is no settlement-cracking concern and no forced joint. Such elements can be poured together with the slab (see Pour sequencing) rather than separately."
+                "title": "Detail water control where a joint is introduced",
+                "description": "Where a construction joint is introduced near ground level, exposed edges, retaining conditions or wet areas, detail the water-control strategy deliberately. This may require a waterstop, joint preparation, waterproofing continuity or other project-specific treatment."
               },
               {
-                "title": "Remediate an unplanned monolithic pour",
-                "description": "If a monolithic column/wall-to-slab pour has occurred, the interface can be revibrated while the concrete is still plastic to re-knit it. Once the supporting concrete has set, the junction should be treated as a cold joint — cleaned and prepared, with additional reinforcement across it as required."
+                "title": "Do not rely on extra reinforcement alone",
+                "description": "Additional reinforcement may help control hardened cracking, but it does not prevent fresh concrete from settling or bleeding while plastic. Reinforcement can also restrain settlement and contribute to cracking or bleed-water pockets around bars."
               }
             ],
             "applicability": {
-              "appliesWhere": "This entry applies to reinforced concrete columns and walls that support a suspended slab or beam, where the design or detail could be built as a monolithic vertical-member-to-slab pour. It does not apply to elements that are part of the horizontal floor system (beams, bands, upturns), nor to ground-bearing piers and footings under a slab-on-ground.",
+              "appliesWhere": "This entry applies to deep vertical concrete elements at slab, beam, ground beam and pile cap interfaces. Examples include walls, columns, bored piers, piles, deep drop edge beams, downstand beams and other deep vertical legs cast against a thinner horizontal member.",
               "checks": [
                 {
-                  "title": "Floor-system element or vertical support?",
-                  "description": "The key distinction is whether the concrete is part of the floor spanning horizontally (cast monolithically with the slab) or a vertical member carrying the floor (stopped at the soffit). Mis-classifying a beam as a support would wrongly introduce joints; mis-classifying a column as floor concrete builds in the settlement crack."
+                  "title": "This is an interface issue, not a rule for all vertical pours",
+                  "description": "A lift shaft wall or core wall poured several metres high is a different constructability issue unless it is being combined with a slab, beam or cap at the same interface. That case is mainly about formwork pressure, rate of rise, compaction access, cold joints and concrete placement procedure."
                 },
                 {
-                  "title": "Height of the vertical lift",
-                  "description": "Settlement accumulates over the depth of fresh vertical concrete, so the taller the column or wall lift, the larger the consequence and the more important the soffit break. Short stubs settle little; full-storey members settle a lot."
+                  "title": "Normal beam-and-slab construction is not the target",
+                  "description": "Integral beams, band beams, drop panels and slab thickenings are commonly poured monolithically with slabs. This entry targets deep-to-shallow geometry where the vertical settlement potential is large enough to influence the pour method."
                 },
                 {
-                  "title": "Mix, temperature and admixtures",
-                  "description": "Bleed characteristics and the length of the plastic phase depend on the mix, the temperature and any retarders. These affect how long the supporting member must stand before the slab is placed, not whether the break is needed."
+                  "title": "Drop edge and downstand beams need judgement",
+                  "description": "A deep drop edge beam may have meaningful plastic settlement potential, but a separate construction joint near ground or external exposure can create a water-ingress problem. The better constructability response may be a controlled monolithic pour rather than a joint."
                 },
                 {
-                  "title": "Congestion and grade at the junction",
-                  "description": "Column/wall-to-slab junctions are often heavily congested and may involve a higher-grade vertical member than the slab. Both make a clean monolithic placement harder and reinforce the case for a planned soffit joint."
+                  "title": "Piers and piles are included where they interface with a cap, beam or slab",
+                  "description": "Deep bored piers or piles are normally poured separately with starters into the cap, beam or slab above. Where a detail implies otherwise, the same settlement and interface logic should be reviewed."
+                },
+                {
+                  "title": "The worked example is not a code limit",
+                  "description": "The table uses an indicative settlement range to show order of magnitude. It should not be used as a structural deflection calculation, concrete acceptance criterion or mandatory cutoff."
                 }
               ],
-              "note": "Use the rating as a review prompt. The corrective action — a soffit construction joint plus a short delay before the supported member is placed — is standard, low-cost practice; the purpose of the entry is to make sure a monolithic pour is not detailed or assumed without recognising the settlement-cracking consequence."
+              "note": "Use the rating as a constructability prompt. The aim is not to ban monolithic pouring, but to make the pour strategy deliberate where deep vertical concrete is cast against a much shallower slab, beam, ground beam or pile cap."
             },
-            "evidence": "This entry is framed around the plastic-settlement cracking mechanism and its remediation, with codified construction provisions as corroboration.<br><br><strong>The cracking mechanism.</strong> Plastic settlement cracking arises while concrete is still plastic, as the solids consolidate and bleed water rises. Where a deep section settles beneath a member that is restrained or that has begun to stiffen and span, the differential movement cracks the interface. The column- or wall-to-slab junction is the classic structural instance: a suspended member cast onto a still-settling vertical support cracks at the head. This is distinct from plastic shrinkage cracking (surface drying) and is documented in standard concrete-technology references and early-age cracking guidance.<br><br><strong>Codified corroboration.</strong> The provision that members supported by columns and walls should not be cast until the concrete in the vertical support is no longer plastic is long established — ACI 318 states it explicitly, and its commentary attributes the required delay to bleeding and settlement of the plastic concrete in the supporting member. AS 3600 carries an equivalent requirement within its construction-joint provisions (exact clause to be confirmed on review).<br><br><strong>The delay timeframe.</strong> Practice specifications that schedule this sequence put the delay at roughly 1 to 2 hours — for example bridge construction specifications direct that the column or wall concrete be placed to the underside of the cap and a delay of about 1 to 2 hours elapse before the member above is placed, to permit water release and consolidation of the vertical concrete. This confirms the wait is a matter of hours (the plastic phase), not days.<br><br><strong>References</strong><br>ACI Committee 318. <em>Building Code Requirements for Structural Concrete (ACI 318)</em> — provision on members supported by columns and walls, and commentary.<br>Neville, A. M. <em>Properties of Concrete</em> — bleeding and plastic settlement.<br>Cement Concrete &amp; Aggregates Australia (CCAA). <em>Concrete Basics</em> / early-age cracking guidance.<br>Standards Australia. <em>AS 3600 Concrete structures</em> (equivalent construction provision — clause to confirm).<br>Bridge construction specifications (e.g. Texas DOT Item 420; Minnesota DOT Bridge Construction Manual) — 1&ndash;2 hour settlement delay between a vertical member and the member cast above (practice corroboration).",
+            "evidence": "This entry is supported by research on plastic settlement and plastic cracking in fresh concrete. The evidence supports the mechanism and the order of magnitude used in the worked example, but it does not provide a hard code-style cutoff for when a pour must be separated.<br><br><strong>Mechanism &mdash; differential plastic settlement.</strong> Kayondo, Combrinck and Boshoff (2019) review plastic cracking research and identify plastic settlement cracking as a differential-settlement problem caused by restraints such as changes in section depth and reinforcement. Their T-beam figure is useful because it illustrates cracking at a deep-to-shallow section change. They also state that greater differences in vertical volume change between settlement zones increase cracking potential, and identify concrete depth as a main factor influencing settlement.<br><br><strong>Settlement range and reinforcement effect.</strong> Kwak, Ha and Weiss (2010) experimentally and numerically quantified plastic settlement in fresh cementitious systems. Their work supports self-weight settlement as a real mechanism and reports settlement values that can be used to estimate the order of magnitude of potential movement. They also show that reinforcement can restrain settlement, with water pockets forming below bars and tensile stress developing above bars. This is why additional reinforcement is not a substitute for sequencing or settlement control.<br><br><strong>How the worked example is used.</strong> The worked example applies the published settlement range of 0.005–0.02 mm/mm to common concrete depths and compares them with a 150 mm slab. Values above 1000 mm are extrapolated to show the scale of the mechanism at wall, column, pile and deep edge-beam depths. The table is therefore a constructability prompt, not a prediction of exact site movement.<br><br><strong>Constructability interpretation.</strong> For full-height walls, columns, piers and piles, the usual practical response is to pour the vertical element separately and show starter/continuity reinforcement. For deep drop edge beams and similar edge conditions, a monolithic pour may still be the better response because a construction joint can create water-ingress risk. The design should make that choice deliberate rather than accidental.<br><br><strong>References</strong><br>Kayondo, M., Combrinck, R., &amp; Boshoff, W. P. (2019). State-of-the-art review on plastic cracking of concrete. <em>Construction and Building Materials, 225</em>, 886&ndash;899. https://doi.org/10.1016/j.conbuildmat.2019.07.197<br>Kwak, H.-G., Ha, S., &amp; Weiss, W. J. (2010). Experimental and numerical quantification of plastic settlement in fresh cementitious systems. <em>Journal of Materials in Civil Engineering, 22</em>(10), 951&ndash;966. https://doi.org/10.1061/(ASCE)MT.1943-5533.0000097",
+            "examples": [],
+            "supportingImages": [],
             "dateAdded": "2026-06-05",
+            "dateReviewed": "2026-06-12",
             "location": {
               "country": "Australia",
               "state": "NSW"
             },
-            "_status": "DRAFT — not live (available:false). New entry, created alongside the reframed Pour sequencing entry. On review: (1) do a focused pass for the dedicated plastic-settlement-cracking and remediation literature (Neville; concrete-technology texts; CCAA early-age cracking) and cite precisely; (2) confirm the exact AS 3600 construction-joint clause and the current ACI 318 clause number; (3) consider whether the dimension should be Detailing rather than Construction Methods (currently Methods, on root-cause = construction sequence); (4) add a de-identified example/photograph of settlement cracking at a junction if one becomes available."
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Supported by plastic-settlement and plastic-cracking research, including an order-of-magnitude settlement range and a clear differential-settlement mechanism. The worked example extrapolates beyond the tested depth range and is a constructability prompt rather than a hard rule, so the support level is medium."
+            }
           }
         },
         {
