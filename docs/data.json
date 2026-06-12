@@ -654,24 +654,24 @@
             },
             "alternatives": [
               {
-                "title": "Show the intended pour sequence clearly",
-                "description": "Make the construction method obvious on the drawings. Where the vertical element is to be poured separately, stop it at the intended construction joint or soffit and show starter bars, laps, couplers or continuity reinforcement into the slab, beam, ground beam or pile cap above."
+                "title": "Pour full-height vertical elements separately from the slab where practical",
+                "description": "For full-height vertical elements, such as walls and columns above approximately 2.4 m, the preferred constructability approach is usually to pour the vertical element separately from the slab, beam, ground beam or pile cap above. Stop the wall or column at the intended construction joint or soffit, allow the concrete to settle and leave the plastic state, and connect the next pour using starter bars, laps, couplers or other continuity reinforcement as required."
               },
               {
-                "title": "Pour deep vertical supports separately where practical",
-                "description": "For walls, columns, piers and piles, detail the vertical element as a separate pour where practical. This allows the vertical concrete to settle and stop being plastic before the slab, beam, ground beam or pile cap above is placed."
+                "title": "Treat deep piers and piles the same way where they connect into caps, ground beams or slabs",
+                "description": "For bored piers, piles or similar deep vertical elements, avoid implying that a deep vertical pour and the slab, pile cap or ground beam above are placed as one continuous fresh-concrete pour. Where practical, pour the pier or pile first and connect into the member above with starters or continuity reinforcement."
               },
               {
-                "title": "Do not automatically introduce joints into deep edge beams",
-                "description": "For deep drop edge beams, downstand beams and slab thickenings, review whether a controlled monolithic pour is better than a construction joint that may create water ingress risk, particularly near ground level, exposed edges, retaining conditions or wet areas."
+                "title": "Do not automatically split deep edge beams or slab thickenings",
+                "description": "Deep drop edge beams, downstand beams and slab thickenings may still be best poured monolithically with the slab, especially near ground level, exposed edges, retaining conditions or wet areas where a construction joint could create a water ingress problem. In these cases, the recommendation is not “add a joint”; it is to deliberately manage the monolithic pour through placement sequence, vibration, possible revibration, mix control and reinforcement congestion review."
               },
               {
-                "title": "Detail water control where a joint is introduced",
-                "description": "Where a construction joint is introduced near ground level, exposed edges, retaining conditions or wet areas, detail the water-control strategy deliberately. This may require a waterstop, joint preparation, waterproofing continuity or other project-specific treatment."
+                "title": "Detail water control where a joint is introduced near exposure",
+                "description": "Where a construction joint is introduced near ground level, exposed edges, retaining conditions or wet areas, detail the water-control strategy deliberately. This may require a waterstop, joint preparation, waterproofing continuity, sealant, surface preparation or another project-specific treatment."
               },
               {
-                "title": "Do not rely on extra reinforcement alone",
-                "description": "Additional reinforcement may help control hardened cracking, but it does not prevent fresh concrete from settling or bleeding while plastic. Reinforcement can also restrain settlement and contribute to cracking or bleed-water pockets around bars."
+                "title": "Do not rely on extra reinforcement alone to solve plastic settlement",
+                "description": "Additional reinforcement may help control hardened-concrete cracking, but it does not prevent fresh concrete from settling or bleeding while plastic. In the plastic state, reinforcement can also act as a restraint and contribute to cracking or bleed-water pockets around bars. The primary control is the pour strategy, not simply adding more steel."
               }
             ],
             "applicability": {
