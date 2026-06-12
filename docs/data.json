@@ -561,7 +561,6 @@
           "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
           "name": "Pour sequencing for deep vertical concrete elements at slab interfaces (example: walls/columns/piles)",
           "available": true,
-          "draft": false,
           "data": {
             "question": "Where a slab, beam, ground beam or pile cap is cast against or above a deep vertical concrete element, has the design made the intended pour sequence clear and considered plastic settlement, construction-joint and water-ingress risks?",
             "parameter": "Depth difference between the slab or horizontal member and the deeper vertical concrete element at the interface (mm).",
@@ -703,7 +702,12 @@
             },
             "evidence": "This entry is supported by research on plastic settlement and plastic cracking in fresh concrete. The evidence supports the mechanism and the order of magnitude used in the worked example, but it does not provide a hard code-style cutoff for when a pour must be separated.<br><br><strong>Mechanism &mdash; differential plastic settlement.</strong> Kayondo, Combrinck and Boshoff (2019) review plastic cracking research and identify plastic settlement cracking as a differential-settlement problem caused by restraints such as changes in section depth and reinforcement. Their T-beam figure is useful because it illustrates cracking at a deep-to-shallow section change. They also state that greater differences in vertical volume change between settlement zones increase cracking potential, and identify concrete depth as a main factor influencing settlement.<br><br><strong>Settlement range and reinforcement effect.</strong> Kwak, Ha and Weiss (2010) experimentally and numerically quantified plastic settlement in fresh cementitious systems. Their work supports self-weight settlement as a real mechanism and reports settlement values that can be used to estimate the order of magnitude of potential movement. They also show that reinforcement can restrain settlement, with water pockets forming below bars and tensile stress developing above bars. This is why additional reinforcement is not a substitute for sequencing or settlement control.<br><br><strong>How the worked example is used.</strong> The worked example applies the published settlement range of 0.005–0.02 mm/mm to common concrete depths and compares them with a 150 mm slab. Values above 1000 mm are extrapolated to show the scale of the mechanism at wall, column, pile and deep edge-beam depths. The table is therefore a constructability prompt, not a prediction of exact site movement.<br><br><strong>Constructability interpretation.</strong> For full-height walls, columns, piers and piles, the usual practical response is to pour the vertical element separately and show starter/continuity reinforcement. For deep drop edge beams and similar edge conditions, a monolithic pour may still be the better response because a construction joint can create water-ingress risk. The design should make that choice deliberate rather than accidental.<br><br><strong>References</strong><br>Kayondo, M., Combrinck, R., &amp; Boshoff, W. P. (2019). State-of-the-art review on plastic cracking of concrete. <em>Construction and Building Materials, 225</em>, 886&ndash;899. https://doi.org/10.1016/j.conbuildmat.2019.07.197<br>Kwak, H.-G., Ha, S., &amp; Weiss, W. J. (2010). Experimental and numerical quantification of plastic settlement in fresh cementitious systems. <em>Journal of Materials in Civil Engineering, 22</em>(10), 951&ndash;966. https://doi.org/10.1061/(ASCE)MT.1943-5533.0000097",
             "examples": [],
-            "supportingImages": [],
+            "supportingImages": [
+              {
+                "image": "images/plastic-settlement-deep-to-shallow-section.png",
+                "title": "Plastic settlement at a deep-to-shallow concrete section<br>The deeper section settles more than the adjacent shallow slab while the concrete is still plastic, creating differential movement and cracking at the interface. This T-beam example illustrates the mechanism behind the entry: as the vertical depth below a slab interface increases, plastic settlement can become large enough to affect the pour strategy. It is not intended to suggest that ordinary beam-and-slab pours are unacceptable."
+              }
+            ],
             "dateAdded": "2026-06-05",
             "dateReviewed": "2026-06-12",
             "location": {
@@ -2284,5 +2288,6 @@
       "note": "Suggested entries, suggested changes and comments do not appear automatically. They are reviewed and de-identified before being added to the framework."
     }
   },
-  "_processed": []
+  "_processed": [],
+  "_rejected": []
 }
