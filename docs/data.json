@@ -755,6 +755,129 @@
             "_evidenceAngle": "Strongest tie is the mass-concrete THERMAL angle (more rigorous than 'uses less concrete'): a thick raft is a large heat-of-hydration pour prone to early thermal cracking, hard to build well; a biaxial void slab sidesteps the thick-pour problem and cuts self-weight. Practice reference: CIRIA C660 (controlling early-age thermal cracking) as a construction-practice guide, NOT a code clause. Keep the AS mass-concrete provisions in the back of mind only.",
             "_thresholdSketch": "Good/Consider by pour thickness + thermal risk: thin/normal → fine. Concern: thick raft with real thermal-cracking control burden. Action required: very thick pour where a void slab would clearly ease buildability — weigh it."
           }
+        },
+        {
+          "id": "rock-sockets-with-excavator-mounted-augers",
+          "name": "Rock sockets with excavator-mounted augers",
+          "available": true,
+          "data": {
+            "question": "Where bored piers, posts or small foundation holes are required to penetrate rock, has the required rock socket depth been matched to the drilling plant likely to be available on site — or does the design assume that a standard excavator-mounted auger can drill rock sockets that may actually require specialist rock-drilling or piling equipment?",
+            "parameter": "Required penetration into competent rock, considered together with the drilling plant likely to be available on the site.",
+            "keywords": [
+              "rock socket",
+              "rock sockets",
+              "rock auger",
+              "standard auger",
+              "earth auger",
+              "excavator auger",
+              "mini excavator",
+              "post hole digger",
+              "borer",
+              "bored pier",
+              "bored piers",
+              "bored pile",
+              "piling rig",
+              "core barrel",
+              "drill into rock",
+              "auger refusal",
+              "sandstone",
+              "founding in rock",
+              "restricted access piling",
+              "limited access piling"
+            ],
+            "background": "Small residential and low-rise foundation work is often approached with an excavator, mini-loader or skid-steer fitted with a post-hole auger. That equipment is well suited to shallow holes in soil and some weak or fractured material, and hire-style post-hole attachments commonly advertise depths around 2 m with extensions. The constructability problem starts when the structural design quietly relies on something more demanding: a bored pier or post hole that must socket into competent rock.<br><br>A shallow clean-up or small bite into weathered rock may be achievable with the right auger, teeth and machine. But a standard earth auger is not the same thing as a rock auger, and neither is the same thing as a piling rig fitted with specialist tools. Once the design requires meaningful penetration into hard rock, the construction method may change from ordinary excavation work to specialist rock drilling. That may mean a dedicated rock auger, a larger excavator, a restricted-access piling rig, a core barrel, casing, a different spoil-handling arrangement, or a different footing system altogether.<br><br>This is a design-stage issue because the rock socket often appears as a small note on a footing schedule, while the site may have been priced and planned around a standard excavator and auger. If the socket depth is beyond what that plant can achieve, the problem is usually discovered only when the auger refuses on rock. By that stage the builder may need a piling subcontractor, a different machine, access changes, delays, or a redesigned foundation. The issue is not whether rock sockets are structurally useful; it is whether the socket required by the design has been matched to a buildable drilling method before the footing layout is locked in.<br><br>For this entry, the 150–200 mm band should be read as a practical local prompt rather than a universal machine limit. The available product and contractor evidence supports the mechanism — standard augers, rock augers, hard-rock tooling and piling rigs are different equipment classes — but the exact depth a particular contractor can drill depends on the machine, auger drive torque, tooth type, rock strength, diameter, access, spoil removal and operator experience.",
+            "thresholds": [
+              {
+                "range": "No socket, or founded on cleaned rock",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "The design does not rely on drilling a meaningful socket into competent rock. The footing or pier bears on cleaned and inspected rock, or the penetration into rock is not structurally relied upon. Standard excavation or shallow augering may be sufficient, subject to geotechnical inspection and normal founding requirements."
+              },
+              {
+                "range": "<= 150-200 mm rock penetration",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "A shallow bite into weathered or fractured rock may be achievable with an excavator-mounted auger if the contractor has the correct rock teeth, auger and machine. Do not assume this from the drawing alone. Confirm the intended drilling plant before issue or before tender, especially where there are many piers or restricted access."
+              },
+              {
+                "range": "> 200 mm rock socket, or hard rock",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "The design relies on more rock drilling than should be assumed for a standard excavator earth-auger setup. A specialist rock auger, higher-torque drive, larger machine, piling rig, core barrel or redesign may be required. Review the drilling method, access and cost implications before the footing layout is locked in."
+              },
+              {
+                "range": "Deep socket assumed, plant not confirmed",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "The foundation design relies on rock sockets that may require specialist piling or rock-drilling equipment, but the site has not been checked for that equipment. Confirm drilling method, access, working platform, headroom, spoil handling, reinforcement cage installation and concrete placement. If the required plant cannot access the site, redesign the footing system or socket requirement before construction."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Confirm the drilling method before the footing layout is fixed",
+                "description": "Where rock sockets are required, nominate or confirm the assumed construction method early. At minimum, ask whether the work is intended to be done with a standard excavator auger, an excavator-mounted rock auger, a restricted-access piling rig, or a larger piling rig with rock tools. The socket depth, diameter and rock strength should be matched to the actual plant, not left as an assumption."
+              },
+              {
+                "title": "Avoid casual rock sockets where founding on rock is enough",
+                "description": "If the design only requires bearing on competent rock, consider whether a cleaned and inspected rock founding surface is sufficient rather than requiring a drilled socket. Do not specify a socket merely because it is a familiar detail; the socket should be structurally necessary and buildable."
+              },
+              {
+                "title": "Use specialist rock drilling where the socket is structurally necessary",
+                "description": "Where the socket is required for uplift, lateral resistance, sliding, moment transfer or geotechnical capacity, keep the socket but make the construction method explicit. This may require a rock auger, core barrel, casing, piling subcontractor, restricted-access piling rig or other specialist plant."
+              },
+              {
+                "title": "Change the foundation system where the required drilling plant cannot access the site",
+                "description": "Where specialist drilling plant cannot access the footing locations, review alternatives such as pads or strips founded on rock, ground beams spanning between fewer foundations, screw piles where suitable, fewer larger piles in accessible positions, or another geotechnically appropriate foundation arrangement."
+              },
+              {
+                "title": "Flag the risk in the footing notes or tender information",
+                "description": "If the socket requirement remains, make the construction implication visible. For example, note that rock socket depths are subject to confirmation by a piling or rock-drilling contractor, or that specialist rock-drilling equipment may be required where sockets exceed shallow penetration into weathered rock."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to bored piers, bored piles, post holes and small foundation excavations where the design requires drilling into rock, especially on residential and low-rise projects where the builder may expect to use an excavator-mounted auger rather than a piling rig.",
+              "checks": [
+                {
+                  "title": "Rock type and strength",
+                  "description": "Weathered or fractured sandstone is not the same drilling problem as hard competent rock, basalt or very high-strength material. The socket depth should be considered with the geotechnical description, not only as a number on the footing schedule."
+                },
+                {
+                  "title": "Hole diameter and depth",
+                  "description": "A shallow 300 mm diameter hole is a different task from a 450, 600 or larger bored pier. Larger diameters and deeper holes increase torque demand, spoil handling, verticality control, collapse risk and the likelihood that piling plant is needed."
+                },
+                {
+                  "title": "Number of holes",
+                  "description": "A one-off shallow socket may be handled as a difficult excavation item. Many repeated sockets can justify specialist plant or a redesign because even a small per-hole difficulty becomes a programme and cost issue when repeated."
+                },
+                {
+                  "title": "Access and working platform",
+                  "description": "Piling rigs and larger excavators need physical access, working room, suitable ground bearing, overhead clearance and space for spoil, reinforcement and concrete placement. Restricted access does not necessarily mean standard excavator only; specialist restricted-access piling rigs may be available, but they must be planned."
+                },
+                {
+                  "title": "Structural reason for the socket",
+                  "description": "The response depends on why the socket exists. A socket required for uplift or lateral resistance cannot simply be removed. A socket included by habit where bearing on rock would suffice should be questioned."
+                },
+                {
+                  "title": "Regional contractor practice",
+                  "description": "The 150–200 mm prompt reflects practical judgement and should be checked locally. Available auger drives, rock teeth, piling contractors, sandstone conditions and common builder practice vary by region."
+                }
+              ],
+              "note": "Use the rating as a constructability prompt, not as a prohibition on rock sockets. The aim is to make the required drilling method explicit before tender or construction, so a structurally valid foundation detail does not become an avoidable site delay."
+            },
+            "evidence": "<strong>Standard excavator/post-hole auger depth envelope.</strong> Hire-style post-hole attachments for mini-loaders and similar plant commonly advertise shallow foundation and post-hole applications, with depths around 2 m when an extension is used. This supports the practical distinction between ordinary small-site augering and deeper or more demanding bored-pile construction.<br><br><strong>Standard augers are not hard-rock tools.</strong> Specialist rock-auger manufacturers distinguish rock augers from standard augers. Digga describes tapered rock augers as extreme rock-drilling tools that allow penetration into ground normally unachievable with a standard auger. This supports the constructability warning that a normal earth auger should not be assumed to drill meaningful sockets into hard rock.<br><br><strong>Specialist piling uses different tooling.</strong> Bored-pile and piling-rig guidance identifies augers, rock augers, buckets, casing and core barrels as separate tools selected to suit ground conditions. Soilmec states that when digging very hard rock formations, the most suitable drilling tool is the core barrel. Keller describes bored piles as available from 450 mm diameter upward and installable in a wide range of soil and rock conditions. This supports the distinction between excavator augering and specialist bored-pile/rock-drilling practice.<br><br><strong>Threshold basis.</strong> The exact 150–200 mm band is not a code or manufacturer limit. It is a practical design-stage prompt based on local construction judgement: shallow penetration into weathered or fractured rock may be achievable with the right excavator-mounted rock tooling, but deeper sockets or hard competent rock should trigger confirmation of specialist plant. The evidence supports the equipment-class distinction; the depth thresholds should be improved over time using contractor feedback, site examples and regional experience.<br><br><strong>References</strong><br>Kennards Hire. Mini Loader Post Hole Attachment. Accessed 2026.<br>Digga Australia. Tapered Rock Augers. Accessed 2026.<br>Soilmec. <em>Bored Piles</em>. Accessed 2026.<br>Keller Australia. Bored Piles. Accessed 2026.",
+            "examples": [],
+            "supportingImages": [],
+            "dateAdded": "2026-06-13",
+            "dateReviewed": "2026-06-13",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Supported by equipment and piling references that distinguish standard augers, rock augers, core barrels and bored-pile rigs, plus practical NSW site experience. The exact 150–200 mm threshold is a judgement-based prompt and should be strengthened with contractor feedback or project examples."
+            }
+          }
         }
       ]
     },
@@ -2288,6 +2411,8 @@
       "note": "Suggested entries, suggested changes and comments do not appear automatically. They are reviewed and de-identified before being added to the framework."
     }
   },
-  "_processed": [],
+  "_processed": [
+    "fragment|entry|rock-sockets-with-excavator-mounted-augers|3iehqn"
+  ],
   "_rejected": []
 }
