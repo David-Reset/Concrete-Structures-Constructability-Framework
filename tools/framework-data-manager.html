@@ -191,9 +191,36 @@
   .erow-name{font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .erow-id{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .erow-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
+  /* related-entries: badge, link chips, on-demand highlight */
+  .erow-links{display:none;flex-wrap:wrap;gap:5px;margin-top:7px}
+  /* chips stay hidden until you click an entry's 🔗 badge — only the clicked entry reveals its links */
+  #listGroups .erow.lit-primary .erow-links{display:flex}
+  .erow-link-chip{display:inline-flex;align-items:center;gap:5px;max-width:260px;font-size:10.5px;color:var(--text-muted);background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:2px 8px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .erow-link-chip:hover{border-color:var(--accent);color:var(--text)}
+  .erow-link-chip .lk-arrow{color:var(--accent);flex-shrink:0}
+  .erow-link-chip.draft{font-style:italic;opacity:0.8}
+  .linkbadge{display:inline-flex;align-items:center;gap:4px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);background:var(--accent-glow);border:1px solid var(--accent);border-radius:5px;padding:3px 7px;cursor:pointer;flex-shrink:0}
+  .linkbadge:hover{background:var(--accent);color:#fff}
+  .list-hint{font-size:11.5px;color:var(--text-muted);line-height:1.5;margin:0 0 12px}
+  .list-hint .chip-eg{font-family:'JetBrains Mono',monospace;color:var(--accent)}
+  #listGroups.focusing .erow{opacity:0.32;transition:opacity .12s}
+  #listGroups.focusing .erow.lit,#listGroups.focusing .erow.lit-primary{opacity:1}
+  .erow.lit{border-color:var(--accent)}
+  .erow.lit-primary{border-color:var(--accent);background:var(--accent-glow);box-shadow:0 0 0 2px var(--accent-glow)}
+  .clear-lit{font-size:11px;color:var(--accent);background:none;border:none;cursor:pointer;font-family:inherit;padding:0;text-decoration:underline}
+  /* link editor (manage related entries modal) */
+  .hint{font-size:11px;color:var(--text-muted);line-height:1.45}
+  .lk-edit{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:8px}
+  .lk-edit-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:7px}
+  .lk-edit-name{font-size:13px;font-weight:600;color:var(--text)}
+  .lk-edit-dim{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted);font-weight:400;margin-left:4px}
+  .lk-note{width:100%;min-height:46px;resize:vertical;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:7px 9px;font-family:inherit;font-size:12px;line-height:1.5}
+  .lk-note:focus{border-color:var(--accent);outline:none}
+  .lk-add{display:flex;flex-direction:column;gap:8px}
+  .lk-add-sel{width:100%}
   .ic{width:26px;height:26px;border:1px solid var(--border);border-radius:5px;background:var(--surface-light);color:var(--text-muted);font-size:13px;cursor:pointer}
   .ic:hover{border-color:var(--accent);color:var(--text)}
-  .mv{background:var(--bg);color:var(--text-muted);border:1px solid var(--border);border-radius:5px;font-size:11px;padding:4px 6px;max-width:130px;font-family:inherit}
+  .mv{background:var(--bg);color:var(--text-muted);border:1px solid var(--border);border-radius:5px;font-size:11px;padding:4px 26px 4px 8px;min-width:172px;max-width:210px;font-family:inherit}
   .edit-top,.edit-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px}
   .edit-top{margin-bottom:16px;border-bottom:1px solid var(--border);padding-bottom:14px}
   .edit-bottom{margin-top:18px;border-top:1px solid var(--border);padding-top:16px;justify-content:flex-end}
@@ -1436,6 +1463,7 @@ function showList(){
       <input id="searchBox" class="search" type="text" placeholder="Search by name, id, or keyword…" oninput="state.search=this.value;filterList()">
       <div class="list-count" id="listCount"></div>
     </div>
+    <div class="list-hint">🔗 marks entries with related links. Click a <span class="chip-eg">🔗 badge</span> or any link tag to light up that entry and everything it connects to — across dimensions. <span id="clearLitWrap" style="display:none">(<button class="clear-lit" onclick="highlightWeb(state.litId)">clear highlight</button>)</span></div>
     <div id="listGroups"></div>
   </div>`;
   document.getElementById('searchBox').value=state.search;
@@ -1604,19 +1632,136 @@ function filterList(){
   const g=document.getElementById('listGroups');
   g.innerHTML=html||'<div class="empty">No entries match the search.</div>';
   document.getElementById('listCount').textContent=(q?shown+' of '+countEntries():countEntries())+' entries';
+  applyHighlight();
+}
+/* ---- related-entries: two-way web within the loaded data (drafts included) ---- */
+function mgrRelated(id){
+  const out=[],seen=new Set();
+  const meta=mid=>{for(const dim of state.db.dimensions){const it=dim.items.find(x=>x.id===mid);if(it)return {id:mid,name:it.name,dimName:dim.name,available:it.available!==false};}return null;};
+  const self=findEntry(state.db,{id});
+  ((self&&self.item.data&&self.item.data.relatedEntries)||[]).forEach(r=>{
+    const rid=typeof r==='string'?r:r.id,note=typeof r==='string'?'':(r.note||'');
+    const m=meta(rid);if(m&&rid!==id&&!seen.has(rid)){seen.add(rid);out.push(Object.assign(m,{note}));}
+  });
+  state.db.dimensions.forEach(dim=>dim.items.forEach(it=>{
+    if(!it.data||!it.data.relatedEntries)return;
+    it.data.relatedEntries.forEach(r=>{
+      const rid=typeof r==='string'?r:r.id;
+      if(rid===id&&it.id!==id&&!seen.has(it.id)){const m=meta(it.id);if(m){seen.add(it.id);out.push(Object.assign(m,{note:typeof r==='string'?'':(r.note||'')}));}}
+    });
+  }));
+  return out;
+}
+function rowEl(id){return Array.from(document.querySelectorAll('#listGroups .erow')).find(e=>e.dataset.id===id);}
+function highlightWeb(id){state.litId=(state.litId===id)?null:id;applyHighlight();}
+function focusEntry(id){state.litId=id;applyHighlight();const el=rowEl(id);if(el)el.scrollIntoView({behavior:'smooth',block:'center'});}
+function applyHighlight(){
+  const groups=document.getElementById('listGroups');if(!groups)return;
+  groups.querySelectorAll('.erow.lit,.erow.lit-primary').forEach(e=>e.classList.remove('lit','lit-primary'));
+  const wrap=document.getElementById('clearLitWrap');
+  if(!state.litId){groups.classList.remove('focusing');if(wrap)wrap.style.display='none';return;}
+  groups.classList.add('focusing');if(wrap)wrap.style.display='inline';
+  [state.litId,...mgrRelated(state.litId).map(r=>r.id)].forEach(eid=>{
+    const el=rowEl(eid);if(el)el.classList.add(eid===state.litId?'lit-primary':'lit');
+  });
+}
+/* ---- link editing: create / note / remove (mutates state.db immediately, like move/delete) ---- */
+function entryById(id){const r=findEntry(state.db,{id});return r?{dim:r.dim,it:r.item}:null;}
+// Find the array + index where the A–B link is authored, in either direction.
+function findLinkOwner(aId,bId){
+  const idOf=r=>typeof r==='string'?r:r.id;
+  const a=entryById(aId);
+  if(a&&a.it.data&&Array.isArray(a.it.data.relatedEntries)){const i=a.it.data.relatedEntries.findIndex(r=>idOf(r)===bId);if(i>=0)return {ownerId:aId,arr:a.it.data.relatedEntries,index:i};}
+  const b=entryById(bId);
+  if(b&&b.it.data&&Array.isArray(b.it.data.relatedEntries)){const i=b.it.data.relatedEntries.findIndex(r=>idOf(r)===aId);if(i>=0)return {ownerId:bId,arr:b.it.data.relatedEntries,index:i};}
+  return null;
+}
+function linkNoteVal(aId,bId){const o=findLinkOwner(aId,bId);if(!o)return '';const r=o.arr[o.index];return typeof r==='string'?'':(r.note||'');}
+function setLinkNote(aId,bId,note){
+  const o=findLinkOwner(aId,bId);if(!o)return;
+  const r=o.arr[o.index],n=(note||'').trim();
+  if(typeof r==='string'){o.arr[o.index]=n?{id:r,note:n}:{id:r};}
+  else if(n){r.note=n;}else{delete r.note;}
+}
+function createLink(aId,bId,note){
+  if(!aId||!bId||aId===bId)return;
+  if(findLinkOwner(aId,bId)){setLinkNote(aId,bId,note);return;} // already mutual — just set the note
+  const a=entryById(aId);if(!a)return;
+  a.it.data=a.it.data||{};
+  if(!Array.isArray(a.it.data.relatedEntries))a.it.data.relatedEntries=[];
+  const n=(note||'').trim();
+  a.it.data.relatedEntries.push(n?{id:bId,note:n}:{id:bId});
+}
+function removeLink(aId,bId){
+  const o=findLinkOwner(aId,bId);if(!o)return;
+  o.arr.splice(o.index,1);
+  const e=entryById(o.ownerId);
+  if(e&&e.it.data&&Array.isArray(e.it.data.relatedEntries)&&!e.it.data.relatedEntries.length)delete e.it.data.relatedEntries;
+}
+function manageLinks(id){
+  closeLinks();
+  const ov=document.createElement('div');ov.className='overlay';ov.id='linksModal';
+  ov.onclick=e=>{if(e.target===ov)closeLinks();};
+  ov.innerHTML=linksModalHtml(id);
+  document.body.appendChild(ov);
+}
+function closeLinks(){const m=document.getElementById('linksModal');if(m)m.remove();}
+function linksModalHtml(id){
+  const e=entryById(id),name=e?esc(e.it.name):esc(id);
+  const rel=mgrRelated(id);
+  const rows=rel.length?rel.map(r=>`<div class="lk-edit">
+      <div class="lk-edit-head"><span class="lk-edit-name">${esc(r.name)}<span class="lk-edit-dim">${esc(r.dimName)}${r.available?'':' · draft'}</span></span>
+      <button class="btn small reject" onclick="lkRemove('${esc(id)}','${esc(r.id)}')">Unlink</button></div>
+      <textarea class="lk-note" placeholder="Why are these related? (optional — shown on the live site)" oninput="setLinkNote('${esc(id)}','${esc(r.id)}',this.value)">${esc(linkNoteVal(id,r.id))}</textarea>
+    </div>`).join(''):'<div class="empty" style="padding:16px 0">No related entries yet — add one below.</div>';
+  const relIds=new Set(rel.map(r=>r.id));relIds.add(id);
+  let opts='';
+  state.db.dimensions.forEach(dim=>{
+    const av=dim.items.filter(it=>!relIds.has(it.id));
+    if(!av.length)return;
+    opts+=`<optgroup label="${esc(dim.name)}">`+av.map(it=>`<option value="${esc(it.id)}">${esc(it.name)}${it.available!==false?'':' (draft)'}</option>`).join('')+'</optgroup>';
+  });
+  const add=opts?`<div class="lk-add">
+      <select id="lkAddSel" class="lk-add-sel"><option value="">— choose an entry to link —</option>${opts}</select>
+      <textarea id="lkAddNote" class="lk-note" placeholder="Reason for the link (optional)"></textarea>
+      <button class="btn primary small" style="align-self:flex-start" onclick="lkAdd('${esc(id)}')">＋ Add link</button>
+    </div>`:'<div class="empty" style="padding:12px 0">Every other entry is already linked to this one.</div>';
+  return `<div class="modal">
+    <div class="modal-top"><h2>Related entries — ${name}</h2><button class="lc-x" onclick="closeLinks()">×</button></div>
+    <div class="hint">Links are mutual and written once: linking this to another entry shows the relationship on both. Edits apply to the loaded data immediately — export <code>data.json</code> to keep them.</div>
+    <div class="modal-sec"><div class="modal-sec-h">Current links (${rel.length})</div>${rows}</div>
+    <div class="modal-sec"><div class="modal-sec-h">Add a link</div>${add}</div>
+  </div>`;
+}
+function lkAdd(id){
+  const sel=document.getElementById('lkAddSel'),note=document.getElementById('lkAddNote');
+  if(!sel||!sel.value)return;
+  createLink(id,sel.value,note?note.value:'');
+  afterLinkChange(id);
+}
+function lkRemove(id,otherId){removeLink(id,otherId);afterLinkChange(id);}
+function afterLinkChange(id){
+  const ov=document.getElementById('linksModal');if(ov)ov.innerHTML=linksModalHtml(id);
+  if(state.mode==='list')filterList();
+  updateFooter();
 }
 function rowHtml(dimId,idx){
   const dim=state.db.dimensions.find(d=>d.id===dimId);
   const it=dim.items[idx];
   const avail=it.available!==false;
   const dimOpts=state.db.dimensions.map(d=>`<option value="${d.id}" ${d.id===dimId?'selected':''}>${esc(d.name)}</option>`).join('');
-  return `<div class="erow">
+  const rel=mgrRelated(it.id);
+  const badge=rel.length?`<button class="linkbadge" title="Light up this entry's ${rel.length} related ${rel.length===1?'entry':'entries'}" onclick="highlightWeb('${esc(it.id)}')">🔗 ${rel.length}</button>`:'';
+  const links=rel.length?`<div class="erow-links">${rel.map(r=>`<span class="erow-link-chip${r.available?'':' draft'}" title="${esc(r.note||('Related · '+r.dimName))}${r.available?'':' (draft — hidden on the live site until published)'}" onclick="focusEntry('${esc(r.id)}')"><span class="lk-arrow">↳</span>${esc(r.name)}</span>`).join('')}</div>`:'';
+  return `<div class="erow" data-id="${esc(it.id)}">
     <span class="dot ${avail?'on':'off'}" title="${avail?'available':'hidden'}"></span>
-    <div class="erow-main"><div class="erow-name">${esc(it.name)}</div><div class="erow-id">${esc(it.id)}</div></div>
+    <div class="erow-main"><div class="erow-name" title="${esc(it.name)} · ${esc(it.id)}">${esc(it.name)}</div>${links}</div>
     <div class="erow-actions">
+      ${badge}
       <button class="ic" title="Move up" onclick="moveEntry('${dimId}',${idx},-1)">↑</button>
       <button class="ic" title="Move down" onclick="moveEntry('${dimId}',${idx},1)">↓</button>
       <select class="mv" title="Move to a different dimension" onchange="moveDim('${dimId}',${idx},this.value)">${dimOpts}</select>
+      <button class="btn small" title="Add, edit or remove related entries" onclick="manageLinks('${esc(it.id)}')">Links</button>
       <button class="btn small" onclick="openEdit('${dimId}',${idx})">Edit</button>
       <button class="btn small reject" onclick="deleteEntry('${dimId}',${idx})">Delete</button>
     </div>
