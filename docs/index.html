@@ -329,6 +329,16 @@
   .evidence-shared-note{margin:0 16px 16px;padding:10px 12px;border-radius:8px;background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.22);font-size:12px;color:var(--text);line-height:1.5;opacity:.88}
   .evidence-index-summary{font-size:12.5px;color:var(--text);line-height:1.55;opacity:.76;margin-top:8px}
   .evidence-index-section-label{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:22px 0 10px}
+  .evidence-lead{font-size:14px;color:var(--text);line-height:1.65;max-width:760px;opacity:.92}
+  .evidence-lead p{margin:0 0 12px}
+  .evidence-key{color:var(--text);font-weight:700;background:var(--accent-glow);border-bottom:1px solid rgba(59,130,246,0.45);padding:0 2px;border-radius:2px}
+  .evidence-callout{max-width:760px;margin:14px 0 4px;padding:13px 16px;background:rgba(34,197,94,0.07);border:1px solid rgba(34,197,94,0.28);border-left:3px solid var(--green);border-radius:0 8px 8px 0;font-size:13.5px;line-height:1.6;color:var(--text)}
+  .evidence-callout strong{color:var(--green)}
+  .evidence-steps{display:grid;gap:8px;margin:14px 0 6px;max-width:760px}
+  .evidence-step{display:grid;grid-template-columns:26px 1fr;gap:11px;align-items:start;padding:11px 14px;background:var(--surface);border:1px solid var(--border);border-radius:9px}
+  .evidence-step-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:900;background:var(--accent-glow);color:var(--accent)}
+  .evidence-step-text{font-size:13px;color:var(--text);line-height:1.55}
+  .evidence-step-text strong{color:var(--text)}
   @media(max-width:900px){.evidence-rule-strip{grid-template-columns:1fr}.evidence-hierarchy-grid{grid-template-columns:1fr}.evidence-test-grid{grid-template-columns:1fr}}
 
   /* ===== GUIDE CARD (home grid) ===== */
@@ -1152,16 +1162,21 @@ function renderEvidenceRubric(){
     [9,'General or analogous literature only','No corroborating measurement, derivation, standard, duty, research, or case.'],
     [10,'Unaided practitioner judgement','A strengthening flag before publication.']
   ];
-  return `<section class="evidence-rule-strip">
-    <div class="evidence-rule-card"><div class="evidence-rule-title">Rating question</div><div class="evidence-rule-line">Does the cited evidence support the parameter and bands the user acts on?</div></div>
-    <div class="evidence-test-grid"><div class="evidence-test-card"><strong>Numeric parameter</strong><span>Test each band edge.</span></div><div class="evidence-test-card"><strong>Categorical parameter</strong><span>Test the recommended call / ordering.</span></div></div>
+  return `<div class="label">How the rating is decided</div>
+  <p class="section-desc" style="max-width:760px;margin-bottom:6px">Most entries give you <span class="evidence-key">cut-off numbers</span> to act on — for example, <em>fold depth over 600&nbsp;mm</em>. Some instead just recommend a <span class="evidence-key">choice</span> — <em>chamfer the corner or don't</em>. The rating measures how much you can trust those numbers or that choice. Three questions decide it:</p>
+  <section class="evidence-steps">
+    <div class="evidence-step"><div class="evidence-step-num">1</div><div class="evidence-step-text"><strong>What kind of evidence sits behind it?</strong> Measured on site, calculated from real component sizes, set by a code or standard, taken from a study, or based on experience. The list further down ranks these, strongest first.</div></div>
+    <div class="evidence-step"><div class="evidence-step-num">2</div><div class="evidence-step-text"><strong>Does that evidence actually cover the numbers?</strong> For an entry with cut-offs, is there real evidence behind <em>each</em> cut-off, or are some of them a sensible estimate? For an entry that recommends a choice, is that choice itself backed up?</div></div>
+    <div class="evidence-step"><div class="evidence-step-num">3</div><div class="evidence-step-text"><strong>Does more than one independent source point the same way?</strong> A single source on its own is never enough for a High rating.</div></div>
   </section>
-  <div class="label">Evidence hierarchy — strongest to weakest</div>
+  <div class="label">The three levels</div>
   <section class="evidence-hierarchy-grid">
-    <article class="evidence-tier-card high"><div class="evidence-tier-head"><div><div class="evidence-tier-title">High support</div><div class="evidence-tier-rule">Threshold edges / recommended call rest on directly relevant evidence.</div></div><div class="evidence-tier-range">1–7</div></div><div class="evidence-type-list">${highTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div></article>
-    <article class="evidence-tier-card medium"><div class="evidence-tier-head"><div><div class="evidence-tier-title">Medium support</div><div class="evidence-tier-rule">Mechanism supported, but one or more bands/calls are reasoned or analogous.</div></div><div class="evidence-tier-range">8–9</div></div><div class="evidence-type-list">${mediumTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div><div class="evidence-shared-note"><strong>Note:</strong> item 9 can be medium when paired with a relevant source, example, or supported mechanism.</div></article>
-    <article class="evidence-tier-card low"><div class="evidence-tier-head"><div><div class="evidence-tier-title">Low support</div><div class="evidence-tier-rule">Mainly assertion or loose analogy; threshold positions are essentially arbitrary.</div></div><div class="evidence-tier-range">9–10</div></div><div class="evidence-type-list">${lowTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div></article>
-  </section>`;
+    <article class="evidence-tier-card high"><div class="evidence-tier-head"><div><div class="evidence-tier-title">High</div><div class="evidence-tier-rule">The numbers (or the recommended choice) come from strong evidence — measured, calculated from real dimensions, or set by a code, standard or study — <strong>and</strong> at least one other independent source or real project confirms it. Use them broadly as written; any doubt is about exact precision, not whether they sit in the right place. One source alone is never High.</div></div><div class="evidence-tier-range">strong + confirmed</div></div><div class="evidence-type-list">${highTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div></article>
+    <article class="evidence-tier-card medium"><div class="evidence-tier-head"><div><div class="evidence-tier-title">Medium</div><div class="evidence-tier-rule">The issue is well established and genuinely supported, but at least one cut-off number (or the exact recommended choice) is a reasoned judgement rather than something measured or set by a standard. Use the numbers as a well-founded starting point and apply your own judgement to your project.</div></div><div class="evidence-tier-range">supported, some judgement</div></div><div class="evidence-type-list">${mediumTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div><div class="evidence-shared-note"><strong>Note:</strong> general or analogous literature (item 9) can support a Medium when it is paired with a real example, a relevant source, or a well-supported mechanism — not on its own.</div></article>
+    <article class="evidence-tier-card low"><div class="evidence-tier-head"><div><div class="evidence-tier-title">Low</div><div class="evidence-tier-rule">Rests mainly on experience, or a loose comparison borrowed from another field, with nothing measured, calculated or backed by a standard to confirm it. The numbers are rough. Treat it as a prompt to investigate, not a figure to rely on — these are generally not published live.</div></div><div class="evidence-tier-range">mostly judgement</div></div><div class="evidence-type-list">${lowTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div></article>
+  </section>
+  <div class="label">What counts as evidence — strongest at the top</div>
+  <p class="section-desc" style="max-width:760px;margin:6px 0 -6px">These are the kinds of evidence behind the levels above. Higher items can set where a cut-off sits; lower items mainly confirm or suggest.</p>`;
 }
 function renderEvidenceSupportView(){
   const counts=evidenceSupportCounts();
@@ -1169,9 +1184,9 @@ function renderEvidenceSupportView(){
   const labels={all:'All',high:'High',medium:'Medium',low:'Low'};
   const notes={
     all:'Every live entry',
-    high:'Items 1–7 support the bands/call',
-    medium:'Items 8–9 or analogous support',
-    low:'Items 9–10 mainly relied on'
+    high:'Strong evidence on the numbers, confirmed by a second source',
+    medium:'Well supported, but some numbers are a reasoned call',
+    low:'Mostly judgement — treat as a prompt, not a figure'
   };
   const order=['all','high','medium','low'];
   const summary=order.map(level=>`<div class="evidence-summary-card ${active===level?'active':''}" onclick="setEvidenceFilter('${level}')"><div class="evidence-summary-label">${labels[level]}</div><div class="evidence-summary-count">${counts[level]}</div><div class="evidence-summary-note">${notes[level]}</div></div>`).join('');
@@ -1188,7 +1203,7 @@ function renderEvidenceSupportView(){
   }).join('');
   const shown=filtered.length;
   const suffix=active==='all'?'all evidence support levels':`${labels[active]} evidence support`;
-  return `<div class="content evidence-content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">📊</span><h1 class="dim-header-title">Evidence support index</h1></div><div class="section-desc">Evidence support is assigned from the hierarchy below. It tests how well the cited evidence supports the entry’s parameter and threshold bands — not whether the constructability issue is important, useful, or worth considering.<br><br>A lower evidence rating does not mean an entry should be ignored. Every published entry is included because it captures a real constructability question that may affect design decisions. High support often means the issue is already well known, well documented, or easier to measure. Medium or low support may reflect a newer, more practical, more site-specific, or less formally studied issue. These entries can still be highly valuable as review prompts, but the reader should apply more judgement and recognise that the thresholds have a wider margin of uncertainty.<br><br>The support rating also shows where contribution is needed. A medium or low rating may mean that the issue is supported by practical experience but needs stronger formal evidence, or that formal literature exists but the thresholds, project relevance or regional application would benefit from more field examples. Readers can strengthen the framework by contributing academic sources, field measurements, contractor feedback, design examples, project case studies or regional experience that help confirm, refine or challenge the guidance.</div>${renderEvidenceRubric()}<div class="evidence-index-section-label"><div class="label" style="margin-bottom:0">Live entry index</div></div><div class="evidence-summary-grid">${summary}</div><div class="evidence-filter">${buttons}</div><div class="label">${shown} ${shown===1?'entry':'entries'} — ${suffix}</div><div class="item-list">${rows}</div></div>`;
+  return `<div class="content evidence-content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">📊</span><h1 class="dim-header-title">Evidence support index</h1></div><div class="section-desc">Evidence support is assigned from the hierarchy below. It tests <span class="evidence-key">how much you can trust the numbers or the recommendation in an entry</span> — not whether the constructability issue is important, useful, or worth considering.</div><div class="evidence-callout"><strong>A lower rating does not mean an entry is weak or should be ignored.</strong> Every published entry captures a real constructability question that may affect design decisions. A High rating often just means the issue is already well known, well documented, or easy to measure. <span class="evidence-key">Medium or Low entries can be just as valuable</span> — they are often newer, more practical, more site-specific, or less formally studied. Read them as prompts, apply more of your own judgement, and recognise the numbers carry a wider margin.</div><div class="evidence-lead"><p>The rating also shows <strong>where contribution is needed</strong>. A Medium or Low rating may mean the issue is backed by practical experience but needs stronger formal evidence, or that literature exists but the cut-offs, project relevance or regional application would benefit from more field examples. You can strengthen the framework by contributing academic sources, field measurements, contractor feedback, design examples, project case studies or regional experience that confirm, refine or challenge the guidance.</p></div>${renderEvidenceRubric()}<div class="evidence-index-section-label"><div class="label" style="margin-bottom:0">Live entry index</div></div><div class="evidence-summary-grid">${summary}</div><div class="evidence-filter">${buttons}</div><div class="label">${shown} ${shown===1?'entry':'entries'} — ${suffix}</div><div class="item-list">${rows}</div></div>`;
 }
 
 // ===== GUIDE (how-to-use) =====
