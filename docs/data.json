@@ -2097,7 +2097,7 @@
     "title": "How to use this framework",
     "icon": "🧭",
     "tagline": "New here? Start with this. What the framework is, how to read an entry, and how the ratings are meant to be used.",
-    "intro": "Use this framework in two ways. First, as a searchable library of constructability entries: browse or search for a design decision and read the relevant guidance, thresholds, examples and evidence. Second, as a project review tool: save relevant entries to a project list and export them as a project-specific constructability checklist. Use the framework to inform your own engineering judgement &mdash; not as fixed answers, but as prompts for thinking through how your design will actually be built.",
+    "intro": "Use this framework in two ways. First, as a searchable library of constructability entries: browse or search for a design decision and read the relevant guidance, thresholds, examples and evidence. Second, as a project review tool: save relevant entries to a project review list and export them as a project-specific constructability checklist. Use the framework to inform your own engineering judgement &mdash; not as fixed answers, but as prompts for thinking through how your design will actually be built.",
     "whatIs": {
       "title": "What is this framework?",
       "intro": "Structural designers operate under two parallel bodies of obligation: <em>compliance</em> and <em>professional duty</em>. This framework helps with <strong><em>professional duty</em></strong>. It does not help you check codes, interpret Australian Standards, or determine whether a design is structurally adequate. It helps designers think about whether what they have drawn can be built safely and practically, and it now supports both single-entry review and project-specific constructability checklists.",
@@ -2246,7 +2246,7 @@
           "caption": "Practical options to consider if you land in Concern or Action required. A starting point for the decision, not a fixed instruction."
         }
       ],
-      "moreFields": "Entries may also include a <strong>Background</strong> (why the issue matters), an <strong>Evidence Basis</strong> (how the guidance was established, with references), and <strong>Evidence Support</strong> (a Low, Medium or High indicator showing how much supporting information sits behind the entry). Entries may also include <strong>Examples</strong> and <strong>Supporting Images</strong> &mdash; real, de-identified drawings and site photographs showing the issue in practice. Some entries also link to <strong>Related Entries</strong> &mdash; other entries worth considering alongside this one. At the bottom of each live entry you can add the entry to a <strong>project list</strong>, suggest a change, or add a reviewed comment."
+      "moreFields": "Entries may also include a <strong>Background</strong> (why the issue matters), an <strong>Evidence Basis</strong> (how the guidance was established, with references), and <strong>Evidence Support</strong> (a Low, Medium or High indicator showing how much supporting information sits behind the entry). Entries may also include <strong>Examples</strong> and <strong>Supporting Images</strong> &mdash; real, de-identified drawings and site photographs showing the issue in practice. Some entries also link to <strong>Related Entries</strong> &mdash; other entries worth considering alongside this one. At the bottom of each live entry you can add the entry to a <strong>project review list</strong>, suggest a change, or add a reviewed comment."
     },
     "trace": {
       "title": "How an entry works: condition → band → response",
@@ -2331,15 +2331,15 @@
           "a": "BIM and AI tools can support coordination, modelling, checking, optimisation and faster design production. This framework works earlier: it helps the engineer question the design decision before it becomes locked in. It asks whether the chosen detail, method, material or assumption is appropriate for the way the structure will actually be built. The focus is the decision itself, not only the review of a developing model."
         },
         {
-          "q": "What is the project list for?",
-          "a": "The project list lets you collect framework entries that are relevant to a particular project. Instead of reading entries one by one and losing track of them, you can save the checks you want to apply and export them as a project-specific constructability review checklist."
+          "q": "What is the project review list for?",
+          "a": "The project review list lets you collect framework entries that are relevant to a particular project. Instead of reading entries one by one and losing track of them, you can save the checks you want to apply and export them as a project-specific constructability review checklist."
         },
         {
-          "q": "Is my project list public?",
-          "a": "No. The project list is stored locally in your browser. It does not require login and is not published to the framework. If you clear your browser data or use a different device, the list may not be there."
+          "q": "Is my project review list public?",
+          "a": "No. The project review list is stored locally in your browser. It does not require login and is not published to the framework. If you clear your browser data or use a different device, the list may not be there."
         },
         {
-          "q": "In the project list, what is the project purpose field for?",
+          "q": "In the project review list, what is the project purpose field for?",
           "a": "The project purpose field appears in the exported PDF/checklist and can be edited to suit the project or audience. It explains why the selected entries are being reviewed and helps frame the export as a constructability review aid rather than a compliance certificate or formal sign-off."
         },
         {
@@ -2366,7 +2366,7 @@
     },
     "projectListWorkflow": {
       "title": "Using the framework on a project",
-      "intro": "The framework can be used as more than a reference library. When you are reviewing a real project, you can collect the entries that matter to that job into a private project list and export them as a project-specific constructability review checklist.",
+      "intro": "The framework can be used as more than a reference library. When you are reviewing a real project, you can collect the entries that matter to that job into a private project review list and export them as a project-specific constructability review checklist.",
       "steps": [
         {
           "label": "Find relevant entries",
@@ -2374,9 +2374,9 @@
           "sub": "Use the search box, dimension pages and region filter to find entries that match the design decisions on your project."
         },
         {
-          "label": "Build a project list",
-          "value": "Add to project list",
-          "sub": "Open a relevant entry and add it to the project list. The list stays in your browser and does not require login."
+          "label": "Build a project review list",
+          "value": "Add to project review list",
+          "sub": "Open a relevant entry and add it to the project review list. The list stays in your browser and does not require login."
         },
         {
           "label": "Describe the review",
@@ -2389,7 +2389,7 @@
           "sub": "Export the selected entries as a checklist or PDF. The output is a constructability review aid, not a compliance certificate or formal sign-off."
         }
       ],
-      "note": "The project list is intended to turn selected framework entries into a project-specific constructability review checklist. It is local to the browser, temporary by nature, and should be treated as a prompt for design review rather than proof that a project complies with any standard."
+      "note": "The project review list is intended to turn selected framework entries into a project-specific constructability review checklist. It is local to the browser, temporary by nature, and should be treated as a prompt for design review rather than proof that a project complies with any standard."
     },
     "contributing": {
       "title": "Contributing feedback",
