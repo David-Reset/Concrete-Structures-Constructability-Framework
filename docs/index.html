@@ -291,6 +291,45 @@
   .evidence-index-main{flex:1;min-width:0;margin-right:12px}
   .evidence-index-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .evidence-index-meta{font-size:12px;color:var(--text-muted);line-height:1.6;margin-top:7px}
+  .content.evidence-content{max-width:1120px}
+  .evidence-rule-strip{display:grid;grid-template-columns:1.1fr 1fr;gap:10px;margin:20px 0 18px}
+  .evidence-rule-card{padding:16px 18px;background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.30);border-left:3px solid var(--accent);border-radius:0 10px 10px 0}
+  .evidence-rule-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:var(--accent);margin-bottom:8px}
+  .evidence-rule-line{font-size:18px;font-weight:800;letter-spacing:-0.25px;color:var(--text);line-height:1.35}
+  .evidence-test-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .evidence-test-card{padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:10px}
+  .evidence-test-card strong{display:block;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-bottom:7px;color:var(--text)}
+  .evidence-test-card span{font-size:13px;color:var(--text-muted);line-height:1.55;display:block}
+  .evidence-hierarchy-grid{display:grid;grid-template-columns:1.45fr 1fr 1fr;gap:12px;margin:16px 0 22px;align-items:stretch}
+  .evidence-tier-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-height:100%}
+  .evidence-tier-head{padding:16px 18px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+  .evidence-tier-title{font-size:18px;font-weight:900;letter-spacing:-0.35px;line-height:1.15}
+  .evidence-tier-range{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:800;padding:5px 9px;border-radius:999px;white-space:nowrap}
+  .evidence-tier-rule{font-size:12.5px;color:var(--text);opacity:.88;line-height:1.55;margin-top:7px}
+  .evidence-tier-card.high{border-color:rgba(34,197,94,0.36)}
+  .evidence-tier-card.high .evidence-tier-head{background:rgba(34,197,94,0.07)}
+  .evidence-tier-card.high .evidence-tier-title{color:var(--green)}
+  .evidence-tier-card.high .evidence-tier-range{background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.28)}
+  .evidence-tier-card.medium{border-color:rgba(234,179,8,0.38)}
+  .evidence-tier-card.medium .evidence-tier-head{background:rgba(234,179,8,0.07)}
+  .evidence-tier-card.medium .evidence-tier-title{color:var(--yellow)}
+  .evidence-tier-card.medium .evidence-tier-range{background:rgba(234,179,8,0.12);color:var(--yellow);border:1px solid rgba(234,179,8,0.28)}
+  .evidence-tier-card.low{border-color:rgba(248,113,113,0.38)}
+  .evidence-tier-card.low .evidence-tier-head{background:rgba(239,68,68,0.07)}
+  .evidence-tier-card.low .evidence-tier-title{color:#f87171}
+  .evidence-tier-card.low .evidence-tier-range{background:rgba(239,68,68,0.12);color:#f87171;border:1px solid rgba(248,113,113,0.28)}
+  .evidence-type-list{display:flex;flex-direction:column;gap:7px;padding:14px 16px;flex:1}
+  .evidence-type{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;padding:10px 11px;background:var(--surface-light);border:1px solid var(--border);border-radius:8px}
+  .evidence-type-num{font-family:'JetBrains Mono',monospace;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;background:rgba(59,130,246,0.14);color:var(--accent)}
+  .evidence-tier-card.high .evidence-type-num{background:rgba(34,197,94,0.14);color:var(--green)}
+  .evidence-tier-card.medium .evidence-type-num{background:rgba(234,179,8,0.15);color:var(--yellow)}
+  .evidence-tier-card.low .evidence-type-num{background:rgba(239,68,68,0.15);color:#f87171}
+  .evidence-type-name{font-size:13px;font-weight:700;line-height:1.35;color:var(--text)}
+  .evidence-type-note{font-size:11.5px;color:var(--text-muted);line-height:1.45;margin-top:3px}
+  .evidence-shared-note{margin:0 16px 16px;padding:10px 12px;border-radius:8px;background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.22);font-size:12px;color:var(--text);line-height:1.5;opacity:.88}
+  .evidence-index-summary{font-size:12.5px;color:var(--text);line-height:1.55;opacity:.76;margin-top:8px}
+  .evidence-index-section-label{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:22px 0 10px}
+  @media(max-width:900px){.evidence-rule-strip{grid-template-columns:1fr}.evidence-hierarchy-grid{grid-template-columns:1fr}.evidence-test-grid{grid-template-columns:1fr}}
 
   /* ===== GUIDE CARD (home grid) ===== */
   .guide-card{position:relative;background:linear-gradient(135deg,rgba(59,130,246,0.13),rgba(99,102,241,0.06));border-color:rgba(59,130,246,0.45)}
@@ -1092,15 +1131,47 @@ function evidenceSupportCounts(){
   return counts;
 }
 function setEvidenceFilter(level){state.evidenceFilter=level||'all';render();}
+function evidenceTypeMarkup(num,name,note){
+  return `<div class="evidence-type"><div class="evidence-type-num">${num}</div><div><div class="evidence-type-name">${name}</div>${note?`<div class="evidence-type-note">${note}</div>`:''}</div></div>`;
+}
+function renderEvidenceRubric(){
+  const highTypes=[
+    [1,'Direct measurement / field data','Same element or parameter.'],
+    [2,'First-principles physical derivation','Established dimensions or mechanics.'],
+    [3,'Regulatory duty or mandatory code provision','Especially safety and communication duties.'],
+    [4,'Peer-reviewed research directly on point',''],
+    [5,'Authoritative industry standard or guidance','Directly on point.'],
+    [6,'Primary research conducted for the framework','Example: structured supplier review.'],
+    [7,'Documented real project case','A concern / recommended example that occurred.']
+  ];
+  const mediumTypes=[
+    [8,'Industry or contractor consultation','Useful, but not a measured threshold.'],
+    [9,'General or analogous literature','Right phenomenon, different domain; applied by inference.']
+  ];
+  const lowTypes=[
+    [9,'General or analogous literature only','No corroborating measurement, derivation, standard, duty, research, or case.'],
+    [10,'Unaided practitioner judgement','A strengthening flag before publication.']
+  ];
+  return `<section class="evidence-rule-strip">
+    <div class="evidence-rule-card"><div class="evidence-rule-title">Rating question</div><div class="evidence-rule-line">Does the cited evidence support the parameter and bands the user acts on?</div></div>
+    <div class="evidence-test-grid"><div class="evidence-test-card"><strong>Numeric parameter</strong><span>Test each band edge.</span></div><div class="evidence-test-card"><strong>Categorical parameter</strong><span>Test the recommended call / ordering.</span></div></div>
+  </section>
+  <div class="label">Evidence hierarchy — strongest to weakest</div>
+  <section class="evidence-hierarchy-grid">
+    <article class="evidence-tier-card high"><div class="evidence-tier-head"><div><div class="evidence-tier-title">High support</div><div class="evidence-tier-rule">Threshold edges / recommended call rest on directly relevant evidence.</div></div><div class="evidence-tier-range">1–7</div></div><div class="evidence-type-list">${highTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div></article>
+    <article class="evidence-tier-card medium"><div class="evidence-tier-head"><div><div class="evidence-tier-title">Medium support</div><div class="evidence-tier-rule">Mechanism supported, but one or more bands/calls are reasoned or analogous.</div></div><div class="evidence-tier-range">8–9</div></div><div class="evidence-type-list">${mediumTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div><div class="evidence-shared-note"><strong>Note:</strong> item 9 can be medium when paired with a relevant source, example, or supported mechanism.</div></article>
+    <article class="evidence-tier-card low"><div class="evidence-tier-head"><div><div class="evidence-tier-title">Low support</div><div class="evidence-tier-rule">Mainly assertion or loose analogy; threshold positions are essentially arbitrary.</div></div><div class="evidence-tier-range">9–10</div></div><div class="evidence-type-list">${lowTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div></article>
+  </section>`;
+}
 function renderEvidenceSupportView(){
   const counts=evidenceSupportCounts();
   const active=state.evidenceFilter||'all';
   const labels={all:'All',high:'High',medium:'Medium',low:'Low'};
   const notes={
     all:'Every live entry',
-    high:'Most mature support',
-    medium:'Useful, but can strengthen',
-    low:'Highest priority to strengthen'
+    high:'Items 1–7 support the bands/call',
+    medium:'Items 8–9 or analogous support',
+    low:'Items 9–10 mainly relied on'
   };
   const order=['all','high','medium','low'];
   const summary=order.map(level=>`<div class="evidence-summary-card ${active===level?'active':''}" onclick="setEvidenceFilter('${level}')"><div class="evidence-summary-label">${labels[level]}</div><div class="evidence-summary-count">${counts[level]}</div><div class="evidence-summary-note">${notes[level]}</div></div>`).join('');
@@ -1112,11 +1183,12 @@ function renderEvidenceSupportView(){
     const loc=d.location?locTag(d.location):'';
     const support=evidenceSupportPill(d);
     const right=`<div style="text-align:right;flex-shrink:0"><div class="item-arrow">→</div>${reviewed?`<div class="item-meta">Reviewed ${reviewed}</div>`:''}</div>`;
-    return `<div class="item-row available evidence-index-result" onclick="goEntry('${dim.id}','${it.id}')"><div class="evidence-index-main"><div class="evidence-index-top"><span class="item-name">${escHtml(it.name)}</span><span class="related-dim"><span class="ico">${dim.icon}</span>${escHtml(dim.name)}</span>${loc}</div><div class="evidence-index-meta">Parameter: ${d.parameter}</div><div class="search-result-meta">${support}</div></div>${right}</div>`;
+    const evSummary=d.evidenceSupport&&d.evidenceSupport.summary?`<div class="evidence-index-summary">${d.evidenceSupport.summary}</div>`:'';
+    return `<div class="item-row available evidence-index-result" onclick="goEntry('${dim.id}','${it.id}')"><div class="evidence-index-main"><div class="evidence-index-top"><span class="item-name">${escHtml(it.name)}</span><span class="related-dim"><span class="ico">${dim.icon}</span>${escHtml(dim.name)}</span>${loc}</div><div class="evidence-index-meta"><strong>Parameter:</strong> ${d.parameter}</div><div class="search-result-meta">${support}</div>${evSummary}</div>${right}</div>`;
   }).join('');
   const shown=filtered.length;
   const suffix=active==='all'?'all evidence support levels':`${labels[active]} evidence support`;
-  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">📊</span><h1 class="dim-header-title">Evidence support index</h1></div><p class="section-desc">View live entries across all dimensions by Evidence Support level. This is mainly a transparency and maintenance view: low and medium support entries are the easiest places to add stronger references, examples or regional feedback.</p><div class="evidence-summary-grid">${summary}</div><div class="evidence-filter">${buttons}</div><div class="label">${shown} ${shown===1?'entry':'entries'} — ${suffix}</div><div class="item-list">${rows}</div></div>`;
+  return `<div class="content evidence-content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">📊</span><h1 class="dim-header-title">Evidence support index</h1></div><p class="section-desc">Evidence support is assigned from the hierarchy below. The rating tests whether the cited evidence supports the entry's parameter and threshold bands, not just whether the constructability issue is real.</p>${renderEvidenceRubric()}<div class="evidence-index-section-label"><div class="label" style="margin-bottom:0">Live entry index</div></div><div class="evidence-summary-grid">${summary}</div><div class="evidence-filter">${buttons}</div><div class="label">${shown} ${shown===1?'entry':'entries'} — ${suffix}</div><div class="item-list">${rows}</div></div>`;
 }
 
 // ===== GUIDE (how-to-use) =====
