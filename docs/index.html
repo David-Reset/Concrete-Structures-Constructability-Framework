@@ -161,6 +161,20 @@
   .modal-link:hover{text-decoration:underline}
   .modal-fineprint{font-size:11.5px;color:var(--text-muted);border-top:1px solid var(--border);padding-top:12px;margin-bottom:0}
   .modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
+  /* related-entries add checklist */
+  .ra-intro{font-size:13.5px;color:var(--text);line-height:1.6;margin-bottom:14px}
+  .ra-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+  .ra-selectall{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted);cursor:pointer;user-select:none}
+  .ra-selectall input{width:15px;height:15px;cursor:pointer;accent-color:var(--accent)}
+  .ra-count{font-size:12px;color:var(--text-muted)}
+  .ra-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin:0;max-height:46vh;overflow-y:auto}
+  .ra-row{display:flex;gap:11px;align-items:flex-start;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:11px 13px;cursor:pointer;transition:border-color .15s}
+  .ra-row:hover{border-color:var(--accent)}
+  .ra-row input{margin-top:2px;width:16px;height:16px;flex-shrink:0;cursor:pointer;accent-color:var(--accent)}
+  .ra-text{flex:1;min-width:0}
+  .ra-name{display:block;font-size:13.5px;font-weight:700;color:var(--text);line-height:1.35}
+  .ra-dim{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-muted);margin-top:3px}
+  .ra-note{display:block;font-size:12px;color:var(--text-muted);line-height:1.5;margin-top:6px}
   .entry-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
   .entry-btn.primary:hover{background:#2f6fd6;border-color:#2f6fd6}
 
@@ -300,13 +314,12 @@
   .evidence-test-card{padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:10px}
   .evidence-test-card strong{display:block;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-bottom:7px;color:var(--text)}
   .evidence-test-card span{font-size:13px;color:var(--text-muted);line-height:1.55;display:block}
-  .evidence-hierarchy-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0 22px;align-items:start}
+  .evidence-hierarchy-grid{display:grid;grid-template-columns:1.45fr 1fr 1fr;gap:12px;margin:16px 0 22px;align-items:stretch}
   .evidence-tier-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-height:100%}
-  .evidence-tier-head{padding:16px 18px;border-bottom:1px solid var(--border)}
-  .evidence-tier-titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+  .evidence-tier-head{padding:16px 18px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
   .evidence-tier-title{font-size:18px;font-weight:900;letter-spacing:-0.35px;line-height:1.15}
-  .evidence-tier-range{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:800;padding:5px 9px;border-radius:999px;white-space:nowrap;flex-shrink:0}
-  .evidence-tier-rule{font-size:12.5px;color:var(--text);opacity:.88;line-height:1.55;margin-top:0}
+  .evidence-tier-range{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:800;padding:5px 9px;border-radius:999px;white-space:nowrap}
+  .evidence-tier-rule{font-size:12.5px;color:var(--text);opacity:.88;line-height:1.55;margin-top:7px}
   .evidence-tier-card.high{border-color:rgba(34,197,94,0.36)}
   .evidence-tier-card.high .evidence-tier-head{background:rgba(34,197,94,0.07)}
   .evidence-tier-card.high .evidence-tier-title{color:var(--green)}
@@ -330,16 +343,6 @@
   .evidence-shared-note{margin:0 16px 16px;padding:10px 12px;border-radius:8px;background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.22);font-size:12px;color:var(--text);line-height:1.5;opacity:.88}
   .evidence-index-summary{font-size:12.5px;color:var(--text);line-height:1.55;opacity:.76;margin-top:8px}
   .evidence-index-section-label{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:22px 0 10px}
-  .evidence-lead{font-size:14px;color:var(--text);line-height:1.65;max-width:760px;opacity:.92}
-  .evidence-lead p{margin:0 0 12px}
-  .evidence-key{color:var(--text);font-weight:600}
-  .evidence-callout{max-width:760px;margin:14px 0 4px;padding:13px 16px;background:rgba(34,197,94,0.07);border:1px solid rgba(34,197,94,0.28);border-left:3px solid var(--green);border-radius:0 8px 8px 0;font-size:13.5px;line-height:1.6;color:var(--text)}
-  .evidence-callout strong{color:var(--green)}
-  .evidence-steps{display:grid;gap:8px;margin:14px 0 6px;max-width:760px}
-  .evidence-step{display:grid;grid-template-columns:26px 1fr;gap:11px;align-items:start;padding:11px 14px;background:var(--surface);border:1px solid var(--border);border-radius:9px}
-  .evidence-step-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:900;background:var(--accent-glow);color:var(--accent)}
-  .evidence-step-text{font-size:13px;color:var(--text);line-height:1.55}
-  .evidence-step-text strong{color:var(--text)}
   @media(max-width:900px){.evidence-rule-strip{grid-template-columns:1fr}.evidence-hierarchy-grid{grid-template-columns:1fr}.evidence-test-grid{grid-template-columns:1fr}}
 
   /* ===== GUIDE CARD (home grid) ===== */
@@ -791,16 +794,7 @@ function entryUrl(dimId,id){
 }
 
 
-// ===== PROJECT REVIEW LIST =====
-// UI name: "Project review list" — a list of framework ENTRIES a user collects to
-// review against ONE project they're working on (NOT a list of projects).
-// In code this feature is abbreviated to "projectList" everywhere — e.g.
-//   state.view === 'projectList'      // the view
-//   getProjectList() / addToProjectList() / removeFromProjectList()
-//   the '#project-list' URL hash (with a legacy '#review-list' alias)
-//   CSS classes like .project-card, .project-list-panel
-// The short identifier is intentional and stable; only the user-facing labels
-// rendered to screen say "Project review list". Don't rename the identifiers.
+// ===== PROJECT LIST =====
 const PROJECT_LIST_KEY='constructabilityProjectList.v1';
 const LEGACY_REVIEW_LIST_KEY='constructabilityReviewList.v1';
 const DEFAULT_PROJECT_PURPOSE="This checklist contains constructability framework entries selected for this project's constructability review. Each item is a design-stage prompt, not a compliance assessment or formal sign-off. Open the full entry for thresholds, applicability, recommended actions and evidence.";
@@ -848,7 +842,76 @@ function resolveEntryId(id){
 function projectItems(){return getProjectList().ids.map(id=>resolveEntryId(id)).filter(Boolean);}
 function projectItemButton(id){
   const added=isInProjectList(id);
-  return `<button class="entry-btn entry-top-project-btn ${added?'added':''}" onclick="toggleProjectList('${id}')"><span class="ico">${added?'✓':'＋'}</span> ${added?'Remove entry from project review list':'Add entry to project review list'}</button>`;
+  return `<button class="entry-btn entry-top-project-btn ${added?'added':''}" onclick="onProjectButtonClick('${id}')"><span class="ico">${added?'✓':'＋'}</span> ${added?'Remove entry from project list':'Add entry to project list'}</button>`;
+}
+// Adding an entry offers a checklist of its related entries; removing never prompts.
+function onProjectButtonClick(id){
+  if(isInProjectList(id)){removeFromProjectList(id);return;}
+  addToProjectList(id);
+  const related=relatedNotInList(id);
+  if(related.length)showRelatedAddPanel(id,related);
+}
+// Two-way related entries for `id` that aren't already on the project list.
+function relatedNotInList(id){
+  const r=resolveEntryId(id);
+  if(!r)return [];
+  const inList=new Set(getProjectList().ids);
+  return getRelatedEntries(id,r.data).filter(x=>!inList.has(x.id));
+}
+function addManyToProjectList(ids){
+  const list=getProjectList();
+  ids.forEach(id=>{if(!list.ids.includes(id))list.ids.push(id);});
+  saveProjectList(list);render();
+}
+function closeRelatedAddPanel(){const m=document.getElementById('relatedAddOverlay');if(m)m.remove();}
+function raChecks(){return Array.from(document.querySelectorAll('#relatedAddOverlay .ra-check'));}
+function toggleAllRelated(src){raChecks().forEach(c=>{c.checked=src.checked;});updateRelatedAddCount();}
+function updateRelatedAddCount(){
+  const checks=raChecks(),sel=checks.filter(c=>c.checked).length;
+  const btn=document.getElementById('raAddBtn');
+  if(btn){btn.textContent=sel?`Add selected (${sel})`:'Add selected';btn.disabled=!sel;btn.style.opacity=sel?'1':'0.5';btn.style.cursor=sel?'pointer':'not-allowed';}
+  const all=document.getElementById('raSelectAll');
+  if(all){all.checked=sel===checks.length&&checks.length>0;all.indeterminate=sel>0&&sel<checks.length;}
+  const cnt=document.getElementById('raCount');
+  if(cnt)cnt.textContent=`${sel} of ${checks.length} selected`;
+}
+function confirmAddRelated(){
+  const ids=raChecks().filter(c=>c.checked).map(c=>c.value);
+  closeRelatedAddPanel();
+  if(ids.length)addManyToProjectList(ids);
+}
+function showRelatedAddPanel(id,related){
+  closeRelatedAddPanel();
+  const src=resolveEntryId(id);
+  const name=src?escHtml(src.item.name):'This entry';
+  const n=related.length;
+  const rows=related.map(r=>`<label class="ra-row">
+      <input type="checkbox" class="ra-check" value="${r.id}" checked onchange="updateRelatedAddCount()">
+      <span class="ra-text">
+        <span class="ra-name">${escHtml(r.name)}</span>
+        <span class="ra-dim"><span class="ico">${r.dimIcon||''}</span>${escHtml(r.dimName)}</span>
+        ${r.note?`<span class="ra-note">${escHtml(r.note)}</span>`:''}
+      </span>
+    </label>`).join('');
+  const overlay=document.createElement('div');
+  overlay.className='modal-overlay';
+  overlay.id='relatedAddOverlay';
+  overlay.onclick=closeRelatedAddPanel;
+  overlay.innerHTML=`<div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-title">Added — related entries</div>
+    <div class="ra-intro"><strong>${name}</strong> is now on your project list. It relates to ${n} other ${n===1?'entry':'entries'} — tick any you'd also like to add.</div>
+    <div class="ra-toolbar">
+      <label class="ra-selectall"><input type="checkbox" id="raSelectAll" checked onchange="toggleAllRelated(this)"> Select all</label>
+      <span class="ra-count" id="raCount"></span>
+    </div>
+    <div class="ra-list">${rows}</div>
+    <div class="modal-actions">
+      <button class="entry-btn" onclick="closeRelatedAddPanel()">Skip</button>
+      <button class="entry-btn primary" id="raAddBtn" onclick="confirmAddRelated()">Add selected</button>
+    </div>
+  </div>`;
+  document.body.appendChild(overlay);
+  updateRelatedAddCount();
 }
 function copyTextFallback(text){
   const ta=document.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();
@@ -866,7 +929,7 @@ function projectExportRows(){
 }
 function projectExportTitle(){
   const list=getProjectList();
-  return list.name&&list.name.trim()?cleanText(list.name.trim()):'Untitled project review list';
+  return list.name&&list.name.trim()?cleanText(list.name.trim()):'Untitled project list';
 }
 function projectExportDate(){return new Date().toISOString().slice(0,10);}
 function projectExportPurpose(){const p=(getProjectList().purpose||'').trim();return cleanText(p||DEFAULT_PROJECT_PURPOSE);}
@@ -880,7 +943,7 @@ function buildProjectChecklistText(){
   const parts=[
     `Project Constructability Checklist`,
     ``,
-    `Project review list: ${title}`,
+    `Project list: ${title}`,
     `Generated: ${projectExportDate()}`,
     `Selected entries: ${rows.length}`,
     ``,
@@ -903,7 +966,7 @@ function buildProjectChecklistMarkdown(){
   const parts=[
     `# Project Constructability Checklist`,
     ``,
-    `**Project review list:** ${title}`,
+    `**Project list:** ${title}`,
     ``,
     `**Generated:** ${projectExportDate()}  `,
     `**Selected entries:** ${rows.length}`,
@@ -933,7 +996,7 @@ function buildProjectChecklistMarkdown(){
   return parts.join('\n');
 }
 function copyProjectChecklist(){
-  if(!projectItems().length){alert('Your project review list is empty.');return;}
+  if(!projectItems().length){alert('Your project list is empty.');return;}
   const text=buildProjectChecklistText();
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(()=>alert('Project checklist copied to clipboard.')).catch(()=>copyTextFallback(text));}
   else copyTextFallback(text);
@@ -948,7 +1011,7 @@ function downloadTextFile(filename,text,mime){
   setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},0);
 }
 function downloadProjectMarkdown(){
-  if(!projectItems().length){alert('Your project review list is empty.');return;}
+  if(!projectItems().length){alert('Your project list is empty.');return;}
   downloadTextFile(safeFileName(projectExportTitle(),'md'),buildProjectChecklistMarkdown(),'text/markdown;charset=utf-8');
 }
 function pdfTextClean(s){
@@ -1000,7 +1063,7 @@ function makePdf(lines,annotations){
 }
 function downloadProjectPdf(){
   const rows=projectExportRows();
-  if(!rows.length){alert('Your project review list is empty.');return;}
+  if(!rows.length){alert('Your project list is empty.');return;}
   const lines=[],ann=[];
   const margin=50,bottom=52,width=495;
   let page=0,y=792;
@@ -1026,7 +1089,7 @@ function downloadProjectPdf(){
     y-=4;
   }
   addLine('Project Constructability Checklist',18,true,0,24);
-  addLine('Project review list: '+projectExportTitle(),11,true,0,16);
+  addLine('Project list: '+projectExportTitle(),11,true,0,16);
   addLine('Generated: '+projectExportDate()+'    Selected entries: '+rows.length,10,false,0,18);
   addWrapped('Purpose',projectExportPurpose(),10,0);
   y-=4;
@@ -1049,7 +1112,7 @@ function downloadProjectPdf(){
 }
 function clearProjectList(){
   if(!projectCount())return;
-  if(confirm('Clear all entries from this project review list?')){const list=getProjectList();list.ids=[];saveProjectList(list);render();}
+  if(confirm('Clear all entries from this project list?')){const list=getProjectList();list.ids=[];saveProjectList(list);render();}
 }
 function renderProjectListView(){
   const list=getProjectList();
@@ -1060,9 +1123,9 @@ function renderProjectListView(){
   const cards=rows.map(({dim,item,data})=>{
     return `<div class="project-card"><div class="project-card-main"><div class="project-card-title">${escHtml(item.name)}</div><div class="project-card-meta"><strong>Dimension:</strong> ${escHtml(dim.name)}</div><div class="project-card-question"><strong>Design question:</strong><br>${data.question||''}</div><div class="project-card-meta"><strong>Design parameter:</strong> ${data.parameter||''}</div></div><div class="project-card-actions"><button class="entry-btn" onclick="goEntry('${dim.id}','${item.id}')">Open entry →</button><button class="entry-btn danger" onclick="removeFromProjectList('${item.id}')">Remove</button></div></div>`;
   }).join('');
-  const empty=`<div class="project-empty"><div class="project-empty-title">Your project review list is empty.</div><div class="project-empty-sub">Open any live entry and use <strong>Add to project review list</strong>. The list stays in this browser and can be exported as a project checklist later.</div></div>`;
+  const empty=`<div class="project-empty"><div class="project-empty-title">Your project list is empty.</div><div class="project-empty-sub">Open any live entry and use <strong>Add to project list</strong>. The list stays in this browser and can be exported as a project checklist later.</div></div>`;
   const exportHelp=`<div class="project-export-card"><div class="project-export-title">Export options</div><div class="project-export-grid"><div class="project-export-item"><strong>Copy project checklist</strong><span>Copies a plain-text project checklist to the clipboard, ready to paste into an email, meeting note, design review or QA record.</span></div><div class="project-export-item"><strong>Download PDF</strong><span>Downloads a professional checklist document with the selected entries, design questions, design parameters and clickable framework links.</span></div><div class="project-export-item"><strong>Download Markdown</strong><span>Downloads an editable .md checklist for GitHub, Notion, Obsidian, project notes or later conversion into another document.</span></div></div></div>`;
-  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to framework</div><div class="dim-header"><span class="dim-header-icon">📋</span><h1 class="dim-header-title">My project review list</h1></div><p class="section-desc">Collect the entries that apply to a particular project, give the list a useful name, then export a project-specific constructability review checklist.</p><div class="project-name-card"><div class="label">List name</div><div class="project-name-row"><input class="project-name-input" value="${name}" placeholder="e.g. 12 Smith Street — structural review" oninput="setProjectListName(this.value)"></div><div class="project-name-help">Stored only in this browser. Do not put confidential project information here if you plan to copy/share the checklist.</div><div class="project-field-gap"><div class="label">Purpose</div><textarea class="project-purpose-textarea" oninput="setProjectListPurpose(this.value)">${purpose}</textarea><div class="project-name-help">This purpose statement is shown in the copied checklist, PDF and Markdown exports. The default text explains that the list is a project review aid, not a compliance assessment; you can update it to suit your project or audience.</div></div></div>${exportHelp}<div class="project-actions-bar"><button class="entry-btn primary" onclick="copyProjectChecklist()">Copy project checklist</button><button class="entry-btn" onclick="downloadProjectPdf()">Download PDF</button><button class="entry-btn" onclick="downloadProjectMarkdown()">Download Markdown</button><button class="entry-btn danger" onclick="clearProjectList()">Clear list</button></div>${missing>0?`<div class="project-name-help">${missing} saved entry ${missing===1?'id was':'ids were'} not found in the current data and ${missing===1?'has':'have'} been hidden.</div>`:''}<div class="item-list project-list-panel">${cards||empty}</div></div>`;
+  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to framework</div><div class="dim-header"><span class="dim-header-icon">📋</span><h1 class="dim-header-title">My project list</h1></div><p class="section-desc">Collect the entries that apply to a particular project, give the list a useful name, then export a project-specific constructability review checklist.</p><div class="project-name-card"><div class="label">List name</div><div class="project-name-row"><input class="project-name-input" value="${name}" placeholder="e.g. 12 Smith Street — structural review" oninput="setProjectListName(this.value)"></div><div class="project-name-help">Stored only in this browser. Do not put confidential project information here if you plan to copy/share the checklist.</div><div class="project-field-gap"><div class="label">Purpose</div><textarea class="project-purpose-textarea" oninput="setProjectListPurpose(this.value)">${purpose}</textarea><div class="project-name-help">This purpose statement is shown in the copied checklist, PDF and Markdown exports. The default text explains that the list is a project review aid, not a compliance assessment; you can update it to suit your project or audience.</div></div></div>${exportHelp}<div class="project-actions-bar"><button class="entry-btn primary" onclick="copyProjectChecklist()">Copy project checklist</button><button class="entry-btn" onclick="downloadProjectPdf()">Download PDF</button><button class="entry-btn" onclick="downloadProjectMarkdown()">Download Markdown</button><button class="entry-btn danger" onclick="clearProjectList()">Clear list</button></div>${missing>0?`<div class="project-name-help">${missing} saved entry ${missing===1?'id was':'ids were'} not found in the current data and ${missing===1?'has':'have'} been hidden.</div>`:''}<div class="item-list project-list-panel">${cards||empty}</div></div>`;
 }
 function prefillUrl(form,name,link){
   return form.base+'?usp=pp_url'
@@ -1101,7 +1164,7 @@ function render(){
 
 function renderHeader(){
   const count=projectCount();
-  return `<div class="header"><div class="header-left" onclick="goHome()" style="cursor:pointer"><div class="logo">C</div><div><div class="header-title">Constructability Framework</div><div class="header-sub">Design Guidance</div></div></div><div class="header-actions"><button class="project-header-btn" onclick="goProjectList()">📋 Project review list <span class="project-count-pill">${count}</span></button></div></div>`;
+  return `<div class="header"><div class="header-left" onclick="goHome()" style="cursor:pointer"><div class="logo">C</div><div><div class="header-title">Constructability Framework</div><div class="header-sub">Design Guidance</div></div></div><div class="header-actions"><button class="project-header-btn" onclick="goProjectList()">📋 Project list <span class="project-count-pill">${count}</span></button></div></div>`;
 }
 
 function renderBreadcrumb(){
@@ -1109,7 +1172,7 @@ function renderBreadcrumb(){
   let h='<div class="breadcrumb"><span class="breadcrumb-link" onclick="goHome()">Framework</span>';
   if(state.view==='guide'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">'+(guide?guide.title:'Guide')+'</span></div>'; }
   if(state.view==='evidence'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Evidence support index</span></div>'; }
-  if(state.view==='projectList'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">My project review list</span></div>';}
+  if(state.view==='projectList'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">My project list</span></div>';}
   if(dim){
     h+='<span class="breadcrumb-sep">›</span>';
     if(item){h+=`<span class="breadcrumb-link" onclick="goDimension('${dim.id}')">${dim.name}</span><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">${item.name}</span>`}
@@ -1160,7 +1223,7 @@ function renderEvidenceRubric(){
     [2,'First-principles physical derivation','Established dimensions or mechanics.'],
     [3,'Regulatory duty or mandatory code provision','Especially safety and communication duties.'],
     [4,'Peer-reviewed research directly on point',''],
-    [5,'Authoritative industry guidance','Directly on point — e.g. SRIA, CCAA, RTA technical notes.'],
+    [5,'Authoritative industry standard or guidance','Directly on point.'],
     [6,'Primary research conducted for the framework','Example: structured supplier review.'],
     [7,'Documented real project case','A concern / recommended example that occurred.']
   ];
@@ -1169,24 +1232,19 @@ function renderEvidenceRubric(){
     [9,'General or analogous literature','Right phenomenon, different domain; applied by inference.']
   ];
   const lowTypes=[
-    [9,'General or analogous literature only','No corroborating measurement, derivation, guidance, duty, research, or case.'],
+    [9,'General or analogous literature only','No corroborating measurement, derivation, standard, duty, research, or case.'],
     [10,'Unaided practitioner judgement','A strengthening flag before publication.']
   ];
-  return `<div class="label">How the rating is decided</div>
-  <p class="section-desc" style="max-width:760px;margin-bottom:6px">Most entries give you <span class="evidence-key">cut-off numbers</span> to act on — for example, <em>fold depth over 600&nbsp;mm</em>. Some instead just recommend a <span class="evidence-key">choice</span> — <em>chamfer the corner or don't</em>. The rating measures how much you can trust those numbers or that choice. Three questions decide it:</p>
-  <section class="evidence-steps">
-    <div class="evidence-step"><div class="evidence-step-num">1</div><div class="evidence-step-text"><strong>What kind of evidence sits behind it?</strong> Measured on site, calculated from real component sizes, required by a duty or code, taken from a study or industry guidance, or based on experience. The list further down ranks these, strongest first.</div></div>
-    <div class="evidence-step"><div class="evidence-step-num">2</div><div class="evidence-step-text"><strong>Does that evidence actually cover the numbers?</strong> For an entry with cut-offs, is there real evidence behind <em>each</em> cut-off, or are some of them a sensible estimate? For an entry that recommends a choice, is that choice itself backed up?</div></div>
-    <div class="evidence-step"><div class="evidence-step-num">3</div><div class="evidence-step-text"><strong>Does more than one independent source point the same way?</strong> A single source on its own is never enough for a High rating.</div></div>
+  return `<section class="evidence-rule-strip">
+    <div class="evidence-rule-card"><div class="evidence-rule-title">Rating question</div><div class="evidence-rule-line">Does the cited evidence support the parameter and bands the user acts on?</div></div>
+    <div class="evidence-test-grid"><div class="evidence-test-card"><strong>Numeric parameter</strong><span>Test each band edge.</span></div><div class="evidence-test-card"><strong>Categorical parameter</strong><span>Test the recommended call / ordering.</span></div></div>
   </section>
-  <div class="label">The three levels</div>
+  <div class="label">Evidence hierarchy — strongest to weakest</div>
   <section class="evidence-hierarchy-grid">
-    <article class="evidence-tier-card high"><div class="evidence-tier-head"><div class="evidence-tier-titlerow"><div class="evidence-tier-title">High</div><div class="evidence-tier-range">strong + confirmed</div></div><div class="evidence-tier-rule">The numbers (or the recommended choice) come from strong evidence — measured, calculated from real dimensions, or set by a duty, code or industry guidance — <strong>and</strong> at least one other independent source or real project confirms it. Use them broadly as written; any doubt is about exact precision, not whether they sit in the right place. One source alone is never High.</div></div><div class="evidence-type-list">${highTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div></article>
-    <article class="evidence-tier-card medium"><div class="evidence-tier-head"><div class="evidence-tier-titlerow"><div class="evidence-tier-title">Medium</div><div class="evidence-tier-range">supported, some judgement</div></div><div class="evidence-tier-rule">The issue is well established and genuinely supported, but at least one cut-off number (or the exact recommended choice) is a reasoned judgement rather than something measured, derived, or set by a duty, code or guidance. Use the numbers as a well-founded starting point and apply your own judgement to your project.</div></div><div class="evidence-type-list">${mediumTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div><div class="evidence-shared-note"><strong>Note:</strong> general or analogous literature (item 9) can support a Medium when it is paired with a real example, a relevant source, or a well-supported mechanism — not on its own.</div></article>
-    <article class="evidence-tier-card low"><div class="evidence-tier-head"><div class="evidence-tier-titlerow"><div class="evidence-tier-title">Low</div><div class="evidence-tier-range">mostly judgement</div></div><div class="evidence-tier-rule">Rests mainly on experience, or a loose comparison borrowed from another field, with nothing measured, calculated or backed by a duty, code or guidance to confirm it. The numbers are rough. Treat it as a prompt to investigate, not a figure to rely on — these are generally not published live.</div></div><div class="evidence-type-list">${lowTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div></article>
-  </section>
-  <div class="label">What counts as evidence — strongest at the top</div>
-  <p class="section-desc" style="max-width:760px;margin:6px 0 -6px">These are the kinds of evidence behind the levels above. Higher items can set where a cut-off sits; lower items mainly confirm or suggest.</p>`;
+    <article class="evidence-tier-card high"><div class="evidence-tier-head"><div><div class="evidence-tier-title">High support</div><div class="evidence-tier-rule">Threshold edges / recommended call rest on directly relevant evidence.</div></div><div class="evidence-tier-range">1–7</div></div><div class="evidence-type-list">${highTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div></article>
+    <article class="evidence-tier-card medium"><div class="evidence-tier-head"><div><div class="evidence-tier-title">Medium support</div><div class="evidence-tier-rule">Mechanism supported, but one or more bands/calls are reasoned or analogous.</div></div><div class="evidence-tier-range">8–9</div></div><div class="evidence-type-list">${mediumTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div><div class="evidence-shared-note"><strong>Note:</strong> item 9 can be medium when paired with a relevant source, example, or supported mechanism.</div></article>
+    <article class="evidence-tier-card low"><div class="evidence-tier-head"><div><div class="evidence-tier-title">Low support</div><div class="evidence-tier-rule">Mainly assertion or loose analogy; threshold positions are essentially arbitrary.</div></div><div class="evidence-tier-range">9–10</div></div><div class="evidence-type-list">${lowTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div></article>
+  </section>`;
 }
 function renderEvidenceSupportView(){
   const counts=evidenceSupportCounts();
@@ -1194,9 +1252,9 @@ function renderEvidenceSupportView(){
   const labels={all:'All',high:'High',medium:'Medium',low:'Low'};
   const notes={
     all:'Every live entry',
-    high:'Strong evidence on the numbers, confirmed by a second source',
-    medium:'Well supported, but some numbers are a reasoned call',
-    low:'Mostly judgement — treat as a prompt, not a figure'
+    high:'Items 1–7 support the bands/call',
+    medium:'Items 8–9 or analogous support',
+    low:'Items 9–10 mainly relied on'
   };
   const order=['all','high','medium','low'];
   const summary=order.map(level=>`<div class="evidence-summary-card ${active===level?'active':''}" onclick="setEvidenceFilter('${level}')"><div class="evidence-summary-label">${labels[level]}</div><div class="evidence-summary-count">${counts[level]}</div><div class="evidence-summary-note">${notes[level]}</div></div>`).join('');
@@ -1213,7 +1271,7 @@ function renderEvidenceSupportView(){
   }).join('');
   const shown=filtered.length;
   const suffix=active==='all'?'all evidence support levels':`${labels[active]} evidence support`;
-  return `<div class="content evidence-content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">📊</span><h1 class="dim-header-title">Evidence support index</h1></div><div class="section-desc">Evidence support is assigned from the hierarchy below. It tests <span class="evidence-key">how much you can trust the numbers or the recommendation in an entry</span> — not whether the constructability issue is important, useful, or worth considering.</div><div class="evidence-callout"><strong>A lower rating does not mean an entry is weak or should be ignored.</strong> Every published entry captures a real constructability question that may affect design decisions. A High rating often just means the issue is already well known, well documented, or easy to measure. <span class="evidence-key">Medium or Low entries can be just as valuable</span> — they are often newer, more practical, more site-specific, or less formally studied. Read them as prompts, apply more of your own judgement, and recognise the numbers carry a wider margin.</div><div class="evidence-lead"><p>The rating also shows <strong>where contribution is needed</strong>. A Medium or Low rating may mean the issue is backed by practical experience but needs stronger formal evidence, or that literature exists but the cut-offs, project relevance or regional application would benefit from more field examples. You can strengthen the framework by contributing academic sources, field measurements, contractor feedback, design examples, project case studies or regional experience that confirm, refine or challenge the guidance.</p></div>${renderEvidenceRubric()}<div class="evidence-index-section-label"><div class="label" style="margin-bottom:0">Live entry index</div></div><div class="evidence-summary-grid">${summary}</div><div class="evidence-filter">${buttons}</div><div class="label">${shown} ${shown===1?'entry':'entries'} — ${suffix}</div><div class="item-list">${rows}</div></div>`;
+  return `<div class="content evidence-content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">📊</span><h1 class="dim-header-title">Evidence support index</h1></div><div class="section-desc">Evidence support is assigned from the hierarchy below. It tests how well the cited evidence supports the entry’s parameter and threshold bands — not whether the constructability issue is important, useful, or worth considering.<br><br>A lower evidence rating does not mean an entry should be ignored. Every published entry is included because it captures a real constructability question that may affect design decisions. High support often means the issue is already well known, well documented, or easier to measure. Medium or low support may reflect a newer, more practical, more site-specific, or less formally studied issue. These entries can still be highly valuable as review prompts, but the reader should apply more judgement and recognise that the thresholds have a wider margin of uncertainty.<br><br>The support rating also shows where contribution is needed. A medium or low rating may mean that the issue is supported by practical experience but needs stronger formal evidence, or that formal literature exists but the thresholds, project relevance or regional application would benefit from more field examples. Readers can strengthen the framework by contributing academic sources, field measurements, contractor feedback, design examples, project case studies or regional experience that help confirm, refine or challenge the guidance.</div>${renderEvidenceRubric()}<div class="evidence-index-section-label"><div class="label" style="margin-bottom:0">Live entry index</div></div><div class="evidence-summary-grid">${summary}</div><div class="evidence-filter">${buttons}</div><div class="label">${shown} ${shown===1?'entry':'entries'} — ${suffix}</div><div class="item-list">${rows}</div></div>`;
 }
 
 // ===== GUIDE (how-to-use) =====
@@ -1279,14 +1337,15 @@ function renderGuideView(){
     html+=`<div class="label" style="margin-top:36px">${g.dimensionsGuide.title}</div><p class="guide-sub">${g.dimensionsGuide.intro}</p><div class="dimension-guide-grid">${cards}</div>${g.dimensionsGuide.note?`<div class="guide-more">${g.dimensionsGuide.note}</div>`:''}`;
   }
 
-  // Rating legend in the four live colours — defined before the callout that references them
-  if(g.ratingLegend){
-    html+=`<div class="label" style="margin-top:32px">${g.ratingLegend.title}</div><p class="guide-sub">${g.ratingLegend.intro}</p><div class="legend-grid">${g.ratingLegend.items.map(it=>`<div class="legend-item" style="background:${bgVar(it.color)};border:1px solid ${colorVar(it.color)}33"><div class="legend-dot" style="background:${colorVar(it.color)}"></div><div><div class="legend-rating" style="color:${colorVar(it.color)}">${it.rating}</div><div class="legend-meaning">${it.meaning}</div></div></div>`).join('')}</div>`;
-  }
-
-  // Engineering-judgement callout, immediately after the ratings it interprets
+  // Engineering-judgement callout, placed up front so it cannot be missed
   if(g.judgement){
     html+=`<div class="guide-callout"><div class="label" style="color:var(--yellow)">${g.judgement.title}</div>${g.judgement.points.map(p=>`<div class="guide-point"><div class="guide-point-lead">${p.lead}</div><div class="guide-point-text">${p.text}</div></div>`).join('')}</div>`;
+  }
+
+
+  // Rating legend in the four live colours
+  if(g.ratingLegend){
+    html+=`<div class="label" style="margin-top:32px">${g.ratingLegend.title}</div><p class="guide-sub">${g.ratingLegend.intro}</p><div class="legend-grid">${g.ratingLegend.items.map(it=>`<div class="legend-item" style="background:${bgVar(it.color)};border:1px solid ${colorVar(it.color)}33"><div class="legend-dot" style="background:${colorVar(it.color)}"></div><div><div class="legend-rating" style="color:${colorVar(it.color)}">${it.rating}</div><div class="legend-meaning">${it.meaning}</div></div></div>`).join('')}</div>`;
   }
 
   // Anatomy of a real entry, rendered from live components
@@ -1312,20 +1371,20 @@ function renderGuideView(){
     html+=`<div class="label" style="margin-top:36px">${g.trace.title}</div><p class="guide-sub">${g.trace.intro}</p><div class="trace-flow">${steps}</div>`;
   }
 
-  // The parameter takes different shapes (numeric / categorical / qualitative) — stays with the entry-reading sections
+  // Project list workflow
+  if(g.projectListWorkflow){
+    const pr=g.projectListWorkflow;
+    const steps=(pr.steps||[]).map((s,i)=>`<div class="trace-step"><div class="trace-step-label">${s.label}</div><div class="trace-step-value">${s.value}</div><div class="trace-step-sub">${s.sub}</div></div>${i<(pr.steps||[]).length-1?'<div class="trace-arrow">→</div>':''}`).join('');
+    html+=`<div class="label" style="margin-top:36px">${pr.title}</div><p class="guide-sub">${pr.intro}</p><div class="trace-flow">${steps}</div>${pr.note?`<div class="guide-more">${pr.note}</div>`:''}`;
+  }
+
+  // The parameter takes different shapes (numeric / categorical / qualitative)
   if(g.shapes){
     const cards=g.shapes.items.map(s=>{
       const found=findEntryById(s.entryRef.id),sd=found?found.item.data:null;
       return `<div class="shape-card"><div class="shape-tag">${s.shape}</div><div class="shape-param">${sd?sd.parameter:''}</div><div class="shape-desc">${s.desc}</div><div class="threshold-list shape-thresholds">${sd?gThresholds(sd,true):''}</div>${found?`<div class="shape-link" onclick="goEntry('${found.dim.id}','${found.item.id}')">See full entry →</div>`:''}</div>`;
     }).join('');
     html+=`<div class="label" style="margin-top:36px">${g.shapes.title}</div><p class="guide-sub">${g.shapes.intro}</p><div class="shape-grid">${cards}</div>`;
-  }
-
-  // Project review list workflow — the hand-off from reading one entry to using the framework across a job
-  if(g.projectListWorkflow){
-    const pr=g.projectListWorkflow;
-    const steps=(pr.steps||[]).map((s,i)=>`<div class="trace-step"><div class="trace-step-label">${s.label}</div><div class="trace-step-value">${s.value}</div><div class="trace-step-sub">${s.sub}</div></div>${i<(pr.steps||[]).length-1?'<div class="trace-arrow">→</div>':''}`).join('');
-    html+=`<div class="label" style="margin-top:36px">${pr.title}</div><p class="guide-sub">${pr.intro}</p><div class="trace-flow">${steps}</div>${pr.note?`<div class="guide-more">${pr.note}</div>`:''}`;
   }
 
   // Contribution pathways
