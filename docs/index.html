@@ -1270,15 +1270,14 @@ function renderGuideView(){
     html+=`<div class="label" style="margin-top:36px">${g.dimensionsGuide.title}</div><p class="guide-sub">${g.dimensionsGuide.intro}</p><div class="dimension-guide-grid">${cards}</div>${g.dimensionsGuide.note?`<div class="guide-more">${g.dimensionsGuide.note}</div>`:''}`;
   }
 
-  // Engineering-judgement callout, placed up front so it cannot be missed
-  if(g.judgement){
-    html+=`<div class="guide-callout"><div class="label" style="color:var(--yellow)">${g.judgement.title}</div>${g.judgement.points.map(p=>`<div class="guide-point"><div class="guide-point-lead">${p.lead}</div><div class="guide-point-text">${p.text}</div></div>`).join('')}</div>`;
-  }
-
-
-  // Rating legend in the four live colours
+  // Rating legend in the four live colours — defined before the callout that references them
   if(g.ratingLegend){
     html+=`<div class="label" style="margin-top:32px">${g.ratingLegend.title}</div><p class="guide-sub">${g.ratingLegend.intro}</p><div class="legend-grid">${g.ratingLegend.items.map(it=>`<div class="legend-item" style="background:${bgVar(it.color)};border:1px solid ${colorVar(it.color)}33"><div class="legend-dot" style="background:${colorVar(it.color)}"></div><div><div class="legend-rating" style="color:${colorVar(it.color)}">${it.rating}</div><div class="legend-meaning">${it.meaning}</div></div></div>`).join('')}</div>`;
+  }
+
+  // Engineering-judgement callout, immediately after the ratings it interprets
+  if(g.judgement){
+    html+=`<div class="guide-callout"><div class="label" style="color:var(--yellow)">${g.judgement.title}</div>${g.judgement.points.map(p=>`<div class="guide-point"><div class="guide-point-lead">${p.lead}</div><div class="guide-point-text">${p.text}</div></div>`).join('')}</div>`;
   }
 
   // Anatomy of a real entry, rendered from live components
@@ -1305,19 +1304,20 @@ function renderGuideView(){
   }
 
   // Project list workflow
-  if(g.projectListWorkflow){
-    const pr=g.projectListWorkflow;
-    const steps=(pr.steps||[]).map((s,i)=>`<div class="trace-step"><div class="trace-step-label">${s.label}</div><div class="trace-step-value">${s.value}</div><div class="trace-step-sub">${s.sub}</div></div>${i<(pr.steps||[]).length-1?'<div class="trace-arrow">→</div>':''}`).join('');
-    html+=`<div class="label" style="margin-top:36px">${pr.title}</div><p class="guide-sub">${pr.intro}</p><div class="trace-flow">${steps}</div>${pr.note?`<div class="guide-more">${pr.note}</div>`:''}`;
-  }
-
-  // The parameter takes different shapes (numeric / categorical / qualitative)
+  // The parameter takes different shapes (numeric / categorical / qualitative) — stays with the entry-reading sections
   if(g.shapes){
     const cards=g.shapes.items.map(s=>{
       const found=findEntryById(s.entryRef.id),sd=found?found.item.data:null;
       return `<div class="shape-card"><div class="shape-tag">${s.shape}</div><div class="shape-param">${sd?sd.parameter:''}</div><div class="shape-desc">${s.desc}</div><div class="threshold-list shape-thresholds">${sd?gThresholds(sd,true):''}</div>${found?`<div class="shape-link" onclick="goEntry('${found.dim.id}','${found.item.id}')">See full entry →</div>`:''}</div>`;
     }).join('');
     html+=`<div class="label" style="margin-top:36px">${g.shapes.title}</div><p class="guide-sub">${g.shapes.intro}</p><div class="shape-grid">${cards}</div>`;
+  }
+
+  // Project list workflow — the hand-off from reading one entry to using the framework across a job
+  if(g.projectListWorkflow){
+    const pr=g.projectListWorkflow;
+    const steps=(pr.steps||[]).map((s,i)=>`<div class="trace-step"><div class="trace-step-label">${s.label}</div><div class="trace-step-value">${s.value}</div><div class="trace-step-sub">${s.sub}</div></div>${i<(pr.steps||[]).length-1?'<div class="trace-arrow">→</div>':''}`).join('');
+    html+=`<div class="label" style="margin-top:36px">${pr.title}</div><p class="guide-sub">${pr.intro}</p><div class="trace-flow">${steps}</div>${pr.note?`<div class="guide-more">${pr.note}</div>`:''}`;
   }
 
   // Contribution pathways
