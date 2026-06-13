@@ -302,10 +302,11 @@
   .evidence-test-card span{font-size:13px;color:var(--text-muted);line-height:1.55;display:block}
   .evidence-hierarchy-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0 22px;align-items:start}
   .evidence-tier-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-height:100%}
-  .evidence-tier-head{padding:16px 18px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+  .evidence-tier-head{padding:16px 18px;border-bottom:1px solid var(--border)}
+  .evidence-tier-titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
   .evidence-tier-title{font-size:18px;font-weight:900;letter-spacing:-0.35px;line-height:1.15}
-  .evidence-tier-range{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:800;padding:5px 9px;border-radius:999px;white-space:nowrap}
-  .evidence-tier-rule{font-size:12.5px;color:var(--text);opacity:.88;line-height:1.55;margin-top:7px}
+  .evidence-tier-range{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:800;padding:5px 9px;border-radius:999px;white-space:nowrap;flex-shrink:0}
+  .evidence-tier-rule{font-size:12.5px;color:var(--text);opacity:.88;line-height:1.55;margin-top:0}
   .evidence-tier-card.high{border-color:rgba(34,197,94,0.36)}
   .evidence-tier-card.high .evidence-tier-head{background:rgba(34,197,94,0.07)}
   .evidence-tier-card.high .evidence-tier-title{color:var(--green)}
@@ -1150,7 +1151,7 @@ function renderEvidenceRubric(){
     [2,'First-principles physical derivation','Established dimensions or mechanics.'],
     [3,'Regulatory duty or mandatory code provision','Especially safety and communication duties.'],
     [4,'Peer-reviewed research directly on point',''],
-    [5,'Authoritative industry standard or guidance','Directly on point.'],
+    [5,'Authoritative industry guidance','Directly on point — e.g. SRIA, CCAA, RTA technical notes.'],
     [6,'Primary research conducted for the framework','Example: structured supplier review.'],
     [7,'Documented real project case','A concern / recommended example that occurred.']
   ];
@@ -1159,21 +1160,21 @@ function renderEvidenceRubric(){
     [9,'General or analogous literature','Right phenomenon, different domain; applied by inference.']
   ];
   const lowTypes=[
-    [9,'General or analogous literature only','No corroborating measurement, derivation, standard, duty, research, or case.'],
+    [9,'General or analogous literature only','No corroborating measurement, derivation, guidance, duty, research, or case.'],
     [10,'Unaided practitioner judgement','A strengthening flag before publication.']
   ];
   return `<div class="label">How the rating is decided</div>
   <p class="section-desc" style="max-width:760px;margin-bottom:6px">Most entries give you <span class="evidence-key">cut-off numbers</span> to act on — for example, <em>fold depth over 600&nbsp;mm</em>. Some instead just recommend a <span class="evidence-key">choice</span> — <em>chamfer the corner or don't</em>. The rating measures how much you can trust those numbers or that choice. Three questions decide it:</p>
   <section class="evidence-steps">
-    <div class="evidence-step"><div class="evidence-step-num">1</div><div class="evidence-step-text"><strong>What kind of evidence sits behind it?</strong> Measured on site, calculated from real component sizes, set by a code or standard, taken from a study, or based on experience. The list further down ranks these, strongest first.</div></div>
+    <div class="evidence-step"><div class="evidence-step-num">1</div><div class="evidence-step-text"><strong>What kind of evidence sits behind it?</strong> Measured on site, calculated from real component sizes, required by a duty or code, taken from a study or industry guidance, or based on experience. The list further down ranks these, strongest first.</div></div>
     <div class="evidence-step"><div class="evidence-step-num">2</div><div class="evidence-step-text"><strong>Does that evidence actually cover the numbers?</strong> For an entry with cut-offs, is there real evidence behind <em>each</em> cut-off, or are some of them a sensible estimate? For an entry that recommends a choice, is that choice itself backed up?</div></div>
     <div class="evidence-step"><div class="evidence-step-num">3</div><div class="evidence-step-text"><strong>Does more than one independent source point the same way?</strong> A single source on its own is never enough for a High rating.</div></div>
   </section>
   <div class="label">The three levels</div>
   <section class="evidence-hierarchy-grid">
-    <article class="evidence-tier-card high"><div class="evidence-tier-head"><div><div class="evidence-tier-title">High</div><div class="evidence-tier-rule">The numbers (or the recommended choice) come from strong evidence — measured, calculated from real dimensions, or set by a code, standard or study — <strong>and</strong> at least one other independent source or real project confirms it. Use them broadly as written; any doubt is about exact precision, not whether they sit in the right place. One source alone is never High.</div></div><div class="evidence-tier-range">strong + confirmed</div></div><div class="evidence-type-list">${highTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div></article>
-    <article class="evidence-tier-card medium"><div class="evidence-tier-head"><div><div class="evidence-tier-title">Medium</div><div class="evidence-tier-rule">The issue is well established and genuinely supported, but at least one cut-off number (or the exact recommended choice) is a reasoned judgement rather than something measured or set by a standard. Use the numbers as a well-founded starting point and apply your own judgement to your project.</div></div><div class="evidence-tier-range">supported, some judgement</div></div><div class="evidence-type-list">${mediumTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div><div class="evidence-shared-note"><strong>Note:</strong> general or analogous literature (item 9) can support a Medium when it is paired with a real example, a relevant source, or a well-supported mechanism — not on its own.</div></article>
-    <article class="evidence-tier-card low"><div class="evidence-tier-head"><div><div class="evidence-tier-title">Low</div><div class="evidence-tier-rule">Rests mainly on experience, or a loose comparison borrowed from another field, with nothing measured, calculated or backed by a standard to confirm it. The numbers are rough. Treat it as a prompt to investigate, not a figure to rely on — these are generally not published live.</div></div><div class="evidence-tier-range">mostly judgement</div></div><div class="evidence-type-list">${lowTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div></article>
+    <article class="evidence-tier-card high"><div class="evidence-tier-head"><div class="evidence-tier-titlerow"><div class="evidence-tier-title">High</div><div class="evidence-tier-range">strong + confirmed</div></div><div class="evidence-tier-rule">The numbers (or the recommended choice) come from strong evidence — measured, calculated from real dimensions, or set by a duty, code or industry guidance — <strong>and</strong> at least one other independent source or real project confirms it. Use them broadly as written; any doubt is about exact precision, not whether they sit in the right place. One source alone is never High.</div></div><div class="evidence-type-list">${highTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div></article>
+    <article class="evidence-tier-card medium"><div class="evidence-tier-head"><div class="evidence-tier-titlerow"><div class="evidence-tier-title">Medium</div><div class="evidence-tier-range">supported, some judgement</div></div><div class="evidence-tier-rule">The issue is well established and genuinely supported, but at least one cut-off number (or the exact recommended choice) is a reasoned judgement rather than something measured, derived, or set by a duty, code or guidance. Use the numbers as a well-founded starting point and apply your own judgement to your project.</div></div><div class="evidence-type-list">${mediumTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div><div class="evidence-shared-note"><strong>Note:</strong> general or analogous literature (item 9) can support a Medium when it is paired with a real example, a relevant source, or a well-supported mechanism — not on its own.</div></article>
+    <article class="evidence-tier-card low"><div class="evidence-tier-head"><div class="evidence-tier-titlerow"><div class="evidence-tier-title">Low</div><div class="evidence-tier-range">mostly judgement</div></div><div class="evidence-tier-rule">Rests mainly on experience, or a loose comparison borrowed from another field, with nothing measured, calculated or backed by a duty, code or guidance to confirm it. The numbers are rough. Treat it as a prompt to investigate, not a figure to rely on — these are generally not published live.</div></div><div class="evidence-type-list">${lowTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div></article>
   </section>
   <div class="label">What counts as evidence — strongest at the top</div>
   <p class="section-desc" style="max-width:760px;margin:6px 0 -6px">These are the kinds of evidence behind the levels above. Higher items can set where a cut-off sits; lower items mainly confirm or suggest.</p>`;
