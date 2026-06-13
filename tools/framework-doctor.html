@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Framework Doctor</title>
+<!-- Framework Doctor. Read-only health check for data.json + images folder. Nothing is uploaded or modified. -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#0a0f1a;--surface:#111827;--surface-light:#1a2234;--border:#2a3548;
+    --text:#e2e8f0;--text-muted:#8899aa;--accent:#3b82f6;--accent-glow:rgba(59,130,246,0.14);
+    --red:#ef4444;--orange:#f97316;--yellow:#eab308;--green:#22c55e;
+    --green-bg:rgba(34,197,94,0.1);--red-bg:rgba(239,68,68,0.1);--yellow-bg:rgba(234,179,8,0.1);--orange-bg:rgba(249,115,22,0.12);--accent-bg:rgba(59,130,246,0.1);
+  }
+  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;min-height:100vh;padding-bottom:84px}
+  .header{padding:18px 28px;border-bottom:1px solid var(--border);background:var(--surface);display:flex;align-items:center;gap:14px}
+  .logo{width:34px;height:34px;background:linear-gradient(135deg,var(--accent),#6366f1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;letter-spacing:.5px}
+  .header-title{font-size:15px;font-weight:700}.header-sub{font-size:11px;color:var(--text-muted)}
+  .wrap{max-width:1040px;margin:0 auto;padding:24px 28px}
+  .panel{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px 22px;margin-bottom:18px}
+  .panel h2{font-size:15px;font-weight:700;margin-bottom:6px}.panel p.desc{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:14px}
+  .label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
+  .filerow{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start}.fileblock{display:flex;flex-direction:column;gap:6px;min-width:260px;flex:1}
+  .fileblock.drop{border:1.5px dashed var(--border);border-radius:8px;padding:14px 16px;gap:8px;transition:all .12s}
+  .fileblock.drop.drag-over{border-color:var(--accent);background:var(--accent-glow)}
+  .drop-hint{font-size:11px;color:var(--text-muted);font-style:italic}.drop .drop-hint{white-space:nowrap}
+  input[type=file]{font-family:inherit;font-size:12px;color:var(--text-muted)}
+  input[type=file]::file-selector-button{font-family:inherit;font-size:12px;font-weight:600;background:var(--surface-light);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:7px 12px;margin-right:10px;cursor:pointer}
+  input[type=file]::file-selector-button:hover{border-color:var(--accent)}
+  input[type=text]{width:100%;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:9px 10px;font-family:inherit;font-size:13px;line-height:1.5;outline:none}
+  input[type=text]:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+  .status{margin-top:14px;display:flex;flex-direction:column;gap:6px}.status-line{font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .pill{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1px;padding:2px 8px;border-radius:4px;border:1px solid var(--border);background:var(--surface-light)}
+  .pill.ok{color:var(--green);border-color:var(--green)}.pill.warn{color:var(--orange);border-color:var(--orange)}.pill.err{color:var(--red);border-color:var(--red)}.pill.note{color:var(--accent);border-color:var(--accent)}
+  .link-x{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:15px;line-height:1;padding:0 2px}.link-x:hover{color:var(--red)}
+  .helpbox{background:var(--accent-glow);border:1px solid var(--accent);border-radius:10px;padding:14px 18px;margin-bottom:18px}.help-title{font-size:13px;font-weight:700;margin-bottom:5px}.help-body{font-size:12.5px;color:var(--text);line-height:1.6;opacity:.95}
+  .code{font-family:'JetBrains Mono',monospace;background:var(--surface-light);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+  .chiprow{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}.chip{display:inline-flex;align-items:center;gap:6px;background:var(--surface-light);border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-size:12px;color:var(--text-muted)}.chip strong{color:var(--text)}
+
+  /* Summary banner */
+  .summary{display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-radius:10px;padding:16px 20px;margin-bottom:18px;border:1px solid var(--border);background:var(--surface)}
+  .summary.clear{border-color:var(--green);background:var(--green-bg)}
+  .summary.issues{border-color:var(--orange);background:var(--orange-bg)}
+  .summary-head{font-size:15px;font-weight:700}
+  .summary-sub{font-size:12px;color:var(--text-muted);margin-top:2px}
+  .tallies{display:flex;gap:10px;flex-wrap:wrap;margin-left:auto}
+  .tally{font-family:'JetBrains Mono',monospace;font-size:12px;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:var(--bg);display:flex;align-items:center;gap:7px}
+  .tally b{font-size:14px}
+  .tally.err b{color:var(--red)}.tally.warn b{color:var(--orange)}.tally.note b{color:var(--accent)}.tally.ok b{color:var(--green)}
+
+  /* Check cards */
+  .check{border:1px solid var(--border);border-radius:10px;background:var(--surface);margin-bottom:14px;overflow:hidden}
+  .check-head{display:flex;align-items:flex-start;gap:12px;padding:15px 18px}
+  .sev{width:9px;height:9px;border-radius:50%;margin-top:6px;flex-shrink:0;background:var(--text-muted)}
+  .sev.err{background:var(--red)}.sev.warn{background:var(--orange)}.sev.note{background:var(--accent)}.sev.ok{background:var(--green)}.sev.info{background:var(--text-muted)}
+  .check-title{font-size:14px;font-weight:700;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .check-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:1px 9px}
+  .check-sub{font-size:12.5px;color:var(--text-muted);line-height:1.55;margin-top:4px}
+  .check-body{padding:0 18px 16px 41px}
+  .issue-list{border:1px solid var(--border);border-radius:8px;background:var(--bg);max-height:280px;overflow:auto}
+  .issue{display:flex;gap:10px;align-items:baseline;padding:8px 12px;border-bottom:1px solid var(--border);font-size:12.5px;line-height:1.5}
+  .issue:last-child{border-bottom:none}
+  .issue .mono{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--text);word-break:break-all}
+  .issue .meta{color:var(--text-muted);font-size:11.5px;margin-left:auto;white-space:nowrap;padding-left:10px}
+  .issue .tag{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+  .empty-note{font-size:12.5px;color:var(--text-muted);font-style:italic}
+  .more-note{font-size:11.5px;color:var(--text-muted);padding:8px 12px;border-top:1px solid var(--border)}
+  .count-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+  .count-cell{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+  .count-num{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700}
+  .count-lbl{font-size:11px;color:var(--text-muted);margin-top:3px;line-height:1.4}
+  .section-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:2px;margin:26px 0 12px}
+  .hidden{display:none!important}
+  .footer{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:50}
+  .footer .info{font-size:12px;color:var(--text-muted);line-height:1.45}
+  .footer-actions{display:flex;gap:10px}
+  .btn{font-family:inherit;font-size:12px;font-weight:600;border-radius:6px;padding:8px 12px;cursor:pointer;border:1px solid var(--border);background:var(--surface-light);color:var(--text);transition:all .15s}
+  .btn:hover{border-color:var(--accent)}.btn:disabled{opacity:.4;cursor:not-allowed}
+  @media(max-width:760px){.wrap{padding:18px 16px}.footer{padding:14px 16px;flex-direction:column;align-items:flex-start}.check-body{padding-left:18px}}
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">FD</div>
+    <div><div class="header-title">Framework Doctor</div><div class="header-sub">Read-only health check for data.json and the images folder — runs entirely in your browser</div></div>
+  </div>
+
+  <div class="wrap">
+    <div class="helpbox">
+      <div class="help-title">What this does</div>
+      <div class="help-body">Load your <span class="code">data.json</span> and (optionally) drop in your <span class="code">images</span> folder. The Doctor cross-checks the two and reports problems: images referenced but missing from the folder, files in the folder nothing points to, broken cross-references, entries that look ready but are still drafts, and internal notes that ship in the published file. It never changes anything — it only reads and reports. The quickest way to get the folder: from the GitHub repo, use <span class="code">Code → Download ZIP</span>, unzip, then either pick the <span class="code">images</span> folder with the button below, or open it and drag the image files in.</div>
+    </div>
+
+    <div class="panel">
+      <h2>Load files</h2>
+      <p class="desc">Nothing is uploaded — files are read only inside this browser tab. <span class="code">data.json</span> is required; the images folder is optional but unlocks the image checks.</p>
+      <div class="filerow">
+        <div class="fileblock drop" data-drop="data">
+          <div class="label">data.json — required</div>
+          <input id="dataFile" type="file" accept=".json,application/json">
+          <div class="drop-hint">or drop a file here</div>
+          <div id="dataStatus" class="status"></div>
+          <div id="dataErr" class="status"></div>
+        </div>
+        <div class="fileblock drop" data-drop="folder">
+          <div class="label">images folder — optional</div>
+          <input id="imgFolder" type="file" webkitdirectory directory multiple>
+          <div class="drop-hint">pick the folder, or drag image files in</div>
+          <div id="folderStatus" class="status"></div>
+          <div id="folderErr" class="status"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="summary" class="summary hidden"></div>
+    <div id="report"></div>
+  </div>
+
+  <div class="footer">
+    <div class="info" id="footerInfo">No files loaded yet.</div>
+    <div class="footer-actions">
+      <button class="btn" id="copyReportBtn" onclick="copyReport()" disabled>Copy report</button>
+      <button class="btn" id="downloadReportBtn" onclick="downloadReport()" disabled>Download report</button>
+      <button class="btn" id="resetBtn" onclick="resetAll()" disabled>Reset</button>
+    </div>
+  </div>
+
+<script>
+/* ---------- state ---------- */
+const state={db:null,dbName:'',files:null,folderName:'',fileCount:0};
+
+/* ---------- utilities (shared conventions with the other tools) ---------- */
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function normPath(p){return String(p||'').replace(/\\/g,'/').replace(/^\.\//,'').trim().toLowerCase();}
+function baseName(p){const n=normPath(p);const i=n.lastIndexOf('/');return i>=0?n.slice(i+1):n;}
+function extOf(p){const m=String(p||'').toLowerCase().match(/\.([a-z0-9]+)$/);return m?m[1]:'';}
+function nonEmpty(v){if(v==null)return false;if(Array.isArray(v))return v.length>0;if(typeof v==='string')return v.trim()!=='';if(typeof v==='object')return Object.keys(v).length>0;return true;}
+function fmtSize(b){if(b<1024)return b+' B';if(b<1024*1024)return (b/1024).toFixed(0)+' KB';return (b/1048576).toFixed(1)+' MB';}
+const WEB_EXT=['png','jpg','jpeg','webp','gif','svg'];
+const OVERSIZE=600*1024; // page-load concern threshold
+
+function collectImagePaths(obj,out){
+  if(!obj)return;
+  if(Array.isArray(obj)){obj.forEach(x=>collectImagePaths(x,out));return;}
+  if(typeof obj==='object'){
+    Object.entries(obj).forEach(([k,v])=>{
+      if(typeof v==='string'){
+        const val=v.trim();
+        if((k.toLowerCase()==='image'||/images\//i.test(val)) && /\.(png|jpe?g|webp|gif|bmp|svg)$/i.test(val)){
+          out.add(val.replace(/^\.\//,''));
+        }
+      }else collectImagePaths(v,out);
+    });
+  }
+}
+function allItems(db){const out=[];(db.dimensions||[]).forEach(d=>(d.items||[]).forEach(it=>out.push({dim:d,it:it})));return out;}
+
+/* ---------- loading ---------- */
+function renderStatus(id,lines){
+  document.getElementById(id).innerHTML=lines.map(l=>
+    `<div class="status-line"><span class="pill ${l.cls}">${esc(l.label||l.cls)}</span><strong>${esc(l.txt)}</strong>${l.extra?' — '+esc(l.extra):''}${l.unload?` <button class="link-x" title="Unload" onclick="${l.unload}()">×</button>`:''}</div>`
+  ).join('');
+}
+const _errTimers={};
+function boxError(errId,msg,extra){
+  const el=document.getElementById(errId); if(!el)return;
+  el.innerHTML=`<div class="status-line"><span class="pill err">wrong file</span> <strong>${esc(msg)}</strong>${extra?' — '+esc(extra):''} <button class="link-x" title="Dismiss" onclick="this.closest('.status-line').remove()">×</button></div>`;
+  if(_errTimers[errId])clearTimeout(_errTimers[errId]);
+  _errTimers[errId]=setTimeout(()=>{const e2=document.getElementById(errId);if(e2)e2.innerHTML='';delete _errTimers[errId];},7000);
+}
+function clearBoxError(errId){if(_errTimers[errId]){clearTimeout(_errTimers[errId]);delete _errTimers[errId];}const el=document.getElementById(errId);if(el)el.innerHTML='';}
+function loadDataFile(file){
+  if(!file)return;
+  if(extOf(file.name)!=='json'){boxError('dataErr','This box only takes a data.json file — you dropped a .'+(extOf(file.name)||'?')+' file','the images folder goes in the box to the right');return;}
+  const r=new FileReader();
+  r.onload=()=>{
+    let db;
+    try{db=JSON.parse(r.result);}catch(e){boxError('dataErr',file.name+' isn’t valid JSON',e.message);return;}
+    if(!db.dimensions){boxError('dataErr',file.name+' doesn’t look like the framework data.json','no "dimensions" key — a single-entry fragment or other JSON won’t work here');return;}
+    state.db=db;state.dbName=file.name;
+    const n=allItems(db).length;
+    clearBoxError('dataErr');
+    renderStatus('dataStatus',[{cls:'ok',txt:file.name+' loaded',extra:n+' entries across '+db.dimensions.length+' dimensions',unload:'unloadData'}]);
+    runAndRender();
+  };
+  r.readAsText(file);
+}
+function loadFolder(fileList){
+  const arr=[...(fileList||[])].filter(f=>WEB_EXT.includes(extOf(f.name))||/\.(bmp|tiff?)$/i.test(f.name));
+  if(!arr.length){boxError('folderErr','No image files in what you dropped','this box takes images — the data.json goes in the box on the left');return;}
+  state.files=arr;state.fileCount=arr.length;
+  const rel=arr[0].webkitRelativePath||arr[0].name;
+  state.folderName=rel.includes('/')?rel.split('/')[0]:'dropped images';
+  clearBoxError('folderErr');
+  renderStatus('folderStatus',[{cls:'ok',txt:state.folderName+'/ loaded',extra:arr.length+' image files read',unload:'unloadFolder'}]);
+  runAndRender();
+}
+function unloadData(){state.db=null;state.dbName='';document.getElementById('dataStatus').innerHTML='';clearBoxError('dataErr');document.getElementById('dataFile').value='';runAndRender();}
+function unloadFolder(){state.files=null;state.fileCount=0;state.folderName='';document.getElementById('folderStatus').innerHTML='';clearBoxError('folderErr');document.getElementById('imgFolder').value='';runAndRender();}
+function resetAll(){unloadData();unloadFolder();}
+
+/* ---------- checks ---------- */
+const CORE=['question','parameter','thresholds','applicability'];
+
+function dataChecks(db){
+  const items=allItems(db);
+  const ids=items.map(x=>x.it.id);
+  const idSet=new Set(ids);
+  const checks=[];
+
+  // 1. Duplicate / blank ids
+  const seen=new Set(),dupes=new Set();let blanks=0;
+  ids.forEach(id=>{if(!id||!String(id).trim()){blanks++;return;}if(seen.has(id))dupes.add(id);seen.add(id);});
+  const idIssues=[...dupes].map(id=>({mono:id,meta:'duplicate id'}));
+  if(blanks)idIssues.push({mono:'('+blanks+' entr'+(blanks===1?'y':'ies')+' with no id)',meta:'blank id'});
+  checks.push({title:'Entry ids',sev:idIssues.length?'err':'ok',count:idIssues.length,
+    sub:idIssues.length?'Ids must be unique and present — these break lookups and cross-references.':'All ids present and unique.',
+    issues:idIssues});
+
+  // 2. Broken cross-references (relatedEntries → id that doesn't exist)
+  const broken=[];
+  items.forEach(({it})=>{const re=(it.data||{}).relatedEntries;if(Array.isArray(re))re.forEach(r=>{const tid=r&&r.id;if(tid&&!idSet.has(tid))broken.push({mono:tid,meta:'from '+it.id});});});
+  checks.push({title:'Cross-references',sev:broken.length?'err':'ok',count:broken.length,
+    sub:broken.length?'These relatedEntries point at ids that no longer exist.':'Every relatedEntries link points at a real entry.',
+    issues:broken});
+
+  // 3. Live entries missing core content
+  const liveMissing=[];
+  items.forEach(({it})=>{if(it.available===true){const miss=CORE.filter(k=>!nonEmpty((it.data||{})[k]));if(miss.length)liveMissing.push({mono:it.id,meta:'missing '+miss.join(', ')});}});
+  checks.push({title:'Live entries — completeness',sev:liveMissing.length?'warn':'ok',count:liveMissing.length,
+    sub:liveMissing.length?'These are published (available: true) but missing core sections visitors expect.':'Every published entry has its core sections filled.',
+    issues:liveMissing});
+
+  // 4. Complete but still draft (fleshed core, available:false)
+  const cd=items.filter(({it})=>it.available!==true && nonEmpty((it.data||{}).thresholds) && nonEmpty((it.data||{}).applicability) && nonEmpty((it.data||{}).question)).map(({it})=>({mono:it.id,meta:'looks ready'}));
+  checks.push({title:'Complete but unpublished',sev:cd.length?'note':'ok',count:cd.length,
+    sub:cd.length?'These have a full core but are still marked draft — did you mean to leave them unpublished?':'No fully-built entries are sitting unpublished.',
+    issues:cd});
+
+  return checks;
+}
+
+function backlogShape(db){
+  const items=allItems(db);
+  const live=items.filter(x=>x.it.available===true).length;
+  const complete=items.filter(x=>nonEmpty((x.it.data||{}).thresholds)&&nonEmpty((x.it.data||{}).applicability)).length;
+  const skeleton=items.filter(x=>{const d=x.it.data||{};return !nonEmpty(d.thresholds)&&!nonEmpty(d.applicability)&&!nonEmpty(d.background);}).length;
+  const inProgress=items.length-complete-skeleton;
+  return {total:items.length,live,draft:items.length-live,complete,inProgress,skeleton};
+}
+
+function internalNotes(db){
+  const items=allItems(db);
+  const out=[];
+  items.forEach(({it})=>{const ks=Object.keys(it.data||{}).filter(k=>k.startsWith('_'));if(ks.length)out.push({mono:it.id,meta:ks.join(', ')});});
+  return out;
+}
+
+function imageChecks(db,files){
+  // referenced paths from data.json
+  const refSet=new Set();collectImagePaths(db,refSet);
+  const refs=[...refSet];
+  // index folder by basename (lower) -> file meta; keep exact-case basenames too
+  const byLower=new Map();      // lowerbase -> {file, base(exact)}
+  const exactBases=new Set();   // exact-case basenames present
+  files.forEach(f=>{
+    const exact=(f.webkitRelativePath||f.name).split('/').pop();
+    byLower.set(exact.toLowerCase(),{file:f,exact});
+    exactBases.add(exact);
+  });
+  const referencedLower=new Set(refs.map(p=>baseName(p)));
+
+  const missing=[],caseMismatch=[],badFormat=[];
+  refs.forEach(p=>{
+    const exactRefBase=p.split('/').pop().replace(/^\.\//,'');
+    const lb=exactRefBase.toLowerCase();
+    if(!byLower.has(lb)){missing.push({mono:p,meta:'no file in folder'});}
+    else{
+      const hit=byLower.get(lb);
+      if(hit.exact!==exactRefBase)caseMismatch.push({mono:p,meta:'folder has: '+hit.exact});
+    }
+    if(!WEB_EXT.includes(extOf(p)))badFormat.push({mono:p,meta:extOf(p)||'no ext'});
+  });
+
+  const orphans=[],oversized=[];
+  files.forEach(f=>{
+    const exact=(f.webkitRelativePath||f.name).split('/').pop();
+    if(!referencedLower.has(exact.toLowerCase()))orphans.push({mono:exact,meta:fmtSize(f.size)});
+    if(f.size>OVERSIZE)oversized.push({mono:exact,meta:fmtSize(f.size)});
+  });
+
+  const checks=[];
+  checks.push({title:'Missing images',sev:missing.length?'err':'ok',count:missing.length,
+    sub:missing.length?'Referenced in data.json but not in the folder — these are broken on the live site right now.':'Every referenced image has a matching file.',
+    issues:missing});
+  checks.push({title:'Orphan files',sev:orphans.length?'note':'ok',count:orphans.length,
+    sub:orphans.length?'In the folder but referenced nowhere — safe to delete to keep the folder clean.':'No unused files — nothing referenced is missing and nothing extra is sitting around.',
+    issues:orphans});
+  if(caseMismatch.length)checks.push({title:'Case mismatches',sev:'warn',count:caseMismatch.length,
+    sub:'The reference and the filename differ only by capitalisation. Most web servers are case-sensitive, so these can break on the live site even though they match locally.',issues:caseMismatch});
+  if(oversized.length)checks.push({title:'Oversized images',sev:'note',count:oversized.length,
+    sub:'Larger than '+fmtSize(OVERSIZE)+' — worth re-running through the Image Formatter to cut page-load weight.',issues:oversized});
+  if(badFormat.length)checks.push({title:'Non-web formats',sev:'warn',count:badFormat.length,
+    sub:'Referenced with a format that may not display reliably in browsers.',issues:badFormat});
+  return {checks,refCount:refs.length};
+}
+
+/* ---------- render ---------- */
+function renderIssueList(issues,limit){
+  if(!issues.length)return '';
+  const shown=issues.slice(0,limit);
+  const rows=shown.map(i=>`<div class="issue"><span class="mono">${esc(i.mono)}</span>${i.meta?`<span class="meta">${esc(i.meta)}</span>`:''}</div>`).join('');
+  const more=issues.length>limit?`<div class="more-note">…and ${issues.length-limit} more</div>`:'';
+  return `<div class="issue-list">${rows}${more}</div>`;
+}
+function checkCard(c){
+  const body = c.issues && c.issues.length
+    ? renderIssueList(c.issues,200)
+    : `<div class="empty-note">${esc(c.okText||'Nothing to report.')}</div>`;
+  const showBody = (c.issues && c.issues.length) || c.alwaysBody;
+  return `<div class="check">
+    <div class="check-head">
+      <div class="sev ${c.sev}"></div>
+      <div style="flex:1">
+        <div class="check-title">${esc(c.title)}${c.count?`<span class="check-count">${c.count}</span>`:''}</div>
+        <div class="check-sub">${esc(c.sub)}</div>
+      </div>
+    </div>
+    ${showBody?`<div class="check-body">${body}</div>`:''}
+  </div>`;
+}
+
+function runAndRender(){
+  const report=document.getElementById('report');
+  const summary=document.getElementById('summary');
+  const hasData=!!state.db, hasFolder=!!(state.files&&state.files.length);
+  document.getElementById('resetBtn').disabled=!(hasData||hasFolder);
+  document.getElementById('copyReportBtn').disabled=!hasData;
+  document.getElementById('downloadReportBtn').disabled=!hasData;
+  updateFooter();
+
+  if(!hasData){
+    summary.classList.add('hidden');
+    report.innerHTML = hasFolder
+      ? `<div class="check"><div class="check-head"><div class="sev info"></div><div><div class="check-title">Waiting on data.json</div><div class="check-sub">The images folder is loaded. Load data.json to cross-check it and run the full report.</div></div></div></div>`
+      : '';
+    return;
+  }
+
+  // gather checks
+  const dchecks=dataChecks(state.db);
+  const shape=backlogShape(state.db);
+  const notes=internalNotes(state.db);
+  let imgResult=null;
+  if(hasFolder)imgResult=imageChecks(state.db,state.files);
+
+  // tallies
+  let err=0,warn=0,note=0;
+  const tallyOf=arr=>arr.forEach(c=>{if(c.count){if(c.sev==='err')err+=c.count;else if(c.sev==='warn')warn+=c.count;else if(c.sev==='note')note+=c.count;}});
+  tallyOf(dchecks);
+  if(imgResult)tallyOf(imgResult.checks);
+  if(notes.length)note+=notes.length;
+
+  // summary banner
+  const totalFlags=err+warn+note;
+  const clear=err===0&&warn===0;
+  summary.className='summary '+(err||warn?'issues':'clear');
+  summary.classList.remove('hidden');
+  summary.innerHTML=`
+    <div>
+      <div class="summary-head">${err?'Issues need attention':warn?'A few things to review':'Looking healthy'}</div>
+      <div class="summary-sub">${esc(state.dbName)}${hasFolder?' + '+esc(state.folderName)+'/':' · images folder not loaded'} — ${shape.total} entries checked${imgResult?', '+imgResult.refCount+' image references':''}</div>
+    </div>
+    <div class="tallies">
+      <div class="tally err"><b>${err}</b> ${err===1?'error':'errors'}</div>
+      <div class="tally warn"><b>${warn}</b> ${warn===1?'warning':'warnings'}</div>
+      <div class="tally note"><b>${note}</b> ${note===1?'notice':'notices'}</div>
+    </div>`;
+
+  // build report
+  let html='';
+
+  html+='<div class="section-label">Images</div>';
+  if(imgResult){
+    imgResult.checks.forEach(c=>html+=checkCard(c));
+  }else{
+    html+=`<div class="check"><div class="check-head"><div class="sev info"></div><div><div class="check-title">Image checks paused</div><div class="check-sub">Drop your images folder above to check for missing files (broken on the live site) and orphans (safe to delete). ${state.db?allItems(state.db).length:0} entries reference images that aren't being verified yet.</div></div></div></div>`;
+  }
+
+  html+='<div class="section-label">Data integrity</div>';
+  dchecks.forEach(c=>html+=checkCard(c));
+
+  html+='<div class="section-label">Overview</div>';
+  // backlog shape card (informational, always shows body)
+  html+=`<div class="check">
+    <div class="check-head"><div class="sev info"></div><div style="flex:1">
+      <div class="check-title">Backlog shape</div>
+      <div class="check-sub">How the ${shape.total} entries break down by readiness. Informational — not a problem to fix.</div>
+    </div></div>
+    <div class="check-body">
+      <div class="count-grid">
+        <div class="count-cell"><div class="count-num" style="color:var(--green)">${shape.live}</div><div class="count-lbl">live (published)</div></div>
+        <div class="count-cell"><div class="count-num" style="color:var(--text-muted)">${shape.draft}</div><div class="count-lbl">draft (hidden)</div></div>
+        <div class="count-cell"><div class="count-num">${shape.complete}</div><div class="count-lbl">complete core</div></div>
+        <div class="count-cell"><div class="count-num">${shape.inProgress}</div><div class="count-lbl">in progress</div></div>
+        <div class="count-cell"><div class="count-num">${shape.skeleton}</div><div class="count-lbl">skeleton stubs</div></div>
+      </div>
+    </div>
+  </div>`;
+
+  // internal notes card
+  html+=checkCard({
+    title:'Internal notes in published file',
+    sev:notes.length?'note':'ok',
+    count:notes.length,
+    sub:notes.length
+      ? 'These entries carry working fields (e.g. _evidenceAngle, _thresholdSketch, _status) that the live site never renders — but data.json is fetched by the browser, so anyone who opens it can read them. Review whether you want them shipping publicly.'
+      : 'No internal working fields are riding along in the published data.',
+    issues:notes
+  });
+
+  report.innerHTML=html;
+}
+
+function buildReportText(){
+  if(!state.db)return '';
+  const hasFolder=!!(state.files&&state.files.length);
+  const d=dataChecks(state.db), shape=backlogShape(state.db), notes=internalNotes(state.db);
+  const img=hasFolder?imageChecks(state.db,state.files):null;
+  let err=0,warn=0,note=0;
+  const tally=arr=>arr.forEach(c=>{if(c.count){if(c.sev==='err')err+=c.count;else if(c.sev==='warn')warn+=c.count;else if(c.sev==='note')note+=c.count;}});
+  tally(d); if(img)tally(img.checks); note+=notes.length;
+  const L=[];
+  L.push('FRAMEWORK DOCTOR REPORT');
+  L.push(new Date().toLocaleString());
+  L.push('data.json: '+state.dbName+' \u2014 '+shape.total+' entries across '+state.db.dimensions.length+' dimensions');
+  L.push('images: '+(hasFolder?state.folderName+'/ \u2014 '+img.refCount+' references':'folder not loaded \u2014 image checks skipped'));
+  L.push('summary: '+err+' error'+(err===1?'':'s')+', '+warn+' warning'+(warn===1?'':'s')+', '+note+' notice'+(note===1?'':'s'));
+  const sec=(title,checks)=>{
+    L.push(''); L.push('== '+title+' ==');
+    checks.forEach(c=>{
+      const tag=c.sev==='err'?'[ERROR]':c.sev==='warn'?'[warn] ':c.sev==='note'?'[note] ':'[ok]   ';
+      L.push(tag+' '+c.title+(c.count?' ('+c.count+')':'')+(c.count?'':' \u2014 '+c.sub));
+      (c.issues||[]).forEach(it=>L.push('        - '+(it.mono||'')+(it.meta?'  ['+it.meta+']':'')));
+    });
+  };
+  if(img)sec('Images',img.checks); else {L.push('');L.push('== Images ==');L.push('(images folder not loaded \u2014 image checks skipped)');}
+  sec('Data integrity',d);
+  L.push(''); L.push('== Overview ==');
+  L.push('backlog: '+shape.live+' live, '+shape.draft+' draft, '+shape.complete+' complete core, '+shape.inProgress+' in progress, '+shape.skeleton+' skeleton');
+  L.push((notes.length?'[note]  ':'[ok]    ')+'Internal notes in published file'+(notes.length?' ('+notes.length+')':' \u2014 none'));
+  notes.forEach(n=>L.push('        - '+(n.mono||'')+(n.meta?'  ['+n.meta+']':'')));
+  return L.join('\n');
+}
+function flashBtn(id,txt){const b=document.getElementById(id);if(!b)return;const o=b.textContent;b.textContent=txt;setTimeout(()=>{b.textContent=o;},1100);}
+function copyReport(){
+  const t=buildReportText(); if(!t)return;
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(()=>flashBtn('copyReportBtn','Copied \u2713')).catch(()=>fallbackCopy(t));}
+  else fallbackCopy(t);
+}
+function fallbackCopy(t){const ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');flashBtn('copyReportBtn','Copied \u2713');}catch(e){}ta.remove();}
+function downloadReport(){
+  const t=buildReportText(); if(!t)return;
+  const blob=new Blob([t],{type:'text/plain'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download=(state.dbName||'data').replace(/\.json$/i,'')+'-doctor-report.txt';
+  document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1500);
+  flashBtn('downloadReportBtn','Saved \u2713');
+}
+function updateFooter(){
+  const bits=[];
+  bits.push(state.db?`${state.dbName} loaded`:'data.json not loaded');
+  bits.push(state.files&&state.files.length?`${state.fileCount} images from ${state.folderName}/`:'images folder not loaded');
+  document.getElementById('footerInfo').textContent=bits.join(' · ');
+}
+
+/* ---------- wiring ---------- */
+/* ---- universal drag & drop: any [data-drop] zone accepts files; folders are walked ---- */
+(function(){
+  const zoneOf=e=>{const t=e.target;return t&&t.closest?t.closest('[data-drop]'):null;};
+  document.addEventListener('dragover',e=>{const z=zoneOf(e);if(z){e.preventDefault();if(e.dataTransfer)e.dataTransfer.dropEffect='copy';z.classList.add('drag-over');}});
+  document.addEventListener('dragleave',e=>{const z=zoneOf(e);if(z&&!z.contains(e.relatedTarget))z.classList.remove('drag-over');});
+  document.addEventListener('drop',e=>{const z=zoneOf(e);if(!z)return;e.preventDefault();z.classList.remove('drag-over');routeDrop(z,e.dataTransfer);});
+})();
+function routeDrop(z,dt){
+  const kind=z.getAttribute('data-drop');
+  if(kind==='data'){
+    const f=[...(dt.files||[])].find(x=>/\.json$/i.test(x.name))||(dt.files&&dt.files[0]);
+    if(f)loadDataFile(f);
+  }else if(kind==='folder'){
+    droppedImageFiles(dt).then(list=>{
+      if(list&&list.length)loadFolder(list);
+      else boxError('folderErr','Couldn’t read that dropped folder','Chrome can’t read a dropped folder from a local file — use the picker button, or open the folder, select the images, and drag those in instead');
+    });
+  }
+}
+/* Prefer the plain file list (works from a local file:// page). Only walk the
+   FileSystem Entry API when an actual folder was dropped, and fall back to the
+   file list if that traversal is blocked (Chrome restricts it on file://). */
+function droppedImageFiles(dt){
+  const direct=[...(dt.files||[])];               // captured synchronously
+  let entries=[];
+  if(dt.items&&dt.items.length){
+    entries=[...dt.items].map(it=>it.webkitGetAsEntry?it.webkitGetAsEntry():null).filter(Boolean);
+  }
+  const hasDir=entries.some(en=>en&&en.isDirectory);
+  if(hasDir){
+    return readEntriesDeep(entries).then(list=>(list&&list.length)?list:direct);
+  }
+  return Promise.resolve(direct);
+}
+function readEntriesDeep(entries){
+  const out=[];
+  function walk(entry){
+    return new Promise(res=>{
+      if(!entry){res();return;}
+      if(entry.isFile){
+        entry.file(f=>{out.push({name:f.name,webkitRelativePath:(entry.fullPath||('/'+f.name)).replace(/^\//,''),size:f.size});res();},()=>res());
+      }else if(entry.isDirectory){
+        const reader=entry.createReader();const kids=[];
+        const batch=()=>reader.readEntries(es=>{
+          if(!es.length){Promise.all(kids.map(walk)).then(()=>res());return;}
+          kids.push(...es);batch();
+        },()=>res());
+        batch();
+      }else res();
+    });
+  }
+  return Promise.all(entries.map(walk)).then(()=>out);
+}
+document.getElementById('dataFile').addEventListener('change',e=>{loadDataFile(e.target.files[0]);});
+document.getElementById('imgFolder').addEventListener('change',e=>{loadFolder(e.target.files);});
+updateFooter();
+</script>
+</body>
+</html>

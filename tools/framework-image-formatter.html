@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Framework Image Formatter</title>
+<!-- Framework Image Formatter. Batch-capable. Runs entirely in the browser; nothing is uploaded. -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#0a0f1a;--surface:#111827;--surface-light:#1a2234;--border:#2a3548;
+    --text:#e2e8f0;--text-muted:#8899aa;--accent:#3b82f6;--accent-glow:rgba(59,130,246,0.14);
+    --red:#ef4444;--orange:#f97316;--yellow:#eab308;--green:#22c55e;
+    --green-bg:rgba(34,197,94,0.1);--red-bg:rgba(239,68,68,0.1);--yellow-bg:rgba(234,179,8,0.1);--orange-bg:rgba(249,115,22,0.12);
+  }
+  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;min-height:100vh;padding-bottom:92px}
+  .header{padding:18px 28px;border-bottom:1px solid var(--border);background:var(--surface);display:flex;align-items:center;gap:14px}
+  .logo{width:34px;height:34px;background:linear-gradient(135deg,var(--accent),#6366f1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;color:#fff}
+  .header-title{font-size:15px;font-weight:700}.header-sub{font-size:11px;color:var(--text-muted)}
+  .wrap{max-width:1040px;margin:0 auto;padding:24px 28px}
+  .panel{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px 22px;margin-bottom:18px}
+  .panel h2{font-size:15px;font-weight:700;margin-bottom:6px}.panel p.desc{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:14px}
+  .label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
+  .filerow{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-start}.fileblock{display:flex;flex-direction:column;gap:6px;min-width:260px;flex:1}
+  .fileblock.drop{border:1.5px dashed var(--border);border-radius:8px;padding:14px 16px;gap:8px;transition:all .12s}
+  .fileblock.drop.drag-over{border-color:var(--accent);background:var(--accent-glow)}
+  .drop-hint{font-size:11px;color:var(--text-muted);font-style:italic}.drop .drop-hint{white-space:nowrap}
+  input[type=file]{font-family:inherit;font-size:12px;color:var(--text-muted)}
+  input[type=file]::file-selector-button{font-family:inherit;font-size:12px;font-weight:600;background:var(--surface-light);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:7px 12px;margin-right:10px;cursor:pointer}
+  input[type=file]::file-selector-button:hover{border-color:var(--accent)}
+  input[type=text],input[type=number],select{width:100%;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:9px 10px;font-family:inherit;font-size:13px;line-height:1.5;outline:none}
+  input[type=text]:focus,input[type=number]:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+  input[type=range]{width:100%;accent-color:var(--accent)}
+  .status{margin-top:14px;display:flex;flex-direction:column;gap:6px}.status-line{font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .pill{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1px;padding:2px 8px;border-radius:4px;border:1px solid var(--border);background:var(--surface-light)}
+  .pill.ok{color:var(--green);border-color:var(--green)}.pill.warn{color:var(--orange);border-color:var(--orange)}.pill.err{color:var(--red);border-color:var(--red)}.pill.note{color:var(--accent);border-color:var(--accent)}
+  .link-x{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:15px;line-height:1;padding:0 2px}.link-x:hover{color:var(--red)}
+  .field{margin-bottom:14px}.field>label{display:block;font-size:11px;font-weight:600;color:var(--text);margin-bottom:5px}.hint{font-size:11px;color:var(--text-muted);line-height:1.45;margin-top:5px}
+  .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}@media(max-width:760px){.row3{grid-template-columns:1fr}}
+  .chiprow{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.chip{display:inline-flex;align-items:center;gap:6px;background:var(--surface-light);border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-size:12px;color:var(--text-muted)}.chip strong{color:var(--text)}
+  .helpbox{background:var(--accent-glow);border:1px solid var(--accent);border-radius:10px;padding:14px 18px;margin-bottom:18px}.help-title{font-size:13px;font-weight:700;margin-bottom:5px}.help-body{font-size:12.5px;color:var(--text);line-height:1.6;opacity:.95}
+  .code{font-family:'JetBrains Mono',monospace;background:var(--surface-light);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+  .small-list{max-height:168px;overflow:auto;margin-top:8px;border:1px solid var(--border);border-radius:8px;background:var(--bg)}.small-list div{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);padding:7px 10px;border-bottom:1px solid var(--border);word-break:break-all}.small-list div:last-child{border-bottom:none}
+  .hidden{display:none!important}
+  .metanote{font-size:11.5px;color:var(--text-muted);background:var(--green-bg);border:1px solid rgba(34,197,94,0.4);border-radius:8px;padding:9px 12px;margin-top:12px;line-height:1.5}
+  /* image cards */
+  .imgcard{display:flex;gap:16px;border:1px solid var(--border);border-radius:10px;background:var(--bg);padding:14px;margin-bottom:12px}
+  .thumb-wrap{flex-shrink:0;width:150px;height:130px;border:1px solid var(--border);border-radius:8px;background:#0f172a;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .thumb-wrap img{max-width:100%;max-height:100%;object-fit:contain}
+  .thumb-wrap .ph{font-size:11px;color:var(--text-muted)}
+  .imgcard-main{flex:1;min-width:0}
+  .imgcard-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:8px}
+  .src-name{font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;word-break:break-all}
+  .rm{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:17px;line-height:1;padding:0 2px;flex-shrink:0}.rm:hover{color:var(--red)}
+  .out-grid{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin-top:8px;align-items:baseline}
+  .out-k{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);white-space:nowrap}
+  .out-v{font-size:12.5px;color:var(--text);word-break:break-all}
+  .big-name{font-family:'JetBrains Mono',monospace;font-size:13.5px;color:var(--accent);font-weight:700;word-break:break-all}
+  .mono{font-family:'JetBrains Mono',monospace}.oktext{color:var(--green)}.warntext{color:var(--orange)}.errtext{color:var(--red)}
+  .row-actions{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
+  .suggest-line{font-size:11.5px;margin-top:3px}
+  .btn{font-family:inherit;font-size:12px;font-weight:600;border-radius:6px;padding:8px 12px;cursor:pointer;border:1px solid var(--border);background:var(--surface-light);color:var(--text);transition:all .15s}
+  .btn:hover{border-color:var(--accent)}.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}.btn.primary:hover{background:#2f6fd6}.btn:disabled{opacity:.4;cursor:not-allowed}.btn.small{padding:5px 9px;font-size:11px}.btn.linky{background:none;border:none;color:var(--accent);padding:2px 4px}
+  .empty{font-size:13px;color:var(--text-muted);text-align:center;padding:26px;line-height:1.6}
+  .footer{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:50}.footer .info{font-size:12px;color:var(--text-muted);line-height:1.45}.footer-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+  @media(max-width:760px){.wrap{padding:18px 16px}.footer{padding:14px 16px;flex-direction:column;align-items:flex-start}.imgcard{flex-direction:column}.thumb-wrap{width:100%;height:160px}}
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">IF</div>
+    <div><div class="header-title">Framework Image Formatter</div><div class="header-sub">Rename, resize and re-encode framework images — one or many at once, entirely in your browser</div></div>
+  </div>
+
+  <div class="wrap">
+    <div class="helpbox">
+      <div class="help-title">What this does</div>
+      <div class="help-body">Load the current <span class="code">data.json</span>, drop in one or several images, give each a plain name like <strong>pier hole depth</strong>, and download clean, resized files like <span class="code">pier-hole-depth.png</span> for the GitHub <span class="code">images</span> folder. Each name is checked for uniqueness against images already in the framework <em>and</em> the others in this batch. Re-encoding through the browser also strips original photo metadata (GPS, camera, device) — a built-in de-identification step.</div>
+    </div>
+
+    <div class="panel" id="loadPanel">
+      <h2>1 · Load data.json</h2>
+      <p class="desc">Reads the image filenames already referenced by the framework, so new names can be checked for clashes. Nothing is uploaded — the file is only read in this tab.</p>
+      <div class="filerow">
+        <div class="fileblock drop" data-drop="data">
+          <div class="label">Current data.json</div>
+          <input id="dataFile" type="file" accept=".json,application/json">
+          <div class="drop-hint">or drop a file here</div>
+        </div>
+      </div>
+      <div id="dataStatus" class="status"></div>
+      <div id="dataErr" class="status"></div>
+      <div id="existingListWrap" class="hidden">
+        <div class="chiprow" id="dataChips"></div>
+        <div class="field" style="margin-top:14px;margin-bottom:0">
+          <label>Existing framework images found</label>
+          <input id="imageSearch" type="text" placeholder="Filter existing image filenames…" oninput="renderExistingList()">
+          <div id="existingList" class="small-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>2 · Add images</h2>
+      <p class="desc">Drop one image or several at once (e.g. all the images from a single submission). Each gets its own row below. Tip: open the folder, select the images, and drag them in.</p>
+      <div class="filerow">
+        <div class="fileblock drop" data-drop="images">
+          <div class="label">Image files</div>
+          <input id="imageFile" type="file" accept="image/*" multiple>
+          <div class="drop-hint">PNG, JPG, WebP, GIF, BMP — drop one or many</div>
+        </div>
+      </div>
+      <div id="imageStatus" class="status"></div>
+      <div id="imageErr" class="status"></div>
+    </div>
+
+    <div class="panel">
+      <h2>3 · Output settings <span class="hint" style="display:inline">(applied to every image)</span></h2>
+      <div class="row3">
+        <div class="field" style="margin-bottom:0">
+          <label>Output format</label>
+          <select id="formatMode" onchange="onSettingsChange()">
+            <option value="keep">Keep each original format</option>
+            <option value="png">PNG (all)</option>
+            <option value="jpeg">JPEG (all)</option>
+            <option value="webp">WebP (all)</option>
+          </select>
+          <div class="hint"><strong>For the web, WebP is usually best</strong> — smallest files at the same quality, supported by every current browser. Use <strong>PNG</strong> for screenshots, diagrams or anything needing transparency; <strong>JPEG</strong> for maximum compatibility with old software; <strong>Keep</strong> for a mixed batch. Any row can override this below.</div>
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <label>Resize — max long side</label>
+          <select id="resizeMode" onchange="onSettingsChange()">
+            <option value="1600">1600 px</option>
+            <option value="1200">1200 px</option>
+            <option value="2000">2000 px</option>
+            <option value="original">Keep original size</option>
+            <option value="custom">Custom…</option>
+          </select>
+          <div class="hint">Shrinks only if longer; never enlarges.</div>
+          <div id="customWrap" class="hidden" style="margin-top:8px"><input id="customMax" type="number" min="100" max="10000" step="50" value="1600" oninput="onSettingsChange()"></div>
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <label>Quality <span class="hint" style="display:inline">(JPEG / WebP only)</span> · <span id="qVal" class="mono">0.88</span></label>
+          <input id="quality" type="range" min="0.5" max="1" step="0.01" value="0.88" oninput="onQualityInput()">
+          <div class="hint">Lower = smaller files. PNG ignores this.</div>
+        </div>
+      </div>
+      <div class="metanote">Every downloaded file is re-encoded, which removes the original metadata (GPS coordinates, camera and device info). The forms ask submitters for de-identified images — this enforces it.</div>
+    </div>
+
+    <div class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <h2 style="margin:0">4 · Images to download</h2>
+        <button class="btn small" id="makeAllUniqueBtn" onclick="onMakeAllUnique()" disabled>Make all names unique</button>
+      </div>
+      <p class="desc">Name each image — a human-written name beats anything auto-generated. The filename is the lowercase, hyphenated version plus the chosen extension, checked for uniqueness as you type. Stuck on a unique name? Use the per-row <em>Make name unique</em>, or the button above to resolve every clash at once (it appends -2, -3, … to duplicates).</p>
+      <div id="imageList"><div class="empty">No images yet. Drop one or several above.</div></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="info" id="footerInfo">Load data.json, then add one or more images.</div>
+    <div class="footer-actions">
+      <button class="btn" id="clearBtn" onclick="clearAll()" disabled>Clear all</button>
+      <button class="btn primary" id="downloadAllBtn" onclick="downloadAll()" disabled>Download all</button>
+    </div>
+  </div>
+
+<script>
+const state={
+  dbLoaded:false,dbName:'',imagePaths:new Set(),imagePathsOriginal:[],usage:new Map(),
+  images:[],nextId:1
+};
+
+/* ---------- shared utilities (same conventions as the other tools) ---------- */
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function byId(id){return document.getElementById(id);}
+function setText(id,t){const el=byId(id);if(el)el.textContent=t;}
+function normPath(p){return String(p||'').replace(/\\/g,'/').replace(/^\.\//,'').trim().toLowerCase();}
+function slugify(s){return (s||'').toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');}
+function extFromName(name){const m=String(name||'').toLowerCase().match(/\.([a-z0-9]+)$/);return m?m[1]:'png';}
+function mimeFromExt(ext){ext=(ext||'png').toLowerCase();if(ext==='jpg')ext='jpeg';if(ext==='jpeg')return'image/jpeg';if(ext==='webp')return'image/webp';if(ext==='png')return'image/png';return'image/png';}
+function fmtSize(b){if(b==null)return '—';if(b<1024)return b+' B';if(b<1024*1024)return (b/1024).toFixed(0)+' KB';return (b/1048576).toFixed(1)+' MB';}
+function renderStatus(id,lines){byId(id).innerHTML=lines.map(l=>`<div class="status-line"><span class="pill ${l.cls}">${l.label||l.cls}</span><strong>${esc(l.txt)}</strong>${l.extra?' — '+esc(l.extra):''}${l.unload?` <button class="link-x" title="Unload" onclick="${l.unload}()">×</button>`:''}</div>`).join('');}
+const _errTimers={};
+function boxError(errId,msg,extra){
+  const el=byId(errId); if(!el)return;
+  el.innerHTML=`<div class="status-line"><span class="pill err">wrong file</span> <strong>${esc(msg)}</strong>${extra?' — '+esc(extra):''} <button class="link-x" title="Dismiss" onclick="this.closest('.status-line').remove()">×</button></div>`;
+  if(_errTimers[errId])clearTimeout(_errTimers[errId]);
+  _errTimers[errId]=setTimeout(()=>{const e2=byId(errId);if(e2)e2.innerHTML='';delete _errTimers[errId];},7000);
+}
+function clearBoxError(errId){if(_errTimers[errId]){clearTimeout(_errTimers[errId]);delete _errTimers[errId];}const el=byId(errId);if(el)el.innerHTML='';}
+function unloadData(){state.dbLoaded=false;state.dbName='';state.imagePaths=new Set();state.imagePathsOriginal=[];state.usage=new Map();byId('dataStatus').innerHTML='';byId('existingListWrap').classList.add('hidden');byId('dataFile').value='';clearBoxError('dataErr');refreshAllChrome();}
+
+function collectImagePaths(obj,out){
+  if(!obj)return;
+  if(Array.isArray(obj)){obj.forEach(x=>collectImagePaths(x,out));return;}
+  if(typeof obj==='object'){
+    Object.entries(obj).forEach(([k,v])=>{
+      if(typeof v==='string'){
+        const val=v.trim();
+        if((k.toLowerCase()==='image'||/images\//i.test(val)) && /\.(png|jpe?g|webp|gif|bmp|svg)$/i.test(val)){out.add(val.replace(/^\.\//,''));}
+      }else collectImagePaths(v,out);
+    });
+  }
+}
+/* path -> [entry names] so a clash can name the entry(ies) using it */
+function collectImageUsage(db){
+  const map=new Map();
+  (db.dimensions||[]).forEach(dim=>(dim.items||[]).forEach(item=>{
+    const paths=new Set();collectImagePaths(item.data||item,paths);
+    paths.forEach(p=>{const np=normPath(p);if(!map.has(np))map.set(np,new Set());map.get(np).add(item.name||item.id||'(unnamed)');});
+  }));
+  return map;
+}
+function countEntries(db){let n=0;(db.dimensions||[]).forEach(d=>n+=(d.items||[]).length);return n;}
+
+/* ---------- data.json ---------- */
+function loadDataFile(file){
+  if(!file)return;
+  if(extFromName(file.name)!=='json'){boxError('dataErr','This box only takes a data.json file — you dropped a .'+(extFromName(file.name)||'?')+' file','images go in the “Add images” box below');return;}
+  const r=new FileReader();
+  r.onload=()=>{
+    let db;
+    try{db=JSON.parse(r.result);}catch(e){boxError('dataErr',file.name+' isn’t valid JSON',e.message);return;}
+    if(!db.dimensions){boxError('dataErr',file.name+' doesn’t look like the framework data.json','no "dimensions" key — a single-entry fragment or other JSON won’t work here');return;}
+    const paths=new Set();collectImagePaths(db,paths);
+    state.dbLoaded=true;state.dbName=file.name;
+    state.imagePathsOriginal=[...paths].sort((a,b)=>a.localeCompare(b));
+    state.imagePaths=new Set(state.imagePathsOriginal.map(normPath));
+    state.usage=collectImageUsage(db);
+    clearBoxError('dataErr');
+    renderStatus('dataStatus',[{cls:'ok',txt:file.name+' loaded',extra:state.imagePathsOriginal.length+' framework images found',unload:'unloadData'}]);
+    byId('existingListWrap').classList.remove('hidden');
+    byId('dataChips').innerHTML=`<span class="chip"><strong>${state.imagePathsOriginal.length}</strong> framework images</span><span class="chip"><strong>${countEntries(db)}</strong> entries scanned</span>`;
+    renderExistingList();refreshAllChrome();
+  };
+  r.readAsText(file);
+}
+function renderExistingList(){
+  const q=(byId('imageSearch').value||'').toLowerCase().trim();
+  const arr=state.imagePathsOriginal.filter(p=>!q||p.toLowerCase().includes(q)).slice(0,100);
+  byId('existingList').innerHTML=arr.length?arr.map(p=>`<div>${esc(p)}</div>`).join(''):`<div>No matching paths.</div>`;
+}
+
+/* ---------- adding images ---------- */
+async function decodeOriented(file){
+  if('createImageBitmap' in window){
+    try{return await createImageBitmap(file,{imageOrientation:'from-image'});}
+    catch(e){try{return await createImageBitmap(file);}catch(e2){}}
+  }
+  return await new Promise((res,rej)=>{const u=URL.createObjectURL(file);const im=new Image();im.onload=()=>{res(im);};im.onerror=()=>{URL.revokeObjectURL(u);rej(new Error('decode failed'));};im.src=u;});
+}
+function dimsOf(bmp){return {w:bmp.width||bmp.naturalWidth||0,h:bmp.height||bmp.naturalHeight||0};}
+
+async function addImageFiles(fileList){
+  const incoming=[...fileList];
+  const files=incoming.filter(f=>/^image\//.test(f.type)||/\.(png|jpe?g|webp|gif|bmp)$/i.test(f.name));
+  if(!files.length){boxError('imageErr','No image files in what you dropped','this box takes images (PNG, JPG, WebP, GIF, BMP) — the data.json goes in the box above');return;}
+  clearBoxError('imageErr');
+  const skipped=incoming.length-files.length;
+  let ok=0,bad=0;
+  for(const file of files){
+    const rec={id:state.nextId++,file,name:file.name.replace(/\.[^.]+$/,'').replace(/[_-]+/g,' ').trim(),bmp:null,ow:0,oh:0,sourceExt:extFromName(file.name),fileSize:file.size,blob:null,outBlobSize:null,outW:0,outH:0,willResize:false,thumb:'',slug:'',status:{cls:'warn',msg:'Type a name'},error:null};
+    try{
+      const bmp=await decodeOriented(file);
+      const d=dimsOf(bmp);rec.bmp=bmp;rec.ow=d.w;rec.oh=d.h;
+      rec.thumb=makeThumb(bmp);
+      ok++;
+    }catch(e){rec.error='Could not decode this image';bad++;}
+    state.images.push(rec);
+  }
+  renderStatus('imageStatus',[{cls:ok?'ok':'err',txt:ok+' image'+(ok===1?'':'s')+' added'+(bad?', '+bad+' could not be read':'')+(skipped?', '+skipped+' non-image file'+(skipped===1?'':'s')+' skipped':''),extra:state.images.length+' in the list'}]);
+  renderList();
+  await processAll();
+}
+function makeThumb(bmp){
+  const d=dimsOf(bmp);if(!d.w)return '';
+  const max=300,scale=Math.min(1,max/Math.max(d.w,d.h));
+  const c=document.createElement('canvas');c.width=Math.max(1,Math.round(d.w*scale));c.height=Math.max(1,Math.round(d.h*scale));
+  c.getContext('2d').drawImage(bmp,0,0,c.width,c.height);
+  try{return c.toDataURL('image/png');}catch(e){return '';}
+}
+
+/* ---------- settings ---------- */
+function fmtMode(){return byId('formatMode').value;}
+function extFor(rec){
+  const mode=(rec.formatOverride&&rec.formatOverride!=='global')?rec.formatOverride:fmtMode();
+  let e=mode==='keep'?(rec.sourceExt||'png'):mode;
+  if(e==='jpeg')e='jpg';
+  if(!['png','jpg','webp'].includes(e))e='png';
+  return e;
+}
+function maxLongSide(){
+  const mode=byId('resizeMode').value;
+  byId('customWrap').classList.toggle('hidden',mode!=='custom');
+  if(mode==='original')return Infinity;
+  if(mode==='custom')return Math.max(100,parseInt(byId('customMax').value||'1600',10)||1600);
+  return parseInt(mode,10);
+}
+function qualityVal(){return parseFloat(byId('quality').value||'0.88');}
+function onQualityInput(){setText('qVal',qualityVal().toFixed(2));clearTimeout(window._qT);window._qT=setTimeout(processAll,200);}
+function onSettingsChange(){refreshAllChrome();clearTimeout(window._sT);window._sT=setTimeout(processAll,120);}
+
+function outputDims(rec){
+  if(!rec.ow||!rec.oh)return {w:0,h:0,resize:false};
+  const max=maxLongSide(),long=Math.max(rec.ow,rec.oh);
+  if(!isFinite(max)||long<=max)return {w:rec.ow,h:rec.oh,resize:false};
+  const s=max/long;return {w:Math.round(rec.ow*s),h:Math.round(rec.oh*s),resize:true};
+}
+
+/* ---------- encode each image to a blob (gives the real output KB) ---------- */
+function encodeRec(rec){
+  return new Promise(resolve=>{
+    if(!rec.bmp){resolve();return;}
+    const d=outputDims(rec);rec.outW=d.w;rec.outH=d.h;rec.willResize=d.resize;
+    const canvas=document.createElement('canvas');canvas.width=d.w;canvas.height=d.h;
+    const ctx=canvas.getContext('2d');ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+    ctx.drawImage(rec.bmp,0,0,d.w,d.h);
+    const ext=extFor(rec),mime=mimeFromExt(ext);
+    const q=(mime==='image/jpeg'||mime==='image/webp')?qualityVal():undefined;
+    canvas.toBlob(blob=>{rec.blob=blob;rec.outBlobSize=blob?blob.size:null;resolve();},mime,q);
+  });
+}
+async function processAll(){
+  for(const rec of state.images){if(rec.bmp)await encodeRec(rec);}
+  refreshAllChrome();
+}
+
+/* ---------- naming + uniqueness (data.json + this batch) ---------- */
+function pathFor(rec){const s=slugify(rec.name);rec.slug=s;return s?'images/'+s+'.'+extFor(rec):'';}
+function suggestUnique(path,selfRec){
+  const ext=path.split('.').pop(),base=path.slice(0,-(ext.length+1));
+  const taken=p=>{const np=normPath(p);if(state.dbLoaded&&state.imagePaths.has(np))return true;return state.images.some(r=>r!==selfRec&&normPath(pathFor(r))===np);};
+  let n=2,p=path;while(taken(p)){p=base+'-'+n+'.'+ext;n++;}
+  return p.split('/').pop();
+}
+function recomputeStatuses(){
+  const counts={};
+  state.images.forEach(r=>{const p=normPath(pathFor(r));if(p)counts[p]=(counts[p]||0)+1;});
+  state.images.forEach(r=>{
+    if(r.error){r.status={cls:'err',msg:r.error};return;}
+    const p=pathFor(r),np=normPath(p);
+    if(!r.slug){r.status={cls:'warn',msg:'Type a name'};return;}
+    if(state.dbLoaded&&state.imagePaths.has(np)){
+      const who=[...(state.usage.get(np)||[])];
+      const whoTxt=who.length?' (used by '+who.slice(0,2).join(', ')+(who.length>2?' +'+(who.length-2)+' more':'')+')':'';
+      r.status={cls:'err',msg:'Already used in the framework'+whoTxt,suggest:suggestUnique(p,r)};
+    }else if(counts[np]>1){
+      r.status={cls:'err',msg:'Same name as another image in this batch',suggest:suggestUnique(p,r)};
+    }else if(!state.dbLoaded){
+      r.status={cls:'warn',msg:'Load data.json to check against the framework'};
+    }else{
+      r.status={cls:'ok',msg:'Unique — not used in the framework or this batch'};
+    }
+  });
+}
+
+/* ---------- rendering ---------- */
+function renderList(){
+  const list=byId('imageList');
+  if(!state.images.length){list.innerHTML='<div class="empty">No images yet. Drop one or several above.</div>';refreshChrome();return;}
+  list.innerHTML=state.images.map(r=>cardHtml(r)).join('');
+  refreshAllChrome();
+}
+function cardHtml(r){
+  return `<div class="imgcard" id="card-${r.id}">
+    <div class="thumb-wrap">${r.thumb?`<img src="${r.thumb}" alt="">`:`<span class="ph">${r.error?'no preview':'…'}</span>`}</div>
+    <div class="imgcard-main">
+      <div class="imgcard-top"><span class="src-name">${esc(r.file.name)}</span><button class="rm" title="Remove" onclick="removeImage(${r.id})">×</button></div>
+      <div class="field" style="margin-bottom:6px">
+        <label>Plain image name</label>
+        <input type="text" id="nm-${r.id}" value="${esc(r.name)}" placeholder="e.g. pier hole depth" oninput="onName(${r.id},this.value)">
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px">
+        <label style="font-size:11px;color:var(--text-muted);margin:0;white-space:nowrap">Format</label>
+        <select onchange="onRowFormat(${r.id},this.value)" style="width:auto;padding:5px 8px;font-size:12px">
+          <option value="global"${(!r.formatOverride||r.formatOverride==='global')?' selected':''}>Match global setting</option>
+          <option value="keep"${r.formatOverride==='keep'?' selected':''}>Keep original</option>
+          <option value="png"${r.formatOverride==='png'?' selected':''}>PNG</option>
+          <option value="jpeg"${r.formatOverride==='jpeg'?' selected':''}>JPEG</option>
+          <option value="webp"${r.formatOverride==='webp'?' selected':''}>WebP</option>
+        </select>
+      </div>
+      <div class="out-grid">
+        <div class="out-k">Filename</div><div class="out-v"><span class="big-name" id="fn-${r.id}">—</span></div>
+        <div class="out-k">Status</div><div class="out-v" id="st-${r.id}">—</div>
+        <div class="out-k">Original</div><div class="out-v mono" id="os-${r.id}">—</div>
+        <div class="out-k">Output</div><div class="out-v mono" id="ns-${r.id}">—</div>
+        <div class="out-k">Resize</div><div class="out-v" id="rs-${r.id}">—</div>
+      </div>
+      <div class="row-actions">
+        <button class="btn small primary" id="dl-${r.id}" onclick="downloadOne(${r.id})" disabled>Download</button>
+        <button class="btn small" onclick="onMakeUnique(${r.id})">Make name unique</button>
+        <button class="btn small" onclick="copyName(${r.id})" id="cp-${r.id}">Copy filename</button>
+      </div>
+    </div>
+  </div>`;
+}
+function statusHtml(r){
+  const s=r.status||{};
+  const cls=s.cls==='ok'?'oktext':s.cls==='err'?'errtext':'warntext';
+  let html=`<span class="${cls}">${esc(s.msg)}</span>`;
+  if(s.suggest)html+=`<div class="suggest-line"><span class="mono">Suggestion: ${esc(s.suggest)}</span> <button class="btn linky" onclick="useSuggestion(${r.id},'${esc(s.suggest.replace(/\.[^.]+$/,''))}')">use it</button></div>`;
+  return html;
+}
+function refreshAllChrome(){
+  recomputeStatuses();
+  state.images.forEach(r=>{
+    setText('fn-'+r.id,r.slug?r.slug+'.'+extFor(r):'—');
+    const st=byId('st-'+r.id);if(st)st.innerHTML=statusHtml(r);
+    setText('os-'+r.id,r.ow?`${r.ow} × ${r.oh} px · ${fmtSize(r.fileSize)}`:'—');
+    setText('ns-'+r.id,r.outBlobSize!=null?`${r.outW} × ${r.outH} px · ${fmtSize(r.outBlobSize)}`:(r.bmp?'…':'—'));
+    const rs=byId('rs-'+r.id);if(rs)rs.innerHTML=!r.ow?'—':(r.willResize?`<span class="warntext">shrunk to ${Math.max(r.outW,r.outH)} px long side</span>`:`<span class="oktext">no resize (never enlarged)</span>`);
+    const dl=byId('dl-'+r.id);if(dl)dl.disabled=!(r.blob&&r.slug&&r.status.cls!=='err');
+  });
+  refreshChrome();
+}
+function refreshChrome(){
+  const ready=state.images.filter(r=>r.blob&&r.slug&&r.status.cls!=='err');
+  const all=byId('downloadAllBtn');
+  all.disabled=ready.length===0;
+  all.textContent=ready.length>1?`Download all (${ready.length}) as .zip`:(ready.length===1?'Download image':'Download all');
+  byId('clearBtn').disabled=state.images.length===0;
+  const mau=byId('makeAllUniqueBtn');if(mau)mau.disabled=state.images.length===0;
+  const bits=[];
+  bits.push(state.dbLoaded?`${state.imagePathsOriginal.length} framework images loaded`:'data.json not loaded');
+  bits.push(state.images.length?`${state.images.length} image${state.images.length===1?'':'s'} · ${ready.length} ready`:'no images yet');
+  byId('footerInfo').textContent=bits.join(' · ');
+}
+
+/* ---------- per-row interactions ---------- */
+function onName(id,val){const r=state.images.find(x=>x.id===id);if(!r)return;r.name=val;refreshAllChrome();}
+function useSuggestion(id,plain){const r=state.images.find(x=>x.id===id);if(!r)return;r.name=plain.replace(/-/g,' ');const inp=byId('nm-'+id);if(inp)inp.value=r.name;refreshAllChrome();}
+function onRowFormat(id,val){const r=state.images.find(x=>x.id===id);if(!r)return;r.formatOverride=val;encodeRec(r).then(()=>refreshAllChrome());}
+function onMakeUnique(id){
+  const r=state.images.find(x=>x.id===id);if(!r)return;
+  if(!slugify(r.name))r.name='image';                 // placeholder if blank
+  const sug=suggestUnique(pathFor(r),r);              // resolves vs data.json + other rows
+  r.name=sug.replace(/\.[^.]+$/,'').replace(/-/g,' ');
+  const inp=byId('nm-'+id);if(inp)inp.value=r.name;
+  refreshAllChrome();
+}
+function onMakeAllUnique(){
+  const used=new Set();
+  const taken=p=>{const np=normPath(p);return (state.dbLoaded&&state.imagePaths.has(np))||used.has(np);};
+  state.images.forEach(r=>{
+    if(!slugify(r.name))r.name='image';
+    const base=slugify(r.name), ext=extFor(r);
+    let p='images/'+base+'.'+ext;
+    if(taken(p)){let n=2;while(taken('images/'+base+'-'+n+'.'+ext))n++;p='images/'+base+'-'+n+'.'+ext;}
+    used.add(normPath(p));
+    r.name=p.replace(/^images\//,'').replace(/\.[^.]+$/,'').replace(/-/g,' ');
+  });
+  state.images.forEach(r=>{const inp=byId('nm-'+r.id);if(inp)inp.value=r.name;});
+  refreshAllChrome();
+}
+function removeImage(id){const i=state.images.findIndex(x=>x.id===id);if(i<0)return;const r=state.images[i];if(r.bmp&&r.bmp.close)try{r.bmp.close();}catch(e){}state.images.splice(i,1);renderList();}
+function clearAll(){state.images.forEach(r=>{if(r.bmp&&r.bmp.close)try{r.bmp.close();}catch(e){}});state.images=[];byId('imageStatus').innerHTML='';byId('imageFile').value='';renderList();}
+async function copyName(id){const r=state.images.find(x=>x.id===id);if(!r||!r.slug)return;const fn=r.slug+'.'+extFor(r);try{await navigator.clipboard.writeText(fn);}catch(e){const ta=document.createElement('textarea');ta.value=fn;ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(_){}ta.remove();}const b=byId('cp-'+id);if(b){const o=b.textContent;b.textContent='Copied';setTimeout(()=>b.textContent=o,1100);}}
+
+/* ---------- downloads ---------- */
+function triggerDownload(blob,filename){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1500);}
+async function downloadOne(id){const r=state.images.find(x=>x.id===id);if(!r||!r.blob)return;triggerDownload(r.blob,r.slug+'.'+extFor(r));}
+async function downloadAll(){
+  const ready=state.images.filter(r=>r.blob&&r.slug&&r.status.cls!=='err');
+  if(!ready.length)return;
+  if(ready.length===1){triggerDownload(ready[0].blob,ready[0].slug+'.'+extFor(ready[0]));return;}
+  const entries=[];
+  for(const r of ready){const buf=new Uint8Array(await r.blob.arrayBuffer());entries.push({name:r.slug+'.'+extFor(r),data:buf});}
+  const zip=makeZipBlob(entries);
+  triggerDownload(zip,'framework-images.zip');
+}
+
+/* ---------- minimal store-only ZIP writer (no dependency, works offline) ---------- */
+const CRC_TABLE=(()=>{const t=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=(c&1)?(0xEDB88320^(c>>>1)):(c>>>1);t[n]=c>>>0;}return t;})();
+function crc32(buf){let c=0^(-1);for(let i=0;i<buf.length;i++)c=(c>>>8)^CRC_TABLE[(c^buf[i])&0xFF];return (c^(-1))>>>0;}
+function dosStamp(d){const time=((d.getHours()&31)<<11)|((d.getMinutes()&63)<<5)|((d.getSeconds()/2)&31);const date=(((d.getFullYear()-1980)&127)<<9)|(((d.getMonth()+1)&15)<<5)|(d.getDate()&31);return {time,date};}
+function makeZipBlob(entries){
+  const parts=[],central=[];let offset=0;const {time,date}=dosStamp(new Date());const enc=new TextEncoder();
+  for(const e of entries){
+    const nameB=enc.encode(e.name),data=e.data,crc=crc32(data);
+    const lh=new DataView(new ArrayBuffer(30));
+    lh.setUint32(0,0x04034b50,true);lh.setUint16(4,20,true);lh.setUint16(6,0,true);lh.setUint16(8,0,true);
+    lh.setUint16(10,time,true);lh.setUint16(12,date,true);lh.setUint32(14,crc,true);
+    lh.setUint32(18,data.length,true);lh.setUint32(22,data.length,true);lh.setUint16(26,nameB.length,true);lh.setUint16(28,0,true);
+    parts.push(new Uint8Array(lh.buffer),nameB,data);
+    const ch=new DataView(new ArrayBuffer(46));
+    ch.setUint32(0,0x02014b50,true);ch.setUint16(4,20,true);ch.setUint16(6,20,true);ch.setUint16(8,0,true);ch.setUint16(10,0,true);
+    ch.setUint16(12,time,true);ch.setUint16(14,date,true);ch.setUint32(16,crc,true);ch.setUint32(20,data.length,true);ch.setUint32(24,data.length,true);
+    ch.setUint16(28,nameB.length,true);ch.setUint16(30,0,true);ch.setUint16(32,0,true);ch.setUint16(34,0,true);ch.setUint16(36,0,true);ch.setUint32(38,0,true);ch.setUint32(42,offset,true);
+    central.push(new Uint8Array(ch.buffer),nameB);
+    offset+=30+nameB.length+data.length;
+  }
+  let cSize=0;central.forEach(p=>cSize+=p.length);
+  const eo=new DataView(new ArrayBuffer(22));
+  eo.setUint32(0,0x06054b50,true);eo.setUint16(4,0,true);eo.setUint16(6,0,true);eo.setUint16(8,entries.length,true);eo.setUint16(10,entries.length,true);
+  eo.setUint32(12,cSize,true);eo.setUint32(16,offset,true);eo.setUint16(20,0,true);
+  return new Blob([...parts,...central,new Uint8Array(eo.buffer)],{type:'application/zip'});
+}
+
+/* ---------- universal drag & drop (loose files; works from a local file) ---------- */
+(function(){
+  const zoneOf=e=>{const t=e.target;return t&&t.closest?t.closest('[data-drop]'):null;};
+  document.addEventListener('dragover',e=>{const z=zoneOf(e);if(z){e.preventDefault();if(e.dataTransfer)e.dataTransfer.dropEffect='copy';z.classList.add('drag-over');}});
+  document.addEventListener('dragleave',e=>{const z=zoneOf(e);if(z&&!z.contains(e.relatedTarget))z.classList.remove('drag-over');});
+  document.addEventListener('drop',e=>{const z=zoneOf(e);if(!z)return;e.preventDefault();z.classList.remove('drag-over');const files=e.dataTransfer&&e.dataTransfer.files;if(files&&files.length)routeDrop(z,files);});
+})();
+function routeDrop(z,files){
+  const kind=z.getAttribute('data-drop');
+  if(kind==='data'){const f=[...files].find(x=>/\.json$/i.test(x.name))||files[0];loadDataFile(f);}
+  else if(kind==='images')addImageFiles(files);
+}
+byId('dataFile').addEventListener('change',e=>{loadDataFile(e.target.files[0]);e.target.value='';});
+byId('imageFile').addEventListener('change',e=>{addImageFiles(e.target.files);e.target.value='';});
+refreshChrome();
+</script>
+</body>
+</html>
