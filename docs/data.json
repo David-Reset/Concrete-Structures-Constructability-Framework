@@ -759,7 +759,7 @@
         {
           "id": "rock-sockets-with-excavator-mounted-augers",
           "name": "Rock sockets with excavator-mounted augers",
-          "available": true,
+          "available": false,
           "data": {
             "question": "Where bored piers, posts or small foundation holes are required to penetrate rock, has the required rock socket depth been matched to the drilling plant likely to be available on site — or does the design assume that a standard excavator-mounted auger can drill rock sockets that may actually require specialist rock-drilling or piling equipment?",
             "parameter": "Required penetration into competent rock, considered together with the drilling plant likely to be available on the site.",
@@ -2414,5 +2414,12 @@
   "_processed": [
     "fragment|entry|rock-sockets-with-excavator-mounted-augers|3iehqn"
   ],
-  "_rejected": []
+  "_rejected": [],
+  "_reconsider": [
+    {
+      "key": "comment|6/10/2026 12:51:51",
+      "reason": "Uses inappropriate language and",
+      "at": "2026-06-13"
+    }
+  ]
 }
