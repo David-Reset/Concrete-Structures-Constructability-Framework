@@ -791,7 +791,16 @@ function entryUrl(dimId,id){
 }
 
 
-// ===== PROJECT LIST =====
+// ===== PROJECT REVIEW LIST =====
+// UI name: "Project review list" — a list of framework ENTRIES a user collects to
+// review against ONE project they're working on (NOT a list of projects).
+// In code this feature is abbreviated to "projectList" everywhere — e.g.
+//   state.view === 'projectList'      // the view
+//   getProjectList() / addToProjectList() / removeFromProjectList()
+//   the '#project-list' URL hash (with a legacy '#review-list' alias)
+//   CSS classes like .project-card, .project-list-panel
+// The short identifier is intentional and stable; only the user-facing labels
+// rendered to screen say "Project review list". Don't rename the identifiers.
 const PROJECT_LIST_KEY='constructabilityProjectList.v1';
 const LEGACY_REVIEW_LIST_KEY='constructabilityReviewList.v1';
 const DEFAULT_PROJECT_PURPOSE="This checklist contains constructability framework entries selected for this project's constructability review. Each item is a design-stage prompt, not a compliance assessment or formal sign-off. Open the full entry for thresholds, applicability, recommended actions and evidence.";
@@ -839,7 +848,7 @@ function resolveEntryId(id){
 function projectItems(){return getProjectList().ids.map(id=>resolveEntryId(id)).filter(Boolean);}
 function projectItemButton(id){
   const added=isInProjectList(id);
-  return `<button class="entry-btn entry-top-project-btn ${added?'added':''}" onclick="toggleProjectList('${id}')"><span class="ico">${added?'✓':'＋'}</span> ${added?'Remove entry from project list':'Add entry to project list'}</button>`;
+  return `<button class="entry-btn entry-top-project-btn ${added?'added':''}" onclick="toggleProjectList('${id}')"><span class="ico">${added?'✓':'＋'}</span> ${added?'Remove entry from project review list':'Add entry to project review list'}</button>`;
 }
 function copyTextFallback(text){
   const ta=document.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();
@@ -857,7 +866,7 @@ function projectExportRows(){
 }
 function projectExportTitle(){
   const list=getProjectList();
-  return list.name&&list.name.trim()?cleanText(list.name.trim()):'Untitled project list';
+  return list.name&&list.name.trim()?cleanText(list.name.trim()):'Untitled project review list';
 }
 function projectExportDate(){return new Date().toISOString().slice(0,10);}
 function projectExportPurpose(){const p=(getProjectList().purpose||'').trim();return cleanText(p||DEFAULT_PROJECT_PURPOSE);}
@@ -871,7 +880,7 @@ function buildProjectChecklistText(){
   const parts=[
     `Project Constructability Checklist`,
     ``,
-    `Project list: ${title}`,
+    `Project review list: ${title}`,
     `Generated: ${projectExportDate()}`,
     `Selected entries: ${rows.length}`,
     ``,
@@ -894,7 +903,7 @@ function buildProjectChecklistMarkdown(){
   const parts=[
     `# Project Constructability Checklist`,
     ``,
-    `**Project list:** ${title}`,
+    `**Project review list:** ${title}`,
     ``,
     `**Generated:** ${projectExportDate()}  `,
     `**Selected entries:** ${rows.length}`,
@@ -924,7 +933,7 @@ function buildProjectChecklistMarkdown(){
   return parts.join('\n');
 }
 function copyProjectChecklist(){
-  if(!projectItems().length){alert('Your project list is empty.');return;}
+  if(!projectItems().length){alert('Your project review list is empty.');return;}
   const text=buildProjectChecklistText();
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(()=>alert('Project checklist copied to clipboard.')).catch(()=>copyTextFallback(text));}
   else copyTextFallback(text);
@@ -939,7 +948,7 @@ function downloadTextFile(filename,text,mime){
   setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},0);
 }
 function downloadProjectMarkdown(){
-  if(!projectItems().length){alert('Your project list is empty.');return;}
+  if(!projectItems().length){alert('Your project review list is empty.');return;}
   downloadTextFile(safeFileName(projectExportTitle(),'md'),buildProjectChecklistMarkdown(),'text/markdown;charset=utf-8');
 }
 function pdfTextClean(s){
@@ -991,7 +1000,7 @@ function makePdf(lines,annotations){
 }
 function downloadProjectPdf(){
   const rows=projectExportRows();
-  if(!rows.length){alert('Your project list is empty.');return;}
+  if(!rows.length){alert('Your project review list is empty.');return;}
   const lines=[],ann=[];
   const margin=50,bottom=52,width=495;
   let page=0,y=792;
@@ -1017,7 +1026,7 @@ function downloadProjectPdf(){
     y-=4;
   }
   addLine('Project Constructability Checklist',18,true,0,24);
-  addLine('Project list: '+projectExportTitle(),11,true,0,16);
+  addLine('Project review list: '+projectExportTitle(),11,true,0,16);
   addLine('Generated: '+projectExportDate()+'    Selected entries: '+rows.length,10,false,0,18);
   addWrapped('Purpose',projectExportPurpose(),10,0);
   y-=4;
@@ -1040,7 +1049,7 @@ function downloadProjectPdf(){
 }
 function clearProjectList(){
   if(!projectCount())return;
-  if(confirm('Clear all entries from this project list?')){const list=getProjectList();list.ids=[];saveProjectList(list);render();}
+  if(confirm('Clear all entries from this project review list?')){const list=getProjectList();list.ids=[];saveProjectList(list);render();}
 }
 function renderProjectListView(){
   const list=getProjectList();
@@ -1051,9 +1060,9 @@ function renderProjectListView(){
   const cards=rows.map(({dim,item,data})=>{
     return `<div class="project-card"><div class="project-card-main"><div class="project-card-title">${escHtml(item.name)}</div><div class="project-card-meta"><strong>Dimension:</strong> ${escHtml(dim.name)}</div><div class="project-card-question"><strong>Design question:</strong><br>${data.question||''}</div><div class="project-card-meta"><strong>Design parameter:</strong> ${data.parameter||''}</div></div><div class="project-card-actions"><button class="entry-btn" onclick="goEntry('${dim.id}','${item.id}')">Open entry →</button><button class="entry-btn danger" onclick="removeFromProjectList('${item.id}')">Remove</button></div></div>`;
   }).join('');
-  const empty=`<div class="project-empty"><div class="project-empty-title">Your project list is empty.</div><div class="project-empty-sub">Open any live entry and use <strong>Add to project list</strong>. The list stays in this browser and can be exported as a project checklist later.</div></div>`;
+  const empty=`<div class="project-empty"><div class="project-empty-title">Your project review list is empty.</div><div class="project-empty-sub">Open any live entry and use <strong>Add to project review list</strong>. The list stays in this browser and can be exported as a project checklist later.</div></div>`;
   const exportHelp=`<div class="project-export-card"><div class="project-export-title">Export options</div><div class="project-export-grid"><div class="project-export-item"><strong>Copy project checklist</strong><span>Copies a plain-text project checklist to the clipboard, ready to paste into an email, meeting note, design review or QA record.</span></div><div class="project-export-item"><strong>Download PDF</strong><span>Downloads a professional checklist document with the selected entries, design questions, design parameters and clickable framework links.</span></div><div class="project-export-item"><strong>Download Markdown</strong><span>Downloads an editable .md checklist for GitHub, Notion, Obsidian, project notes or later conversion into another document.</span></div></div></div>`;
-  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to framework</div><div class="dim-header"><span class="dim-header-icon">📋</span><h1 class="dim-header-title">My project list</h1></div><p class="section-desc">Collect the entries that apply to a particular project, give the list a useful name, then export a project-specific constructability review checklist.</p><div class="project-name-card"><div class="label">List name</div><div class="project-name-row"><input class="project-name-input" value="${name}" placeholder="e.g. 12 Smith Street — structural review" oninput="setProjectListName(this.value)"></div><div class="project-name-help">Stored only in this browser. Do not put confidential project information here if you plan to copy/share the checklist.</div><div class="project-field-gap"><div class="label">Purpose</div><textarea class="project-purpose-textarea" oninput="setProjectListPurpose(this.value)">${purpose}</textarea><div class="project-name-help">This purpose statement is shown in the copied checklist, PDF and Markdown exports. The default text explains that the list is a project review aid, not a compliance assessment; you can update it to suit your project or audience.</div></div></div>${exportHelp}<div class="project-actions-bar"><button class="entry-btn primary" onclick="copyProjectChecklist()">Copy project checklist</button><button class="entry-btn" onclick="downloadProjectPdf()">Download PDF</button><button class="entry-btn" onclick="downloadProjectMarkdown()">Download Markdown</button><button class="entry-btn danger" onclick="clearProjectList()">Clear list</button></div>${missing>0?`<div class="project-name-help">${missing} saved entry ${missing===1?'id was':'ids were'} not found in the current data and ${missing===1?'has':'have'} been hidden.</div>`:''}<div class="item-list project-list-panel">${cards||empty}</div></div>`;
+  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to framework</div><div class="dim-header"><span class="dim-header-icon">📋</span><h1 class="dim-header-title">My project review list</h1></div><p class="section-desc">Collect the entries that apply to a particular project, give the list a useful name, then export a project-specific constructability review checklist.</p><div class="project-name-card"><div class="label">List name</div><div class="project-name-row"><input class="project-name-input" value="${name}" placeholder="e.g. 12 Smith Street — structural review" oninput="setProjectListName(this.value)"></div><div class="project-name-help">Stored only in this browser. Do not put confidential project information here if you plan to copy/share the checklist.</div><div class="project-field-gap"><div class="label">Purpose</div><textarea class="project-purpose-textarea" oninput="setProjectListPurpose(this.value)">${purpose}</textarea><div class="project-name-help">This purpose statement is shown in the copied checklist, PDF and Markdown exports. The default text explains that the list is a project review aid, not a compliance assessment; you can update it to suit your project or audience.</div></div></div>${exportHelp}<div class="project-actions-bar"><button class="entry-btn primary" onclick="copyProjectChecklist()">Copy project checklist</button><button class="entry-btn" onclick="downloadProjectPdf()">Download PDF</button><button class="entry-btn" onclick="downloadProjectMarkdown()">Download Markdown</button><button class="entry-btn danger" onclick="clearProjectList()">Clear list</button></div>${missing>0?`<div class="project-name-help">${missing} saved entry ${missing===1?'id was':'ids were'} not found in the current data and ${missing===1?'has':'have'} been hidden.</div>`:''}<div class="item-list project-list-panel">${cards||empty}</div></div>`;
 }
 function prefillUrl(form,name,link){
   return form.base+'?usp=pp_url'
@@ -1092,7 +1101,7 @@ function render(){
 
 function renderHeader(){
   const count=projectCount();
-  return `<div class="header"><div class="header-left" onclick="goHome()" style="cursor:pointer"><div class="logo">C</div><div><div class="header-title">Constructability Framework</div><div class="header-sub">Design Guidance</div></div></div><div class="header-actions"><button class="project-header-btn" onclick="goProjectList()">📋 Project list <span class="project-count-pill">${count}</span></button></div></div>`;
+  return `<div class="header"><div class="header-left" onclick="goHome()" style="cursor:pointer"><div class="logo">C</div><div><div class="header-title">Constructability Framework</div><div class="header-sub">Design Guidance</div></div></div><div class="header-actions"><button class="project-header-btn" onclick="goProjectList()">📋 Project review list <span class="project-count-pill">${count}</span></button></div></div>`;
 }
 
 function renderBreadcrumb(){
@@ -1100,7 +1109,7 @@ function renderBreadcrumb(){
   let h='<div class="breadcrumb"><span class="breadcrumb-link" onclick="goHome()">Framework</span>';
   if(state.view==='guide'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">'+(guide?guide.title:'Guide')+'</span></div>'; }
   if(state.view==='evidence'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Evidence support index</span></div>'; }
-  if(state.view==='projectList'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">My project list</span></div>';}
+  if(state.view==='projectList'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">My project review list</span></div>';}
   if(dim){
     h+='<span class="breadcrumb-sep">›</span>';
     if(item){h+=`<span class="breadcrumb-link" onclick="goDimension('${dim.id}')">${dim.name}</span><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">${item.name}</span>`}
@@ -1303,7 +1312,6 @@ function renderGuideView(){
     html+=`<div class="label" style="margin-top:36px">${g.trace.title}</div><p class="guide-sub">${g.trace.intro}</p><div class="trace-flow">${steps}</div>`;
   }
 
-  // Project list workflow
   // The parameter takes different shapes (numeric / categorical / qualitative) — stays with the entry-reading sections
   if(g.shapes){
     const cards=g.shapes.items.map(s=>{
@@ -1313,7 +1321,7 @@ function renderGuideView(){
     html+=`<div class="label" style="margin-top:36px">${g.shapes.title}</div><p class="guide-sub">${g.shapes.intro}</p><div class="shape-grid">${cards}</div>`;
   }
 
-  // Project list workflow — the hand-off from reading one entry to using the framework across a job
+  // Project review list workflow — the hand-off from reading one entry to using the framework across a job
   if(g.projectListWorkflow){
     const pr=g.projectListWorkflow;
     const steps=(pr.steps||[]).map((s,i)=>`<div class="trace-step"><div class="trace-step-label">${s.label}</div><div class="trace-step-value">${s.value}</div><div class="trace-step-sub">${s.sub}</div></div>${i<(pr.steps||[]).length-1?'<div class="trace-arrow">→</div>':''}`).join('');
