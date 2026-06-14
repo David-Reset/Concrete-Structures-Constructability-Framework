@@ -154,7 +154,17 @@
             "evidenceSupport": {
               "level": "high",
               "summary": "Supported by formwork literature, industry consultation, physical formwork component dimensions, and a real project example."
-            }
+            },
+            "relatedEntries": [
+              {
+                "id": "bored-concrete-piles-vs-screw-piles",
+                "note": "Both depend on whether construction plant and workers can physically reach and work the element on this site — check site access together."
+              },
+              {
+                "id": "confined-space-entry-at-pier-and-shaft-bases",
+                "note": "Both depend on whether construction plant and workers can physically reach and work the element on this site — check site access together."
+              }
+            ]
           }
         },
         {
@@ -310,7 +320,25 @@
             "evidenceSupport": {
               "level": "medium",
               "summary": "The post-tensioning effect on formwork cycling is well supported by measured shore-load research (Kajewski) and a peer-reviewed paper, but the per-floor saving comes from a single modelled scenario and the floor-count bands are a reasoned judgement about when the compounding saving becomes material, so the thresholds a user acts on are indicative rather than evidenced."
-            }
+            },
+            "relatedEntries": [
+              {
+                "id": "structural-steel-vs-concrete-for-isolated-vertical-members",
+                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
+              },
+              {
+                "id": "bored-concrete-piles-vs-screw-piles",
+                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
+              },
+              {
+                "id": "stay-in-place-formwork-and-masonry-wall-systems",
+                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
+              },
+              {
+                "id": "void-former-slab-vs-thick-raft",
+                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
+              }
+            ]
           }
         },
         {
@@ -399,7 +427,17 @@
             "evidenceSupport": {
               "level": "medium",
               "summary": "Supported by workflow literature and labour-breakdown data, but the threshold bands rely partly on practical programme logic and would benefit from further project examples or regional feedback."
-            }
+            },
+            "relatedEntries": [
+              {
+                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
+                "note": "Both concern how the concrete is staged and poured in sequence so trades keep flowing and joints and settlement are controlled."
+              },
+              {
+                "id": "curing-shortfall-in-suspended-slabs-and-beams",
+                "note": "Both concern how the concrete is staged and poured in sequence so trades keep flowing and joints and settlement are controlled."
+              }
+            ]
           }
         },
         {
@@ -554,7 +592,21 @@
             },
             "supportingImages": [],
             "keywords": [],
-            "examples": []
+            "examples": [],
+            "relatedEntries": [
+              {
+                "id": "bored-concrete-piles-vs-screw-piles",
+                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
+              },
+              {
+                "id": "stay-in-place-formwork-and-masonry-wall-systems",
+                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
+              },
+              {
+                "id": "void-former-slab-vs-thick-raft",
+                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
+              }
+            ]
           }
         },
         {
@@ -717,7 +769,13 @@
             "evidenceSupport": {
               "level": "medium",
               "summary": "Supported by plastic-settlement and plastic-cracking research, including an order-of-magnitude settlement range and a clear differential-settlement mechanism. The worked example extrapolates beyond the tested depth range and is a constructability prompt rather than a hard rule, so the support level is medium."
-            }
+            },
+            "relatedEntries": [
+              {
+                "id": "curing-shortfall-in-suspended-slabs-and-beams",
+                "note": "Both concern how the concrete is staged and poured in sequence so trades keep flowing and joints and settlement are controlled."
+              }
+            ]
           }
         },
         {
@@ -729,7 +787,21 @@
             "question": "On a lightly-to-moderately loaded foundation, has the program and site-disruption advantage of screw piles been weighed against bored concrete piles — or has the pile type been chosen on capacity alone, without considering same-day loading, no spoil, and no curing wait?",
             "parameter": "Foundation loading and site constraints, used to weigh screw piles (fast, no spoil, no curing wait, excavator-installable) against bored concrete piles (higher capacity, spoil + curing).",
             "_evidenceAngle": "Programme/buildability, like the PT entry. Direction strongly supported by industry sources: screw piles install in hours, no curing delay (same-day load), no spoil to cart, and can be installed with an excavator rather than a dedicated rig; bored piers favoured for heavy loads / deep sand. For the framework standard, anchor authority to a geotechnical reference (Perko, Helical Piles: A Practical Guide to Design and Installation, 2009) and use installer sources only to corroborate direction (as the PT entry uses supplier literature). Keep the honest counter-case so it stays a 'weigh this' entry. Links to the Equipment access entry.",
-            "_thresholdSketch": "Good/Consider by loading + site: light loads + tight/sensitive access → weigh screw piles strongly. Heavy loads / deep sand → bored may govern. Frame as weigh-the-program-advantage, not a rule."
+            "_thresholdSketch": "Good/Consider by loading + site: light loads + tight/sensitive access → weigh screw piles strongly. Heavy loads / deep sand → bored may govern. Frame as weigh-the-program-advantage, not a rule.",
+            "relatedEntries": [
+              {
+                "id": "stay-in-place-formwork-and-masonry-wall-systems",
+                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
+              },
+              {
+                "id": "void-former-slab-vs-thick-raft",
+                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
+              },
+              {
+                "id": "confined-space-entry-at-pier-and-shaft-bases",
+                "note": "Both depend on whether construction plant and workers can physically reach and work the element on this site — check site access together."
+              }
+            ]
           }
         },
         {
@@ -741,7 +813,13 @@
             "question": "Has the wall system (conventional formed RC, stay-in-place / permanent formwork, or reinforced masonry) been chosen to suit how the wall can actually be built on this site &mdash; above all whether both faces can be accessed and stripped &mdash; rather than defaulting to two-sided formed RC where that is not practical?",
             "parameter": "Wall system selection against site buildability: chiefly access for stripping (both faces accessible vs single-sided / restricted), element repetition, and the required surface finish.",
             "_evidenceAngle": "SELECTION entry (when to use each), not a generic 'fewer trades' claim. The sharpest, best-supported pivot is ACCESS: where the back face cannot be reached to strip a form &mdash; blindside basement walls, walls tight to a boundary or existing structure, retaining walls against an excavation face, and repetitive linear edge runs such as crash barriers / parapets &mdash; permanent / single-sided / stay-in-place formwork moves from 'an alternative' to clearly preferable, because two-sided formed RC physically cannot be stripped there. Practice sources are consistent: permanent formwork is best where access is limited and stripping is impractical; single-sided formwork is specifically for foundation/retaining walls where a second form cannot be deployed; blindside systems form walls within inches of an existing structure. Conventional formed RC stays preferable for high off-form finish and intricate/complex shapes (SIP has shape/structural limitations). Reinforced masonry (blockwork) suits low-rise boundary/retaining walls where a masonry trade is economical and no form hire is wanted. CRASH BARRIERS: the instinct holds on the logic (repetitive linear run + awkward edge access + no strip) &mdash; treat as an example to confirm with a barrier-specific source, not yet a sourced claim. CAUTIONS to bake in: higher upfront cost; accredited-installer warranties; polymer faces force a rethink of waterproofing/coatings/cladding; tall unfilled PVC walls behave like a sail in wind (a real erection hazard). Keep GENERIC &mdash; do not endorse proprietary products. Source leads: Architecture & Design (AU) permanent-formwork pros/cons; one-sided/blindside formwork suppliers for the access logic; seek an independent productivity/selection comparison to lift above supplier claims.",
-            "_thresholdSketch": "Best practice: system matched to access + finish (single-sided/permanent where the back face cannot be stripped; formed RC where two-sided access and a high finish are needed). Consider: either could work — weigh repetition, finish, trade availability, upfront cost. Concern: two-sided formed RC specified where back-face access is genuinely restricted. Action required: a wall that cannot be formed and stripped two-sided as drawn, with no permanent/single-sided system considered."
+            "_thresholdSketch": "Best practice: system matched to access + finish (single-sided/permanent where the back face cannot be stripped; formed RC where two-sided access and a high finish are needed). Consider: either could work — weigh repetition, finish, trade availability, upfront cost. Concern: two-sided formed RC specified where back-face access is genuinely restricted. Action required: a wall that cannot be formed and stripped two-sided as drawn, with no permanent/single-sided system considered.",
+            "relatedEntries": [
+              {
+                "id": "void-former-slab-vs-thick-raft",
+                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
+              }
+            ]
           }
         },
         {
@@ -876,7 +954,21 @@
             "evidenceSupport": {
               "level": "medium",
               "summary": "Supported by equipment and piling references that distinguish standard augers, rock augers, core barrels and bored-pile rigs, plus practical NSW site experience. The exact 150–200 mm threshold is a judgement-based prompt and should be strengthened with contractor feedback or project examples."
-            }
+            },
+            "relatedEntries": [
+              {
+                "id": "off-form-concrete-upturns-near-obstructions",
+                "note": "Both depend on whether construction plant and workers can physically reach and work the element on this site — check site access together."
+              },
+              {
+                "id": "bored-concrete-piles-vs-screw-piles",
+                "note": "Both depend on whether construction plant and workers can physically reach and work the element on this site — check site access together."
+              },
+              {
+                "id": "confined-space-entry-at-pier-and-shaft-bases",
+                "note": "Both depend on whether construction plant and workers can physically reach and work the element on this site — check site access together."
+              }
+            ]
           }
         }
       ]
@@ -1023,7 +1115,17 @@
             "evidenceSupport": {
               "level": "high",
               "summary": "Supported by formwork productivity literature, contractor consultation, and real project examples where monolithic folds were revised or alternatives were documented."
-            }
+            },
+            "relatedEntries": [
+              {
+                "id": "flat-soffit-detailing-at-minor-slab-setdowns",
+                "note": "All involve changes in slab level (folds, setdowns, falls) and the geometry the following trades must build and waterproof against."
+              },
+              {
+                "id": "waterproofing-buildability",
+                "note": "All involve changes in slab level (folds, setdowns, falls) and the geometry the following trades must build and waterproof against."
+              }
+            ]
           }
         },
         {
@@ -1128,7 +1230,13 @@
             "evidenceSupport": {
               "level": "medium",
               "summary": "Supported by practical project examples and labour/productivity logic, but the thresholds depend on slab-specific judgement about extra concrete volume versus formwork simplification."
-            }
+            },
+            "relatedEntries": [
+              {
+                "id": "waterproofing-buildability",
+                "note": "All involve changes in slab level (folds, setdowns, falls) and the geometry the following trades must build and waterproof against."
+              }
+            ]
           }
         },
         {
@@ -1222,6 +1330,10 @@
               {
                 "id": "drip-grooves-on-exposed-soffit-edges",
                 "note": "Both are edge treatments on the same exposed formed face. A chamfer and a drip groove sit close together at slab and beam edges, so detail them as a pair — coordinate their positions and confirm neither compromises cover or the formwork build-up."
+              },
+              {
+                "id": "flat-soffit-detailing-at-minor-slab-setdowns",
+                "note": "All are treatments of the same exposed formed faces — coordinate the edge, corner and soffit details so they don't clash."
               }
             ],
             "evidenceSupport": {
@@ -1335,7 +1447,13 @@
             "evidenceSupport": {
               "level": "high",
               "summary": "The cover-coordination issue and the recommended detailing response are directly supported by authoritative SRIA guidance (Technical Note 5), which addresses drip grooves specifically, together with project examples. The parameter is categorical, so the recommended call rather than a numeric band is what the evidence needs to support, and it does."
-            }
+            },
+            "relatedEntries": [
+              {
+                "id": "flat-soffit-detailing-at-minor-slab-setdowns",
+                "note": "All are treatments of the same exposed formed faces — coordinate the edge, corner and soffit details so they don't clash."
+              }
+            ]
           }
         },
         {
@@ -1359,7 +1477,13 @@
             "question": "On suspended beams, do the width and depth balance against standard form-panel modules — with neither dimension much exceeding the other and depth kept within easily-formed limits — or has a deep, narrow section been set that needs tall one-sided side-forms with extra ties and propping?",
             "parameter": "Suspended beam width and depth relative to standard formwork panel sizes and to each other (balanced and within ~1.2 m preferred; deep narrow sections flagged).",
             "_evidenceAngle": "Pure buildability / form-reuse argument in the same style as the off-form upturn entry — no standards content. Thresholds derived from physical form components, panel modules and the propping/access envelope a deep side-form demands. Practice references: formwork best-practice guides (Hurd, ACI SP-4; CIRIA / Concrete Society formwork guidance) as how-you-build-forms sources, not codes. Origin: project brief noting 1.2 x 1.8 panels, wanting width+depth roughly equal, neither exceeding the other, ideally ≤ ~1.2 m.",
-            "_thresholdSketch": "Good: width+depth balanced, within standard panel reuse, depth ≤ ~1.2 m. Consider: one dimension moderately larger. Concern: deep narrow section needing tall one-sided forms + extra ties. Action required: section that cannot be formed from standard panels without bespoke falsework."
+            "_thresholdSketch": "Good: width+depth balanced, within standard panel reuse, depth ≤ ~1.2 m. Consider: one dimension moderately larger. Concern: deep narrow section needing tall one-sided forms + extra ties. Action required: section that cannot be formed from standard panels without bespoke falsework.",
+            "relatedEntries": [
+              {
+                "id": "conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors",
+                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
+              }
+            ]
           }
         },
         {
@@ -1383,7 +1507,21 @@
             "question": "Across the building, how many distinct formwork / element configurations has the design created — does the floor plate and detailing repeat enough for crews to climb the learning curve, or does near-constant variation reset the crew to slow, first-time output on every element?",
             "parameter": "Number of distinct (non-repeating) formwork or element configurations across the structure relative to the number of elements — i.e. how much the design repeats vs varies.",
             "_evidenceAngle": "Best indirect-evidence candidate in the set. Wright's learning curve (T. P. Wright, 1936, Factors Affecting the Cost of Airplanes, Journal of the Aeronautical Sciences) — unit labour time falls a fixed percentage each time cumulative output doubles — is canonical in manufacturing economics and applies directly to repeated formwork pours and repeated details. Same move as using Rosenholtz (visual clutter) for the callout entry: borrow a well-established law from an adjacent field to explain a construction effect. Reinforces the dimension's stated theme (standardisation, repetition, simplification).",
-            "_thresholdSketch": "Good: high repetition, few unique configurations. Consider: moderate variation. Concern: many one-off configurations limiting any learning effect. Action required: near-constant variation across elements that could have been standardised."
+            "_thresholdSketch": "Good: high repetition, few unique configurations. Consider: moderate variation. Concern: many one-off configurations limiting any learning effect. Action required: near-constant variation across elements that could have been standardised.",
+            "relatedEntries": [
+              {
+                "id": "slab-depth-consistency",
+                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
+              },
+              {
+                "id": "beam-soffit-formwork-proportions",
+                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
+              },
+              {
+                "id": "conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors",
+                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
+              }
+            ]
           }
         }
       ]
@@ -1530,7 +1668,13 @@
             "evidenceSupport": {
               "level": "high",
               "summary": "Supported by supplier availability review, contractor input, practical groundworks logic, and clear reinforcement cage stability and site-adaptability considerations."
-            }
+            },
+            "relatedEntries": [
+              {
+                "id": "hand-bendable-bar-sizes-for-slab-reinforcement",
+                "note": "Both are about choosing bar sizes that are readily available and can be handled or adjusted on site."
+              }
+            ]
           }
         },
         {
@@ -1542,7 +1686,25 @@
             "question": "Has the foundation / element been chosen so it can be installed with equipment that can actually reach and operate on this site — for example a pile type an excavator-mounted attachment can install — rather than one that assumes a large dedicated rig the site cannot accommodate or afford to mobilise?",
             "parameter": "Match between the installation equipment a design implies (e.g. dedicated piling rig) and what the site can realistically accommodate (access, headroom, mobilisation), including whether an excavator-based method is viable.",
             "_evidenceAngle": "Logistics root cause: design commits the site to equipment it can't get in or justify. Direct link to the screw-pile entry — screw piles can be installed with an excavator, avoiding a dedicated rig (industry sources). Use installer/contractor practice sources for the equipment envelopes (access width, headroom, mobilisation cost), the way the off-form entry uses formwork working envelopes.",
-            "_thresholdSketch": "Good: installable with equipment the site can accommodate. Consider: feasible but constrained access. Concern: assumes equipment that barely fits / costly to mobilise. Action required: implied equipment cannot access the site as designed."
+            "_thresholdSketch": "Good: installable with equipment the site can accommodate. Consider: feasible but constrained access. Concern: assumes equipment that barely fits / costly to mobilise. Action required: implied equipment cannot access the site as designed.",
+            "relatedEntries": [
+              {
+                "id": "rock-sockets-with-excavator-mounted-augers",
+                "note": "Both depend on whether construction plant and workers can physically reach and work the element on this site — check site access together."
+              },
+              {
+                "id": "off-form-concrete-upturns-near-obstructions",
+                "note": "Both depend on whether construction plant and workers can physically reach and work the element on this site — check site access together."
+              },
+              {
+                "id": "bored-concrete-piles-vs-screw-piles",
+                "note": "Both depend on whether construction plant and workers can physically reach and work the element on this site — check site access together."
+              },
+              {
+                "id": "confined-space-entry-at-pier-and-shaft-bases",
+                "note": "Both depend on whether construction plant and workers can physically reach and work the element on this site — check site access together."
+              }
+            ]
           }
         },
         {
@@ -1554,7 +1716,17 @@
             "question": "Do the suspended slabs share a consistent depth across the floor and up the building — letting one set of formwork and shoring cycle and reshore cleanly — or do varying depths fragment the formwork system and reshoring into many one-off setups?",
             "parameter": "Number of distinct suspended-slab depths across the floor plate and up the building.",
             "_evidenceAngle": "Buildability + reuse, no standards content. Consistent depth lets a single formwork/shoring set cycle and reshore (ties to the PT formwork-cycling entry and the learning-curve entry). Practice references: formwork/shoring cycling literature on reshore stacking needing matching levels. Pairs naturally with the repetition entry.",
-            "_thresholdSketch": "Good: one (or few) slab depths. Consider: a couple of depths. Concern: many depths fragmenting formwork/reshoring. Action required: depth varies so much a cycling system can't be sustained."
+            "_thresholdSketch": "Good: one (or few) slab depths. Consider: a couple of depths. Concern: many depths fragmenting formwork/reshoring. Action required: depth varies so much a cycling system can't be sustained.",
+            "relatedEntries": [
+              {
+                "id": "beam-soffit-formwork-proportions",
+                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
+              },
+              {
+                "id": "conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors",
+                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
+              }
+            ]
           }
         },
         {
@@ -1700,7 +1872,17 @@
             "evidenceSupport": {
               "level": "high",
               "summary": "Supported by safety-in-design literature, anthropometric/boot-size reasoning, practical site experience, and a clear worker fall-through mechanism."
-            }
+            },
+            "relatedEntries": [
+              {
+                "id": "confined-space-entry-at-pier-and-shaft-bases",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              },
+              {
+                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              }
+            ]
           }
         },
         {
@@ -1799,7 +1981,13 @@
             "evidenceSupport": {
               "level": "high",
               "summary": "Supported by WHS duties and reporting requirements, confined-space guidance, fatality literature, and a clear safety-in-design elimination principle."
-            }
+            },
+            "relatedEntries": [
+              {
+                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              }
+            ]
           }
         },
         {
@@ -1811,7 +1999,25 @@
             "question": "Does the permanent design provide what the structure needs to stand safely while it is only part-built — propping points, lateral restraint, a stable erection sequence — or does stability rely on elements that are not yet in place?",
             "parameter": "Whether the design identifies how the partly-built structure is held stable during construction (props, bracing, pour/erection sequence) before the permanent load path is complete.",
             "_evidenceAngle": "Safety-in-design + the principle that a structure stable when finished can be unstable mid-build (a slab relying on a wall not yet cast, a frame needing the floor diaphragm for stability). Anchor to design-for-construction-safety literature (Behm 2005, already cited in the confined-space entry) for the design-influences-safety link; corroborate with temporary-works guidance on the construction condition being a distinct load case.",
-            "_thresholdSketch": "Good: stable at every stage with permanent elements / clearly-flagged temp props. Concern: stability depends on an element installed later, not flagged. Action required: a credible collapse mechanism exists during a normal build sequence with nothing in the design addressing it."
+            "_thresholdSketch": "Good: stable at every stage with permanent elements / clearly-flagged temp props. Concern: stability depends on an element installed later, not flagged. Action required: a credible collapse mechanism exists during a normal build sequence with nothing in the design addressing it.",
+            "relatedEntries": [
+              {
+                "id": "edge-protection-requirements",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              },
+              {
+                "id": "reinforcement-mat-fall-through-risk",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              },
+              {
+                "id": "confined-space-entry-at-pier-and-shaft-bases",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              },
+              {
+                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              }
+            ]
           }
         },
         {
@@ -1823,7 +2029,21 @@
             "question": "Have the perimeter and penetration edges been designed so fall protection can be installed and anchored — cast-in points, a slab edge that takes a barrier — rather than leaving crews to improvise edge protection on a detail that does not accommodate it?",
             "parameter": "Whether exposed edges, slab perimeters and large penetrations are designed to accept and anchor fall protection (cast-in sockets, suitable edge thickness/upstand).",
             "_evidenceAngle": "Falls are a leading construction fatality category; designing-in anchorage/edge that suits proprietary edge protection removes an improvisation hazard. Same safety-in-design hierarchy-of-control basis as the confined-space and fall-through entries; corroborate with fall-from-height statistics for the scale of the hazard.",
-            "_thresholdSketch": "Good: edges accept standard edge protection / cast-in anchors shown. Concern: edge protection possible only by improvisation. Action required: detail actively prevents safe fall protection (e.g. thin or sloped edge with no anchorage)."
+            "_thresholdSketch": "Good: edges accept standard edge protection / cast-in anchors shown. Concern: edge protection possible only by improvisation. Action required: detail actively prevents safe fall protection (e.g. thin or sloped edge with no anchorage).",
+            "relatedEntries": [
+              {
+                "id": "reinforcement-mat-fall-through-risk",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              },
+              {
+                "id": "confined-space-entry-at-pier-and-shaft-bases",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              },
+              {
+                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              }
+            ]
           }
         }
       ]
@@ -1947,7 +2167,25 @@
             "evidenceSupport": {
               "level": "medium",
               "summary": "Supported by drawing examples and visual-search / communication literature, but the thresholds remain partly judgement-based and would benefit from further designer and contractor feedback."
-            }
+            },
+            "relatedEntries": [
+              {
+                "id": "details-and-schedule-references",
+                "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
+              },
+              {
+                "id": "drawing-notation-clarity",
+                "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
+              },
+              {
+                "id": "detail-sheet-organisation",
+                "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
+              },
+              {
+                "id": "model-based-3d-coordination-vs-2d-only-documentation",
+                "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
+              }
+            ]
           }
         },
         {
@@ -2050,7 +2288,21 @@
             "evidenceSupport": {
               "level": "medium",
               "summary": "Supported by practical drawing examples and design-communication logic, but the evidence base is mainly practice-based and would benefit from further external literature or user feedback."
-            }
+            },
+            "relatedEntries": [
+              {
+                "id": "drawing-notation-clarity",
+                "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
+              },
+              {
+                "id": "detail-sheet-organisation",
+                "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
+              },
+              {
+                "id": "model-based-3d-coordination-vs-2d-only-documentation",
+                "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
+              }
+            ]
           }
         },
         {
@@ -2062,7 +2314,17 @@
             "question": "Is the notation on the drawings legible and unambiguous at the scale and density the builder actually reads it — or do abbreviations, overlapping text and low contrast make callouts easy to misread?",
             "parameter": "Legibility and unambiguity of drawing notation at working scale and density (abbreviation load, text overlap, contrast).",
             "_evidenceAngle": "Sits alongside the existing 'Reinforcement callout clarity' entry but broader (all notation). Same indirect human-factors basis: visual clutter degrades search (Rosenholtz, Li & Nakano 2007) and information-cue overload slows and worsens interpretation. Make sure it does not just duplicate the callout entry — frame around general notation legibility.",
-            "_thresholdSketch": "Good: legible, low-ambiguity notation. Concern: dense/abbreviation-heavy notation easy to misread. Action required: notation a competent reader is likely to misinterpret at working scale."
+            "_thresholdSketch": "Good: legible, low-ambiguity notation. Concern: dense/abbreviation-heavy notation easy to misread. Action required: notation a competent reader is likely to misinterpret at working scale.",
+            "relatedEntries": [
+              {
+                "id": "detail-sheet-organisation",
+                "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
+              },
+              {
+                "id": "model-based-3d-coordination-vs-2d-only-documentation",
+                "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
+              }
+            ]
           }
         },
         {
@@ -2074,7 +2336,13 @@
             "question": "Are details organised and located so the builder can find the one they need when they need it — grouped logically, near their reference, consistently keyed — or are they scattered so the reader hunts across sheets to assemble one detail?",
             "parameter": "Whether details are organised and located for retrieval (logical grouping, proximity to reference, consistent keying) vs scattered across sheets.",
             "_evidenceAngle": "Pairs with the existing 'Details and schedule references' entry; same construction-communication basis (Foroughi Sabzevar et al. 2025 — non-self-contained docs that send the reader chasing across sheets are a top-ranked source of site confusion). Frame around organisation/findability, not cross-referencing per se, to stay distinct.",
-            "_thresholdSketch": "Good: details findable and logically grouped. Concern: scattered details needing cross-sheet assembly. Action required: organisation that reliably sends the reader hunting and inviting wrong-detail use."
+            "_thresholdSketch": "Good: details findable and logically grouped. Concern: scattered details needing cross-sheet assembly. Action required: organisation that reliably sends the reader hunting and inviting wrong-detail use.",
+            "relatedEntries": [
+              {
+                "id": "model-based-3d-coordination-vs-2d-only-documentation",
+                "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
+              }
+            ]
           }
         },
         {
