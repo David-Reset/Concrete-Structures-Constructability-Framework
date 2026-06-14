@@ -161,6 +161,20 @@
   .modal-link:hover{text-decoration:underline}
   .modal-fineprint{font-size:11.5px;color:var(--text-muted);border-top:1px solid var(--border);padding-top:12px;margin-bottom:0}
   .modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
+  /* related-entries add checklist */
+  .ra-intro{font-size:13.5px;color:var(--text);line-height:1.6;margin-bottom:14px}
+  .ra-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+  .ra-selectall{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted);cursor:pointer;user-select:none}
+  .ra-selectall input{width:15px;height:15px;cursor:pointer;accent-color:var(--accent)}
+  .ra-count{font-size:12px;color:var(--text-muted)}
+  .ra-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin:0;max-height:46vh;overflow-y:auto}
+  .ra-row{display:flex;gap:11px;align-items:flex-start;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:11px 13px;cursor:pointer;transition:border-color .15s}
+  .ra-row:hover{border-color:var(--accent)}
+  .ra-row input{margin-top:2px;width:16px;height:16px;flex-shrink:0;cursor:pointer;accent-color:var(--accent)}
+  .ra-text{flex:1;min-width:0}
+  .ra-name{display:block;font-size:13.5px;font-weight:700;color:var(--text);line-height:1.35}
+  .ra-dim{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-muted);margin-top:3px}
+  .ra-note{display:block;font-size:12px;color:var(--text-muted);line-height:1.5;margin-top:6px}
   .entry-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
   .entry-btn.primary:hover{background:#2f6fd6;border-color:#2f6fd6}
 
@@ -828,7 +842,76 @@ function resolveEntryId(id){
 function projectItems(){return getProjectList().ids.map(id=>resolveEntryId(id)).filter(Boolean);}
 function projectItemButton(id){
   const added=isInProjectList(id);
-  return `<button class="entry-btn entry-top-project-btn ${added?'added':''}" onclick="toggleProjectList('${id}')"><span class="ico">${added?'✓':'＋'}</span> ${added?'Remove entry from project list':'Add entry to project list'}</button>`;
+  return `<button class="entry-btn entry-top-project-btn ${added?'added':''}" onclick="onProjectButtonClick('${id}')"><span class="ico">${added?'✓':'＋'}</span> ${added?'Remove entry from project list':'Add entry to project list'}</button>`;
+}
+// Adding an entry offers a checklist of its related entries; removing never prompts.
+function onProjectButtonClick(id){
+  if(isInProjectList(id)){removeFromProjectList(id);return;}
+  addToProjectList(id);
+  const related=relatedNotInList(id);
+  if(related.length)showRelatedAddPanel(id,related);
+}
+// Two-way related entries for `id` that aren't already on the project list.
+function relatedNotInList(id){
+  const r=resolveEntryId(id);
+  if(!r)return [];
+  const inList=new Set(getProjectList().ids);
+  return getRelatedEntries(id,r.data).filter(x=>!inList.has(x.id));
+}
+function addManyToProjectList(ids){
+  const list=getProjectList();
+  ids.forEach(id=>{if(!list.ids.includes(id))list.ids.push(id);});
+  saveProjectList(list);render();
+}
+function closeRelatedAddPanel(){const m=document.getElementById('relatedAddOverlay');if(m)m.remove();}
+function raChecks(){return Array.from(document.querySelectorAll('#relatedAddOverlay .ra-check'));}
+function toggleAllRelated(src){raChecks().forEach(c=>{c.checked=src.checked;});updateRelatedAddCount();}
+function updateRelatedAddCount(){
+  const checks=raChecks(),sel=checks.filter(c=>c.checked).length;
+  const btn=document.getElementById('raAddBtn');
+  if(btn){btn.textContent=sel?`Add selected (${sel})`:'Add selected';btn.disabled=!sel;btn.style.opacity=sel?'1':'0.5';btn.style.cursor=sel?'pointer':'not-allowed';}
+  const all=document.getElementById('raSelectAll');
+  if(all){all.checked=sel===checks.length&&checks.length>0;all.indeterminate=sel>0&&sel<checks.length;}
+  const cnt=document.getElementById('raCount');
+  if(cnt)cnt.textContent=`${sel} of ${checks.length} selected`;
+}
+function confirmAddRelated(){
+  const ids=raChecks().filter(c=>c.checked).map(c=>c.value);
+  closeRelatedAddPanel();
+  if(ids.length)addManyToProjectList(ids);
+}
+function showRelatedAddPanel(id,related){
+  closeRelatedAddPanel();
+  const src=resolveEntryId(id);
+  const name=src?escHtml(src.item.name):'This entry';
+  const n=related.length;
+  const rows=related.map(r=>`<label class="ra-row">
+      <input type="checkbox" class="ra-check" value="${r.id}" checked onchange="updateRelatedAddCount()">
+      <span class="ra-text">
+        <span class="ra-name">${escHtml(r.name)}</span>
+        <span class="ra-dim"><span class="ico">${r.dimIcon||''}</span>${escHtml(r.dimName)}</span>
+        ${r.note?`<span class="ra-note">${escHtml(r.note)}</span>`:''}
+      </span>
+    </label>`).join('');
+  const overlay=document.createElement('div');
+  overlay.className='modal-overlay';
+  overlay.id='relatedAddOverlay';
+  overlay.onclick=closeRelatedAddPanel;
+  overlay.innerHTML=`<div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-title">Added — related entries</div>
+    <div class="ra-intro"><strong>${name}</strong> is now on your project list. It relates to ${n} other ${n===1?'entry':'entries'} — tick any you'd also like to add.</div>
+    <div class="ra-toolbar">
+      <label class="ra-selectall"><input type="checkbox" id="raSelectAll" checked onchange="toggleAllRelated(this)"> Select all</label>
+      <span class="ra-count" id="raCount"></span>
+    </div>
+    <div class="ra-list">${rows}</div>
+    <div class="modal-actions">
+      <button class="entry-btn" onclick="closeRelatedAddPanel()">Skip</button>
+      <button class="entry-btn primary" id="raAddBtn" onclick="confirmAddRelated()">Add selected</button>
+    </div>
+  </div>`;
+  document.body.appendChild(overlay);
+  updateRelatedAddCount();
 }
 function copyTextFallback(text){
   const ta=document.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();
