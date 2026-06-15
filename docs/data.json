@@ -2686,6 +2686,121 @@
           }
         },
         {
+          "id": "large-bar-callout-clarity",
+          "name": "Drawing clarity for isolated large slab reinforcement",
+          "available": true,
+          "data": {
+            "question": "Where 20 mm or larger bars are used locally in slab reinforcement, are those larger bars made visually obvious on the drawings, or are they hidden within the typical slab reinforcement notation?",
+            "parameter": "Drawing clarity of isolated slab reinforcement bars 20 mm diameter and larger.",
+            "keywords": [
+              "N20",
+              "N24",
+              "large slab bars",
+              "additional bars",
+              "extra bars",
+              "reo callout",
+              "bar mark",
+              "drawing clarity",
+              "reinforcement notation",
+              "missed bars",
+              "isolated reinforcement"
+            ],
+            "background": "The related detailing entry recommends using 12 mm and 16 mm slab bars where structurally practical, with 20 mm and larger bars reserved for locations where the larger diameter is genuinely required. The related logistics entry explains why larger bars have lower on-site adaptability if bending is required. This entry covers the drawing-communication consequence of using those larger bars.<br><br>In many slab plans, the general reinforcement may be 12 mm or 16 mm bars, with a small number of 20 mm, 24 mm or larger bars added at local supports, upstands, thickenings, transfer zones, penetrations or concentrated-load areas. These larger bars may be structurally important, but because they are local, they can be easy to miss if they are drawn in the same visual style as the surrounding typical reinforcement.<br><br>A large bar that is structurally important should not be visually treated like ordinary background reinforcement. If the drawing relies only on the reader noticing a different bar diameter in dense plan notation, the larger bars can be overlooked during checking, ordering or fixing. This is especially risky where there is no supporting section or local detail showing the larger bars.<br><br>The design issue is not whether the larger bars are required. If 20 mm, 24 mm or larger bars are needed, they should be used. The constructability issue is whether the drawing makes those bars obvious enough that they are not missed or confused with the typical slab reinforcement.",
+            "thresholds": [
+              {
+                "range": "Clearly called out",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "Isolated 20 mm or larger slab bars are made visually distinct from the surrounding typical reinforcement. The drawing makes their size, quantity, spacing, extent and location reasonably clear using a separate callout, heavier lineweight, bold note, colour, hatch, shaded band, bracket, bar mark, local section or detail. This is acceptable because the larger bars are easier to identify during checking, ordering and fixing."
+              },
+              {
+                "range": "Hidden in typical reinforcement",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Isolated 20 mm or larger bars are shown in the reinforcement notation, but they are not visually distinct from the surrounding typical slab reinforcement. The larger bars may be structurally important, but the drawing presentation makes them easy to miss or confuse with the normal slab bar set. Review the drawing and make the larger bars more obvious."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Make isolated larger bars visually distinct",
+                "description": "Where 20 mm or larger bars occur locally within otherwise typical slab reinforcement, make them visually stand out from the surrounding bar set. Use a separate colour, heavier lineweight, bold callout, shaded band, hatch, bracket, bar mark or local detail to show that these are not typical slab bars. Do not rely only on the reader noticing a different bar diameter buried in normal reinforcement notation. Where colour is used, do not rely on colour alone. The drawing should still be clear when printed in black and white, so pair the colour with a label, bar mark, bold note, hatch, bracket or heavier line."
+              },
+              {
+                "title": "Show the extent of the larger bars",
+                "description": "Show exactly where the larger bars start and stop. Use a clear line, band, shaded zone, bracket, bar mark or local detail to define the extent. Do not leave the limits of the larger bars to be inferred from surrounding notation or from a dense reinforcement note."
+              },
+              {
+                "title": "Separate typical and non-typical reinforcement",
+                "description": "Where the slab has typical 12 mm or 16 mm reinforcement plus local 20 mm or larger bars, separate the typical reinforcement note from the local larger-bar callout. The drawing should make it obvious which bars are typical and which bars are special or local."
+              },
+              {
+                "title": "Add a section or local detail where the plan view is not enough",
+                "description": "Where larger bars occur at an upstand, support, transfer zone, penetration, step, thickening or edge condition, provide a section or local detail where needed. A section can make the larger bars much harder to miss, especially where the plan view is visually busy."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies where a slab is generally reinforced with 12 mm or 16 mm bars but includes local 20 mm, 24 mm or larger bars.",
+              "checks": [
+                {
+                  "title": "Local larger bars are the target",
+                  "description": "This entry is most relevant where the larger bars occur only in selected support bands, upstands, local thickenings, penetration trimming, transfer zones, concentrated-load zones, balconies, edge strips or similar local areas."
+                },
+                {
+                  "title": "Not a rule against larger bars",
+                  "description": "This entry does not say larger bars should be avoided. The question of whether larger bars are needed belongs in the related detailing entry. This entry only asks whether the larger bars are communicated clearly once they are used."
+                },
+                {
+                  "title": "Whole-slab larger-bar layouts are different",
+                  "description": "This entry is less relevant where the entire slab is consistently detailed with larger bars and the bar size is already obvious from the typical reinforcement note. The main risk is isolated larger bars being visually lost inside a smaller-bar slab layout."
+                },
+                {
+                  "title": "Plan views may need support from sections",
+                  "description": "A plan view may technically show the bars but still fail to make them obvious. Where the plan is dense or the bars occur at a local section condition, a section or local detail may be the clearest way to communicate the requirement."
+                }
+              ],
+              "note": "Use this entry as a drawing-communication check. The aim is to make isolated larger slab bars obvious enough for checking, ordering and fixing, not to prescribe one office's exact drafting style."
+            },
+            "evidence": "This entry is based on drawing-communication logic and practical project examples. Isolated larger bars are more likely to be missed when they are shown in the same visual style as surrounding typical slab reinforcement, particularly where the plan is dense and no supporting section or local detail is provided.<br><br><strong>Practical project examples.</strong> The concern example shows additional N16 and N20 bars in a slab plan where the main reinforcement is generally N12. The additional larger bars are shown, but they are visually similar to the surrounding notation and are not reinforced by a local section. This makes them easier to overlook. The acceptable example shows larger N24 reinforcement in a dedicated local section. The detail is centred on the larger bars, so they are more obvious to the reader.<br><br><strong>Communication mechanism.</strong> This entry is consistent with the same communication principle used in the related reinforcement-callout clarity entry: important non-typical reinforcement should not be hidden inside dense or visually similar notation. Visual clutter and information overload make target information harder to find. A small local N20 or N24 callout can be structurally important even if it is visually low-salience on a busy slab plan.<br><br><strong>Connection to related entries.</strong> The related detailing entry explains why 20 mm and larger bars should be reserved for where they are genuinely required. The related logistics entry explains why those larger bars have lower site adaptability if bending is needed. This communication entry adds the documentation control: when larger bars are used locally, make them visually distinct enough that they are not missed.<br><br><strong>Recommendation supported by the examples.</strong> The recommendation is not to ban local larger bars. It is to make them clearer: use separate callouts, heavier lineweight, bold notes, colour with a black-and-white backup, hatching, brackets, bar marks, shaded bands, sections or local details where needed.<br><br><strong>References</strong><br>Rosenholtz, R., Li, Y., &amp; Nakano, L. (2007). Measuring visual clutter. <em>Journal of Vision, 7</em>(2):17, 1&ndash;22. https://doi.org/10.1167/7.2.17<br>Speier, C., Valacich, J. S., &amp; Vessey, I. (1999). The influence of task interruption on individual decision making: An information overload perspective. <em>Decision Sciences, 30</em>(2), 337&ndash;360. https://doi.org/10.1111/j.1540-5915.1999.tb01613.x",
+            "examples": [
+              {
+                "image": "images/additional-n16-and-n20-bars-not-visually-distinct-plan.webp",
+                "tag": "concern",
+                "caption": "Additional N16 and N20 bars shown in plan, but easy to miss. This slab plan includes additional 2N16 and 3N20 bars within a slab that is otherwise mainly N12 reinforcement. The larger bars are shown, but they are presented in a similar visual style to the surrounding notation and are not supported by a local section or visual emphasis. Because they are isolated and structurally important, they could be overlooked during checking, ordering or fixing."
+              },
+              {
+                "image": "images/isolated-n24-bars-clearly-called-out-detail.webp",
+                "tag": "acceptable",
+                "caption": "Isolated N24 bars shown clearly in a local section. This section is focused on the larger bars, so the 2N24 and 4N24 reinforcement is reasonably clear and not buried only in the general slab plan. This is an acceptable communication approach because the larger bars are shown in a dedicated detail. However, the bars could still be made more visually distinct using a bold callout, heavier lineweight, bar mark, colour, hatch or other visual emphasis."
+              }
+            ],
+            "supportingImages": [],
+            "dateAdded": "2026-06-15",
+            "dateReviewed": "2026-06-15",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Supported by practical drawing examples and communication logic, with indirect support from visual-clutter and information-overload literature. The threshold remains judgement-based because this is a drawing-clarity issue rather than a measured numerical limit."
+            },
+            "relatedEntries": [
+              {
+                "id": "hand-bendable-bar-sizes-for-slab-reinforcement",
+                "note": "Companion Detailing entry. Decide there whether 20 mm and larger slab bars are genuinely required; this entry covers how to make those larger bars obvious when they are used locally."
+              },
+              {
+                "id": "slab-bar-diameter-and-on-site-bending-equipment",
+                "note": "Companion Logistics entry. Larger bars have lower on-site bending adaptability, so isolated larger bars should be made clear enough that they are not missed, substituted or treated as typical reinforcement."
+              },
+              {
+                "id": "reinforcement-callout-clarity",
+                "note": "Both entries concern reinforcement information being missed when important bars or extras are buried in dense or visually similar notation."
+              }
+            ]
+          }
+        },
+        {
           "id": "drawing-notation-clarity",
           "name": "Drawing notation clarity",
           "available": false,
@@ -3065,7 +3180,8 @@
     "fragment|entry|rock-sockets-founding-on-rock-vs-drilled-socket|1va5unk",
     "fragment|entry|rock-sockets-vs-likely-available-drilling-plant|1wcqpje",
     "fragment|update|hand-bendable-bar-sizes-for-slab-reinforcement|vulmto",
-    "fragment|entry|slab-bar-diameter-and-on-site-bending-equipment|qkisu4"
+    "fragment|entry|slab-bar-diameter-and-on-site-bending-equipment|qkisu4",
+    "fragment|entry|large-bar-callout-clarity|uan5pm"
   ],
   "_rejected": [],
   "_reconsider": [
