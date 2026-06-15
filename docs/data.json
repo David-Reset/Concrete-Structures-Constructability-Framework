@@ -881,41 +881,153 @@
         },
         {
           "id": "structural-steel-vs-concrete-for-isolated-vertical-members",
-          "name": "Structural steel vs concrete for isolated vertical members",
-          "available": false,
+          "name": "Concrete columns/walls vs a blockwork-and-steel combination",
+          "available": true,
           "data": {
-            "question": "Where a small number of isolated vertical members (columns, posts or piers) would otherwise be cast in reinforced concrete, should a structural steel member be used instead to delete a separate form&ndash;fix&ndash;pour&ndash;cure&ndash;strike cycle and its fixed overhead?",
-            "parameter": "Whether an isolated, low-repetition vertical concrete member justifies its own pour cycle, or whether a steel member erected dry would remove that cycle &mdash; judged against the member's repetition, the material of the surrounding structure, and the connection, fire, durability, finish and cost requirements of a steel alternative.",
-            "background": "Reinforced concrete is a linear wet-trade process: form, fix, pour, cure, strike. For a one-off or isolated vertical member &mdash; a single column, a few posts, an isolated pier &mdash; that whole cycle carries fixed overhead (a pour day, a pump or crane visit, joint preparation, an inspection) that is disproportionate to the work, because there is no repetition to absorb it. A structural steel member, erected dry, can delete the pour cycle altogether and is often installed faster and out of sequence with the concrete trades. A concrete-filled steel hollow section is one hybrid that keeps a concrete look or capacity while avoiding the wet forming cycle.<br><br>The decision is a genuine trade-off, not an automatic substitution. It turns on the member's repetition (repetitive columns may form and cycle efficiently in concrete), what the rest of the structure is built from (introducing a single steel element into an otherwise concrete frame brings its own coordination and trade-attendance cost), and the steel-specific requirements: connection design to adjacent concrete, fire rating or encasement, corrosion protection and finish, and relative material and erection cost.<br><br>This idea was previously folded into the pour-staging entry but is a distinct material-choice question, so it lives here. It is related to <em>Optional pour breaks to keep concrete trades flowing</em> (both are about removing or rescheduling pour cycles to protect the programme) and to <em>Casting suspended members on freshly placed columns and walls</em> (vertical members that cannot be cast monolithically with the slab they support).",
-            "thresholds": [],
-            "alternatives": [],
+            "question": "For vertical members supporting a suspended concrete floor, are reinforced concrete columns or walls the more constructable choice &mdash; or would a blockwork-and-steel combination build more simply?",
+            "parameter": "The chosen vertical support system (concrete columns/walls vs a blockwork-and-steel combination), assessed against how much the floors repeat and whether the member has a concrete-specific structural or fire role.",
+            "keywords": [
+              "steel column",
+              "steel post",
+              "structural steel",
+              "steel vs concrete",
+              "concrete vs steel",
+              "blockwork",
+              "block wall",
+              "masonry",
+              "core-filled blockwork",
+              "isolated column",
+              "single column",
+              "one-off column",
+              "low repetition",
+              "repeated floors",
+              "similar floors",
+              "typical floor",
+              "formwork cycling",
+              "formwork reuse",
+              "pour cycle",
+              "wet trade",
+              "dry trade",
+              "erected dry",
+              "prefabricated",
+              "flat plate",
+              "flat slab",
+              "punching shear",
+              "shear wall",
+              "core",
+              "fire rating",
+              "CHS",
+              "SHS",
+              "hollow section",
+              "concrete-filled steel tube",
+              "CFST",
+              "mixed frame",
+              "material choice"
+            ],
+            "background": "A suspended concrete floor does not force concrete supports beneath it. The same deck can sit on reinforced concrete columns and walls, on blockwork walls, or on steel posts &mdash; and very often a mix. The constructability question is not whether concrete can do the job, but which support system builds more simply for this particular structure. Concrete is the obvious answer in some cases and an expensive habit in others, and the difference is usually predictable.<br><br>Two things mostly decide it. The first is repetition. Reinforced concrete is a wet-trade cycle &mdash; form, fix, pour, cure, strike &mdash; in which formwork, not concrete, dominates the labour. Where a building has many similar floors, that formwork cycles and the crew climbs a learning curve, so concrete columns and walls become very efficient and are almost always the right call; the trade is already mobilised and the marginal member is cheap. Where floors are few, irregular or non-repeating, the reuse never develops and a one-off member carries the full fixed overhead of a pour event (a pour day, a pump or crane visit, joint preparation, an inspection hold) for very little work. The second is whether the member has a concrete-specific role that a blockwork-and-steel scheme cannot easily replace: part of the lateral system (a core or shear wall), a column under a flat plate where the monolithic head carries punching shear and moment continuity, inherent fire resistance, an aggressive durability exposure, or an off-form architectural finish. Where one of these governs, concrete earns its place regardless of repetition.<br><br>Where neither applies &mdash; an isolated, gravity-only vertical member on a low-rise, non-repetitive job, with the rest of the support already in blockwork or steel &mdash; a blockwork wall (which needs no formwork, stripping or curing) or a steel post (erected dry, fast and out of sequence) will often build more simply and let the deck land on a support that is already up. A concrete-filled steel hollow section is a hybrid that keeps concrete capacity or appearance while avoiding the wet forming cycle.<br><br>This entry deliberately does not declare which option is cheaper. Published frame-comparison studies disagree, and the result is sensitive to region, market, scale and the project's fire and lateral strategy. The entry's job is to flag when the comparison is worth running and which way the constructability factors lean &mdash; not to issue a cost verdict.",
+            "thresholds": [
+              {
+                "range": "Repetition or defined role",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "Either the building has many similar, repeating floors so the formwork cycles and the concrete trade is already mobilised, or the member has a concrete-specific role a blockwork-and-steel scheme cannot easily replace (a lateral core or shear wall, a flat-plate column head carrying punching and continuity, inherent fire resistance, aggressive durability, or off-form architecture). Concrete columns or walls are the more constructable choice and drawing them in concrete is justified, not habitual."
+              },
+              {
+                "range": "Partial repetition; confirm",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "Some repetition exists but floors vary, or it is a genuinely close mid-rise call, and the member has no clear concrete-specific role. Concrete is plausibly fine, but confirm the formwork reuse actually develops across the floors as drawn rather than being fragmented by varied geometry. Where the call is marginal, develop the blockwork-and-steel option in parallel, and if it remains unclear, ask a builder or contractor in your network which would build more easily before committing."
+              },
+              {
+                "range": "Isolated, no concrete need",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "A single suspended level or a low-rise, non-repetitive job, where isolated vertical members would each trigger their own pour overhead and none has a concrete-specific structural or fire role. Casting them in concrete means mobilising a vertical concrete operation largely for these members. Carry a blockwork-and-steel scheme as a real option and, if the easier-to-build choice is not obvious, seek a builder or contractor's view before the structural scheme is fixed; the alternative will often build more simply."
+              },
+              {
+                "range": "Concrete by habit alone",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "Isolated concrete columns or walls on an otherwise dry, low-rise, non-repetitive structure &mdash; with the rest of the support already in blockwork or steel and no lateral, flat-plate, fire or durability reason for concrete. The full wet-trade cycle is being committed for no design benefit while simpler trades are already on site. Resolve the material choice before the frame and programme lock: either confirm a reason concrete is required, or switch to blockwork and/or steel coordinated with the existing work. The flag marks an unexamined default, not a prohibition on concrete where it is the right answer."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Establish floor repetition first",
+                "description": "Decide how much the floors actually repeat. Many similar floors let formwork cycle and the crew climb the learning curve, which makes concrete columns and walls efficient and usually the right call. Few, irregular or non-repeating floors never develop that reuse, and an isolated member carries the full fixed overhead of its own pour event &mdash; the case where a blockwork-and-steel alternative is most worth weighing against concrete."
+              },
+              {
+                "title": "Identify any concrete-specific role",
+                "description": "Confirm whether the member has a role that blockwork and steel cannot easily replace: part of the lateral system (a core or shear wall), a column under a flat plate where the monolithic head carries punching shear and moment continuity, inherent fire resistance, an aggressive durability exposure, or an off-form architectural finish. If one of these governs, concrete earns its place regardless of repetition. Note that pinning a steel column under a flat plate changes the slab design."
+              },
+              {
+                "title": "Consider blockwork and steel as a scheme",
+                "description": "A suspended concrete deck can sit on blockwork walls and steel posts. Blockwork needs no formwork, stripping or curing and can go up ahead of the deck; steel posts erect dry, fast and out of sequence; and the deck lands on a support that is already up rather than one that must be cast, cured and stripped first. Treat this as a genuine scheme option, not a fallback."
+              },
+              {
+                "title": "Consider a concrete-filled hollow section",
+                "description": "Where a concrete look, axial capacity or fire performance is wanted but the wet forming cycle is the problem, a concrete-filled CHS or SHS uses the permanent tube as both formwork and reinforcement, avoiding conventional stripping. It can be erected dry and filled later, capturing part of the steel programme benefit while retaining concrete capacity."
+              },
+              {
+                "title": "Ask a builder where it is marginal",
+                "description": "Where the constructability lean is not clear, which system is simpler and cheaper to build turns on regional, market and trade factors a design engineer cannot settle from the drawings. Rather than attempting to estimate it, ask a builder or contractor in your network for a practical opinion on which option would build more easily in the local market. Their feedback at concept stage is quick to obtain and usually decides a marginal call."
+              }
+            ],
             "applicability": {
-              "appliesWhere": "Isolated or low-repetition vertical concrete members where a structural steel alternative is structurally viable and where the concrete pour cycle for that member carries disproportionate fixed overhead. Not intended for repetitive columns that form and cycle efficiently in concrete, nor for cases where fire, durability or architectural requirements clearly favour concrete.",
-              "checks": [],
-              "note": "PLACEHOLDER &mdash; not yet live. Spun out of the pour-staging entry. To complete: define thresholds (likely a judged decision on repetition and surrounding-structure material), recommended actions, evidence (RC as a wet-trade cycle; hybrid / concrete-filled steel hollow sections avoiding wet trades), and any worked example or site photographs."
+              "appliesWhere": "This entry applies to vertical members supporting a suspended concrete structure where both reinforced concrete (columns or walls) and a blockwork-and-steel combination are structurally viable. It is most useful on low-rise and mixed-system buildings where the support material is genuinely open. It is not intended for buildings with many repeating floors where formwork cycles efficiently in concrete, nor where a lateral, flat-plate, fire, durability or architectural requirement clearly settles the choice in favour of concrete.",
+              "checks": [
+                {
+                  "title": "Floor repetition and similarity",
+                  "description": "Many similar, repeating floors let formwork cycle and the crew climb a learning curve, which favours concrete. Few, irregular or non-repeating floors fragment the reuse and weaken the concrete case. Judge the repetition the design actually delivers, not the nominal storey count."
+                },
+                {
+                  "title": "Whether the concrete trade is already mobilised",
+                  "description": "If the structure has a concrete core, walls or repeating decks, a concrete column rides along on a trade, formwork system, pump and crew already on site, so its marginal cost is small. If casting these members would mobilise a vertical concrete operation largely for them, the overhead is far harder to justify."
+                },
+                {
+                  "title": "Concrete-specific structural role",
+                  "description": "Check whether the member is part of the lateral system or sits under a flat plate where the monolithic head carries punching and continuity. These are structural reasons to keep concrete; substituting steel or blockwork can change the slab design or the lateral system, not just the member."
+                },
+                {
+                  "title": "Fire, durability and finish",
+                  "description": "Inherent fire resistance, aggressive exposure, or a required off-form finish can tie the member to concrete. A steel alternative typically needs applied fire and corrosion protection with its own cost, inspection and maintenance; weigh these in the comparison."
+                },
+                {
+                  "title": "Connection and sequence",
+                  "description": "Steel posts and blockwork walls change the build sequence (support up first, deck lands on top) and require connection details to the deck, footings and any concrete elements. The base plate, holding-down and bearing details are part of the comparison, not an afterthought."
+                },
+                {
+                  "title": "Cost is regional and out of scope",
+                  "description": "This entry does not decide which option is cheaper. Published frame-comparison studies disagree and the result depends on region, market, scale and fire/lateral strategy. Use the entry to decide when a builder's or contractor's practical view is worth seeking; obtaining a price is not a design-engineer task."
+                }
+              ],
+              "note": "Use the rating as a constructability review prompt, not a rule that isolated members must be steel or blockwork. The bands scale how strongly the structure points toward a cycling concrete trade or a defined concrete role: repetition of similar floors or a lateral/flat-plate/fire role favours concrete; an isolated member on a low-rise, non-repetitive job with no such role is where a blockwork-and-steel scheme is most worth weighing. Structural adequacy, fire, durability and connection design of any alternative remain the engineer's responsibility under the relevant standards."
             },
-            "evidence": "",
+            "evidence": "<strong>Why repetition favours concrete.</strong> Reinforced concrete is a wet-trade cycle in which formwork, not concrete, dominates the labour: Löfgren et al. (2001) attribute roughly 49% of concrete-structure work to formwork against about 11% to concrete operations, and identify simplicity and repetition as key efficiency principles. Because formwork is the cost, reusing it is what makes concrete economical. Jarkas (2010) measured this directly, finding that repetition of floor layout and standardisation significantly improve formwork labour productivity on building floors. The underlying mechanism is the learning curve first described by Wright (1936), in which unit labour time falls a fixed proportion each time cumulative output doubles &mdash; exactly the effect repeated, similar floors produce. Many similar floors therefore make concrete columns and walls efficient; few or irregular floors do not.<br><br><strong>Why a dry or simpler trade can win otherwise.</strong> The foundational buildability principles (CIRIA, 1983; Adams, 1989) call both for maximum repetition and standardisation and for modular and pre-assembly designs that facilitate prefabrication and installation. The first favours repeated in-situ concrete; the second favours a steel post erected dry and out of sequence, or a blockwork wall that needs no formwork, stripping or curing and can be built ahead of the deck. Which principle dominates depends on the structure, which is why this is a genuine trade-off rather than a fixed preference.<br><br><strong>Why concrete sometimes earns its place regardless of repetition.</strong> A vertical member that forms part of the lateral system (a core or shear wall), or a column under a flat plate where the monolithic head carries punching shear and moment continuity, performs a structural function that substituting steel or blockwork would change, not merely relocate. Fire resistance and durability can do the same. These are design requirements governed by the relevant structural and fire standards (in Australia, AS 3600 and AS 4100) and remain the engineer's responsibility; the entry prompts the comparison, it does not pre-empt that design.<br><br><strong>Why the entry does not name a cost winner.</strong> Published frame-comparison studies reach opposing conclusions that track the interest publishing them: steel-industry cost studies report steel frames modestly cheaper and faster to erect, while concrete- and masonry-industry studies report concrete or concrete-masonry systems cheaper, and independent academic comparisons (typically software cost models) contradict one another and are highly sensitive to their assumptions. The one robust, cross-source agreement is that steel erects faster. Because the cost result depends on region, market, scale and the project's fire and lateral strategy, this entry flags when a builder's or contractor's practical input is worth seeking rather than declaring an outcome.<br><br><strong>Basis of the bands.</strong> The bands scale how strongly the structure points toward a cycling concrete trade or a defined concrete role. The repetition leg is supported by measured formwork-productivity research; the structural-role gate by standard design behaviour; the cost dimension is deliberately left to a builder or contractor's input. The exact tipping point in the middle (the close mid-rise call) is practitioner judgement and should be refined with project examples and regional feedback.<br><br><strong>References</strong><br>Adams, S. (1989). <em>Practical Buildability</em> (CIRIA Building Design Report). Butterworths, London.<br>CIRIA (1983). <em>Buildability: An Assessment</em>. CIRIA Special Publication 26, London.<br>Jarkas, A. M. (2010). Buildability factors affecting formwork labour productivity of building floors. <em>Canadian Journal of Civil Engineering</em>, 37(10), 1383-1394.<br>L&ouml;fgren, I., Gylltoft, K., &amp; Kutti, T. (2001). <em>In-situ concrete building - Innovations in Formwork</em>. Department of Structural Engineering, Chalmers University of Technology / Thomas Concrete Group.<br>Wong, F. W. H., Lam, P. T. I., Chan, E. H. W., &amp; Wong, F. K. W. (2006). Factors affecting buildability of building designs. <em>Canadian Journal of Civil Engineering</em>, 33, 795-806.<br>Wright, T. P. (1936). Factors affecting the cost of airplanes. <em>Journal of the Aeronautical Sciences</em>, 3(4), 122-128.",
+            "examples": [],
+            "supportingImages": [],
             "dateAdded": "2026-06-09",
-            "dateReviewed": "2026-06-09",
+            "dateReviewed": "2026-06-15",
             "location": {
               "country": "Australia",
               "state": "NSW"
             },
-            "supportingImages": [],
-            "keywords": [],
-            "examples": [],
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "The core lean is well supported: measured formwork-productivity research shows repetition and standardisation drive concrete efficiency (Jarkas, 2010; Löfgren et al., 2001), reinforced by the learning-curve principle (Wright, 1936) and the foundational buildability principles (CIRIA, 1983; Adams, 1989), which also back the prefabrication advantage of steel. The concrete-specific role gate (lateral systems, flat-plate column heads, fire) rests on standard design behaviour and the relevant standards. The entry deliberately does not adjudicate the cost comparison, which published frame studies dispute and which is region-dependent, and the mid-rise tipping point between bands is practitioner judgement. Treat as a constructability prompt; the exact band boundaries should be refined with project examples."
+            },
             "relatedEntries": [
               {
+                "id": "conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors",
+                "note": "The repetition leg of this entry in detail: how formwork cycling on repeated floors drives the economy of in-situ concrete framing."
+              },
+              {
+                "id": "optional-pour-breaks-to-keep-concrete-trades-flowing",
+                "note": "Both concern the cost of concrete pour cycles; this entry can remove the cycle by changing material, that one reschedules it to protect the programme."
+              },
+              {
                 "id": "bored-concrete-piles-vs-screw-piles",
-                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
-              },
-              {
-                "id": "stay-in-place-formwork-and-masonry-wall-systems",
-                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
-              },
-              {
-                "id": "void-former-slab-vs-thick-raft",
-                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
+                "note": "Companion material/system-choice question where a dry, fabricated alternative can remove a wet or plant-heavy in-situ process."
               }
             ]
           }
@@ -3291,7 +3403,8 @@
     "fragment|update|hand-bendable-bar-sizes-for-slab-reinforcement|vulmto",
     "fragment|entry|slab-bar-diameter-and-on-site-bending-equipment|qkisu4",
     "fragment|entry|large-bar-callout-clarity|uan5pm",
-    "fragment|entry|reducing-grinder-cutting-from-large-slab-reinforcement-bars|1rh10n1"
+    "fragment|entry|reducing-grinder-cutting-from-large-slab-reinforcement-bars|1rh10n1",
+    "fragment|update|structural-steel-vs-concrete-for-isolated-vertical-members|k2h5k7"
   ],
   "_rejected": [],
   "_reconsider": [
