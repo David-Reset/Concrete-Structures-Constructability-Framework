@@ -1941,6 +1941,135 @@
           }
         },
         {
+          "id": "slab-bar-diameter-and-on-site-bending-equipment",
+          "name": "Slab bar diameter and on-site bending equipment",
+          "available": true,
+          "data": {
+            "question": "Where slab reinforcement uses bars greater than 16 mm diameter, has the design recognised that any on-site bending of those bars is unlikely to be handled with ordinary low-cost site bending tools?",
+            "parameter": "Nominal slab reinforcement diameter and implied on-site bending equipment class.",
+            "keywords": [
+              "bar diameter",
+              "bar size",
+              "N12",
+              "N16",
+              "N20",
+              "N24",
+              "N32",
+              "large bars",
+              "slab reinforcement",
+              "slab bars",
+              "site bending",
+              "rebar bending",
+              "reo bending",
+              "manual bender",
+              "manual lever bender",
+              "powered bender",
+              "portable rebar bender",
+              "industrial rebar bender",
+              "bar bending equipment",
+              "bending equipment",
+              "site adaptability",
+              "off-site bending",
+              "factory bending"
+            ],
+            "background": "The detailing entry linked to this one asks whether slab reinforcement can be kept to 12 mm or 16 mm bars where structurally practical. This logistics entry explains why that matters on site.<br><br>The issue is not cutting. Bars can often be cut on site using grinders, saws or other cutting methods. The real logistics change occurs when bars need to be bent. SRIA guidance places ordinary manual bending tools at up to about 16 mm diameter. Above that size, cold bending requires considerably more force and generally moves into powered or specialist bending equipment.<br><br>This matters because 16 mm bending equipment is still within normal site-tool territory. A simple manual lever cutter/bender is relatively low-cost and portable. A portable powered bender is more expensive, but the example reviewed is still only rated to 16 mm and is mainly useful where bars are already fixed or cast in, such as starters projecting from a wall that need to be bent down into a slab.<br><br>Once bending moves into 20 mm, 24 mm, 32 mm or larger bars, the equipment class changes sharply. The tools become larger, heavier, more expensive and much less likely to be casually available on a normal site. In practice, larger bars are far more likely to be bent off site by the reinforcement supplier or processor. That makes them much less adaptable once they arrive on site.<br><br>This entry is not saying that 20 mm or larger slab bars should be avoided where they are structurally required. The design engineer chooses bar diameter and spacing. The logistics prompt is that using larger bars has a consequence: if the detail later needs bending or local adaptation, the site may not have realistic equipment to do it. For general slab reinforcement, this is another reason to use 12 mm and 16 mm bars where structurally practical, and to keep larger bars localised to where they are genuinely needed.",
+            "thresholds": [
+              {
+                "range": "12 / 16 mm",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "Slab reinforcement remains within the ordinary 16 mm site bending equipment range. These bars can be handled with simple manual lever benders or portable powered tools where proper bending equipment is used. This gives the reinforcement higher on-site adaptability and reduces reliance on off-site bending for minor changes."
+              },
+              {
+                "range": "≥ 20 mm",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Slab reinforcement uses bars greater than 16 mm diameter. These bars are outside the ordinary manual lever-bender range and, if they need to be bent on site, generally require powered or specialist bending equipment. This equipment is much more expensive and less likely to be casually available on site. Larger bars may still be structurally necessary, but they should be treated as low-adaptability site items and not used broadly where 12 mm or 16 mm bars would work."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Keep general slab reinforcement within the 16 mm bending-equipment range where structurally practical",
+                "description": "Where 12 mm or 16 mm bars can achieve the design, prefer those sizes for general slab reinforcement. This keeps the detail within the ordinary site bending equipment class and avoids unnecessary reliance on off-site bending or specialist tools."
+              },
+              {
+                "title": "Treat 20 mm and larger bars as low-adaptability site items",
+                "description": "Do not assume bars greater than 16 mm can be conveniently bent or adjusted on site. If 20 mm or larger bars are used, the design should assume they will usually arrive in their final required shape or be used straight, rather than relying on casual site bending."
+              },
+              {
+                "title": "Keep larger bars localised to genuine demand",
+                "description": "Where 20 mm or larger bars are structurally required, keep them to the strips, bands, supports, transfer zones or local details where the demand exists. Use 12 mm or 16 mm bars elsewhere where structurally practical."
+              },
+              {
+                "title": "Do not confuse cutting with bending",
+                "description": "The logistics problem is bending, not simply cutting. A site may be able to cut larger bars with grinders or saws, but bending those bars accurately and safely is a different task and usually requires a different class of equipment."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to slab reinforcement where the designer is choosing bar diameter and spacing, especially where a choice exists between smaller bars at closer spacing and larger bars at wider spacing.",
+              "checks": [
+                {
+                  "title": "Relevant slab types",
+                  "description": "This entry is most relevant to suspended slabs, raft slabs, podium slabs, balconies, setdowns, slab thickenings and local reinforcement zones where reinforcement may need to be coordinated with site conditions."
+                },
+                {
+                  "title": "Larger bars may still be structurally required",
+                  "description": "This entry does not apply where larger bars are structurally required and are deliberately detailed for that purpose. It is not a rule against 20 mm, 24 mm, 32 mm or larger reinforcement."
+                },
+                {
+                  "title": "Logistics prompt, not a method statement",
+                  "description": "This entry does not ask the design engineer to nominate the contractor’s bending tool, bending method or construction procedure. The engineer controls bar diameter and spacing. The contractor controls means and methods. The constructability issue is that the engineer’s bar-size choice can shift the work from ordinary site tooling to specialist or off-site bending."
+                },
+                {
+                  "title": "Bending is the issue, not cutting",
+                  "description": "A site may still cut larger bars with grinders, saws or other cutting methods. The equipment-class jump discussed in this entry is about bending bars accurately and safely, not merely cutting them to length."
+                }
+              ],
+              "note": "Use the rating as a logistics prompt about the equipment class implied by the bar diameter. Bars greater than 16 mm are not prohibited, but they should be treated as lower-adaptability site items unless suitable bending equipment or off-site fabrication has been allowed for by the construction team."
+            },
+            "evidence": "SRIA guidance identifies 16 mm as the practical hinge for on-site bending. SRIA states that manual bending tools are recommended for bars up to about 16 mm diameter, with electric bending tools recommended for larger bars. SRIA Technical Note 4 also states that cold bending bars greater than 16 mm requires considerable force, that 12 mm and 16 mm bars should be bent cold, and that 20 mm and larger bars preferably require power-operated bending tools.<br><br>The reviewed tool examples support the logistics consequence of that hinge. A simple manual lever cutter/bender rated to 16 mm was shown at $509.95. A portable powered bender rated to 4–16 mm was shown at $1,798.50. However, moving into larger bar bending equipment caused a major cost and equipment-class jump: an industrial 6–32 mm electric bender/cutter was shown at $12,618.00, and a heavy-duty 6–46 mm bender was shown at $36,995.00 and required 400–415 V power.<br><br>This supports the entry’s constructability conclusion: 12 mm and 16 mm slab bars remain within ordinary site bending equipment territory, while 20 mm and larger bars should be treated as low-adaptability items that are more likely to require off-site bending or specialist equipment if bending is needed.<br><br><strong>References</strong><br>Steel Reinforcement Institute of Australia. (2016). <em>Bending Reinforcement on Site</em> (Issue No. 42/4). SRIA.<br>Steel Reinforcement Institute of Australia. (2007). <em>Technical Note 4: Fabrication and Site Handling of Reinforcing Bars</em>. SRIA.<br>Sydney Tools. (2026). <em>HK Porter 0590RBJN 1320mm/52\" Rebar Cutter &amp; Bender</em>. Product page screenshot reviewed June 2026.<br>Sydney Tools. (2026). <em>RAPIDTOOL ERB-16 4mm–16mm Rebar Bender</em>. Product page screenshot reviewed June 2026.<br>Sydney Tools. (2026). <em>RAPIDTOOL CRBC-32A 6mm–32mm Electric Industrial Rebar Bender &amp; Cutter</em>. Product page screenshot reviewed June 2026.<br>Sydney Tools. (2026). <em>RAPIDTOOL PRB-46X Premium 400–415V Heavy Duty 6–46mm Rebar Bender</em>. Product page screenshot reviewed June 2026.",
+            "examples": [],
+            "supportingImages": [
+              {
+                "image": "images/manual-lever-rebar-cutter-bender-16mm.webp",
+                "title": "<strong>Manual lever rebar cutter/bender — up to 16 mm</strong><br>A simple lever-type cutter and bender is low-cost site equipment, shown here at $509.95. It represents the ordinary bending-tool class available for smaller bars. SRIA guidance places manual bending tools at up to about 16 mm diameter, which aligns with the practical 12/16 mm slab reinforcement range. Source: Sydney Tools product page screenshot."
+              },
+              {
+                "image": "images/portable-powered-rebar-bender-16mm.webp",
+                "title": "<strong>Portable powered rebar bender — up to 16 mm</strong><br>A portable powered bender is a more expensive equipment class, shown here at $1,798.50, but this example is still limited to 4–16 mm bars. It may be useful where bars are already fixed or cast in, such as 16 mm starters projecting from a wall that need to be bent into a slab. It does not solve the 20 mm and larger bar-bending issue. Source: Sydney Tools product page screenshot."
+              },
+              {
+                "image": "images/industrial-rebar-bender-cutter-32mm.webp",
+                "title": "<strong>Industrial electric rebar bender/cutter — up to 32 mm</strong><br>Once bending moves into the 20–32 mm range, the equipment class changes dramatically. This 6–32 mm electric industrial bender/cutter is shown at $12,618.00, far above ordinary 16 mm site tools. This supports treating 20 mm and larger bars as low-adaptability site items unless specialist equipment or off-site bending is planned. Source: Sydney Tools product page screenshot."
+              },
+              {
+                "image": "images/heavy-duty-rebar-bender-46mm.webp",
+                "title": "<strong>Heavy-duty rebar bender — up to 46 mm</strong><br>Large-capacity bending equipment is a specialist plant item rather than normal site tooling. This 6–46 mm heavy-duty bender is shown at $36,995.00 and requires 400–415 V power. At this equipment class, the bar is effectively a planned or fabricated item rather than something expected to be conveniently adapted on site. Source: Sydney Tools product page screenshot."
+              }
+            ],
+            "dateAdded": "2026-06-15",
+            "dateReviewed": "2026-06-15",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "The 16 mm equipment hinge is directly supported by SRIA guidance, and the reviewed tool examples clearly show the cost and equipment-class jump from 16 mm tools to larger-bar bending equipment. The exact cost ratios are based on a small set of current supplier screenshots and should be treated as illustrative rather than universal."
+            },
+            "relatedEntries": [
+              {
+                "id": "hand-bendable-bar-sizes-for-slab-reinforcement",
+                "note": "Companion Detailing entry. Decide there whether 20 mm and larger slab bars are genuinely required; this entry explains the equipment and availability consequences if those larger bars need to be bent on site."
+              },
+              {
+                "id": "stirrup-bar-size-availability-and-site-adaptability",
+                "note": "Both concern how reinforcement size choices affect site adaptability, ordinary equipment availability and the likelihood of substitution or delay."
+              }
+            ]
+          }
+        },
+        {
           "id": "equipment-access-constraints",
           "name": "Equipment access constraints",
           "available": false,
@@ -2935,7 +3064,8 @@
     "fragment|entry|rock-sockets-with-excavator-mounted-augers-2|1wz6lky",
     "fragment|entry|rock-sockets-founding-on-rock-vs-drilled-socket|1va5unk",
     "fragment|entry|rock-sockets-vs-likely-available-drilling-plant|1wcqpje",
-    "fragment|update|hand-bendable-bar-sizes-for-slab-reinforcement|vulmto"
+    "fragment|update|hand-bendable-bar-sizes-for-slab-reinforcement|vulmto",
+    "fragment|entry|slab-bar-diameter-and-on-site-bending-equipment|qkisu4"
   ],
   "_rejected": [],
   "_reconsider": [
