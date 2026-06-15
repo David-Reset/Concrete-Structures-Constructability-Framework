@@ -2371,6 +2371,115 @@
           }
         },
         {
+          "id": "reducing-grinder-cutting-from-large-slab-reinforcement-bars",
+          "name": "Reducing grinder cutting from large slab reinforcement bars",
+          "available": true,
+          "data": {
+            "question": "Are 20 mm and larger slab bars genuinely required, given that their use makes any on-site cutting more likely to involve an angle grinder rather than ordinary cutter/bender equipment?",
+            "parameter": "Nominal slab reinforcement diameter (mm).",
+            "keywords": [
+              "angle grinder",
+              "grinder cutting",
+              "cutting reo",
+              "cutting rebar",
+              "cutting reinforcement",
+              "large bars",
+              "N20",
+              "N24",
+              "N32",
+              "site cutting",
+              "bar cutter",
+              "cutter bender",
+              "rebar cutter",
+              "reo safety",
+              "safety in design"
+            ],
+            "background": "This entry is the Safety in Design companion to the detailing, logistics and drawing-communication entries on large slab reinforcement bars.<br><br>The structural use of 20 mm, 24 mm or larger bars is not unsafe by itself. Larger bars may be necessary at supports, transfer zones, thickened strips, local bands, penetrations or concentrated-load areas. The safety issue is that specifying larger bars changes the likely site cutting class if those bars ever need to be cut on site.<br><br>A 12 mm or 16 mm slab bar is more likely to be within the range of ordinary low-energy site cutting and bending equipment, such as simple cutter/bender tools or smaller portable powered tools. A 20 mm or larger bar is much less likely to be handled by that ordinary cutter/bender class. If a 20 mm or larger bar has to be shortened on site, the practical cutting method may shift toward an angle grinder or specialist cutting equipment.<br><br>That matters because grinder cutting is a real safety exposure, not just an inconvenience. Angle grinders use high-speed rotating discs. They can kick back, discs can shatter, guards can be removed or misused, and severe injuries and fatalities are documented in clinical studies and regulator safety alerts.<br><br>The designer does not control the contractor's cutting method. That remains a construction method and site safety responsibility. However, the designer does control the reinforcement diameter selected. If 12 mm or 16 mm bars would satisfy the design, specifying 20 mm or larger bars can create an avoidable pathway to a higher-risk site cutting task.<br><br>The aim is therefore not to ban 20 mm and larger slab bars. The aim is to ask whether they are genuinely needed. Where they are not needed, using 12 mm and 16 mm bars is the safer design-stage choice because it avoids unnecessarily moving the work into a grinder-cutting or specialist-cutting class if cutting is required on site.",
+            "thresholds": [
+              {
+                "range": "12 / 16 mm",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "General slab reinforcement is detailed with 12 mm or 16 mm bars where these sizes satisfy the structural design. These bars remain in the smaller-bar site handling range and are more likely to be cut, bent or adjusted with ordinary cutter/bender equipment if site work is required. This reduces the chance that reinforcement cutting shifts into angle-grinder work."
+              },
+              {
+                "range": ">= 20 mm",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Slab reinforcement includes bars 20 mm diameter or larger. These bars may be structurally necessary, but they should not be used as a default because they are outside the ordinary 16 mm cutter/bender class. If they need to be cut on site, angle-grinder cutting or specialist cutting is more likely. Review whether the larger diameter is genuinely required, or whether 12 mm or 16 mm bars at closer spacing can achieve the design intent."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Use 12 mm and 16 mm bars for general slab reinforcement where structurally practical",
+                "description": "Where 12 mm or 16 mm bars can achieve the design intent, prefer those sizes for general slab reinforcement. This keeps the work in the smaller-bar handling range and reduces the likelihood that site cutting of reinforcement becomes grinder cutting."
+              },
+              {
+                "title": "Reserve 20 mm and larger bars for genuine structural demand",
+                "description": "Use 20 mm, 24 mm or larger bars where the structural demand justifies them, such as local support zones, transfer strips, punching reinforcement zones, heavy concentrated loads, thickened slab bands or other high-demand areas. Avoid using larger bars broadly where smaller bars at closer spacing would work."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to reinforced concrete slab reinforcement where the designer is choosing bar diameter and spacing, especially where a choice exists between 12 mm or 16 mm bars at closer spacing and 20 mm or larger bars at wider spacing.",
+              "checks": [
+                {
+                  "title": "This is a bar-size selection issue",
+                  "description": "The design control is the diameter selected for the slab reinforcement. The entry does not ask the engineer to manage site cutting methods, but it does ask whether the design has unnecessarily moved the work into a larger-bar cutting class."
+                },
+                {
+                  "title": "Larger bars may still be structurally required",
+                  "description": "This entry is not a rule against 20 mm, 24 mm or larger reinforcement. Where larger bars are required for strength, serviceability, anchorage, congestion control or another real design reason, they should be used. The concern is unnecessary or broad use of large bars where 12 mm or 16 mm bars would work."
+                },
+                {
+                  "title": "Cutting risk is different from bending risk",
+                  "description": "This entry focuses on cutting exposure and grinder use. Bending and rebending of larger bars are covered in the related detailing and logistics entries."
+                },
+                {
+                  "title": "Site methods remain the contractor's responsibility",
+                  "description": "The contractor remains responsible for safe systems of work, tool selection, guarding, training and exclusion zones. The Safety in Design issue is whether the design unnecessarily creates a higher-risk cutting task in the first place."
+                }
+              ],
+              "note": "Use the rating as a design-stage safety prompt, not as a prohibition on large bars. The question is whether 20 mm and larger slab bars are genuinely needed, given the likely increase in grinder-cutting or specialist-cutting exposure if they must be cut on site."
+            },
+            "evidence": "<strong>Reinforcement handling hinge at 16 mm.</strong> SRIA's <em>Bending Reinforcement on Site</em> recommends special manual bending tools for bars up to about 16 mm diameter and electric bending tools for larger bars. The same document notes that the AS/NZS 4671 rebend test applies to deformed bars 16 mm and smaller, with no equivalent test for bars 20 mm and larger because rebending is intended for smaller bars. SRIA Technical Note 4 also states that cold bending bars greater than 16 mm requires considerable force, and that N20 and larger bars preferably require power-operated bending tools. This supports treating 12 mm and 16 mm bars as one practical site-handling class, and 20 mm and larger bars as a different class.<br><br><strong>Tooling examples.</strong> The reviewed tool examples support the same practical distinction. The simple manual cutter/bender and portable powered bender examples are both limited to 16 mm. The larger-bar tools reviewed for 32 mm and 46 mm capacity are industrial equipment at a much higher cost and equipment class. This does not prove that every 20 mm bar will be cut with a grinder, but it supports the practical point that 20 mm and larger bars are outside the ordinary small-bar cutter/bender class available on many sites.<br><br><strong>Angle-grinder injury severity.</strong> Sozbilen et al. (2018) conducted a prospective one-year emergency-department study of angle-grinder hand and forearm injuries. They recorded 82 angle-grinder injuries out of 742 acute hand and forearm injuries. The paper reports tendon, nerve, artery and amputation injuries, and classifies the grinder injuries using the Modified Hand Injury Severity Score. Figure 4 labels 40% of the recorded injuries as severe and 31% as major, a combined 71% by the figure percentages. By count, the paper reports 34 severe and 27 major injuries out of 82, or approximately 74%. Either way, the study supports treating grinder cutting as a serious injury exposure rather than a minor inconvenience.<br><br><strong>Angle-grinder hazard mechanism.</strong> Sozbilen et al. describe angle grinders as high-speed disc tools, with discs rotating about 6000 to 15,000 rpm. The study identifies kickback, wrong disc selection, worn discs, vibration and disc shattering as relevant injury mechanisms. SafeWork NSW safety material also warns about broken discs, removed guards, incorrect discs and kickback. One SafeWork NSW safety alert describes a fatal incident in which part of a broken disc from a 230 mm angle grinder struck a worker's chest and caused fatal internal injuries. A separate SafeWork NSW incident release describes a fatal nine-inch angle-grinder incident on a residential construction site and warns that larger 230 mm grinders are harder to manoeuvre and can cause severe kickback.<br><br><strong>Safety in Design link.</strong> Safe design guidance requires designers of structures used as workplaces to consider hazards created by design decisions and to work through the hierarchy of control. In this entry, the higher-risk task is grinder cutting of large reinforcement bars. The designer cannot control the contractor's cutting method, but can avoid specifying 20 mm and larger slab bars where 12 mm or 16 mm bars would be structurally practical. That is the design-stage control: reduce the likelihood that the hazardous cutting task is created unnecessarily.<br><br><strong>References</strong><br>Steel Reinforcement Institute of Australia. (2016). <em>Bending Reinforcement on Site</em>, Issue No. 42/4, December 2016.<br>Steel Reinforcement Institute of Australia. (2007). <em>Fabrication and Site Handling of Reinforcing Bars</em>, Technical Note 4, November 2007.<br>Sozbilen, M. C., Dastan, A. E., Gunay, H., &amp; Kucuk, L. (2018). A prospective study of angle grinder injuries in the hands and forearms during a one-year period. <em>Hand Surgery and Rehabilitation, 37</em>, 300&ndash;304. https://doi.org/10.1016/j.hansur.2018.07.002<br>SafeWork NSW. (2018). <em>Guards and disks on angle grinders</em> safety alert.<br>SafeWork NSW. (2022). <em>Angle grinder fatality</em> incident information release.<br>Safe Work Australia. (2018). <em>Model Code of Practice: Safe Design of Structures</em>.",
+            "examples": [],
+            "supportingImages": [
+              {
+                "image": "images/angle-grinder-injury-severity-mhiss-sozbilen-2018.webp",
+                "title": "<strong>Angle-grinder injury severity &mdash; Sozbilen et al. (2018)</strong><br>In a prospective one-year study of angle-grinder hand and forearm injuries, Figure 4 labels 40% of recorded injuries as severe and 31% as major using the Modified Hand Injury Severity Score. Combined, severe and major injuries account for 71% of the angle-grinder injuries by the figure percentages. This supports treating grinder cutting as a meaningful construction-stage safety exposure, not merely a minor inconvenience. Source: Sozbilen et al. (2018), <em>Hand Surgery and Rehabilitation</em>, 37, 300&ndash;304."
+              }
+            ],
+            "dateAdded": "2026-06-15",
+            "dateReviewed": "2026-06-15",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "The hazard of angle-grinder cutting is strongly supported by clinical injury evidence and SafeWork NSW regulator material, and the 16 mm reinforcement-handling hinge is supported by SRIA guidance. The design link between specifying 20 mm and larger slab bars and increasing likely grinder-cutting exposure is a reasoned constructability pathway rather than a measured reinforcement-specific injury dataset, so the overall support level is medium."
+            },
+            "relatedEntries": [
+              {
+                "id": "hand-bendable-bar-sizes-for-slab-reinforcement",
+                "note": "Both ask whether 20 mm and larger slab bars are genuinely required, or whether 12 mm and 16 mm bars can achieve the design more constructably."
+              },
+              {
+                "id": "slab-bar-diameter-and-on-site-bending-equipment",
+                "note": "Both use the same 16 mm hinge. This entry focuses on cutting safety, while the logistics entry focuses on bending equipment class and on-site adaptability."
+              },
+              {
+                "id": "large-bar-callout-clarity",
+                "note": "If 20 mm and larger bars are required, making them visually clear reduces the chance of ordering, fixing or cutting errors that could lead to site correction."
+              },
+              {
+                "id": "reinforcement-callout-clarity",
+                "note": "Both concern the risk that additional or non-typical reinforcement is missed, misread or incorrectly fixed because the drawing does not make it clear enough."
+              }
+            ]
+          }
+        },
+        {
           "id": "temporary-works-stability",
           "name": "Temporary works stability",
           "available": false,
@@ -3181,7 +3290,8 @@
     "fragment|entry|rock-sockets-vs-likely-available-drilling-plant|1wcqpje",
     "fragment|update|hand-bendable-bar-sizes-for-slab-reinforcement|vulmto",
     "fragment|entry|slab-bar-diameter-and-on-site-bending-equipment|qkisu4",
-    "fragment|entry|large-bar-callout-clarity|uan5pm"
+    "fragment|entry|large-bar-callout-clarity|uan5pm",
+    "fragment|entry|reducing-grinder-cutting-from-large-slab-reinforcement-bars|1rh10n1"
   ],
   "_rejected": [],
   "_reconsider": [
