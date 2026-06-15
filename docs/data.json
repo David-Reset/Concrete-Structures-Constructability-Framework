@@ -1463,14 +1463,111 @@
         },
         {
           "id": "hand-bendable-bar-sizes-for-slab-reinforcement",
-          "name": "Hand-bendable bar sizes for slab reinforcement",
-          "available": false,
-          "draft": true,
+          "name": "Avoiding unnecessary large bars in slab reinforcement",
+          "available": true,
           "data": {
-            "question": "For slab reinforcement that may need to be cranked, offset or adjusted on site, has a bar size that can be bent on site with a proper hand bending tool (N12, N16) been specified — or does the specified size (N20 and above) force machine bending or pre-bent supply and remove that site adaptability?",
-            "parameter": "Specified diameter of slab main and secondary reinforcement where on-site bending or adjustment may be required (N12 / N16 vs N20 and above).",
-            "_evidenceAngle": "Construction-practice evidence, not a standards argument. BRANZ Build (site-bending of reinforcing steel): traditional long-handled manual benders bend up to ~16 mm, with ~12 mm the largest comfortably hand-bent; a common hand bender tops out at 16 mm. So N12/N16 retain on-site bendability with proper tooling; N20+ generally need a machine or pre-bending. CRITICAL nuance to keep in mind (Australian Reinforcement Handbook / SRIA): on-site cold bending must use a proper bar-bending tool — NOT pulling against a concrete edge, sledgehammering, or using a pipe, which damages the bar, cuts ductility and can break it. The entry recommends choosing a bendable SIZE, never crude bending, and respecting minimum bend pin diameters. Distinct from the existing Logistics 'Stirrup bar size availability' entry (that is ground-footing stirrups/ties + supplier availability + cage stability; this is suspended-slab main bars + the hand-bend threshold).",
-            "_thresholdSketch": "Best practice: N12/N16 where site bending/adjustment is foreseeable. Consider: N16 at the larger end of comfortable hand bending. Concern: N20 specified where site adaptability is likely needed — machine bend or pre-bend required. Action required: large bars specified into a detail that realistically depends on site adjustment."
+            "question": "Has slab reinforcement been detailed with 12 mm or 16 mm bars where structurally practical, with bars 20 mm diameter and larger limited to locations where the larger diameter is genuinely required?",
+            "parameter": "Nominal bar diameter used for slab reinforcement (mm).",
+            "keywords": [
+              "bar diameter",
+              "bar size",
+              "N12",
+              "N16",
+              "N20",
+              "N24",
+              "large bars",
+              "slab reinforcement",
+              "slab bars",
+              "hand bendable",
+              "bendable bars",
+              "site bending",
+              "rebar bending",
+              "reo bending",
+              "reinforcement detailing",
+              "reinforcement coordination",
+              "bar spacing",
+              "larger bars",
+              "smaller bars"
+            ],
+            "background": "In slab reinforcement, the design engineer chooses the bar diameter and spacing. Larger bars can reduce the number of bars shown on the drawing, but that does not always make the detail easier to build. Once slab reinforcement moves above 16 mm diameter, it leaves the ordinary hand-bendable range identified in SRIA guidance and becomes a different handling class on site.<br><br>This entry is not saying that 20 mm, 24 mm or larger bars are wrong. Where the structure genuinely requires larger bars, they should be used. The constructability issue is using bars above 16 mm where 12 mm or 16 mm bars at closer spacing could reasonably achieve the same design intent.<br><br>For general slab reinforcement, 12 mm and 16 mm bars are usually the more buildable sizes. They are easier to handle, place, tie, support on chairs, coordinate around penetrations and setdowns, and locally work into congested reinforcement zones. Larger bars are stiffer, heavier and less forgiving. They can still be bent or processed using the correct equipment, but they should not be treated as having the same ordinary site adaptability as 12 mm or 16 mm bars.<br><br>The design-stage prompt is therefore simple: do not make bars 20 mm and larger the default slab reinforcement size unless the design needs them. Use 12 mm and 16 mm bars where structurally practical, and keep larger bars localised to the areas where their diameter is actually required.",
+            "thresholds": [
+              {
+                "range": "12 / 16 mm",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "Slab reinforcement is detailed with 12 mm or 16 mm bars where these sizes can satisfy the structural design. These sizes sit within the practical hand-bendable range identified by SRIA guidance and are generally easier to handle, place, tie and coordinate on site. Larger bars may still be used where required, but they are not used as the default slab bar size."
+              },
+              {
+                "range": ">= 20 mm",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Bars 20 mm diameter or larger have been used in slab reinforcement. This may be necessary in higher-demand locations, but it should not be the default where 12 mm or 16 mm bars at closer spacing could achieve the design intent. Bars above 16 mm are outside the ordinary hand-bendable range and are generally less forgiving to handle and coordinate. Review whether the larger bars are genuinely required, and where they are not, use 12 mm or 16 mm bars instead."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Use 12 mm and 16 mm bars for general slab reinforcement where structurally practical",
+                "description": "Where the required reinforcement area can be achieved with 12 mm or 16 mm bars at practical spacing, use those sizes for general slab reinforcement. This keeps the slab detail within the normal hand-bendable range and improves handling, fixing and coordination on site."
+              },
+              {
+                "title": "Reserve 20 mm and larger bars for genuine demand",
+                "description": "Do not avoid larger bars where the design needs them. Use 20 mm, 24 mm or larger bars where required for local demand, anchorage, transfer, punching, concentrated loads, lap constraints, congestion control or another real design reason. The issue is unnecessary use of large bars, not the use of large bars altogether."
+              },
+              {
+                "title": "Keep larger bars localised",
+                "description": "Where larger bars are required, keep them to the strips, zones or details where the demand exists. Do not let a local need for larger bars become the default reinforcement size across the wider slab."
+              },
+              {
+                "title": "Consider closer-spaced smaller bars before increasing bar diameter",
+                "description": "Where both options satisfy the structural design, consider whether closer-spaced 12 mm or 16 mm bars would produce a more buildable slab than fewer larger bars. The lowest bar count is not always the most constructable reinforcement layout."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to reinforced concrete slab reinforcement where the designer is choosing bar diameter and spacing. It is most relevant to suspended slabs, raft slabs, podium slabs, balconies, slab setdowns, slab thickenings and local reinforcement zones where the same reinforcement area could potentially be achieved using either smaller bars at closer spacing or larger bars at wider spacing.",
+              "checks": [
+                {
+                  "title": "Larger bars may be structurally required",
+                  "description": "This entry does not apply where the larger bar diameter is structurally required. It is not a rule against 20 mm, 24 mm or larger reinforcement. It is a prompt to avoid using those bars unnecessarily in general slab reinforcement."
+                },
+                {
+                  "title": "Bar diameter and spacing are the design decision",
+                  "description": "This entry does not ask the design engineer to specify the contractor's bending equipment, bending method or site procedure. The engineer's design decision is the bar diameter and spacing. Contractor means and methods remain outside this entry."
+                },
+                {
+                  "title": "Drawing clarity for isolated larger bars is separate",
+                  "description": "Where only a small number of larger bars are required in an otherwise 12 mm or 16 mm slab, drawing clarity becomes important. That is a separate Design Communication issue: isolated larger bars should be made clear enough that they are not missed or confused with typical slab reinforcement."
+                }
+              ],
+              "note": "Use the rating as a constructability prompt about bar-size selection in slab reinforcement. The aim is not to prohibit larger bars, but to avoid making bars above 16 mm the default where 12 mm or 16 mm bars would be structurally practical."
+            },
+            "evidence": "SRIA guidance identifies 16 mm as the practical hinge for site bending. SRIA states that manual bending tools are recommended for bars up to about 16 mm diameter, with electric bending tools recommended for larger bars. SRIA also notes that rebending is intended for smaller bars, with bars 16 mm and smaller covered by the rebend-test range and bars 20 mm and larger outside that range.<br><br>SRIA Technical Note 4 gives the same practical split. It states that cold bending bars greater than 16 mm diameter requires considerable force, that 12 mm and 16 mm bars should be bent cold, and that 20 mm and larger bars preferably require power-operated bending tools.<br><br>This supports treating 12 mm and 16 mm bars as the practical hand-bendable range for slab detailing, and treating bars 20 mm diameter and larger as a different constructability class. The evidence does not say that 20 mm or larger bars cannot be bent. It supports the narrower design-stage conclusion used here: avoid specifying bars above 16 mm in slab reinforcement unless the larger diameter is genuinely required.<br><br><strong>References</strong><br>Steel Reinforcement Institute of Australia. (2016). <em>Bending Reinforcement on Site</em> (Issue No. 42/4). SRIA.<br>Steel Reinforcement Institute of Australia. (2007). <em>Technical Note 4: Fabrication and Site Handling of Reinforcing Bars</em>. SRIA.",
+            "examples": [],
+            "supportingImages": [
+              {
+                "image": "images/manual-rebar-bending-tool.webp",
+                "title": "<strong>Manual rebar bending tool</strong><br>Manual bending tools represent the ordinary low-cost site equipment used for smaller reinforcing bars. SRIA guidance places the practical manual-bending range at up to about 16 mm diameter, supporting the preference for 12 mm and 16 mm slab bars where structurally practical. Image source: wikiHow, \"How to Bend Rebar\"."
+              },
+              {
+                "image": "images/power-operated-rebar-bender.webp",
+                "title": "<strong>Power-operated rebar bender</strong><br>Power-operated bending tools are a different class of equipment from a simple manual bending tool. SRIA guidance states that cold bending bars greater than 16 mm requires considerable force and that 20 mm and larger bars preferably require power-operated bending tools. Image source: wikiHow, \"How to Bend Rebar\"."
+              }
+            ],
+            "dateAdded": "2026-06-15",
+            "dateReviewed": "2026-06-15",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "high",
+              "summary": "The 16 mm hinge is directly supported by SRIA guidance. The constructability recommendation is deliberately narrow: use 12 mm and 16 mm bars where structurally practical, and reserve 20 mm and larger bars for where the larger diameter is genuinely required."
+            },
+            "relatedEntries": [
+              {
+                "id": "stirrup-bar-size-availability-and-site-adaptability",
+                "note": "Both concern choosing reinforcement sizes that remain practical to handle and adjust on site, but this entry applies to slab reinforcement while the related entry applies to ground-footing stirrups, ligatures and ties."
+              }
+            ]
           }
         },
         {
@@ -2837,7 +2934,8 @@
     "fragment|entry|rock-sockets-with-excavator-mounted-augers|3iehqn",
     "fragment|entry|rock-sockets-with-excavator-mounted-augers-2|1wz6lky",
     "fragment|entry|rock-sockets-founding-on-rock-vs-drilled-socket|1va5unk",
-    "fragment|entry|rock-sockets-vs-likely-available-drilling-plant|1wcqpje"
+    "fragment|entry|rock-sockets-vs-likely-available-drilling-plant|1wcqpje",
+    "fragment|update|hand-bendable-bar-sizes-for-slab-reinforcement|vulmto"
   ],
   "_rejected": [],
   "_reconsider": [
