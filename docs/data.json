@@ -1688,7 +1688,7 @@
           "available": true,
           "data": {
             "question": "On a suspended beam, can the depth below the slab soffit be braced off a standard plywood sheet at a safe raker angle — or does it force an oversized board?",
-            "parameter": "The bracing width the side-form raker needs at 45° (the soffit-sheet dimension running across the beam), checked against the standard 1200 × 1800 sheet and an oversized 2400. Table 2 shows the internal-beam case; Table 3 shows the edge-beam case, where the outer face braces the full beam depth.",
+            "parameter": "The bracing width the side-form raker needs at 45° — the soffit-sheet dimension across the beam — checked against the standard 1200 × 1800 sheet and an oversized 2400.",
             "keywords": [
               "beam soffit",
               "side form",
