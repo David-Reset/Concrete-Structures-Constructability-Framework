@@ -3003,6 +3003,22 @@
             "examples": [],
             "supportingImages": [
               {
+                "image": "images/founding-material-visible-vs-hidden.webp",
+                "title": "<strong>Founding material visible versus hidden</strong><br>Bored concrete piles bring excavated material to the surface and leave an open borehole before the cage and concrete are placed, allowing the founding material to be inspected. Screw piles do not create an open bore or equivalent spoil return, so the material supporting the helix remains hidden below ground."
+              },
+              {
+                "image": "images/screw-piles-different-founding-material.webp",
+                "title": "<strong>Same site, different founding material</strong><br>Nearby screw piles can look identical at ground level while their helices found in different subsurface materials. One pile may reach the intended competent rock, while another may terminate in weaker material where the rock level changes. The issue is not whether screw piles can work, but whether the founding condition of each pile can be verified."
+              },
+              {
+                "image": "images/bored-pile-vs-screw-pile-verification.webp",
+                "title": "<strong>Bored pile versus screw pile verification</strong><br>Bored concrete piles provide directly observable construction evidence: bore depth, bore diameter, spoil or founding material, and reinforcement cage placement can be checked before concrete is placed. Screw piles provide less visible evidence below ground, so the designer must rely more heavily on surface set-out, installation records, torque information, testing and certification."
+              },
+              {
+                "image": "images/screw-pile-verification-pathway.webp",
+                "title": "<strong>Why screw piles can be harder to independently verify</strong><br>Screw piles can offer fast installation, low disruption, no spoil and no curing delay, but those same advantages reduce the amount of directly visible construction evidence. Without an open bore or spoil return, the founding material and helix position are not directly visible, so verification relies more heavily on installation records, torque data, testing and certification."
+              },
+              {
                 "image": "images/screw-pile-through-bar-link-ground-beam.webp",
                 "title": "<strong>Example screw pile head linked into a ground beam</strong><br>Example screw pile head linked into a reinforced concrete ground beam using a transverse reinforcing bar. This image is not shown as a defective detail; it illustrates the type of pile-head connection that should be established and certified by the screw pile designer before the beam is poured."
               },
@@ -3855,7 +3871,8 @@
     "fragment|entry|latent-safety-risk-of-screw-pile-foundations|pz0zz8",
     "fragment|update|beam-soffit-formwork-proportions|13eq5ox",
     "fragment|update|beam-soffit-formwork-proportions|o0wv36",
-    "fragment|update|beam-soffit-formwork-proportions|1nh4wm8"
+    "fragment|update|beam-soffit-formwork-proportions|1nh4wm8",
+    "fragment|update|latent-safety-risk-of-screw-pile-foundations|1dfv8k0"
   ],
   "_rejected": [],
   "_reconsider": [
