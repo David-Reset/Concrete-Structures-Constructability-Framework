@@ -1003,7 +1003,7 @@
               ],
               "note": "Use the rating as a constructability review prompt, not a rule that isolated members must be steel or blockwork. The bands scale how strongly the structure points toward a cycling concrete trade or a defined concrete role: repetition of similar floors or a lateral/flat-plate/fire role favours concrete; an isolated member on a low-rise, non-repetitive job with no such role is where a blockwork-and-steel scheme is most worth weighing. Structural adequacy, fire, durability and connection design of any alternative remain the engineer's responsibility under the relevant standards."
             },
-            "evidence": "<strong>Why repetition favours concrete.</strong> Reinforced concrete is a wet-trade cycle in which formwork, not concrete, dominates the labour: Löfgren et al. (2001) attribute roughly 49% of concrete-structure work to formwork against about 11% to concrete operations, and identify simplicity and repetition as key efficiency principles. Because formwork is the cost, reusing it is what makes concrete economical. Jarkas (2010) measured this directly, finding that repetition of floor layout and standardisation significantly improve formwork labour productivity on building floors. The underlying mechanism is the learning curve first described by Wright (1936), in which unit labour time falls a fixed proportion each time cumulative output doubles &mdash; exactly the effect repeated, similar floors produce. Many similar floors therefore make concrete columns and walls efficient; few or irregular floors do not.<br><br><strong>Why a dry or simpler trade can win otherwise.</strong> The foundational buildability principles (CIRIA, 1983; Adams, 1989) call both for maximum repetition and standardisation and for modular and pre-assembly designs that facilitate prefabrication and installation. The first favours repeated in-situ concrete; the second favours a steel post erected dry and out of sequence, or a blockwork wall that needs no formwork, stripping or curing and can be built ahead of the deck. Which principle dominates depends on the structure, which is why this is a genuine trade-off rather than a fixed preference.<br><br><strong>Why concrete sometimes earns its place regardless of repetition.</strong> A vertical member that forms part of the lateral system (a core or shear wall), or a column under a flat plate where the monolithic head carries punching shear and moment continuity, performs a structural function that substituting steel or blockwork would change, not merely relocate. Fire resistance and durability can do the same. These are design requirements governed by the relevant structural and fire standards (in Australia, AS 3600 and AS 4100) and remain the engineer's responsibility; the entry prompts the comparison, it does not pre-empt that design.<br><br><strong>Why the entry does not name a cost winner.</strong> Published frame-comparison studies reach opposing conclusions that track the interest publishing them: steel-industry cost studies report steel frames modestly cheaper and faster to erect, while concrete- and masonry-industry studies report concrete or concrete-masonry systems cheaper, and independent academic comparisons (typically software cost models) contradict one another and are highly sensitive to their assumptions. The one robust, cross-source agreement is that steel erects faster. Because the cost result depends on region, market, scale and the project's fire and lateral strategy, this entry flags when a builder's or contractor's practical input is worth seeking rather than declaring an outcome.<br><br><strong>Basis of the bands.</strong> The bands scale how strongly the structure points toward a cycling concrete trade or a defined concrete role. The repetition leg is supported by measured formwork-productivity research; the structural-role gate by standard design behaviour; the cost dimension is deliberately left to a builder or contractor's input. The exact tipping point in the middle (the close mid-rise call) is practitioner judgement and should be refined with project examples and regional feedback.<br><br><strong>References</strong><br>Adams, S. (1989). <em>Practical Buildability</em> (CIRIA Building Design Report). Butterworths, London.<br>CIRIA (1983). <em>Buildability: An Assessment</em>. CIRIA Special Publication 26, London.<br>Jarkas, A. M. (2010). Buildability factors affecting formwork labour productivity of building floors. <em>Canadian Journal of Civil Engineering</em>, 37(10), 1383-1394.<br>L&ouml;fgren, I., Gylltoft, K., &amp; Kutti, T. (2001). <em>In-situ concrete building - Innovations in Formwork</em>. Department of Structural Engineering, Chalmers University of Technology / Thomas Concrete Group.<br>Wong, F. W. H., Lam, P. T. I., Chan, E. H. W., &amp; Wong, F. K. W. (2006). Factors affecting buildability of building designs. <em>Canadian Journal of Civil Engineering</em>, 33, 795-806.<br>Wright, T. P. (1936). Factors affecting the cost of airplanes. <em>Journal of the Aeronautical Sciences</em>, 3(4), 122-128.",
+            "evidence": "<strong>Why repetition favours concrete.</strong> Reinforced concrete is a wet-trade cycle in which formwork, not concrete, dominates the labour: Löfgren et al. (2001) attribute roughly 49% of concrete-structure work to formwork against about 11% to concrete operations, and identify simplicity and repetition as key efficiency principles. Because formwork is the cost, reusing it is what makes concrete economical. Jarkas (2010) measured this directly, finding that repetition of floor layout and standardisation significantly improve formwork labour productivity on building floors. The mechanism is a learning-curve effect &mdash; as the same floor layout and the same formwork are repeated, unit labour time falls and output climbs &mdash; which is what those productivity gains reflect. Many similar floors therefore make concrete columns and walls efficient; few or irregular floors do not.<br><br><strong>Why a dry or simpler trade can win otherwise.</strong> The foundational buildability principles (CIRIA, 1983; Adams, 1989) call both for maximum repetition and standardisation and for modular and pre-assembly designs that facilitate prefabrication and installation. The first favours repeated in-situ concrete; the second favours a steel post erected dry and out of sequence, or a blockwork wall that needs no formwork, stripping or curing and can be built ahead of the deck. Which principle dominates depends on the structure, which is why this is a genuine trade-off rather than a fixed preference.<br><br><strong>Why concrete sometimes earns its place regardless of repetition.</strong> A vertical member that forms part of the lateral system (a core or shear wall), or a column under a flat plate where the monolithic head carries punching shear and moment continuity, performs a structural function that substituting steel or blockwork would change, not merely relocate. Fire resistance and durability can do the same. These are design requirements governed by the relevant structural and fire standards (in Australia, AS 3600 and AS 4100) and remain the engineer's responsibility; the entry prompts the comparison, it does not pre-empt that design.<br><br><strong>Why the entry does not name a cost winner.</strong> Published frame-comparison studies reach opposing conclusions that track the interest publishing them: steel-industry cost studies report steel frames modestly cheaper and faster to erect, while concrete- and masonry-industry studies report concrete or concrete-masonry systems cheaper, and independent academic comparisons (typically software cost models) contradict one another and are highly sensitive to their assumptions. The one robust, cross-source agreement is that steel erects faster. Because the cost result depends on region, market, scale and the project's fire and lateral strategy, this entry flags when a builder's or contractor's practical input is worth seeking rather than declaring an outcome.<br><br><strong>Basis of the bands.</strong> The bands scale how strongly the structure points toward a cycling concrete trade or a defined concrete role. The repetition leg is supported by measured formwork-productivity research; the structural-role gate by standard design behaviour; the cost dimension is deliberately left to a builder or contractor's input. The exact tipping point in the middle (the close mid-rise call) is practitioner judgement and should be refined with project examples and regional feedback.<br><br><strong>References</strong><br>Adams, S. (1989). <em>Practical Buildability</em> (CIRIA Building Design Report). Butterworths, London.<br>CIRIA (1983). <em>Buildability: An Assessment</em>. CIRIA Special Publication 26, London.<br>Jarkas, A. M. (2010). Buildability factors affecting formwork labour productivity of building floors. <em>Canadian Journal of Civil Engineering</em>, 37(10), 1383-1394.<br>L&ouml;fgren, I., Gylltoft, K., &amp; Kutti, T. (2001). <em>In-situ concrete building - Innovations in Formwork</em>. Department of Structural Engineering, Chalmers University of Technology / Thomas Concrete Group.<br>Wong, F. W. H., Lam, P. T. I., Chan, E. H. W., &amp; Wong, F. K. W. (2006). Factors affecting buildability of building designs. <em>Canadian Journal of Civil Engineering</em>, 33, 795-806.",
             "examples": [],
             "supportingImages": [],
             "dateAdded": "2026-06-09",
@@ -1014,7 +1014,7 @@
             },
             "evidenceSupport": {
               "level": "medium",
-              "summary": "The core lean is well supported: measured formwork-productivity research shows repetition and standardisation drive concrete efficiency (Jarkas, 2010; Löfgren et al., 2001), reinforced by the learning-curve principle (Wright, 1936) and the foundational buildability principles (CIRIA, 1983; Adams, 1989), which also back the prefabrication advantage of steel. The concrete-specific role gate (lateral systems, flat-plate column heads, fire) rests on standard design behaviour and the relevant standards. The entry deliberately does not adjudicate the cost comparison, which published frame studies dispute and which is region-dependent, and the mid-rise tipping point between bands is practitioner judgement. Treat as a constructability prompt; the exact band boundaries should be refined with project examples."
+              "summary": "The core lean is well supported: measured formwork-productivity research shows repetition and standardisation drive concrete efficiency (Jarkas, 2010; Löfgren et al., 2001), reinforced by the learning-curve effect that repeated, similar work produces and by the foundational buildability principles (CIRIA, 1983; Adams, 1989), which also back the prefabrication advantage of steel. The concrete-specific role gate (lateral systems, flat-plate column heads, fire) rests on standard design behaviour and the relevant standards. The entry deliberately does not adjudicate the cost comparison, which published frame studies dispute and which is region-dependent, and the mid-rise tipping point between bands is practitioner judgement. Treat as a constructability prompt; the exact band boundaries should be refined with project examples."
             },
             "relatedEntries": [
               {
@@ -1685,19 +1685,245 @@
         {
           "id": "beam-soffit-formwork-proportions",
           "name": "Beam soffit formwork proportions",
-          "available": false,
-          "draft": true,
+          "available": true,
           "data": {
-            "question": "On suspended beams, do the width and depth balance against standard form-panel modules — with neither dimension much exceeding the other and depth kept within easily-formed limits — or has a deep, narrow section been set that needs tall one-sided side-forms with extra ties and propping?",
-            "parameter": "Suspended beam width and depth relative to standard formwork panel sizes and to each other (balanced and within ~1.2 m preferred; deep narrow sections flagged).",
-            "_evidenceAngle": "Pure buildability / form-reuse argument in the same style as the off-form upturn entry — no standards content. Thresholds derived from physical form components, panel modules and the propping/access envelope a deep side-form demands. Practice references: formwork best-practice guides (Hurd, ACI SP-4; CIRIA / Concrete Society formwork guidance) as how-you-build-forms sources, not codes. Origin: project brief noting 1.2 x 1.8 panels, wanting width+depth roughly equal, neither exceeding the other, ideally ≤ ~1.2 m.",
-            "_thresholdSketch": "Good: width+depth balanced, within standard panel reuse, depth ≤ ~1.2 m. Consider: one dimension moderately larger. Concern: deep narrow section needing tall one-sided forms + extra ties. Action required: section that cannot be formed from standard panels without bespoke falsework.",
+            "question": "On a suspended beam, can the depth below the slab soffit be braced off a standard plywood sheet at a safe raker angle — or does it force an oversized board?",
+            "parameter": "The bracing width the side-form raker needs at 30° (the soffit-sheet dimension running across the beam), against the standard 1200 × 1800 sheet and an oversized 2400.",
+            "keywords": [
+              "beam soffit",
+              "side form",
+              "side-form bracing",
+              "raker",
+              "kicker",
+              "brace angle",
+              "30 degrees",
+              "formwork plywood",
+              "1200 x 1800",
+              "soffit board",
+              "downstand",
+              "formed depth",
+              "beam depth",
+              "slab absorbed",
+              "deep narrow beam",
+              "formwork reuse",
+              "form panel module"
+            ],
+            "background": "A suspended beam is formed with a soffit board and two side forms, and the side forms must be braced against the lateral pressure of the wet concrete. On an elevated soffit table that bracing is taken by a raker footing on the soffit board itself — up in the air there is nothing below to anchor to, so the run available to the raker is limited by the width of the soffit board on either side of the beam. Critically, only the formed downstand — the part of the beam projecting below the slab soffit — has to be braced this way. The slab thickness above is formed and supported by the adjacent deck. This means a deep beam with a thick slab can be an easy form, while the same beam under a thin slab can be a hard one, because what matters is the depth left below the soffit. The constructability check is therefore not the beam's structural depth but whether its formed downstand can be braced off a standard plywood board at a safe raker angle, before the section forces an oversized board or bespoke falsework.",
+            "thresholds": [
+              {
+                "range": "<= 1200 mm",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "Braces off the standard 1200 × 1800 sheet laid with its 1200 side across the beam — the efficient orientation, since the 1800 then runs along the beam length and fewer sheets cover the run. Lightest to handle, simplest side form. Most beams with a normal slab sit here — e.g. a 400 mm wide beam up to ~420 mm total depth under a 200 mm slab (a ~220 mm formed downstand)."
+              },
+              {
+                "range": "1200 - 1800 mm",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "Needs the same standard sheet turned so its 1800 side runs across the beam, giving the wider bracing. Structurally no different and the same board — but the 1200 now runs along the beam length, so more sheets, and more cross-joints, are needed to cover the run. E.g. a 600 mm wide beam up to ~535 mm total depth under a 200 mm slab (a ~335 mm formed downstand)."
+              },
+              {
+                "range": "1800 - 2400 mm",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Exceeds what the standard sheet gives in either orientation — needs a 2400 mm board. It will brace the downstand, but 2400 sheets are awkward and unpopular to handle on the soffit table and slow the crew. Reconsider the proportions, or deepen the slab to pull the downstand back onto the standard sheet (every 100 mm taken into the slab removes ~346 mm of required bracing width)."
+              },
+              {
+                "range": "> 2400 mm",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "No standard plywood sheet braces the formed downstand off the soffit at a safe raker angle. The section needs engineered falsework, a proprietary deep-beam forming system, or a redesign that reduces the formed downstand — a deeper slab to absorb depth, or a wider, shallower (band) beam. Confirm the forming method with the contractor at the design stage rather than committing to the section as drawn."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Let the slab absorb more of the beam depth",
+                "description": "The most powerful and cheapest lever. Because only the downstand below the slab soffit is braced off the board, deepening the slab directly reduces the formed downstand. Every 100 mm of depth moved into the slab removes about 346 mm from the required soffit-board width at a 30° raker. A deep beam that fails the check on total depth can often pass once a realistic slab thickness is accounted for. Verify the slab design still works structurally and that the deeper slab does not create its own constructability or cost issues."
+              },
+              {
+                "title": "Proportion the beam wider and shallower (band beam)",
+                "description": "For the same cross-sectional area or capacity, a wider, shallower band beam has a smaller formed downstand and braces off a smaller board. Where the structural design and headroom allow it, widening and reducing depth keeps the section on a standard board. Check deflection, shear and any architectural soffit constraints before reproportioning."
+              },
+              {
+                "title": "Engineered or proprietary deep-beam formwork",
+                "description": "Where the downstand genuinely has to be deep, proprietary modular beam-forming systems or an engineered falsework design can brace a side form that a standard board cannot. This shifts the work from standard plywood and rakers to a designed temporary-works solution, with the associated hire cost, lead time and a competent temporary-works design. More readily justified on larger or repetitive projects than for an isolated deep beam."
+              },
+              {
+                "title": "Reconsider the framing",
+                "description": "If a deep beam is being used only to span, consider whether a different framing approach reduces the depth — more frequent beams, a band-beam-and-slab system, or post-tensioning to cut the structural depth. Each changes the formed downstand and therefore the board the side form can be built from. Weigh against the wider scheme, services coordination and cost."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to suspended and elevated reinforced concrete beams formed on a soffit table, where the side forms are braced by rakers footing on the soffit board. It does not apply to ground beams, beams cast against an existing face, or beams whose side forms can be restrained by other means (for example a top tie across to the opposite face, or an abutting permanent element).",
+              "checks": [
+                {
+                  "title": "Slab thickness assumed",
+                  "description": "The worked example uses a 200 mm slab. The figure that matters is the formed downstand = total beam depth − slab thickness. Re-run the check for the project's actual slab thickness before applying the band — a thicker slab moves the beam into a better band, a thinner slab into a worse one."
+                },
+                {
+                  "title": "Raker anchorage and top restraint",
+                  "description": "The cap assumes the raker must foot on the soffit board itself, which is the case for a beam formed on a soffit table with nothing below to anchor to. Where the side form can instead be tied across the top to the opposite face, or restrained by an abutting element, the raker demand reduces and the board-width cap relaxes."
+                },
+                {
+                  "title": "Brace angle convention",
+                  "description": "30° is adopted as the conservative, flat-raker worst case: it is the most effective angle for resisting horizontal concrete pressure and produces the least uplift, but it needs the most run and therefore yields the shallowest allowable downstand. A steeper raker fits a narrower board but increases the brace force and the uplift on the form foot. Sizing at 30° means any steeper raker the site actually uses still fits the envelope."
+                },
+                {
+                  "title": "Plywood sheet sizes and thickness",
+                  "description": "The bands use standard formply sheet widths of 1200, 1800 and 2400 mm. Formply is about 17 mm thick; 20 mm is assumed for the side-form ply to allow tolerance, which changes the caps by only a few millimetres. Sheet sizes and common formply thicknesses vary by region and supplier; confirm the locally available board sizes before applying the numbers elsewhere."
+                },
+                {
+                  "title": "Form pressure independent of geometry",
+                  "description": "The board-width cap is a bracing-geometry check only. A deeper downstand also raises the lateral concrete pressure and therefore the demand on soldiers, walers and ties, governed by the pour rate and concrete properties. A section that passes the geometry check can still need a heavier side-form build-up; size the form components separately to the relevant formwork pressure provisions."
+                }
+              ],
+              "note": "Use the rating as a constructability review prompt, not a prohibition. The board-width cap is the conservative board-footed case at a 30° raker; the appropriate response to a poor rating is to confirm the forming method early or apply the slab-absorption lever, not to abandon the section outright."
+            },
+            "evidence": "A suspended beam's side forms resist the lateral pressure of the wet concrete, and on an elevated soffit table that restraint is provided by a raker that foots on the soffit board itself — there is nothing below to anchor to. The thresholds are derived from the geometry of that raker, the standard plywood sheet sizes available to foot it, and a documented form-bracing angle, with the lateral form pressure treated as a separate sizing check.<br><br><strong>Why the raker angle governs, and why 30°.</strong> The raker resists the horizontal concrete pressure as axial compression. Resolving the brace force at an angle to the horizontal, the useful horizontal restraint is the force times the cosine of the angle, while the vertical uplift dumped into the foot is the force times the tangent of the angle. A flatter raker is therefore the more effective and lower-uplift choice: the uplift is about 0.58 of the horizontal force at 30°, equal to it at 45°, and 1.73 times it at 60°. 45° is a sensible upper bound rather than an optimum, and a flatter brace — around 30° — is preferred, most importantly where the top of the side form is not otherwise restrained and the raker alone must hold it plumb. A concrete-form construction manual states the diagonal bracing member should make a 30° angle with the horizontal. 30° is adopted here as the conservative worst case: being the flattest practical raker it needs the most run and yields the shallowest allowable downstand, so any steeper raker the site uses still fits the sized envelope. The lateral load the bracing carries follows ACI 347, which requires wall-form bracing to be designed for a load applied at the top of the form.<br><br><strong>The geometry.</strong> With the raker at 30°, the run it needs to brace a formed downstand H is H ÷ tan 30° ≈ 1.73 H. Footing on the soffit board, the run available each side is the board half-width, less the beam half-width, less the side-form ply (about 20 mm, allowing tolerance on ~17 mm formply). Setting available run equal to required run gives the downstand a sheet can brace, and rearranging gives a single closed-form rule:<br><br><strong>required bracing width ≈ beam width + 3.46 × formed downstand + 40 mm</strong><br><br>(3.46 is 2 ÷ tan 30°; 40 mm is two 20 mm plies). The required bracing width is the soffit-sheet dimension that must run across the beam. A 400 mm wide beam with a 200 mm downstand needs about 400 + 692 + 40 ≈ 1130 mm — within the 1200 dimension of a standard sheet; a 600 mm wide beam with a 335 mm downstand needs about 1795 mm — at the 1800 dimension. The worked example tabulates this across beam widths and the three sheet options.<br><br><strong>The standard sheet and its two orientations.</strong> A standard formply sheet is 1200 × 1800 mm. Laid with the 1200 across the beam it is in its efficient orientation, the 1800 running along the beam length so fewer sheets cover the run; turned so the 1800 runs across the beam it gives more bracing width, but the 1200 now runs along the length, needing more sheets and more cross-joints. Only past 1800 mm of required bracing width is a genuinely larger 2400 sheet needed — which braces the downstand but is awkward to handle, hence the concern rating; past 2400 mm no standard sheet braces it off the soffit and engineered falsework is required.<br><br><strong>The slab lever.</strong> Because only the downstand below the slab soffit is braced, slab thickness is the cheapest lever: every 100 mm of depth moved into the slab removes about 346 mm from the required bracing width. A beam that fails on total depth often passes once a realistic slab is accounted for — a 400 × 400 beam under a 200 mm slab is only a 200 mm formed downstand and sits on the standard sheet in its best orientation.<br><br><strong>Limitations.</strong> The sheet dimensions (1200, 1800, 2400) are physical standards and the run requirement is first-principles geometry, but two inputs are reasoned: the 30° raker is a documented practice convention adopted as a conservative worst case rather than a measured optimum for this exact element, and the cap assumes the raker foots on the soffit board with the form braced toward its top. Where a top tie or an abutting element restrains the form, the cap relaxes. The cap is a bracing-geometry check only; the lateral concrete pressure must be sized separately against the relevant formwork-pressure provisions.<br><br><strong>References</strong><br>ACI Committee 347. Guide to Formwork for Concrete. American Concrete Institute.<br>Hurd, M. K. (2005). Formwork for Concrete (7th ed.). American Concrete Institute (ACI SP-4).<br>Jha, K. N. (2012). Formwork for Concrete Structures. Tata McGraw Hill.<br>Standard formply sheet sizes (1200 × 1800 and 2400 mm) and ~18 mm thickness per common manufacturer/supplier data.",
+            "examples": [],
+            "supportingImages": [
+              {
+                "image": "images/beam-soffit-cross-section.png",
+                "title": "<strong>PLACEHOLDER — beam side-form cross-section</strong><br>Soffit board with the beam concentric, two side forms, and the raker footing on the board wing at 30° to the horizontal. Dimension the wing run, the formed downstand below the slab soffit, and the slab thickness over, so the reader sees that only the downstand is braced off the board."
+              },
+              {
+                "image": "images/beam-soffit-board-comparison.png",
+                "title": "<strong>PLACEHOLDER — 1200 vs 1800 vs 2400 board at a fixed beam width</strong><br>The same beam width shown on each of the three standard boards at a 30° raker, so the braceable formed-downstand cap visibly grows with board width — and the 2400 reads as the awkward, last-resort sheet."
+              },
+              {
+                "image": "images/beam-soffit-force-triangle.png",
+                "title": "<strong>PLACEHOLDER — raker force triangle</strong><br>The brace force resolved into its horizontal component (resisting the concrete pressure) and its vertical uplift component, showing why a flatter ~30° raker is the more effective and lower-uplift choice and why 45° is an upper bound rather than the optimum."
+              }
+            ],
+            "dateAdded": "2026-06-16",
+            "dateReviewed": "2026-06-16",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "The board-width thresholds rest on standard plywood sheet dimensions and first-principles raker geometry, with the 30° bracing angle taken from a documented form-bracing convention and adopted as a conservative worst case; the angle is a practice convention rather than a measured optimum for this element, the concern threshold is a handling judgement about the 2400 board, and the cap assumes a board-footed raker with the form braced toward its top. Would move toward high with a documented project example and an element-matched source for the 30° / 45° angle limits."
+            },
             "relatedEntries": [
               {
                 "id": "conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors",
                 "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
+              },
+              {
+                "id": "slab-depth-consistency",
+                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
+              },
+              {
+                "id": "repetition-and-the-formwork-learning-curve",
+                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
               }
-            ]
+            ],
+            "workedExample": {
+              "title": "Worked example — what each soffit sheet can brace",
+              "caveat": "A conservative, board-footed guide at a 30° raker — not a substitute for a temporary-works design. Re-run it for the project's actual slab thickness and locally available sheet sizes.",
+              "headline": "The first table is the formed downstand a sheet can brace at a safe 30° raker — the part of the beam below the slab soffit, before any slab is added. The second table adds a 200 mm slab to give a realistic total beam depth.",
+              "tableCaption": "Table 1 — Maximum formed downstand each sheet can brace (slab depth NOT yet considered)",
+              "tableHeaders": [
+                "Beam width",
+                "1200 across",
+                "1800 across (turned)",
+                "2400 board"
+              ],
+              "tableRows": [
+                [
+                  "300 mm",
+                  "250 mm",
+                  "420 mm",
+                  "595 mm"
+                ],
+                [
+                  "400 mm",
+                  "220 mm",
+                  "395 mm",
+                  "565 mm"
+                ],
+                [
+                  "500 mm",
+                  "190 mm",
+                  "365 mm",
+                  "535 mm"
+                ],
+                [
+                  "600 mm",
+                  "160 mm",
+                  "335 mm",
+                  "510 mm"
+                ],
+                [
+                  "700 mm",
+                  "135 mm",
+                  "305 mm",
+                  "480 mm"
+                ],
+                [
+                  "800 mm",
+                  "105 mm",
+                  "275 mm",
+                  "450 mm"
+                ]
+              ],
+              "tableCaption2": "Table 2 — The same as a realistic total beam depth, with a 200 mm slab absorbed (add your own slab thickness to Table 1)",
+              "tableHeaders2": [
+                "Beam width",
+                "1200 across",
+                "1800 across (turned)",
+                "2400 board"
+              ],
+              "tableRows2": [
+                [
+                  "300 mm",
+                  "450 mm",
+                  "620 mm",
+                  "795 mm"
+                ],
+                [
+                  "400 mm",
+                  "420 mm",
+                  "595 mm",
+                  "765 mm"
+                ],
+                [
+                  "500 mm",
+                  "390 mm",
+                  "565 mm",
+                  "735 mm"
+                ],
+                [
+                  "600 mm",
+                  "360 mm",
+                  "535 mm",
+                  "710 mm"
+                ],
+                [
+                  "700 mm",
+                  "335 mm",
+                  "505 mm",
+                  "680 mm"
+                ],
+                [
+                  "800 mm",
+                  "305 mm",
+                  "475 mm",
+                  "650 mm"
+                ]
+              ],
+              "howToUse": "Pick your beam width and read across. Table 1 is the deepest downstand each sheet braces below the soffit; Table 2 adds a 200 mm slab for a realistic total beam depth. The 1200-across column is best practice. If a beam only fits the 2400 column, deepen the slab or reproportion before committing.",
+              "assumptions": [
+                "Formply is about 17 mm; 20 mm is assumed here to allow for tolerance, which shifts the caps by only a few millimetres.",
+                "Raker at 30° to the horizontal — the conservative flat-raker worst case (most run, least uplift, shallowest allowable downstand).",
+                "The raker foots on the soffit board itself (suspended beam, nothing below to anchor to).",
+                "The 1200 and 1800 columns are the same standard 1200 × 1800 sheet in two orientations; 2400 is a genuinely larger sheet.",
+                "Table 1 is the formed downstand only; Table 2 adds a 200 mm slab. Formed downstand = total beam depth − slab thickness.",
+                "Closed-form rule: required bracing width ≈ beam width + 3.46 × formed downstand + 40 mm (3.46 = 2 ÷ tan 30°; 40 = two 20 mm plies)."
+              ],
+              "assumptionsNote": "Every 100 mm of depth moved into the slab removes about 346 mm from the required bracing width — the cheapest lever for bringing a deep beam back onto a standard sheet."
+            }
           }
         },
         {
@@ -2592,6 +2818,155 @@
           }
         },
         {
+          "id": "latent-safety-risk-of-screw-pile-foundations",
+          "name": "Foundation selection and the latent safety risk of screw piles",
+          "available": true,
+          "data": {
+            "question": "Has the foundation system been chosen so the designer can verify its as-built adequacy &mdash; or have screw piles been adopted on speed and cost, leaving a latent, uninspectable risk that hasn't been weighed or communicated?",
+            "parameter": "The chosen foundation system, assessed on whether the designer can verify its as-built adequacy.",
+            "keywords": [
+              "screw piles",
+              "helical piles",
+              "foundation selection",
+              "safety in design",
+              "latent defect",
+              "differential settlement",
+              "pile cap",
+              "cap",
+              "punching shear",
+              "pile-head connection",
+              "reo bar connection",
+              "pile to structure connection",
+              "screw pile designer",
+              "producer statement",
+              "placement tolerance",
+              "unverifiable foundation",
+              "founding material confirmation",
+              "contractor risk",
+              "builder substitution",
+              "CFA piles",
+              "bored piles",
+              "last resort foundation",
+              "torque over-read",
+              "liquefiable soil buckling",
+              "seismic lateral capacity"
+            ],
+            "background": "A building foundation can usually be carried by a concrete pile (bored or continuous-flight-auger) or by a screw (helical) pile. The safety question is not whether either has capacity on paper &mdash; both can be designed to. It is whether the <em>as-built</em> adequacy can be seen and verified by the designer who carries the duty for the structure. On that test the two systems are not equivalent, and the difference is a safety-in-design issue, not just a cost or programme one.<br><br>The asymmetry is the heart of it. A poorly executed concrete pile carries a risk that is largely <strong>visible and designer-controllable</strong>: the geometry is observable, the cage and the pour are witnessed events, and the main covert risk &mdash; low concrete strength &mdash; can be designed away by specifying a grade higher, so a sloppy delivery still clears the requirement. A poorly executed screw pile carries a risk that is <strong>invisible and not designer-controllable</strong>: insufficient torque, soil loosened during installation, an out-of-position or raked placement, or a deficient connection into the structure. None of these shows at the surface, and none can be pre-empted with a conservative number.<br><br>The responsibility split is what makes this acute. With screw piles the <strong>screw pile designer</strong> &mdash; usually the piling contractor's own engineer &mdash; is responsible for the pile system and for the connection that ties the pile into the structure, and they both design and install it under their own producer statement. The structure's engineer designs and places the beam (or pile cap) and provides the loads, but rarely details the connection. So the two most safety-critical elements &mdash; the pile's real capacity and its connection &mdash; are designed and built by a single, cost-incentivised party, while the structure's engineer's control drops to specifying requirements, requiring producer statements, and reviewing the result. And there is no agency that rates a screw-piling contractor's competence or compliance, so that single party cannot even be relied on as &lsquo;checked&rsquo;.<br><br>The screw pile also cannot be verified in the way engineers reach for to get comfortable. There is no spoil, so the founding material cannot be confirmed; installation torque can indicate more capacity than is actually present where weaker soils lie above or below the helix; and a sampled load test verifies the piles it touches, not the honesty of the records. In a market that both an industry practice note and a parliamentary submission describe as under-regulated, those records can be skipped or falsified.<br><br>The pile-head connection makes the responsibility split concrete. The connection between the steel pile and the beam sits in the screw pile designer's scope and may be a through-bar, protruding reinforcement, proprietary bracket, plate, sleeve, welded head or other nominated detail. The structure's engineer does not normally design that connection; the practical check is that the screw pile designer has actually established and certified it before the beam is poured. If the connection is left implied, the most important interface in the system becomes assumed rather than confirmed.<br><br>The reason this rises to a safety concern is that the resulting deficiency is <strong>latent and can be dangerous</strong>. An under-performing or out-of-position pile feeds differential settlement, erodes the beam's reliability against punching shear, or overloads a deficient connection. The visible early symptoms are architectural &mdash; cracked finishes, jammed or cracked windows and doors &mdash; but the same distortion drives additional stresses into beams, columns and the structure, and at the severe end differential settlement has been responsible for serious structural damage and, in the worst cases, catastrophic failure and loss of life. Worse, with screw piles the deficiency may not present itself until the structure sees a large or seismic load, so the warning and the danger can arrive together.<br><br>This entry does not argue that screw piles never work; installed correctly they perform, and on some sites nothing else is viable. It argues that the design decision to use them transfers a latent, unverifiable safety risk onto the structure's whole life that the designer cannot control &mdash; so a verifiable concrete pile is the best-practice default, and screw piles, even at their best, are a <strong>compromise rather than best practice</strong>: a considered last resort, chosen only where no verifiable system suits, and only with the pile-head connection into the designer's beam required and reviewed, and the residual risk put squarely to the builder. Where a builder asks to substitute screw piles to save time or cost, the safe-design response is not to accept it as a like-for-like swap, but to inform them of the risks they are taking on &mdash; which, weighed honestly against the saving, often steers the choice back to a verifiable system.",
+            "thresholds": [
+              {
+                "range": "Verifiable concrete pile",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "A foundation whose as-built adequacy can be seen and recorded &mdash; a bored or CFA concrete pile &mdash; has been chosen. The geometry is observable, the pour is witnessed, and the founding material can be confirmed, so the designer can stand behind what is in the ground. This is the safe-design default wherever a verifiable system is feasible."
+              },
+              {
+                "range": "Screw piles as a last resort, risk owned",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "Screw piles are used only because site access or disruption genuinely rules out a verifiable concrete system &mdash; not to save time or money. The designer has designed the beam for the loads and specified a placement tolerance it can carry, and has required the screw pile designer to provide a documented pile-head connection into that beam and issue a producer statement or certification covering the pile system and connection before anything is cast in. Install verification has been required, and the residual risk that cannot be designed out &mdash; unconfirmable founding material, an uninspectable install, no rated contractor &mdash; has been communicated to the builder. This is the most that can be done with screw piles, and it remains a compromise, not best practice, because that residual risk stays."
+              },
+              {
+                "range": "Screw piles on speed or cost",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "Screw piles have been chosen, or a substitution accepted, to save programme or money where a verifiable system would have suited &mdash; or with the pile-head connection left implied, undocumented or uncertified, the install unverified, or in ground that makes them more dangerous still (layered soils where torque over-reads capacity, sensitive or liquefiable soils, significant lateral or seismic demand). The latent, unverifiable risk is live and unowned. Revert to a verifiable system, or &mdash; if screw piles are genuinely unavoidable &mdash; require the screw pile designer's documented pile-head connection, certification and install verification, and put the residual risk to the builder, before proceeding. The flag marks an unexamined default, not a claim that screw piles can never be used."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Default to a verifiable concrete pile",
+                "description": "Prefer a bored or CFA concrete pile whose adequacy is observable and recorded, and treat screw piles as a genuine last resort &mdash; used only where access or disruption rules out concrete plant. CFA in particular keeps much of the screw pile's appeal (low vibration and noise, little spoil, restricted access) while leaving a concrete element of known geometry with a monitored pour."
+              },
+              {
+                "title": "Keep the beam yours, and confirm the pile-head connection exists",
+                "description": "The beam (or pile cap) is your reinforced-concrete element and stays in your design. The screw pile designer designs the pile and the pile-head connection into your beam and installs them under their own producer statement, so your control is not to design that connection but to confirm that it has been documented and certified before anything is cast into it."
+              },
+              {
+                "title": "Require the interface protocol",
+                "description": "Specify that any change to your beam or ground beam needed to make the piles work must come back to you first, because it is your element. Do not let the pile system quietly drive a change to the structure without your sign-off."
+              },
+              {
+                "title": "Require install verification, and be clear about its limits",
+                "description": "Require producer statements (design and construction, ideally with independent review), machine-logged torque and depth rather than hand-written records, founding confirmation by CPT or boreholes below the founding level, and load testing where deflection or capacity is critical. Recognise that this reduces but does not remove the risk, does not make the contractor independently rated because no such scheme exists, and is not yours to guarantee."
+              },
+              {
+                "title": "If a builder or contractor asks to substitute screw piles, inform them of the risk",
+                "description": "Do not accept a substitution as a like-for-like swap to save time or money. Put the residual risks to the builder squarely and in writing: the unconfirmable founding material, the uninspectable install, the connection that depends on the contractor doing more than the minimum, and the latency &mdash; that a deficiency may not show until a large or seismic load. Weighed against the saving, this often steers the choice back to a verifiable system. Either way, record the connection requirement set, the review done, and the advice given, so the decision is an informed and traceable one."
+              },
+              {
+                "title": "Avoid the ground conditions that amplify the risk",
+                "description": "Push toward a verifiable concrete system where the ground makes a screw pile harder to trust: layered soils, where installation torque can read higher than the capacity actually available; sensitive or liquefiable soils and deep weak deposits, where the slender shaft is prone to buckling and uplift deflection is large; and sites with significant lateral or seismic demand, where the narrow shaft is weakest. These are exactly the conditions where an unverifiable foundation is most dangerous."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "Applies to building foundations where a verifiable concrete pile (bored or CFA) is feasible and screw piles are being considered or proposed &mdash; typically lightly-to-moderately loaded footings, columns or ground-beam-supported slabs. It is most useful at concept and scheme stage, and whenever a builder or contractor proposes substituting screw piles for a designed concrete system. It is not aimed at sites where no verifiable system suits and screw piles are the only viable option; there the entry's role is the require-review-and-communicate duty, not avoidance.",
+              "checks": [
+                {
+                  "title": "Can the as-built adequacy be seen or recorded?",
+                  "description": "A concrete pile gives observable geometry, a witnessed pour, and spoil that confirms the founding material; a screw pile gives none of these &mdash; no spoil, and an installation torque that can over-read true capacity in layered soils. If the system's adequacy cannot be seen or independently recorded, the designer is trusting rather than verifying."
+                },
+                {
+                  "title": "Is this genuinely the only viable system, or a speed and cost choice?",
+                  "description": "Distinguish a real last-resort case (access, headroom or disruption rules out concrete plant) from a substitution made to save programme or money. The first justifies the require-review-and-communicate path; the second is where the entry says revert to a verifiable system."
+                },
+                {
+                  "title": "The pile-head connection into your beam",
+                  "description": "The pile-head connection between the steel pile and the beam is the screw pile designer's to design and install, and it may be delivered as a through-bar, protruding reinforcement, proprietary bracket, plate, sleeve, welded head or other nominated detail. The recurring risk is not that one detail type is automatically wrong; it is that the connection is left implied, undocumented or uncertified before the beam is cast. Confirm that the screw pile designer has established the connection detail and certification before pouring."
+                },
+                {
+                  "title": "Placement tolerance and the beam",
+                  "description": "A screw pile is rarely installed exactly on position, and the deviation erodes the beam's reliability against punching shear. Because the placement is the contractor's, the designer's lever is to specify a tolerance the beam can carry and to require survey verification that piles land within it (Hoang, 2025)."
+                },
+                {
+                  "title": "Ground conditions that amplify the risk",
+                  "description": "Layered soils (torque over-reads), sensitive and liquefiable soils and deep weak deposits (buckling, large uplift deflection), significant lateral or seismic demand (slender shaft), and obstructions or hard layers (refusal, imprecise placement) all make an unverifiable screw pile more dangerous and push toward a concrete system."
+                },
+                {
+                  "title": "Verification and the absence of contractor accreditation",
+                  "description": "No scheme rates a screw-piling contractor's competence or compliance, and the installation market is described in industry and parliamentary sources as under-regulated. Require producer statements and testing, but treat them as evidence to review, not as control the designer holds."
+                }
+              ],
+              "note": "Use the rating as a safe-design prompt, not a prohibition. It does not say screw piles can never be used &mdash; correctly installed they perform. It flags that the design decision to use them transfers a latent, unverifiable safety risk the designer cannot control onto the structure's life, so they belong as a considered last resort. The beam (or pile cap) stays the designer's element; the pile and its pile-head connection are the screw pile designer's, documented and certified before casting; and the residual risk is communicated to the builder."
+            },
+            "evidence": "<strong>Why this is a safety question.</strong> The hazard is that the as-built screw pile cannot be verified, while its failure mode stays hidden. Engineering New Zealand's Practice Note 28 (2015) records that the absence of spoil prevents confirmation of the founding material, that installation torque can read higher than the capacity actually present where weaker soils lie above or below the helix, and that problems may not surface until a large or seismic load &mdash; and it describes a largely unregulated installation market. It also sets the responsibility split this entry turns on: the screw pile designer (the contractor's engineer) is responsible for the pile system and the secondary elements including the connection between the pile and the structure, while the structure's engineer designs the beam and provides the loads.<br><br><strong>The harm pathway.</strong> An under-performing or out-of-position pile drives differential settlement, which Chen (2020) links to serious structural damage and, at the extreme, catastrophic failure and loss of life, showing up as additional stresses in beams and columns and distortion of the structure. The early signs are architectural &mdash; cracked finishes, jammed or cracked windows and doors &mdash; but they sit on a load path redistributing into elements not designed for it.<br><br><strong>The connection is the safety-critical, least-controlled interface.</strong> Practice Note 28 places the pile system and its secondary elements, including the connection between the pile and the structure, in the screw pile designer's scope. Connection research also shows that helical pile-to-foundation connections can govern the system response and lack settled official design provisions (Chiluwal &amp; Guner, 2019). The practical concern is not that a through-bar, protruding reinforcement or proprietary bracket is automatically wrong; it is that the connection can be left implied, undocumented or uncertified before the beam is cast. The structure's engineer's control is therefore limited to confirming that the screw pile designer has established and certified the pile-head connection.<br><br><strong>Position and the beam.</strong> Hoang (2025), from 510 field measurements, shows that pile positioning deviation &mdash; common and standards-permitted &mdash; measurably reduces the beam's reliability against punching shear, a check routine design omits. Because the placement itself is the contractor's, the structure's engineer's lever is to specify a tolerance the beam can carry and to require survey verification.<br><br><strong>The installation reality.</strong> A submission to the NSW Public Accountability Committee by a screw-piling contractor (Australian Foundation Systems Pty Ltd, 2019) states on the public record that installation records can be falsified, that certifiers in almost all cases do not inspect, and that of the order of a hundred thousand screw piles were installed in NSW over a decade with many under specification, too shallow or poorly installed &mdash; corroborating Practice Note 28's &lsquo;unregulated market&rsquo; from inside the industry.<br><br><strong>Basis of the bands.</strong> Because no body rates a screw-piling contractor, the pile and its connection sit in the contractor's scope, and the per-pile checks are fallible and downstream of the designer, verification is not a lever the structure's engineer holds. The bands turn on the levers that are: choosing a verifiable system, restricting screw piles to a genuine last resort, requiring and reviewing a documented, certified connection into the designer's beam, requiring install verification, and communicating the residual risk. A verifiable concrete pile is best practice; a forced, well-handled screw pile is an owned compromise; a screw pile chosen on speed or cost is not.<br><br><strong>References</strong><br>Australian Foundation Systems Pty Ltd (2019). <em>Submission No 82</em>, Inquiry into the regulation of building standards, building quality and building disputes. NSW Legislative Council, Public Accountability Committee.<br>Chen, W. (2020). <em>Structural Response of Multi-Story Buildings Subjected to Foundation Differential Settlements</em>. PhD thesis, Concordia University.<br>Chiluwal, S., &amp; Guner, S. (2019). Helical pile-to-pile cap connections subjected to uplift forces: improving future practice. <em>Deep Foundations Institute Annual Conference</em>.<br>Hoang, B. A. (2025). Reliability evaluation of the impact of pile positioning deviation on pile cap punching shear resistance: a case study from Vietnam. <em>Engineering, Technology &amp; Applied Science Research</em>, 15(6), 28440-28446.<br>IPENZ / Engineering New Zealand (2015). <em>Screw Piles: Guidelines for Design, Construction &amp; Installation</em>. Practice Note 28.",
+            "examples": [],
+            "supportingImages": [
+              {
+                "image": "images/screw-pile-through-bar-link-ground-beam.webp",
+                "title": "<strong>Example screw pile head linked into a ground beam</strong><br>Example screw pile head linked into a reinforced concrete ground beam using a transverse reinforcing bar. This image is not shown as a defective detail; it illustrates the type of pile-head connection that should be established and certified by the screw pile designer before the beam is poured."
+              },
+              {
+                "image": "images/pile-position-deviation-hoang-2025.webp",
+                "title": "<strong>Hoang (2025) &mdash; pile position deviation from 510 field measurements</strong><br>Field-measured pile position deviations showing the difference between actual and design pile-centre coordinates. Mean deviation was small (+1.2 mm in X and &minus;3.6 mm in Y), but the spread was significant: standard deviation was about 51&ndash;54 mm, with recorded deviations up to +178 mm / &minus;140 mm in X and +154 mm / &minus;203 mm in Y. The study used these deviations to assess how pile misplacement affects pile-cap punching and shear reliability."
+              }
+            ],
+            "dateAdded": "2026-06-15",
+            "dateReviewed": "2026-06-16",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "A strong medium. Each harm pathway is well supported: differential settlement is linked to serious damage and, at the extreme, loss of life (Chen, 2020); positional deviation measurably reduces the beam's punching reliability from 510 field measurements (Hoang, 2025); helical pile-to-foundation connection research shows the connection can govern the system response and lacks settled design provisions (Chiluwal & Guner, 2019); and the verifiability gap, latency and the design-versus-install responsibility split are set out by an authoritative practice note (Engineering NZ Practice Note 28, 2015), with the under-regulated installation reality corroborated by a named industry submission to the NSW inquiry (2019). The recurring real-world pattern that the pile-head connection may be left implied, undocumented or uncertified rests on structural design engineer consultation rather than a published study. No single source runs the full chain from contractor behaviour to structural danger, and the band ordering is a reasoned call. Treat the rating as a safe-design selection prompt."
+            },
+            "relatedEntries": [
+              {
+                "id": "confined-space-entry-at-pier-and-shaft-bases",
+                "note": "Both are foundation-system decisions with a safety dimension: a bored pile creates a deep shaft with confined-space risk, while a screw pile trades that visible, manageable risk for a foundation whose adequacy cannot be verified. Weigh the safety trade-offs of the system together."
+              },
+              {
+                "id": "stay-in-place-formwork-and-masonry-wall-systems",
+                "note": "Both are early system-selection decisions where constructability and risk, not just structural capacity, should drive the choice. Weigh them together when settling the scheme."
+              },
+              {
+                "id": "void-former-slab-vs-thick-raft",
+                "note": "Both are early system-selection decisions where constructability and risk, not just structural capacity, should drive the choice. Weigh them together when settling the scheme."
+              }
+            ]
+          }
+        },
+        {
           "id": "temporary-works-stability",
           "name": "Temporary works stability",
           "available": false,
@@ -3404,7 +3779,10 @@
     "fragment|entry|slab-bar-diameter-and-on-site-bending-equipment|qkisu4",
     "fragment|entry|large-bar-callout-clarity|uan5pm",
     "fragment|entry|reducing-grinder-cutting-from-large-slab-reinforcement-bars|1rh10n1",
-    "fragment|update|structural-steel-vs-concrete-for-isolated-vertical-members|k2h5k7"
+    "fragment|update|structural-steel-vs-concrete-for-isolated-vertical-members|k2h5k7",
+    "fragment|update|structural-steel-vs-concrete-for-isolated-vertical-members|14a2qcw",
+    "fragment|entry|latent-safety-risk-of-screw-pile-foundations|pz0zz8",
+    "fragment|update|beam-soffit-formwork-proportions|13eq5ox"
   ],
   "_rejected": [],
   "_reconsider": [
