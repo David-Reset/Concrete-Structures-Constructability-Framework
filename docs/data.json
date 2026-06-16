@@ -1688,7 +1688,7 @@
           "available": true,
           "data": {
             "question": "On a suspended beam, can the depth below the slab soffit be braced off a standard plywood sheet at a safe raker angle — or does it force an oversized board?",
-            "parameter": "The bracing width the side-form raker needs at 45° (the soffit-sheet dimension running across the beam), against the standard 1200 × 1800 sheet and an oversized 2400.",
+            "parameter": "The bracing width the side-form raker needs at 45° (the soffit-sheet dimension running across the beam), checked against the standard 1200 × 1800 sheet and an oversized 2400. Table 2 shows the internal-beam case; Table 3 shows the edge-beam case, where the outer face braces the full beam depth.",
             "keywords": [
               "beam soffit",
               "side form",
@@ -1697,7 +1697,7 @@
               "kicker",
               "brace angle",
               "45 degrees",
-              "extend ply by braced height",
+              "extend plywood sheet by braced height",
               "45 degree raker",
               "formwork plywood",
               "1200 x 1800",
@@ -1708,9 +1708,11 @@
               "slab absorbed",
               "deep narrow beam",
               "formwork reuse",
-              "form panel module"
+              "form panel module",
+              "edge beam",
+              "internal beam"
             ],
-            "background": "A suspended beam is formed with a soffit board and two side forms, and the side forms must be braced against the lateral pressure of the wet concrete. On an elevated soffit table that bracing is taken by a raker footing on the soffit board itself — up in the air there is nothing below to anchor to, so the run available to the raker is limited by the width of the soffit board on either side of the beam. Critically, only the formed downstand — the part of the beam projecting below the slab soffit — has to be braced this way. The slab thickness above is formed and supported by the adjacent deck. This means a deep beam with a thick slab can be an easy form, while the same beam under a thin slab can be a hard one, because what matters is the depth left below the soffit. The constructability check is therefore not the beam's structural depth but whether its formed downstand can be braced off a standard plywood board at a safe raker angle, before the section forces an oversized board or bespoke falsework.",
+            "background": "A suspended beam is formed with a soffit board and two side forms, and the side forms must be braced against the lateral pressure of the wet concrete. On an elevated soffit table that bracing is taken by a raker footing on the soffit board itself — up in the air there is nothing below to anchor to, so the run available to the raker is limited by the width of the soffit board on either side of the beam. For an internal beam, only the formed downstand — the part of the beam projecting below the slab soffit — has to be braced this way on each face, because the slab thickness above is formed and supported by the adjacent deck. This means a deep beam with a thick slab can be an easy form, while the same beam under a thin slab can be a hard one, because what matters is the depth left below the soffit. The constructability check is therefore not the beam's structural depth but whether its formed downstand can be braced off a standard plywood board at a safe raker angle, before the section forces an oversized board or bespoke falsework. This slab absorption happens on both faces only for an internal beam, with deck each side. An edge beam has deck on one side only, so its inner face braces the downstand but its outer face must brace the full beam depth. The worked example separates these cases: Table 2 is the internal-beam case and Table 3 is the edge-beam case.",
             "thresholds": [
               {
                 "range": "<= 1200 mm",
@@ -1728,7 +1730,7 @@
                 "range": "1800 - 2400 mm",
                 "rating": "Concern",
                 "color": "orange",
-                "guidance": "Exceeds what the standard sheet gives in either orientation — needs a 2400 mm board. It will brace the downstand, but 2400 sheets are awkward and unpopular to handle on the soffit table and slow the crew. Reconsider the proportions, or deepen the slab to pull the downstand back onto the standard sheet (every 100 mm taken into the slab removes ~200 mm of required bracing width)."
+                "guidance": "Exceeds what the standard sheet gives in either orientation — needs a 2400 mm board. It will brace the downstand, but 2400 sheets are awkward and unpopular to handle on the soffit table and slow the crew. Reconsider the proportions, or deepen the slab to reduce the downstand. For an internal beam, every 100 mm taken into the slab removes ~200 mm of required bracing width; for an edge beam, only the inner face benefits, so check the edge-beam rule separately."
               },
               {
                 "range": "> 2400 mm",
@@ -1740,7 +1742,7 @@
             "alternatives": [
               {
                 "title": "Let the slab absorb more of the beam depth",
-                "description": "The most powerful and cheapest lever. Because only the downstand below the slab soffit is braced off the board, deepening the slab directly reduces the formed downstand. Every 100 mm of depth moved into the slab removes about 200 mm from the required soffit-board width at a 45° raker. A deep beam that fails the check on total depth can often pass once a realistic slab thickness is accounted for. Verify the slab design still works structurally and that the deeper slab does not create its own constructability or cost issues."
+                "description": "The most powerful and cheapest lever for an internal beam. Because only the downstand below the slab soffit is braced on both faces, deepening the slab directly reduces the formed downstand on both sides. Every 100 mm of depth moved into the slab removes about 200 mm from the required soffit-board width at a 45° raker. For an edge beam, only the inner face gets that benefit; the outer face still braces the full beam depth, so the saving is about 100 mm of required width for every 100 mm added to the slab. A deep beam that fails the check on total depth can often pass once a realistic slab thickness is accounted for. Verify the slab design still works structurally and that the deeper slab does not create its own constructability or cost issues."
               },
               {
                 "title": "Proportion the beam wider and shallower (band beam)",
@@ -1760,7 +1762,11 @@
               "checks": [
                 {
                   "title": "Slab thickness assumed",
-                  "description": "The worked example uses a 200 mm slab. The figure that matters is the formed downstand = total beam depth − slab thickness. Re-run the check for the project's actual slab thickness before applying the band — a thicker slab moves the beam into a better band, a thinner slab into a worse one."
+                  "description": "The worked example uses a 200 mm slab. For an internal beam, the figure that matters is the formed downstand = total beam depth − slab thickness. For an edge beam, the inner face uses that downstand, but the outer face uses the full beam depth. Re-run the check for the project's actual slab thickness before applying the band — a thicker slab improves the internal-beam case more strongly than the edge-beam case."
+                },
+                {
+                  "title": "Internal beam versus edge beam",
+                  "description": "The main thresholds and Table 2 assume an internal beam, with deck on both sides forming the slab so that only the downstand is braced on each face. Table 3 gives the edge-beam case. An edge beam has deck on one side only: the inner face still braces only the downstand, but the outer face forms and retains the full beam depth (slab + downstand), with no adjacent deck and no top restraint. Brace it per face — required width = full beam depth (outer) + beam width + downstand (inner) + 40 mm. For a fixed sheet width, that makes the maximum edge-beam depth about half a slab thickness shallower than the internal-beam depth. In practice the building edge may leave no room to extend the soffit board outward, so edge beams commonly need a top tie or waling back to the deck, a cantilever-bracket or needle arrangement, or back-propping; treat an edge beam as materially harder to form than an internal beam of the same proportions."
                 },
                 {
                   "title": "Raker anchorage and top restraint",
@@ -1768,11 +1774,11 @@
                 },
                 {
                   "title": "Brace angle convention",
-                  "description": "45° is adopted as the design raker — the angle documented form-bracing practice centres on (column-form diagonal braces are typically set at about 45° to the horizontal, and model-code let-in diagonal bracing is recognised between 45° and 60° from the horizontal). At 45° the geometry is simple: the soffit ply extends past each beam face by the braced height, because the raker's run equals its rise. A flatter raker, toward 30°, needs more run and therefore a wider board; it is the tall-form case, reached for on wall pours metres high to limit uplift and hold the form plumb over its height. A beam's formed downstand is far shallower, so that case does not govern. The trade-off to note is uplift: at 45° the uplift on the form foot is about equal to the horizontal pressure force (roughly 1.7× the 30° value), but for the shallow downstands beams produce this force is modest — size the form-foot fixing for it."
+                  "description": "45° is adopted as the design raker — the angle documented form-bracing practice centres on (column-form diagonal braces are typically set at about 45° to the horizontal, and model-code let-in diagonal bracing is recognised between 45° and 60° from the horizontal). At 45° the geometry is simple: the soffit plywood sheet extends past each beam face by the braced height, because the raker's run equals its rise. A flatter raker, toward 30°, needs more run and therefore a wider board; it is the tall-form case, reached for on wall pours metres high to limit uplift and hold the form plumb over its height. A beam's formed downstand is far shallower, so that case does not govern. The trade-off to note is uplift: at 45° the uplift on the form foot is about equal to the horizontal pressure force (roughly 1.7× the 30° value), but for the shallow downstands beams produce this force is modest — size the form-foot fixing for it."
                 },
                 {
                   "title": "Plywood sheet sizes and thickness",
-                  "description": "The bands use standard formply sheet widths of 1200, 1800 and 2400 mm. Formply is about 17 mm thick; 20 mm is assumed for the side-form ply to allow tolerance, which changes the caps by only a few millimetres. Sheet sizes and common formply thicknesses vary by region and supplier; confirm the locally available board sizes before applying the numbers elsewhere."
+                  "description": "The bands use standard formply sheet widths of 1200, 1800 and 2400 mm. Formply is about 17 mm thick; 20 mm is assumed for the side-form plywood sheet to allow tolerance, which changes the caps by only a few millimetres. Sheet sizes and common formply thicknesses vary by region and supplier; confirm the locally available board sizes before applying the numbers elsewhere."
                 },
                 {
                   "title": "Form pressure independent of geometry",
@@ -1781,7 +1787,7 @@
               ],
               "note": "Use the rating as a constructability review prompt, not a prohibition. The board-width cap is the board-footed case at a 45° raker; the appropriate response to a poor rating is to review the permanent beam proportions early or apply the slab-absorption lever, not to abandon the section outright."
             },
-            "evidence": "A suspended beam's side forms resist the lateral pressure of the wet concrete, and on an elevated soffit table that restraint is provided by a raker that foots on the soffit board itself — there is nothing below to anchor to. The thresholds are derived from the geometry of that raker, the standard plywood sheet sizes available to foot it, and a documented form-bracing angle, with the lateral form pressure treated as a separate sizing check.<br><br><strong>Why the raker angle governs, and why 45°.</strong> The raker resists the horizontal concrete pressure as axial compression. Resolving the brace force at an angle to the horizontal, the useful horizontal restraint is the force times the cosine of the angle, while the vertical uplift dumped into the foot is the force times the tangent of the angle. The uplift is about 0.58 of the horizontal force at 30°, equal to it at 45°, and 1.73 times it at 60°. Documented form-bracing practice centres on about 45°: a concrete-form reference recommends column-form diagonal braces at approximately 45° to the horizontal, and model-code let-in diagonal bracing is recognised between 45° and 60° from the horizontal. 45° is therefore adopted here as the design raker — the mainstream angle, not an aggressive limit. A flatter brace, toward 30°, is the conservative tall-form case: it produces less uplift and holds a tall form plumb over its height, which is why it is reached for on wall pours where placement heights run to several metres (ACI 347 treats walls over 4 m as a distinct, demanding pressure case). A beam's formed downstand is an order of magnitude shallower, so the conditions that call for the flat brace do not arise and the simple 45° geometry applies. The lateral load the bracing carries follows ACI 347, which requires form bracing to be designed for a horizontal load applied at the top of the form; the 45° raker raises the uplift on the form foot relative to a flatter brace, which is sized for separately.<br><br><strong>The geometry.</strong> With the raker at 45°, the run it needs to brace a formed downstand H equals H — the run equals the rise, since tan 45° = 1. Footing on the soffit board, the run available each side is the board half-width, less the beam half-width, less the side-form ply (about 20 mm, allowing tolerance on ~17 mm formply). Setting available run equal to required run gives the downstand a sheet can brace, and rearranging gives a single closed-form rule:<br><br><strong>required bracing width ≈ beam width + (2.0 × formed downstand) + 40 mm</strong><br><br>(2.0 is 2 ÷ tan 45°; 40 mm is two 20 mm plywood sheets). In words: extend the soffit ply past each beam face by the braced height, then add the two plywood sheets. The required bracing width is the soffit-sheet dimension that must run across the beam. A 400 mm wide beam with a 200 mm downstand needs about 400 + 400 + 40 ≈ 840 mm — well within the 1200 dimension of a standard sheet; a 600 mm wide beam with a 580 mm downstand needs about 600 + 1160 + 40 ≈ 1800 mm — at the 1800 dimension. The worked example tabulates this across beam widths and the three sheet options.<br><br><strong>The standard sheet and its two orientations.</strong> A standard formply sheet is 1200 × 1800 mm. Laid with the 1200 across the beam it is in its efficient orientation, the 1800 running along the beam length so fewer sheets cover the run; turned so the 1800 runs across the beam it gives more bracing width, but the 1200 now runs along the length, needing more sheets and more cross-joints. Only past 1800 mm of required bracing width is a genuinely larger 2400 sheet needed — which braces the downstand but is awkward to handle, hence the concern rating; past 2400 mm no standard sheet braces it off the soffit and engineered falsework is required.<br><br><strong>The slab lever.</strong> Because only the downstand below the slab soffit is braced, slab thickness is the cheapest lever: every 100 mm of depth moved into the slab removes about 200 mm from the required bracing width. A beam that fails on total depth often passes once a realistic slab is accounted for — a 400 × 400 beam under a 200 mm slab is only a 200 mm formed downstand and sits on the standard sheet in its best orientation.<br><br><strong>Limitations.</strong> The sheet dimensions (1200, 1800, 2400) are physical standards and the run requirement is first-principles geometry, but two inputs are reasoned: the 45° raker is the documented mainstream form-bracing angle adopted as the design basis rather than a measured optimum for this exact element — a raker flatter than 45° would need a wider board than tabulated, while a steeper one increases the uplift on the form foot — and the cap assumes the raker foots on the soffit board with the form braced toward its top. Where a top tie or an abutting element restrains the form, the cap relaxes. The cap is a bracing-geometry check only; the lateral concrete pressure must be sized separately against the relevant formwork-pressure provisions.<br><br><strong>References</strong><br>ACI Committee 347. Guide to Formwork for Concrete. American Concrete Institute.<br>Hurd, M. K. (2005). Formwork for Concrete (7th ed.). American Concrete Institute (ACI SP-4).<br>Jha, K. N. (2012). Formwork for Concrete Structures. Tata McGraw Hill.<br>Badzinski, S. (1974). Carpentry in Commercial Construction — column-form diagonal braces at approximately 45° to the horizontal.<br>Model building code provisions for let-in diagonal bracing (recognised between 45° and 60° from the horizontal).<br>Standard formply sheet sizes (1200 × 1800 and 2400 mm) and ~17 mm thickness per common manufacturer/supplier data.",
+            "evidence": "A suspended beam's side forms resist the lateral pressure of the wet concrete, and on an elevated soffit table that restraint is provided by a raker that foots on the soffit board itself — there is nothing below to anchor to. The thresholds are derived from the geometry of that raker, the standard plywood sheet sizes available to foot it, and a documented form-bracing angle, with the lateral form pressure treated as a separate sizing check.<br><br><strong>Why the raker angle governs, and why 45°.</strong> The raker resists the horizontal concrete pressure as axial compression. Resolving the brace force at an angle to the horizontal, the useful horizontal restraint is the force times the cosine of the angle, while the vertical uplift dumped into the foot is the force times the tangent of the angle. The uplift is about 0.58 of the horizontal force at 30°, equal to it at 45°, and 1.73 times it at 60°. Documented form-bracing practice centres on about 45°: a concrete-form reference recommends column-form diagonal braces at approximately 45° to the horizontal, and model-code let-in diagonal bracing is recognised between 45° and 60° from the horizontal. 45° is therefore adopted here as the design raker — the mainstream angle, not an aggressive limit. A flatter brace, toward 30°, is the conservative tall-form case: it produces less uplift and holds a tall form plumb over its height, which is why it is reached for on wall pours where placement heights run to several metres (ACI 347 treats walls over 4 m as a distinct, demanding pressure case). A beam's formed downstand is an order of magnitude shallower, so the conditions that call for the flat brace do not arise and the simple 45° geometry applies. The lateral load the bracing carries follows ACI 347, which requires form bracing to be designed for a horizontal load applied at the top of the form; the 45° raker raises the uplift on the form foot relative to a flatter brace, which is sized for separately.<br><br><strong>The internal-beam geometry.</strong> With the raker at 45°, the run it needs to brace a formed downstand H equals H — the run equals the rise, since tan 45° = 1. For an internal beam, deck exists on both sides and each face braces only the downstand. Footing on the soffit board, the run available each side is the board half-width, less the beam half-width, less the side-form plywood sheet (about 20 mm, allowing tolerance on ~17 mm formply). Setting available run equal to required run gives the downstand a sheet can brace, and rearranging gives the internal-beam rule:<br><br><strong>required bracing width ≈ beam width + 2.0 × formed downstand + 40 mm</strong><br><br>(2.0 is 2 ÷ tan 45°; 40 mm is two 20 mm side-form plywood sheets). In words, for an internal beam: extend the soffit plywood sheet past each beam face by the braced height, then add the two side-form plywood sheets. The required bracing width is the soffit-sheet dimension that must run across the beam. A 400 mm wide internal beam with a 200 mm downstand needs about 400 + 400 + 40 ≈ 840 mm — well within the 1200 dimension of a standard sheet; a 600 mm wide internal beam with a 580 mm downstand needs about 600 + 1160 + 40 ≈ 1800 mm — at the 1800 dimension. Table 1 gives the raw braced height and Table 2 applies it to an internal beam under a 200 mm slab.<br><br><strong>Edge-beam geometry.</strong> An edge beam (sometimes called a spandrel beam) has deck on one side only: the inner face still braces the downstand, but the outer face forms and retains the full beam depth (slab + downstand) with no adjacent deck. The edge-beam rule is therefore:<br><br><strong>required bracing width = full beam depth (outer) + beam width + downstand (inner) + 40 mm</strong><br><br>For a 200 mm slab, this can also be written as required bracing width ≈ beam width + 2.0 × total beam depth − 200 mm + 40 mm. A 600 mm wide edge beam 300 mm deep under a 200 mm slab needs 300 + 600 + (300 − 200) + 40 ≈ 1040 mm, against 840 mm for the same beam internally. This is why the edge-beam table reaches about 100 mm shallower than the internal-beam table on the same sheet. The outer face is also the unrestrained-top case where a flatter raker is classically preferred, and at the building perimeter the soffit board often cannot extend outward at all, so edge beams frequently need a top tie back to the deck, a cantilever-bracket or needle system, or back-propping rather than a wider sheet.<br><br><strong>The standard sheet and its two orientations.</strong> A standard formply sheet is 1200 × 1800 mm. Laid with the 1200 across the beam it is in its efficient orientation, the 1800 running along the beam length so fewer sheets cover the run; turned so the 1800 runs across the beam it gives more bracing width, but the 1200 now runs along the length, needing more sheets and more cross-joints. Only past 1800 mm of required bracing width is a genuinely larger 2400 sheet needed — which braces the downstand but is awkward to handle, hence the concern rating; past 2400 mm no standard sheet braces it off the soffit and engineered falsework is required.<br><br><strong>The slab lever.</strong> For internal beams, slab thickness is the cheapest lever because only the downstand below the slab soffit is braced on both faces: every 100 mm of depth moved into the slab removes about 200 mm from the required bracing width. For edge beams, the benefit is smaller because the outer face still braces the full beam depth; every 100 mm added to the slab removes about 100 mm from the required width. A beam that fails on total depth often passes once a realistic slab is accounted for — a 400 × 400 internal beam under a 200 mm slab is only a 200 mm formed downstand and sits on the standard sheet in its best orientation.<br><br><strong>Limitations.</strong> The sheet dimensions (1200, 1800, 2400) are physical standards and the run requirement is first-principles geometry, but two inputs are reasoned: the 45° raker is the documented mainstream form-bracing angle adopted as the design basis rather than a measured optimum for this exact element — a raker flatter than 45° would need a wider board than tabulated, while a steeper one increases the uplift on the form foot — and the cap assumes the raker foots on the soffit board with the form braced toward its top. Where a top tie or an abutting element restrains the form, the cap relaxes. The cap is a bracing-geometry check only; the lateral concrete pressure must be sized separately against the relevant formwork-pressure provisions.<br><br><strong>References</strong><br>ACI Committee 347. Guide to Formwork for Concrete. American Concrete Institute.<br>Hurd, M. K. (2005). Formwork for Concrete (7th ed.). American Concrete Institute (ACI SP-4).<br>Jha, K. N. (2012). Formwork for Concrete Structures. Tata McGraw Hill.<br>Badzinski, S. (1974). Carpentry in Commercial Construction — column-form diagonal braces at approximately 45° to the horizontal.<br>Model building code provisions for let-in diagonal bracing (recognised between 45° and 60° from the horizontal).<br>Standard formply sheet sizes (1200 × 1800 and 2400 mm) and ~17 mm thickness per common manufacturer/supplier data.",
             "examples": [],
             "supportingImages": [
               {
@@ -1815,15 +1821,15 @@
             ],
             "workedExample": {
               "title": "Worked example — what each soffit sheet can brace",
-              "caveat": "A conservative, board-footed guide at a 45° raker — not a substitute for a temporary-works design. Re-run it for the project's actual slab thickness and locally available sheet sizes.",
-              "headline": "The first table is the formed downstand a sheet can brace at a safe 45° raker — the part of the beam below the slab soffit, before any slab is added. The second table adds a 200 mm slab to show the realistic total beam depth.",
+              "caveat": "A conservative, board-footed guide at a 45° raker — not a substitute for a temporary-works design. Re-run it for the project's actual slab thickness and locally available sheet sizes. Table 1 gives raw braced height, Table 2 gives the internal-beam case, and Table 3 gives the edge-beam case.",
+              "headline": "The first table is the braced height a single sheet supports at a safe 45° raker — the height of formwork it can hold, before any beam type is assumed. The second table reads that as an internal beam under a 200 mm slab, where the braced height is the downstand so total depth = braced height + slab. The third does the same for an edge beam, whose outer face has no adjacent deck and must brace the full beam depth — so on the same sheet it reaches a shallower beam.",
               "tableStyle": "soffitSheetBracing",
-              "tableCaption": "Table 1 — Maximum formed downstand below slab soffit",
+              "tableCaption": "Table 1 — Standard: maximum braced height a sheet supports (no slab)",
               "tableHeaders": [
                 "Beam width",
-                "Downstand<br>(1200 mm ply span)",
-                "Downstand<br>(1800 mm ply span)",
-                "Downstand<br>(2400 mm ply span)"
+                "Braced height<br>(1200 mm ply span)",
+                "Braced height<br>(1800 mm ply span)",
+                "Braced height<br>(2400 mm ply span)"
               ],
               "tableColumnBands": [
                 "",
@@ -1869,7 +1875,7 @@
                   "780 mm"
                 ]
               ],
-              "tableCaption2": "Table 2 — Maximum total beam depth with a 200 mm slab",
+              "tableCaption2": "Table 2 — Internal beam: maximum total depth (200 mm slab)",
               "tableHeaders2": [
                 "Beam width",
                 "Beam depth<br>(1200 mm ply span)",
@@ -1920,21 +1926,74 @@
                   "980 mm"
                 ]
               ],
-              "howToUse": "Pick your beam width and read across. Table 1 is the deepest formed downstand each sheet braces below the slab soffit. Table 2 adds a 200 mm slab to show the realistic total beam depth.<br><br><strong>For a 200 mm slab:</strong> a 400 × 400 beam (a 200 mm downstand) needs only ~840 mm across and sits comfortably in the 1200-across zone — the clean target. A 600 mm wide beam stays in that zone up to about 480 mm total depth, then moves to the turned-sheet (1800-across) condition; a 600 × 600 beam sits in that 1800 zone. A beam only reaches the 2400-board zone when the downstand is large — e.g. a 600 mm wide beam beyond about 780 mm total depth — so treat that as a design warning before the proportions are locked in.<br><br><strong>Design selection:</strong> the 1200-across column is the preferred target. The 1800-turned column is workable but less efficient because the same sheet is turned and more joints are introduced along the beam run. The 2400-board column is a warning that the beam is becoming awkward to form. If the beam only fits this column, consider making the beam wider and shallower, deepening the slab, using a band-beam arrangement, or otherwise accepting that the structural scheme is pushing the formwork away from the clean standard-sheet target.",
+              "howToUse": "Pick your beam width and read down the sheet you want to use. <strong>Table 1</strong> is the raw capacity — the braced height any single sheet supports. <strong>Table 2</strong> turns that into a realistic internal beam under a 200 mm slab (slab formed by deck both sides, so only the downstand is braced). <strong>Table 3</strong> does the same for an edge beam, whose outer face forms the full beam depth.<br><br><strong>Internal beams (Table 2):</strong> the 1200-across column is the preferred target; the 1800-turned column is workable but less efficient (the same sheet turned, more joints along the run); the 2400-board column is a warning the beam is becoming awkward to form. A 400 × 400 beam sits comfortably in the 1200 zone. If a beam only fits the 2400 column, consider making it wider and shallower, deepening the slab, or a band-beam arrangement.<br><br><strong>Edge beams (Table 3):</strong> for the same width and sheet an edge beam reaches about 100 mm shallower than an internal one, because its outer face braces the full depth, not just the downstand. For a slab other than 200 mm, work it per face — required width = full beam depth (outer) + beam width + downstand (inner) + 40 mm. For a 600 mm wide edge beam, 300 mm deep, under a 200 mm slab: 300 + 600 + (300 − 200) + 40 = 1040 mm, still on a standard 1200 sheet, where the internal version needs only 840 mm. Remember the outer face is the unrestrained-top case and the building edge may leave no room to extend the board outward, so edge beams often need a top tie back to the deck, a cantilever-bracket or needle system, or back-propping rather than just a wider board.",
               "assumptionsTitle": "How these numbers were derived",
               "assumptions": [
                 "Formply is about 17 mm; 20 mm is assumed here to allow for tolerance, which shifts the caps by only a few millimetres.",
                 "Raker at 45° to the horizontal — the documented mainstream form-bracing angle, adopted as the design raker, where the run equals the rise.",
                 "The raker foots on the soffit board itself, as in suspended beam formwork where there is no ground below to anchor to.",
                 "The 1200 and 1800 columns are the same standard 1200 × 1800 sheet in two orientations; 2400 is a genuinely larger board.",
-                "Table 1 is the formed downstand only. Table 2 adds a 200 mm slab. Formed downstand = total beam depth − slab thickness.",
-                "Closed-form rule: required bracing width ≈ beam width + 2.0 × formed downstand + 40 mm (2.0 = 2 ÷ tan 45°; 40 = two 20 mm plies) — i.e. extend the ply past each beam face by the braced height, then add the two plies."
+                "For Tables 1 and 2, the braced height is the formed downstand. Table 2 adds a 200 mm slab to that braced height: total beam depth = braced height + slab thickness.",
+                "Internal-beam rule for Tables 1 and 2: required bracing width ≈ beam width + 2.0 × formed downstand + 40 mm (2.0 = 2 ÷ tan 45°; 40 = two 20 mm side-form plywood sheets). This is the case where both faces brace only the downstand.",
+                "Edge-beam rule for Table 3: required bracing width = full beam depth (outer face) + beam width + formed downstand (inner face) + 40 mm. With a 200 mm slab, that is the same as beam width + 2.0 × total beam depth − 200 mm + 40 mm.",
+                "For the same beam width and sheet, Table 3 is about 100 mm shallower than Table 2 because a 200 mm slab only improves the inner face of the edge beam, not the outer full-depth face."
               ],
-              "assumptionsNote": "Every 100 mm of depth moved into the slab removes about 200 mm from the required bracing width. That is why a wider, shallower band beam can be more formwork-friendly than a deeper narrow beam.",
+              "assumptionsNote": "For an internal beam, every 100 mm of depth moved into the slab removes about 200 mm from the required bracing width. For an edge beam, every 100 mm moved into the slab removes about 100 mm because the outer face still braces the full beam depth. That is why a wider, shallower band beam can be more formwork-friendly than a deeper narrow beam.",
               "figureBeforeTable2": {
                 "image": "images/beam-soffit-plywood-span-guide.webp",
-                "caption": "<strong>Beam depth, beam width and plywood span used in Table 2</strong><br>The worked example assumes a 200 mm slab and compares the total beam depth that can be formed using 1200 mm, 1800 mm and 2400 mm plywood spans."
-              }
+                "caption": "<strong>Beam depth, beam width and ply span used in Table 2</strong><br>The worked example assumes a 200 mm slab and compares the total beam depth that can be formed using 1200 mm, 1800 mm and 2400 mm ply spans."
+              },
+              "tableCaption3": "Table 3 — Edge beam: maximum total depth (200 mm slab)",
+              "tableHeaders3": [
+                "Beam width",
+                "Beam depth<br>(1200 mm ply span)",
+                "Beam depth<br>(1800 mm ply span)",
+                "Beam depth<br>(2400 mm ply span)"
+              ],
+              "tableColumnBands3": [
+                "",
+                "green",
+                "yellow",
+                "orange"
+              ],
+              "tableRows3": [
+                [
+                  "300 mm",
+                  "530 mm",
+                  "830 mm",
+                  "1130 mm"
+                ],
+                [
+                  "400 mm",
+                  "480 mm",
+                  "780 mm",
+                  "1080 mm"
+                ],
+                [
+                  "500 mm",
+                  "430 mm",
+                  "730 mm",
+                  "1030 mm"
+                ],
+                [
+                  "600 mm",
+                  "380 mm",
+                  "680 mm",
+                  "980 mm"
+                ],
+                [
+                  "700 mm",
+                  "330 mm",
+                  "630 mm",
+                  "930 mm"
+                ],
+                [
+                  "800 mm",
+                  "280 mm",
+                  "580 mm",
+                  "880 mm"
+                ]
+              ]
             }
           }
         },
@@ -3795,7 +3854,8 @@
     "fragment|update|structural-steel-vs-concrete-for-isolated-vertical-members|14a2qcw",
     "fragment|entry|latent-safety-risk-of-screw-pile-foundations|pz0zz8",
     "fragment|update|beam-soffit-formwork-proportions|13eq5ox",
-    "fragment|update|beam-soffit-formwork-proportions|o0wv36"
+    "fragment|update|beam-soffit-formwork-proportions|o0wv36",
+    "fragment|update|beam-soffit-formwork-proportions|1nh4wm8"
   ],
   "_rejected": [],
   "_reconsider": [
