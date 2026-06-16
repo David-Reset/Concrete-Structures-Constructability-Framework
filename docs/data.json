@@ -1732,7 +1732,7 @@
                 "range": "> 2400 mm",
                 "rating": "Action required",
                 "color": "red",
-                "guidance": "No standard plywood sheet braces the formed downstand off the soffit at a safe raker angle. The section needs engineered falsework, a proprietary deep-beam forming system, or a redesign that reduces the formed downstand — a deeper slab to absorb depth, or a wider, shallower (band) beam. Confirm the forming method with the contractor at the design stage rather than committing to the section as drawn."
+                "guidance": "No standard plywood sheet braces the formed downstand off the soffit at a safe raker angle. The section needs engineered falsework, a proprietary deep-beam forming system, or a redesign that reduces the formed downstand — a deeper slab to absorb depth, or a wider, shallower (band) beam. Treat this as a design-stage warning before committing to the section as drawn; the designer can still reduce the permanent downstand, widen the beam, deepen the slab or use a band-beam arrangement."
               }
             ],
             "alternatives": [
@@ -1746,7 +1746,7 @@
               },
               {
                 "title": "Engineered or proprietary deep-beam formwork",
-                "description": "Where the downstand genuinely has to be deep, proprietary modular beam-forming systems or an engineered falsework design can brace a side form that a standard board cannot. This shifts the work from standard plywood and rakers to a designed temporary-works solution, with the associated hire cost, lead time and a competent temporary-works design. More readily justified on larger or repetitive projects than for an isolated deep beam."
+                "description": "Where the downstand genuinely has to be deep, recognise that the formwork may move beyond simple plywood-and-raker bracing and into contractor-designed or proprietary formwork. The design response is not to size or approve that system; it is to decide whether the structural geometry can be simplified first by reducing the downstand, widening the beam, deepening the slab or using a band-beam arrangement. This is more readily justified on larger or repetitive projects than for an isolated deep beam."
               },
               {
                 "title": "Reconsider the framing",
@@ -1777,22 +1777,14 @@
                   "description": "The board-width cap is a bracing-geometry check only. A deeper downstand also raises the lateral concrete pressure and therefore the demand on soldiers, walers and ties, governed by the pour rate and concrete properties. A section that passes the geometry check can still need a heavier side-form build-up; size the form components separately to the relevant formwork pressure provisions."
                 }
               ],
-              "note": "Use the rating as a constructability review prompt, not a prohibition. The board-width cap is the conservative board-footed case at a 30° raker; the appropriate response to a poor rating is to confirm the forming method early or apply the slab-absorption lever, not to abandon the section outright."
+              "note": "Use the rating as a constructability review prompt, not a prohibition. The board-width cap is the conservative board-footed case at a 30° raker; the appropriate response to a poor rating is to review the permanent beam proportions early or apply the slab-absorption lever, not to abandon the section outright."
             },
-            "evidence": "A suspended beam's side forms resist the lateral pressure of the wet concrete, and on an elevated soffit table that restraint is provided by a raker that foots on the soffit board itself — there is nothing below to anchor to. The thresholds are derived from the geometry of that raker, the standard plywood sheet sizes available to foot it, and a documented form-bracing angle, with the lateral form pressure treated as a separate sizing check.<br><br><strong>Why the raker angle governs, and why 30°.</strong> The raker resists the horizontal concrete pressure as axial compression. Resolving the brace force at an angle to the horizontal, the useful horizontal restraint is the force times the cosine of the angle, while the vertical uplift dumped into the foot is the force times the tangent of the angle. A flatter raker is therefore the more effective and lower-uplift choice: the uplift is about 0.58 of the horizontal force at 30°, equal to it at 45°, and 1.73 times it at 60°. 45° is a sensible upper bound rather than an optimum, and a flatter brace — around 30° — is preferred, most importantly where the top of the side form is not otherwise restrained and the raker alone must hold it plumb. A concrete-form construction manual states the diagonal bracing member should make a 30° angle with the horizontal. 30° is adopted here as the conservative worst case: being the flattest practical raker it needs the most run and yields the shallowest allowable downstand, so any steeper raker the site uses still fits the sized envelope. The lateral load the bracing carries follows ACI 347, which requires wall-form bracing to be designed for a load applied at the top of the form.<br><br><strong>The geometry.</strong> With the raker at 30°, the run it needs to brace a formed downstand H is H ÷ tan 30° ≈ 1.73 H. Footing on the soffit board, the run available each side is the board half-width, less the beam half-width, less the side-form ply (about 20 mm, allowing tolerance on ~17 mm formply). Setting available run equal to required run gives the downstand a sheet can brace, and rearranging gives a single closed-form rule:<br><br><strong>required bracing width ≈ beam width + 3.46 × formed downstand + 40 mm</strong><br><br>(3.46 is 2 ÷ tan 30°; 40 mm is two 20 mm plies). The required bracing width is the soffit-sheet dimension that must run across the beam. A 400 mm wide beam with a 200 mm downstand needs about 400 + 692 + 40 ≈ 1130 mm — within the 1200 dimension of a standard sheet; a 600 mm wide beam with a 335 mm downstand needs about 1795 mm — at the 1800 dimension. The worked example tabulates this across beam widths and the three sheet options.<br><br><strong>The standard sheet and its two orientations.</strong> A standard formply sheet is 1200 × 1800 mm. Laid with the 1200 across the beam it is in its efficient orientation, the 1800 running along the beam length so fewer sheets cover the run; turned so the 1800 runs across the beam it gives more bracing width, but the 1200 now runs along the length, needing more sheets and more cross-joints. Only past 1800 mm of required bracing width is a genuinely larger 2400 sheet needed — which braces the downstand but is awkward to handle, hence the concern rating; past 2400 mm no standard sheet braces it off the soffit and engineered falsework is required.<br><br><strong>The slab lever.</strong> Because only the downstand below the slab soffit is braced, slab thickness is the cheapest lever: every 100 mm of depth moved into the slab removes about 346 mm from the required bracing width. A beam that fails on total depth often passes once a realistic slab is accounted for — a 400 × 400 beam under a 200 mm slab is only a 200 mm formed downstand and sits on the standard sheet in its best orientation.<br><br><strong>Limitations.</strong> The sheet dimensions (1200, 1800, 2400) are physical standards and the run requirement is first-principles geometry, but two inputs are reasoned: the 30° raker is a documented practice convention adopted as a conservative worst case rather than a measured optimum for this exact element, and the cap assumes the raker foots on the soffit board with the form braced toward its top. Where a top tie or an abutting element restrains the form, the cap relaxes. The cap is a bracing-geometry check only; the lateral concrete pressure must be sized separately against the relevant formwork-pressure provisions.<br><br><strong>References</strong><br>ACI Committee 347. Guide to Formwork for Concrete. American Concrete Institute.<br>Hurd, M. K. (2005). Formwork for Concrete (7th ed.). American Concrete Institute (ACI SP-4).<br>Jha, K. N. (2012). Formwork for Concrete Structures. Tata McGraw Hill.<br>Standard formply sheet sizes (1200 × 1800 and 2400 mm) and ~18 mm thickness per common manufacturer/supplier data.",
+            "evidence": "A suspended beam's side forms resist the lateral pressure of the wet concrete, and on an elevated soffit table that restraint is provided by a raker that foots on the soffit board itself — there is nothing below to anchor to. The thresholds are derived from the geometry of that raker, the standard plywood sheet sizes available to foot it, and a documented form-bracing angle, with the lateral form pressure treated as a separate sizing check.<br><br><strong>Why the raker angle governs, and why 30°.</strong> The raker resists the horizontal concrete pressure as axial compression. Resolving the brace force at an angle to the horizontal, the useful horizontal restraint is the force times the cosine of the angle, while the vertical uplift dumped into the foot is the force times the tangent of the angle. A flatter raker is therefore the more effective and lower-uplift choice: the uplift is about 0.58 of the horizontal force at 30°, equal to it at 45°, and 1.73 times it at 60°. 45° is a sensible upper bound rather than an optimum, and a flatter brace — around 30° — is preferred, most importantly where the top of the side form is not otherwise restrained and the raker alone must hold it plumb. A concrete-form construction manual states the diagonal bracing member should make a 30° angle with the horizontal. 30° is adopted here as the conservative worst case: being the flattest practical raker it needs the most run and yields the shallowest allowable downstand, so any steeper raker the site uses still fits the sized envelope. The lateral load the bracing carries follows ACI 347, which requires wall-form bracing to be designed for a load applied at the top of the form.<br><br><strong>The geometry.</strong> With the raker at 30°, the run it needs to brace a formed downstand H is H ÷ tan 30° ≈ 1.73 H. Footing on the soffit board, the run available each side is the board half-width, less the beam half-width, less the side-form ply (about 20 mm, allowing tolerance on ~17 mm formply). Setting available run equal to required run gives the downstand a sheet can brace, and rearranging gives a single closed-form rule:<br><br><strong>required bracing width ≈ beam width + 3.46 × formed downstand + 40 mm</strong><br><br>(3.46 is 2 ÷ tan 30°; 40 mm is two 20 mm plies). The required bracing width is the soffit-sheet dimension that must run across the beam. A 400 mm wide beam with a 200 mm downstand needs about 400 + 692 + 40 ≈ 1130 mm — within the 1200 dimension of a standard sheet; a 600 mm wide beam with a 335 mm downstand needs about 1795 mm — at the 1800 dimension. The worked example tabulates this across beam widths and the three sheet options.<br><br><strong>The standard sheet and its two orientations.</strong> A standard formply sheet is 1200 × 1800 mm. Laid with the 1200 across the beam it is in its efficient orientation, the 1800 running along the beam length so fewer sheets cover the run; turned so the 1800 runs across the beam it gives more bracing width, but the 1200 now runs along the length, needing more sheets and more cross-joints. Only past 1800 mm of required bracing width is a genuinely larger 2400 sheet needed — which braces the downstand but is awkward to handle, hence the concern rating; past 2400 mm no standard sheet braces it off the soffit and engineered falsework is required.<br><br><strong>The slab lever.</strong> Because only the downstand below the slab soffit is braced, slab thickness is the cheapest lever: every 100 mm of depth moved into the slab removes about 346 mm from the required bracing width. A beam that fails on total depth often passes once a realistic slab is accounted for — a 400 × 400 beam under a 200 mm slab is only a 200 mm formed downstand and sits on the standard sheet in its best orientation.<br><br><strong>Limitations.</strong> The sheet dimensions (1200, 1800, 2400) are physical standards and the run requirement is first-principles geometry, but two inputs are reasoned: the 30° raker is a documented practice convention adopted as a conservative worst case rather than a measured optimum for this exact element, and the cap assumes the raker foots on the soffit board with the form braced toward its top. Where a top tie or an abutting element restrains the form, the cap relaxes. The cap is a bracing-geometry check only; the lateral concrete pressure must be sized separately against the relevant formwork-pressure provisions.<br><br><strong>References</strong><br>ACI Committee 347. Guide to Formwork for Concrete. American Concrete Institute.<br>Hurd, M. K. (2005). Formwork for Concrete (7th ed.). American Concrete Institute (ACI SP-4).<br>Jha, K. N. (2012). Formwork for Concrete Structures. Tata McGraw Hill.<br>Standard formply sheet sizes (1200 × 1800 and 2400 mm) and ~17 mm thickness per common manufacturer/supplier data.",
             "examples": [],
             "supportingImages": [
               {
-                "image": "images/beam-soffit-cross-section.png",
-                "title": "<strong>PLACEHOLDER — beam side-form cross-section</strong><br>Soffit board with the beam concentric, two side forms, and the raker footing on the board wing at 30° to the horizontal. Dimension the wing run, the formed downstand below the slab soffit, and the slab thickness over, so the reader sees that only the downstand is braced off the board."
-              },
-              {
-                "image": "images/beam-soffit-board-comparison.png",
-                "title": "<strong>PLACEHOLDER — 1200 vs 1800 vs 2400 board at a fixed beam width</strong><br>The same beam width shown on each of the three standard boards at a 30° raker, so the braceable formed-downstand cap visibly grows with board width — and the 2400 reads as the awkward, last-resort sheet."
-              },
-              {
-                "image": "images/beam-soffit-force-triangle.png",
-                "title": "<strong>PLACEHOLDER — raker force triangle</strong><br>The brace force resolved into its horizontal component (resisting the concrete pressure) and its vertical uplift component, showing why a flatter ~30° raker is the more effective and lower-uplift choice and why 45° is an upper bound rather than the optimum."
+                "image": "images/formply-standard-sheet-sizes-united-plywood.webp",
+                "title": "<strong>United Plywood — F17 formply sheet sizes</strong><br>Supplier listing showing F17 formply as 1800 × 1200 mm and 2400 × 1200 mm sheets, with 17 mm thickness. This supports the sheet sizes used in the worked example. The 1800 × 1200 sheet is treated as the standard, more manageable board; the 2400 × 1200 sheet is available but is treated as the less-preferred oversized board because it is harder to handle on a soffit table."
               }
             ],
             "dateAdded": "2026-06-16",
@@ -1822,13 +1814,20 @@
             "workedExample": {
               "title": "Worked example — what each soffit sheet can brace",
               "caveat": "A conservative, board-footed guide at a 30° raker — not a substitute for a temporary-works design. Re-run it for the project's actual slab thickness and locally available sheet sizes.",
-              "headline": "The first table is the formed downstand a sheet can brace at a safe 30° raker — the part of the beam below the slab soffit, before any slab is added. The second table adds a 200 mm slab to give a realistic total beam depth.",
-              "tableCaption": "Table 1 — Maximum formed downstand each sheet can brace (slab depth NOT yet considered)",
+              "headline": "The first table is the formed downstand a sheet can brace at a safe 30° raker — the part of the beam below the slab soffit, before any slab is added. The second table adds a 200 mm slab to show the realistic total beam depth.",
+              "tableStyle": "soffitSheetBracing",
+              "tableCaption": "Table 1 — Maximum formed downstand below slab soffit",
               "tableHeaders": [
                 "Beam width",
-                "1200 across",
-                "1800 across (turned)",
-                "2400 board"
+                "Downstand<br>(1200 mm ply span)",
+                "Downstand<br>(1800 mm ply span)",
+                "Downstand<br>(2400 mm ply span)"
+              ],
+              "tableColumnBands": [
+                "",
+                "green",
+                "yellow",
+                "orange"
               ],
               "tableRows": [
                 [
@@ -1868,12 +1867,18 @@
                   "450 mm"
                 ]
               ],
-              "tableCaption2": "Table 2 — The same as a realistic total beam depth, with a 200 mm slab absorbed (add your own slab thickness to Table 1)",
+              "tableCaption2": "Table 2 — Maximum total beam depth with a 200 mm slab",
               "tableHeaders2": [
                 "Beam width",
-                "1200 across",
-                "1800 across (turned)",
-                "2400 board"
+                "Beam depth<br>(1200 mm ply span)",
+                "Beam depth<br>(1800 mm ply span)",
+                "Beam depth<br>(2400 mm ply span)"
+              ],
+              "tableColumnBands2": [
+                "",
+                "green",
+                "yellow",
+                "orange"
               ],
               "tableRows2": [
                 [
@@ -1913,16 +1918,21 @@
                   "650 mm"
                 ]
               ],
-              "howToUse": "Pick your beam width and read across. Table 1 is the deepest downstand each sheet braces below the soffit; Table 2 adds a 200 mm slab for a realistic total beam depth. The 1200-across column is best practice. If a beam only fits the 2400 column, deepen the slab or reproportion before committing.",
+              "howToUse": "Pick your beam width and read across. Table 1 is the deepest formed downstand each sheet braces below the slab soffit. Table 2 adds a 200 mm slab to show the realistic total beam depth.<br><br><strong>For a 200 mm slab:</strong> a 400 × 400 beam sits in the 1200-across zone, which is the clean target. A 500 × 400 beam is already just beyond that zone and should be treated as a turned-sheet condition. A 600 × 600 beam sits in the 2400-board zone, so treat it as a design warning before the beam proportions are locked in.<br><br><strong>Design selection:</strong> the 1200-across column is the preferred target. The 1800-turned column is workable but less efficient because the same sheet is turned and more joints are introduced along the beam run. The 2400-board column is a warning that the beam is becoming awkward to form. If the beam only fits this column, consider making the beam wider and shallower, deepening the slab, using a band-beam arrangement, or otherwise accepting that the structural scheme is pushing the formwork away from the clean standard-sheet target.",
+              "assumptionsTitle": "How these numbers were derived",
               "assumptions": [
                 "Formply is about 17 mm; 20 mm is assumed here to allow for tolerance, which shifts the caps by only a few millimetres.",
-                "Raker at 30° to the horizontal — the conservative flat-raker worst case (most run, least uplift, shallowest allowable downstand).",
-                "The raker foots on the soffit board itself (suspended beam, nothing below to anchor to).",
-                "The 1200 and 1800 columns are the same standard 1200 × 1800 sheet in two orientations; 2400 is a genuinely larger sheet.",
-                "Table 1 is the formed downstand only; Table 2 adds a 200 mm slab. Formed downstand = total beam depth − slab thickness.",
+                "Raker at 30° to the horizontal — the conservative flat-raker worst case for this board-footed check.",
+                "The raker foots on the soffit board itself, as in suspended beam formwork where there is no ground below to anchor to.",
+                "The 1200 and 1800 columns are the same standard 1200 × 1800 sheet in two orientations; 2400 is a genuinely larger board.",
+                "Table 1 is the formed downstand only. Table 2 adds a 200 mm slab. Formed downstand = total beam depth − slab thickness.",
                 "Closed-form rule: required bracing width ≈ beam width + 3.46 × formed downstand + 40 mm (3.46 = 2 ÷ tan 30°; 40 = two 20 mm plies)."
               ],
-              "assumptionsNote": "Every 100 mm of depth moved into the slab removes about 346 mm from the required bracing width — the cheapest lever for bringing a deep beam back onto a standard sheet."
+              "assumptionsNote": "Every 100 mm of depth moved into the slab removes about 346 mm from the required bracing width. That is why a wider, shallower band beam can be more formwork-friendly than a deeper narrow beam.",
+              "figureBeforeTable2": {
+                "image": "images/beam-soffit-plywood-span-guide.webp",
+                "caption": "<strong>Beam depth, beam width and plywood span used in Table 2</strong><br>The worked example assumes a 200 mm slab and compares the total beam depth that can be formed using 1200 mm, 1800 mm and 2400 mm plywood spans."
+              }
             }
           }
         },
@@ -3782,7 +3792,8 @@
     "fragment|update|structural-steel-vs-concrete-for-isolated-vertical-members|k2h5k7",
     "fragment|update|structural-steel-vs-concrete-for-isolated-vertical-members|14a2qcw",
     "fragment|entry|latent-safety-risk-of-screw-pile-foundations|pz0zz8",
-    "fragment|update|beam-soffit-formwork-proportions|13eq5ox"
+    "fragment|update|beam-soffit-formwork-proportions|13eq5ox",
+    "fragment|update|beam-soffit-formwork-proportions|o0wv36"
   ],
   "_rejected": [],
   "_reconsider": [
