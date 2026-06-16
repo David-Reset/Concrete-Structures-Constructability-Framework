@@ -94,6 +94,7 @@
   .worked-example-table{width:100%;border-collapse:collapse;margin:10px 0 14px;font-size:13px}
   .worked-example-table th{text-align:left;padding:8px 10px;background:var(--surface-light);border:1px solid var(--border);color:var(--text);font-weight:700;font-size:12px}
   .worked-example-table td{padding:8px 10px;border:1px solid var(--border);color:var(--text);opacity:0.9}
+  .worked-example-table-cap{font-size:12px;font-weight:700;color:var(--text);margin:16px 0 4px;opacity:0.85}
   .worked-example-howto{font-size:13px;color:var(--text);line-height:1.6;opacity:0.9;margin-bottom:4px}
   .worked-example-howto strong{color:var(--text);opacity:1}
   .worked-example-howto em{color:var(--text-muted);font-style:italic}
@@ -1519,7 +1520,8 @@ function renderEntryDetail(){
 
   const workedExampleHtml=d.workedExample?(()=>{
     const we=d.workedExample;
-    const tableHtml=we.tableHeaders&&we.tableRows?`<table class="worked-example-table"><thead><tr>${we.tableHeaders.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${we.tableRows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>`:'';
+    const mkTbl=(hdrs,rows,cap)=>hdrs&&rows?`${cap?`<div class="worked-example-table-cap">${cap}</div>`:''}<table class="worked-example-table"><thead><tr>${hdrs.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>`:'';
+    const tableHtml=mkTbl(we.tableHeaders,we.tableRows,we.tableCaption)+mkTbl(we.tableHeaders2,we.tableRows2,we.tableCaption2);
     const assumptionsHtml=we.assumptions&&we.assumptions.length>0?`<div class="worked-example-assumptions"><div class="worked-example-assumptions-title">${we.assumptionsTitle||'How these numbers were derived'}</div><ul>${we.assumptions.map(a=>`<li>${a}</li>`).join('')}</ul>${we.assumptionsNote?`<div class="worked-example-assumptions-note">${we.assumptionsNote}</div>`:''}</div>`:'';
     return `<div class="worked-example-box"><div class="worked-example-title">${we.title||'Worked example'}</div>${we.caveat?`<div class="worked-example-caveat">${we.caveat}</div>`:''}${we.headline?`<div class="worked-example-headline">${we.headline}</div>`:''}${tableHtml}${we.howToUse?`<div class="worked-example-howto"><strong>How to use it:</strong> ${we.howToUse}</div>`:''}${assumptionsHtml}</div>`;
   })():'';
