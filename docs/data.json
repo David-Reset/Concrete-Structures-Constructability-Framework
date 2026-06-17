@@ -1998,47 +1998,9 @@
           }
         },
         {
-          "id": "waterproofing-buildability",
-          "name": "Waterproofing buildability",
-          "available": false,
-          "draft": true,
-          "data": {
-            "question": "Does the concrete provide the geometry waterproofing actually needs — set-downs, falls to drainage, upstand heights, and termination room at penetrations and junctions — or is a membrane expected to perform on a flat slab with no falls and no room to turn up and terminate?",
-            "parameter": "Whether wet-area and external slabs provide the set-downs, falls, upstands and termination clearances a membrane needs (provided at design stage / drawn without coordination / left to site).",
-            "_evidenceAngle": "Detailing root cause: the membrane can only work if the concrete gives it falls and terminations; fixing this after the pour means grinding falls or building up topping. Same shape as the drip-groove entry (a formed feature must be resolved before the pour). Practice references: AIW (Australian Institute of Waterproofing) and membrane-manufacturer detailing guidance; corroborate with the prevalence of waterproofing as a defect/rework category in building-defect studies.",
-            "_thresholdSketch": "Good: falls, set-downs, upstands and terminations detailed. Concern: membrane required but slab is flat / no termination room. Action required: detail forces post-pour grinding or topping build-up to create falls."
-          }
-        },
-        {
-          "id": "repetition-and-the-formwork-learning-curve",
-          "name": "Repetition and the formwork learning curve",
-          "available": false,
-          "draft": true,
-          "data": {
-            "question": "Across the building, how many distinct formwork / element configurations has the design created — does the floor plate and detailing repeat enough for crews to climb the learning curve, or does near-constant variation reset the crew to slow, first-time output on every element?",
-            "parameter": "Number of distinct (non-repeating) formwork or element configurations across the structure relative to the number of elements — i.e. how much the design repeats vs varies.",
-            "_evidenceAngle": "Best indirect-evidence candidate in the set. Wright's learning curve (T. P. Wright, 1936, Factors Affecting the Cost of Airplanes, Journal of the Aeronautical Sciences) — unit labour time falls a fixed percentage each time cumulative output doubles — is canonical in manufacturing economics and applies directly to repeated formwork pours and repeated details. Same move as using Rosenholtz (visual clutter) for the callout entry: borrow a well-established law from an adjacent field to explain a construction effect. Reinforces the dimension's stated theme (standardisation, repetition, simplification).",
-            "_thresholdSketch": "Good: high repetition, few unique configurations. Consider: moderate variation. Concern: many one-off configurations limiting any learning effect. Action required: near-constant variation across elements that could have been standardised.",
-            "relatedEntries": [
-              {
-                "id": "slab-depth-consistency",
-                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
-              },
-              {
-                "id": "beam-soffit-formwork-proportions",
-                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
-              },
-              {
-                "id": "conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors",
-                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
-              }
-            ]
-          }
-        },
-        {
           "id": "non-moving-construction-joint-waterproofing",
           "name": "Waterproofing the non-moving construction joint in walls",
-          "available": false,
+          "available": true,
           "data": {
             "question": "Has the non-moving construction joint in a watertight wall been detailed as a coordinated waterproofing system, or left to a single product?",
             "parameter": "Waterproofing system completeness at a non-moving watertight wall joint (coordinated vs single-product).",
@@ -2162,6 +2124,44 @@
               {
                 "id": "waterproofing-buildability",
                 "note": "Sibling waterproofing entry on a different surface: that one covers slab geometry (falls, set-downs, upstands, membrane terminations); this one covers the wall construction joint. Coordinate so the slab-edge and wall-joint details meet cleanly and don't overlap in scope."
+              }
+            ]
+          }
+        },
+        {
+          "id": "waterproofing-buildability",
+          "name": "Waterproofing buildability",
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "Does the concrete provide the geometry waterproofing actually needs — set-downs, falls to drainage, upstand heights, and termination room at penetrations and junctions — or is a membrane expected to perform on a flat slab with no falls and no room to turn up and terminate?",
+            "parameter": "Whether wet-area and external slabs provide the set-downs, falls, upstands and termination clearances a membrane needs (provided at design stage / drawn without coordination / left to site).",
+            "_evidenceAngle": "Detailing root cause: the membrane can only work if the concrete gives it falls and terminations; fixing this after the pour means grinding falls or building up topping. Same shape as the drip-groove entry (a formed feature must be resolved before the pour). Practice references: AIW (Australian Institute of Waterproofing) and membrane-manufacturer detailing guidance; corroborate with the prevalence of waterproofing as a defect/rework category in building-defect studies.",
+            "_thresholdSketch": "Good: falls, set-downs, upstands and terminations detailed. Concern: membrane required but slab is flat / no termination room. Action required: detail forces post-pour grinding or topping build-up to create falls."
+          }
+        },
+        {
+          "id": "repetition-and-the-formwork-learning-curve",
+          "name": "Repetition and the formwork learning curve",
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "Across the building, how many distinct formwork / element configurations has the design created — does the floor plate and detailing repeat enough for crews to climb the learning curve, or does near-constant variation reset the crew to slow, first-time output on every element?",
+            "parameter": "Number of distinct (non-repeating) formwork or element configurations across the structure relative to the number of elements — i.e. how much the design repeats vs varies.",
+            "_evidenceAngle": "Best indirect-evidence candidate in the set. Wright's learning curve (T. P. Wright, 1936, Factors Affecting the Cost of Airplanes, Journal of the Aeronautical Sciences) — unit labour time falls a fixed percentage each time cumulative output doubles — is canonical in manufacturing economics and applies directly to repeated formwork pours and repeated details. Same move as using Rosenholtz (visual clutter) for the callout entry: borrow a well-established law from an adjacent field to explain a construction effect. Reinforces the dimension's stated theme (standardisation, repetition, simplification).",
+            "_thresholdSketch": "Good: high repetition, few unique configurations. Consider: moderate variation. Concern: many one-off configurations limiting any learning effect. Action required: near-constant variation across elements that could have been standardised.",
+            "relatedEntries": [
+              {
+                "id": "slab-depth-consistency",
+                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
+              },
+              {
+                "id": "beam-soffit-formwork-proportions",
+                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
+              },
+              {
+                "id": "conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors",
+                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
               }
             ]
           }
