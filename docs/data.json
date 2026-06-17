@@ -2034,6 +2034,137 @@
               }
             ]
           }
+        },
+        {
+          "id": "non-moving-construction-joint-waterproofing",
+          "name": "Waterproofing the non-moving construction joint in walls",
+          "available": false,
+          "data": {
+            "question": "Has the non-moving construction joint in a watertight wall been detailed as a coordinated waterproofing system, or left to a single product?",
+            "parameter": "Waterproofing system completeness at a non-moving watertight wall joint (coordinated vs single-product).",
+            "keywords": [
+              "construction joint",
+              "cold joint",
+              "day joint",
+              "wall-slab joint",
+              "waterstop",
+              "hydrophilic",
+              "delayed-swell",
+              "swellable",
+              "bentonite",
+              "rubber waterbar",
+              "PVC waterbar",
+              "watertight concrete",
+              "integral admixture",
+              "crystalline admixture",
+              "translucent formwork",
+              "honeycombing",
+              "backfill damage",
+              "watertight basement"
+            ],
+            "background": "A construction joint &mdash; typically where the wall is cast onto its slab or footing &mdash; is a deliberate discontinuity in a wall meant to act as one watertight element, which makes it the principal leak path. The constructability point is that waterproofing it is a <em>coordinated system</em>, not a single product: the real decision is which line of defence you choose to trust.<br><br>The strongest strategy makes the concrete itself the waterproofing &mdash; a watertight (integral or crystalline) admixture in the body, a seal across the joint, and drainage to relieve the head &mdash; and treats any external membrane as contingent redundancy rather than the primary barrier. A membrane is the least verifiable element: once backfilled it is hidden, unrepairable, and easily punctured by sharp backfill or following trades. So it is only dropped where the concrete body can be trusted &mdash; either translucent permanent formwork lets the pour and compaction be verified, or the contractor is verified as competent. Where neither applies the membrane stays as a last line of defence: the weakest part of the system, but better than nothing behind concrete that cannot be confirmed.<br><br>At the joint, a delayed-swell / hydrophilic seal is usually the better buildability choice than a central rubber or PVC waterbar, which the concrete must be placed and compacted cleanly around. &lsquo;Non-moving&rsquo; means the joint is not a deliberate movement joint &mdash; not that it is static; a joint genuinely required to accommodate movement is a different detail (a separate entry), so confirming which one you have is the first move. Which line leads also depends on the wall system: a concrete or PVC permanent-formwork wall can lean on watertight verified concrete plus a sealed joint, whereas core-filled blockwork leans harder on barrier and drainage.",
+            "thresholds": [
+              {
+                "range": "Verified concrete body",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "The joint is confirmed non-moving, and the waterproofing is carried by the concrete: watertight admixture in the body, a delayed-swell / hydrophilic (or system-approved) seal at the joint with the cover and confinement it needs, and drainage to relieve the head. The membrane has been dropped because the right to drop it was earned &mdash; either the wall uses translucent permanent formwork so the pour and compaction can be verified for honeycombing and voids, or the contractor is verified as competent &mdash; so the concrete is trusted because it is confirmed, not assumed. Any membrane retained is deliberate redundancy, never the primary barrier."
+              },
+              {
+                "range": "Membrane as backup",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "The strategy is sound, but the right to drop the membrane has not been earned: the formwork is opaque and the contractor is not verified as competent, so the concrete body cannot be confirmed. The membrane is correctly kept as a last line of defence &mdash; the least capable part of the system, hidden and easily damaged on backfill, but better than nothing behind concrete that cannot be verified. Confirm the seal type, the placement controls and the membrane protection before issue; if the fill can be made verifiable, the membrane can then be dropped."
+              },
+              {
+                "range": "Single hidden product",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "The waterproofing is hung on one product with no coordinated system behind it &mdash; a membrane &lsquo;by others&rsquo; as the primary barrier with no watertight-concrete or joint-seal logic, a central waterbar specified where it will obstruct concrete placement, or a generic &lsquo;waterstop by others&rsquo; note. A buried, unverifiable layer is being trusted to carry the wall. Resolve the system before issue."
+              },
+              {
+                "range": "Critical and unresolved",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "A dry-critical space &mdash; habitable basement, lift pit, plant room or similar &mdash; where leakage would be costly, but the construction joint has no coordinated strategy: no joint-seal logic, primary reliance on a buried membrane that cannot be verified and is likely damaged on backfill, and no way to confirm the concrete body. Resolve before the drawings are issued."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Make the concrete the waterproofing, not the membrane",
+                "description": "Carry the waterproofing on the concrete: watertight (integral or crystalline) admixture in the body, a seal across the joint, and drainage to relieve the head. Treat any membrane as contingent redundancy, not the primary barrier &mdash; because once backfilled it is hidden, unrepairable, and the layer most likely to be punctured or damaged during backfilling."
+              },
+              {
+                "title": "Earn the right to drop the membrane",
+                "description": "Drop the membrane only where the concrete body can be trusted &mdash; either the wall uses translucent permanent formwork so the pour can be watched for honeycombing and voids, or the contractor is verified as competent. On that basis the wall relies on watertight verified concrete and a sealed joint. Where neither applies, keep the membrane as a last line of defence: it is the weakest, most damage-prone part of the system, but better than nothing behind concrete that cannot be confirmed."
+              },
+              {
+                "title": "Specify delayed-swell over a central waterbar at the joint",
+                "description": "For a non-moving construction joint, specify a delayed-swell / hydrophilic seal rather than a central PVC/rubber waterbar. It seals small irregularities, fixes to the first pour, and does not obstruct placement or require split-forming and welded corners. Specify a delay-coated grade with an activation window longer than the realistic exposure before close-up, so it is not triggered prematurely by rain or standing water; the delay rating addresses premature activation only and is not a movement rating."
+              }
+            ],
+            "evidence": "<strong>The joint is a system, and the interface governs the seal (mechanism).</strong> Cho et al. (2019) tested waterstops at underground concrete construction joints and found that leakage can track the interface between the waterstop and the concrete, rather than passing through the waterstop material, and that improving contact and bond at that interface markedly increases the pressure head the joint resists. This supports the central principle that the seal&rsquo;s performance is governed by the interface, not the product alone &mdash; and the related buildability point that a confined swelling seal, which develops against the surrounding concrete, suits a non-moving joint better than a central waterbar that the concrete must be placed cleanly around.<br><br><strong>The membrane is the least dependable line of defence.</strong> Song et al. (2017) evaluated waterproofing membrane systems and found performance depends heavily on substrate condition and workmanship rather than on product selection alone. That below-ground membranes are damaged during backfilling is not speculative: it is standard industry practice to install a dedicated protection board over the membrane specifically to shield it from sharps in the backfill, and the practice of paying to protect the membrane is itself evidence that the hazard is real and expected (Evans / AIW). The same practitioner guidance reports that damage still occurs despite protection &mdash; from the sharp corners of composite drainage cores and from following trades cutting penetrations through a finished membrane and failing to reseal them. Combined with the membrane being concealed and unrepairable once backfilled, and inaccessible and costly to rectify later, this supports treating it as contingent redundancy rather than the primary barrier, and preferring a verifiable concrete body where one can be achieved.<br><br><strong>Watertight concrete is a real contribution.</strong> Jahandari et al. (2023), reviewing integral waterproof concrete, supports the use of integral and crystalline admixtures as a genuine reduction in water transport through the body of the concrete, while noting that admixtures affect properties such as workability and strength and so still require proper mix design and verification. This underpins the strategy of making the concrete itself the waterproofing rather than relying on a surface layer.<br><br><strong>Vocabulary, not backing.</strong> The barrier / integral / drained framework is used here only as descriptive language to organise the system. It is not relied on as the backing for any rating.<br><br><strong>What this entry does not claim.</strong> The exposure of below-ground membranes to backfill damage is well recognised &mdash; evidenced by the routine specification of protection boards to mitigate it &mdash; but its frequency is not quantified in the reviewed sources, so the entry does not put a number on the rate. Nor does it claim a membrane is useless: retained as a last line of defence it still adds value behind concrete that cannot be confirmed. The decision to drop or retain a membrane therefore remains a project judgement keyed to whether the concrete body can actually be verified and to the consequence of leakage.<br><br><strong>References</strong><br>Cho, B. H., Nam, B. H., Seo, S., Kim, J., An, J., &amp; Youn, H. (2019). <em>Waterproofing performance of waterstop with adhesive bonding used at joints of underground concrete structures.</em> Construction and Building Materials, 221, 491&ndash;500.<br>Song, J., Oh, S., et al. (2017). <em>Performance evaluation of waterproofing membrane systems subject to the concrete joint load behavior of below-grade concrete structures.</em> Applied Sciences, 7(11), 1147.<br>Jahandari, S., Tao, Z., Alim, M. A., Zhang, G., Setunge, S., Liu, S., Aghadavoudi, F., He, Y., &amp; Rasekh, H. (2023). <em>Integral waterproof concrete: a comprehensive review.</em> Journal of Building Engineering.<br>Evans, P. <em>Below ground tanking: basement &amp; foundation waterproofing systems.</em> Building Services Australia / Australian Institute of Waterproofing (AIW).",
+            "examples": [],
+            "supportingImages": [
+              {
+                "image": "images/non-moving-construction-joint-leak-path.webp",
+                "title": "<strong>Non-moving construction joint as the leak path</strong><br>Even with a sound wall body, water pressure outside can track along the cold joint between the slab/footing pour and the wall pour &mdash; so the joint, not the wall, is the thing to seal."
+              },
+              {
+                "image": "images/coordinated-waterproofing-at-construction-joint.webp",
+                "title": "<strong>Coordinated waterproofing at the construction joint</strong><br>Treat the joint as several lines of defence working together: waterproof concrete in the body, a sealed joint, external drainage to relieve pressure, and any membrane as an optional extra &mdash; not reliance on one product."
+              },
+              {
+                "image": "images/waterstop-choice-at-non-moving-construction-joint.webp",
+                "title": "<strong>Waterstop choice at the joint</strong><br>A delayed-swell / hydrophilic strip fixes to the first pour and sits within the joint, suiting a non-moving joint. A centre-bulb rubber/PVC waterbar can work but must match wall width and profile, is really intended for designed movement joints, and forces the concrete to be placed cleanly around a central obstruction."
+              },
+              {
+                "image": "images/external-membrane-as-backup-not-main-barrier.webp",
+                "title": "<strong>External membrane as backup, not the main barrier</strong><br>Keep the concrete body and sealed joint as the primary line; a membrane adds protection but, once backfilled, is hidden and hard to inspect or repair &mdash; so relying on it alone leaves performance hanging on a buried layer. Drop it only when the concrete fill can be verified."
+              }
+            ],
+            "dateAdded": "2026-06-17",
+            "dateReviewed": "2026-06-17",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "applicability": {
+              "appliesWhere": "This entry applies to any wall with a non-moving construction joint that must resist water &mdash; basement and retaining walls are the clearest case, but also water tanks, lift pits, plant-room and pool walls, and podium or planter walls with water on one side. It applies whether the wall is formed reinforced concrete, PVC permanent formwork, or core-filled blockwork. It does not apply where the joint is a deliberate movement, expansion, isolation or settlement joint (a separate detail), or where the wall has no waterproofing demand.",
+              "checks": [
+                {
+                  "title": "Confirm the joint isn&rsquo;t required to move",
+                  "description": "The entry assumes a genuine non-moving construction joint. Long restrained pours, settlement between elements, or missing movement bays may mean the line is actually a movement joint &mdash; a different detail with a different device. Mis-classifying a moving joint as non-moving is the most common failure, so this is the first check, not an afterthought."
+                },
+                {
+                  "title": "Can the concrete body be verified?",
+                  "description": "This is the decision that drives whether a membrane is needed. The membrane is dropped only where the body can be trusted &mdash; either translucent permanent formwork lets the pour and compaction be checked for honeycombing and voids, or the contractor is verified as competent. Where neither applies, keep the membrane as a last line of defence: the least capable part of the system, but better than nothing behind concrete that cannot be confirmed."
+                },
+                {
+                  "title": "Don&rsquo;t bury trust in a membrane",
+                  "description": "A membrane is the least verifiable element: hidden after backfill, unrepairable, and exposed to puncture by sharp backfill and damage by following trades. Where it is retained, it is contingent redundancy with protection detailed &mdash; not the primary barrier carrying the wall."
+                },
+                {
+                  "title": "Delayed-swell over a central waterbar",
+                  "description": "At a non-moving construction joint a delayed-swell / hydrophilic seal usually beats a central PVC/rubber waterbar on buildability: it seals irregularities, fixes to the first pour, and doesn&rsquo;t obstruct placement or need welded corners. Specify a delay-coated grade with an activation window longer than the realistic exposure before the second pour; the delay rating is not a movement rating."
+                },
+                {
+                  "title": "Which protection leads depends on the wall system",
+                  "description": "A concrete or PVC permanent-formwork wall can lean on watertight concrete plus a sealed joint plus verifiable fill; core-filled blockwork leans harder on barrier and drainage because its body is not one continuous watertight element. The wall-system selection entry sets this; this entry details the joint once the wall is chosen."
+                }
+              ]
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "The core principles &mdash; the joint is a system, the seal&rsquo;s interface governs its performance, and watertight concrete is a real contribution &mdash; are supported by peer-reviewed testing and review. The vulnerability of a buried membrane to backfill damage is supported by membrane-workmanship research and by the standard industry practice of installing protection boards to mitigate that very hazard. The drop-or-retain threshold itself remains reasoned constructability judgement, keyed to verifiability and consequence."
+            },
+            "relatedEntries": [
+              {
+                "id": "waterproofing-buildability",
+                "note": "Sibling waterproofing entry on a different surface: that one covers slab geometry (falls, set-downs, upstands, membrane terminations); this one covers the wall construction joint. Coordinate so the slab-edge and wall-joint details meet cleanly and don't overlap in scope."
+              }
+            ]
+          }
         }
       ]
     },
@@ -3873,7 +4004,8 @@
     "fragment|update|beam-soffit-formwork-proportions|o0wv36",
     "fragment|update|beam-soffit-formwork-proportions|1nh4wm8",
     "fragment|update|latent-safety-risk-of-screw-pile-foundations|1dfv8k0",
-    "fragment|entry|non-moving-construction-joint-waterproofing|1paeomi"
+    "fragment|entry|non-moving-construction-joint-waterproofing|1paeomi",
+    "fragment|entry|non-moving-construction-joint-waterproofing|1a9abeq"
   ],
   "_rejected": [],
   "_reconsider": [
