@@ -1218,7 +1218,7 @@ async function loadData(){
 // ===== RENDER =====
 function render(){
   const app=document.getElementById('app');
-  app.innerHTML=renderHeader()+(state.view==='guide'?renderBreadcrumb()+renderGuideView():state.view==='evidence'?renderBreadcrumb()+renderEvidenceSupportView():state.view==='projectList'?renderBreadcrumb()+renderProjectListView():state.view==='entry'?renderBreadcrumb()+renderEntryDetail():state.view==='dimension'?renderBreadcrumb()+renderDimensionView():renderHomeView());
+  app.innerHTML=renderHeader()+(state.view==='guide'?renderBreadcrumb()+renderGuideView():state.view==='evidence'?renderBreadcrumb()+renderEvidenceSupportView():state.view==='projectList'?renderBreadcrumb()+renderProjectListView():state.view==='entry'?renderBreadcrumb()+renderEntryDetail():state.view==='dimension'?renderBreadcrumb()+renderDimensionView():state.view==='byDate'?renderBreadcrumb()+renderByDateView():renderHomeView());
 }
 
 function renderHeader(){
@@ -1234,6 +1234,7 @@ function renderBreadcrumb(){
   if(state.view==='guide'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">'+(guide?guide.title:'Guide')+'</span></div>'; }
   if(state.view==='evidence'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Evidence support index</span></div>'; }
   if(state.view==='projectList'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">My project review list</span></div>';}
+  if(state.view==='byDate'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">All entries by date</span></div>';}
   if(dim){
     h+='<span class="breadcrumb-sep">›</span>';
     if(item){h+=`<span class="breadcrumb-link" onclick="goDimension('${dim.id}')">${dim.name}</span><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">${item.name}</span>`}
@@ -1253,9 +1254,47 @@ function renderHomeView(){
     <div class="search-bar">${searchIcon}<input id="search-input" class="search-input" type="text" autocomplete="off" spellcheck="false" placeholder="Describe your design problem — e.g. “wall close to a boundary”, “stirrup size”, “curing”" value="${escAttr(searchQuery)}" oninput="onSearchInput(this.value)"><div id="search-clear" class="search-clear" style="display:${searchQuery?'flex':'none'}" onclick="clearSearch()">✕</div></div>
     <div id="search-region-wrap" class="search-region-wrap" style="display:${has?'flex':'none'}"><span class="search-region-label">Narrow to region</span><select id="search-region" class="search-region" onchange="onSearchRegion(this.value)">${searchRegionOptions()}</select></div>
   </div>`;
-  return `<div class="content animate-in"><div style="margin-bottom:18px"><h1 class="section-title">Find constructability guidance</h1><p class="section-desc">Describe your design problem to search across all five dimensions — or browse the dimensions below.</p></div>${searchHero}<div id="search-results">${renderSearchResults()}</div><div id="dim-grid-wrap" style="display:${has?'none':''}"><div style="margin:28px 0 8px"><div class="label">Browse by dimension</div></div><div class="dim-grid">${guideCard}${cards}</div>${evidenceBanner}<div class="suggest-banner" onclick="goSuggest()"><div class="suggest-banner-text"><div class="suggest-banner-title">Don't see your issue?</div><div class="suggest-banner-sub">Suggest a new constructability entry — every submission is reviewed and structured by the framework team.</div></div><div class="suggest-banner-btn">Suggest an entry →</div></div></div></div>`;
+  return `<div class="content animate-in"><div style="margin-bottom:18px"><h1 class="section-title">Find constructability guidance</h1><p class="section-desc">Describe your design problem to search across all five dimensions — or browse the dimensions below.</p></div>${searchHero}<div id="search-results">${renderSearchResults()}</div><div id="dim-grid-wrap" style="display:${has?'none':''}">${renderRecentlyAdded()}<div style="margin:28px 0 8px"><div class="label">Browse by dimension</div></div><div class="dim-grid">${guideCard}${cards}</div>${evidenceBanner}<div class="suggest-banner" onclick="goSuggest()"><div class="suggest-banner-text"><div class="suggest-banner-title">Don't see your issue?</div><div class="suggest-banner-sub">Suggest a new constructability entry — every submission is reviewed and structured by the framework team.</div></div><div class="suggest-banner-btn">Suggest an entry →</div></div></div></div>`;
 }
 
+
+// ===== RECENTLY ADDED / BY DATE =====
+function fmtDate(s){
+  if(!s)return '';
+  const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(s);
+  if(!m)return s;
+  const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return parseInt(m[3],10)+' '+(months[parseInt(m[2],10)-1]||'')+' '+m[1];
+}
+// Live entries that carry a dateAdded, newest first. Ties break on dateReviewed
+// then name so the order is stable. Pass n to cap the list (e.g. the home page 3).
+function recentEntries(n){
+  const list=allAvailableEntries().filter(e=>e.data&&e.data.dateAdded);
+  list.sort((a,b)=>{
+    if(a.data.dateAdded!==b.data.dateAdded)return a.data.dateAdded<b.data.dateAdded?1:-1;
+    const ar=a.data.dateReviewed||'',br=b.data.dateReviewed||'';
+    if(ar!==br)return ar<br?1:-1;
+    return (a.item.name||'').localeCompare(b.item.name||'');
+  });
+  return n?list.slice(0,n):list;
+}
+function renderRecentRow(e){
+  const dim=e.dim,it=e.item,d=e.data;
+  const updated=(d.dateReviewed&&d.dateReviewed>d.dateAdded)?`<div class="item-meta" style="margin-top:2px;color:var(--link)">updated ${fmtDate(d.dateReviewed)}</div>`:'';
+  return `<div class="item-row available" style="align-items:flex-start" onclick="goEntry('${dim.id}','${it.id}')"><div style="flex:1;min-width:0;margin-right:12px"><div class="search-result-top"><span class="item-name">${escHtml(it.name)}</span><span class="related-dim"><span class="ico">${dim.icon}</span>${escHtml(dim.name)}</span></div></div><div style="text-align:right;flex-shrink:0"><div class="item-arrow">→</div><div class="item-meta">Added ${fmtDate(d.dateAdded)}</div>${updated}</div></div>`;
+}
+function renderRecentlyAdded(){
+  const recent=recentEntries(3);
+  if(!recent.length)return '';
+  const rows=recent.map(renderRecentRow).join('');
+  return `<div style="margin:28px 0 8px"><div class="label">Recently added</div></div><div class="item-list">${rows}</div><div style="margin-top:13px"><span class="breadcrumb-link" style="font-size:12px;font-weight:600" onclick="goByDate()">View all entries by date →</span></div>`;
+}
+function renderByDateView(){
+  const list=recentEntries();
+  const rows=list.map(renderRecentRow).join('');
+  const n=list.length;
+  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">🕑</span><h1 class="dim-header-title">All entries by date</h1></div><p class="section-desc">Every live entry, newest first by the date it was added. Where an entry has been revised since, the date it was last updated is shown too.</p><div class="label">${n} ${n===1?'entry':'entries'}</div><div class="item-list">${rows}</div></div>`;
+}
 
 // ===== EVIDENCE SUPPORT INDEX =====
 function allAvailableEntries(){
@@ -1630,6 +1669,7 @@ function toggleTheme(){
 }
 function goGuide(){window.location.hash='guide'}
 function goEvidenceSupport(level){state.evidenceFilter=level||'all';window.location.hash='evidence-support';if(state.view==='evidence')render();}
+function goByDate(){window.location.hash='by-date'}
 function goDimension(id){state.locationFilter=null;window.location.hash=id}
 function goEntry(dimId,id){window.location.hash=dimId+'/'+id}
 function setLocationFilter(val){
@@ -1645,6 +1685,7 @@ function parseHash(){
   else if(hash==='guide'){state.view='guide';state.dimId=null;state.itemId=null;state.locationFilter=null;}
   else if(hash==='evidence-support'){state.view='evidence';state.dimId=null;state.itemId=null;state.locationFilter=null;if(!state.evidenceFilter)state.evidenceFilter='all';}
   else if(hash==='project-list'||hash==='review-list'){state.view='projectList';state.dimId=null;state.itemId=null;state.locationFilter=null;}
+  else if(hash==='by-date'){state.view='byDate';state.dimId=null;state.itemId=null;state.locationFilter=null;}
   else if(hash.includes('/')){
     const[dimId,seg]=hash.split('/');
     const dim=dimensions.find(d=>d.id===dimId);
