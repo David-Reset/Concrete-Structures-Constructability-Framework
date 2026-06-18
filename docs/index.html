@@ -14,6 +14,18 @@
     --red: #ef4444; --orange: #f97316; --yellow: #eab308; --green: #22c55e;
     --red-bg: rgba(239,68,68,0.12); --orange-bg: rgba(249,115,22,0.12);
     --yellow-bg: rgba(234,179,8,0.1); --green-bg: rgba(34,197,94,0.1);
+    --link: #60a5fa; --link-hover: #93c5fd; --img-bg: #1e2a3a;
+    color-scheme: dark;
+  }
+  :root[data-theme="light"] {
+    --bg: #f4f6fb; --surface: #ffffff; --surface-light: #eef2f8;
+    --border: #d3dbe8; --text: #1c2430; --text-muted: #5a6678;
+    --accent: #2563eb; --accent-glow: rgba(37,99,235,0.10);
+    --red: #dc2626; --orange: #ea580c; --yellow: #b45309; --green: #16a34a;
+    --red-bg: rgba(220,38,38,0.10); --orange-bg: rgba(234,88,12,0.10);
+    --yellow-bg: rgba(180,83,9,0.10); --green-bg: rgba(22,163,74,0.10);
+    --link: #2563eb; --link-hover: #1d4ed8; --img-bg: #e2e8f0;
+    color-scheme: light;
   }
   body { background:var(--bg); color:var(--text); font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif; min-height:100vh; }
   @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
@@ -196,7 +208,7 @@
   .examples-grid.imgs-1{grid-template-columns:1fr}
   .examples-grid.imgs-2{grid-template-columns:repeat(2,1fr)}
   .example-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
-  .example-card img{width:100%;max-height:200px;object-fit:cover;display:block;background:#1e2a3a}
+  .example-card img{width:100%;max-height:200px;object-fit:cover;display:block;background:var(--img-bg)}
   .examples-grid.imgs-1 .example-card{flex-direction:row;align-items:stretch}
   .examples-grid.imgs-1 .example-card img{width:55%;max-width:55%;max-height:300px;object-fit:contain;align-self:center}
   .examples-grid.imgs-1 .example-caption{flex:1;display:flex;flex-direction:column;justify-content:center;border-top:none;border-left:1px solid var(--border)}
@@ -211,7 +223,7 @@
   .supporting-images-grid.imgs-1{grid-template-columns:1fr}
   .supporting-images-grid.imgs-2{grid-template-columns:repeat(2,1fr)}
   .supporting-image-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
-  .supporting-image-card img{width:100%;height:160px;object-fit:cover;display:block;background:#1e2a3a;flex-shrink:0}
+  .supporting-image-card img{width:100%;height:160px;object-fit:cover;display:block;background:var(--img-bg);flex-shrink:0}
   .supporting-images-grid.imgs-1 .supporting-image-card{flex-direction:row;align-items:stretch}
   .supporting-images-grid.imgs-1 .supporting-image-card img{width:55%;max-width:55%;height:auto;max-height:340px;object-fit:contain;align-self:center;flex-shrink:0}
   .supporting-images-grid.imgs-1 .supporting-image-title{flex:1;display:flex;flex-direction:column;justify-content:center;border-top:none;border-left:1px solid var(--border)}
@@ -271,6 +283,8 @@
   .header-actions{display:flex;align-items:center;gap:10px}
   .project-header-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;background:var(--surface-light);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;transition:all .2s}
   .project-header-btn:hover{border-color:var(--accent);background:var(--accent-glow)}
+  .theme-toggle-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:var(--surface-light);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:16px;line-height:1;cursor:pointer;transition:all .2s;flex-shrink:0}
+  .theme-toggle-btn:hover{border-color:var(--accent);background:var(--accent-glow)}
   .project-count-pill{font-family:'JetBrains Mono',monospace;font-size:10px;color:#fff;background:var(--accent);border-radius:999px;padding:2px 7px;min-width:20px;text-align:center}
   .project-list-panel{margin-top:22px}
   .project-name-card{padding:18px 20px;background:var(--surface);border:1px solid var(--border);border-radius:10px;margin:18px 0 14px}
@@ -462,9 +476,8 @@
   .faq-chevron{color:var(--accent);font-size:20px;font-weight:400;flex-shrink:0;line-height:1}
   .faq-a{display:none;padding:0 18px 16px;font-size:13px;color:var(--text);line-height:1.65;opacity:0.85}
   .faq-a.open{display:block}
-  .faq-a a{color:#60a5fa;font-weight:600;text-decoration:underline;text-underline-offset:2px}
-  .faq-a a:visited{color:#93c5fd}
-  .faq-a a:hover{color:#bfdbfe}
+  .faq-a a,.evidence-text a,.consideration-text a,.applicability-text a,.alt-desc a,.alt-text a,.threshold-guidance a,.worked-example-headline a,.evidence-support-text a,.example-desc a,.ra-note a{color:var(--link);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+  .faq-a a:hover,.evidence-text a:hover,.consideration-text a:hover,.applicability-text a:hover,.alt-desc a:hover,.alt-text a:hover,.threshold-guidance a:hover,.worked-example-headline a:hover,.evidence-support-text a:hover,.example-desc a:hover,.ra-note a:hover{color:var(--link-hover)}
 
   @media(max-width:640px){
     .content{padding:20px 16px} .header{padding:16px;gap:12px;align-items:flex-start} .header-actions{width:100%;justify-content:flex-start} .breadcrumb{padding:10px 16px}
@@ -477,6 +490,20 @@
     .anatomy-block{grid-template-columns:1fr;gap:12px} .trace-arrow{transform:rotate(90deg);width:100%;justify-content:center}
   }
 </style>
+<script>
+  /* Apply saved/system theme before paint to avoid a flash of the wrong theme. */
+  (function(){
+    try{
+      var t=localStorage.getItem('theme');
+      if(t!=='light'&&t!=='dark'){
+        t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';
+      }
+      document.documentElement.setAttribute('data-theme',t);
+    }catch(e){
+      document.documentElement.setAttribute('data-theme','dark');
+    }
+  })();
+</script>
 </head>
 <body>
 <div id="app"><div class="content" style="text-align:center;padding-top:80px;color:var(--text-muted)">Loading framework...</div></div>
@@ -1198,7 +1225,9 @@ function render(){
 
 function renderHeader(){
   const count=projectCount();
-  return `<div class="header"><div class="header-left" onclick="goHome()" style="cursor:pointer"><div class="logo">C</div><div><div class="header-title">Constructability Framework</div><div class="header-sub">Design Guidance</div></div></div><div class="header-actions"><button class="project-header-btn" onclick="goProjectList()">📋 Project review list <span class="project-count-pill">${count}</span></button></div></div>`;
+  const theme=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';
+  const themeIcon=theme==='light'?'☀️':'🌙';
+  return `<div class="header"><div class="header-left" onclick="goHome()" style="cursor:pointer"><div class="logo">C</div><div><div class="header-title">Constructability Framework</div><div class="header-sub">Design Guidance</div></div></div><div class="header-actions"><button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch between light and dark theme" aria-label="Toggle colour theme"><span id="theme-toggle-icon">${themeIcon}</span></button><button class="project-header-btn" onclick="goProjectList()">📋 Project review list <span class="project-count-pill">${count}</span></button></div></div>`;
 }
 
 function renderBreadcrumb(){
@@ -1590,6 +1619,17 @@ function openLightbox(src){const lb=document.createElement('div');lb.className='
 
 // ===== HASH-BASED NAVIGATION =====
 function goHome(){window.location.hash=''}
+function applyTheme(t){
+  const theme=t==='light'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',theme);
+  try{localStorage.setItem('theme',theme);}catch(e){}
+  const ic=document.getElementById('theme-toggle-icon');
+  if(ic)ic.textContent=theme==='light'?'☀️':'🌙';
+}
+function toggleTheme(){
+  const cur=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';
+  applyTheme(cur==='light'?'dark':'light');
+}
 function goGuide(){window.location.hash='guide'}
 function goEvidenceSupport(level){state.evidenceFilter=level||'all';window.location.hash='evidence-support';if(state.view==='evidence')render();}
 function goDimension(id){state.locationFilter=null;window.location.hash=id}
