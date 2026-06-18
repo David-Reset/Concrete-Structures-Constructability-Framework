@@ -1999,7 +1999,7 @@
         },
         {
           "id": "non-moving-construction-joint-waterproofing",
-          "name": "Waterproofing the non-moving construction joint in walls",
+          "name": "Waterproofing the non-moving construction joint at wall base",
           "available": true,
           "data": {
             "question": "Has the non-moving construction joint in a watertight wall been detailed as a coordinated waterproofing system, or left to a single product?",
