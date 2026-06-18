@@ -666,7 +666,7 @@ function runSearch(q){
       if(best>0){score+=best;coverage++;}
     });
     if(coverage>0)matched.push({dimId:dim.id,id:it.id,name:it.name,dimName:dim.name,dimIcon:dim.icon,
-      location:it.data.location||null,evidenceSupport:it.data.evidenceSupport||null,dateReviewed:it.data.dateReviewed||it.data.dateAdded||'',coverage,score,snippet:buildSnippet(fields,flat)});
+      location:it.data.location||null,evidenceSupport:it.data.evidenceSupport||null,dateAdded:it.data.dateAdded||'',dateReviewed:it.data.dateReviewed||'',coverage,score,snippet:buildSnippet(fields,flat)});
   });
   if(!matched.length)return [];
   matched.sort((a,b)=>b.score-a.score||b.coverage-a.coverage);
@@ -729,7 +729,7 @@ function renderSearchResults(){
   if(!res.length){
     return `<div class="search-empty"><div class="search-empty-title">No entries match “${escAttr(q)}”${searchRegion?' in this region':''}.</div><div class="search-empty-sub">Try fewer or different words${searchRegion?', widen the region,':''} or browse the dimensions below. If the framework doesn't cover this yet, you can <span class="search-empty-link" onclick="goSuggest()">suggest a new entry</span>.</div></div>`;
   }
-  const rows=res.map(r=>{const support=r.evidenceSupport?evidenceSupportPill({evidenceSupport:r.evidenceSupport}):'';const supportRow=support?`<div class="search-result-meta">${support}</div>`:'';const reviewed=r.dateReviewed?`<div class="item-meta">Reviewed ${r.dateReviewed}</div>`:'';const right=`<div style="text-align:right;flex-shrink:0"><div class="item-arrow">→</div>${reviewed}</div>`;return `<div class="item-row available search-result" onclick="goEntry('${r.dimId}','${r.id}')"><div class="search-result-main"><div class="search-result-top"><span class="item-name">${escHtml(r.name)}</span><span class="related-dim"><span class="ico">${r.dimIcon}</span>${escHtml(r.dimName)}</span>${r.location?locTag(r.location):''}</div>${r.snippet?`<div class="search-snippet">${r.snippet}</div>`:''}${supportRow}</div>${right}</div>`}).join('');
+  const rows=res.map(r=>{const support=r.evidenceSupport?evidenceSupportPill({evidenceSupport:r.evidenceSupport}):'';const supportRow=support?`<div class="search-result-meta">${support}</div>`:'';const reviewed=dateMeta(r);const right=`<div style="text-align:right;flex-shrink:0"><div class="item-arrow">→</div>${reviewed}</div>`;return `<div class="item-row available search-result" onclick="goEntry('${r.dimId}','${r.id}')"><div class="search-result-main"><div class="search-result-top"><span class="item-name">${escHtml(r.name)}</span><span class="related-dim"><span class="ico">${r.dimIcon}</span>${escHtml(r.dimName)}</span>${r.location?locTag(r.location):''}</div>${r.snippet?`<div class="search-snippet">${r.snippet}</div>`:''}${supportRow}</div>${right}</div>`}).join('');
   return `<div class="search-count">${res.length} ${res.length===1?'entry':'entries'} found</div><div class="item-list search-list">${rows}</div>`;
 }
 function onSearchInput(v){
@@ -1266,6 +1266,17 @@ function fmtDate(s){
   const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   return parseInt(m[3],10)+' '+(months[parseInt(m[2],10)-1]||'')+' '+m[1];
 }
+// Shared date line for every entry row: always show Added; show "updated" only
+// when the entry was reviewed after it was added. Single source of truth so all
+// views (dimension, search, evidence index, recent, by-date) stay consistent.
+function dateMeta(o){
+  const added=o&&o.dateAdded?o.dateAdded:'';
+  const rev=o&&o.dateReviewed?o.dateReviewed:'';
+  if(!added&&!rev)return '';
+  if(!added)return `<div class="item-meta">Updated ${fmtDate(rev)}</div>`;
+  const upd=(rev&&rev>added)?`<div class="item-meta" style="margin-top:2px;color:var(--link)">updated ${fmtDate(rev)}</div>`:'';
+  return `<div class="item-meta">Added ${fmtDate(added)}</div>${upd}`;
+}
 // Live entries that carry a dateAdded, newest first. Ties break on dateReviewed
 // then name so the order is stable. Pass n to cap the list (e.g. the home page 3).
 function recentEntries(n){
@@ -1280,8 +1291,11 @@ function recentEntries(n){
 }
 function renderRecentRow(e){
   const dim=e.dim,it=e.item,d=e.data;
-  const updated=(d.dateReviewed&&d.dateReviewed>d.dateAdded)?`<div class="item-meta" style="margin-top:2px;color:var(--link)">updated ${fmtDate(d.dateReviewed)}</div>`:'';
-  return `<div class="item-row available" style="align-items:flex-start" onclick="goEntry('${dim.id}','${it.id}')"><div style="flex:1;min-width:0;margin-right:12px"><div class="search-result-top"><span class="item-name">${escHtml(it.name)}</span><span class="related-dim"><span class="ico">${dim.icon}</span>${escHtml(dim.name)}</span></div></div><div style="text-align:right;flex-shrink:0"><div class="item-arrow">→</div><div class="item-meta">Added ${fmtDate(d.dateAdded)}</div>${updated}</div></div>`;
+  const loc=d.location?locTag(d.location):'';
+  const support=evidenceSupportPill(d);
+  const param=d.parameter?`<div class="evidence-index-meta"><strong>Parameter:</strong> ${d.parameter}</div>`:'';
+  const right=`<div style="text-align:right;flex-shrink:0"><div class="item-arrow">→</div>${dateMeta(d)}</div>`;
+  return `<div class="item-row available evidence-index-result" onclick="goEntry('${dim.id}','${it.id}')"><div class="evidence-index-main"><div class="evidence-index-top"><span class="item-name">${escHtml(it.name)}</span><span class="related-dim"><span class="ico">${dim.icon}</span>${escHtml(dim.name)}</span>${loc}</div>${param}${support?`<div class="search-result-meta">${support}</div>`:''}</div>${right}</div>`;
 }
 function renderRecentlyAdded(){
   const recent=recentEntries(3);
@@ -1367,10 +1381,10 @@ function renderEvidenceSupportView(){
   const filtered=allAvailableEntries().filter(e=>active==='all'||evidenceSupportLevel(e.data)===active);
   const rows=filtered.map(e=>{
     const dim=e.dim,it=e.item,d=e.data;
-    const reviewed=d.dateReviewed||d.dateAdded||'';
+    const reviewed=dateMeta(d);
     const loc=d.location?locTag(d.location):'';
     const support=evidenceSupportPill(d);
-    const right=`<div style="text-align:right;flex-shrink:0"><div class="item-arrow">→</div>${reviewed?`<div class="item-meta">Reviewed ${reviewed}</div>`:''}</div>`;
+    const right=`<div style="text-align:right;flex-shrink:0"><div class="item-arrow">→</div>${reviewed}</div>`;
     const evSummary=d.evidenceSupport&&d.evidenceSupport.summary?`<div class="evidence-index-summary">${d.evidenceSupport.summary}</div>`:'';
     return `<div class="item-row available evidence-index-result" onclick="goEntry('${dim.id}','${it.id}')"><div class="evidence-index-main"><div class="evidence-index-top"><span class="item-name">${escHtml(it.name)}</span><span class="related-dim"><span class="ico">${dim.icon}</span>${escHtml(dim.name)}</span>${loc}</div><div class="evidence-index-meta"><strong>Parameter:</strong> ${d.parameter}</div><div class="search-result-meta">${support}</div>${evSummary}</div>${right}</div>`;
   }).join('');
@@ -1533,7 +1547,7 @@ function renderDimensionView(){
     const cls=item.available?'item-row available':'item-row unavailable';
     const onclick=item.available?`onclick="goEntry('${dim.id}','${item.id}')"`:'';
     const loc=item.available&&item.data&&item.data.location?locTag(item.data.location):'';
-    const right=item.available?`<div style="text-align:right"><div class="item-arrow">→</div>${item.data?`<div class="item-meta">Reviewed ${item.data.dateReviewed || item.data.dateAdded}</div>`:''}</div>`:'<div class="item-coming">Coming soon</div>';
+    const right=item.available?`<div style="text-align:right"><div class="item-arrow">→</div>${item.data?dateMeta(item.data):''}</div>`:'<div class="item-coming">Coming soon</div>';
     const support=item.available&&item.data?evidenceSupportPill(item.data):'';
     const meta=item.available&&item.data?`<div class="item-meta">Parameter: ${item.data.parameter}</div>${support?`<div class="item-meta" style="margin-top:8px">${support}</div>`:''}`:'';
     return `<div class="${cls}" ${onclick} ${hidden}><div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><div class="item-name">${item.name}</div>${loc}</div>${meta}</div>${right}</div>`;
