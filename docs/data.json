@@ -331,7 +331,7 @@
                 "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
               },
               {
-                "id": "stay-in-place-formwork-and-masonry-wall-systems",
+                "id": "pvc-permanent-formwork-vs-blockwork",
                 "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
               },
               {
@@ -1033,6 +1033,83 @@
           }
         },
         {
+          "id": "pvc-permanent-formwork-vs-blockwork",
+          "name": "PVC permanent formwork vs core-filled blockwork",
+          "available": true,
+          "data": {
+            "question": "For a wall that won't be conventionally formed, is PVC permanent formwork or core-filled blockwork the more constructable choice?",
+            "parameter": "The chosen wall system (PVC permanent formwork vs core-filled blockwork), assessed against the wall's waterproofing demand and its height and reinforcement load.",
+            "keywords": [
+              "Dincel",
+              "permanent formwork",
+              "stay-in-place formwork",
+              "lost formwork",
+              "polymer formwork",
+              "single-sided formwork",
+              "besser block",
+              "core fill",
+              "grout congestion",
+              "grout lift",
+              "tanking",
+              "basement wall",
+              "retaining wall",
+              "lift pit",
+              "fair-faced masonry",
+              "sail effect"
+            ],
+            "background": "A wall that cannot be built as conventional two-sided formed reinforced concrete &mdash; because the back face can't be reached to brace and strip a form &mdash; is usually narrowed to two systems: PVC permanent (stay-in-place) formwork, or core-filled blockwork. Both avoid the problem that ruled out formed RC, since neither needs rear-face access or stripping. So the choice between <em>them</em> turns on different things, and this entry is about those.<br><br>It deliberately sets aside the trivial answer that a PVC-formed wall is a concrete wall and therefore stronger &mdash; that is true but says nothing about which builds better here. The buildability forks that actually separate the two are: how the wall resists water and whether that resistance can be verified; whether the wall is tall or heavily reinforced enough to strain what blockwork can be grouted to do; and the finish the architect wants. Where there is water on one side of a dry-critical space, below-grade blockwork leans on an external membrane applied to its back face, buried and effectively unverifiable once backfilled, because the block body &mdash; porous face shells and mortar joints over a grouted core &mdash; is not itself a barrier that can be trusted or checked. A concrete body, formed in PVC, can carry its own waterproofing and (with a translucent panel) be watched as it's poured, so the membrane becomes a backup rather than the only line. Where the wall grows tall or heavily loaded, blockwork tends to run out not on a clean strength limit but because the reinforcement and its lap splices no longer fit a narrow core that can be filled with grout and consolidated without leaving voids.<br><br>Finish often sits with the architect, not the engineer, and it can override the technical call: blockwork can be left as fair-faced or exposed block, a look a PVC panel cannot give without being rendered, coated or clad. A client may accept some dampness to keep that look. The entry's job is not to overrule that choice but to make its cost visible &mdash; so that exposed block over an occupied dry space is recognised as a real conflict and resolved deliberately (the look gives way, the waterproofing strategy is elaborated, or the dampness is knowingly accepted), rather than left for the build to discover.",
+            "thresholds": [
+              {
+                "range": "Matched to the driver",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "The system suits the condition that governs. PVC permanent formwork where a dry-critical face carries hydrostatic head, or the wall is tall or heavily reinforced; core-filled blockwork where the water demand is low or external-grade, the wall is modest in height, and finish and trade favour masonry. The choice has been made on how the wall builds and resists water, not on which system the office usually draws."
+              },
+              {
+                "range": "Either could work",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "No single driver governs. Either system is plausibly fine, so weigh the secondary factors and choose on balance: finish (exposed block versus a PVC face that must be rendered, coated or clad to match), trade availability, programme and cost. Where finish is the deciding factor and it sits with the architect, make the buildability and waterproofing consequences of each option visible before it is locked."
+              },
+              {
+                "range": "Working against the driver",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "The system fights the governing condition. Either core-filled blockwork is specified on a dry-critical face where it relies solely on a buried, unverifiable external membrane &mdash; with no verifiable concrete body behind it &mdash; or it is pushed past the height and reinforcement at which bars and lap splices no longer fit a core that can be grouted and consolidated without voids. Reconsider the system, or the waterproofing strategy, before proceeding. Exposed block over an occupied dry space with hydrostatic head and no coordinated waterproofing system is the clearest case to resolve."
+              }
+            ],
+            "examples": [],
+            "supportingImages": [],
+            "evidence": "<strong>The access advantage is shared, so it doesn't decide between them.</strong> Conventional off-form RC needs clearance behind the wall for bracing, tie bolt-up and stripping; both PVC permanent formwork and blockwork remove that need, which is why they are the standard alternatives once rear access is lost (supported by the formwork-access reasoning already evidenced in the off-form-concrete-upturns entry; no new source needed). Because the advantage is common to both, the selection rests on the forks below, not on access.<br><br><strong>Below grade, blockwork's water resistance is an applied external barrier, not the wall body.</strong> A below-grade masonry wall is dampproofed or waterproofed on its outer face as part of a system with drainage and grading; the barrier is the applied layer, not the block. Where hydrostatic head can develop &mdash; a high water table or poorly draining clay backfill &mdash; a waterproof (not merely dampproof) external membrane is required. <em>(find evidence &mdash; peer-reviewed work on water and moisture ingress through concrete masonry below grade and the role of applied barriers. This claim currently rests on industry guidance, CMHA TEK 19-03B, which may be kept as supporting material but is a tech note, not peer-reviewed backing.)</em><br><br><strong>The buried membrane is the least verifiable, most damage-prone line &mdash; which is what makes the fork matter.</strong> Once backfilled, an external membrane is hidden, hard to inspect and easily punctured by sharp backfill or following trades, so a wall that depends on it alone has its waterproofing hanging on its weakest, unconfirmable element. <em>(carried by our own non-moving-construction-joint-waterproofing entry &mdash; cross-reference rather than re-evidence here.)</em><br><br><strong>A formed concrete body can be verified; a grouted core hides its own defects.</strong> Translucent permanent formwork lets the pour, flow and any honeycombing or voids be seen as the wall is filled, so the body can be trusted and the membrane demoted to backup; a grouted block core is opaque, and voids in it are invisible from outside. <em>(find evidence &mdash; ideally research on void formation or incomplete fill in grouted masonry cores; partly carried by the detailing entry already.)</em><br><br><strong>The congestion ceiling is a grout-consolidation limit, not a clean strength cutoff.</strong> Grout for masonry is a deliberately high-slump, fluid material because it must flow down a confined core and around the reinforcement and fill it completely; consolidation, by vibration or puddling, is what prevents voids. As bars grow and lap splices double the steel in a core, the clear grout space shrinks and complete, void-free filling becomes harder, which is the real reason allowable grout lift and pour heights are limited. <em>(find evidence &mdash; peer-reviewed research on grout consolidation, congestion and void formation in reinforced masonry. This is the key gap; the standard's lift limits are only a proxy for the underlying mechanism and cannot themselves be cited as evidence.)</em><br><br><strong>Finish is an architect-set constraint that legitimately pivots the choice.</strong> Blockwork can be finished as exposed or fair-faced masonry; a PVC face is a polymer that must be rendered, coated or clad to read as concrete or masonry, so a requirement for exposed block points to blockwork and a requirement for an off-form concrete look points away from a bare PVC face. <em>(practice-level / categorical; may stay as reasoned practice, or find a finishes reference to lift it.)</em><br><br><strong>What this entry does not claim.</strong> It does not claim blockwork is unsuitable below grade &mdash; with a coordinated waterproofing system it performs well &mdash; only that it commits the wall to relying on a buried, unverifiable barrier where a verifiable concrete body need not. It does not put a number on the height or reinforcement at which congestion bites, since that depends on block size, bar diameter and splice layout; it flags the mechanism, not a threshold.<br><br><strong>References</strong><br><em>To be completed once peer-reviewed backing is sourced for the two flagged claims (below-grade hydrostatic ingress through masonry; grout consolidation and void formation in congested cores).</em>",
+            "dateAdded": "2026-06-18",
+            "dateReviewed": "2026-06-18",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Provisional. The waterproofing and congestion calls are mechanistically sound but two claims still need peer-reviewed backing: below-grade hydrostatic ingress through concrete masonry and the role of an applied external barrier, and grout consolidation / void formation in congested reinforced cores. The verifiability and buried-membrane points are carried by the non-moving-construction-joint-waterproofing entry, and the finish and trade-economy axes are practice-level. Rating to be confirmed once the literature is in."
+            },
+            "relatedEntries": [
+              {
+                "id": "off-form-concrete-upturns-near-obstructions",
+                "note": "Handoff: that entry owns the access decision to leave conventional two-sided formed RC; this entry picks up after it, choosing between the two systems that remain."
+              },
+              {
+                "id": "non-moving-construction-joint-waterproofing",
+                "note": "Handoff: once a system is picked here, that entry details the joint seal and membrane strategy &mdash; including the verifiability point that lets a membrane be demoted to backup."
+              }
+            ],
+            "alternatives": [],
+            "applicability": {
+              "appliesWhere": "",
+              "checks": [],
+              "note": ""
+            }
+          }
+        },
+        {
           "id": "bored-concrete-piles-vs-screw-piles",
           "name": "Bored concrete piles vs. screw piles",
           "available": false,
@@ -1044,7 +1121,7 @@
             "_thresholdSketch": "Good/Consider by loading + site: light loads + tight/sensitive access → weigh screw piles strongly. Heavy loads / deep sand → bored may govern. Frame as weigh-the-program-advantage, not a rule.",
             "relatedEntries": [
               {
-                "id": "stay-in-place-formwork-and-masonry-wall-systems",
+                "id": "pvc-permanent-formwork-vs-blockwork",
                 "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
               },
               {
@@ -1054,24 +1131,6 @@
               {
                 "id": "confined-space-entry-at-pier-and-shaft-bases",
                 "note": "Both depend on whether construction plant and workers can physically reach and work the element on this site — check site access together."
-              }
-            ]
-          }
-        },
-        {
-          "id": "stay-in-place-formwork-and-masonry-wall-systems",
-          "name": "Stay-in-place formwork and masonry wall systems",
-          "available": false,
-          "draft": true,
-          "data": {
-            "question": "Has the wall system (conventional formed RC, stay-in-place / permanent formwork, or reinforced masonry) been chosen to suit how the wall can actually be built on this site &mdash; above all whether both faces can be accessed and stripped &mdash; rather than defaulting to two-sided formed RC where that is not practical?",
-            "parameter": "Wall system selection against site buildability: chiefly access for stripping (both faces accessible vs single-sided / restricted), element repetition, and the required surface finish.",
-            "_evidenceAngle": "SELECTION entry (when to use each), not a generic 'fewer trades' claim. The sharpest, best-supported pivot is ACCESS: where the back face cannot be reached to strip a form &mdash; blindside basement walls, walls tight to a boundary or existing structure, retaining walls against an excavation face, and repetitive linear edge runs such as crash barriers / parapets &mdash; permanent / single-sided / stay-in-place formwork moves from 'an alternative' to clearly preferable, because two-sided formed RC physically cannot be stripped there. Practice sources are consistent: permanent formwork is best where access is limited and stripping is impractical; single-sided formwork is specifically for foundation/retaining walls where a second form cannot be deployed; blindside systems form walls within inches of an existing structure. Conventional formed RC stays preferable for high off-form finish and intricate/complex shapes (SIP has shape/structural limitations). Reinforced masonry (blockwork) suits low-rise boundary/retaining walls where a masonry trade is economical and no form hire is wanted. CRASH BARRIERS: the instinct holds on the logic (repetitive linear run + awkward edge access + no strip) &mdash; treat as an example to confirm with a barrier-specific source, not yet a sourced claim. CAUTIONS to bake in: higher upfront cost; accredited-installer warranties; polymer faces force a rethink of waterproofing/coatings/cladding; tall unfilled PVC walls behave like a sail in wind (a real erection hazard). Keep GENERIC &mdash; do not endorse proprietary products. Source leads: Architecture & Design (AU) permanent-formwork pros/cons; one-sided/blindside formwork suppliers for the access logic; seek an independent productivity/selection comparison to lift above supplier claims.",
-            "_thresholdSketch": "Best practice: system matched to access + finish (single-sided/permanent where the back face cannot be stripped; formed RC where two-sided access and a high finish are needed). Consider: either could work — weigh repetition, finish, trade availability, upfront cost. Concern: two-sided formed RC specified where back-face access is genuinely restricted. Action required: a wall that cannot be formed and stripped two-sided as drawn, with no permanent/single-sided system considered.",
-            "relatedEntries": [
-              {
-                "id": "void-former-slab-vs-thick-raft",
-                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
               }
             ]
           }
@@ -3212,7 +3271,7 @@
                 "note": "Both are foundation-system decisions with a safety dimension: a bored pile creates a deep shaft with confined-space risk, while a screw pile trades that visible, manageable risk for a foundation whose adequacy cannot be verified. Weigh the safety trade-offs of the system together."
               },
               {
-                "id": "stay-in-place-formwork-and-masonry-wall-systems",
+                "id": "pvc-permanent-formwork-vs-blockwork",
                 "note": "Both are early system-selection decisions where constructability and risk, not just structural capacity, should drive the choice. Weigh them together when settling the scheme."
               },
               {
@@ -4045,7 +4104,8 @@
     "fragment|entry|non-moving-construction-joint-waterproofing|1paeomi",
     "fragment|entry|non-moving-construction-joint-waterproofing|1a9abeq",
     "fragment|update|non-moving-construction-joint-waterproofing|7ket7z",
-    "fragment|update|non-moving-construction-joint-waterproofing|11245rr"
+    "fragment|update|non-moving-construction-joint-waterproofing|11245rr",
+    "fragment|entry|pvc-permanent-formwork-vs-blockwork|xflni1"
   ],
   "_rejected": [],
   "_reconsider": [
