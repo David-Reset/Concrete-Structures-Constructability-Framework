@@ -270,6 +270,22 @@
   .loc-filter select{background:var(--surface-light);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:6px 12px;font-size:12px;font-family:'IBM Plex Sans',sans-serif;cursor:pointer;outline:none}
   .loc-filter select:focus{border-color:var(--accent)}
   .loc-filter-count{font-size:11px;color:var(--text-muted);margin-left:auto}
+  .facet-filter{margin-bottom:16px;padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:8px;display:flex;flex-direction:column;gap:11px}
+  .facet-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .facet-label{font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;min-width:62px}
+  .facet-select{background:var(--surface-light);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:6px 12px;font-size:12px;font-family:inherit;cursor:pointer;outline:none}
+  .facet-select:focus{border-color:var(--accent)}
+  .facet-chips{display:flex;flex-wrap:wrap;gap:7px}
+  .facet-chip{font-family:inherit;font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;border:1px solid var(--border);background:var(--surface-light);color:var(--text-muted);cursor:pointer;transition:all .15s}
+  .facet-chip:hover{border-color:var(--accent);color:var(--text)}
+  .facet-chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .facet-foot{display:flex;align-items:center;gap:14px}
+  .facet-count{font-size:11px;color:var(--text-muted)}
+  .facet-clear{margin-left:auto;background:none;border:none;color:var(--link);font-size:12px;font-weight:600;cursor:pointer;font-family:inherit}
+  .facet-clear:hover{text-decoration:underline}
+  .meta-tag{display:inline-block;font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:999px;line-height:1.5;white-space:nowrap;background:var(--surface-light);border:1px solid var(--border);color:var(--text-muted)}
+  .meta-tag.el{color:var(--accent);border-color:var(--accent)}
+  .entry-tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
   .search-bar{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:0 14px;transition:border-color .2s,box-shadow .2s}
   .search-bar:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
   .search-icon{width:18px;height:18px;fill:var(--text-muted);flex-shrink:0}
@@ -528,7 +544,7 @@
 // ===== STATE =====
 let dimensions = [];
 let guide = null;
-let state = { view:'home', dimId:null, itemId:null, locationFilter:null, evidenceFilter:'all', sharedPreview:null };
+let state = { view:'home', dimId:null, itemId:null, locationFilter:null, evidenceFilter:'all', sharedPreview:null, elementFilter:[], phaseFilter:[] };
 let searchQuery='';
 let searchRegion=null;
 
@@ -595,13 +611,60 @@ function getLocations(dim){
   });
   return locs;
 }
+// Canonical vocab order for the element / lifecycle facets (display order only).
+const ELEMENT_ORDER=['slab','wall','column','beam','footing','pile/pier/shaft','reinforcement'];
+const PHASE_ORDER=['design & documentation','formwork','reinforcement fixing','pour/placement','curing','founding/piling','stripping'];
+// An entry passes if it satisfies EVERY active facet (region AND element AND phase);
+// within a facet, any selected value is enough (OR). Untagged entries fail an active facet.
 function itemMatchesFilter(item){
-  if(!state.locationFilter)return true;
-  if(!item.available||!item.data||!item.data.location)return !state.locationFilter;
-  const loc=item.data.location;
-  const f=state.locationFilter;
-  if(f.state)return loc.country===f.country&&loc.state===f.state;
-  return loc.country===f.country;
+  if(state.locationFilter){
+    if(!item.available||!item.data||!item.data.location)return false;
+    const loc=item.data.location,f=state.locationFilter;
+    if(f.state){if(!(loc.country===f.country&&loc.state===f.state))return false;}
+    else if(loc.country!==f.country)return false;
+  }
+  if(state.elementFilter&&state.elementFilter.length){
+    const tags=(item.data&&item.data.elementType)||[];
+    if(!state.elementFilter.some(v=>tags.includes(v)))return false;
+  }
+  if(state.phaseFilter&&state.phaseFilter.length){
+    const tags=(item.data&&item.data.constructionPhase)||[];
+    if(!state.phaseFilter.some(v=>tags.includes(v)))return false;
+  }
+  return true;
+}
+function anyFacetActive(){return !!(state.locationFilter||(state.elementFilter&&state.elementFilter.length)||(state.phaseFilter&&state.phaseFilter.length));}
+function getFacetValues(dim,field){const set=new Set();dim.items.forEach(it=>{if(it.available&&it.data&&Array.isArray(it.data[field]))it.data[field].forEach(v=>set.add(v));});return set;}
+function orderFacet(set,order){return [...set].sort((a,b)=>{const ia=order.indexOf(a),ib=order.indexOf(b);return (ia<0?99:ia)-(ib<0?99:ib)||a.localeCompare(b);});}
+function toggleElementFilter(v){if(!state.elementFilter)state.elementFilter=[];const i=state.elementFilter.indexOf(v);i>=0?state.elementFilter.splice(i,1):state.elementFilter.push(v);render();}
+function togglePhaseFilter(v){if(!state.phaseFilter)state.phaseFilter=[];const i=state.phaseFilter.indexOf(v);i>=0?state.phaseFilter.splice(i,1):state.phaseFilter.push(v);render();}
+function clearAllFilters(){state.locationFilter=null;state.elementFilter=[];state.phaseFilter=[];render();}
+// Small chips shown on entries so the tags are visible, not just filterable.
+function metaTagChips(d){if(!d)return '';const el=(d.elementType||[]),ph=(d.constructionPhase||[]);return el.map(v=>`<span class="meta-tag el">${escHtml(v)}</span>`).join('')+ph.map(v=>`<span class="meta-tag ph">${escHtml(v)}</span>`).join('');}
+// Combined region + element + stage filter bar for the dimension (browse) view.
+function renderFacetFilters(dim){
+  const locs=getLocations(dim);
+  const elVals=orderFacet(getFacetValues(dim,'elementType'),ELEMENT_ORDER);
+  const phVals=orderFacet(getFacetValues(dim,'constructionPhase'),PHASE_ORDER);
+  if(locs.size===0&&elVals.length===0&&phVals.length===0)return '';
+  let region='';
+  if(locs.size>0){
+    let opts='<option value="">All regions</option>';
+    for(const [country,states] of locs){
+      opts+=`<option value="${country}" ${state.locationFilter&&state.locationFilter.country===country&&!state.locationFilter.state?'selected':''}>${country}</option>`;
+      for(const st of [...states].sort()){const val=`${country}|${st}`;opts+=`<option value="${val}" ${state.locationFilter&&state.locationFilter.state===st?'selected':''}>&nbsp;&nbsp;${st}, ${country}</option>`;}
+    }
+    region=`<div class="facet-row"><span class="facet-label">Region</span><select class="facet-select" onchange="setLocationFilter(this.value)">${opts}</select></div>`;
+  }
+  const elChips=elVals.map(v=>`<button class="facet-chip${state.elementFilter.includes(v)?' on':''}" onclick="toggleElementFilter('${escAttr(v)}')">${escHtml(v)}</button>`).join('');
+  const phChips=phVals.map(v=>`<button class="facet-chip${state.phaseFilter.includes(v)?' on':''}" onclick="togglePhaseFilter('${escAttr(v)}')">${escHtml(v)}</button>`).join('');
+  const elRow=elVals.length?`<div class="facet-row"><span class="facet-label">Element</span><div class="facet-chips">${elChips}</div></div>`:'';
+  const phRow=phVals.length?`<div class="facet-row"><span class="facet-label">Stage</span><div class="facet-chips">${phChips}</div></div>`:'';
+  const active=anyFacetActive();
+  const matchCount=dim.items.filter(item=>item.available&&itemMatchesFilter(item)).length;
+  const totalAvail=dim.items.filter(item=>item.available).length;
+  const foot=active?`<div class="facet-foot"><span class="facet-count">Showing ${matchCount} of ${totalAvail} entries</span><button class="facet-clear" onclick="clearAllFilters()">Clear filters</button></div>`:'';
+  return `<div class="facet-filter">${region}${elRow}${phRow}${foot}</div>`;
 }
 
 // ===== SEARCH =====
@@ -1703,34 +1766,18 @@ function renderGuideView(){
 function renderDimensionView(){
   const dim=getDim();
   
-  // Build location filter options
-  const locs=getLocations(dim);
-  let filterHtml='';
-  if(locs.size>0){
-    let opts='<option value="">All regions</option>';
-    for(const [country,states] of locs){
-      opts+=`<option value="${country}" ${state.locationFilter&&state.locationFilter.country===country&&!state.locationFilter.state?'selected':''}>${country}</option>`;
-      for(const st of [...states].sort()){
-        const val=`${country}|${st}`;
-        opts+=`<option value="${val}" ${state.locationFilter&&state.locationFilter.state===st?'selected':''}>&nbsp;&nbsp;${st}, ${country}</option>`;
-      }
-    }
-    const matchCount=dim.items.filter(item=>itemMatchesFilter(item)).length;
-    const totalAvail=dim.items.filter(item=>item.available).length;
-    const countText=state.locationFilter?`Showing ${matchCount} of ${totalAvail} entries`:'';
-    filterHtml=`<div class="loc-filter"><div class="loc-filter-label">Region</div><select onchange="setLocationFilter(this.value)">${opts}</select><div class="loc-filter-count">${countText}</div></div>`;
-  }
+  let filterHtml=renderFacetFilters(dim);
 
   const items=dim.items.map((item,i)=>{
     const matches=itemMatchesFilter(item);
-    const hidden=state.locationFilter&&!matches&&item.available?'style="display:none"':'';
+    const hidden=anyFacetActive()&&!matches&&item.available?'style="display:none"':'';
     const cls=item.available?'item-row available':'item-row unavailable';
     const onclick=item.available?`onclick="goEntry('${dim.id}','${item.id}')"`:'';
     const loc=item.available&&item.data&&item.data.location?locTag(item.data.location):'';
     const right=item.available?`<div style="text-align:right"><div class="item-arrow">→</div>${item.data?dateMeta(item.data):''}</div>`:'<div class="item-coming">Coming soon</div>';
     const support=item.available&&item.data?evidenceSupportPill(item.data):'';
     const meta=item.available&&item.data?`<div class="item-meta">Parameter: ${item.data.parameter}</div>${support?`<div class="item-meta" style="margin-top:8px">${support}</div>`:''}`:'';
-    return `<div class="${cls}" ${onclick} ${hidden}><div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><div class="item-name">${item.name}</div>${loc}</div>${meta}</div>${right}</div>`;
+    return `<div class="${cls}" ${onclick} ${hidden}><div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><div class="item-name">${item.name}</div>${loc}${item.available?metaTagChips(item.data):''}</div>${meta}</div>${right}</div>`;
   }).join('');
 
   let guidanceHtml='';
@@ -1822,6 +1869,7 @@ function renderEntryDetail(){
     <div class="entry-topbar"><div class="back-link" onclick="goDimension('${dim.id}')">← Back to ${dim.name}</div>${projectItemButton(item.id)}</div>
     <div class="entry-title">${item.name}</div>
     <div class="entry-meta">Dimension: ${dim.name} · Reinforced Concrete ${d.location?' · '+locTag(d.location):''}</div>
+    ${metaTagChips(d)?`<div class="entry-tag-row">${metaTagChips(d)}</div>`:''}
     <div class="question-box"><div class="label label-accent">Design Question</div><div class="question-text">${d.question}</div></div>
     ${d.background?`<div class="label">Background</div><div class="consideration-text">${d.background}</div>`:''}
     <div class="param-box"><div class="label">Design Parameter</div><div class="param-value">${d.parameter}</div></div>
@@ -1864,7 +1912,7 @@ function toggleTheme(){
 function goGuide(){window.location.hash='guide'}
 function goEvidenceSupport(level){state.evidenceFilter=level||'all';window.location.hash='evidence-support';if(state.view==='evidence')render();}
 function goByDate(){window.location.hash='by-date'}
-function goDimension(id){state.locationFilter=null;window.location.hash=id}
+function goDimension(id){state.locationFilter=null;state.elementFilter=[];state.phaseFilter=[];window.location.hash=id}
 function goEntry(dimId,id){window.location.hash=dimId+'/'+id}
 function setLocationFilter(val){
   if(!val){state.locationFilter=null}
