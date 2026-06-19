@@ -2851,18 +2851,163 @@
         },
         {
           "id": "equipment-access-constraints",
-          "name": "Equipment access constraints",
-          "available": false,
-          "draft": true,
+          "name": "Piling plant on access-constrained sites",
+          "available": true,
           "data": {
-            "question": "Has the foundation / element been chosen so it can be installed with equipment that can actually reach and operate on this site — for example a pile type an excavator-mounted attachment can install — rather than one that assumes a large dedicated rig the site cannot accommodate or afford to mobilise?",
-            "parameter": "Match between the installation equipment a design implies (e.g. dedicated piling rig) and what the site can realistically accommodate (access, headroom, mobilisation), including whether an excavator-based method is viable.",
-            "_evidenceAngle": "Logistics root cause: design commits the site to equipment it can't get in or justify. Direct link to the screw-pile entry — screw piles can be installed with an excavator, avoiding a dedicated rig (industry sources). Use installer/contractor practice sources for the equipment envelopes (access width, headroom, mobilisation cost), the way the off-form entry uses formwork working envelopes.",
-            "_thresholdSketch": "Good: installable with equipment the site can accommodate. Consider: feasible but constrained access. Concern: assumes equipment that barely fits / costly to mobilise. Action required: implied equipment cannot access the site as designed.",
+            "question": "On a height- or width-constrained site, can common piling plant install the pile?",
+            "parameter": "Whether the pile detail stays within common plant or needs specialist restricted-access plant.",
+            "keywords": [
+              "restricted access piling",
+              "low headroom piling",
+              "mini piling rig",
+              "excavator mounted auger",
+              "post hole auger",
+              "mini excavator",
+              "foldable ROPS",
+              "retractable undercarriage",
+              "sectional CFA",
+              "screw pile torque head",
+              "auger extraction headroom",
+              "access width",
+              "tight site",
+              "bored pier"
+            ],
+            "background": "This entry only matters when there is a real constraint at the pile — a low eave, carport, undercroft, basement or services directly overhead, or a narrow side passage or gate. On an open site, ordinary plant reaches almost any normal pile and there is nothing here to weigh.<br><br>The distinction that does the work is operating constraint vs transit constraint. What rules plant in or out is the room the machine has where it drills. A constraint only on the route to an open pile pad is usually a transit problem, and transit problems are commonly solved with ordinary machines: an excavator's ROPS canopy folds or unbolts to duck under a low approach and is refitted to work, and many mini excavators retract their tracks to pass a tight gate then expand them to dig. So a low approach to an open backyard is not a headroom problem; piling under an existing slab is.<br><br>For common plant the operating headroom needed is set by auger extraction. A continuous-flight auger has to be drawn clear of the hole, so the clearance over the pile needs to be roughly the drilled depth plus about half a metre. A 1.5 m pile wants about 2 m of clearance; a 1.6 m hole under a 2.5 m ceiling is comfortable. Headroom for common augering therefore scales with depth — a shallow hole under a normal ceiling is fine, a deep hole under a low one is not.<br><br>The common, readily-available setup is a small excavator (~1.5–5 t) with a hire auger — the most prevalent earthmoving plant in the country, the kind almost any residential or light-commercial contractor already has or hires for a day rate. These machines are slim: the common range runs about <strong>1–2 m wide</strong> — the popular 1.7 t class about 0.99 m, up to about 1.96 m at 5.5 t — with tracks that retract for transit. Sub-1 m micro excavators (down to about 0.75 m) exist and will pass a doorway, but they are less common and lower in auger torque, so 1–2 m is the safer common assumption. Even so, the common range is about as narrow as a restricted-access rig, which is why width alone rarely forces specialist plant. Off-the-shelf hire augers bore to roughly 2–3 m and up to ~450 mm diameter on these machines, reaching toward ~6 m on larger ones.<br><br>The trap on a tight site is that specialist restricted-access plant exists which will drill deep holes in ~2 m of headroom through a ~1 m gap — because it uses sectional tooling added and removed in short lengths, breaking the link between depth and headroom. So \"is it possible?\" is the wrong test; the answer is almost always yes. The right test is \"is it common?\" Once the detail needs that specialist plant, the work leaves the broad pool of contractors who turn up at a normal price and enters a small pool of specialist piling subcontractors with their own mobilisation. That is a real cost-and-programme step, and on a tight site it is a legitimate outcome to concede deliberately — sometimes there is no common-plant option (for example underpinning inside a basement) and the right answer is to design the specialist method in, not discover it on site.",
+            "thresholds": [
+              {
+                "range": "Common plant suits",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "The pile location is workable for ordinary plant: passable to the pile (slim machine, ROPS folded or removed and refitted, tracks retracted as needed), and the clearance over the pile is at least roughly the drilled depth plus about half a metre, so a continuous-flight auger draws clear — for example about 2 m of clearance for a 1.5 m pile. A common small excavator (~1.5–5 t) with a hire auger reaches the detail: roughly ≤ 2–3 m deep, ≤ ~450 mm diameter. No specialist trade, no mobilisation premium; design the pile to sit here where you can."
+              },
+              {
+                "range": "Edge of common plant",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "The detail sits at the upper edge of common kit: it needs the next machine up with auger extensions (toward ~6 m or larger diameter), or a screw-pile torque head suited to low-spoil tight access. Extensions also raise the headroom the auger needs to clear, so re-check the clearance over the pile against the drilled depth. Still plant most contractors can source, but no longer the default — confirm the assumed machine, auger reach and diameter, the narrowest access along the route, and the headroom at the pile before relying on it."
+              },
+              {
+                "range": "Specialist plant needed",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "The clearance over the pile is less than the drilled depth plus its extraction allowance — a deeper pile under a low ceiling, an undercroft or a basement — and/or depth or diameter is beyond common reach. A continuous-flight auger can no longer be drawn clear, so the detail is pushed into restricted-access plant: a low-headroom mini-piling rig or sectional CFA that works in ~2.0–2.6 m regardless of depth because its tooling is added and removed in sections. It is buildable, but it means a specialist subcontractor, mobilisation and a small contractor pool, growing with depth. Either pull the detail back toward common plant (shallower or smaller piers, closer spacing, screw piles off a common excavator), or, where there is no common-plant option, concede the specialist method and record it and its cost/programme basis at design stage."
+              }
+            ],
+            "workedExample": {
+              "title": "Worked example — common plant vs specialist plant on a tight site",
+              "caveat": "The figures are screening values from advertised hire and supplier envelopes, not measured limits. The \"drilled depth plus about half a metre\" headroom rule is a practical auger-extraction allowance; real reach and clearance vary with machine geometry, auger type and length, extension handling, spoil clearance and ground. Use the table to see where common kit ends and specialist kit begins, not as a fixed capability.",
+              "headline": "Common excavator augering needs headroom over the pile of about the drilled depth plus half a metre, because the continuous-flight auger must be drawn clear. A specialist restricted-access rig works in ~2.0–2.6 m regardless of depth, because its tooling is added and removed in sections — which is exactly what you are paying the specialist for.",
+              "tableHeaders": [
+                "",
+                "Common kit (excavator + hire auger)",
+                "Specialist restricted-access kit (mini-piling rig / sectional CFA)"
+              ],
+              "tableRows": [
+                [
+                  "Typical machine",
+                  "Small excavator ~1.5–5 t",
+                  "Purpose-built restricted-access piling rig"
+                ],
+                [
+                  "Access width to get in",
+                  "~1–2 m",
+                  "~1.0 m / a doorway"
+                ],
+                [
+                  "Operating headroom at the pile",
+                  "~ depth + 0.5 m",
+                  "~2.0–2.6 m, any depth"
+                ],
+                [
+                  "Depth",
+                  "~≤ 2–3 m (to ~6 m)",
+                  "~10–20 m"
+                ],
+                [
+                  "Diameter",
+                  "up to ~450 mm",
+                  "~250–450 mm"
+                ],
+                [
+                  "Trade / cost",
+                  "On-site contractor; day-rate hire",
+                  "Specialist subcontractor; mobilisation"
+                ]
+              ],
+              "howToUse": "Take a 1.5 m deep, 400 mm bored pier on a tight infill block, with a 2.5 m carport over the pile position. The clearance needed to draw the auger out is about 1.5 + 0.5 = 2.0 m; the 2.5 m carport clears it, the pier is within ~≤ 3 m and ≤ 450 mm, and the machine reaches the pile by folding its ROPS to pass under the carport and retracting its tracks at the side gate. This sits squarely in the common column — the earthworks contractor already on site installs it with a day-rate excavator and auger, with no specialist trade and no mobilisation premium.<br><br>Now change one thing. Drop that same pier under a 1.8 m undercroft, or take its depth to 4 m: the clearance needed (2.0 m, or 4.5 m) now exceeds the headroom over the pile, a continuous-flight auger can no longer be drawn clear, and the job crosses into the specialist column — a restricted-access rig that drills the depth in ~2 m of headroom using sectional tooling, but brings a specialist subcontractor and mobilisation with it. The detail did not become impossible; it became uncommon, and that is the cost flag."
+            },
+            "alternatives": [
+              {
+                "title": "Judge the constraint at the pile, not the route",
+                "description": "Operating headroom and working room where the machine drills decide the plant class. A low approach or a tight gate is usually transit — beaten by folding or removing the ROPS and refitting it, or retracting the tracks — and does not by itself force specialist plant."
+              },
+              {
+                "title": "Size the headroom from the depth",
+                "description": "For common continuous-flight augering, the clearance over the pile needs to be about the drilled depth plus half a metre so the auger draws clear. Check the pile depth against the actual ceiling at the pile, not a fixed headroom number."
+              },
+              {
+                "title": "Test \"common\", not \"possible\"",
+                "description": "Specialist plant makes almost anything buildable on a tight site, so feasibility is not the question. Ask whether the readily-available excavator-plus-auger setup covers the detail."
+              },
+              {
+                "title": "Confirm the route and the work point separately",
+                "description": "Measure the narrowest gate or passage and the lowest clearance along the route (transit), and separately the headroom and working room at the pile (operating). Pass them on so the right plant is assumed."
+              },
+              {
+                "title": "Design the specialist method in, or design it out",
+                "description": "Where the detail forces specialist plant, either pull it back toward common kit (shallower or smaller piers, closer spacing, screw piles off a torque head), or record the specialist assumption and its cost and programme consequence rather than leaving it to be found on site."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to building foundations with a genuine constraint at the pile — low operating headroom (eaves, carports, undercrofts, basements, internal works, overhead services) or restricted working room and access (narrow side passages, gates, infill blocks) — where the designer is setting pile depth, diameter, type or layout. It is most relevant to residential, low-rise, small-commercial, extension and underpinning work.<br><br>It does not apply where there is no real constraint at the pile (ordinary plant reaches it, and a low approach to an open pad is transit rather than an operating limit), where the question is whether to move off bored piles at all (that is the Construction Methods entry, Bored concrete piles vs screw piles), or where the issue is the rock-specific escalation into rock-drilling plant (that is the rock-socket Logistics entry). It is not a contractor plant-selection instruction — it flags when a tight-site detail quietly requires plant beyond the common, readily-available kit.",
+              "checks": [
+                {
+                  "title": "Is there a real constraint at the pile?",
+                  "description": "If the headroom and working room at the pile are open and only the approach is tight, it is usually transit and solvable with common plant — stop here."
+                },
+                {
+                  "title": "Read the binding limit",
+                  "description": "Establish the operating headroom and working room at the pile, and the narrowest access along the whole route to it."
+                },
+                {
+                  "title": "Size the detail against common plant",
+                  "description": "Compare depth and diameter to what the common excavator-plus-auger setup reaches, and check the clearance over the pile against the drilled depth plus about half a metre."
+                },
+                {
+                  "title": "Treat specialist plant as a commitment, not a clearance",
+                  "description": "Buildability via restricted-access plant means a specialist subcontractor is being designed in — do it knowingly, and record it."
+                }
+              ]
+            },
+            "evidence": "<strong>What common plant needs and reaches.</strong> The small-excavator-plus-auger setup is the most prevalent earthmoving plant in Australia: market reporting by Arizton puts compact excavators at close to half of all construction-equipment sales, with the ~1.5 t class the most popular and the ~1.8 t the single highest-selling model, and these machines routinely run auger attachments. Standard excavator hire augers, such as Eastern Plant Hire's, span roughly 200–1500 mm diameter and ~1.5–6 m depth, placing ordinary small-machine work at ~≤ 2–3 m and ~≤ 450 mm. The common machines are also slim, running about 1–2 m wide: the popular 1.7 t class is about 0.99 m and retracts its tracks before expanding to dig (Diggermate), up to about 1.96 m at 5.5 t (Express Hire, Kubota U55-4). Smaller micro excavators (about 0.75 m, passing a standard doorway) exist (Hire Express) but are less common and lower in auger torque, so 1–2 m is the safer assumption. Either way the common range is about as narrow as a restricted-access rig, so width alone rarely forces specialist plant. Because a continuous-flight auger must be drawn clear of the hole, the operating headroom needed scales with depth — roughly the drilled depth plus a short extraction allowance — so a shallow pile under a normal ceiling is fine while a deep one under a low ceiling is not. Transit height and width on the route are commonly engineerable rather than disqualifying: as For Construction Pros describes, ROPS canopies fold or unbolt for low clearance and are refitted to work, and retractable undercarriages narrow the track to pass tight access then expand to dig.<br><br><strong>When you are into specialist plant.</strong> Restricted-access piling is a different, specialist tier that breaks the depth–headroom link with sectional tooling. Belpile (Australia) passes through narrow openings and works in ~2.0 m headroom using sectional CFA to install 250–450 mm piles 10–14 m deep — depth and low-headroom capability ordinary excavator augering cannot reach. The residential reality that sends a job there is well described by Anchorpile in the Australian market: side passages often as narrow as 900 mm, and a conventional rig standing 4–5 m tall cannot work under a 2 m eave; the practical step is to measure the narrowest point of the access route, including gates, and the minimum headroom, and pass them to the installer. Stepping into this tier means a specialist subcontractor and mobilisation rather than the general hire fleet — a real cost step, and on a tight site sometimes the only option, which is why it should be designed in deliberately.<br><br><strong>References</strong><br>Arizton. <em>Australia Compact Construction Equipment Market</em>. Accessed 2026.<br>Eastern Plant Hire. Excavator hydraulic augers (200–1500 mm; 1.5–6 m). Accessed 2026.<br>Diggermate. 1.7 t Mini Excavator (990 mm wide; tracks expand to 1240 mm). Accessed 2026.<br>Hire Express. 1 t Mini Excavator (~920 kg; passes through a standard doorway). Accessed 2026.<br>Express Hire. Kubota U55-4 5.5 t Excavator (machine width 1960 mm). Accessed 2026.<br>For Construction Pros. <em>Tailor Compact Excavators for Indoor Construction Sites</em> (foldable ROPS; retractable undercarriages). Accessed 2026.<br>Belpile. <em>Limited Access / Restricted Headroom Piling</em> (~2.0 m headroom; 250–450 mm; 10–14 m; sectional CFA). Accessed 2026.<br>Anchorpile SA. <em>Restricted Access Sites: How Screw Piles Work When Space Is Tight</em> (900 mm side passages; measure the access route). 2026.",
+            "examples": [],
+            "supportingImages": [],
+            "dateAdded": "2026-06-19",
+            "dateReviewed": "2026-06-19",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "The common-vs-specialist direction is well supported: the prevalence of the small-excavator baseline, its machine widths and auger reach, the restricted-access headroom and width figures, the transit workarounds (foldable ROPS, retractable tracks) and the specialist-trade cost step are all backed by market, hire-fleet and supplier sources. The numeric edges are screening values, not measured limits: the ~2–3 m and ~450 mm common-reach figures come from advertised hire envelopes, and the \"drilled depth plus about half a metre\" headroom rule is a practical extraction allowance rather than a tested threshold — real reach and clearance vary with machine geometry, auger type and length, extension handling, spoil clearance and ground. Treat the bands as a prompt for when a tight-site detail has probably left common plant and needs contractor confirmation or a deliberate specialist-plant assumption, not as a proven capability rule."
+            },
             "relatedEntries": [
               {
+                "id": "bored-concrete-piles-vs-screw-piles",
+                "note": "That entry decides whether access, spoil or open-hole burden justifies moving off bored piles; this one, once a tight site is established, checks whether the detail stays within common plant. Screw piles install off a common excavator torque head, so they often keep a tight-site job in the common-plant tier."
+              },
+              {
+                "id": "rock-sockets-vs-likely-available-drilling-plant",
+                "note": "The rock-specific escalation into rock-drilling plant. This entry is the general tight-site plant screen; that one is the worked rock sub-case."
+              },
+              {
                 "id": "confined-space-entry-at-pier-and-shaft-bases",
-                "note": "Both depend on whether construction plant and workers can physically reach and work the element on this site — check site access together."
+                "note": "Both turn on whether plant and workers can physically reach and work the element on a constrained site — check site access together."
+              },
+              {
+                "id": "latent-safety-risk-of-screw-pile-foundations",
+                "note": "If tight access pushes the design toward screw piles, check whether the selected system can be verified as built before committing."
               }
             ]
           }
@@ -4251,7 +4396,8 @@
     "fragment|entry|pvc-permanent-formwork-vs-blockwork|xflni1",
     "fragment|update|pvc-permanent-formwork-vs-blockwork|56nd0s",
     "fragment|update|pvc-permanent-formwork-vs-blockwork|nxpqdr",
-    "fragment|update|bored-concrete-piles-vs-screw-piles|13c0i0w"
+    "fragment|update|bored-concrete-piles-vs-screw-piles|13c0i0w",
+    "fragment|update|equipment-access-constraints|ctqpsu"
   ],
   "_rejected": [],
   "_reconsider": [
