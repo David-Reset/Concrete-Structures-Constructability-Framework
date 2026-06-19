@@ -1143,25 +1143,137 @@
         {
           "id": "bored-concrete-piles-vs-screw-piles",
           "name": "Bored concrete piles vs. screw piles",
-          "available": false,
-          "draft": true,
+          "available": true,
           "data": {
-            "question": "On a lightly-to-moderately loaded foundation, has the program and site-disruption advantage of screw piles been weighed against bored concrete piles — or has the pile type been chosen on capacity alone, without considering same-day loading, no spoil, and no curing wait?",
-            "parameter": "Foundation loading and site constraints, used to weigh screw piles (fast, no spoil, no curing wait, excavator-installable) against bored concrete piles (higher capacity, spoil + curing).",
-            "_evidenceAngle": "Programme/buildability, like the PT entry. Direction strongly supported by industry sources: screw piles install in hours, no curing delay (same-day load), no spoil to cart, and can be installed with an excavator rather than a dedicated rig; bored piers favoured for heavy loads / deep sand. For the framework standard, anchor authority to a geotechnical reference (Perko, Helical Piles: A Practical Guide to Design and Installation, 2009) and use installer sources only to corroborate direction (as the PT entry uses supplier literature). Keep the honest counter-case so it stays a 'weigh this' entry. Links to the Equipment access entry.",
-            "_thresholdSketch": "Good/Consider by loading + site: light loads + tight/sensitive access → weigh screw piles strongly. Heavy loads / deep sand → bored may govern. Frame as weigh-the-program-advantage, not a rule.",
+            "question": "Is there a genuine access, spoil or open-hole reason to move away from bored concrete piles?",
+            "parameter": "How many of the four bored-pile construction constraints genuinely apply to the site.",
+            "keywords": [
+              "screw pile",
+              "helical pile",
+              "bored pier",
+              "screw pier",
+              "low headroom piling",
+              "restricted access piling",
+              "contaminated spoil",
+              "spoil removal",
+              "no spoil",
+              "small plant piling",
+              "excavator mounted piling",
+              "CFA pile",
+              "micropile",
+              "mini pile",
+              "pile head connection"
+            ],
+            "background": "Bored concrete piles are a mature, broadly-resourced foundation method. Cast-in-place reinforced concrete shafts can be formed across a wide range of soils and rock, socketed into rock where required, and built by a deep pool of piling contractors using familiar plant and well-established quality-assurance routes — sonar profiling, integrity testing, static and dynamic load testing. On a site that can take the plant and the spoil, that maturity is exactly why they are the buildability default: the method, the contractors and the QA are all readily available with the least friction.<br><br>The question is narrow. It is not whether bored piles are a <em>better pile</em> — both systems can be designed to carry the load. It is whether the <em>process of building a bored pile</em> is the hard part of the job on this particular site. That process needs plant access, a drilled hole, spoil removed, the hole kept open or cased, reinforcement placed and concrete delivered. On a straightforward site it is routine; on a tight, contaminated or unstable site it can dominate the foundation decision.<br><br>Four construction constraints are what make the bored-pile process the hard part. Each is counted only where it materially affects the job, not where it is merely theoretical:<br><br><strong>Restricted access / low headroom / small-plant only</strong> — the site cannot practically take normal bored-pile plant, spoil-handling equipment, concrete access, casing equipment or working room.<br><strong>Spoil-removal burden</strong> — removing bored spoil is a real construction issue because of access, volume, handling, cartage, storage, mud, disruption or sequencing.<br><strong>Contaminated or regulated spoil</strong> — the ground is contaminated or potentially contaminated (acid sulfate, hydrocarbon, asbestos and the like), making spoil costly or difficult to classify, stockpile and dispose of.<br><strong>Open-hole instability / casing / groundwater burden</strong> — the bore needs casing, slurry, dewatering or temporary support that is disproportionate to the project scale.<br><br>Screw (helical) piles change that process. Installed by rotating a steel shaft into the ground with an excavator-mounted torque head, they need smaller plant, produce little or no spoil, and suit restricted access, low headroom and contaminated ground. Where those constraints are real, screw piles are not a compromise — they are the genuinely better-buildable choice, and this entry treats them as such.<br><br>What screw piles do carry is a separate problem: their as-built capacity cannot be confirmed the way a witnessed concrete pour can. That risk is real, but it is the subject of its own Safety in Design entry and is not re-argued here — if this entry points you toward screw piles, follow that link before committing.",
+            "thresholds": [
+              {
+                "range": "0 constraints",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "No genuine bored-pile construction constraint applies: the site takes the plant, spoil is handled normally, the bore is stable or needs only routine casing, and the ground is uncontaminated. Bored concrete piles are the buildability default here — mature method, deep contractor pool, established QA. Do not move to screw piles on speed or marketing alone; on an unconstrained site a conventional bored pile builds and is supported with the least friction."
+              },
+              {
+                "range": "1 constraint",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "One genuine constraint applies. Open a comparison rather than switching method automatically, and look first at what the single constraint actually is. If it is the open-hole / casing / groundwater one, CFA (continuous flight auger) piling may resolve it while keeping a concrete pile, because the auger supports the bore continuously and needs no temporary casing. If instead the constraint is access, spoil or contamination, CFA will not help — those point toward screw piles. A single, manageable constraint should not by itself flip the method: a compact rig, routine cartage or standard casing may absorb it with ordinary planning."
+              },
+              {
+                "range": "2 or more constraints",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Two or more genuine constraints are stacking — restricted access with spoil removal, contaminated spoil with groundwater, small-plant access with casing difficulty. The bored-pile process is now carrying real construction burden. CFA can at most remove the open-hole leg; it stays high-spoil and needs rig access and height, so it does nothing for access, spoil or contamination and rarely clears a multi-constraint site. A low-spoil / small-plant method — screw piles, or another specialist system — is the likely better-buildable choice. Change method before the design is fixed, or record why bored piling remains workable. If you move to screw piles, follow the Safety entry for the as-built verification that choice brings."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Start from bored concrete piles where they build readily",
+                "description": "Where access is good, the ground bores normally, spoil is removed routinely and conventional QA applies, retain bored concrete piles unless there is a project-specific reason not to. This keeps the foundation in a familiar, widely-resourced and well-supported construction method."
+              },
+              {
+                "title": "Count only the genuine constraints (0, 1, 2+)",
+                "description": "Count a constraint only where it materially changes the job — spoil only if removal is actually difficult, access only if normal plant genuinely cannot work, groundwater only if it materially changes the bored-pile method."
+              },
+              {
+                "title": "One constraint — compare, do not switch",
+                "description": "A single trigger justifies a conversation, not an automatic change of system. If that one constraint is the open hole, look at CFA first — it removes the casing and bore-stability problem while keeping a concrete pile. If it is access, spoil or contamination, weigh screw piles."
+              },
+              {
+                "title": "Two or more constraints — actively review low-spoil / small-plant methods",
+                "description": "When access combines with spoil, or contaminated spoil combines with groundwater, the buildability case for a low-spoil method is strong. CFA will not carry a multi-constraint site on its own, so compare screw piles (or micropiles / mini-piles) on their merits."
+              },
+              {
+                "title": "Do not treat screw piles as the answer to rock or large lateral / moment demand",
+                "description": "Hard rock can make screw piles spin without penetration and force a change back to bored piling; large lateral, seismic or overturning actions often favour larger-diameter bored piles, sockets or pile groups. Check the rock-socket entry before assuming a socket is even required."
+              },
+              {
+                "title": "If screw piles are selected, follow the Safety entry",
+                "description": "Choosing them for buildability does not remove the verification burden — require records covering geotechnical investigation below founding level, pile geometry, torque, advancement ratio, rotational speed, installation logs, load testing where required, corrosion protection and pile-head connection certification."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to lightly-to-moderately loaded building foundations where both bored concrete piles and screw piles could be structurally viable and the designer is weighing whether the construction method justifies moving away from bored concrete. It is most relevant to residential, low-rise, small-commercial, extension and remedial work where access, spoil and plant spread strongly influence buildability.<br><br>It does not apply where the governing issue is whether the as-built capacity can be verified (that is the Safety in Design entry), where the governing issue is simply what plant can access the site (that is the Logistics equipment-access entry), where the project needs high-capacity piles, deep rock sockets, large lateral or overturning resistance or infrastructure-scale design, or where the real comparison is driven vs bored piling, in which case vibration becomes a different and stronger question.",
+              "checks": [
+                {
+                  "title": "Structural suitability comes first",
+                  "description": "Both systems must be structurally and geotechnically viable before constructability is compared. This entry assumes the question sits outside pure structural capacity."
+                },
+                {
+                  "title": "Verify each constraint is real, not theoretical",
+                  "description": "Do not count a constraint just because it could exist in the abstract — count it only where it materially changes how the bored pile is built."
+                },
+                {
+                  "title": "CFA is the middle option, and it only solves the open hole",
+                  "description": "If the single binding constraint is open-hole instability / casing / groundwater, continuous flight auger (CFA) piling can resolve it while keeping a cast-in-place concrete pile, because the auger supports the bore throughout and no temporary casing is needed — so collapsing or water-bearing ground that would otherwise push you to screw piles can often be handled with CFA instead. But CFA still brings spoil up the flights, so the spoil-removal and contaminated-spoil burdens remain, and CFA rigs are tall and need good access, so it does nothing for restricted access or low headroom. Treat CFA as the answer to the open-hole constraint specifically, not to access, spoil or contamination."
+                },
+                {
+                  "title": "Bored piles are also low-vibration",
+                  "description": "Do not use vibration sensitivity on its own to justify screw piles over bored piles — bored piling is commonly chosen precisely where low vibration is required."
+                },
+                {
+                  "title": "Screw piles bring a verification burden",
+                  "description": "Choosing screw piles for access or spoil reasons does not remove the need to verify the as-built result; that burden is set out in the Safety in Design entry and must be carried, not waived."
+                },
+                {
+                  "title": "The decision is regional",
+                  "description": "Small-plant piling, spoil-disposal costs, contaminated-soil handling and the local contractor pool vary by region. Treat this as NSW-practice guidance supported by broader literature, not a universal rule."
+                }
+              ],
+              "note": "Use the rating as a constructability review prompt, not a rule that screw piles must be used above a set number of constraints. The aim is to head off two opposite errors: specifying screw piles because they seem faster or offer immediate loading where bored piles would build easily, and defaulting to bored piles where access, spoil or contamination has made the bored-pile process the real constructability problem."
+            },
+            "evidence": "<strong>Screw-pile triggers and limitations — direct practice guidance.</strong> Engineering NZ / IPENZ Practice Note 28 (2015) is the closest practical authority. It records the genuine advantages that define when screw piles suit a site — short setup, installation in poor-access / low-headroom / confined space, minimal vibration and noise, and reduced disposal where ground is contaminated because little spoil is produced — and the matching limitations that bound the method: no soil returned to confirm the founding material, a narrow shaft that can limit capacity under large lateral or overturning demand, hard layers that prevent embedment, corrosion limits on service life, and hard rock that can cause spin without penetration and may force a change back to conventional bored piling.<br><br><strong>The bored-pile counter-case — contractor guidance.</strong> Keller (Australia) describes bored piles as high-capacity cast-in-place elements used across a wide range of soils and rock, capable of rock sockets, low-vibration, and supported by a mature QA suite — sonar pile profiling, CCTV inspection, integrity testing, thermal integrity profiling, and static and dynamic load testing. This is what keeps the entry from reading as anti-bored-pile: bored piling is the robust, well-resourced default, not a crude method.<br><br><strong>Construction-method mechanism — real comparison.</strong> The Kirkbride Road Interchange (Chen & King, 2017) compared reinforced-concrete bored piles against screw piles for the same task and favoured screw piles on a clear construction-method basis: a much smaller plant spread (excavator-mounted rigs versus rotary rigs, cranes, casing, vibro drivers, and spoil, concrete and bentonite plant), little or no spoil, and avoidance of contaminated / hydrocarbon-affected spoil handling. This is infrastructure-scale, so it supports the mechanism — plant spread, spoil and contamination — rather than setting the residential thresholds.<br><br><strong>The CFA middle option.</strong> That CFA piling supports the bore continuously and needs no temporary casing — while still producing spoil up the flights and requiring large, tall rigs — is standard piling-method behaviour rather than a contested finding, and is what lets CFA resolve the open-hole constraint specifically without addressing access, spoil or contamination.<br><br><strong>Peer-reviewed support.</strong> Srijaroen et al. (2021), comparing soil-cement screw piles against dry-process bored piles for low- and medium-rise buildings in soft Bangkok clay, found the screw method time- and cost-competitive — peer-reviewed support for weighing screw-type methods against bored piling on buildability, though an analogue in a specific clay rather than a direct NSW steel-screw-pile study.<br><br><strong>Threshold basis.</strong> The 0 / 1 / 2+ bands are reasoned design-stage constructability judgement, not measured thresholds, and each constraint is itself a material / not-material call rather than a number. They scale the scrutiny a move away from bored piling should attract, and should be refined over time with project examples and regional contractor feedback.<br><br><strong>References</strong><br>Engineering NZ / IPENZ (2015). <em>Practice Note 28: Screw Piles — Guidelines for Design, Construction and Installation</em>.<br>Keller Australia. <em>Bored piles</em>; Keller Group. <em>Helical / screw piles</em>.<br>Chen, S., & King, R. (2017). <em>The Kirkbride Road Interchange</em>.<br>Srijaroen, C., Hoy, M., Horpibulsuk, S., Rachan, R., & Arulrajah, A. (2021). Soil–Cement Screw Pile: Alternative Pile for Low- and Medium-Rise Buildings in Soft Bangkok Clay. <em>Journal of Construction Engineering and Management</em>, 147(2), 04020173.",
+            "examples": [],
+            "supportingImages": [],
+            "dateAdded": "2026-06-19",
+            "dateReviewed": "2026-06-19",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Supported by direct practice guidance on screw-pile advantages and limitations (Engineering NZ Practice Note 28), contractor guidance on both construction processes (Keller), a real infrastructure comparison showing the plant-spread / spoil / contamination mechanism (Kirkbride Road), and a peer-reviewed screw-vs-bored buildability comparison. The 0 / 1 / 2+ bands are reasoned constructability judgement rather than measured thresholds — each constraint is a material / not-material call — and the closest peer-reviewed comparison concerns soil-cement screw piles in soft Bangkok clay rather than ordinary NSW steel screw piles. Treat the entry as a constructability prompt, not a proven decision rule."
+            },
             "relatedEntries": [
               {
-                "id": "pvc-permanent-formwork-vs-blockwork",
-                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
+                "id": "latent-safety-risk-of-screw-pile-foundations",
+                "note": "This entry covers when screw piles are worth considering for access, spoil or contamination reasons. The Safety entry then checks whether the selected screw-pile system can be verified as built — read it before committing to screw piles."
+              },
+              {
+                "id": "equipment-access-constraints",
+                "note": "Both depend on whether the required piling plant, spoil handling and concrete delivery can physically reach the work; this entry weighs the construction method, the Logistics entry weighs the plant."
+              },
+              {
+                "id": "confined-space-entry-at-pier-and-shaft-bases",
+                "note": "Both depend on whether construction plant and workers can physically reach and work the element on this site — check site access together."
               },
               {
                 "id": "void-former-slab-vs-thick-raft",
                 "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
               },
               {
-                "id": "confined-space-entry-at-pier-and-shaft-bases",
-                "note": "Both depend on whether construction plant and workers can physically reach and work the element on this site — check site access together."
+                "id": "pvc-permanent-formwork-vs-blockwork",
+                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
               }
             ]
           }
@@ -4138,7 +4250,8 @@
     "fragment|update|non-moving-construction-joint-waterproofing|11245rr",
     "fragment|entry|pvc-permanent-formwork-vs-blockwork|xflni1",
     "fragment|update|pvc-permanent-formwork-vs-blockwork|56nd0s",
-    "fragment|update|pvc-permanent-formwork-vs-blockwork|nxpqdr"
+    "fragment|update|pvc-permanent-formwork-vs-blockwork|nxpqdr",
+    "fragment|update|bored-concrete-piles-vs-screw-piles|13c0i0w"
   ],
   "_rejected": [],
   "_reconsider": [
