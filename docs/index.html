@@ -244,6 +244,13 @@
   .share-preview-banner .spb-title{font-size:14px;font-weight:800;color:var(--text);margin-bottom:6px}
   .share-preview-banner .spb-sub{font-size:12.5px;color:var(--text-muted);line-height:1.6}
   .share-preview-actions{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+  .recent-wrap{margin:28px 0 8px}
+  .recent-toggle{display:inline-flex;align-items:center;gap:10px;cursor:pointer;user-select:none;padding:5px 0;outline:none}
+  .recent-toggle-icon{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border:1px solid var(--border);border-radius:5px;font-size:14px;line-height:1;font-weight:700;color:var(--text-muted);background:var(--surface-light);transition:color .15s,border-color .15s}
+  .recent-toggle:hover .recent-toggle-icon,.recent-toggle:focus-visible .recent-toggle-icon{color:var(--text);border-color:var(--accent)}
+  .recent-toggle-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px}
+  .recent-toggle:hover .recent-toggle-label{color:var(--text)}
+  .recent-toggle-sig{font-size:11.5px;color:var(--text-muted);font-weight:500;letter-spacing:.2px}
   .lightbox img{max-width:90vw;max-height:90vh;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,0.5)}
 
 
@@ -1455,11 +1462,26 @@ function renderRecentRow(e){
   const right=`<div style="text-align:right;flex-shrink:0"><div class="item-arrow">→</div>${dateMeta(d)}</div>`;
   return `<div class="item-row available evidence-index-result" onclick="goEntry('${dim.id}','${it.id}')"><div class="evidence-index-main"><div class="evidence-index-top"><span class="item-name">${escHtml(it.name)}</span><span class="related-dim"><span class="ico">${dim.icon}</span>${escHtml(dim.name)}</span>${loc}</div>${param}${support?`<div class="search-result-meta">${support}</div>`:''}</div>${right}</div>`;
 }
+// The home-page "Recently added" strip exists to signal the framework is alive.
+// It is a single collapsible: COLLAPSED BY DEFAULT, but the header line still
+// carries the signal (the date of the newest entry) so the closed state isn't
+// dead. Expanding reveals the rows; the open/closed choice is remembered per
+// browser via localStorage so a returning visitor keeps their preference.
+const RECENT_EXPANDED_KEY='recentlyAddedExpanded.v1';
+function isRecentExpanded(){try{return localStorage.getItem(RECENT_EXPANDED_KEY)==='true';}catch(e){return false;}}
+function setRecentExpanded(v){try{localStorage.setItem(RECENT_EXPANDED_KEY,v?'true':'false');}catch(e){}}
+function toggleRecentExpanded(){setRecentExpanded(!isRecentExpanded());render();}
 function renderRecentlyAdded(){
   const recent=recentEntries(3);
   if(!recent.length)return '';
+  const expanded=isRecentExpanded();
+  const latest=(recent[0]&&recent[0].data)?fmtDate(recent[0].data.dateAdded):'';
+  const sig=latest?`<span class="recent-toggle-sig">latest ${latest}</span>`:'';
+  const icon=expanded?'\u2212':'+'; // − when open, + when closed
+  const header=`<div class="recent-toggle" role="button" tabindex="0" aria-expanded="${expanded}" aria-label="${expanded?'Collapse':'Expand'} recently added entries" onclick="toggleRecentExpanded()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleRecentExpanded();}"><span class="recent-toggle-icon">${icon}</span><span class="recent-toggle-label">Recently added</span>${sig}</div>`;
+  if(!expanded)return `<div class="recent-wrap">${header}</div>`;
   const rows=recent.map(renderRecentRow).join('');
-  return `<div style="margin:28px 0 8px"><div class="label">Recently added</div></div><div class="item-list">${rows}</div><div style="margin-top:13px"><span class="breadcrumb-link" style="font-size:12px;font-weight:600" onclick="goByDate()">View all entries by date →</span></div>`;
+  return `<div class="recent-wrap">${header}<div class="item-list" style="margin-top:12px">${rows}</div><div style="margin-top:13px"><span class="breadcrumb-link" style="font-size:12px;font-weight:600" onclick="goByDate()">View all entries by date →</span></div></div>`;
 }
 function renderByDateView(){
   const list=recentEntries();
