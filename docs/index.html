@@ -203,6 +203,24 @@
   .ra-note{display:block;font-size:12px;color:var(--text-muted);line-height:1.5;margin-top:6px}
   .entry-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
   .entry-btn.primary:hover{background:#2f6fd6;border-color:#2f6fd6}
+  /* ===== GUIDED TRIAGE ===== */
+  .triage-launch{display:flex;align-items:center;gap:14px;margin-top:12px;flex-wrap:wrap}
+  .triage-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:var(--accent-glow);border:1px solid var(--accent);border-radius:8px;color:var(--accent);font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;transition:all .2s;flex-shrink:0}
+  .triage-btn:hover{background:var(--accent);color:#fff}
+  .triage-btn .ico{font-size:15px;line-height:1}
+  .triage-launch-hint{font-size:12px;color:var(--text-muted);line-height:1.5;max-width:420px}
+  .triage-progress{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:10px}
+  .triage-q{font-size:16px;font-weight:700;color:var(--text);line-height:1.45;margin-bottom:6px}
+  .triage-q-sub{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:4px}
+  .triage-gate-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin:14px 0 0;padding:0;max-height:50vh;overflow-y:auto}
+  .triage-gate-row{display:flex;gap:11px;align-items:flex-start;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:11px 13px;cursor:pointer;transition:border-color .15s}
+  .triage-gate-row:hover{border-color:var(--accent)}
+  .triage-gate-row input{margin-top:1px;width:16px;height:16px;flex-shrink:0;cursor:pointer;accent-color:var(--accent)}
+  .triage-gate-label{font-size:13.5px;font-weight:600;color:var(--text);line-height:1.35}
+  .triage-gate-hint{display:block;font-size:12px;color:var(--text-muted);margin-top:3px;font-weight:400}
+  .triage-yesno{display:flex;gap:10px;margin-top:18px}
+  .triage-yesno .entry-btn{flex:1;justify-content:center}
+  .triage-empty{font-size:13.5px;color:var(--text);line-height:1.7}
 
   .examples-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px;margin-bottom:20px}
   .examples-grid.imgs-1{grid-template-columns:1fr}
@@ -1282,6 +1300,239 @@ function lookupItem(dimId,id){const dm=dimensions.find(x=>x.id===dimId);return d
 function goComment(dimId,id){const it=lookupItem(dimId,id);if(!it)return;window.open(prefillUrl(FORMS.comment,it.name,entryUrl(dimId,id)),'_blank');}
 function goEditEntry(dimId,id){const it=lookupItem(dimId,id);if(!it)return;window.open(prefillUrl(FORMS.edit,it.name,entryUrl(dimId,id)),'_blank');}
 
+// ===== GUIDED TRIAGE =====
+// Editable question model. The authoring guide and the full entry->question mapping live
+// in triage-questions.md. Only entry IDs that exist and are `available` are ever surfaced;
+// unknown IDs are silently ignored, so this block is safe to edit freely. To change the
+// questionnaire you only edit TRIAGE below — the engine underneath needs no changes.
+const TRIAGE={
+  intro:"Answer a few questions about what's on the architect's drawings and what you're still deciding. We'll gather the entries worth reviewing — you choose which to add to your project list.",
+  // STEP 1 — "What's in this job?" (multi-select). Selecting an option (a) surfaces the
+  // entries worth weighing simply because that element is present, and (b) unlocks the
+  // scenario questions that become relevant.
+  gates:[
+    {id:'slabs',label:'Suspended slabs',hint:'Suspended floors, transfer slabs, suspended ground floors',
+     surface:['hand-bendable-bar-sizes-for-slab-reinforcement','slab-bar-diameter-and-on-site-bending-equipment','reducing-grinder-cutting-from-large-slab-reinforcement-bars','large-bar-callout-clarity','reinforcement-mat-fall-through-risk','curing-shortfall-in-suspended-slabs-and-beams']},
+    {id:'beams',label:'Suspended beams or band beams',hint:'Beams forming part of a suspended floor',
+     surface:['curing-shortfall-in-suspended-slabs-and-beams','beam-soffit-formwork-proportions']},
+    {id:'footings',label:'Footings or ground beams',hint:'Pad/strip footings, pile caps, ground beams',
+     surface:['stirrup-bar-size-availability-and-site-adaptability']},
+    {id:'walls',label:'Concrete walls',hint:'Core walls, retaining walls, blade walls, upstands',
+     surface:[]},
+    {id:'piles',label:'Piles, piers or shafts',hint:'Bored, driven or screw piles; caissons',
+     surface:[]},
+    {id:'exposed',label:'Exposed / architectural concrete',hint:'Off-form faces, feature corners or soffits on show',
+     surface:['chamfered-exposed-external-corners','drip-grooves-on-exposed-soffit-edges']},
+    {id:'watertight',label:'Basement or watertight structure',hint:'Walls or tanks that must stay dry',
+     surface:['pvc-permanent-formwork-vs-blockwork','non-moving-construction-joint-waterproofing']},
+  ],
+  // STEP 2 — Scenario questions (plain yes/no, answerable from drawings or early intent).
+  // `gates` controls when a question appears (shown if ANY listed gate is selected; an empty
+  // or omitted list = always shown). A "yes" adds that question's `ids`.
+  questions:[
+    {id:'upturns',gates:['walls'],
+     prompt:'Are there concrete upturns, planters or upstands cast hard against an obstruction or boundary?',
+     ids:['off-form-concrete-upturns-near-obstructions']},
+    {id:'vertical-system',gates:['walls','beams','slabs'],
+     prompt:'Are you still choosing the vertical-member system that supports the floor (reinforced concrete vs a blockwork-and-steel alternative)?',
+     ids:['structural-steel-vs-concrete-for-isolated-vertical-members']},
+    {id:'repeated-floors',gates:['slabs','beams'],
+     prompt:'Does the building have repeated, similar suspended floors (a structure that repeats storey to storey)?',
+     ids:['conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors','optional-pour-breaks-to-keep-concrete-trades-flowing']},
+    {id:'level-changes',gates:['slabs'],
+     prompt:'Do the slabs include level changes — folds, steps or wet-area setdowns?',
+     ids:['suspended-slab-level-changes-folds','flat-soffit-detailing-at-minor-slab-setdowns']},
+    {id:'deep-vertical',gates:['slabs','beams','walls','piles','footings'],
+     prompt:'Is a slab, beam or pile cap cast against or above a deep vertical element (a tall wall, column or deep pile)?',
+     ids:['pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces']},
+    {id:'rock',gates:['piles','footings'],
+     prompt:'Are any foundations founded on, or socketed into, rock?',
+     ids:['rock-sockets-founding-on-rock-vs-drilled-socket','rock-sockets-vs-likely-available-drilling-plant','confined-space-entry-at-pier-and-shaft-bases']},
+    {id:'access',gates:['piles'],
+     prompt:'Is the site height- or width-constrained for piling plant (low headroom, tight access)?',
+     ids:['equipment-access-constraints']},
+    {id:'screw',gates:['piles'],
+     prompt:'Are screw piles being considered for the foundations?',
+     ids:['bored-concrete-piles-vs-screw-piles','latent-safety-risk-of-screw-pile-foundations']},
+  ],
+  // STEP 3 — Always offered: a documentation / drawing-clarity check.
+  always:{
+    prompt:'Would you like to include the drawing-clarity checks (reinforcement callouts, details and schedule references)?',
+    ids:['reinforcement-callout-clarity','details-and-schedule-references']
+  }
+};
+
+let triage=null;
+
+function openTriage(){
+  triage={phase:'gates',gateSel:new Set(),qList:[],qIdx:0,qYes:new Set(),docYes:true};
+  paintTriage();
+}
+function closeTriage(){const o=document.getElementById('triageOverlay');if(o)o.remove();triage=null;}
+function paintTriage(){
+  let o=document.getElementById('triageOverlay');
+  if(!o){
+    o=document.createElement('div');o.className='modal-overlay';o.id='triageOverlay';
+    o.onclick=closeTriage;
+    o.innerHTML='<div class="modal" onclick="event.stopPropagation()"></div>';
+    document.body.appendChild(o);
+  }
+  o.querySelector('.modal').innerHTML=triageInner();
+}
+function triageInner(){
+  if(triage.phase==='gates')return triageGatesHtml();
+  if(triage.phase==='questions')return triageQuestionHtml();
+  if(triage.phase==='doc')return triageDocHtml();
+  return '';
+}
+function triageGatesHtml(){
+  const rows=TRIAGE.gates.map(g=>`<label class="triage-gate-row">
+    <input type="checkbox" class="triage-gate-check" value="${g.id}" ${triage.gateSel.has(g.id)?'checked':''}>
+    <span><span class="triage-gate-label">${escHtml(g.label)}</span>${g.hint?`<span class="triage-gate-hint">${escHtml(g.hint)}</span>`:''}</span>
+  </label>`).join('');
+  return `<div class="modal-title">Guided triage</div>
+    <div class="ra-intro">${escHtml(TRIAGE.intro)}</div>
+    <div class="triage-progress">Step 1 &mdash; what's in this job?</div>
+    <div class="triage-q">Which of these does the design include?</div>
+    <div class="triage-q-sub">Tick all that apply &mdash; you can answer straight from the architect's drawings.</div>
+    <ul class="triage-gate-list">${rows}</ul>
+    <div class="modal-actions">
+      <button class="entry-btn" onclick="closeTriage()">Cancel</button>
+      <button class="entry-btn primary" onclick="triageGatesNext()">Next &rarr;</button>
+    </div>`;
+}
+function triageGatesNext(){
+  const sel=new Set(Array.from(document.querySelectorAll('#triageOverlay .triage-gate-check')).filter(c=>c.checked).map(c=>c.value));
+  triage.gateSel=sel;
+  triage.qList=TRIAGE.questions.filter(q=>!q.gates||q.gates.length===0||q.gates.some(g=>sel.has(g)));
+  // Drop any answers for questions that are no longer shown (gates changed on a Back/Next).
+  triage.qYes=new Set(Array.from(triage.qYes).filter(id=>triage.qList.some(q=>q.id===id)));
+  triage.qIdx=0;
+  triage.phase=triage.qList.length?'questions':'doc';
+  paintTriage();
+}
+function triageQuestionHtml(){
+  const q=triage.qList[triage.qIdx];
+  const total=triage.qList.length;
+  return `<div class="modal-title">Guided triage</div>
+    <div class="triage-progress">Question ${triage.qIdx+1} of ${total}</div>
+    <div class="triage-q">${escHtml(q.prompt)}</div>
+    <div class="triage-yesno">
+      <button class="entry-btn" onclick="triageAnswer(false)">No</button>
+      <button class="entry-btn primary" onclick="triageAnswer(true)">Yes</button>
+    </div>
+    <div class="modal-actions">
+      <button class="entry-btn" onclick="triageBack()">&larr; Back</button>
+    </div>`;
+}
+function triageAnswer(yes){
+  const q=triage.qList[triage.qIdx];
+  if(yes)triage.qYes.add(q.id);else triage.qYes.delete(q.id);
+  if(triage.qIdx<triage.qList.length-1){triage.qIdx++;}
+  else{triage.phase='doc';}
+  paintTriage();
+}
+function triageBack(){
+  if(triage.phase==='doc'){
+    if(triage.qList.length){triage.phase='questions';triage.qIdx=triage.qList.length-1;}
+    else{triage.phase='gates';}
+    paintTriage();return;
+  }
+  if(triage.phase==='questions'){
+    if(triage.qIdx>0){triage.qIdx--;}
+    else{triage.phase='gates';}
+    paintTriage();return;
+  }
+}
+function triageDocHtml(){
+  return `<div class="modal-title">Guided triage</div>
+    <div class="triage-progress">Last step &mdash; drawing clarity</div>
+    <div class="triage-q">${escHtml(TRIAGE.always.prompt)}</div>
+    <div class="triage-yesno">
+      <button class="entry-btn" onclick="triageDoc(false)">Skip</button>
+      <button class="entry-btn primary" onclick="triageDoc(true)">Include</button>
+    </div>
+    <div class="modal-actions">
+      <button class="entry-btn" onclick="triageBack()">&larr; Back</button>
+    </div>`;
+}
+function triageDoc(yes){triage.docYes=yes;triageFinish();}
+function triageCollect(){
+  const reason=new Map(); // id -> reason label (first reason wins for display)
+  const add=(id,why)=>{if(!reason.has(id))reason.set(id,why);};
+  TRIAGE.gates.forEach(g=>{if(triage.gateSel.has(g.id))(g.surface||[]).forEach(id=>add(id,g.label));});
+  triage.qList.forEach(q=>{if(triage.qYes.has(q.id))(q.ids||[]).forEach(id=>add(id,'Your answers'));});
+  if(triage.docYes)(TRIAGE.always.ids||[]).forEach(id=>add(id,'Drawing clarity'));
+  const inList=new Set(getProjectList().ids);
+  const entries=[],skipped=[];
+  reason.forEach((why,id)=>{
+    const r=resolveEntryId(id);
+    if(!r)return;
+    const row={id,name:r.item.name,dimName:r.dim.name,dimIcon:r.dim.icon,reason:why};
+    if(inList.has(id))skipped.push(row);else entries.push(row);
+  });
+  return {entries,skipped};
+}
+function triageFinish(){
+  const {entries,skipped}=triageCollect();
+  closeTriage();
+  showTriageResults(entries,skipped);
+}
+function showTriageResults(entries,skipped){
+  const n=entries.length;
+  let body;
+  if(!n){
+    const msg=skipped.length
+      ?`Everything this triage suggested is already on your project review list &mdash; nothing more to add.`
+      :`No entries matched these answers. Try the search above, or browse the dimensions &mdash; and if the framework doesn't cover your issue, you can <span class="search-empty-link" onclick="closeTriageResults();goSuggest()">suggest a new entry</span>.`;
+    body=`<div class="triage-empty">${msg}</div>
+      <div class="modal-actions"><button class="entry-btn primary" onclick="closeTriageResults()">Done</button></div>`;
+  }else{
+    const rows=entries.map(e=>`<label class="ra-row">
+      <input type="checkbox" class="tr-check" value="${e.id}" checked onchange="updateTriageCount()">
+      <span class="ra-text">
+        <span class="ra-name">${escHtml(e.name)}</span>
+        <span class="ra-dim"><span class="ico">${e.dimIcon||''}</span>${escHtml(e.dimName)}</span>
+        ${e.reason?`<span class="ra-note">Suggested by: ${escHtml(e.reason)}</span>`:''}
+      </span>
+    </label>`).join('');
+    const skipNote=skipped.length?`<div class="triage-q-sub" style="margin-top:10px">${skipped.length} suggested ${skipped.length===1?'entry is':'entries are'} already on your list and ${skipped.length===1?'was':'were'} left out.</div>`:'';
+    body=`<div class="ra-intro">Based on your answers, these ${n} ${n===1?'entry is':'entries are'} worth reviewing. Untick anything that doesn't apply, then add the rest to your project review list.</div>
+      <div class="ra-toolbar">
+        <label class="ra-selectall"><input type="checkbox" id="trSelectAll" checked onchange="toggleAllTriage(this)"> Select all</label>
+        <span class="ra-count" id="trCount"></span>
+      </div>
+      <div class="ra-list">${rows}</div>
+      ${skipNote}
+      <div class="modal-actions">
+        <button class="entry-btn" onclick="closeTriageResults()">Cancel</button>
+        <button class="entry-btn primary" id="trAddBtn" onclick="confirmTriageAdd()">Add selected</button>
+      </div>`;
+  }
+  const o=document.createElement('div');
+  o.className='modal-overlay';o.id='triageResultOverlay';o.onclick=closeTriageResults;
+  o.innerHTML=`<div class="modal" onclick="event.stopPropagation()"><div class="modal-title">Suggested entries to review</div>${body}</div>`;
+  document.body.appendChild(o);
+  if(n)updateTriageCount();
+}
+function closeTriageResults(){const o=document.getElementById('triageResultOverlay');if(o)o.remove();}
+function trChecks(){return Array.from(document.querySelectorAll('#triageResultOverlay .tr-check'));}
+function toggleAllTriage(src){trChecks().forEach(c=>{c.checked=src.checked;});updateTriageCount();}
+function updateTriageCount(){
+  const checks=trChecks(),sel=checks.filter(c=>c.checked).length;
+  const btn=document.getElementById('trAddBtn');
+  if(btn){btn.textContent=sel?`Add selected (${sel})`:'Add selected';btn.disabled=!sel;btn.style.opacity=sel?'1':'0.5';btn.style.cursor=sel?'pointer':'not-allowed';}
+  const all=document.getElementById('trSelectAll');
+  if(all){all.checked=sel===checks.length&&checks.length>0;all.indeterminate=sel>0&&sel<checks.length;}
+  const cnt=document.getElementById('trCount');
+  if(cnt)cnt.textContent=`${sel} of ${checks.length} selected`;
+}
+function confirmTriageAdd(){
+  const ids=trChecks().filter(c=>c.checked).map(c=>c.value);
+  closeTriageResults();
+  if(ids.length)addManyToProjectList(ids);
+}
+
 // ===== LOAD DATA =====
 async function loadData(){
   try{
@@ -1513,6 +1764,10 @@ function renderHomeView(){
   const searchIcon='<svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z"/></svg>';
   const searchHero=`<div class="search-hero">
     <div class="search-bar">${searchIcon}<input id="search-input" class="search-input" type="text" autocomplete="off" spellcheck="false" placeholder="Describe your design problem — e.g. “wall close to a boundary”, “stirrup size”, “curing”" value="${escAttr(searchQuery)}" oninput="onSearchInput(this.value)"><div id="search-clear" class="search-clear" style="display:${searchQuery?'flex':'none'}" onclick="clearSearch()">✕</div></div>
+    <div class="triage-launch">
+      <button class="triage-btn" onclick="openTriage()"><span class="ico">⌗</span> Run guided triage</button>
+      <span class="triage-launch-hint">Not sure what to search for? Answer a few questions about your project and we'll suggest entries to review.</span>
+    </div>
     <div id="search-region-wrap" class="search-region-wrap" style="display:${has?'flex':'none'}"><span class="search-region-label">Narrow to region</span><select id="search-region" class="search-region" onchange="onSearchRegion(this.value)">${searchRegionOptions()}</select></div>
   </div>`;
   return `<div class="content animate-in"><div style="margin-bottom:18px"><h1 class="section-title">Find constructability guidance</h1><p class="section-desc">Describe your design problem to search across all five dimensions — or browse the dimensions below.</p></div>${searchHero}<div id="search-results">${renderSearchResults()}</div><div id="dim-grid-wrap" style="display:${has?'none':''}">${renderRecentlyAdded()}<div style="margin:28px 0 8px"><div class="label">Browse by dimension</div></div><div class="dim-grid">${guideCard}${cards}</div>${browseBanner}${evidenceBanner}<div class="suggest-banner" onclick="goSuggest()"><div class="suggest-banner-text"><div class="suggest-banner-title">Don't see your issue?</div><div class="suggest-banner-sub">Suggest a new constructability entry — every submission is reviewed and structured by the framework team.</div></div><div class="suggest-banner-btn">Suggest an entry →</div></div></div></div>`;
