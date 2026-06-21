@@ -688,7 +688,7 @@ function renderFacetFilters(dim){
   const active=anyFacetActive();
   const matchCount=dim.items.filter(item=>item.available&&itemMatchesFilter(item)).length;
   const totalAvail=dim.items.filter(item=>item.available).length;
-  const crossLink=`<button class="facet-crosslink" onclick="goBrowse()">↗ Browse by element &amp; stage across all dimensions</button>`;
+  const crossLink=`<button class="facet-crosslink" onclick="goBrowse()">↗ Browse all dimensions by region, element or stage</button>`;
   const stats=active?`<span class="facet-count">Showing ${matchCount} of ${totalAvail} entries</span><button class="facet-clear" onclick="clearAllFilters()">Clear filters</button>`:'';
   const foot=`<div class="facet-foot">${crossLink}${stats}</div>`;
   return `<div class="facet-filter">${region}${elRow}${phRow}${foot}</div>`;
@@ -1779,8 +1779,7 @@ function renderHomeView(){
   const guideCard=guide?`<div class="dim-card guide-card" onclick="goGuide()"><div class="guide-pill">Start here</div><div class="dim-icon">${guide.icon}</div><div class="dim-name">${guide.title}</div><div class="dim-desc">${guide.tagline}</div><div class="dim-count">Open guide →</div></div>`:'';
   const evCounts=evidenceSupportCounts();
   const evidenceBanner=`<div class="suggest-banner evidence-index-banner" onclick="goEvidenceSupport('all')"><div class="suggest-banner-text"><div class="suggest-banner-title">Evidence support index</div><div class="suggest-banner-sub">View all ${evCounts.all} live entries by evidence support level — High, Medium or Low.</div></div><div class="suggest-banner-btn">View index →</div></div>`;
-  const browseBanner=`<div class="suggest-banner browse-banner" onclick="goBrowse()"><div class="suggest-banner-text"><div class="suggest-banner-title">Browse by element &amp; stage</div><div class="suggest-banner-sub">See every entry that applies to a given element — walls, slabs, piles, reinforcement — or a construction stage, across all dimensions.</div></div><div class="suggest-banner-btn">Browse →</div></div>`;
-  const regionBanner=`<div class="suggest-banner browse-banner" onclick="goBrowse()"><div class="suggest-banner-text"><div class="suggest-banner-title">Browse by region</div><div class="suggest-banner-sub">Bring up every live entry whose evidence was gathered in a given country or state, across all five dimensions.</div></div><div class="suggest-banner-btn">Browse →</div></div>`;
+  const browseBanner=`<div class="suggest-banner browse-banner" onclick="goBrowse()"><div class="suggest-banner-text"><div class="suggest-banner-title">Browse all entries — by region, element or stage</div><div class="suggest-banner-sub">See every live entry across all five dimensions, narrowed by the region its evidence was gathered in, the structural element it concerns, or the construction stage it affects.</div></div><div class="suggest-banner-btn">Browse →</div></div>`;
   const has=searchQuery.trim().length>0;
   const searchIcon='<svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z"/></svg>';
   const searchHero=`<div class="search-hero">
@@ -1791,7 +1790,7 @@ function renderHomeView(){
     </div>
     <div id="search-region-wrap" class="search-region-wrap" style="display:${has?'flex':'none'}"><span class="search-region-label">Narrow to region</span><select id="search-region" class="search-region" onchange="onSearchRegion(this.value)">${searchRegionOptions()}</select></div>
   </div>`;
-  return `<div class="content animate-in"><div style="margin-bottom:18px"><h1 class="section-title">Find constructability guidance</h1><p class="section-desc">Describe your design problem to search across all five dimensions — or browse the dimensions below.</p></div>${searchHero}<div id="search-results">${renderSearchResults()}</div><div id="dim-grid-wrap" style="display:${has?'none':''}">${renderRecentlyAdded()}<div style="margin:28px 0 8px"><div class="label">Browse by dimension</div></div><div class="dim-grid">${guideCard}${cards}</div>${browseBanner}${regionBanner}${evidenceBanner}<div class="suggest-banner" onclick="goSuggest()"><div class="suggest-banner-text"><div class="suggest-banner-title">Don't see your issue?</div><div class="suggest-banner-sub">Suggest a new constructability entry — every submission is reviewed and structured by the framework team.</div></div><div class="suggest-banner-btn">Suggest an entry →</div></div></div></div>`;
+  return `<div class="content animate-in"><div style="margin-bottom:18px"><h1 class="section-title">Find constructability guidance</h1><p class="section-desc">Describe your design problem to search across all five dimensions — or browse the dimensions below.</p></div>${searchHero}<div id="search-results">${renderSearchResults()}</div><div id="dim-grid-wrap" style="display:${has?'none':''}">${renderRecentlyAdded()}<div style="margin:28px 0 8px"><div class="label">Browse by dimension</div></div><div class="dim-grid">${guideCard}${cards}</div>${browseBanner}${evidenceBanner}<div class="suggest-banner" onclick="goSuggest()"><div class="suggest-banner-text"><div class="suggest-banner-title">Don't see your issue?</div><div class="suggest-banner-sub">Suggest a new constructability entry — every submission is reviewed and structured by the framework team.</div></div><div class="suggest-banner-btn">Suggest an entry →</div></div></div></div>`;
 }
 
 
