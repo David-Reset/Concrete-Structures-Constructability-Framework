@@ -1607,9 +1607,12 @@ function newListFlow(){
 }
 function renameListFlow(id){
   const ws=getWorkspace();const l=ws.lists.find(x=>x.id===id);if(!l)return;
-  const name=prompt('Rename this project review list:',l.name||'');
-  if(name===null)return;
-  l.name=name.trim();l.updated=todayStr();saveWorkspace(ws);render();
+  const current=(l.name||'').trim();
+  promptListName('Rename list',function(name){
+    if(name===null)return;
+    const w=getWorkspace();const t=w.lists.find(x=>x.id===id);if(!t)return;
+    t.name=name;t.updated=todayStr();saveWorkspace(w);render();
+  },'Rename',current||nextGenericListName(),'Type a new name for this list.');
 }
 function duplicateList(id){
   const ws=getWorkspace();const l=ws.lists.find(x=>x.id===id);if(!l)return;
