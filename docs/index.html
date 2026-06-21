@@ -195,6 +195,7 @@
   .ra-count{font-size:12px;color:var(--text-muted)}
   .ra-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin:0;max-height:46vh;overflow-y:auto}
   .ra-row{display:flex;gap:11px;align-items:flex-start;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:11px 13px;cursor:pointer;transition:border-color .15s}
+  .lp-newrow{margin:10px 0 2px}
   .ra-row:hover{border-color:var(--accent)}
   .ra-row input{margin-top:2px;width:16px;height:16px;flex-shrink:0;cursor:pointer;accent-color:var(--accent)}
   .ra-text{flex:1;min-width:0}
@@ -1116,23 +1117,147 @@ function resolveEntryId(id){
   return null;
 }
 function projectItems(){return getProjectList().ids.map(id=>resolveEntryId(id)).filter(Boolean);}
+// Which lists an entry currently sits on.
+function entryListIds(eid){return getWorkspace().lists.filter(l=>l.ids.includes(eid)).map(l=>l.id);}
 function projectItemButton(id){
-  const added=isInProjectList(id);
-  return `<button class="entry-btn entry-top-project-btn ${added?'added':''}" onclick="onProjectButtonClick('${id}')"><span class="ico">${added?'✓':'＋'}</span> ${added?'Remove entry from project review list':'Add entry to project review list'}</button>`;
+  const on=entryListIds(id).length;
+  const label=on?('On '+on+' review '+(on===1?'list':'lists')):'Add to project review list';
+  const ico=on?'✓':'＋';
+  return `<button class="entry-btn entry-top-project-btn ${on?'added':''}" onclick="openAddPicker('${id}')"><span class="ico">${ico}</span> ${label}</button>`;
 }
-// Adding an entry offers a checklist of its related entries; removing never prompts.
-function onProjectButtonClick(id){
-  if(isInProjectList(id)){removeFromProjectList(id);return;}
-  addToProjectList(id);
-  const related=relatedNotInList(id);
-  if(related.length)showRelatedAddPanel(id,related);
+// Kept for any old callers, but the button now always opens the picker.
+function onProjectButtonClick(id){openAddPicker(id);}
+
+// ===== ADD-TO-LISTS PICKER =====
+// Adding is always an explicit choice — never a silent drop into a hidden
+// "active" list. The picker lists every project review list with a checkbox,
+// pre-ticked where the entry already is, so one entry can go onto one list,
+// several lists at once, or be removed by un-ticking.
+let _relatedTargets=[];
+let _bulkPending=[];
+function closeAddPicker(){const m=document.getElementById('addPickerOverlay');if(m)m.remove();}
+function lpChecks(){return Array.from(document.querySelectorAll('#addPickerOverlay .lp-check'));}
+function lpListRowsHtml(checkedSet){
+  return getWorkspace().lists.map(l=>{
+    const nm=l.name&&l.name.trim()?escHtml(l.name):'Untitled list';
+    const cnt=l.ids.length;
+    const ck=checkedSet.has(l.id)?'checked':'';
+    return `<label class="ra-row"><input type="checkbox" class="lp-check" value="${l.id}" ${ck}><span class="ra-text"><span class="ra-name">${nm}</span><span class="ra-dim">${cnt} ${cnt===1?'entry':'entries'}</span></span></label>`;
+  }).join('');
 }
-// Two-way related entries for `id` that aren't already on the project review list.
-function relatedNotInList(id){
+// Create a list without navigating away (keeps the picker open).
+function createListSilently(name,ids){
+  const ws=getWorkspace();
+  const l={id:genListId(),name:(name||'').trim(),purpose:DEFAULT_PROJECT_PURPOSE,ids:[...new Set((ids||[]).filter(Boolean))],created:todayStr(),updated:todayStr()};
+  ws.lists.push(l);saveWorkspace(ws);
+  return l.id;
+}
+function lpNewList(){
+  const name=prompt('Name the new project review list (e.g. 12 Smith Street):','');
+  if(name===null)return;
+  const id=createListSilently(name);
+  const listEl=document.getElementById('lpList');
+  if(listEl){
+    const nm=name&&name.trim()?escHtml(name.trim()):'Untitled list';
+    const lbl=document.createElement('label');lbl.className='ra-row';
+    lbl.innerHTML='<input type="checkbox" class="lp-check" value="'+id+'" checked><span class="ra-text"><span class="ra-name">'+nm+'</span><span class="ra-dim">0 entries</span></span>';
+    listEl.appendChild(lbl);
+  }
+}
+function openAddPicker(entryId){
+  closeAddPicker();
+  const r=resolveEntryId(entryId);
+  const ename=r?escHtml(r.item.name):'this entry';
+  const checked=new Set(entryListIds(entryId));
+  const overlay=document.createElement('div');
+  overlay.className='modal-overlay';overlay.id='addPickerOverlay';overlay.onclick=closeAddPicker;
+  overlay.innerHTML=`<div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-title">Add to project review lists</div>
+    <div class="ra-intro">Choose which list(s) <strong>${ename}</strong> should be on. Tick more than one to add it to several at once; un-tick to remove.</div>
+    <div class="ra-list" id="lpList">${lpListRowsHtml(checked)}</div>
+    <div class="lp-newrow"><button class="entry-btn" onclick="lpNewList()">+ New list…</button></div>
+    <div class="modal-actions">
+      <button class="entry-btn" onclick="closeAddPicker()">Cancel</button>
+      <button class="entry-btn primary" onclick="confirmAddPicker('${entryId}')">Done</button>
+    </div>
+  </div>`;
+  document.body.appendChild(overlay);
+}
+function confirmAddPicker(entryId){
+  const checkedIds=new Set(lpChecks().filter(c=>c.checked).map(c=>c.value));
+  closeAddPicker();
+  const ws=getWorkspace();
+  const addedTo=[];
+  ws.lists.forEach(l=>{
+    const has=l.ids.includes(entryId);
+    if(checkedIds.has(l.id)&&!has){l.ids.push(entryId);l.updated=todayStr();addedTo.push(l.id);}
+    else if(!checkedIds.has(l.id)&&has){l.ids=l.ids.filter(x=>x!==entryId);l.updated=todayStr();}
+  });
+  saveWorkspace(ws);render();
+  // If the entry was just added to an unnamed list, nudge to name it.
+  nameUnnamedTargets(addedTo);
+  // Offer this entry's related entries onto the same lists it was just added to.
+  if(addedTo.length){
+    const related=relatedNotInLists(entryId,addedTo);
+    if(related.length)showRelatedAddPanel(entryId,related,addedTo);
+  }
+}
+// Prompt to name any unnamed lists among the given ids (usually just the default).
+function nameUnnamedTargets(listIds){
+  if(!listIds||!listIds.length)return;
+  const ws=getWorkspace();let changed=false;
+  ws.lists.forEach(l=>{
+    if(listIds.includes(l.id)&&!(l.name&&l.name.trim())){
+      const nm=prompt('That list has no name yet. Give it one so you can tell your projects apart (or leave blank):','');
+      if(nm&&nm.trim()){l.name=nm.trim();l.updated=todayStr();changed=true;}
+    }
+  });
+  if(changed){saveWorkspace(ws);render();}
+}
+// Bulk add (triage results): pick which list(s) to drop the whole set onto.
+function openBulkAddPicker(ids){
+  _bulkPending=ids.slice();
+  closeAddPicker();
+  const n=ids.length;
+  const overlay=document.createElement('div');
+  overlay.className='modal-overlay';overlay.id='addPickerOverlay';overlay.onclick=closeAddPicker;
+  overlay.innerHTML=`<div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-title">Add ${n} ${n===1?'entry':'entries'} to project review lists</div>
+    <div class="ra-intro">Choose which list(s) these ${n} ${n===1?'entry':'entries'} should go onto.</div>
+    <div class="ra-list" id="lpList">${lpListRowsHtml(new Set())}</div>
+    <div class="lp-newrow"><button class="entry-btn" onclick="lpNewList()">+ New list…</button></div>
+    <div class="modal-actions">
+      <button class="entry-btn" onclick="closeAddPicker()">Cancel</button>
+      <button class="entry-btn primary" onclick="confirmBulkAddPicker()">Add to selected</button>
+    </div>
+  </div>`;
+  document.body.appendChild(overlay);
+}
+function confirmBulkAddPicker(){
+  const chosen=lpChecks().filter(c=>c.checked).map(c=>c.value);
+  const ids=_bulkPending.slice();_bulkPending=[];
+  closeAddPicker();
+  if(!chosen.length||!ids.length)return;
+  addManyToLists(ids,chosen);
+  nameUnnamedTargets(chosen);
+}
+// Add several entries to several lists at once (no removals).
+function addManyToLists(ids,listIds){
+  const ws=getWorkspace();
+  ws.lists.forEach(l=>{
+    if(listIds.includes(l.id)){
+      ids.forEach(id=>{if(!l.ids.includes(id))l.ids.push(id);});
+      l.updated=todayStr();
+    }
+  });
+  saveWorkspace(ws);render();
+}
+// Related entries for `id` that are missing from at least one of the chosen lists.
+function relatedNotInLists(id,listIds){
   const r=resolveEntryId(id);
   if(!r)return [];
-  const inList=new Set(getProjectList().ids);
-  return getRelatedEntries(id,r.data).filter(x=>!inList.has(x.id));
+  const chosen=getWorkspace().lists.filter(l=>listIds.includes(l.id));
+  return getRelatedEntries(id,r.data).filter(x=>chosen.some(l=>!l.ids.includes(x.id)));
 }
 function addManyToProjectList(ids){
   const list=getProjectList();
@@ -1154,9 +1279,10 @@ function updateRelatedAddCount(){
 function confirmAddRelated(){
   const ids=raChecks().filter(c=>c.checked).map(c=>c.value);
   closeRelatedAddPanel();
-  if(ids.length)addManyToProjectList(ids);
+  if(ids.length)addManyToLists(ids,_relatedTargets);
 }
-function showRelatedAddPanel(id,related){
+function showRelatedAddPanel(id,related,targets){
+  _relatedTargets=Array.isArray(targets)&&targets.length?targets:[getWorkspace().activeId];
   closeRelatedAddPanel();
   const src=resolveEntryId(id);
   const name=src?escHtml(src.item.name):'This entry';
@@ -1175,7 +1301,7 @@ function showRelatedAddPanel(id,related){
   overlay.onclick=closeRelatedAddPanel;
   overlay.innerHTML=`<div class="modal" onclick="event.stopPropagation()">
     <div class="modal-title">Added — related entries</div>
-    <div class="ra-intro"><strong>${name}</strong> is now on your project review list. It relates to ${n} other ${n===1?'entry':'entries'} — tick any you'd also like to add.</div>
+    <div class="ra-intro"><strong>${name}</strong> was added to ${_relatedTargets.length===1?'that list':(_relatedTargets.length+' lists')}. It relates to ${n} other ${n===1?'entry':'entries'} — tick any you'd also like to add to the same ${_relatedTargets.length===1?'list':'lists'}.</div>
     <div class="ra-toolbar">
       <label class="ra-selectall"><input type="checkbox" id="raSelectAll" checked onchange="toggleAllRelated(this)"> Select all</label>
       <span class="ra-count" id="raCount"></span>
@@ -1823,7 +1949,7 @@ function updateTriageCount(){
 function confirmTriageAdd(){
   const ids=trChecks().filter(c=>c.checked).map(c=>c.value);
   closeTriageResults();
-  if(ids.length)addManyToProjectList(ids);
+  if(ids.length)openBulkAddPicker(ids);
 }
 
 // ===== LOAD DATA =====
