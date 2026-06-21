@@ -1,5 +1,79 @@
 # Framework changelog
 
+## 2026-06-21
+
+### Notes
+_Platform changes. The project review list, previously a single browser-local list, is now a workspace of multiple named lists._
+- **Multiple project review lists.** You can now keep a separate review list for each project and switch between them from a **My project review lists** hub. The hub shows every list with its entry count and lets you open, rename, duplicate, delete, or delete-all.
+- **Explicit add-to-list picker.** Adding an entry no longer drops it into a hidden "active" list. A picker opens showing every list with a checkbox — tick one, tick several to add to multiple projects at once, or un-tick to remove. The entry button shows how many lists an entry is on. New lists can be created and named inline via a styled dialog that suggests "Project review list N" and clears as you type.
+- **Per-list and whole-workspace export/import.** **Export file** saves a single list; **Export all lists** saves every list as one backup file; either re-imports on any device. Imports reconcile by list, so re-importing updates the matching list instead of creating duplicates.
+- The share-link, related-entries and triage flows now target the chosen list(s) rather than a single active list. The top-bar count now shows the number of lists that contain entries.
+- _The entry sections dated 2026-06-12 to 2026-06-19 below were reconstructed from the `dateAdded` / `dateReviewed` fields in `data.json` to bring the log up to date; they were not exported individually at the time._
+
+## 2026-06-19
+
+**Summary:** 2 added · 0 edited · 0 deleted
+
+### Added
+- **Bored concrete piles vs. screw piles** (Construction Methods)
+- **Piling plant on access-constrained sites** (Logistics)
+
+## 2026-06-18
+
+**Summary:** 1 added · 1 edited · 0 deleted
+
+### Added
+- **PVC permanent formwork vs core-filled blockwork** (Construction Methods)
+
+### Edited
+- **Waterproofing the non-moving construction joint at wall base** (Detailing) — review pass.
+
+## 2026-06-17
+
+**Summary:** 1 added · 1 edited · 0 deleted
+
+### Added
+- **Waterproofing the non-moving construction joint at wall base** (Detailing)
+
+### Edited
+- **Beam soffit formwork proportions** (Detailing) — review pass.
+
+## 2026-06-16
+
+**Summary:** 1 added · 1 edited · 0 deleted
+
+### Added
+- **Beam soffit formwork proportions** (Detailing)
+
+### Edited
+- **Foundation selection and the latent safety risk of screw piles** (Safety in Design) — review pass.
+
+## 2026-06-15
+
+**Summary:** 7 added · 1 edited · 0 deleted
+
+### Added
+- **Avoiding unnecessary large bars in slab reinforcement** (Detailing)
+- **Drawing clarity for isolated large slab reinforcement** (Design Communication)
+- **Reducing grinder cutting from large slab reinforcement bars** (Safety in Design)
+- **Slab bar diameter and on-site bending equipment** (Logistics)
+- **Foundation selection and the latent safety risk of screw piles** (Safety in Design)
+- **Rock sockets: founding on rock vs. a drilled socket** (Construction Methods)
+- **Rock sockets vs. likely available drilling plant** (Logistics)
+
+### Edited
+- **Concrete columns/walls vs a blockwork-and-steel combination** (Construction Methods) — developed from the 2026-06-09 placeholder into a full entry.
+
+### Notes
+- Two themed clusters added: large-diameter slab reinforcement (bar selection, drawing clarity, on-site bending, grinder cutting) and pile / rock-socket foundation choices (founding vs drilled socket, plant availability, screw-pile safety).
+
+## 2026-06-12
+
+**Summary:** 0 added · 1 edited · 0 deleted
+
+### Edited
+- **Pour sequencing for deep vertical concrete elements at slab interfaces** (Construction Methods) — review pass.
+
 ## 2026-06-09
 
 **Summary:** 1 added · 0 edited · 0 deleted
