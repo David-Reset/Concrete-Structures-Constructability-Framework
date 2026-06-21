@@ -1417,13 +1417,13 @@ function createList(name,purpose,ids){
   return l.id;
 }
 function newListFlow(){
-  const name=prompt('Name this review list (e.g. 12 Smith Street \u2014 structural review):','');
+  const name=prompt('Name this project review list (e.g. 12 Smith Street \u2014 structural review):','');
   if(name===null)return; // cancelled
   createList(name,undefined,[]);
 }
 function renameListFlow(id){
   const ws=getWorkspace();const l=ws.lists.find(x=>x.id===id);if(!l)return;
-  const name=prompt('Rename this review list:',l.name||'');
+  const name=prompt('Rename this project review list:',l.name||'');
   if(name===null)return;
   l.name=name.trim();l.updated=todayStr();saveWorkspace(ws);render();
 }
@@ -1489,10 +1489,10 @@ function handleImportedListText(text){
   const ws2=getWorkspace();
   let newId=(obj.id&&typeof obj.id==='string')?obj.id:genListId();
   if(ws2.lists.some(l=>l.id===newId))newId=genListId();
-  const nl={id:newId,name:obj.name||'Imported review list',purpose:(obj.purpose!==undefined?obj.purpose:DEFAULT_PROJECT_PURPOSE),ids:valid,created:todayStr(),updated:todayStr()};
+  const nl={id:newId,name:obj.name||'Imported project review list',purpose:(obj.purpose!==undefined?obj.purpose:DEFAULT_PROJECT_PURPOSE),ids:valid,created:todayStr(),updated:todayStr()};
   ws2.lists.push(nl);ws2.activeId=nl.id;saveWorkspace(ws2);
   state.sharedPreview=null;state.view='projectList';window.location.hash='project-list';render();window.scrollTo({top:0,left:0,behavior:'auto'});
-  alert('Imported a new review list ('+valid.length+(valid.length===1?' entry':' entries')+').');
+  alert('Imported a new project review list ('+valid.length+(valid.length===1?' entry':' entries')+').');
 }
 
 function renderProjectIndexView(){
@@ -1515,8 +1515,8 @@ function renderProjectIndexView(){
   }).join('');
   return '<div class="content animate-in">'
     +'<div class="back-link" onclick="goHome()">\u2190 Back to framework</div>'
-    +'<div class="dim-header"><span class="dim-header-icon">\uD83D\uDDC2\uFE0F</span><h1 class="dim-header-title">My review lists</h1></div>'
-    +'<p class="section-desc">Keep a separate review list for each project and switch between them any time. The list you open becomes the <strong>active</strong> list \u2014 the one new entries are added to.</p>'
+    +'<div class="dim-header"><span class="dim-header-icon">\uD83D\uDDC2\uFE0F</span><h1 class="dim-header-title">My project review lists</h1></div>'
+    +'<p class="section-desc">Keep a separate project review list for each job and switch between them any time. The list you open becomes the <strong>active</strong> list \u2014 the one new entries are added to.</p>'
     +'<div class="list-index-bar">'
     +'<button class="entry-btn primary" onclick="newListFlow()">+ New list</button>'
     +'<button class="entry-btn" onclick="importListFile()">Import list from file</button>'
@@ -1536,7 +1536,7 @@ function renderProjectListView(){
   }).join('');
   const empty=`<div class="project-empty"><div class="project-empty-title">Your project review list is empty.</div><div class="project-empty-sub">Open any live entry and use <strong>Add to project review list</strong>. The list stays in this browser and can be exported as a project checklist later.</div></div>`;
   const exportHelp=`<div class="project-export-card"><div class="project-export-title">Export options</div><div class="project-export-grid"><div class="project-export-item"><strong>Copy share link</strong><span>Copies a link that reopens this live framework with the same entries pre-selected — hand someone a review set that stays current, instead of a frozen PDF.</span></div><div class="project-export-item"><strong>Copy project checklist</strong><span>Copies a plain-text project checklist to the clipboard, ready to paste into an email, meeting note, design review or QA record.</span></div><div class="project-export-item"><strong>Download PDF</strong><span>Downloads a professional checklist document with the selected entries, design questions, design parameters and clickable framework links.</span></div><div class="project-export-item"><strong>Download Markdown</strong><span>Downloads an editable .md checklist for GitHub, Notion, Obsidian, project notes or later conversion into another document.</span></div><div class="project-export-item"><strong>Export list as file</strong><span>Saves this list as a small file you own — your durable backup. Re-import it here later (on any device) to carry on; it updates this same list instead of making a copy.</span></div></div></div>`;
-  return `<div class="content animate-in"><div class="back-link" onclick="goProjectLists()">← All review lists</div><div class="dim-header"><span class="dim-header-icon">📋</span><h1 class="dim-header-title">${list.name?escHtml(list.name):'Untitled review list'}</h1></div><p class="section-desc">Collect the entries that apply to a particular project, give the list a useful name, then export a project-specific constructability review checklist.</p><div class="project-name-card"><div class="label">List name</div><div class="project-name-row"><input class="project-name-input" value="${name}" placeholder="e.g. 12 Smith Street — structural review" oninput="setProjectListName(this.value)"></div><div class="project-name-help">Stored only in this browser. Do not put confidential project information here if you plan to copy/share the checklist.</div><div class="project-field-gap"><div class="label">Purpose</div><textarea class="project-purpose-textarea" oninput="setProjectListPurpose(this.value)">${purpose}</textarea><div class="project-name-help">This purpose statement is shown in the copied checklist, PDF and Markdown exports. The default text explains that the list is a project review aid, not a compliance assessment; you can update it to suit your project or audience.</div></div></div>${exportHelp}<div class="project-actions-bar"><button class="entry-btn primary" onclick="copyProjectShareLink()">Copy share link</button><button class="entry-btn" onclick="copyProjectChecklist()">Copy project checklist</button><button class="entry-btn" onclick="downloadProjectPdf()">Download PDF</button><button class="entry-btn" onclick="downloadProjectMarkdown()">Download Markdown</button><button class="entry-btn" onclick="exportActiveListFile()">Export list as file</button><button class="entry-btn danger" onclick="clearProjectList()">Clear list</button></div>${missing>0?`<div class="project-name-help">${missing} saved entry ${missing===1?'id was':'ids were'} not found in the current data and ${missing===1?'has':'have'} been hidden.</div>`:''}<div class="item-list project-list-panel">${cards||empty}</div></div>`;
+  return `<div class="content animate-in"><div class="back-link" onclick="goProjectLists()">← All project review lists</div><div class="dim-header"><span class="dim-header-icon">📋</span><h1 class="dim-header-title">${list.name?escHtml(list.name):'Untitled list'}</h1></div><p class="section-desc">Collect the entries that apply to a particular project, give the list a useful name, then export a project-specific constructability review checklist.</p><div class="project-name-card"><div class="label">List name</div><div class="project-name-row"><input class="project-name-input" value="${name}" placeholder="e.g. 12 Smith Street — structural review" oninput="setProjectListName(this.value)"></div><div class="project-name-help">Stored only in this browser. Do not put confidential project information here if you plan to copy/share the checklist.</div><div class="project-field-gap"><div class="label">Purpose</div><textarea class="project-purpose-textarea" oninput="setProjectListPurpose(this.value)">${purpose}</textarea><div class="project-name-help">This purpose statement is shown in the copied checklist, PDF and Markdown exports. The default text explains that the list is a project review aid, not a compliance assessment; you can update it to suit your project or audience.</div></div></div>${exportHelp}<div class="project-actions-bar"><button class="entry-btn primary" onclick="copyProjectShareLink()">Copy share link</button><button class="entry-btn" onclick="copyProjectChecklist()">Copy project checklist</button><button class="entry-btn" onclick="downloadProjectPdf()">Download PDF</button><button class="entry-btn" onclick="downloadProjectMarkdown()">Download Markdown</button><button class="entry-btn" onclick="exportActiveListFile()">Export list as file</button><button class="entry-btn danger" onclick="clearProjectList()">Clear list</button></div>${missing>0?`<div class="project-name-help">${missing} saved entry ${missing===1?'id was':'ids were'} not found in the current data and ${missing===1?'has':'have'} been hidden.</div>`:''}<div class="item-list project-list-panel">${cards||empty}</div></div>`;
 }
 function prefillUrl(form,name,link){
   return form.base+'?usp=pp_url'
@@ -1924,8 +1924,8 @@ function shareImportAsNew(){
   const s=_sharedIncoming;if(!s)return;
   const n=s.ids.length;
   _sharedIncoming=null;
-  createList(s.name||'Shared review list',s.purpose,s.ids);
-  alert('Imported as a new review list ('+n+(n===1?' entry':' entries')+').');
+  createList(s.name||'Shared project review list',s.purpose,s.ids);
+  alert('Imported as a new project review list ('+n+(n===1?' entry':' entries')+').');
 }
 function dismissSharedPreview(){state.sharedPreview=null;state.view='projectList';render();window.scrollTo({top:0,left:0,behavior:'auto'});}
 // Read-only view of a shared list that does NOT touch the saved list.
@@ -1966,7 +1966,7 @@ function renderHeader(){
   const count=projectCount();
   const theme=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';
   const themeIcon=theme==='light'?'☀️':'🌙';
-  return `<div class="header"><div class="header-left" onclick="goHome()" style="cursor:pointer"><div class="logo">C</div><div><div class="header-title">Constructability Framework</div><div class="header-sub">Design Guidance</div></div></div><div class="header-actions"><button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch between light and dark theme" aria-label="Toggle colour theme"><span id="theme-toggle-icon">${themeIcon}</span></button><button class="project-header-btn" onclick="goProjectLists()">📋 Review lists <span class="project-count-pill">${count}</span></button></div></div>`;
+  return `<div class="header"><div class="header-left" onclick="goHome()" style="cursor:pointer"><div class="logo">C</div><div><div class="header-title">Constructability Framework</div><div class="header-sub">Design Guidance</div></div></div><div class="header-actions"><button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch between light and dark theme" aria-label="Toggle colour theme"><span id="theme-toggle-icon">${themeIcon}</span></button><button class="project-header-btn" onclick="goProjectLists()">📋 Project review lists <span class="project-count-pill">${count}</span></button></div></div>`;
 }
 
 function globalFacetValues(field){const s=new Set();allAvailableEntries().forEach(e=>{if(Array.isArray(e.data[field]))e.data[field].forEach(v=>s.add(v));});return s;}
@@ -2016,8 +2016,8 @@ function renderBreadcrumb(){
   let h='<div class="breadcrumb"><span class="breadcrumb-link" onclick="goHome()">Framework</span>';
   if(state.view==='guide'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">'+(guide?guide.title:'Guide')+'</span></div>'; }
   if(state.view==='evidence'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Evidence support index</span></div>'; }
-  if(state.view==='projectIndex'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">My review lists</span></div>';}
-  if(state.view==='projectList'){const _ln=getProjectList().name;return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-link" onclick="goProjectLists()">My review lists</span><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">'+escHtml(_ln||'Untitled list')+'</span></div>';}
+  if(state.view==='projectIndex'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">My project review lists</span></div>';}
+  if(state.view==='projectList'){const _ln=getProjectList().name;return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-link" onclick="goProjectLists()">My project review lists</span><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">'+escHtml(_ln||'Untitled list')+'</span></div>';}
   if(state.view==='byDate'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">All entries by date</span></div>';}
   if(state.view==='browse'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Browse all entries</span></div>';}
   if(dim){
