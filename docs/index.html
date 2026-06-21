@@ -282,6 +282,12 @@
   .evidence-support-text{font-size:13px;color:var(--text);line-height:1.6;opacity:0.82}
 
   .loc-tag{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;color:var(--text-muted);background:var(--surface-light);border:1px solid var(--border);border-radius:4px;padding:2px 8px;letter-spacing:0.3px}
+  .region-box{margin-top:24px;padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:8px}
+  .region-line{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--text);margin-top:7px;line-height:1.5}
+  .region-pin svg{width:14px;height:14px;fill:var(--text-muted);flex-shrink:0;margin-top:2px}
+  .region-check{color:var(--green);font-weight:700;flex-shrink:0;line-height:1.5}
+  .region-sub{font-size:11px;color:var(--text-muted);font-weight:600;margin-top:12px;text-transform:uppercase;letter-spacing:.5px}
+  .region-meta{color:var(--text-muted);font-size:12px}
   .loc-tag svg{width:10px;height:10px;fill:var(--text-muted);flex-shrink:0}
   .loc-filter{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:8px}
   .loc-filter-label{font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
@@ -623,14 +629,41 @@ function getRelatedEntries(curId,curData){
 const PIN_SVG='<svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>';
 function locLabel(loc){if(!loc)return'';return loc.state?`${loc.state}, ${loc.country}`:loc.country}
 function locTag(loc){if(!loc)return'';return `<span class="loc-tag">${PIN_SVG} ${locLabel(loc)}</span>`}
+// Multi-region model: an entry has an ORIGIN (location — where its evidence was gathered)
+// plus optional CONFIRMATIONS (regions where it has since been confirmed to apply, each dated).
+const COUNTRY_DISPLAY_CODE={"Afghanistan":"AF","Albania":"AL","Algeria":"DZ","American Samoa":"AS","Andorra":"AD","Angola":"AO","Anguilla":"AI","Antarctica":"AQ","Antigua and Barbuda":"AG","Argentina":"AR","Armenia":"AM","Aruba":"AW","Australia":"AU","Austria":"AT","Azerbaijan":"AZ","Bahamas":"BS","Bahrain":"BH","Bangladesh":"BD","Barbados":"BB","Belarus":"BY","Belgium":"BE","Belize":"BZ","Benin":"BJ","Bermuda":"BM","Bhutan":"BT","Bolivia":"BO","Bonaire, Sint Eustatius and Saba":"BQ","Bosnia and Herzegovina":"BA","Botswana":"BW","Bouvet Island":"BV","Brazil":"BR","British Indian Ocean Territory":"IO","Brunei Darussalam":"BN","Bulgaria":"BG","Burkina Faso":"BF","Burundi":"BI","Cabo Verde":"CV","Cambodia":"KH","Cameroon":"CM","Canada":"CA","Cayman Islands":"KY","Central African Republic":"CF","Chad":"TD","Chile":"CL","China":"CN","Christmas Island":"CX","Cocos (Keeling) Islands":"CC","Colombia":"CO","Comoros":"KM","Congo":"CG","Congo, The Democratic Republic of the":"CD","Cook Islands":"CK","Costa Rica":"CR","Croatia":"HR","Cuba":"CU","Cura\u00e7ao":"CW","Cyprus":"CY","Czechia":"CZ","C\u00f4te d'Ivoire":"CI","Denmark":"DK","Djibouti":"DJ","Dominica":"DM","Dominican Republic":"DO","Ecuador":"EC","Egypt":"EG","El Salvador":"SV","Equatorial Guinea":"GQ","Eritrea":"ER","Estonia":"EE","Eswatini":"SZ","Ethiopia":"ET","Falkland Islands (Malvinas)":"FK","Faroe Islands":"FO","Fiji":"FJ","Finland":"FI","France":"FR","French Guiana":"GF","French Polynesia":"PF","French Southern Territories":"TF","Gabon":"GA","Gambia":"GM","Georgia":"GE","Germany":"DE","Ghana":"GH","Gibraltar":"GI","Greece":"GR","Greenland":"GL","Grenada":"GD","Guadeloupe":"GP","Guam":"GU","Guatemala":"GT","Guernsey":"GG","Guinea":"GN","Guinea-Bissau":"GW","Guyana":"GY","Haiti":"HT","Heard Island and McDonald Islands":"HM","Holy See (Vatican City State)":"VA","Honduras":"HN","Hong Kong":"HK","Hungary":"HU","Iceland":"IS","India":"IN","Indonesia":"ID","Iran":"IR","Iraq":"IQ","Ireland":"IE","Isle of Man":"IM","Israel":"IL","Italy":"IT","Jamaica":"JM","Japan":"JP","Jersey":"JE","Jordan":"JO","Kazakhstan":"KZ","Kenya":"KE","Kiribati":"KI","Kuwait":"KW","Kyrgyzstan":"KG","Laos":"LA","Latvia":"LV","Lebanon":"LB","Lesotho":"LS","Liberia":"LR","Libya":"LY","Liechtenstein":"LI","Lithuania":"LT","Luxembourg":"LU","Macao":"MO","Madagascar":"MG","Malawi":"MW","Malaysia":"MY","Maldives":"MV","Mali":"ML","Malta":"MT","Marshall Islands":"MH","Martinique":"MQ","Mauritania":"MR","Mauritius":"MU","Mayotte":"YT","Mexico":"MX","Micronesia, Federated States of":"FM","Moldova":"MD","Monaco":"MC","Mongolia":"MN","Montenegro":"ME","Montserrat":"MS","Morocco":"MA","Mozambique":"MZ","Myanmar":"MM","Namibia":"NA","Nauru":"NR","Nepal":"NP","Netherlands":"NL","New Caledonia":"NC","New Zealand":"NZ","Nicaragua":"NI","Niger":"NE","Nigeria":"NG","Niue":"NU","Norfolk Island":"NF","North Korea":"KP","North Macedonia":"MK","Northern Mariana Islands":"MP","Norway":"NO","Oman":"OM","Pakistan":"PK","Palau":"PW","Palestine, State of":"PS","Panama":"PA","Papua New Guinea":"PG","Paraguay":"PY","Peru":"PE","Philippines":"PH","Pitcairn":"PN","Poland":"PL","Portugal":"PT","Puerto Rico":"PR","Qatar":"QA","Romania":"RO","Russian Federation":"RU","Rwanda":"RW","R\u00e9union":"RE","Saint Barth\u00e9lemy":"BL","Saint Helena, Ascension and Tristan da Cunha":"SH","Saint Kitts and Nevis":"KN","Saint Lucia":"LC","Saint Martin (French part)":"MF","Saint Pierre and Miquelon":"PM","Saint Vincent and the Grenadines":"VC","Samoa":"WS","San Marino":"SM","Sao Tome and Principe":"ST","Saudi Arabia":"SA","Senegal":"SN","Serbia":"RS","Seychelles":"SC","Sierra Leone":"SL","Singapore":"SG","Sint Maarten (Dutch part)":"SX","Slovakia":"SK","Slovenia":"SI","Solomon Islands":"SB","Somalia":"SO","South Africa":"ZA","South Georgia and the South Sandwich Islands":"GS","South Korea":"KR","South Sudan":"SS","Spain":"ES","Sri Lanka":"LK","Sudan":"SD","Suriname":"SR","Svalbard and Jan Mayen":"SJ","Sweden":"SE","Switzerland":"CH","Syria":"SY","Taiwan":"TW","Tajikistan":"TJ","Tanzania":"TZ","Thailand":"TH","Timor-Leste":"TL","Togo":"TG","Tokelau":"TK","Tonga":"TO","Trinidad and Tobago":"TT","Tunisia":"TN","Turkmenistan":"TM","Turks and Caicos Islands":"TC","Tuvalu":"TV","T\u00fcrkiye":"TR","Uganda":"UG","Ukraine":"UA","United Arab Emirates":"AE","United Kingdom":"UK","United States":"USA","United States Minor Outlying Islands":"UM","Uruguay":"UY","Uzbekistan":"UZ","Vanuatu":"VU","Venezuela":"VE","Vietnam":"VN","Virgin Islands, British":"VG","Virgin Islands, U.S.":"VI","Wallis and Futuna":"WF","Western Sahara":"EH","Yemen":"YE","Zambia":"ZM","Zimbabwe":"ZW","\u00c5land Islands":"AX"};
+function dispCode(c){return COUNTRY_DISPLAY_CODE[c]||(c||'').slice(0,2).toUpperCase();}
+// Distinct {country,state} across origin + confirmations (origin first, deduped).
+function entryRegions(d){
+  if(!d)return[];const out=[],seen=new Set();
+  const add=(c,s)=>{if(!c)return;const k=c+'|'+(s||'');if(seen.has(k))return;seen.add(k);out.push({country:c,state:s||''});};
+  if(d.location)add(d.location.country,d.location.state);
+  (d.confirmations||[]).forEach(r=>r&&add(r.country,r.state));
+  return out;
+}
+// Compact region label for cards: collapses by count — full labels -> country codes -> "Multi-regional".
+function regionSummary(d){
+  const R=entryRegions(d);if(!R.length)return null;
+  const countries=[...new Set(R.map(r=>r.country))];
+  const full=R.map(r=>r.state?`${r.state}, ${r.country}`:r.country);
+  if(countries.length===1){
+    const states=R.filter(r=>r.state).map(r=>r.state);
+    if(R.length===1)return{text:full[0],title:full[0]};
+    if(states.length<=2)return{text:`${states.join(', ')}, ${countries[0]}`,title:full.join(' · ')};
+    return{text:`${countries[0]} · ${states.length} regions`,title:full.join(' · ')};
+  }
+  if(countries.length<=3)return{text:countries.map(dispCode).join(' · '),title:full.join(' · ')};
+  return{text:'Multi-regional',title:full.join(' · ')};
+}
+function regionTag(d){const s=regionSummary(d);if(!s)return'';return `<span class="loc-tag" title="${escAttr(s.title)}">${PIN_SVG} ${escHtml(s.text)}</span>`;}
 function getLocations(dim){
   const locs=new Map();
   dim.items.forEach(item=>{
-    if(item.available&&item.data&&item.data.location){
-      const loc=item.data.location;
-      if(!locs.has(loc.country))locs.set(loc.country,new Set());
-      if(loc.state)locs.get(loc.country).add(loc.state);
-    }
+    if(!item.available||!item.data)return;
+    entryRegions(item.data).forEach(r=>{
+      if(!locs.has(r.country))locs.set(r.country,new Set());
+      if(r.state)locs.get(r.country).add(r.state);
+    });
   });
   return locs;
 }
@@ -641,10 +674,10 @@ const PHASE_ORDER=['design & documentation','founding/piling','formwork','reinfo
 // within a facet, any selected value is enough (OR). Untagged entries fail an active facet.
 function itemMatchesFilter(item){
   if(state.locationFilter){
-    if(!item.available||!item.data||!item.data.location)return false;
-    const loc=item.data.location,f=state.locationFilter;
-    if(f.state){if(!(loc.country===f.country&&loc.state===f.state))return false;}
-    else if(loc.country!==f.country)return false;
+    if(!item.available||!item.data)return false;
+    const f=state.locationFilter,R=entryRegions(item.data);
+    const hit=f.state?R.some(r=>r.country===f.country&&(r.state===f.state||!r.state)):R.some(r=>r.country===f.country);
+    if(!hit)return false;
   }
   if(state.elementFilter&&state.elementFilter.length){
     const tags=(item.data&&item.data.elementType)||[];
@@ -722,11 +755,11 @@ function searchConcepts(q){
 }
 function matchesRegion(it,f){
   if(!f)return true;
-  if(!it.data||!it.data.location)return false;
-  const loc=it.data.location;
+  if(!it.data)return false;
+  const R=entryRegions(it.data);
   // A state filter also surfaces country-level entries (per the framework's regional model).
-  if(f.state)return loc.country===f.country&&(loc.state===f.state||!loc.state);
-  return loc.country===f.country;
+  if(f.state)return R.some(r=>r.country===f.country&&(r.state===f.state||!r.state));
+  return R.some(r=>r.country===f.country);
 }
 // Returns [text, weight, isSnippetSource] for each searchable field of an entry.
 function entryFields(it,dim){
@@ -775,7 +808,7 @@ function runSearch(q){
       if(best>0){score+=best;coverage++;}
     });
     if(coverage>0)matched.push({dimId:dim.id,id:it.id,name:it.name,dimName:dim.name,dimIcon:dim.icon,
-      location:it.data.location||null,evidenceSupport:it.data.evidenceSupport||null,dateAdded:it.data.dateAdded||'',dateReviewed:it.data.dateReviewed||'',coverage,score,snippet:buildSnippet(fields,flat)});
+      location:it.data.location||null,confirmations:it.data.confirmations||null,evidenceSupport:it.data.evidenceSupport||null,dateAdded:it.data.dateAdded||'',dateReviewed:it.data.dateReviewed||'',coverage,score,snippet:buildSnippet(fields,flat)});
   });
   if(!matched.length)return [];
   matched.sort((a,b)=>b.score-a.score||b.coverage-a.coverage);
@@ -814,10 +847,11 @@ function escHtml(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').re
 function searchRegionOptions(){
   const locs=new Map();
   dimensions.forEach(dim=>dim.items.forEach(it=>{
-    if(it.available&&it.data&&it.data.location){
-      const l=it.data.location;
-      if(!locs.has(l.country))locs.set(l.country,new Set());
-      if(l.state)locs.get(l.country).add(l.state);
+    if(it.available&&it.data){
+      entryRegions(it.data).forEach(r=>{
+        if(!locs.has(r.country))locs.set(r.country,new Set());
+        if(r.state)locs.get(r.country).add(r.state);
+      });
     }
   }));
   let opts='<option value="">All regions</option>';
@@ -838,7 +872,7 @@ function renderSearchResults(){
   if(!res.length){
     return `<div class="search-empty"><div class="search-empty-title">No entries match “${escAttr(q)}”${searchRegion?' in this region':''}.</div><div class="search-empty-sub">Try fewer or different words${searchRegion?', widen the region,':''} or browse the dimensions below. If the framework doesn't cover this yet, you can <span class="search-empty-link" onclick="goSuggest()">suggest a new entry</span>.</div></div>`;
   }
-  const rows=res.map(r=>{const support=r.evidenceSupport?evidenceSupportPill({evidenceSupport:r.evidenceSupport}):'';const supportRow=support?`<div class="search-result-meta">${support}</div>`:'';const reviewed=dateMeta(r);const right=`<div style="text-align:right;flex-shrink:0"><div class="item-arrow">→</div>${reviewed}</div>`;return `<div class="item-row available search-result" onclick="goEntry('${r.dimId}','${r.id}')"><div class="search-result-main"><div class="search-result-top"><span class="item-name">${escHtml(r.name)}</span><span class="related-dim"><span class="ico">${r.dimIcon}</span>${escHtml(r.dimName)}</span>${r.location?locTag(r.location):''}</div>${r.snippet?`<div class="search-snippet">${r.snippet}</div>`:''}${supportRow}</div>${right}</div>`}).join('');
+  const rows=res.map(r=>{const support=r.evidenceSupport?evidenceSupportPill({evidenceSupport:r.evidenceSupport}):'';const supportRow=support?`<div class="search-result-meta">${support}</div>`:'';const reviewed=dateMeta(r);const right=`<div style="text-align:right;flex-shrink:0"><div class="item-arrow">→</div>${reviewed}</div>`;return `<div class="item-row available search-result" onclick="goEntry('${r.dimId}','${r.id}')"><div class="search-result-main"><div class="search-result-top"><span class="item-name">${escHtml(r.name)}</span><span class="related-dim"><span class="ico">${r.dimIcon}</span>${escHtml(r.dimName)}</span>${regionTag(r)}</div>${r.snippet?`<div class="search-snippet">${r.snippet}</div>`:''}${supportRow}</div>${right}</div>`}).join('');
   return `<div class="search-count">${res.length} ${res.length===1?'entry':'entries'} found</div><div class="item-list search-list">${rows}</div>`;
 }
 function onSearchInput(v){
@@ -1719,7 +1753,7 @@ function renderHeader(){
 function globalFacetValues(field){const s=new Set();allAvailableEntries().forEach(e=>{if(Array.isArray(e.data[field]))e.data[field].forEach(v=>s.add(v));});return s;}
 function facetCount(field,v){return allAvailableEntries().filter(e=>Array.isArray(e.data[field])&&e.data[field].includes(v)).length;}
 // All locations across every live entry (cross-cutting), as Map<country, Set<state>>.
-function globalLocations(){const locs=new Map();allAvailableEntries().forEach(e=>{const l=e.data.location;if(!l)return;if(!locs.has(l.country))locs.set(l.country,new Set());if(l.state)locs.get(l.country).add(l.state);});return locs;}
+function globalLocations(){const locs=new Map();allAvailableEntries().forEach(e=>{entryRegions(e.data).forEach(r=>{if(!locs.has(r.country))locs.set(r.country,new Set());if(r.state)locs.get(r.country).add(r.state);});});return locs;}
 function browseRegionOptions(){
   let opts='<option value="">All regions</option>';
   for(const [country,states] of globalLocations()){
@@ -1827,7 +1861,7 @@ function recentEntries(n){
 }
 function renderRecentRow(e){
   const dim=e.dim,it=e.item,d=e.data;
-  const loc=d.location?locTag(d.location):'';
+  const loc=regionTag(d);
   const support=evidenceSupportPill(d);
   const param=d.parameter?`<div class="evidence-index-meta"><strong>Parameter:</strong> ${d.parameter}</div>`:'';
   const right=`<div style="text-align:right;flex-shrink:0"><div class="item-arrow">→</div>${dateMeta(d)}</div>`;
@@ -1933,7 +1967,7 @@ function renderEvidenceSupportView(){
   const rows=filtered.map(e=>{
     const dim=e.dim,it=e.item,d=e.data;
     const reviewed=dateMeta(d);
-    const loc=d.location?locTag(d.location):'';
+    const loc=regionTag(d);
     const support=evidenceSupportPill(d);
     const right=`<div style="text-align:right;flex-shrink:0"><div class="item-arrow">→</div>${reviewed}</div>`;
     const evSummary=d.evidenceSupport&&d.evidenceSupport.summary?`<div class="evidence-index-summary">${d.evidenceSupport.summary}</div>`:'';
@@ -1962,6 +1996,20 @@ function gActions(d){
     if(typeof a==='string')return `<div class="alt-item"><div class="alt-num">${i+1}</div><div class="alt-text">${a}</div></div>`;
     return `<div class="alt-item"><div class="alt-num">${i+1}</div><div class="alt-text"><div class="alt-title">${a.title}</div><div class="alt-desc">${a.description}</div></div></div>`;
   }).join('');
+}
+function regionLogHtml(d){
+  if(!d)return'';
+  const origin=d.location?locLabel(d.location):'';
+  const confs=(d.confirmations||[]).filter(r=>r&&r.country);
+  if(!origin&&!confs.length)return'';
+  const originLine=origin?`<div class="region-line"><span class="region-pin">${PIN_SVG}</span><span><strong>Evidence gathered in:</strong> ${escHtml(origin)}</span></div>`:'';
+  const confLines=confs.map(r=>{
+    const lbl=r.state?`${r.state}, ${r.country}`:r.country;
+    const meta=[r.date,r.note].filter(Boolean).map(escHtml).join(' — ');
+    return `<div class="region-line"><span class="region-check">✓</span><span>${escHtml(lbl)}${meta?` <span class="region-meta">${meta}</span>`:''}</span></div>`;
+  }).join('');
+  const confBlock=confs.length?`<div class="region-sub">Also confirmed to apply in</div>${confLines}`:'';
+  return `<div class="region-box"><div class="label" style="margin-bottom:2px">Regional applicability</div>${originLine}${confBlock}</div>`;
 }
 function gApplicability(d){
   if(!d.applicability)return '';
@@ -2081,7 +2129,7 @@ function renderDimensionView(){
     const hidden=anyFacetActive()&&!matches&&item.available?'style="display:none"':'';
     const cls=item.available?'item-row available':'item-row unavailable';
     const onclick=item.available?`onclick="goEntry('${dim.id}','${item.id}')"`:'';
-    const loc=item.available&&item.data&&item.data.location?locTag(item.data.location):'';
+    const loc=item.available&&item.data?regionTag(item.data):'';
     const right=item.available?`<div style="text-align:right"><div class="item-arrow">→</div>${item.data?dateMeta(item.data):''}</div>`:'<div class="item-coming">Coming soon</div>';
     const support=item.available&&item.data?evidenceSupportPill(item.data):'';
     const meta=item.available&&item.data?`<div class="item-meta">Parameter: ${item.data.parameter}</div>${support?`<div class="item-meta" style="margin-top:8px">${support}</div>`:''}`:'';
@@ -2176,7 +2224,7 @@ function renderEntryDetail(){
   return `<div class="content animate-in">
     <div class="entry-topbar"><div class="back-link" onclick="goDimension('${dim.id}')">← Back to ${dim.name}</div>${projectItemButton(item.id)}</div>
     <div class="entry-title">${item.name}</div>
-    <div class="entry-meta">Dimension: ${dim.name} · Reinforced Concrete ${d.location?' · '+locTag(d.location):''}</div>
+    <div class="entry-meta">Dimension: ${dim.name} · Reinforced Concrete ${regionSummary(d)?' · '+regionTag(d):''}</div>
     ${metaTagChips(d)?`<div class="entry-tag-row">${metaTagChips(d,true)}</div>`:''}
     <div class="question-box"><div class="label label-accent">Design Question</div><div class="question-text">${d.question}</div></div>
     ${d.background?`<div class="label">Background</div><div class="consideration-text">${d.background}</div>`:''}
@@ -2191,6 +2239,7 @@ function renderEntryDetail(){
     ${supportingImagesHtml}
     ${relatedHtml}
     ${evidenceSupportBox(d)}
+    ${regionLogHtml(d)}
     ${renderComments(d)}
     <div class="entry-actions">
       <button class="entry-btn" onclick="goComment('${dim.id}','${item.id}')"><span class="ico">💬</span> Add a comment</button>
