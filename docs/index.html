@@ -1164,16 +1164,17 @@ function nextGenericListName(){
   return 'Project review list '+n;
 }
 function closeNamePrompt(){const m=document.getElementById('namePromptOverlay');if(m)m.remove();}
-function promptListName(title,onDone,okLabel,suggestedOverride){
+function promptListName(title,onDone,okLabel,suggestedOverride,introOverride){
   closeNamePrompt();
   _nameCb=onDone;
   _nameSuggested=(suggestedOverride!==undefined?suggestedOverride:nextGenericListName());
+  const intro=introOverride!==undefined?introOverride:'Give it a name so you can tell your projects apart \u2014 or just keep the suggested one.';
   const overlay=document.createElement('div');
   overlay.className='modal-overlay';overlay.id='namePromptOverlay';
   overlay.onclick=function(){submitNamePrompt(true);};
   overlay.innerHTML='<div class="modal" onclick="event.stopPropagation()">'
     +'<div class="modal-title">'+escHtml(title)+'</div>'
-    +'<div class="ra-intro">Give it a name so you can tell your projects apart \u2014 or just keep the suggested one.</div>'
+    +'<div class="ra-intro">'+escHtml(intro)+'</div>'
     +'<input id="namePromptInput" class="project-name-input np-input" type="text" autocomplete="off" value="'+escAttr(_nameSuggested)+'" onfocus="this.select()" onkeydown="namePromptKey(event)">'
     +'<div class="modal-actions">'
     +'<button class="entry-btn" onclick="submitNamePrompt(true)">Cancel</button>'
@@ -1232,15 +1233,19 @@ function confirmAddPicker(entryId){
   const checkedIds=new Set(lpChecks().filter(c=>c.checked).map(c=>c.value));
   closeAddPicker();
   const ws=getWorkspace();
-  const addedTo=[];
+  const addedTo=[],toName=[];
   ws.lists.forEach(l=>{
     const has=l.ids.includes(entryId);
-    if(checkedIds.has(l.id)&&!has){l.ids.push(entryId);l.updated=todayStr();addedTo.push(l.id);}
+    const wasEmpty=l.ids.length===0;
+    if(checkedIds.has(l.id)&&!has){
+      l.ids.push(entryId);l.updated=todayStr();addedTo.push(l.id);
+      if(wasEmpty&&!(l.name&&l.name.trim()))toName.push(l.id);
+    }
     else if(!checkedIds.has(l.id)&&has){l.ids=l.ids.filter(x=>x!==entryId);l.updated=todayStr();}
   });
   saveWorkspace(ws);render();
-  // If the entry was just added to an unnamed list, nudge to name it.
-  nameUnnamedTargets(addedTo);
+  // Only nudge to name a list the first time it gets content, and only if unnamed.
+  nameUnnamedTargets(toName);
   // Offer this entry's related entries onto the same lists it was just added to.
   if(addedTo.length){
     const related=relatedNotInLists(entryId,addedTo);
@@ -1257,10 +1262,10 @@ function nameUnnamedTargets(listIds){
   (function next(){
     if(i>=unnamed.length){render();return;}
     const target=unnamed[i++];
-    promptListName('Name this project review list',function(name){
+    promptListName('Name your list',function(name){
       if(name){const w=getWorkspace();const t=w.lists.find(x=>x.id===target.id);if(t){t.name=name;t.updated=todayStr();saveWorkspace(w);}}
       next();
-    });
+    },'Save name',undefined,'You just started a list that doesn\u2019t have a name yet. Give it one so you can find it again \u2014 or keep the suggested name.');
   })();
 }
 // Bulk add (triage results): pick which list(s) to drop the whole set onto.
@@ -1287,8 +1292,10 @@ function confirmBulkAddPicker(){
   const ids=_bulkPending.slice();_bulkPending=[];
   closeAddPicker();
   if(!chosen.length||!ids.length)return;
+  const ws=getWorkspace();
+  const toName=ws.lists.filter(l=>chosen.includes(l.id)&&l.ids.length===0&&!(l.name&&l.name.trim())).map(l=>l.id);
   addManyToLists(ids,chosen);
-  nameUnnamedTargets(chosen);
+  nameUnnamedTargets(toName);
 }
 // Add several entries to several lists at once (no removals).
 function addManyToLists(ids,listIds){
@@ -1618,6 +1625,19 @@ function deleteList(id){
   else if(ws.activeId===id){ws.activeId=ws.lists[0].id;}
   saveWorkspace(ws);render();
 }
+// Wipe every list at once (with a clear, destructive confirm) so you don't have
+// to delete them one by one.
+function deleteAllLists(){
+  const ws=getWorkspace();
+  const withContent=ws.lists.filter(l=>l.ids.length||(l.name&&l.name.trim()));
+  if(!withContent.length){alert('There are no project review lists to delete yet.');return;}
+  const total=ws.lists.reduce((s,l)=>s+l.ids.length,0);
+  const n=ws.lists.length;
+  if(!confirm('Delete ALL '+n+' project review '+(n===1?'list':'lists')+' ('+total+' selected '+(total===1?'entry':'entries')+' in total)? This clears everything from this browser and cannot be undone. Use \u201cExport all lists\u201d first if you want a backup.'))return;
+  const fresh=defaultProjectList();
+  saveWorkspace({lists:[fresh],activeId:fresh.id});
+  render();
+}
 
 // ---- export one list to a file / import a list from a file ----
 // The exported file carries the list's stable id, so re-importing it later
@@ -1742,6 +1762,7 @@ function renderProjectIndexView(){
     +'<button class="entry-btn primary" onclick="newListFlow()">+ New list</button>'
     +'<button class="entry-btn" onclick="exportAllListsFile()">Export all lists</button>'
     +'<button class="entry-btn" onclick="importListFile()">Import from file</button>'
+    +'<button class="entry-btn danger" onclick="deleteAllLists()">Delete all lists</button>'
     +'</div>'
     +'<div class="durability-note"><strong>These lists live in this browser only.</strong> Clearing browser data, or moving to another device, will not carry them across. <em>Export all lists</em> saves every list as one backup file; <em>Export file</em> on a single list saves just that one. Either re-imports here later, on any device, matching by list so nothing is duplicated.</div>'
     +'<div class="list-index-grid">'+cards+'</div>'
@@ -2185,7 +2206,7 @@ function render(){
 }
 
 function renderHeader(){
-  const count=projectCount();
+  const count=getWorkspace().lists.filter(l=>l.ids.length>0).length;
   const theme=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';
   const themeIcon=theme==='light'?'☀️':'🌙';
   return `<div class="header"><div class="header-left" onclick="goHome()" style="cursor:pointer"><div class="logo">C</div><div><div class="header-title">Constructability Framework</div><div class="header-sub">Design Guidance</div></div></div><div class="header-actions"><button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch between light and dark theme" aria-label="Toggle colour theme"><span id="theme-toggle-icon">${themeIcon}</span></button><button class="project-header-btn" onclick="goProjectLists()">📋 Project review lists <span class="project-count-pill">${count}</span></button></div></div>`;
