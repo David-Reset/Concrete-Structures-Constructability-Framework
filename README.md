@@ -82,6 +82,16 @@ The home page has a search box that looks across **all five dimensions at once**
 
 Search is **automatic**: it reads the text already written in each entry (the name, design question, background and guidance) and matches your words against it. You don't need to know an entry's name, and nothing has to be tagged for an entry to be found. Rarer, more specific words (such as "boundary" or "stirrup") count for more than common ones (such as "wall" or "concrete"), and weak, incidental matches are dropped so results stay relevant. Maintainers can optionally reinforce this with [search keywords](#search-keywords-optional) on individual entries.
 
+### Building project review lists
+As you read, you can collect the entries that apply to a particular job into a **project review list**, then export that list as a project-specific constructability checklist. You can keep **several named lists at once** — one per project — and switch between them.
+
+- **Adding entries.** On any live entry, use **Add to project review list**. A picker opens showing every list with a checkbox: tick one, tick several to add the entry to multiple projects at once, or un-tick to remove it. The button shows how many lists an entry is currently on, and you can create and name a new list from inside the picker.
+- **Managing lists.** The **My project review lists** hub (the button in the top bar) shows every list with its entry count, and lets you open, rename, duplicate or delete each one, create new lists, or delete them all. The list you open becomes the one that exports and shares act on.
+- **Naming and purpose.** Each list carries a name and an editable purpose statement (shown in exports). New lists suggest a generic "Project review list N" name you can keep or replace.
+- **Exporting a checklist.** Any list can be exported to **PDF**, **Markdown**, or the clipboard, with links back to the full entries — ready for an email, design review or QA record.
+- **Sharing.** **Copy share link** produces a link that reopens the live framework with that set of entries pre-selected — a review set that stays current, rather than a frozen PDF.
+- **Backups across devices.** Lists are stored **in your browser only**, so clearing browser data or moving to another device won't carry them across. **Export file** saves one list and **Export all lists** saves every list as a single backup file; both re-import here later, on any device. Imports match by list, so re-importing updates a list rather than duplicating it.
+
 ### Running locally
 1. Clone or download this repository
 2. Serve the files using any local web server (e.g. `python -m http.server` or VS Code Live Server)
