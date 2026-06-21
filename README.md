@@ -153,7 +153,7 @@ All submissions — new entries, edits, and comments — are reviewed before bei
 
 Three browser-based tools live in the `tools/` folder. Each one is a single HTML file you open locally (double-click, or serve it) — they run entirely in your browser, upload nothing, and read or write only the files you hand them (`data.json`, images, and `CHANGELOG.md`). The rubric beside them is a written reference, not a program.
 
-- **Data Manager** (`tools/framework-data-manager.html`) — the main content tool. It turns Google Form responses into properly structured `data.json`: load the current `data.json` and the response CSVs, then work through an inbox of new entries, edits and comments. You can accept an item, reject it (with an optional reason that is kept with the record), send a rejected item back to the inbox for another look, manage an entry's comments, link entries together as **related entries** (via the **Links** button on each entry), and review unpublished **drafts** before publishing them. It exports an updated `data.json`. This is the tool the workflow below uses.
+- **Data Manager** (`tools/framework-data-manager.html`) — the main content tool. It turns Google Form responses into properly structured `data.json`: load the current `data.json` and the response CSVs, then work through an inbox of new entries, edits and comments. You can accept an item, reject it (with an optional reason that is kept with the record), send a rejected item back to the inbox for another look, manage an entry's comments, and review unpublished **drafts** before publishing them. It exports an updated `data.json`. This is the tool the workflow below uses.
 - **Framework Doctor** (`tools/framework-doctor.html`) — a read-only health check. Load `data.json` and point it at the `images/` folder, and it reports **missing images** (referenced by an entry but not in the folder — these break on the live site) and **orphan images** (in the folder but referenced by nothing — safe to delete), along with data-integrity and overview checks. It changes nothing; you can copy or download the report as plain text. Run it before you commit.
 - **Image Formatter** (`tools/framework-image-formatter.html`) — prepares images for the `images/` folder. Drop in one or many images and it re-encodes them (WebP, PNG, JPEG, or keep original, with a per-image override), and checks each filename for clashes against `data.json` and the other images, with one-click **make-unique** naming. Because re-encoding rewrites the file, it also strips embedded metadata such as GPS coordinates and camera/device info — a useful privacy step for site photographs.
 - **Evidence rating rubric** (`tools/evidence-rating-rubric.md`) — the rule maintainers follow when assigning an entry's High / Medium / Low evidence support and writing its summary. See [Evidence support](#evidence-support).
@@ -178,7 +178,7 @@ Formatting is built in so you never need to write HTML: type normally, press Ent
 
 ### Editing data.json directly
 
-For changes the Data Manager doesn't cover — bulk edits, fixing a small typo, or cross-referencing many entries at once — you can still edit `data.json` by hand. Each entry is a JSON object inside its dimension's `items` array. A few rules to keep in mind:
+For changes the Data Manager doesn't cover — adding cross-references between entries, bulk edits, or fixing a small typo — you can still edit `data.json` by hand. Each entry is a JSON object inside its dimension's `items` array. A few rules to keep in mind:
 
 - **Stable `id`** — every entry has a permanent `id`: a lowercase, hyphenated slug derived from the name (e.g. `"id": "drip-grooves-on-exposed-soffit-edges"`). This is the entry's permanent address — it appears in the entry's URL (`#dimId/id`) and is how other entries cross-reference it. **Once an entry is live, never change its `id`**, as doing so breaks shared links, bookmarks, and cross-references. The display `name` can change freely; the `id` should not.
 - **`location`** — `"location": {"country": "Australia", "state": "NSW"}`; use just `country` if the evidence applies nationally, or include `state` if it is region-specific.
@@ -188,9 +188,7 @@ For changes the Data Manager doesn't cover — bulk edits, fixing a small typo, 
 
 ### Related entries (cross-references)
 
-An entry can point to others that a designer should consider alongside it. The easiest way to add a cross-reference is the **Links** button on the entry in the Data Manager: choose the entry to link to and, optionally, write a short note explaining why they're related. Links can be added, re-noted, or removed there at any time.
-
-Under the hood, each cross-reference is a `relatedEntries` array on the entry's `data` object, which you can also edit by hand (useful for bulk changes):
+Cross-references are added by editing `data.json` directly — the Data Manager doesn't manage them. An entry can point to others that a designer should consider alongside it. Add a `relatedEntries` array to the entry's `data` object:
 
 ```json
 "relatedEntries": [
