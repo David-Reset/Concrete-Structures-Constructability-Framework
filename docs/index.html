@@ -1013,7 +1013,8 @@ function entryUrl(dimId,id){
 const PROJECT_LIST_KEY='constructabilityProjectList.v1';            // legacy single-list key (folded into the workspace on first load)
 const LEGACY_REVIEW_LIST_KEY='constructabilityReviewList.v1';       // older legacy key
 const WORKSPACE_KEY='constructabilityProjectWorkspace.v1';          // current store: many named lists + an active one
-const PROJECT_FILE_FORMAT='constructability-project-list';          // marker written into exported list files
+const PROJECT_FILE_FORMAT='constructability-project-list';          // marker written into single-list export files
+const WORKSPACE_FILE_FORMAT='constructability-project-workspace';   // marker written into "export all lists" files
 const DEFAULT_PROJECT_PURPOSE="This checklist contains constructability framework entries selected for this project's constructability review. Each item is a design-stage prompt, not a compliance assessment or formal sign-off. Open the full entry for thresholds, applicability, recommended actions and evidence.";
 // ---- list + workspace model -------------------------------------------------
 // A "list" is one named project review list: {id, name, purpose, ids[], created, updated}.
@@ -1453,6 +1454,29 @@ function exportListFile(id){
   downloadTextFile(safeFileName(l.name||'review-list','json'),JSON.stringify(payload,null,2),'application/json;charset=utf-8');
 }
 function exportActiveListFile(){exportListFile(getProjectList().id);}
+// Export EVERY list in one file — the full backup. Re-importing it restores all
+// of them at once, matching by id so nothing is duplicated.
+function exportAllListsFile(){
+  const ws=getWorkspace();
+  const hasAnything=ws.lists.some(l=>l.ids.length||(l.name&&l.name.trim()));
+  if(!hasAnything){alert('There are no project review lists with anything in them to export yet.');return;}
+  const payload={
+    format:WORKSPACE_FILE_FORMAT,version:1,exported:new Date().toISOString(),
+    lists:ws.lists.map(l=>({id:l.id,name:l.name||'',purpose:l.purpose,ids:l.ids,created:l.created||todayStr()}))
+  };
+  downloadTextFile(safeFileName('all-project-review-lists','json'),JSON.stringify(payload,null,2),'application/json;charset=utf-8');
+}
+// Drop nameless, empty lists once real lists exist, so a bulk import doesn't leave
+// the blank default list cluttering the hub. Always keeps at least one list.
+function pruneEmptyUnnamed(ws){
+  if(ws.lists.length<=1)return ws;
+  const kept=ws.lists.filter(l=>l.ids.length||(l.name&&l.name.trim()));
+  if(kept.length){
+    ws.lists=kept;
+    if(!ws.lists.some(l=>l.id===ws.activeId))ws.activeId=ws.lists[0].id;
+  }
+  return ws;
+}
 function importListFile(){
   const inp=document.createElement('input');
   inp.type='file';inp.accept='.json,application/json';
@@ -1467,7 +1491,8 @@ function importListFile(){
 }
 function handleImportedListText(text){
   let obj=null;try{obj=JSON.parse(text);}catch(e){alert('That file is not a valid review-list export \u2014 it could not be read as JSON.');return;}
-  if(!obj||obj.format!==PROJECT_FILE_FORMAT||!Array.isArray(obj.ids)){alert('That file is not a constructability review-list export.');return;}
+  if(obj&&obj.format===WORKSPACE_FILE_FORMAT&&Array.isArray(obj.lists))return importWorkspaceObject(obj);
+  if(!obj||obj.format!==PROJECT_FILE_FORMAT||!Array.isArray(obj.ids)){alert('That file is not a constructability project review list export.');return;}
   const valid=validSharedIds(obj.ids.filter(x=>typeof x==='string'));
   if(!valid.length){alert('None of the entries in that file exist in the current framework, so there is nothing to import.');return;}
   const ws=getWorkspace();
@@ -1494,6 +1519,26 @@ function handleImportedListText(text){
   state.sharedPreview=null;state.view='projectList';window.location.hash='project-list';render();window.scrollTo({top:0,left:0,behavior:'auto'});
   alert('Imported a new project review list ('+valid.length+(valid.length===1?' entry':' entries')+').');
 }
+// Bulk import of an "export all lists" file: each incoming list updates the
+// matching list (same id) or is added as a new one, so your other lists are kept.
+function importWorkspaceObject(obj){
+  const incoming=obj.lists.map(normaliseList).map(l=>{l.ids=validSharedIds(l.ids);return l;})
+    .filter(l=>l.ids.length||(l.name&&l.name.trim())); // drop fully-empty, unnamed lists
+  if(!incoming.length){alert('That backup did not contain any project review lists that exist in the current framework.');return;}
+  const ws=getWorkspace();
+  let updated=0,added=0;
+  incoming.forEach(l=>{
+    const ex=ws.lists.find(x=>x.id===l.id);
+    if(ex){ex.name=l.name;ex.purpose=l.purpose;ex.ids=l.ids;ex.updated=todayStr();updated++;}
+    else{ws.lists.push({id:l.id,name:l.name,purpose:l.purpose,ids:l.ids,created:l.created||todayStr(),updated:todayStr()});added++;}
+  });
+  ws.activeId=incoming[0].id;
+  pruneEmptyUnnamed(ws);
+  saveWorkspace(ws);
+  state.sharedPreview=null;state.view='projectIndex';window.location.hash='project-lists';render();window.scrollTo({top:0,left:0,behavior:'auto'});
+  const bits=[];if(added)bits.push(added+' added');if(updated)bits.push(updated+' updated');
+  alert('Imported '+incoming.length+' project review '+(incoming.length===1?'list':'lists')+(bits.length?(' ('+bits.join(', ')+')'):'')+'.');
+}
 
 function renderProjectIndexView(){
   const sums=listSummaries();
@@ -1519,9 +1564,10 @@ function renderProjectIndexView(){
     +'<p class="section-desc">Keep a separate project review list for each job and switch between them any time. The list you open becomes the <strong>active</strong> list \u2014 the one new entries are added to.</p>'
     +'<div class="list-index-bar">'
     +'<button class="entry-btn primary" onclick="newListFlow()">+ New list</button>'
-    +'<button class="entry-btn" onclick="importListFile()">Import list from file</button>'
+    +'<button class="entry-btn" onclick="exportAllListsFile()">Export all lists</button>'
+    +'<button class="entry-btn" onclick="importListFile()">Import from file</button>'
     +'</div>'
-    +'<div class="durability-note"><strong>These lists live in this browser only.</strong> Clearing browser data, or moving to another device, will not carry them across. Use <em>Export file</em> to keep a durable copy of a list that matters \u2014 the file re-imports here later, on any device, and updates the same list instead of duplicating it.</div>'
+    +'<div class="durability-note"><strong>These lists live in this browser only.</strong> Clearing browser data, or moving to another device, will not carry them across. <em>Export all lists</em> saves every list as one backup file; <em>Export file</em> on a single list saves just that one. Either re-imports here later, on any device, matching by list so nothing is duplicated.</div>'
     +'<div class="list-index-grid">'+cards+'</div>'
     +'</div>';
 }
