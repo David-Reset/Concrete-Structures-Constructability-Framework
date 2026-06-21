@@ -358,6 +358,19 @@
   .project-purpose-textarea{width:100%;min-height:92px;resize:vertical;background:var(--surface-light);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:14px;font-family:inherit;line-height:1.55;outline:none}
   .project-purpose-textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
   .project-name-help{font-size:12px;color:var(--text-muted);line-height:1.55;margin-top:10px}
+  .list-index-bar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 14px}
+  .durability-note{padding:12px 14px;border-radius:9px;background:var(--accent-glow);border:1px solid var(--border);font-size:12.5px;color:var(--text-muted);line-height:1.55;margin-bottom:18px}
+  .durability-note strong{color:var(--text)}
+  .list-index-grid{display:flex;flex-direction:column;gap:12px}
+  .list-index-card{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;padding:16px 18px;background:var(--surface);border:1px solid var(--border);border-radius:10px;transition:border-color .2s,box-shadow .2s}
+  .list-index-card:hover{border-color:var(--accent)}
+  .list-index-card.active{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+  .list-index-main{flex:1;min-width:200px;cursor:pointer}
+  .list-index-name{font-size:15px;font-weight:800;color:var(--text);display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .list-index-badge{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;color:#fff;background:var(--accent);border-radius:999px;padding:2px 8px;font-weight:700}
+  .list-index-meta{font-size:12px;color:var(--text-muted);margin-top:5px}
+  .list-index-actions{display:flex;gap:8px;flex-wrap:wrap}
+  .list-index-actions .entry-btn{padding:7px 12px;font-size:12px}
   .project-field-gap{margin-top:16px}
   .project-card{padding:16px 18px;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:flex;gap:14px;justify-content:space-between;align-items:flex-start}
   .project-card-main{flex:1;min-width:0}
@@ -997,34 +1010,94 @@ function entryUrl(dimId,id){
 //   CSS classes like .project-card, .project-list-panel
 // The short identifier is intentional and stable; only the user-facing labels
 // rendered to screen say "Project review list". Don't rename the identifiers.
-const PROJECT_LIST_KEY='constructabilityProjectList.v1';
-const LEGACY_REVIEW_LIST_KEY='constructabilityReviewList.v1';
+const PROJECT_LIST_KEY='constructabilityProjectList.v1';            // legacy single-list key (folded into the workspace on first load)
+const LEGACY_REVIEW_LIST_KEY='constructabilityReviewList.v1';       // older legacy key
+const WORKSPACE_KEY='constructabilityProjectWorkspace.v1';          // current store: many named lists + an active one
+const PROJECT_FILE_FORMAT='constructability-project-list';          // marker written into exported list files
 const DEFAULT_PROJECT_PURPOSE="This checklist contains constructability framework entries selected for this project's constructability review. Each item is a design-stage prompt, not a compliance assessment or formal sign-off. Open the full entry for thresholds, applicability, recommended actions and evidence.";
-function defaultProjectList(){return {name:'',purpose:DEFAULT_PROJECT_PURPOSE,ids:[],updated:''};}
-function normaliseProjectList(parsed){
+// ---- list + workspace model -------------------------------------------------
+// A "list" is one named project review list: {id, name, purpose, ids[], created, updated}.
+// The "workspace" holds every list plus which one is active: {lists:[...], activeId}.
+// The whole single-list API below (getProjectList / saveProjectList / addToProjectList /
+// removeFromProjectList / …) is preserved and simply operates on the ACTIVE list, so every
+// existing caller — the detail page, the share flow, the exporters — keeps working untouched.
+function genListId(){
+  let r='';
+  try{if(window.crypto&&crypto.randomUUID)r=crypto.randomUUID().replace(/-/g,'').slice(0,10);}catch(e){}
+  if(!r)r=Math.random().toString(36).slice(2,10);
+  return 'L-'+r+'-'+Date.now().toString(36).slice(-4);
+}
+function todayStr(){return new Date().toISOString().slice(0,10);}
+function defaultProjectList(){return {id:genListId(),name:'',purpose:DEFAULT_PROJECT_PURPOSE,ids:[],created:todayStr(),updated:''};}
+function normaliseList(parsed){
   if(!parsed)return defaultProjectList();
   // Legacy support if an early prototype stored only an array of ids.
-  if(Array.isArray(parsed))return {name:'',purpose:DEFAULT_PROJECT_PURPOSE,ids:parsed,updated:''};
-  return {name:parsed.name||'',purpose:(parsed.purpose!==undefined?parsed.purpose:DEFAULT_PROJECT_PURPOSE),ids:Array.isArray(parsed.ids)?parsed.ids:[],updated:parsed.updated||''};
+  if(Array.isArray(parsed))return {id:genListId(),name:'',purpose:DEFAULT_PROJECT_PURPOSE,ids:parsed.filter(Boolean),created:todayStr(),updated:''};
+  return {
+    id:(typeof parsed.id==='string'&&parsed.id)?parsed.id:genListId(),
+    name:parsed.name||'',
+    purpose:(parsed.purpose!==undefined?parsed.purpose:DEFAULT_PROJECT_PURPOSE),
+    ids:Array.isArray(parsed.ids)?[...new Set(parsed.ids.filter(Boolean))]:[],
+    created:parsed.created||todayStr(),
+    updated:parsed.updated||''
+  };
 }
-function getProjectList(){
+function defaultWorkspace(){const l=defaultProjectList();return {lists:[l],activeId:l.id};}
+function normaliseWorkspace(parsed){
+  if(!parsed||!Array.isArray(parsed.lists)||!parsed.lists.length)return defaultWorkspace();
+  const lists=parsed.lists.map(normaliseList);
+  let activeId=parsed.activeId;
+  if(!lists.some(l=>l.id===activeId))activeId=lists[0].id;
+  return {lists,activeId};
+}
+// Pull a pre-workspace single list (or its older array form) if one exists, so an
+// upgrading user's saved list is preserved as the first list in the new workspace.
+function readLegacySingleList(){
   try{
     const stored=localStorage.getItem(PROJECT_LIST_KEY);
-    if(stored)return normaliseProjectList(JSON.parse(stored));
+    if(stored)return normaliseList(JSON.parse(stored));
     const legacy=localStorage.getItem(LEGACY_REVIEW_LIST_KEY);
-    if(legacy){
-      const migrated=normaliseProjectList(JSON.parse(legacy));
-      saveProjectList(migrated);
-      return migrated;
-    }
-    return defaultProjectList();
-  }catch(e){return defaultProjectList();}
+    if(legacy)return normaliseList(JSON.parse(legacy));
+  }catch(e){}
+  return null;
 }
+function getWorkspace(){
+  try{
+    const stored=localStorage.getItem(WORKSPACE_KEY);
+    if(stored)return normaliseWorkspace(JSON.parse(stored));
+    const legacy=readLegacySingleList();
+    if(legacy&&(legacy.ids.length||legacy.name)){
+      const ws={lists:[legacy],activeId:legacy.id};
+      saveWorkspace(ws);
+      return ws;
+    }
+    const fresh=defaultWorkspace();
+    saveWorkspace(fresh);
+    return fresh;
+  }catch(e){return defaultWorkspace();}
+}
+function saveWorkspace(ws){
+  try{localStorage.setItem(WORKSPACE_KEY,JSON.stringify({lists:ws.lists,activeId:ws.activeId}));}catch(e){}
+  return ws;
+}
+// ---- active-list compatibility layer (existing API, now workspace-backed) ----
+function getProjectList(){const ws=getWorkspace();return ws.lists.find(l=>l.id===ws.activeId)||ws.lists[0];}
 function saveProjectList(list){
+  const ws=getWorkspace();
   const cleanIds=[...new Set((list.ids||[]).filter(Boolean))];
-  const clean={name:list.name||'',purpose:(list.purpose!==undefined?list.purpose:DEFAULT_PROJECT_PURPOSE),ids:cleanIds,updated:new Date().toISOString().slice(0,10)};
-  localStorage.setItem(PROJECT_LIST_KEY,JSON.stringify(clean));
-  return clean;
+  const targetId=list.id||ws.activeId;
+  const idx=ws.lists.findIndex(l=>l.id===targetId);
+  const merged={
+    id:(idx>=0?ws.lists[idx].id:targetId),
+    name:list.name||'',
+    purpose:(list.purpose!==undefined?list.purpose:DEFAULT_PROJECT_PURPOSE),
+    ids:cleanIds,
+    created:(idx>=0?ws.lists[idx].created:todayStr()),
+    updated:todayStr()
+  };
+  if(idx>=0)ws.lists[idx]=merged; else {ws.lists.push(merged);ws.activeId=merged.id;}
+  saveWorkspace(ws);
+  return merged;
 }
 function projectCount(){return getProjectList().ids.length;}
 function isInProjectList(id){return getProjectList().ids.includes(id);}
@@ -1316,6 +1389,142 @@ function clearProjectList(){
   if(!projectCount())return;
   if(confirm('Clear all entries from this project review list?')){const list=getProjectList();list.ids=[];saveProjectList(list);render();}
 }
+
+// ===== MULTIPLE NAMED REVIEW LISTS (workspace operations) =====
+// Switching between projects happens entirely in the browser; exporting a list
+// to a small file is the durable backup, since localStorage is per-browser and
+// a "clear site data" wipes everything.
+function goProjectLists(){window.location.hash='project-lists';}
+function listSummaries(){
+  const ws=getWorkspace();
+  return ws.lists.map(l=>{
+    const present=l.ids.map(id=>resolveEntryId(id)).filter(Boolean).length;
+    return {id:l.id,name:l.name,count:l.ids.length,present,missing:l.ids.length-present,updated:l.updated,active:l.id===ws.activeId};
+  });
+}
+function setActiveListId(id){
+  const ws=getWorkspace();
+  if(!ws.lists.some(l=>l.id===id))return;
+  ws.activeId=id;saveWorkspace(ws);
+}
+function openList(id){setActiveListId(id);state.sharedPreview=null;state.view='projectList';window.location.hash='project-list';render();window.scrollTo({top:0,left:0,behavior:'auto'});}
+function createList(name,purpose,ids){
+  const ws=getWorkspace();
+  const l={id:genListId(),name:(name||'').trim(),purpose:(purpose!==undefined?purpose:DEFAULT_PROJECT_PURPOSE),ids:[...new Set((ids||[]).filter(Boolean))],created:todayStr(),updated:todayStr()};
+  ws.lists.push(l);ws.activeId=l.id;saveWorkspace(ws);
+  state.sharedPreview=null;state.view='projectList';
+  window.location.hash='project-list';render();window.scrollTo({top:0,left:0,behavior:'auto'});
+  return l.id;
+}
+function newListFlow(){
+  const name=prompt('Name this review list (e.g. 12 Smith Street \u2014 structural review):','');
+  if(name===null)return; // cancelled
+  createList(name,undefined,[]);
+}
+function renameListFlow(id){
+  const ws=getWorkspace();const l=ws.lists.find(x=>x.id===id);if(!l)return;
+  const name=prompt('Rename this review list:',l.name||'');
+  if(name===null)return;
+  l.name=name.trim();l.updated=todayStr();saveWorkspace(ws);render();
+}
+function duplicateList(id){
+  const ws=getWorkspace();const l=ws.lists.find(x=>x.id===id);if(!l)return;
+  const copy={id:genListId(),name:((l.name||'Untitled')+' (copy)').trim(),purpose:l.purpose,ids:[...l.ids],created:todayStr(),updated:todayStr()};
+  ws.lists.push(copy);saveWorkspace(ws);render();
+}
+function deleteList(id){
+  const ws=getWorkspace();const l=ws.lists.find(x=>x.id===id);if(!l)return;
+  const label=l.name?('\u201c'+l.name+'\u201d'):'this untitled list';
+  if(!confirm('Delete '+label+'? Its '+l.ids.length+' selected '+(l.ids.length===1?'entry':'entries')+' will be removed from this browser. Export it first if you want to keep a copy.'))return;
+  ws.lists=ws.lists.filter(x=>x.id!==id);
+  if(!ws.lists.length){const fresh=defaultProjectList();ws.lists=[fresh];ws.activeId=fresh.id;}
+  else if(ws.activeId===id){ws.activeId=ws.lists[0].id;}
+  saveWorkspace(ws);render();
+}
+
+// ---- export one list to a file / import a list from a file ----
+// The exported file carries the list's stable id, so re-importing it later
+// updates the same list instead of spawning a duplicate.
+function exportListFile(id){
+  const ws=getWorkspace();const l=ws.lists.find(x=>x.id===id)||getProjectList();
+  const present=l.ids.map(x=>resolveEntryId(x)).filter(Boolean).length;
+  if(!present){alert('This list has no entries to export yet.');return;}
+  const payload={format:PROJECT_FILE_FORMAT,version:1,id:l.id,name:l.name||'',purpose:l.purpose,ids:l.ids,exported:new Date().toISOString()};
+  downloadTextFile(safeFileName(l.name||'review-list','json'),JSON.stringify(payload,null,2),'application/json;charset=utf-8');
+}
+function exportActiveListFile(){exportListFile(getProjectList().id);}
+function importListFile(){
+  const inp=document.createElement('input');
+  inp.type='file';inp.accept='.json,application/json';
+  inp.onchange=()=>{
+    const f=inp.files&&inp.files[0];if(!f)return;
+    const r=new FileReader();
+    r.onload=()=>{handleImportedListText(String(r.result||''));};
+    r.onerror=()=>alert('That file could not be read.');
+    r.readAsText(f);
+  };
+  inp.click();
+}
+function handleImportedListText(text){
+  let obj=null;try{obj=JSON.parse(text);}catch(e){alert('That file is not a valid review-list export \u2014 it could not be read as JSON.');return;}
+  if(!obj||obj.format!==PROJECT_FILE_FORMAT||!Array.isArray(obj.ids)){alert('That file is not a constructability review-list export.');return;}
+  const valid=validSharedIds(obj.ids.filter(x=>typeof x==='string'));
+  if(!valid.length){alert('None of the entries in that file exist in the current framework, so there is nothing to import.');return;}
+  const ws=getWorkspace();
+  const existing=obj.id?ws.lists.find(l=>l.id===obj.id):null;
+  if(existing){
+    if(confirm('This file is a saved copy of \u201c'+(existing.name||'an untitled list')+'\u201d. Update that list with the imported version? Choose Cancel to import it as a separate new list instead.')){
+      existing.name=(obj.name!==undefined?obj.name:existing.name)||'';
+      existing.purpose=obj.purpose!==undefined?obj.purpose:existing.purpose;
+      existing.ids=valid;existing.updated=todayStr();
+      ws.activeId=existing.id;saveWorkspace(ws);
+      state.view='projectList';window.location.hash='project-list';render();window.scrollTo({top:0,left:0,behavior:'auto'});
+      alert('Updated \u201c'+(existing.name||'untitled list')+'\u201d from the file ('+valid.length+(valid.length===1?' entry':' entries')+').');
+      return;
+    }
+  }
+  // No existing list with this id: import as a brand-new list, but KEEP the file's
+  // own id so that re-importing the same file later updates this list instead of
+  // creating yet another duplicate.
+  const ws2=getWorkspace();
+  let newId=(obj.id&&typeof obj.id==='string')?obj.id:genListId();
+  if(ws2.lists.some(l=>l.id===newId))newId=genListId();
+  const nl={id:newId,name:obj.name||'Imported review list',purpose:(obj.purpose!==undefined?obj.purpose:DEFAULT_PROJECT_PURPOSE),ids:valid,created:todayStr(),updated:todayStr()};
+  ws2.lists.push(nl);ws2.activeId=nl.id;saveWorkspace(ws2);
+  state.sharedPreview=null;state.view='projectList';window.location.hash='project-list';render();window.scrollTo({top:0,left:0,behavior:'auto'});
+  alert('Imported a new review list ('+valid.length+(valid.length===1?' entry':' entries')+').');
+}
+
+function renderProjectIndexView(){
+  const sums=listSummaries();
+  const cards=sums.map(s=>{
+    const nm=s.name?escHtml(s.name):'Untitled list';
+    const meta=s.count+' '+(s.count===1?'entry':'entries')+(s.missing?(' \u00b7 '+s.missing+' unavailable'):'')+(s.updated?(' \u00b7 updated '+s.updated):'');
+    return '<div class="list-index-card'+(s.active?' active':'')+'">'
+      +'<div class="list-index-main" onclick="openList(\''+s.id+'\')">'
+      +'<div class="list-index-name">'+nm+(s.active?'<span class="list-index-badge">Active</span>':'')+'</div>'
+      +'<div class="list-index-meta">'+meta+'</div>'
+      +'</div>'
+      +'<div class="list-index-actions">'
+      +'<button class="entry-btn" onclick="openList(\''+s.id+'\')">Open</button>'
+      +'<button class="entry-btn" onclick="renameListFlow(\''+s.id+'\')">Rename</button>'
+      +'<button class="entry-btn" onclick="duplicateList(\''+s.id+'\')">Duplicate</button>'
+      +'<button class="entry-btn" onclick="exportListFile(\''+s.id+'\')">Export file</button>'
+      +'<button class="entry-btn danger" onclick="deleteList(\''+s.id+'\')">Delete</button>'
+      +'</div></div>';
+  }).join('');
+  return '<div class="content animate-in">'
+    +'<div class="back-link" onclick="goHome()">\u2190 Back to framework</div>'
+    +'<div class="dim-header"><span class="dim-header-icon">\uD83D\uDDC2\uFE0F</span><h1 class="dim-header-title">My review lists</h1></div>'
+    +'<p class="section-desc">Keep a separate review list for each project and switch between them any time. The list you open becomes the <strong>active</strong> list \u2014 the one new entries are added to.</p>'
+    +'<div class="list-index-bar">'
+    +'<button class="entry-btn primary" onclick="newListFlow()">+ New list</button>'
+    +'<button class="entry-btn" onclick="importListFile()">Import list from file</button>'
+    +'</div>'
+    +'<div class="durability-note"><strong>These lists live in this browser only.</strong> Clearing browser data, or moving to another device, will not carry them across. Use <em>Export file</em> to keep a durable copy of a list that matters \u2014 the file re-imports here later, on any device, and updates the same list instead of duplicating it.</div>'
+    +'<div class="list-index-grid">'+cards+'</div>'
+    +'</div>';
+}
 function renderProjectListView(){
   const list=getProjectList();
   const rows=projectItems();
@@ -1326,8 +1535,8 @@ function renderProjectListView(){
     return `<div class="project-card"><div class="project-card-main"><div class="project-card-title">${escHtml(item.name)}</div><div class="project-card-meta"><strong>Dimension:</strong> ${escHtml(dim.name)}</div><div class="project-card-question"><strong>Design question:</strong><br>${data.question||''}</div><div class="project-card-meta"><strong>Design parameter:</strong> ${data.parameter||''}</div></div><div class="project-card-actions"><button class="entry-btn" onclick="goEntry('${dim.id}','${item.id}')">Open entry →</button><button class="entry-btn danger" onclick="removeFromProjectList('${item.id}')">Remove</button></div></div>`;
   }).join('');
   const empty=`<div class="project-empty"><div class="project-empty-title">Your project review list is empty.</div><div class="project-empty-sub">Open any live entry and use <strong>Add to project review list</strong>. The list stays in this browser and can be exported as a project checklist later.</div></div>`;
-  const exportHelp=`<div class="project-export-card"><div class="project-export-title">Export options</div><div class="project-export-grid"><div class="project-export-item"><strong>Copy share link</strong><span>Copies a link that reopens this live framework with the same entries pre-selected — hand someone a review set that stays current, instead of a frozen PDF.</span></div><div class="project-export-item"><strong>Copy project checklist</strong><span>Copies a plain-text project checklist to the clipboard, ready to paste into an email, meeting note, design review or QA record.</span></div><div class="project-export-item"><strong>Download PDF</strong><span>Downloads a professional checklist document with the selected entries, design questions, design parameters and clickable framework links.</span></div><div class="project-export-item"><strong>Download Markdown</strong><span>Downloads an editable .md checklist for GitHub, Notion, Obsidian, project notes or later conversion into another document.</span></div></div></div>`;
-  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to framework</div><div class="dim-header"><span class="dim-header-icon">📋</span><h1 class="dim-header-title">My project review list</h1></div><p class="section-desc">Collect the entries that apply to a particular project, give the list a useful name, then export a project-specific constructability review checklist.</p><div class="project-name-card"><div class="label">List name</div><div class="project-name-row"><input class="project-name-input" value="${name}" placeholder="e.g. 12 Smith Street — structural review" oninput="setProjectListName(this.value)"></div><div class="project-name-help">Stored only in this browser. Do not put confidential project information here if you plan to copy/share the checklist.</div><div class="project-field-gap"><div class="label">Purpose</div><textarea class="project-purpose-textarea" oninput="setProjectListPurpose(this.value)">${purpose}</textarea><div class="project-name-help">This purpose statement is shown in the copied checklist, PDF and Markdown exports. The default text explains that the list is a project review aid, not a compliance assessment; you can update it to suit your project or audience.</div></div></div>${exportHelp}<div class="project-actions-bar"><button class="entry-btn primary" onclick="copyProjectShareLink()">Copy share link</button><button class="entry-btn" onclick="copyProjectChecklist()">Copy project checklist</button><button class="entry-btn" onclick="downloadProjectPdf()">Download PDF</button><button class="entry-btn" onclick="downloadProjectMarkdown()">Download Markdown</button><button class="entry-btn danger" onclick="clearProjectList()">Clear list</button></div>${missing>0?`<div class="project-name-help">${missing} saved entry ${missing===1?'id was':'ids were'} not found in the current data and ${missing===1?'has':'have'} been hidden.</div>`:''}<div class="item-list project-list-panel">${cards||empty}</div></div>`;
+  const exportHelp=`<div class="project-export-card"><div class="project-export-title">Export options</div><div class="project-export-grid"><div class="project-export-item"><strong>Copy share link</strong><span>Copies a link that reopens this live framework with the same entries pre-selected — hand someone a review set that stays current, instead of a frozen PDF.</span></div><div class="project-export-item"><strong>Copy project checklist</strong><span>Copies a plain-text project checklist to the clipboard, ready to paste into an email, meeting note, design review or QA record.</span></div><div class="project-export-item"><strong>Download PDF</strong><span>Downloads a professional checklist document with the selected entries, design questions, design parameters and clickable framework links.</span></div><div class="project-export-item"><strong>Download Markdown</strong><span>Downloads an editable .md checklist for GitHub, Notion, Obsidian, project notes or later conversion into another document.</span></div><div class="project-export-item"><strong>Export list as file</strong><span>Saves this list as a small file you own — your durable backup. Re-import it here later (on any device) to carry on; it updates this same list instead of making a copy.</span></div></div></div>`;
+  return `<div class="content animate-in"><div class="back-link" onclick="goProjectLists()">← All review lists</div><div class="dim-header"><span class="dim-header-icon">📋</span><h1 class="dim-header-title">${list.name?escHtml(list.name):'Untitled review list'}</h1></div><p class="section-desc">Collect the entries that apply to a particular project, give the list a useful name, then export a project-specific constructability review checklist.</p><div class="project-name-card"><div class="label">List name</div><div class="project-name-row"><input class="project-name-input" value="${name}" placeholder="e.g. 12 Smith Street — structural review" oninput="setProjectListName(this.value)"></div><div class="project-name-help">Stored only in this browser. Do not put confidential project information here if you plan to copy/share the checklist.</div><div class="project-field-gap"><div class="label">Purpose</div><textarea class="project-purpose-textarea" oninput="setProjectListPurpose(this.value)">${purpose}</textarea><div class="project-name-help">This purpose statement is shown in the copied checklist, PDF and Markdown exports. The default text explains that the list is a project review aid, not a compliance assessment; you can update it to suit your project or audience.</div></div></div>${exportHelp}<div class="project-actions-bar"><button class="entry-btn primary" onclick="copyProjectShareLink()">Copy share link</button><button class="entry-btn" onclick="copyProjectChecklist()">Copy project checklist</button><button class="entry-btn" onclick="downloadProjectPdf()">Download PDF</button><button class="entry-btn" onclick="downloadProjectMarkdown()">Download Markdown</button><button class="entry-btn" onclick="exportActiveListFile()">Export list as file</button><button class="entry-btn danger" onclick="clearProjectList()">Clear list</button></div>${missing>0?`<div class="project-name-help">${missing} saved entry ${missing===1?'id was':'ids were'} not found in the current data and ${missing===1?'has':'have'} been hidden.</div>`:''}<div class="item-list project-list-panel">${cards||empty}</div></div>`;
 }
 function prefillUrl(form,name,link){
   return form.base+'?usp=pp_url'
@@ -1675,9 +1884,9 @@ function openShareImportModal(shared,mineCount){
     +'<p>You already have your own project review list with <strong>'+mineCount+'</strong> '+(mineCount===1?'entry':'entries')+'. What would you like to do?</p>'
     +'</div>'
     +'<div class="share-modal-actions">'
-    +'<button class="entry-btn primary" onclick="shareMerge()">Merge into my list</button>'
-    +'<button class="entry-btn" onclick="shareViewOnly()">Just view the shared list</button>'
-    +'<button class="entry-btn" onclick="shareReplace()">Replace my list</button>'
+    +'<button class="entry-btn primary" onclick="shareImportAsNew()">Import as a new list</button>'
+    +'<button class="entry-btn" onclick="shareMerge()">Merge into current list</button>'
+    +'<button class="entry-btn" onclick="shareViewOnly()">Just view it</button>'
     +'<button class="entry-btn danger" onclick="closeShareModal()">Cancel</button>'
     +'</div></div>';
   document.body.appendChild(ov);
@@ -1708,6 +1917,16 @@ function shareReplace(){
   saveProjectList({name:s.name||'',purpose:s.purpose,ids:s.ids});
   state.sharedPreview=null;state.view='projectList';render();window.scrollTo({top:0,left:0,behavior:'auto'});
 }
+// Workspace-safe default for an incoming shared link: land it as its own new
+// list rather than overwriting whatever the recipient is currently working on.
+function shareImportAsNew(){
+  closeShareModal();
+  const s=_sharedIncoming;if(!s)return;
+  const n=s.ids.length;
+  _sharedIncoming=null;
+  createList(s.name||'Shared review list',s.purpose,s.ids);
+  alert('Imported as a new review list ('+n+(n===1?' entry':' entries')+').');
+}
 function dismissSharedPreview(){state.sharedPreview=null;state.view='projectList';render();window.scrollTo({top:0,left:0,behavior:'auto'});}
 // Read-only view of a shared list that does NOT touch the saved list.
 function renderSharedPreview(){
@@ -1729,8 +1948,8 @@ function renderSharedPreview(){
     +'<div class="dim-header"><span class="dim-header-icon">\uD83D\uDD17</span><h1 class="dim-header-title">Shared review list'+(s.name?(': '+escHtml(s.name)):'')+'</h1></div>'
     +'<div class="share-preview-banner"><div class="spb-title">You\u2019re viewing a shared list</div><div class="spb-sub">These '+n+' '+(n===1?'entry is':'entries are')+' from a link someone sent you. Nothing has been saved to your own list yet \u2014 choose an action below.</div></div>'
     +'<div class="share-preview-actions">'
-    +'<button class="entry-btn primary" onclick="shareMerge()">Merge into my list</button>'
-    +'<button class="entry-btn" onclick="shareReplace()">Replace my list</button>'
+    +'<button class="entry-btn primary" onclick="shareImportAsNew()">Import as a new list</button>'
+    +'<button class="entry-btn" onclick="shareMerge()">Merge into current list</button>'
     +'<button class="entry-btn danger" onclick="dismissSharedPreview()">Discard</button>'
     +'</div>'
     +'<div class="item-list project-list-panel">'+cards+'</div></div>';
@@ -1740,14 +1959,14 @@ function renderSharedPreview(){
 function render(){
   const app=document.getElementById('app');
   if(state.sharedPreview){app.innerHTML=renderHeader()+renderSharedPreview();return;}
-  app.innerHTML=renderHeader()+(state.view==='guide'?renderBreadcrumb()+renderGuideView():state.view==='evidence'?renderBreadcrumb()+renderEvidenceSupportView():state.view==='projectList'?renderBreadcrumb()+renderProjectListView():state.view==='entry'?renderBreadcrumb()+renderEntryDetail():state.view==='dimension'?renderBreadcrumb()+renderDimensionView():state.view==='byDate'?renderBreadcrumb()+renderByDateView():state.view==='browse'?renderBreadcrumb()+renderBrowseView():renderHomeView());
+  app.innerHTML=renderHeader()+(state.view==='guide'?renderBreadcrumb()+renderGuideView():state.view==='evidence'?renderBreadcrumb()+renderEvidenceSupportView():state.view==='projectIndex'?renderBreadcrumb()+renderProjectIndexView():state.view==='projectList'?renderBreadcrumb()+renderProjectListView():state.view==='entry'?renderBreadcrumb()+renderEntryDetail():state.view==='dimension'?renderBreadcrumb()+renderDimensionView():state.view==='byDate'?renderBreadcrumb()+renderByDateView():state.view==='browse'?renderBreadcrumb()+renderBrowseView():renderHomeView());
 }
 
 function renderHeader(){
   const count=projectCount();
   const theme=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';
   const themeIcon=theme==='light'?'☀️':'🌙';
-  return `<div class="header"><div class="header-left" onclick="goHome()" style="cursor:pointer"><div class="logo">C</div><div><div class="header-title">Constructability Framework</div><div class="header-sub">Design Guidance</div></div></div><div class="header-actions"><button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch between light and dark theme" aria-label="Toggle colour theme"><span id="theme-toggle-icon">${themeIcon}</span></button><button class="project-header-btn" onclick="goProjectList()">📋 Project review list <span class="project-count-pill">${count}</span></button></div></div>`;
+  return `<div class="header"><div class="header-left" onclick="goHome()" style="cursor:pointer"><div class="logo">C</div><div><div class="header-title">Constructability Framework</div><div class="header-sub">Design Guidance</div></div></div><div class="header-actions"><button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch between light and dark theme" aria-label="Toggle colour theme"><span id="theme-toggle-icon">${themeIcon}</span></button><button class="project-header-btn" onclick="goProjectLists()">📋 Review lists <span class="project-count-pill">${count}</span></button></div></div>`;
 }
 
 function globalFacetValues(field){const s=new Set();allAvailableEntries().forEach(e=>{if(Array.isArray(e.data[field]))e.data[field].forEach(v=>s.add(v));});return s;}
@@ -1797,7 +2016,8 @@ function renderBreadcrumb(){
   let h='<div class="breadcrumb"><span class="breadcrumb-link" onclick="goHome()">Framework</span>';
   if(state.view==='guide'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">'+(guide?guide.title:'Guide')+'</span></div>'; }
   if(state.view==='evidence'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Evidence support index</span></div>'; }
-  if(state.view==='projectList'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">My project review list</span></div>';}
+  if(state.view==='projectIndex'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">My review lists</span></div>';}
+  if(state.view==='projectList'){const _ln=getProjectList().name;return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-link" onclick="goProjectLists()">My review lists</span><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">'+escHtml(_ln||'Untitled list')+'</span></div>';}
   if(state.view==='byDate'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">All entries by date</span></div>';}
   if(state.view==='browse'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Browse all entries</span></div>';}
   if(dim){
@@ -2283,6 +2503,7 @@ function parseHash(){
   if(!hash){state.view='home';state.dimId=null;state.itemId=null;state.locationFilter=null;}
   else if(hash==='guide'){state.view='guide';state.dimId=null;state.itemId=null;state.locationFilter=null;}
   else if(hash==='evidence-support'){state.view='evidence';state.dimId=null;state.itemId=null;state.locationFilter=null;if(!state.evidenceFilter)state.evidenceFilter='all';}
+  else if(hash==='project-lists'||hash==='review-lists'){state.view='projectIndex';state.dimId=null;state.itemId=null;state.locationFilter=null;}
   else if(hash==='project-list'||hash==='review-list'){state.view='projectList';state.dimId=null;state.itemId=null;state.locationFilter=null;}
   else if(hash==='by-date'){state.view='byDate';state.dimId=null;state.itemId=null;state.locationFilter=null;}
   else if(hash==='browse'){state.view='browse';state.dimId=null;state.itemId=null;state.locationFilter=null;}
