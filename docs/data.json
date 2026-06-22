@@ -1342,13 +1342,276 @@
         {
           "id": "void-former-slab-vs-thick-raft",
           "name": "Void-former slab vs. thick raft",
-          "available": false,
-          "draft": true,
+          "available": true,
           "data": {
             "question": "Where a thick raft is proposed, has a void-former (biaxial) suspended slab on piles been weighed against it — considering not just concrete volume but the buildability of a large, thick pour and its heat-of-hydration cracking risk?",
             "parameter": "Foundation/slab system where a thick raft is proposed, assessed against a void-former slab for pour buildability, self-weight and early thermal cracking.",
-            "_evidenceAngle": "Strongest tie is the mass-concrete THERMAL angle (more rigorous than 'uses less concrete'): a thick raft is a large heat-of-hydration pour prone to early thermal cracking, hard to build well; a biaxial void slab sidesteps the thick-pour problem and cuts self-weight. Practice reference: CIRIA C660 (controlling early-age thermal cracking) as a construction-practice guide, NOT a code clause. Keep the AS mass-concrete provisions in the back of mind only.",
-            "_thresholdSketch": "Good/Consider by pour thickness + thermal risk: thin/normal → fine. Concern: thick raft with real thermal-cracking control burden. Action required: very thick pour where a void slab would clearly ease buildability — weigh it."
+            "keywords": [
+              "thick raft",
+              "mass concrete",
+              "heat of hydration",
+              "early thermal cracking",
+              "biaxial voided slab",
+              "bubble deck",
+              "voided slab",
+              "self-weight reduction",
+              "staged pour",
+              "CIRIA C660",
+              "CIRIA C766"
+            ],
+            "elementType": [
+              "slab on ground",
+              "raft/footing"
+            ],
+            "constructionPhase": [
+              "founding/slab"
+            ],
+            "background": "A raft that keeps getting thicker eventually stops being an ordinary slab and starts behaving like a mass-concrete pour. Beyond a certain thickness the heat generated as the concrete cures cannot escape fast enough, the core runs much hotter than the surface, and the restrained contraction that follows drives early-age thermal cracking. At that point the raft is no longer just expensive in concrete — the <em>pour itself</em> has become the construction problem, needing mix control, pour planning, possible staging or layering, thermal monitoring and crack-control measures.<br><br>An internal biaxial voided slab removes concrete from the middle of the section, where it does least structural work. That cuts self-weight and — relevant here — cuts the volume of heat-generating concrete in the thickest part of the pour, which can ease the thermal problem rather than just trim the quantity. The trade is a more specialist system: void set-out and fixing are critical, buoyancy during the pour has to be controlled, and punching/shear zones near piles, columns and heavy loads need the voids omitted or detailed around.<br><br>The default is the solid raft. The void-former slab earns its place only where the raft has become thick and concrete-intensive enough that the pour is the real burden — not merely because removing concrete looks efficient on paper.",
+            "_evidenceAngle": "Strongest tie is the mass-concrete THERMAL angle (more rigorous than 'uses less concrete'): a thick raft is a large heat-of-hydration pour prone to early thermal cracking, hard to build well; a biaxial void slab sidesteps the thick-pour problem and cuts self-weight. Practice reference: CIRIA C660 (controlling early-age thermal cracking) as a construction-practice guide, NOT a code clause. Keep the AS mass-concrete provisions in the back of mind only. Supporting: Ju et al. (2019) monitored a thick raft, ~35°C core-to-surface peak; thickness >2.5 m gave >25°C difference above which crack control is needed. Biaxial-slab self-weight/material mechanism: Oukaili et al. (2024), Gajewski et al. (2023), Na & Paik (2019) — but these are suspended/commercial floor slabs, analogous at best to a ground raft.",
+            "_thresholdSketch": "Good/Consider by pour thickness + thermal risk: thin/normal → fine, solid raft is correct. Concern: thick raft with a real thermal-cracking control burden (monitoring, staging, mix control becoming necessary). Action required: very thick / mass-concrete pour where a void slab would clearly ease buildability — weigh it explicitly. Decide whether to anchor a band on a thickness figure (e.g. the ~2.5 m Ju finding) or keep it qualitative; the Ju threshold is from one study and mix/restraint/ambient-dependent, so probably qualitative with the figure as a flag.",
+            "_todo": "Write up evidence section in house style. Confirm whether to cite a thickness number in the bands or keep qualitative. Check the biaxial-slab papers are framed as analogous (floor/commercial), not as direct ground-raft evidence. Note this entry was the original stub — expanded here with background/keywords/metadata; the _evidenceAngle and _thresholdSketch are the original working notes, preserved.",
+            "examples": [],
+            "supportingImages": [],
+            "dateAdded": "2026-06-23",
+            "dateReviewed": "2026-06-23",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "DRAFT — not yet written up. The thermal mechanism is well supported (Ju et al. 2019 on thick-raft core-to-surface temperature and cracking risk; CIRIA C660/C766 as construction-practice references for early-age thermal crack control). The self-weight / concrete-reduction mechanism for biaxial voided slabs is peer-reviewed (Oukaili 2024, Gajewski 2023, Na & Paik 2019) but drawn from suspended and commercial floor slabs rather than residential ground rafts, so it transfers by analogy only. Expect Medium, with bands as reasoned constructability judgement keyed to pour thickness and thermal-control burden."
+            },
+            "relatedEntries": [
+              {
+                "id": "raft-slab-vs-waffle-pod",
+                "note": "The ground-bearing slab-selection entry. Start there; arrive here only once the raft option has turned thick and concrete-intensive enough that the pour is the problem."
+              },
+              {
+                "id": "piled-ground-beams-vs-structural-slab-over-void",
+                "note": "Shares the voided / piled-slab theme from the piled side. Weigh together where piles are involved and the raft is heavy."
+              },
+              {
+                "id": "bored-concrete-piles-vs-screw-piles",
+                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
+              },
+              {
+                "id": "pvc-permanent-formwork-vs-blockwork",
+                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
+              }
+            ],
+            "thresholds": [],
+            "alternatives": [],
+            "applicability": {
+              "appliesWhere": "",
+              "checks": [],
+              "note": ""
+            }
+          }
+        },
+        {
+          "id": "raft-slab-vs-waffle-pod",
+          "name": "Raft slab vs. waffle pod",
+          "available": false,
+          "data": {
+            "question": "Is the site flat, regular and lightly-loaded enough that a waffle pod earns its place — or does site complexity push the slab back to a stiffened raft?",
+            "parameter": "How many of the four raft-favouring site-complexity factors genuinely apply to the slab footprint.",
+            "keywords": [
+              "waffle pod",
+              "waffle raft",
+              "stiffened raft",
+              "raft slab",
+              "ground slab",
+              "slab on ground",
+              "footing system",
+              "polystyrene pods",
+              "void former slab",
+              "residential slab",
+              "reactive soil slab",
+              "edge beam",
+              "slab stiffening",
+              "above-ground slab",
+              "AS 2870"
+            ],
+            "elementType": [
+              "slab on ground",
+              "raft/footing"
+            ],
+            "constructionPhase": [
+              "founding/slab"
+            ],
+            "background": "The stiffened raft and the waffle pod raft are both ribbed ground-slab systems — a thin top slab over a grid of stiffening ribs — but they are built in opposite directions. A stiffened raft is formed <em>into</em> the ground: beam trenches are excavated, caged and poured monolithically with the slab. A waffle pod raft is formed <em>above</em> the ground: lightweight polystyrene pods are laid out on a cleared, level surface and the ribs and slab are poured over and between them, with no beam excavation at all.<br><br>The question is not which slab is stronger — both can be designed to carry the load and made compliant under AS 2870 for the relevant site class. It is whether the <em>way a waffle pod is built</em> still pays off on this particular site. The pod system's advantages — no trenching, less spoil to cart, lighter handling, more predictable concrete quantities, less wet-weather disruption — all depend on the slab being a flat, regular, above-ground platform. The further the site moves from that, the more the pod system has to be cut, stepped, edge-built and specially detailed, and the more its advantage erodes back toward what a stiffened raft would have given anyway.<br><br>The stiffened raft is the robust general-purpose fallback: it tolerates slope, irregular shapes, local thickening and concentrated loads because beams can be put wherever the load goes. The waffle pod is the efficiency option that only holds its advantage on a simple site. Four site-complexity factors are what pull the choice back toward the raft. Each is counted only where it materially affects the build, not where it is merely theoretical:<br><br><strong>Sloping ground / step-downs / cut-and-fill</strong> — the footprint is not flat, so the above-ground pod platform needs build-up, stepping or retaining that a trenched raft would handle in the dig.<br><strong>Irregular or complex footprint</strong> — many offsets, re-entrants, acute corners or complex edges that make the pod grid and edge detailing awkward.<br><strong>Heavy or concentrated loading</strong> — point loads, heavy two-storey-plus masonry or non-uniform loading that the thin top slab and standard rib grid are not a natural fit for, pushing toward local thickening better done as a stiffened raft.<br><strong>Pod system forced outside its standard layout</strong> — the design pushes the pods well beyond their standard configuration with heavy modification, special pods, many step-downs or unusual edge conditions, at which point the speed and material advantage is largely spent.<br><br>Where none of these apply, the waffle pod is the genuinely better-buildable choice and this entry treats it as such. Where they stack, the stiffened raft is usually the simpler build, and a waffle pod may be solving a problem the site does not have.",
+            "thresholds": [
+              {
+                "range": "0 factors",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "The site is flat, the footprint regular, the loading light and even, and the pod layout can stay standard. This is exactly what the waffle pod system is designed for: above-ground construction, no beam trenching, less spoil to handle and cart, lighter components, more predictable concrete quantities and less wet-weather disruption. Choose the waffle pod here with confidence — do not default to a stiffened raft out of habit on a site that genuinely suits a pod."
+              },
+              {
+                "range": "1 factor",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "One complication applies. Open a comparison rather than abandoning the pod automatically, and look at what the single factor actually is. A mild, localised slope or a single step-down can often be absorbed with routine edge build-up without losing the pod's advantage. But check the fix honestly: if accommodating the one factor starts pulling the pod system out of its standard layout, the advantage may already be eroding and a stiffened raft may build just as easily. A single, manageable complication should inform the choice, not automatically flip it."
+              },
+              {
+                "range": "2 or more factors",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Two or more complications are stacking — slope with an irregular footprint, heavy loading with non-standard pod layout, step-downs with complex edges. The waffle pod is being pushed outside the simple flat-platform case it is good at, and the extra cutting, stepping, edge work and special detailing erode the speed and material savings that justified it. A stiffened raft is the likely better-buildable choice here, because beams and local thickening can follow the slope, shape and loads directly. Revert to a stiffened raft before the scheme is fixed, or record why the pod system still builds well on this particular site."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Start the simple-site default at a waffle pod",
+                "description": "On a flat, regular, lightly-loaded residential footprint where the pod layout stays standard, the waffle pod is the buildability default — above-ground, low-spoil, lighter and quicker. Do not move to a stiffened raft without a site-specific reason."
+              },
+              {
+                "title": "Count only the genuine complications (0, 1, 2+)",
+                "description": "Count a factor only where it materially changes the build — slope only where it actually needs build-up or stepping, an irregular footprint only where the pod grid genuinely gets awkward, loading only where local thickening is really required, and 'non-standard' only where the pods are pushed well beyond their standard configuration."
+              },
+              {
+                "title": "One factor — compare, do not switch",
+                "description": "A single complication justifies a check, not an automatic change of system. A mild slope or one step-down can often be handled with routine edge build-up while keeping the pod's advantage; confirm the fix does not quietly drag the system out of its standard layout."
+              },
+              {
+                "title": "Two or more factors — revert to a stiffened raft",
+                "description": "When slope combines with an irregular shape, or heavy loading with a non-standard layout, the buildability case has shifted: a stiffened raft follows the slope, shape and loads directly with beams and local thickening. Compare them on their merits rather than forcing the pod."
+              },
+              {
+                "title": "Do not let the slab type be chosen on price alone",
+                "description": "A waffle pod that looks cheaper per square metre on a flat takeoff can lose that saving once a sloping or complex site forces cutting, stepping and special edge detailing. Weigh the built cost on this site, not the catalogue cost."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to lightly-to-moderately loaded residential and small-commercial ground floors where both a stiffened raft and a waffle pod raft could be made structurally compliant under AS 2870, and the designer is weighing which system builds better on this site. It is most relevant to single- and two-storey housing, additions and small-footprint commercial work where site shape, slope and spoil strongly influence buildability.<br><br>It does not apply where the soil engineering itself dictates the slab type on structural grounds (defer to the geotechnical and structural design and the AS 2870 site classification), where piles are required — that is the piled ground-floor entry — or where the governing problem is a very thick raft pour and its heat-of-hydration cracking risk, which is the void-former-slab-vs-thick-raft entry.",
+              "checks": [
+                {
+                  "title": "Site classification and structural design come first",
+                  "description": "The AS 2870 site class and the geotechnical and structural design govern whether each slab type is viable at all. This entry sits downstream of that decision — it compares buildability only between systems that are already structurally acceptable."
+                },
+                {
+                  "title": "Verify each complication is real, not theoretical",
+                  "description": "Do not count a factor just because it could exist — count it only where it materially changes how the slab is built. A gentle fall the dig already accommodates is not automatically a slope factor."
+                },
+                {
+                  "title": "The pod advantage depends on the pod staying standard",
+                  "description": "The waffle pod's speed, spoil and material savings assume a standard above-ground layout. Once the design needs heavy pod modification, many step-downs or unusual edges, re-test whether the advantage still exists."
+                },
+                {
+                  "title": "Slope is the strongest single signal",
+                  "description": "Industry guidance is most consistent on slope: on sloping ground a stiffened raft is normally the better-buildable option, because the pod platform otherwise needs build-up or stepping the raft handles in excavation."
+                },
+                {
+                  "title": "The decision is regional",
+                  "description": "Pod supply, trade familiarity, spoil-disposal cost and the local builder pool vary by region. Treat this as NSW-practice guidance supported by Australian industry sources, not a universal rule."
+                }
+              ],
+              "note": "Use the rating as a constructability review prompt, not a rule that a waffle pod must be abandoned above a set number of factors. The aim is to head off two opposite errors: specifying a waffle pod on a sloping, irregular or heavily-loaded site because it looks cheaper on a flat takeoff, and defaulting to a stiffened raft on a flat, simple, light site where the pod would build faster with less excavation and spoil."
+            },
+            "evidence": "<strong>Waffle pod buildability mechanism — trades-training guidance.</strong> RMIT's building-trades material describes the waffle raft as a wholly above-ground slab poured over a grid of polystyrene void forms, requiring no beam excavation and using materially less concrete and steel than a stiffened raft — on the order of a third less concrete and a fifth less steel. That is the buildability case in one line: no trenching, less spoil, lighter handling and more predictable quantities, but a system that assumes a flat site.<br><br><strong>The site-shape limit — industry journalism.</strong> Building Connection frames the trade directly: waffle slabs are cheaper and easier to install on very flat ground, but on sloping ground or complex designs a stiffened raft is normally the better option. This is the sentence the entry is built around — site complexity, not structural capacity, is what pushes the choice back to a raft.<br><br><strong>Supplier corroboration.</strong> Neumann Steel describes waffle pods as built on top of a cleared, level surface rather than in-ground, avoiding trenching and excavated-spoil disposal and being less interrupted by wet weather because they are installed on a level platform. Supplier evidence — useful for the mechanism rather than as independent confirmation.<br><br><strong>Threshold basis.</strong> The 0 / 1 / 2+ bands are reasoned design-stage constructability judgement, not measured thresholds, and each factor is itself a material / not-material call rather than a number. They scale the scrutiny that staying on — or moving away from — a waffle pod should attract on a given site, and should be refined with project examples and regional builder feedback.<br><br><strong>References</strong><br>RMIT Learning Lab. <em>Features of waffle raft slabs</em> (BCGBC4010A footing systems).<br>Building Connection (2018). <em>Reactive soil: a slab of confusion</em>.<br>Neumann Steel. <em>Raft Slab vs Waffle Slab — What's the Difference?</em>",
+            "examples": [],
+            "supportingImages": [],
+            "dateAdded": "2026-06-23",
+            "dateReviewed": "2026-06-23",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Supported by trades-training guidance (RMIT) and industry journalism (Building Connection) that frame the waffle-vs-raft trade directly on site shape and complexity, with supplier corroboration (Neumann Steel) of the above-ground, low-spoil mechanism. The sources are Australian and on-point but industry/training rather than peer-reviewed or code-based, and the 0 / 1 / 2+ bands are reasoned constructability judgement rather than measured thresholds. Treat the entry as a constructability prompt, not a proven decision rule."
+            },
+            "relatedEntries": [
+              {
+                "id": "void-former-slab-vs-thick-raft",
+                "note": "The same slab-system family. This entry handles the ground-bearing choice (raft vs waffle pod); the other handles the case where the raft becomes a thick, heat-generating pour and a void-former slab on piles is weighed against it. Check it once the raft turns thick or heavy."
+              },
+              {
+                "id": "piled-ground-beams-vs-structural-slab-over-void",
+                "note": "The piled counterpart to this decision. If the site needs piles rather than a ground-bearing slab, the choice moves to that entry — ground beams vs a structural slab over an under-slab void."
+              },
+              {
+                "id": "bored-concrete-piles-vs-screw-piles",
+                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
+              },
+              {
+                "id": "pvc-permanent-formwork-vs-blockwork",
+                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
+              }
+            ]
+          }
+        },
+        {
+          "id": "piled-ground-beams-vs-structural-slab-over-void",
+          "name": "Piled ground floor: ground beams vs. structural slab over void",
+          "available": false,
+          "data": {
+            "question": "Where piles are required under a ground floor, has a structural slab spanning to the piles over an under-slab void been weighed against the more familiar piles + ground beams + infill slab — on excavation, spoil, reinforcement congestion, pile tolerance and construction sequence?",
+            "parameter": "Piled ground-floor system selection: piles + ground beams vs. a pile-supported structural slab over an under-slab void former, assessed on excavation/spoil, reinforcement congestion, pile-tolerance sensitivity and pour sequence.",
+            "keywords": [
+              "ground beams",
+              "pile cap",
+              "piled slab",
+              "suspended slab on piles",
+              "structural slab over void",
+              "under-slab void former",
+              "heave void",
+              "piled raft",
+              "screw pile slab",
+              "pile head connection",
+              "reactive soil heave"
+            ],
+            "elementType": [
+              "pile/pier/shaft",
+              "ground beam",
+              "slab on ground"
+            ],
+            "constructionPhase": [
+              "founding/piling",
+              "founding/slab"
+            ],
+            "background": "Once piles are required under a ground floor, there are two broad ways to get from the piles to a floor. The familiar one is <strong>piles + ground beams + infill slab</strong>: ground beams run between pile heads along the load lines, the walls bear on the beams, and a slab spans or sits between them. The load path is clear — wall → ground beam → pile — and most builders know it. The alternative is a <strong>pile-supported structural slab over an under-slab void</strong>: the slab itself becomes a transfer element spanning between piles, with a sacrificial or compressible void former beneath it that creates a gap between the slab soffit and the ground.<br><br>The choice is not about which is stronger — both can be designed to work. It is about which process is the hard part on this site. Ground beams bring trench (or formwork) excavation, spoil, cages in trenches, and a more fragmented pour sequence, and they get awkward where there are many wall offsets, steps, corners or tight pile tolerances. A structural slab over a void can remove the beam trenching and give a flatter, cleaner platform to build off, and it isolates the slab from heaving or reactive ground — but the slab becomes thicker and more heavily reinforced, pile punching/shear zones now matter, pile-position tolerance becomes a slab-detailing issue, and the void former itself has to be set out, supported during the pour and inspected.<br><br>The default is piles + ground beams, because the load path and the trade knowledge are already there. The structural-slab-over-void option earns its place when the beam route's excavation, spoil, congestion or sequencing has become the real constructability problem, or when heave isolation is genuinely needed — not just because a flat slab looks tidier on paper.",
+            "_evidenceAngle": "Two threads. (1) Piles+ground beams as a COMBINED system, not 'piles under a slab' — NHBC 'Efficient design of piled foundations for low-rise housing' (optimum pile spacing ~3–5 m and beam size are coupled; fixity and construction-tolerance forces must be allowed for; cast-in-trench vs formwork depends on ground). (2) Under-slab void / piled-slab alternative is a recognised system — Allcon and Cordek (void formers create a cavity under the slab to stop heave transferring stress), Speedeck (piled raft = raft suspended on piles, fewer components, less excavation/spoil), QuadraBuild case study (suspended slab on helical piles). Keep AS 2870 reactive-soil framing in the back of mind; this is a buildability selection prompt, not a structural-capacity prompt.",
+            "_thresholdSketch": "Likely a counting/categorical parameter mirroring the family. Candidate triggers that push AWAY from ground beams toward a structural slab over void: (a) beam trenching deep/messy/spoil-intensive; (b) heave isolation genuinely required; (c) reinforcement congestion / fragmented sequencing at many offsets and corners; (d) pile tolerances make beam-to-pile detailing fragile; (e) a flat platform is materially simpler to build. Sketch: 0 triggers → stay with ground beams (familiar, clear load path). 1 → compare, do not switch. 2+ → actively weigh the structural slab over void. Needs refinement — watch that 'slab over void' carries its own burden (thicker slab, punching zones, void set-out/inspection), so it is not a free win.",
+            "_todo": "Confirm whether NHBC pile-spacing figures transfer to NSW residential screw/CFA practice. Decide final trigger list and whether 3 or 4 bands. Pull the heave-isolation mechanism cleanly from Allcon/Cordek without leaning on supplier marketing. Cross-check overlap with bored-vs-screw (method) and the Safety screw-pile entry.",
+            "examples": [],
+            "supportingImages": [],
+            "dateAdded": "2026-06-23",
+            "dateReviewed": "2026-06-23",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "DRAFT — not yet written up. Mechanism support exists: NHBC guidance treats piles + ground beams as a coupled system with optimum spacing/beam-size and construction-tolerance coordination; supplier and case-study sources (Allcon, Cordek, Speedeck, QuadraBuild) establish that pile-supported slabs over under-slab voids are a recognised system used for heave isolation and reduced excavation/spoil. No direct comparative study sets thresholds between the two for small AU piled ground floors, so this will sit at Medium and the bands will be reasoned constructability judgement."
+            },
+            "relatedEntries": [
+              {
+                "id": "raft-slab-vs-waffle-pod",
+                "note": "The ground-bearing counterpart. That entry covers the choice when no piles are needed; this one picks up once piles are required."
+              },
+              {
+                "id": "void-former-slab-vs-thick-raft",
+                "note": "Shares the under-slab / voided-slab theme. That entry weighs a void-former slab against a thick raft on pour buildability; this one weighs the piled slab-over-void against ground beams."
+              },
+              {
+                "id": "bored-concrete-piles-vs-screw-piles",
+                "note": "Upstream of this decision — it settles which pile method suits the site; this entry then settles how the floor gets from the piles. Weigh together."
+              },
+              {
+                "id": "latent-safety-risk-of-screw-pile-foundations",
+                "note": "If the piles are screw piles, the as-built verification burden in the Safety entry still applies regardless of which floor system is chosen above them."
+              }
+            ],
+            "thresholds": [],
+            "alternatives": [],
+            "applicability": {
+              "appliesWhere": "",
+              "checks": [],
+              "note": ""
+            }
           }
         }
       ]
@@ -5022,7 +5285,10 @@
     "fragment|update|equipment-access-constraints|ctqpsu",
     "fragment|entry|temporary-stability-of-retained-or-part-built-structure|qt5l5a",
     "fragment|entry|formwork-and-falsework-complexity|b098iw",
-    "fragment|entry|isometric-overview-views-in-structural-drawing-sets|rpj2h1"
+    "fragment|entry|isometric-overview-views-in-structural-drawing-sets|rpj2h1",
+    "fragment|entry|piled-ground-beams-vs-structural-slab-over-void|1d1roql",
+    "fragment|entry|raft-slab-vs-waffle-pod|zvftn9",
+    "fragment|update|void-former-slab-vs-thick-raft|jngsa"
   ],
   "_rejected": [],
   "_reconsider": [
