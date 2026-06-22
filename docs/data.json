@@ -3784,6 +3784,157 @@
               }
             ]
           }
+        },
+        {
+          "id": "temporary-stability-of-retained-or-part-built-structure",
+          "name": "Temporary stability of retained or part-built structure",
+          "available": true,
+          "data": {
+            "question": "Does the design identify whether retained or part-built structure stays stable before its permanent restraints are complete?",
+            "parameter": "Whether the temporary stability of retained or part-built structure is identified on the drawings or in the design notes.",
+            "keywords": [
+              "retained wall",
+              "retained facade",
+              "facade retention",
+              "façade retention",
+              "existing wall to remain",
+              "temporary bracing",
+              "temporary support",
+              "temporary stability",
+              "construction stage stability",
+              "demolition sequence",
+              "alteration",
+              "renovation",
+              "partial demolition",
+              "staged construction",
+              "lateral restraint",
+              "out-of-plane stability",
+              "wall collapse",
+              "masonry wall collapse",
+              "freestanding masonry wall",
+              "part-built frame",
+              "braced bay",
+              "floor diaphragm",
+              "roof restraint",
+              "return wall",
+              "existing structure",
+              "adjoining structure",
+              "retaining wall collapse",
+              "construction sequence",
+              "WHS Regulation 295",
+              "designer safety report",
+              "temporary works interface"
+            ],
+            "elementType": [
+              "wall",
+              "facade",
+              "frame"
+            ],
+            "constructionPhase": [
+              "demolition",
+              "sequencing"
+            ],
+            "background": "A structure can be stable once finished and still pass through an unstable temporary condition while it is being built. This is a documented hazard, not a theoretical one: regulators have recorded fatal and serious collapses of masonry and retained walls on construction and demolition sites where lateral restraint from permanent returns, floors or roof framing was missing, not yet installed, or removed during demolition.<br><br>The reason design-stage recognition matters is that temporary stability cannot be assumed to be handled by site judgement alone. The recorded collapses occurred where lateral support was missing, where temporary bracing was absent or inadequate, or where responsibility for it was unclear &mdash; and in the more dangerous cases the need for temporary stability design was not clearly identified, scoped or allocated in the first place, rather than simply being under-designed. A retained wall or part-built frame can be acting as a freestanding temporary structure even though nothing about the finished design makes that obvious. Making the dependency explicit at design stage keeps it from being left to site intuition, contract-scope assumptions or informal bracing.<br><br>There is also a recurring reason these elements end up retained, which can help explain how the dependency slips through. On renovation and alterations-and-additions projects, existing fabric is often kept for planning, heritage, streetscape or setback reasons, so a retained wall can enter the project as architectural or planning fabric rather than as a structural element to be designed for. The structural engineer is typically engaged for the new work &mdash; the ground slab, footings, beams, suspended slabs and connections &mdash; so the retained fabric&rsquo;s temporary stability can fall into the gap between planning intent, permanent design scope, and builder-managed temporary works.",
+            "thresholds": [
+              {
+                "range": "Identified or self-stable",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "The temporary condition has been determined and conveyed: the retained or part-built element is either confirmed self-stable in the temporary condition, or the drawings and notes clearly identify the temporary stability dependency. Where temporary support is required, the documents flag that a temporary stability assessment and bracing or support by a suitably qualified person is required before demolition, excavation or construction removes the existing restraint, and that the support remain until the new permanent restraint is complete and capable of acting. Where the project retains existing fabric or is built in stages, the determination is made and recorded even where the conclusion is that the element is self-stable, so the assumption is visible rather than assumed."
+              },
+              {
+                "range": "Foreseeable, not flagged",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Ordinary renovation, demolition or staged-construction sequencing appears to leave a retained or part-built element without the lateral restraint it previously relied on, and no note, sequence assumption, hold point, bracing requirement or temporary-works interface requirement is shown. The dependency should be clarified and communicated before the design is issued or before construction starts."
+              },
+              {
+                "range": "Mechanism unflagged",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "A retained wall, facade, frame, retaining wall or similar element is left standing with a credible overturning, out-of-plane, sliding, buckling or progressive-collapse mechanism during a normal construction or demolition sequence, and the design gives no warning or requirement for temporary stability assessment. The stability assumption should be resolved before construction proceeds."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies where structural design is undertaken for renovation, alteration, demolition or staged construction &mdash; work that characteristically involves new concrete such as ground slabs, footings, tie beams or suspended slabs &mdash; and existing fabric is retained, or the structure is left part-built, before its permanent restraints are complete. The retained element need not itself be reinforced concrete; what brings it within scope is that the structural design and its construction sequence remove, change or rely on that element&rsquo;s restraint. It does not apply where the issue is only conventional falsework or formwork sizing for wet concrete, where a temporary stability system has already been designed and checked by a suitable temporary-works engineer, or where the retained element is demonstrably self-stable under the temporary load case.",
+              "checks": [
+                {
+                  "title": "Confirm what is retained and removed",
+                  "description": "On renovation work the designer should normally ask what is being retained and what is being removed, rather than assume. The entry has limited force where the designer genuinely has no information that an existing element is to be retained or altered &mdash; but obtaining that information is itself part of designing the alteration."
+                },
+                {
+                  "title": "Planning-retained fabric",
+                  "description": "Where existing walls, facades, verandahs, chimneys, slabs, columns or building portions are retained to support an alterations-and-additions pathway, preserve streetscape character, maintain setbacks or retain heritage fabric, check whether those elements remain stable once adjacent floors, roofs, returns, diaphragms or internal walls are removed. Planning value does not imply structural stability."
+                },
+                {
+                  "title": "What previously braced it",
+                  "description": "Identify what actually restrained the element in its original condition &mdash; floors, roof, cross-walls, returns, a diaphragm or adjacent ground &mdash; and confirm whether the sequence removes that restraint before the new restraint can act."
+                },
+                {
+                  "title": "Sequence dependency",
+                  "description": "Distinguish completed-condition stability from each construction stage. A frame stable once its diaphragm or braced bay is complete may be unstable before then."
+                },
+                {
+                  "title": "Adjacent and retained ground",
+                  "description": "Excavation or changed levels can undermine a retaining wall or adjoining structure that was previously stable."
+                }
+              ],
+              "note": "Use the rating as a safe-design review prompt. The step that matters at design stage is recognising and conveying the temporary condition &mdash; that the retained or part-built element is either self-stable or needs temporary support &mdash; before its restraint is removed. The engineer designing the permanent structure is well placed to see a foreseeable hazard and should recommend that temporary bracing or support be designed; that design can be done by the structural engineer if engaged, or by a temporary-works engineer or other competent person. The point is that the recommendation comes from the engineer who can see the hazard rather than being left to chance on site."
+            },
+            "alternatives": [
+              {
+                "title": "Identify the retained or part-built elements that lose restraint",
+                "description": "Mark the existing walls, facades, frames, returns, roof or floor restraints or adjoining structures that are being retained, removed, undercut or temporarily isolated, so the elements whose restraint changes during the works are explicit on the design."
+              },
+              {
+                "title": "Add a specific design note, not a generic one",
+                "description": "Where the instability is foreseeable from the design, tie the note to the actual element or stage rather than relying on a generic &lsquo;contractor to brace as required&rsquo;. For a retained wall, for example: &lsquo;Existing wall to remain is not to be left unrestrained. Contractor to obtain a temporary stability assessment and bracing or support design by a suitably qualified engineer before removing existing lateral restraints (roof framing, floor framing, return walls or other connected structure). Temporary support to remain until the new permanent restraint is complete and capable of acting.&rsquo; For a retained facade, require the retention system, sequence, inspection and removal or transfer of support to be designed and certified by a suitably qualified temporary-works engineer before the internal structure is demolished."
+              },
+              {
+                "title": "Recommend the bracing be designed by a competent person",
+                "description": "Recommend that a temporary-works engineer or competent structural engineer design and check the bracing before the existing restraint is removed. The structural engineer can take this on directly if engaged to do so; the key step is that the recommendation is made rather than assumed."
+              },
+              {
+                "title": "Show the sequence assumptions the design relies on",
+                "description": "State the construction-sequence assumptions the permanent design depends on &mdash; for example &lsquo;return wall to be built before the wall exceeds the nominated height&rsquo;, &lsquo;roof or floor diaphragm not to be removed until wall bracing is installed&rsquo;, or &lsquo;do not backfill or surcharge the wall until permanent restraint is complete&rsquo;. Where feasible, sequence permanent stabilising elements early so they provide restraint sooner and reduce temporary bracing demand."
+              },
+              {
+                "title": "Record a design-specific hazard in the WHS safety report",
+                "description": "Where the design creates an unusual or design-specific temporary stability hazard, record it in the written safety report under WHS Regulation 295 so the client and principal contractor cannot miss it."
+              },
+              {
+                "title": "Use condition-based removal wording, not fixed dates",
+                "description": "Instead of &lsquo;remove props after 7 days&rsquo;, use condition-based wording such as &lsquo;do not remove temporary restraint until the permanent stabilising element or load path shown on the drawings is complete and capable of acting&rsquo;."
+              }
+            ],
+            "evidence": "This entry rests on regulator incident evidence and safe-design duties, applied to retained or part-built structure. The band states are a judged application of that evidence, not measured thresholds.<br><br><strong>The hazard is real and recorded.</strong> SafeWork NSW reported fatal and serious masonry-wall collapse incidents on Sydney sites and identified the lack of lateral support from permanent returns, floor or wall frames or roof structures &mdash; missing, not yet installed, or removed during demolition &mdash; as the usual contributing factor. WorkSafe Victoria gives independent corroboration, warning that unstable or inadequately braced masonry walls expose workers and the public to death or serious injury, and that temporary bracing should be retained until the final structural elements provide adequate lateral support.<br><br><strong>The recommended response is a design-stage one.</strong> The SafeWork NSW alert recommends identifying, before construction, which walls need temporary support, and including temporary support locations and designs in the construction drawings &mdash; placing the recognition step at design stage rather than leaving it to site judgement.<br><br><strong>The communication duty sits with the designer.</strong> The NSW Safe Design of Structures Code of Practice says designers must provide information on the conditions necessary for the structure to be without risk during construction, expressly including temporary work required to construct or renovate the building as designed, such as bracing of frames. It also requires a written safety report for design-specific construction hazards under WHS Regulation 295.<br><br><strong>Temporary-works guidance sets the boundary.</strong> The Engineers Australia / Temporary Works Forum Australia guidance states that the greatest opportunity to eliminate temporary-works risk is during permanent works design, and that permanent designers should communicate residual risks and temporary conditions so temporary-works designers and site teams can manage them &mdash; without making the permanent engineer responsible for designing every brace.<br><br><strong>A responsibility precedent.</strong> Australian Steel Institute Technical Note TN002 describes a steel-frame collapse during erection where the engineer&rsquo;s generic &lsquo;contractor to brace as required&rsquo; note was reportedly held insufficient, the court finding that the engineer needed to make the need for temporary bracing explicit. It is steel-specific and is used as an analogue, not a general rule.<br><br>Taken together, the evidence supports a design-stage recognition and communication prompt. It does not support a broad claim that builders generally fail to understand freestanding-wall risk &mdash; in some recorded cases the risk was treated as obvious &mdash; so the entry rates the duty to identify and communicate the dependency, not any claim about how often it is missed.<br><br><strong>References</strong><br>SafeWork NSW. (2017). <em>Dangers from masonry walls on construction or demolition sites</em> [safety alert].<br>WorkSafe Victoria. (2014, reviewed 2022). <em>Danger of freestanding masonry walls</em> [safety alert].<br>SafeWork NSW. <em>Safe Design of Structures: Code of Practice</em>.<br>Engineers Australia / Temporary Works Forum Australia. (2020). <em>Temporary Works Risk Guidance</em> (TWfAU2020:01).<br>Hogan, T. J. / Australian Steel Institute. (2011). <em>Technical Note TN002: Issues with Temporary Bracing of Steel Structures</em> (Version 2).",
+            "examples": [],
+            "dateAdded": "2026-06-22",
+            "dateReviewed": "2026-06-22",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "supportingImages": [],
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Supported by regulator alerts and safety reporting showing that freestanding or temporarily unsupported masonry walls have collapsed where final lateral restraints were missing, not yet installed or removed (SafeWork NSW, corroborated by WorkSafe Victoria), together with safe-design and temporary-works guidance placing the recognition and communication step in the designer&rsquo;s lane (NSW Safe Design of Structures Code with the WHS Regulation 295 duty; Temporary Works Forum Australia), and a responsibility precedent that an engineer&rsquo;s generic bracing note can be insufficient (ASI TN002). It sits at medium rather than high because the fatal-incident evidence is predominantly masonry rather than RC-specific and there is no dataset quantifying how often the dependency is missed; the entry rates the duty to identify and communicate the dependency, not any claim about frequency or about builders lacking knowledge. It does not require the permanent designer to design the temporary bracing."
+            },
+            "relatedEntries": [
+              {
+                "id": "confined-space-entry-at-pier-and-shaft-bases",
+                "note": "Both are safe-design entries where the permanent design creates a construction-stage hazard that should be designed out or communicated, not discovered on site."
+              },
+              {
+                "id": "latent-safety-risk-of-screw-pile-foundations",
+                "note": "Both turn on a verifiability gap and a design-versus-install responsibility split &mdash; a hazard that can fall between parties."
+              },
+              {
+                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
+                "note": "Both turn on construction-stage behaviour differing from the completed-condition behaviour the design was checked for."
+              }
+            ]
+          }
         }
       ]
     },
@@ -4573,7 +4724,8 @@
     "fragment|update|pvc-permanent-formwork-vs-blockwork|56nd0s",
     "fragment|update|pvc-permanent-formwork-vs-blockwork|nxpqdr",
     "fragment|update|bored-concrete-piles-vs-screw-piles|13c0i0w",
-    "fragment|update|equipment-access-constraints|ctqpsu"
+    "fragment|update|equipment-access-constraints|ctqpsu",
+    "fragment|entry|temporary-stability-of-retained-or-part-built-structure|qt5l5a"
   ],
   "_rejected": [],
   "_reconsider": [
