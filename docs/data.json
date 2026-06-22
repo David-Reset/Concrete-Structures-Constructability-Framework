@@ -3881,62 +3881,6 @@
           }
         },
         {
-          "id": "temporary-works-stability",
-          "name": "Temporary works stability",
-          "available": false,
-          "draft": true,
-          "data": {
-            "question": "Does the permanent design provide what the structure needs to stand safely while it is only part-built — propping points, lateral restraint, a stable erection sequence — or does stability rely on elements that are not yet in place?",
-            "parameter": "Whether the design identifies how the partly-built structure is held stable during construction (props, bracing, pour/erection sequence) before the permanent load path is complete.",
-            "_evidenceAngle": "Safety-in-design + the principle that a structure stable when finished can be unstable mid-build (a slab relying on a wall not yet cast, a frame needing the floor diaphragm for stability). Anchor to design-for-construction-safety literature (Behm 2005, already cited in the confined-space entry) for the design-influences-safety link; corroborate with temporary-works guidance on the construction condition being a distinct load case.",
-            "_thresholdSketch": "Good: stable at every stage with permanent elements / clearly-flagged temp props. Concern: stability depends on an element installed later, not flagged. Action required: a credible collapse mechanism exists during a normal build sequence with nothing in the design addressing it.",
-            "relatedEntries": [
-              {
-                "id": "edge-protection-requirements",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              },
-              {
-                "id": "reinforcement-mat-fall-through-risk",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              },
-              {
-                "id": "confined-space-entry-at-pier-and-shaft-bases",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              },
-              {
-                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              }
-            ]
-          }
-        },
-        {
-          "id": "edge-protection-requirements",
-          "name": "Edge protection requirements",
-          "available": false,
-          "draft": true,
-          "data": {
-            "question": "Have the perimeter and penetration edges been designed so fall protection can be installed and anchored — cast-in points, a slab edge that takes a barrier — rather than leaving crews to improvise edge protection on a detail that does not accommodate it?",
-            "parameter": "Whether exposed edges, slab perimeters and large penetrations are designed to accept and anchor fall protection (cast-in sockets, suitable edge thickness/upstand).",
-            "_evidenceAngle": "Falls are a leading construction fatality category; designing-in anchorage/edge that suits proprietary edge protection removes an improvisation hazard. Same safety-in-design hierarchy-of-control basis as the confined-space and fall-through entries; corroborate with fall-from-height statistics for the scale of the hazard.",
-            "_thresholdSketch": "Good: edges accept standard edge protection / cast-in anchors shown. Concern: edge protection possible only by improvisation. Action required: detail actively prevents safe fall protection (e.g. thin or sloped edge with no anchorage).",
-            "relatedEntries": [
-              {
-                "id": "reinforcement-mat-fall-through-risk",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              },
-              {
-                "id": "confined-space-entry-at-pier-and-shaft-bases",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              },
-              {
-                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              }
-            ]
-          }
-        },
-        {
           "id": "formwork-and-falsework-complexity",
           "name": "Formwork and falsework complexity",
           "available": true,
@@ -4090,6 +4034,62 @@
               }
             ]
           }
+        },
+        {
+          "id": "temporary-works-stability",
+          "name": "Temporary works stability",
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "Does the permanent design provide what the structure needs to stand safely while it is only part-built — propping points, lateral restraint, a stable erection sequence — or does stability rely on elements that are not yet in place?",
+            "parameter": "Whether the design identifies how the partly-built structure is held stable during construction (props, bracing, pour/erection sequence) before the permanent load path is complete.",
+            "_evidenceAngle": "Safety-in-design + the principle that a structure stable when finished can be unstable mid-build (a slab relying on a wall not yet cast, a frame needing the floor diaphragm for stability). Anchor to design-for-construction-safety literature (Behm 2005, already cited in the confined-space entry) for the design-influences-safety link; corroborate with temporary-works guidance on the construction condition being a distinct load case.",
+            "_thresholdSketch": "Good: stable at every stage with permanent elements / clearly-flagged temp props. Concern: stability depends on an element installed later, not flagged. Action required: a credible collapse mechanism exists during a normal build sequence with nothing in the design addressing it.",
+            "relatedEntries": [
+              {
+                "id": "edge-protection-requirements",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              },
+              {
+                "id": "reinforcement-mat-fall-through-risk",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              },
+              {
+                "id": "confined-space-entry-at-pier-and-shaft-bases",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              },
+              {
+                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              }
+            ]
+          }
+        },
+        {
+          "id": "edge-protection-requirements",
+          "name": "Edge protection requirements",
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "Have the perimeter and penetration edges been designed so fall protection can be installed and anchored — cast-in points, a slab edge that takes a barrier — rather than leaving crews to improvise edge protection on a detail that does not accommodate it?",
+            "parameter": "Whether exposed edges, slab perimeters and large penetrations are designed to accept and anchor fall protection (cast-in sockets, suitable edge thickness/upstand).",
+            "_evidenceAngle": "Falls are a leading construction fatality category; designing-in anchorage/edge that suits proprietary edge protection removes an improvisation hazard. Same safety-in-design hierarchy-of-control basis as the confined-space and fall-through entries; corroborate with fall-from-height statistics for the scale of the hazard.",
+            "_thresholdSketch": "Good: edges accept standard edge protection / cast-in anchors shown. Concern: edge protection possible only by improvisation. Action required: detail actively prevents safe fall protection (e.g. thin or sloped edge with no anchorage).",
+            "relatedEntries": [
+              {
+                "id": "reinforcement-mat-fall-through-risk",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              },
+              {
+                "id": "confined-space-entry-at-pier-and-shaft-bases",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              },
+              {
+                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              }
+            ]
+          }
         }
       ]
     },
@@ -4233,7 +4233,7 @@
                 "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
               },
               {
-                "id": "model-based-3d-coordination-vs-2d-only-documentation",
+                "id": "isometric-overview-views-in-structural-drawing-sets",
                 "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
               }
             ]
@@ -4353,7 +4353,7 @@
                 "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
               },
               {
-                "id": "model-based-3d-coordination-vs-2d-only-documentation",
+                "id": "isometric-overview-views-in-structural-drawing-sets",
                 "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
               }
             ]
@@ -4482,6 +4482,159 @@
           }
         },
         {
+          "id": "isometric-overview-views-in-structural-drawing-sets",
+          "name": "Isometric overview views in structural drawing sets",
+          "available": true,
+          "data": {
+            "question": "Where the overall structure is hard to grasp from the 2D drawings alone, does the set include an isometric overview to orient the builder?",
+            "parameter": "Inclusion of an isometric overview where the 2D set is spatially hard to read.",
+            "keywords": [
+              "isometric",
+              "axonometric",
+              "3D view",
+              "pictorial view",
+              "overview view",
+              "orientation view",
+              "general arrangement",
+              "GA",
+              "Revit",
+              "3D model",
+              "spatial comprehension",
+              "mental assembly",
+              "wayfinding",
+              "cross-referencing",
+              "printed drawings",
+              "level changes",
+              "construction zones"
+            ],
+            "elementType": [
+              "frame"
+            ],
+            "constructionPhase": [
+              "design & documentation"
+            ],
+            "background": "Structural drawings are normally issued as plans, sections, schedules and details, because those views are efficient for the information a builder must have exactly right: dimensions, levels, reinforcement, member marks, laps, cover and notes. They are, and should remain, the controlling source of construction information.<br><br>The constructability issue sits one step before that. Before any of those drawings can be used confidently, the builder has to form a three-dimensional picture of what is being built. Where the structure is simple, planar or repetitive, a well-keyed 2D set does this on its own. But where levels change, elements overlap in plan, staging matters, or several structural systems meet, the reader is left to assemble the whole structure in their head from several separate sheets before the detail makes sense. A simple isometric overview acts as a map: it shows the form, the major elements, the levels and the construction zones in a way that can be taken in quickly, while the 2D drawings continue to carry the exact dimensions and requirements.<br><br>How much this costs depends on how the set was produced, and that should guide the call. Where the structure has been modelled in a 3D environment &mdash; for example Revit, where a model is built and then turned into 2D sheets &mdash; an isometric is essentially another view of a model that already exists, and can be produced at little or no extra cost. This is <strong>not</strong> BIM: the set is still issued as printed 2D drawings, and the model is used only as a convenient way to generate a static orientation view. Nothing here asks anyone to issue, coordinate in, or hand over a model. Where a 3D model already exists and the structure has any real spatial complexity, there is little reason to leave the overview out. Where the set is simple enough to draft as a few 2D diagrams, an overview is rarely needed. The case that genuinely needs judgement is a complex structure drafted in 2D, where a clean isometric is real extra work and should be reserved for where it materially helps the reader.<br><br>The view is an orientation aid, not a dimensioned source of truth. Its job is to help the reader understand the structure and find the right plan, section or detail &mdash; not to instruct construction on its own.",
+            "thresholds": [
+              {
+                "range": "Reader is oriented",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "Either the structure is simple, repetitive or clearly communicated by well-keyed plans and sections (an overview is optional), or one or more simple isometric overviews are provided where the arrangement would not otherwise be obvious. Where the structure has been modelled in 3D, an overview is included as a near-zero-cost view off the existing model."
+              },
+              {
+                "range": "Mental assembly required",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "The arrangement, levels, staging or interfaces require the builder to mentally assemble several plans, sections and details, and no overview is provided &mdash; particularly where the structure was modelled in 3D and an overview could have been generated at little cost. Add a simple isometric overview or zone view."
+              },
+              {
+                "range": "Likely to be misread",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "The overall build, construction sequence, level relationships or system interfaces are unlikely to be understood correctly from the printed set as issued. Provide one or more isometric or staged overview views before issue."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Add a simple isometric overview, sized to orient not to instruct",
+                "description": "Show the overall structural form, the main levels, the major walls, beams, slabs, columns, pile caps and retaining elements, and the key construction zones. Keep it clean and diagrammatic. Do not load it with dimensions or reinforcement notation, which belong in the 2D set."
+              },
+              {
+                "title": "Where the structure is already modelled in 3D, include the overview by default",
+                "description": "If the set has been produced from a 3D model (for example Revit), an orientation view is nearly free to generate. Unless the structure is so simple that a view adds nothing, include one. The model is used only to produce a static printed view, not issued or coordinated in."
+              },
+              {
+                "title": "Choose views that show how things relate, not each piece in isolation",
+                "description": "An isometric earns its value by showing vertical relationships and interfaces: how levels stack, what sits below or above, how systems meet. A whole-structure overview, or a small set of zone or per-level views where one view would be too busy, is usually more useful than a flat view of a single simple level. For a multi-level building modelled in 3D, an overview of each level or key zone is a low-cost, high-clarity option."
+              },
+              {
+                "title": "Make the overview a map with callouts, not a picture",
+                "description": "Label the major elements and reference the relevant plans, sections and details on the isometric, so the view routes the reader to where the controlling information lives. An overview that does not cross-reference is decoration; one that points to the right sheet is doing the work."
+              },
+              {
+                "title": "Keep all dimensions and reinforcement in the 2D views",
+                "description": "Do not rely on the isometric for exact levels, bar sizes, laps, cover or setout unless they are also shown in the controlling plans, sections or schedules."
+              },
+              {
+                "title": "Use a staged isometric sequence where construction order affects understanding",
+                "description": "Where temporary stability, demolition, pour staging, retained walls, underpinning or access constraints affect the work, a short staged isometric sequence communicates the sequence more directly than separate plans."
+              },
+              {
+                "title": "Add the orientation-only note",
+                "description": "Include a standard note near the view: \"Isometric view is diagrammatic and for orientation only. Refer to plans, sections, schedules and details for dimensions, levels, reinforcement and construction requirements.\" This note is what makes the view safe to issue in a contractual set and stops a reader treating a simplified isometric as complete."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies where the overall structural arrangement is not immediately clear from the 2D drawings alone: multiple structural levels, setdowns, folds or steps; retaining walls, ground beams, slabs, pits, pile caps or deep beams overlapping in plan; construction staging affecting understanding; multiple systems meeting (concrete, steel, blockwork, permanent formwork, bored or screw piles); waterproofing, rebates or joints depending on three-dimensional relationships; or the builder needing to understand the overall form before the dimensions make sense. It does not apply where the structure is simple, planar, repetitive or already clearly communicated by the 2D drawings. This is not a rule to always add a 3D view.",
+              "checks": [
+                {
+                  "title": "The drafting method is a practical proxy",
+                  "description": "If the structure is complex enough to be modelled in 3D (or drafted as anything beyond simple 2D diagrams), an overview is both cheap to produce and likely to help. If it is simple enough for a few 2D diagrams, it usually is not needed. The only effortful case is a complex structure drafted in 2D, where the overview should be reserved for where it materially helps."
+                },
+                {
+                  "title": "This is not BIM",
+                  "description": "The set is still issued as printed 2D drawings. A 3D model, where one exists, is only a convenient way to generate one static orientation view. No model issue, coordination or handover is implied."
+                },
+                {
+                  "title": "The target is the overall arrangement",
+                  "description": "This entry is about understanding the spatial arrangement before hunting for detailed information. Whether an individual congested detail is clear is a different question."
+                },
+                {
+                  "title": "It must not imply completeness",
+                  "description": "A clean 3D view can look authoritative while omitting critical information. It must be framed as orientation only, or it can create false confidence, where a reader assumes something not shown does not exist."
+                },
+                {
+                  "title": "Simple and repetitive structures are out of scope",
+                  "description": "Adding an overview where the structure already reads easily creates clutter and weakens the entry's credibility."
+                }
+              ],
+              "note": "Use this as a drawing-communication review prompt, not a drafting-style mandate. The aim is that a reader can understand the build quickly, not to prescribe how an office draws an isometric."
+            },
+            "evidence": "<strong>Drawing standards and practice already recognise the role.</strong> Australian infrastructure drawing guidance (Transport for NSW's engineering drawing and CAD requirements) recognises that isometric views, photographs or rendered sections may be added to improve the clarity of an engineering feature. The Royal Architectural Institute of Canada's handbook of practice notes that construction documentation is traditionally orthographic &mdash; plans, elevations and sections &mdash; but that axonometric, isometric and perspective views are included where they better illustrate complex arrangements. The throughline is consistent: keep the orthographic set as the exact layer and add a pictorial view where it clarifies the arrangement. This entry applies that established split to ordinary structural sets.<br><br><strong>The comprehension mechanism is supported by construction-information research.</strong> A recent survey of construction professionals on paper-based 2D drawings finds they remain widely used and are valued for needing no software or power and for being portable, but that a majority also report weaknesses around cross-referencing and dependence on other documents, which can lead to misinterpretation. Earlier work notes that individual 2D drawings often have to be combined and decoded by the reader, and that this is magnified when one element must be understood across several sheets &mdash; the mental-assembly burden this entry targets. Experimental work on craft-worker performance found that readers with lower spatial cognition performed worse with 2D information alone, and that supplementing it with 3D information reduced or removed that gap, so a clearer spatial representation makes the set more robust across a wider range of readers rather than only a convenience for strong spatial reasoners.<br><br><strong>Limit on the evidence.</strong> The experimental studies are on pipefitting and MEP assembly, not reinforced-concrete structural sets, so the mechanism transfers but the exact performance figures do not. The standards establish that isometric views are permitted and useful for clarity, not when they become necessary, so the trigger of necessity remains a reasoned constructability judgement, which is why this is a Medium-support entry rather than high. The cost asymmetry between 3D-modelled and 2D-drafted sets is sound practitioner reasoning that strengthens the recommendation, but it is not established by the cited sources and so lives in guidance rather than in the evidence claim.<br><br><strong>References</strong><br>Transport for NSW. <em>T MU MD 00006 ST &mdash; Engineering Drawings and CAD Requirements.</em><br>Royal Architectural Institute of Canada. <em>Canadian Handbook of Practice for Architects &mdash; Appendix D: Drawings.</em><br>Foroughi Sabzevar, M., Gheisari, M., &amp; Lo, J. (2024). <em>Analyzing the pros and cons of paper-based 2D drawings in construction: a survey of U.S. construction professionals.</em> International Journal of Construction Management. https://doi.org/10.1080/15623599.2024.2331863<br>Goodrum, P. M., Miller, J., Sweany, J., &amp; Alruwaythi, O. (2016). <em>Influence of the format of engineering information and spatial cognition on craft-worker performance.</em> Journal of Construction Engineering and Management, 142(9). https://doi.org/10.1061/(ASCE)CO.1943-7862.0001157<br>Dadi, G. B., Goodrum, P. M., Taylor, T. R. B., &amp; Maloney, W. F. (2014). <em>Effectiveness of communication of spatial engineering information through 3D CAD and 3D printed models.</em> Visualization in Engineering, 2(9). https://doi.org/10.1186/s40327-014-0009-8",
+            "examples": [
+              {
+                "image": "images/2d-only-set-requires-mental-assembly-concern.webp",
+                "tag": "concern",
+                "caption": "2D-only set requires mental assembly. The building has multiple retaining levels, ground beams, pits and setdowns. The plans and sections are each individually correct, but the reader must jump between many sheets to understand how the structure fits together, with no overview provided. A simple isometric overview would explain the build before the details are used for dimensions."
+              },
+              {
+                "image": "images/isometric-overview-supports-2d-set-recommended.webp",
+                "tag": "recommended",
+                "caption": "Isometric overview supports the 2D set. One simple isometric overview shows the key levels, the main elements and callouts to the relevant plans and sections, with a note stating the view is diagrammatic. It gives a quick mental model of the structure and points the reader back to the controlling drawings without replacing them."
+              }
+            ],
+            "supportingImages": [],
+            "dateAdded": "2026-06-22",
+            "dateReviewed": "2026-06-22",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Supported by Australian and international drawing-documentation guidance that recognises isometric and axonometric views for clarifying complex arrangements, and by construction-information research showing 2D-only documentation increases cross-referencing and spatial-interpretation burden while 3D supplementation helps lower-spatial-cognition readers. The direction of the call is well-founded, but the trigger for when a structural set requires an overview remains a reasoned judgement, and the experimental evidence is from pipefitting rather than RC structural drawings, so the entry is a Medium-support review prompt rather than a hard rule."
+            },
+            "relatedEntries": [
+              {
+                "id": "details-and-schedule-references",
+                "note": "Companion Design Communication entry. Both concern whether the reader can connect information across the set; the overview is the wayfinding layer that routes them to the right detail and section."
+              },
+              {
+                "id": "detail-sheet-organisation",
+                "note": "Related findability entry. That one is about whether details are findable and grouped; this one is about understanding the spatial arrangement before hunting for a detail."
+              },
+              {
+                "id": "large-bar-callout-clarity",
+                "note": "Both prevent important information being technically present on the sheet but easy to miss."
+              },
+              {
+                "id": "temporary-stability-of-retained-or-part-built-structure",
+                "note": "Where staged isometrics are used, this Safety-in-Design entry is why the construction sequence matters."
+              }
+            ]
+          }
+        },
+        {
           "id": "drawing-notation-clarity",
           "name": "Drawing notation clarity",
           "available": false,
@@ -4497,7 +4650,7 @@
                 "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
               },
               {
-                "id": "model-based-3d-coordination-vs-2d-only-documentation",
+                "id": "isometric-overview-views-in-structural-drawing-sets",
                 "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
               }
             ]
@@ -4515,23 +4668,10 @@
             "_thresholdSketch": "Good: details findable and logically grouped. Concern: scattered details needing cross-sheet assembly. Action required: organisation that reliably sends the reader hunting and inviting wrong-detail use.",
             "relatedEntries": [
               {
-                "id": "model-based-3d-coordination-vs-2d-only-documentation",
+                "id": "isometric-overview-views-in-structural-drawing-sets",
                 "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
               }
             ]
-          }
-        },
-        {
-          "id": "model-based-3d-coordination-vs-2d-only-documentation",
-          "name": "Model-based (3D) coordination vs 2D-only documentation",
-          "available": false,
-          "draft": true,
-          "_status": "STRONG EVIDENCE ALREADY FOUND — high-priority to finish.",
-          "data": {
-            "question": "For a geometrically complex or congested element, is coordination carried in a 3D / model-based form that the builder can interrogate — or is it left to 2D sections alone, where clashes and fit problems surface only on site?",
-            "parameter": "Whether complex / congested elements are coordinated and communicated in 3D (model-based) rather than 2D drawings alone.",
-            "_evidenceAngle": "Best-evidenced new communication entry. Quantified: Won et al. (2016) — BIM clash detection prevented ~2.5% of construction waste on Korean high-rise; Autodesk — up to 40% fewer RFIs and 90%+ of coordination conflicts eliminated before work. Conceptual anchor: the MacLeamy / cost-influence curve (ability to influence cost high early; cost of changes rises later) — the same indirect-but-authoritative move as Rosenholtz for the callout entry. None of it is a compliance argument.",
-            "_thresholdSketch": "Good: complex/congested zones coordinated in 3D. Consider: 2D with good sections for moderate complexity. Concern: high complexity carried in 2D only. Action required: congested junction where 2D cannot show fit and clashes are likely."
           }
         }
       ]
@@ -4881,7 +5021,8 @@
     "fragment|update|bored-concrete-piles-vs-screw-piles|13c0i0w",
     "fragment|update|equipment-access-constraints|ctqpsu",
     "fragment|entry|temporary-stability-of-retained-or-part-built-structure|qt5l5a",
-    "fragment|entry|formwork-and-falsework-complexity|b098iw"
+    "fragment|entry|formwork-and-falsework-complexity|b098iw",
+    "fragment|entry|isometric-overview-views-in-structural-drawing-sets|rpj2h1"
   ],
   "_rejected": [],
   "_reconsider": [
