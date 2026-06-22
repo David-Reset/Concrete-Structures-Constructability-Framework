@@ -3730,62 +3730,6 @@
           }
         },
         {
-          "id": "temporary-works-stability",
-          "name": "Temporary works stability",
-          "available": false,
-          "draft": true,
-          "data": {
-            "question": "Does the permanent design provide what the structure needs to stand safely while it is only part-built — propping points, lateral restraint, a stable erection sequence — or does stability rely on elements that are not yet in place?",
-            "parameter": "Whether the design identifies how the partly-built structure is held stable during construction (props, bracing, pour/erection sequence) before the permanent load path is complete.",
-            "_evidenceAngle": "Safety-in-design + the principle that a structure stable when finished can be unstable mid-build (a slab relying on a wall not yet cast, a frame needing the floor diaphragm for stability). Anchor to design-for-construction-safety literature (Behm 2005, already cited in the confined-space entry) for the design-influences-safety link; corroborate with temporary-works guidance on the construction condition being a distinct load case.",
-            "_thresholdSketch": "Good: stable at every stage with permanent elements / clearly-flagged temp props. Concern: stability depends on an element installed later, not flagged. Action required: a credible collapse mechanism exists during a normal build sequence with nothing in the design addressing it.",
-            "relatedEntries": [
-              {
-                "id": "edge-protection-requirements",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              },
-              {
-                "id": "reinforcement-mat-fall-through-risk",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              },
-              {
-                "id": "confined-space-entry-at-pier-and-shaft-bases",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              },
-              {
-                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              }
-            ]
-          }
-        },
-        {
-          "id": "edge-protection-requirements",
-          "name": "Edge protection requirements",
-          "available": false,
-          "draft": true,
-          "data": {
-            "question": "Have the perimeter and penetration edges been designed so fall protection can be installed and anchored — cast-in points, a slab edge that takes a barrier — rather than leaving crews to improvise edge protection on a detail that does not accommodate it?",
-            "parameter": "Whether exposed edges, slab perimeters and large penetrations are designed to accept and anchor fall protection (cast-in sockets, suitable edge thickness/upstand).",
-            "_evidenceAngle": "Falls are a leading construction fatality category; designing-in anchorage/edge that suits proprietary edge protection removes an improvisation hazard. Same safety-in-design hierarchy-of-control basis as the confined-space and fall-through entries; corroborate with fall-from-height statistics for the scale of the hazard.",
-            "_thresholdSketch": "Good: edges accept standard edge protection / cast-in anchors shown. Concern: edge protection possible only by improvisation. Action required: detail actively prevents safe fall protection (e.g. thin or sloped edge with no anchorage).",
-            "relatedEntries": [
-              {
-                "id": "reinforcement-mat-fall-through-risk",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              },
-              {
-                "id": "confined-space-entry-at-pier-and-shaft-bases",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              },
-              {
-                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              }
-            ]
-          }
-        },
-        {
           "id": "temporary-stability-of-retained-or-part-built-structure",
           "name": "Temporary stability of retained or part-built structure",
           "available": true,
@@ -3932,6 +3876,217 @@
               {
                 "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
                 "note": "Both turn on construction-stage behaviour differing from the completed-condition behaviour the design was checked for."
+              }
+            ]
+          }
+        },
+        {
+          "id": "temporary-works-stability",
+          "name": "Temporary works stability",
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "Does the permanent design provide what the structure needs to stand safely while it is only part-built — propping points, lateral restraint, a stable erection sequence — or does stability rely on elements that are not yet in place?",
+            "parameter": "Whether the design identifies how the partly-built structure is held stable during construction (props, bracing, pour/erection sequence) before the permanent load path is complete.",
+            "_evidenceAngle": "Safety-in-design + the principle that a structure stable when finished can be unstable mid-build (a slab relying on a wall not yet cast, a frame needing the floor diaphragm for stability). Anchor to design-for-construction-safety literature (Behm 2005, already cited in the confined-space entry) for the design-influences-safety link; corroborate with temporary-works guidance on the construction condition being a distinct load case.",
+            "_thresholdSketch": "Good: stable at every stage with permanent elements / clearly-flagged temp props. Concern: stability depends on an element installed later, not flagged. Action required: a credible collapse mechanism exists during a normal build sequence with nothing in the design addressing it.",
+            "relatedEntries": [
+              {
+                "id": "edge-protection-requirements",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              },
+              {
+                "id": "reinforcement-mat-fall-through-risk",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              },
+              {
+                "id": "confined-space-entry-at-pier-and-shaft-bases",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              },
+              {
+                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              }
+            ]
+          }
+        },
+        {
+          "id": "edge-protection-requirements",
+          "name": "Edge protection requirements",
+          "available": false,
+          "draft": true,
+          "data": {
+            "question": "Have the perimeter and penetration edges been designed so fall protection can be installed and anchored — cast-in points, a slab edge that takes a barrier — rather than leaving crews to improvise edge protection on a detail that does not accommodate it?",
+            "parameter": "Whether exposed edges, slab perimeters and large penetrations are designed to accept and anchor fall protection (cast-in sockets, suitable edge thickness/upstand).",
+            "_evidenceAngle": "Falls are a leading construction fatality category; designing-in anchorage/edge that suits proprietary edge protection removes an improvisation hazard. Same safety-in-design hierarchy-of-control basis as the confined-space and fall-through entries; corroborate with fall-from-height statistics for the scale of the hazard.",
+            "_thresholdSketch": "Good: edges accept standard edge protection / cast-in anchors shown. Concern: edge protection possible only by improvisation. Action required: detail actively prevents safe fall protection (e.g. thin or sloped edge with no anchorage).",
+            "relatedEntries": [
+              {
+                "id": "reinforcement-mat-fall-through-risk",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              },
+              {
+                "id": "confined-space-entry-at-pier-and-shaft-bases",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              },
+              {
+                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
+                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+              }
+            ]
+          }
+        },
+        {
+          "id": "formwork-and-falsework-complexity",
+          "name": "Formwork and falsework complexity",
+          "available": true,
+          "data": {
+            "question": "Does the permanent design keep the formwork and falsework it requires as simple to build and remove as the structure allows?",
+            "parameter": "Whether the design minimises avoidable formwork and falsework complexity.",
+            "keywords": [
+              "formwork",
+              "falsework",
+              "formwork complexity",
+              "backpropping",
+              "backprops",
+              "props",
+              "propping",
+              "striking",
+              "strike formwork",
+              "soffit access",
+              "floor depth variation",
+              "set-down",
+              "upstand",
+              "cantilever",
+              "transfer beam",
+              "beam count",
+              "column grid",
+              "repetition",
+              "formwork cycling",
+              "construction-stage loading",
+              "prop removal",
+              "lifting clearance",
+              "formwork collapse",
+              "partly-cured concrete",
+              "temporary works",
+              "WHS Regulation 295"
+            ],
+            "elementType": [
+              "slab",
+              "beam",
+              "column",
+              "wall",
+              "frame"
+            ],
+            "constructionPhase": [
+              "formwork"
+            ],
+            "background": "Formwork and falsework are a temporary structure the builder has to design, erect, load and remove &mdash; and they routinely carry wet concrete, reinforcement, plant and people before the permanent element can support itself. The permanent design largely sets how big and complicated that temporary structure has to be. Every extra beam, set-down, upstand, deep edge, cantilever, transfer or one-off geometry becomes formwork that must be fabricated, propped, accessed, loaded and then removed, often at height.<br><br><strong>Simpler formwork is not only cheaper to cycle; it is safer.</strong> Formwork is the dominant on-site activity in a concrete frame: L&ouml;fgren et al. (2001) attribute roughly 49% of concrete-structure labour to formwork against about 11% to concrete operations, so it is where worker exposure concentrates, and reducing its extent and complexity reduces that exposure. Fewer and more repetitive formwork conditions mean fewer complex temporary structures to assemble and brace, less awkward work at height around congested soffits, easier removal, and fewer points of failure. Safe Work Australia&rsquo;s formwork and falsework guidance makes the design link directly: designers of the permanent structure can reduce risk by considering alternative designs, minimising columns and cantilevered floor sections, reducing variation in floor depth, and allowing sufficient clearance and safe access for moving large or heavy components.<br><br>Complexity here is something the designer can read straight off the drawings: beam and column count, floor-depth variation, cantilevers, deep edges, one-off geometry, and the access and lifting clearance around them. The number of unique beam depths, set-downs, upstands, cantilevers and transfers a design forces is a direct count of bespoke formwork conditions, which is why the parameter, though categorical, can be assessed quantitatively at design stage.<br><br>This entry does not ask the permanent works engineer to design the formwork or falsework &mdash; that is the contractor&rsquo;s or temporary-works engineer&rsquo;s role. It asks whether the permanent design has avoided imposing <em>avoidable</em> temporary-works complexity, has left room to build, and has communicated any unusual construction-stage support, loading or removal condition it creates rather than leaving it to be discovered on site.",
+            "thresholds": [
+              {
+                "range": "Simple and accessible",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "The design uses repetitive, regular geometry and has minimised beams, columns, floor-depth variations and cantilevers where the structure allows. Soffits and edges can be formed, braced, accessed and removed with standard equipment, and there is adequate clearance and lifting access. Any unusual support, loading or removal condition is identified, and temporary support is required to remain on a condition basis (until the supported element and permanent load path are complete and concrete strength is verified) rather than on a fixed time."
+              },
+              {
+                "range": "Avoidable complexity",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "The design imposes formwork and falsework complexity that the structure does not obviously require &mdash; multiple one-off conditions, frequent floor-depth changes, deep or awkward edges, congested or hard-to-access soffits &mdash; without any sign that a simpler alternative was considered. Or a construction-stage loading or support dependency, such as backpropping cascading through partly-cured floors below the pour, is present but the drawings are silent on it."
+              },
+              {
+                "range": "Unbuildable or overloaded",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "The geometry or sequence forces formwork or falsework that is impractical to access, brace or remove safely, or that imposes a credible overload or collapse condition on the temporary works or on partly-cured concrete &mdash; and nothing in the design identifies it."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies where a reinforced concrete design &mdash; slabs, beams, walls, columns or frames &mdash; requires formwork and falsework to be built, loaded and removed during construction. It does not require the permanent works engineer to design the formwork or falsework, or to take over the contractor&rsquo;s temporary-works design, checking, certification, inspection or permits to load; those remain temporary-works responsibilities.",
+              "checks": [
+                {
+                  "title": "Was a simpler option weighed",
+                  "description": "Look for evidence that a more regular or repetitive arrangement was considered &mdash; regularised depths, fewer beams, a rationalised grid &mdash; rather than the complex geometry being adopted by default."
+                },
+                {
+                  "title": "Access and removal",
+                  "description": "Check that soffits, edges and voids can be reached, braced and removed safely with standard equipment, and that there is clearance to place and move large or heavy components."
+                },
+                {
+                  "title": "Construction-stage loading",
+                  "description": "Identify where the partly-built structure or its falsework will carry wet concrete, reinforcement packs, plant or stacked material, and where backpropping will pass load through partly-cured floors below the pour."
+                },
+                {
+                  "title": "Removal condition",
+                  "description": "Confirm that temporary support is tied to achieved strength and a completed load path rather than to a fixed number of days."
+                }
+              ],
+              "note": "This is a categorical parameter: there is no single universal threshold, and the rating turns on whether avoidable complexity was weighed and any unusual condition communicated, not on a measured count. A &lsquo;Concern&rsquo; or &lsquo;Action required&rsquo; result is a review prompt, not a prohibition &mdash; a complex formwork condition may still be the right answer once the full design context is weighed; the rating asks that the simpler option was considered and that any residual condition was conveyed. The permanent designer&rsquo;s role is to keep the temporary works as simple as the structure allows, leave room to build and remove it, identify foreseeable construction-stage loading, and supply the loads, stability and assumed-sequence assumptions the temporary-works designer needs."
+            },
+            "alternatives": [
+              {
+                "title": "Count the one-off formwork conditions",
+                "description": "Tally the unique beam depths, set-downs, upstands, deep edges, cantilevers and transfers the design forces. Each is a bespoke piece of formwork that must be fabricated, propped, accessed and removed; the count is a quick measure of how much temporary-works complexity the design is creating."
+              },
+              {
+                "title": "Reduce avoidable complexity where the structure allows",
+                "description": "Consider fewer beams, a rationalised column grid, regularised floor depths, trimmed cantilevers and deep edges, and geometry that repeats floor-to-floor. Simpler, more repetitive formwork is faster to cycle and safer to build."
+              },
+              {
+                "title": "Provide access and lifting clearance",
+                "description": "Leave room for falsework, props and panels to be placed, braced and removed, and for large or heavy components to be moved safely. A detail that cannot be reached or removed safely is a safety problem, not just a cost one."
+              },
+              {
+                "title": "Flag construction-stage loading and backpropping",
+                "description": "Where the partly-built structure will carry wet concrete, reinforcement packs, plant or stacked material &mdash; or where backpropping will cascade load through partly-cured floors below the pour &mdash; identify the dependency so the loading and the affected floors can be checked or a limit communicated. Safe Work Australia&rsquo;s formwork and falsework guidance sets out the related controls: no one beneath falsework while it is loaded, and back-propping verified before any support is released."
+              },
+              {
+                "title": "State temporary-support removal as a condition, not a time",
+                "description": "Prefer &lsquo;support to remain until the supported element and permanent load path are complete and concrete strength has been verified&rsquo; over &lsquo;remove after 7 days&rsquo;. Time-only directions can authorise removal before the permanent element can act. Where dismantling sequence matters, note that falsework is removed in reverse order of erection and that formwork is generally removed before falsework so material does not fall onto people below."
+              },
+              {
+                "title": "Record unusual conditions in the safety report",
+                "description": "Where a formwork, falsework, loading or removal condition is atypical or specific to this design, record it in the designer&rsquo;s safety report / safety-in-design register, consistent with the Safe Design of Structures Code and WHS Regulation 295."
+              }
+            ],
+            "evidence": "<strong>Simplification is a recognised designer lever.</strong> Safe Work Australia&rsquo;s <em>General Guide for Formwork and Falsework</em> states that designers of the permanent structure can simplify the temporary works and minimise risk by considering alternative designs, minimising columns and cantilevered floor sections, reducing variation in floor depth, and allowing sufficient clearance and safe access for moving large or heavy components. The same guide sets out the construction-stage load case the temporary works must carry &mdash; dead and live loads, workers, plant, stacked material, wet concrete, point loads, prestressing-related redistribution, and erection and dismantling sequence &mdash; and lists controls including building as designed, not altering without authority, inspecting and certifying before loading, avoiding point loads, providing adequate foundations and not exceeding prop working loads. Its falsework controls also require that no one be beneath falsework while it is loaded, that dismantling proceed in reverse order of erection, that back-propping be verified before support is released, and that formwork generally be removed before falsework so material does not fall onto people below.<br><br><strong>Why complexity is a safety issue, not only a cost one.</strong> Formwork is the dominant on-site activity in a concrete frame: L&ouml;fgren et al. (2001) attribute roughly 49% of concrete-structure labour to formwork against about 11% to concrete operations, and Jarkas (2010) measured repetition and standardisation improving formwork labour productivity. Because formwork is where most of the on-site work &mdash; and therefore most of the worker exposure &mdash; sits, reducing its extent and complexity reduces exposure. Analyses of falsework failures find that the majority occur during concrete placement (Hadipriono &amp; Wang, 1986), the moment of greatest load and the greatest number of people at risk, which is why an unflagged construction-stage loading or removal condition is consequential.<br><br><strong>The construction stage of concrete is genuinely hazardous.</strong> Major construction-stage concrete collapses &mdash; 2000 Commonwealth Avenue, Boston (1971) and Skyline Plaza, Bailey&rsquo;s Crossroads (1973) &mdash; were driven by loading or removing support before the concrete had gained strength, not by geometric complexity as such. They are cited here to support the removal-as-a-condition point (recommended action 5): temporary support tied to achieved strength rather than elapsed time.<br><br><strong>Formwork design and certification quality is a current concern.</strong> SafeWork NSW&rsquo;s 2024 formwork safety alert recorded an increased number of inadequate installation designs and certifications, with risks including formwork collapse, falls from height and falling objects.<br><br><strong>The communication duty sits with the designer.</strong> The NSW <em>Safe Design of Structures</em> Code of Practice requires designers to provide information on the conditions necessary for a structure to be without risk during construction, expressly including temporary work required to build it, and a written safety report for design-specific construction hazards under WHS Regulation 295. A 2025 CROSS report reinforces this at the temporary-works interface: the permanent works designer should make clear the loading, stability and assumed construction-sequence assumptions so the temporary-works designer can manage construction-stage risk. Engineers Australia / Temporary Works Forum Australia guidance adds that the greatest opportunity to eliminate temporary-works risk is during permanent works design.<br><br><strong>What the evidence does and does not show.</strong> The simplification levers, the formwork and falsework load case and the falsework safety controls are stated directly in the guidance, and the dominance of formwork in concrete labour and the timing of falsework failures are measured. The evidence does not quantify how often complex permanent design leads to an incident; the link from complexity to risk is a reasoned one &mdash; more and more bespoke temporary works to erect, brace, access and remove, against a backdrop where most falsework fails during the pour. The bands are therefore recognition and communication prompts, not measured thresholds.<br><br><strong>References</strong><br>Safe Work Australia. (2014). <em>General Guide for Formwork and Falsework</em>.<br>SafeWork NSW. (2024). <em>Formwork installation design and certification safety alert</em>.<br>SafeWork NSW. <em>Safe Design of Structures: Code of Practice</em>; NSW <em>Work Health and Safety Regulation</em>, s295.<br>CROSS Safety. (2025). <em>Temporary works designers not given access to permanent works calculations</em> (Report ID 1481).<br>Engineers Australia / Temporary Works Forum Australia. (2020). <em>Temporary Works Risk Guidance</em> (TWfAU2020:01).<br>L&ouml;fgren, I., Gylltoft, K., &amp; Kutti, T. (2001). <em>In-situ concrete building &ndash; Innovations in Formwork</em>. Chalmers University of Technology / Thomas Concrete Group.<br>Jarkas, A. M. (2010). Buildability factors affecting formwork labour productivity of building floors. <em>Canadian Journal of Civil Engineering</em>, 37(10), 1383&ndash;1394.<br>Hadipriono, F. C., &amp; Wang, H. K. (1986). Analysis of causes of falsework failures in concrete structures. <em>Journal of Construction Engineering and Management</em>, 112(1), 112&ndash;121.<br>Feld, J., &amp; Carper, K. L. (1997). <em>Construction Failure</em> (2nd ed.). Wiley.",
+            "examples": [],
+            "dateAdded": "2026-06-22",
+            "dateReviewed": "2026-06-22",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "supportingImages": [],
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "The designer&rsquo;s simplification levers, the formwork and falsework load case and the falsework safety controls are stated directly in Safe Work Australia guidance, and are corroborated by a current SafeWork NSW alert, the Safe Design of Structures Code with WHS Regulation 295, CROSS interface reporting and Temporary Works Forum Australia guidance. The supporting magnitudes are measured: formwork is roughly 49% of concrete-structure labour (L&ouml;fgren et al., 2001) and the majority of falsework failures occur during concrete placement (Hadipriono &amp; Wang, 1986). It sits at Medium rather than High because the band ordering is a judged application of that guidance, there is no dataset linking permanent-design complexity to incident rate, and the safety benefit of simplification is reasoned rather than measured. The entry rates the duty to minimise avoidable complexity and to communicate unusual conditions, not any claim about frequency, and does not require the permanent designer to design the temporary works."
+            },
+            "relatedEntries": [
+              {
+                "id": "repetition-and-the-formwork-learning-curve",
+                "note": "Overlap to resolve: that draft counts distinct formwork configurations for productivity; this entry counts them for safety. Decide which owns the &lsquo;count of one-off conditions&rsquo; lever, or scope them explicitly as the economy view and the safety view of the same count."
+              },
+              {
+                "id": "beam-soffit-formwork-proportions",
+                "note": "A specific instance of this general principle: a deep beam side form that forces an oversized board is exactly the avoidable formwork complexity this entry asks the designer to notice."
+              },
+              {
+                "id": "off-form-concrete-upturns-near-obstructions",
+                "note": "Formwork access and bracing feasibility for a particular formed element."
+              },
+              {
+                "id": "conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors",
+                "note": "Formwork quantity and cycling, and backpropping through repeated floors."
+              },
+              {
+                "id": "curing-shortfall-in-suspended-slabs-and-beams",
+                "note": "Condition-based removal of temporary support depends on achieved strength, which curing affects."
+              },
+              {
+                "id": "temporary-stability-of-retained-or-part-built-structure",
+                "note": "Companion safety entry: that one covers an element being unstable before its permanent restraint exists; this one covers the formwork and falsework system the permanent design relies on."
               }
             ]
           }
@@ -4725,7 +4880,8 @@
     "fragment|update|pvc-permanent-formwork-vs-blockwork|nxpqdr",
     "fragment|update|bored-concrete-piles-vs-screw-piles|13c0i0w",
     "fragment|update|equipment-access-constraints|ctqpsu",
-    "fragment|entry|temporary-stability-of-retained-or-part-built-structure|qt5l5a"
+    "fragment|entry|temporary-stability-of-retained-or-part-built-structure|qt5l5a",
+    "fragment|entry|formwork-and-falsework-complexity|b098iw"
   ],
   "_rejected": [],
   "_reconsider": [
