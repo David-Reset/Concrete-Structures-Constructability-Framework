@@ -1,5 +1,12 @@
 # Framework changelog
 
+## 2026-06-22
+
+**Summary:** 1 added · 0 reviewed · 0 deleted
+
+### Added
+- **Temporary stability of retained or part-built structure** (Safety in Design)
+
 ## 2026-06-21
 
 ### Notes
