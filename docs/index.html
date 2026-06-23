@@ -852,7 +852,8 @@ function highlightTerms(text,terms){
   });
   return out;
 }
-function escAttr(s){return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
+function escAttr(s){return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function escJsSingle(s){return String(s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\r?\n/g,'');}
 // --- snippet text hygiene: entry fields contain HTML (<br>,<em>,<strong>) + entities ---
 function stripTags(s){return (s||'').replace(/<[^>]*>/g,' ');}
 const SEARCH_ENT={'&nbsp;':' ','&amp;':'&','&lt;':'<','&gt;':'>','&mdash;':'\u2014','&ndash;':'\u2013','&le;':'\u2264','&ge;':'\u2265','&times;':'\u00d7','&deg;':'\u00b0','&rsquo;':'\u2019','&lsquo;':'\u2018','&prime;':'\u2032','&radic;':'\u221a','&ouml;':'\u00f6'};
@@ -2680,12 +2681,24 @@ function renderEntryDetail(){
   })():'';
 
   const imgHint=`<div class="img-hint"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14zm.5-7v2H8v2H6V9H4V7h2V5h2v2z"/></svg> Click any image to enlarge</div>`;
-  const examplesHtml=d.examples&&d.examples.length>0?`<div style="margin-top:28px"><div class="label">Examples</div>${imgHint}<div class="examples-grid${d.examples.length===1?' imgs-1':d.examples.length===2?' imgs-2':''}">${d.examples.map(ex=>`<div class="example-card">${ex.image?`<img src="${ex.image}" alt="${ex.caption}" onclick="openLightbox('${ex.image}')">`:''}<div class="example-caption"><div class="example-tag ${ex.tag}">${ex.tag==='concern'?'Concern':ex.tag==='acceptable'?'Acceptable':'Recommended'}</div><div class="example-desc">${ex.caption}</div></div></div>`).join('')}</div></div>`:'';
+  const examplesHtml=d.examples&&d.examples.length>0?`<div style="margin-top:28px"><div class="label">Examples</div>${imgHint}<div class="examples-grid${d.examples.length===1?' imgs-1':d.examples.length===2?' imgs-2':''}">${d.examples.map(ex=>{
+    const imgSrc=escAttr(ex.image||'');
+    const imgClick=escAttr(escJsSingle(ex.image||''));
+    const imgAlt=escAttr(cleanText(ex.caption||'Example image'));
+    const tag=escAttr(ex.tag||'');
+    const tagLabel=ex.tag==='concern'?'Concern':ex.tag==='acceptable'?'Acceptable':'Recommended';
+    return `<div class="example-card">${ex.image?`<img src="${imgSrc}" alt="${imgAlt}" onclick="openLightbox('${imgClick}')">`:''}<div class="example-caption"><div class="example-tag ${tag}">${tagLabel}</div><div class="example-desc">${ex.caption||''}</div></div></div>`;
+  }).join('')}</div></div>`:'';
 
   const related=getRelatedEntries(item.id,d);
   const relatedHtml=related.length>0?`<div style="margin-top:28px"><div class="label">Related Entries</div><div class="related-list">${related.map(r=>`<div class="related-card" onclick="goEntry('${r.dimId}','${r.id}')"><div class="related-top"><div class="related-name-wrap"><span class="related-name">${r.name}</span><span class="related-dim"><span class="ico">${r.dimIcon}</span>${r.dimName}</span></div><div class="related-arrow">→</div></div>${r.note?`<div class="related-note">${r.note}</div>`:''}</div>`).join('')}</div></div>`:'';
 
-  const supportingImagesHtml=d.supportingImages&&d.supportingImages.length>0?`<div style="margin-top:20px"><div class="label">Supporting Images</div>${imgHint}<div class="supporting-images-grid${d.supportingImages.length===1?' imgs-1':d.supportingImages.length===2?' imgs-2':''}">${d.supportingImages.map(sp=>`<div class="supporting-image-card">${sp.image?`<img src="${sp.image}" alt="${sp.title}" onclick="openLightbox('${sp.image}')">`:''}<div class="supporting-image-title">${sp.title}</div></div>`).join('')}</div></div>`:'';
+  const supportingImagesHtml=d.supportingImages&&d.supportingImages.length>0?`<div style="margin-top:20px"><div class="label">Supporting Images</div>${imgHint}<div class="supporting-images-grid${d.supportingImages.length===1?' imgs-1':d.supportingImages.length===2?' imgs-2':''}">${d.supportingImages.map(sp=>{
+    const imgSrc=escAttr(sp.image||'');
+    const imgClick=escAttr(escJsSingle(sp.image||''));
+    const imgAlt=escAttr(cleanText(sp.title||'Supporting image'));
+    return `<div class="supporting-image-card">${sp.image?`<img src="${imgSrc}" alt="${imgAlt}" onclick="openLightbox('${imgClick}')">`:''}<div class="supporting-image-title">${sp.title||''}</div></div>`;
+  }).join('')}</div></div>`:'';
 
   return `<div class="content animate-in">
     <div class="entry-topbar"><div class="back-link" onclick="goDimension('${dim.id}')">← Back to ${dim.name}</div>${projectItemButton(item.id)}</div>
