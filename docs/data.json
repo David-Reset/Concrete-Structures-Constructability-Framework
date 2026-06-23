@@ -1760,6 +1760,258 @@
               "note": ""
             }
           }
+        },
+        {
+          "id": "pile-supported-beam-and-slab-vs-flat-slab",
+          "name": "Pile-supported floor: flat plate vs beam-and-slab",
+          "available": true,
+          "data": {
+            "question": "Where a ground floor is carried on piles, has a flat plate spanning the pile heads been weighed against the more familiar beam-and-slab?",
+            "parameter": "How many of the three conditions favouring beam-and-slab apply.",
+            "keywords": [
+              "flat plate on piles",
+              "flat slab on piles",
+              "beam-and-slab",
+              "ground beams",
+              "pile-supported slab",
+              "suspended ground floor",
+              "pile cap",
+              "pile head connection",
+              "punching shear",
+              "two-way slab",
+              "pile grid",
+              "mat reinforcement",
+              "beam cage",
+              "reactive clay",
+              "ground heave",
+              "void former",
+              "fill as formwork",
+              "uplift anchorage",
+              "spoil removal",
+              "beam trenching",
+              "flat build platform"
+            ],
+            "elementType": [
+              "pile/pier/shaft",
+              "ground beam",
+              "slab on ground"
+            ],
+            "constructionPhase": [
+              "founding/piling",
+              "founding/slab"
+            ],
+            "background": "Once a ground floor is going on piles it has left the raft-versus-waffle conversation behind. Those are <strong>ground-bearing</strong> slabs &mdash; they sit on the ground and rely on it. A piled floor is <strong>suspended</strong>: the piles hold it up and the ground is taken out of the load path, usually because the ground is too reactive, too soft or too deep to founding to be ridden on a stiffened slab. The decision one level up &mdash; pile, or stiffen a slab and ride the movement &mdash; has already been made. This entry only settles how the floor connects to the pile heads, and there are two ways to do it.<br><br><strong>Beam-and-slab</strong> runs ground beams pile-head to pile-head along the load lines; the walls bear on the beams and the slab spans the short distance between them. Load path wall &rarr; beam &rarr; pile, which most builders read at a glance. A <strong>flat plate</strong> drops the beams: the slab is a uniform-thickness plate spanning the full pile grid straight into the heads, load path slab &rarr; pile head. (If that plate needs local thickenings, drop panels or enlarged heads to cope at the supports, it has become a <strong>flat slab</strong> &mdash; worth naming, because a flat plate quietly turning into a flat slab is one of the signals this entry turns on.) Both can be made to work; the only question here is which is the easier build on this site.<br><br><strong>The flat plate is usually the cleaner build, and it is under-used.</strong> It needs no beam trenches, gives a flat platform to work off, and goes in as mat steel and a single pour. Beam-and-slab is the conventional habit &mdash; the dominant suspended residential floor is built on beams &mdash; but that habit carries excavation, cages, spoil and a fragmented pour that a thin plate does without. So the sensible default is the flat plate, and the job of the rest of this entry is to find the three things that take it away.<br><br><strong>The pile grid and punching.</strong> The flat plate only stays the lighter build while it stays thin, and what governs that is punching shear at the heads. On a tight, regular grid with light loads a sensible slab depth spans it and punching is satisfied with nothing more than mat steel. Widen the grid, make it irregular, or land concentrated loads between heads, and punching forces local thickenings, enlarged heads or shear reinforcement &mdash; the plate climbs in depth and congests at the heads, and it is on its way to being a flat slab. Beams answer the same problem by putting depth and stiffness only where the span needs it and leaving a thin slab everywhere else.<br><br><strong>Heave, and how the gap under the floor is formed.</strong> A suspended floor is lifted off the ground, so the gap that keeps the heaving clay off it is structural &mdash; and the two systems make that gap differently. Under a flat plate there are no beams to lift it, so the slab is cast near the ground over a <strong>void former</strong>: a sacrificial blanket that holds the wet pour and then collapses, leaving the gap. Under a beam-and-slab the beams do the lifting; the slab between them is almost always cast straight onto <strong>fill used as formwork</strong>, on the understanding that the fill is not permanent &mdash; it can settle or wash out over the floor's life, leaving the slab spanning beam-to-beam over what is effectively a void. You are very unlikely to see engineered void formers laid between beam cages; the fill is the formwork. So the real difference is not 'void versus no void' &mdash; it is a void-former blanket you buy, place and hold down through the pour, versus fill you were going to spread anyway. And as the ground becomes more reactive, the beam-and-slab answers by driving the beams deeper and stiffer, while the flat plate leans harder on the blanket.<br><br><strong>What each does to the builder.</strong> The flat plate's win is the flat, clean platform and the simple pour; its cost is the void-former blanket to lay and keep down, plus the punching steel at every head. The beam-and-slab's cost is the trenching, cages, spoil and a broken-up pour; its win is that the depth, the stiffness and the heave gap all come out of the same beams, and the slab between stays thin. Piling has already brought the rig and the earthmoving plant to site, so forming beams is a marginal extra operation rather than a fresh mobilisation &mdash; the honest check against over-selling the flat plate's tidy platform.<br><br><strong>Position.</strong> Treat the flat plate as the default cleaner build on a tight, regular pile grid with light, uniform loads and ground whose heave a thin plate over a void or self-voiding fill can ride. Reach for beam-and-slab <em>deliberately</em> &mdash; when the grid is wide or irregular, when loads concentrate, or when the heave is bad enough that you want the beams' stiffness. Read the flat plate's own depth as the live signal: once beating punching pushes it past roughly 250&ndash;300 mm, the heavy, congested, hot single pour usually loses to beams plus a thin (~100 mm) infill slab. The flat plate is the cleaner build until those close in on it.<br><br><strong>Three conditions favour beam-and-slab — count how many apply:</strong><br>1. A wide or irregular pile grid.<br>2. Heavy or concentrated loads.<br>3. Heave severe enough that the floor needs the beams' stiffness, not just a void or self-voiding fill under a thin plate.",
+            "thresholds": [
+              {
+                "range": "0 apply",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "None of the three is present: a regular pile grid a sensible slab depth spans, light and uniform loads, and heave a thin plate can ride over a void former or self-voiding fill. This is the flat plate's window &mdash; flat platform, mat steel, one pour, no beam trenches. Prefer it, and do not reach for beams out of habit on a site that genuinely suits a plate."
+              },
+              {
+                "range": "1 applies",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "One condition pushes toward beams. Compare rather than switch; where the beam layout is also simple it is often line-ball, so price both. If the one condition is severe heave, weigh how much stiffness the floor really needs &mdash; a thin plate over a generous void may still suit, but as the demand grows the beams carry it more efficiently, and the fill-as-formwork detail starts doing structural work it was never meant to."
+              },
+              {
+                "range": "2 apply",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Two conditions push toward beams. The flat plate is being driven thick and congested at the heads &mdash; turning into a flat slab &mdash; and the buildability gain is being spent on punching workarounds. Beams carry the loads cleanly and keep the slab thin; lean to beam-and-slab, and check the plate's depth against the ~250–300 mm signal."
+              },
+              {
+                "range": "3 apply",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "All three apply: a wide or irregular grid, heavy or concentrated loads, and heave the floor must be stiff to resist. A flat plate is being fought on grid, loading and ground at once. Adopt beam-and-slab unless a specific reason justifies the plate; if it does, confirm punching, slab depth, deflection, pile-head detailing, tolerance and the heave gap are all resolved before issue."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Treat punching as the deciding check, early",
+                "description": "Before assuming the flat plate, test whether the pile grid and loads let it stay a clean, uniform plate. If punching forces thickenings or shear steel across most heads, the plate has become a flat slab and the buildability case has gone; beams carry those concentrated loads more simply."
+              },
+              {
+                "title": "On reactive ground, the gap is fill or a blanket — not beams",
+                "description": "Do not reach for beams just because the ground is reactive. A flat plate rides reactive ground over a void former; a beam-and-slab rides it over fill that self-voids — both keep the clay off the floor. Beams earn their place only when the heave is bad enough that you want their stiffness, or when grid and loads already point that way. Otherwise the reactive-ground call is simply whether a void-former blanket or fill-as-formwork is the easier gap to make on this site."
+              },
+              {
+                "title": "If the flat plate heads past ~250–300 mm, add beams",
+                "description": "A plate that thick to beat punching is a heavy, hot, reinforcement-dense pour. Concentrating that depth into beams and keeping a thin infill slab is usually the easier and cheaper build — and links to the thick-pour problems handled in the void-former-vs-thick-raft entry."
+              },
+              {
+                "title": "Do not over-weight the cleaner platform",
+                "description": "Piling has already mobilised an excavator-mounted or auger rig and earthmoving plant, so forming ground beams is a marginal extra operation, not a separate mobilisation. The flat plate's flatter-platform advantage is real but narrow, and the void-former blanket plus a bigger pour partly cancels it; weigh it against that, not against a clean greenfield."
+              },
+              {
+                "title": "Check the grid suits two-way spanning",
+                "description": "A regular grid at a spacing a sensible slab depth can span is what keeps a flat plate clean. A wide or awkward grid forces depth or local workarounds that erase the advantage; comparative cost work shows the crossover moving toward beams as spans widen."
+              },
+              {
+                "title": "Treat pile tolerance as a system issue",
+                "description": "It does not vanish. In beam-and-slab it sits at the beam/pile interface; in a flat plate it moves into the pile-head punching and detailing zone. Decide which your site can better absorb before choosing the system."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies once the ground floor is already to be carried on piles, and the choice is how the floor connects to them — a flat plate spanning the pile heads, or beam-and-slab. It does not decide whether to pile in the first place; that is the reactive-ground and raft/waffle decision one level up. It assumes lightly-to-moderately loaded residential and small-commercial floors where both systems could be made viable and buildability is the deciding axis.",
+              "checks": [
+                {
+                  "title": "Pile grid and spacing",
+                  "description": "A regular grid at a spacing a sensible slab depth can span is what keeps a flat plate thin and clean. Confirm the actual grid before assuming the plate is the lighter build — a wide or irregular grid pushes depth and congestion up and moves the economics toward beams."
+                },
+                {
+                  "title": "Reactive ground — which gap is simpler, not whether to use beams",
+                  "description": "If the site is reactive, the floor is isolated from heave by being lifted off the ground under either system; the gap is made by a void-former blanket under a flat plate, or by fill-as-formwork that self-voids under a beam-and-slab. That alone does not pick beams. Confirm whether the heave imposes real stiffness or uplift on the floor (high reactivity, wide plan, level limits) — if so, beams carry it more efficiently; if not, decide on which gap is the easier build. The reactive-soil design itself — movement, uplift, classification — stays with the engineer."
+                },
+                {
+                  "title": "Concentrated and line loads",
+                  "description": "Heavy walls or line loads landing between pile heads are carried simply by beams but force local thickening or shear steel in a flat plate. Check where the loads land relative to the grid before sizing the slab."
+                },
+                {
+                  "title": "Slab depth as a signal",
+                  "description": "If beating punching is driving the flat plate toward 250–300 mm, read that as a prompt to compare beams directly. The structural call and the buildability call are not independent at that depth."
+                },
+                {
+                  "title": "Plant and access already on site",
+                  "description": "Piling usually mobilises an excavator-mounted or auger rig and earthmoving plant, so the cost of forming ground beams is a marginal extra operation rather than a separate mobilisation. Weigh the flat plate's flatter-platform advantage — and the void-former blanket it needs — against that, not against a clean greenfield."
+                },
+                {
+                  "title": "Regional practice and finish",
+                  "description": "Void-former products, beam-forming labour and common piling practice vary by region. The location tag should be considered before applying the guidance elsewhere."
+                }
+              ],
+              "note": "Use the rating as a constructability review prompt, not a prohibition. Where more than one condition applies, the worst applicable rating governs, and the structural design can overrule the buildability comparison. Confirm the system choice and the pile-head and heave detailing early rather than at issue."
+            },
+            "workedExample": {
+              "title": "Worked example - the comparison, and three sites",
+              "caveat": "The first table sets the two systems side by side on the factors that move the choice; the second runs three generic sites through them. Sites A, B and C are illustrative archetypes, not real projects — the verdict comes from counting how many conditions push off the flat plate, which you can read from words alone.",
+              "headline": "Start from the flat plate as the cleaner build. Count the conditions pushing against it — wide or irregular grid, concentrated loads, heave the floor must be stiff to resist — and the answer follows.",
+              "tableCaption": "Table 1 - The two systems on the factors that decide the choice",
+              "tableHeaders": [
+                "Issue",
+                "Flat plate on piles",
+                "Beam-and-slab on piles"
+              ],
+              "tableRows": [
+                [
+                  "Load path",
+                  "Slab &rarr; pile head. Clean, but pile-head design becomes critical.",
+                  "Wall &rarr; beam &rarr; pile. Familiar, easy to read."
+                ],
+                [
+                  "Pile grid",
+                  "Wants a tight, regular grid; widens and punching and depth climb.",
+                  "Tolerant - suits wide or irregular grids and concentrated loads."
+                ],
+                [
+                  "Heave / the gap",
+                  "Cast near-ground over a void-former blanket that collapses to leave the gap; needs depth only where heave imposes real stiffness demand.",
+                  "Beams lift the floor and make the gap; slab cast on fill that self-voids over time; deeper beams give stiffness where heave demands it."
+                ],
+                [
+                  "Void formers",
+                  "A placed, buoyancy-controlled blanket over the footprint - a real product and operation.",
+                  "Unlikely - the fill is the formwork."
+                ],
+                [
+                  "Steel fixing",
+                  "Mostly mat steel - unless loaded up with head top-steel and shear reinforcement.",
+                  "Beam cages, intersections, laps, ligatures."
+                ],
+                [
+                  "Concrete / weight",
+                  "More slab depth if punching or deflection governs; heavier into the piles.",
+                  "Concentrated in beams; thin infill slab."
+                ],
+                [
+                  "Working site",
+                  "Flatter, cleaner platform once heads are prepared.",
+                  "Trenches, cages and pile lines breaking up the platform."
+                ],
+                [
+                  "Plant and spoil",
+                  "Same machine on site; flatter platform, but a void-former blanket to place and a bigger pour.",
+                  "Rig already there also digs the beams; trench spoil to cart."
+                ],
+                [
+                  "Main risk",
+                  "An 'easy' plate turning thick, congested or punching-critical.",
+                  "Lots of small ground-level tasks."
+                ]
+              ],
+              "tableCaption2": "Table 2 - Three sites, counting the push-to-beams conditions",
+              "tableHeaders2": [
+                "Site",
+                "Push-to-beams conditions present",
+                "Count",
+                "Choice"
+              ],
+              "tableRows2": [
+                [
+                  "A - regular plan, light loads, mildly reactive",
+                  "None - even grid a normal slab depth spans, punching satisfied, heave ridden over fill/void under a thin plate",
+                  "0",
+                  "Flat plate - clean platform, quick mat steel"
+                ],
+                [
+                  "B - irregular plan, heavy line loads, non-reactive",
+                  "Wide/irregular grid + concentrated loads",
+                  "2",
+                  "Beam-and-slab - beams carry the line loads, slab stays thin"
+                ],
+                [
+                  "C - tight regular grid, light loads, highly reactive but rideable",
+                  "None - a thin plate over a full void former isolates the floor; no structural stiffness demand",
+                  "0",
+                  "Flat plate - decide blanket vs fill, not beams"
+                ]
+              ],
+              "howToUse": "Read Table 1 to see which factors differ on your site, then count in Table 2 how many of the three conditions apply: wide or irregular grid, heavy or concentrated loads, and heave the floor must be stiff to resist. 0 leaves the flat plate in its window; 2 or 3 lean firmly to beams; 1 means compare. Note Site C: reactive ground does not by itself pick beams — a thin plate over a full void former suits a regular, lightly-loaded site, so the call there is simply which gap (void-former blanket or self-voiding fill) is easier to build. C would flip toward beams only if the heave grew severe enough, or the plan wide enough, that the floor needed real stiffness to bridge the movement — which is exactly the case a grid-only reading misses.",
+              "assumptionsTitle": "Notes",
+              "assumptions": [
+                "Sites A, B and C are illustrative archetypes; real sites mix these factors, which is why a single condition is a prompt to compare rather than to switch.",
+                "Under a beam-and-slab the slab between beams is normally cast on fill used as formwork, not on engineered void formers; the fill is not permanent and can settle or wash out, leaving the slab spanning beam-to-beam over what is effectively a void. Engineered void formers under a beam-and-slab are the exception (very high reactivity), not the rule.",
+                "Under a flat plate the void former is a placed blanket that supports the wet pour and then collapses as the soil takes up moisture, leaving the plate isolated on its piles; buoyancy and set-out during the pour are part of its cost.",
+                "The 250–300 mm figure for a flat plate heading thick is indicative of where the pour itself becomes a heavy, hot, reinforcement-dense job and beams plus a thin (~100 mm) infill slab often become the easier build; it is not a fixed threshold."
+              ]
+            },
+            "evidence": "<strong>Flat plate and punching.</strong> Concrete Society guidance on pile-supported floors establishes the core mechanism — load can transfer directly into the piles without beams, but punching around the heads may govern and local thickening may be needed, with span-to-depth limits and cracking recognised risks. Hulett's work on pile-supported concrete floors is the caution against treating the plate as tidy-and-done: cracking over piles, mid-span deflection and crack-avoidance margins all become live once a slab spans to pile heads. Together they support the lever that the flat plate is the cleaner build only while it stays structurally clean at the heads — and that a plate driven to thickenings has become a flat slab.<br><br><strong>Beam-and-slab as the conventional suspended floor.</strong> Across UK residential practice the suspended ground floor is overwhelmingly built on beams: beam-and-block on ground beams (or in-situ ground beams with an infill slab) is the dominant new-build ground floor where the floor cannot bear directly on the ground, and ground beams are the standard way to span between piles for low-rise work. The flat plate spanning supports, by contrast, is essentially a commercial and industrial slab technique rather than a residential one. This is the basis for treating beam-and-slab as the habit and the flat plate as the under-considered option — and it is established without leaning on a residential-slab standard.<br><br><strong>Heave isolation and the gap.</strong> A suspended floor is isolated from heaving clay by being lifted off the ground; where heave is a risk, practice guidance has a compressible material or void former provided below the floor so the swelling soil never loads it. The constructability reading carried here — that under a flat plate this gap is a placed void-former blanket, while under a beam-and-slab it is fill used as formwork that self-voids — is buildability reasoning consistent with that mechanism, not a measured rule, and the structural design of the isolation stays with the engineer.<br><br><strong>Span and grid economics.</strong> Comparative cost work on flat-plate versus beam-and-slab floors finds flat plate cheaper at tight spans but beam-and-slab cheaper as spans widen, with flat-slab dimensions commonly driven to where punching governs and reinforcement densities well above those of a solid slab. This is from elevated building floors rather than small piled ground floors, so it is carried as direction, not proof: removing beams simplifies the build only while the slab does not turn structurally demanding.<br><br><strong>What was not found.</strong> No source directly compares a residential pile-supported flat plate against a residential pile-supported beam-and-slab on build time, spoil, steel-fixing hours, concrete volume, cost or defect rate, and none sets the grid spacing or slab depth at which the answer flips. The 0/1/2/3 condition-count bands are constructability judgement, not a measured rule.<br><br><strong>References</strong><br>1. The Concrete Society. <em>Pile-supported floors</em> (technical guidance).<br>2. Hulett, T. (2011). <em>Design and construction of pile-supported concrete floors.</em> Concrete, September 2011.<br>3. UK suspended ground-floor practice: NHBC / LABC technical guidance and industry references on beam-and-block and ground-beam suspended floors; Designing Buildings, <em>Ground beams in construction</em> and <em>Beam and block floor construction</em>.<br>4. Practice guidance on void formers / compressible material below suspended floors over reactive or heave-prone ground.<br>5. <em>Comparative Cost Study of Reinforced Concrete Flat Slab and Slab-with-Beam Floor Systems</em> (elevated floors).",
+            "examples": [],
+            "supportingImages": [],
+            "dateAdded": "2026-06-24",
+            "dateReviewed": "2026-06-24",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Each lever is supported on point for its mechanism — Concrete Society and Hulett on the flat plate transferring directly to piles but becoming punching- and cracking-critical at the heads; UK suspended-floor practice on beam-and-slab being the conventional residential system and the flat plate the under-considered import; void-former / compressible-layer guidance on heave being handled by lifting the floor off the ground; and flat-plate-versus-beam cost work on the span-based crossover and the depth and reinforcement penalty when punching governs. The limitation is that no source directly compares the two systems for small pile-supported residential ground floors, the cost comparison is from elevated floors, and the fill-as-formwork-versus-void-former-blanket framing is buildability reasoning — so the 0/1/2/3 condition-count bands are reasoned judgement rather than measured thresholds."
+            },
+            "relatedEntries": [
+              {
+                "id": "found-below-reactive-ground-vs-stiffened-slab-on-top",
+                "note": "The decision one level up. Settles whether to pile below reactive ground at all; this entry then settles how the floor connects to the piles, with heave still live."
+              },
+              {
+                "id": "raft-slab-vs-waffle-pod",
+                "note": "The ground-bearing counterpart, for when no piles are needed. That entry stays a slab-on-ground choice; this one picks up once the floor is suspended on piles and the ground is out of the load path."
+              },
+              {
+                "id": "void-former-slab-vs-thick-raft",
+                "note": "Where the pour itself becomes the problem; directly relevant when punching drives the flat plate into a thick, hot pour and beams plus a thin infill slab become the easier build."
+              },
+              {
+                "id": "bored-concrete-piles-vs-screw-piles",
+                "note": "Upstream pile-method choice; affects spoil, access, tolerance and the plant already on site. Weigh together."
+              },
+              {
+                "id": "latent-safety-risk-of-screw-pile-foundations",
+                "note": "If the piles are screw piles, the as-built verification and head-connection burden applies whichever floor sits above, and bears on uplift fixity on reactive ground."
+              }
+            ]
+          }
         }
       ]
     },
@@ -5516,7 +5768,8 @@
     "fragment|update|raft-slab-vs-waffle-pod|ystflp",
     "fragment|entry|waffle-pod-depth-availability|18nl42d",
     "fragment|entry|found-below-reactive-ground-vs-stiffened-slab-on-top|1f3rxnt",
-    "fragment|update|raft-slab-vs-waffle-pod|11hr5r0"
+    "fragment|update|raft-slab-vs-waffle-pod|11hr5r0",
+    "fragment|entry|pile-supported-beam-and-slab-vs-flat-slab|1607rdc"
   ],
   "_rejected": [],
   "_reconsider": [
