@@ -1340,9 +1340,216 @@
           }
         },
         {
+          "id": "raft-slab-vs-waffle-pod",
+          "name": "Stiffened raft vs. waffle pod slab",
+          "available": true,
+          "data": {
+            "question": "Is there a genuine floor-level, excavation or footprint reason to choose a stiffened raft over a waffle pod slab?",
+            "parameter": "How many of the three waffle-pod preconditions fail on this site.",
+            "keywords": [
+              "waffle pod",
+              "waffle raft",
+              "stiffened raft",
+              "raft slab",
+              "EPS pods",
+              "polystyrene pods",
+              "void former slab",
+              "bored pier",
+              "screw pile",
+              "finished floor level",
+              "FFL",
+              "setdown",
+              "slab on ground",
+              "edge beam",
+              "residential slab",
+              "ground slab",
+              "pod depth",
+              "reactive ground",
+              "375mm pod"
+            ],
+            "elementType": [
+              "slab on ground",
+              "raft/footing"
+            ],
+            "constructionPhase": [
+              "founding/slab"
+            ],
+            "background": "The stiffened raft and the waffle pod are both ribbed ground-slab systems, but they are built in opposite directions. A stiffened raft is formed <em>into</em> the ground: beam trenches are excavated, caged and poured monolithically with the slab. A waffle pod is formed <em>above</em> the ground: lightweight EPS (polystyrene) void formers are laid out on a cleared, level platform and the ribs and slab are poured over and between them, with no internal beam excavation. Both can be designed to carry the load; this entry is only about which one builds more easily on the site in front of you.<br><br>The stiffened raft is the robust fallback. Its beams can go wherever the geometry and loads require, so it tolerates fall across the site, irregular shapes, local thickening and concentrated loads. The waffle pod is the efficiency option — above ground, less trenching, less spoil, on the order of a third less concrete and a fifth less steel on a simple platform — but it only holds that advantage while the slab stays a <strong>level</strong>, regular, above-ground grid. (Note the distinction: a block can be planar yet still fall across the footprint. What defeats the pod is <strong>fall</strong> — a level platform — not whether the ground is free of humps.) So the entry counts how many of the waffle pod's <strong>three preconditions fail</strong> on this site. None failing means the pod earns its place; several failing means the raft is probably the simpler build and the pod is solving a problem the site does not have.<br><br><strong>Floor-level headroom.</strong> A waffle pod builds its rib depth upward — pods are 1090 mm square and 225 mm is the most commonly used depth, with 150, 175, 300 and 375 mm also made — so the system <strong>brings height with it</strong>. That is fine where lifting the platform is acceptable, and a problem where the floor level is fixed: an extension matching an existing floor, an accessibility threshold, or a tight level difference to external works. If the floor cannot rise, the builder has to <strong>dig the platform down</strong> to fit the pods — at which point the 'less excavation' advantage is largely gone.<br><br><strong>Low-excavation job.</strong> The pod's no-trenching, low-spoil saving only exists relative to a clean level platform. Where the job already needs significant excavation — a basement, garage cut, retaining, deep cut-and-fill, or <strong>bored piers or piles under the slab</strong> — the excavator and the spoil-off-site operation are on site regardless, and the saving largely evaporates.<br><br><strong>Modular-grid fit.</strong> The pod layout wants to stay a clean grid, and it is the <em>interrupted</em> footprint, not merely the non-rectangular one, that defeats it: many <strong>setdowns or slab steps</strong>, dense <strong>plumbing penetrations</strong>, <strong>narrow returns, bay windows, odd corners or architectural offsets</strong>, or <strong>ribs clashing</strong> with services or layout. Each interruption means cut pods and fiddly set-out, where a raft simply puts a beam where it is needed.<br><br><strong>Piling deserves its own check, and it tends to favour the raft.</strong> The correct waffle-on-piles detail places each pier at a <strong>rib intersection</strong>, with trimmer bars run over the pier head — exactly the standard arrangement a piled waffle drawing shows. But the pod grid is fixed, so the as-built pier position is unforgiving: a pier that drifts off its intersection no longer gets the clean rib load path and needs local remedial detailing, where a continuous raft beam would have caught it anywhere along its length. Internal piers also tend to <strong>multiply</strong> on soft or problem ground — required through the middle of the house, not just the perimeter — and each one is a local pile-cap-and-trimmer detail that erodes the speed and cost that justified the pod. Bored piers add spoil on top of this; screw piles are gentler on spoil but still land against the same fixed grid. Where piling is only local it can still work; where it becomes <strong>general across the footprint</strong>, the choice has stopped being 'waffle vs raft' and should move to the piled-system entry.<br><br><strong>One depth lever worth being mindful of.</strong> A deeper pod gives a deeper rib and a more rigid slab, which on <strong>reactive ground</strong> (prone to heave and shrink movement) better resists that movement — so a deeper pod, toward 375 mm, can be worth trialling for rigidity. That is not the point of this entry, and the actual reactive-soil design stays with the engineer, but it is worth carrying because it cuts straight back to the floor-level check: the same depth that buys rigidity is the depth that can force the platform down on a height-constrained site, and the deepest pods are not stocked everywhere. Where the underlying question is whether to <em>found below</em> reactive ground on piles or <em>stiffen a slab on top</em> of it, that is a system-selection decision in its own right — see the related entry.",
+            "thresholds": [
+              {
+                "range": "0 fail",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "None of the three preconditions fails: the floor can accept the pod height, the job is otherwise excavation-light with no general piling, and the footprint stays a clean grid on a level platform. This is the waffle pod's home ground — above-ground build, little trenching, less spoil, less concrete and steel, and on the peer-reviewed evidence usually the lower-impact and lower-cost option here. Choose it with confidence; do not fall back to a stiffened raft out of habit on a site that genuinely suits a pod."
+              },
+              {
+                "range": "1 fail",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "One precondition fails. Compare rather than switch automatically, and look at which one it is. A single, contained issue — a mild level constraint absorbed by edge build-up, a handful of penetrations, or a few local piers landing on the edge beam — may not erode the advantage. But check the fix honestly: if accommodating it starts pulling the pods out of their standard layout, forcing the platform down, or multiplying internal piers, the saving is already going and a raft may build just as easily."
+              },
+              {
+                "range": "2 or more fail",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Two or more preconditions fail — a fixed floor level with an interrupted footprint, general piling with bored-pier spoil, step-downs stacked on grid clashes. The pod is being pushed off its home ground, and the cutting, digging-down, local pier detailing and set-out coordination eat the saving that justified it. A stiffened raft is the likely simpler build, because its beams follow the levels, loads and pier lines directly. Revert to a raft before the scheme is fixed, or record why the pod still builds well here."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Start from a waffle pod where the site is simple",
+                "description": "On a level, regular, lightly-interrupted footprint where the floor can accept the pod height and no general piling is required, the waffle pod is the buildability default — above-ground, low-spoil, lighter and quicker, and usually the lower-impact option. Do not move to a stiffened raft without a site-specific reason."
+              },
+              {
+                "title": "Count only genuine precondition failures (0, 1, 2+)",
+                "description": "Count a precondition as failing only where it materially changes the build — floor level only where the pod height genuinely cannot be accommodated, excavation only where significant digging or piling is really required, and grid-fit only where the footprint is interrupted enough to force cut pods and awkward set-out."
+              },
+              {
+                "title": "Check the floor level first",
+                "description": "Confirm the slab can rise by the pod depth. On an extension matching an existing floor, an accessibility threshold, or a tight external level difference, the pods may have to be set into a dug-down platform — which removes the excavation saving and can create steps, ramps or drainage issues. Where the floor cannot rise, lean toward the raft."
+              },
+              {
+                "title": "Confirm it is really a low-excavation job",
+                "description": "If a basement, garage cut, retaining, deep cut-and-fill, or bored piers/piles under the slab are already required, the excavator and spoil operation are on site regardless. Do not rely on 'less excavation' as the reason for the pod when the site is already an excavation job."
+              },
+              {
+                "title": "Where piles are required, weigh the raft's easier pier integration",
+                "description": "Piers under a waffle must land on rib intersections and each internal pier is a local detail; on soft ground they tend to multiply through the middle of the house. A raft's continuous beams absorb pier position and pier count more gracefully. If piling becomes general across the footprint, treat it as a piled-system decision, not a slab-type one, and go to that entry."
+              },
+              {
+                "title": "On reactive ground, treat pod depth as a rigidity lever — but check it fits and can be sourced",
+                "description": "A deeper pod (toward 375 mm) gives deeper ribs and a more rigid slab that better resists reactive ground movement, so it can be worth trialling. Weigh it against floor-level headroom and local availability — the deepest pods are not stocked everywhere. If the underlying question is whether to pile below reactive ground or stiffen a slab over it, treat that as its own system choice (see related entry); this entry assumes you are already comparing ground-bearing slabs."
+              },
+              {
+                "title": "Plan EPS pod-offcut control, and do not choose on flat-takeoff price",
+                "description": "Where pods are used, require clean offcut collection and recycling — EPS is light, wind-borne and only recycles if kept clean and separated. And weigh the built cost on this site, not the catalogue cost: a pod that looks cheaper on a level takeoff can lose that saving once levels, grid clashes or piers force cutting, digging-down and local detailing."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to lightly-to-moderately loaded residential and small-commercial ground floors where both a stiffened raft and a waffle pod could be made viable, and the designer is weighing which system builds more easily on this site. It is most relevant to single- and two-storey housing, additions and small-footprint commercial work where floor level, footprint interruption, excavation and piling strongly influence buildability.<br><br>It does not apply where the geotechnical and structural assessment of the ground itself settles the slab type before buildability is weighed — this entry sits downstream of that. Nor does it apply where the real question is whether to found below reactive ground on piles or stiffen a slab on top of it (its own system-selection entry), where piling is general across the footprint and the decision is which piled system is simplest (the piled ground-beams-vs-structural-slab entry), or where the governing problem is a very thick raft pour and its heat-of-hydration cracking risk (the void-former-slab-vs-thick-raft entry).",
+              "checks": [
+                {
+                  "title": "The ground assessment comes first",
+                  "description": "The geotechnical and structural assessment of the ground may already point to one system — or to piling — before buildability is weighed. This entry only compares ground-bearing systems that are already viable; it does not override that assessment or design for ground movement."
+                },
+                {
+                  "title": "Verify each precondition failure is real, not theoretical",
+                  "description": "Do not count a precondition as failed just because it could be — count it only where it materially changes how the slab is built. A gentle fall the dig already accommodates is not automatically a floor-level or excavation failure."
+                },
+                {
+                  "title": "The pod advantage depends on the pods staying standard",
+                  "description": "The waffle pod's speed, spoil and material savings assume a standard above-ground grid on a level platform. Once the design needs heavy pod cutting, many step-downs, dense penetrations or numerous internal piers, re-test whether the advantage still exists."
+                },
+                {
+                  "title": "Piling tilts toward the raft — check count and position, not just presence",
+                  "description": "A few perimeter piers on the edge beam are easily absorbed. Internal piers that must land on rib intersections, and that multiply on soft ground, are where the pod struggles — assess how many internal piers are required and how tight their set-out is before assuming the pod still suits."
+                },
+                {
+                  "title": "Pod depth carries both a rigidity benefit and a height and supply cost",
+                  "description": "Deeper pods stiffen the slab against reactive ground movement, but they raise the platform and the deepest depths are not stocked by every supplier. Treat the depth choice as a coordinated decision across rigidity, floor level and local availability, not a single-axis pick."
+                },
+                {
+                  "title": "EPS waste and drainage are manageable but must be planned",
+                  "description": "EPS pod offcuts are light and wind-borne and only recycle if kept clean and separated, so they need active site control rather than being treated as incidental rubbish. The above-ground system also relies on good perimeter drainage and external levels so water is not directed under or against the slab. Neither usually flips the system choice, but both belong in the construction plan when pods are used."
+                },
+                {
+                  "title": "The decision is regional",
+                  "description": "Pod supply and depth range, trade familiarity, spoil-disposal cost and the local builder and piling pool vary by region. Treat this as NSW-practice guidance supported by Australian sources, not a universal rule."
+                }
+              ],
+              "note": "Use the rating as a constructability review prompt, not a rule that the waffle pod must be abandoned above a set number of failures. The aim is to head off two opposite errors: specifying a waffle pod on a level-constrained, interrupted or piled site because it looks cheaper on a level takeoff, and defaulting to a stiffened raft on a level, simple, low-excavation site where the pod would build faster with less spoil and is usually the lower-impact option."
+            },
+            "workedExample": {
+              "title": "Worked example — two sites, the same three checks",
+              "caveat": "Site A and Site B are generic archetypes for illustration, not a real project. The verdict comes from counting the precondition failures, not from any drawing — you can run the same three checks on a site from words alone.",
+              "headline": "The same three preconditions, opposite answers — and you can see why the choice flips.",
+              "tableStyle": "soffitSheetBracing",
+              "tableHeaders": [
+                "Precondition",
+                "Site A — new house, level block",
+                "Site B — rear extension, sloping block"
+              ],
+              "tableColumnBands": [
+                "",
+                "green",
+                "orange"
+              ],
+              "tableRows": [
+                [
+                  "Floor-level headroom",
+                  "Pass — new build; the floor can sit up on the pods, with no existing level to match",
+                  "Fail — the floor must match the existing house; pod depth would force the platform to be dug down"
+                ],
+                [
+                  "Low-excavation job",
+                  "Pass — no basement, no piling, a level platform ready to build on",
+                  "Fail — the fall must be cut and a few bored piers are needed; the excavator is on site regardless"
+                ],
+                [
+                  "Modular-grid fit",
+                  "Pass — a simple rectangle with services planned around the grid",
+                  "Borderline — one step-down and a couple of penetrations, but still workable"
+                ],
+                [
+                  "Preconditions failed",
+                  "0 → waffle pod slab (its home ground)",
+                  "2 → stiffened raft (the pod's saving is already spent)"
+                ]
+              ],
+              "howToUse": "Run the same three checks on your own site, count the genuine failures, and read the band: 0 favours the waffle pod, 2 or more favours the stiffened raft, and a single failure means compare rather than switch. Note that Site B fails on exactly the floor-level and excavation mechanisms the entry is built around, while the grid check barely moves the result — that is the count doing the work.",
+              "assumptionsTitle": "Pod depths and notes",
+              "assumptions": [
+                "Waffle pods are 1090 mm square. 225 mm is the most commonly used depth, with 150, 175, 300 and 375 mm also made. The deeper the pod, the more height it adds to the platform — which is what the floor-level check turns on.",
+                "Deeper pods give deeper ribs and a more rigid slab, so on reactive ground (prone to heave and shrink movement) a deeper pod — toward 375 mm — is a lever for slab rigidity. Weigh that against floor-level headroom: the same depth that buys rigidity is the depth that can force the platform down.",
+                "Pod availability varies by supplier and region — the deeper 375 mm (and in some states the 150/175 mm) is not stocked everywhere and may need made-to-order lead time and cartage. Confirm the specified depth is available before relying on it; see the related Logistics entry.",
+                "Site A and Site B are illustrative archetypes; real sites mix these factors in their own way, which is why a single failure is treated as 'compare', not an automatic switch."
+              ]
+            },
+            "evidence": "<strong>Material and method mechanism — Australian industry and training.</strong> RMIT's building-trades material and waffle-pod product literature (Future Foams, Neumann Steel) describe the waffle pod as a wholly above-ground slab poured over EPS void forms, needing no internal beam excavation, using on the order of a third less concrete and a fifth less steel than a stiffened raft, and being suited to simple, level platforms — with the stiffened raft normally the better option on sloping or complex sites. This is the buildability case in one line: less trenching, less spoil, lighter handling and more predictable quantities, but a system that assumes a level, regular grid.<br><br><strong>Sustainability and economy — peer-reviewed.</strong> Teodosio et al. (2023, <em>Journal of Building Engineering</em>) compared waffle and stiffened rafts for single-detached dwellings using a multi-output deep-learning model, and found the waffle raft generally the lower option for embodied energy, greenhouse emissions, life-cycle cost and deflection, with all four rising and the waffle's margin narrowing as the ground became more reactive. This is the strongest single source, and it keeps the entry balanced: on its home ground the waffle pod is often the more sustainable and economical choice, so the entry is about fit, not a verdict against pods.<br><br><strong>Pod depth and rigidity.</strong> Pods are 1090 mm square in depths from about 150 mm to 375 mm, with 225 mm the everyday residential size; deeper pods give deeper ribs and a stiffer slab, which is why deeper pods are reached for on more reactive ground. This entry carries that only as a depth/height/availability buildability point — the reactive-soil design itself stays with the engineer.<br><br><strong>Piling — practitioner evidence and first principles.</strong> Practitioner guidance (Cornell Engineers) reports that on soft or problem ground extra bored or screw piers are commonly required through the middle of the house, not only the perimeter, and documents a real owner account of a waffle pushed as the cheaper option ending up needing dozens of internal piers, undercutting the saving. The standard waffle-on-piles detail places each pier at a rib intersection with trimmer bars over the head; the buildability point — that the fixed pod grid makes as-built pier position critical and each internal pier a local detail, where a continuous raft beam captures a pier anywhere along its line — is first-principles reasoning supported by these accounts rather than a measured study.<br><br><strong>Spoil — bored versus screw.</strong> Part of a bored pier's cost is removing the drilled spoil, whereas screw piles disturb and remove less ground. So bored piering spends the pod's excavation advantage as well as raising the set-out problem, while screw piling is gentler on spoil but still lands against the same grid.<br><br><strong>Threshold basis.</strong> The 0 / 1 / 2+ bands are reasoned design-stage constructability judgement, not measured thresholds, and each precondition is itself a material / not-material call. They scale the scrutiny that staying on — or moving away from — a waffle pod should attract, and should be refined with project examples and regional builder feedback.<br><br><strong>References</strong><br>Teodosio, B., Wasantha, P.L.P., Yaghoubi, E., Guerrieri, M., Fragomeni, S., & van Staden, R. (2023). Environmental, economic and serviceability attributes of residential foundation slabs: a comparison between waffle and stiffened rafts using multi-output deep learning. <em>Journal of Building Engineering</em>, 80, 107983.<br>RMIT Learning Lab. <em>Features of waffle raft slabs</em>.<br>Future Foams. <em>EPS Waffle Pod System Product Manual</em>.<br>Neumann Steel. <em>Raft Slab vs Waffle Slab — What's the Difference?</em><br>Cornell Engineers. <em>Beware Waffle Slabs</em>.",
+            "examples": [],
+            "supportingImages": [],
+            "dateAdded": "2026-06-23",
+            "dateReviewed": "2026-06-23",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Supported by a peer-reviewed Australian comparison (Teodosio et al. 2023) showing the waffle raft is generally the lower-impact, lower-cost and lower-deflection option for single-detached dwellings on its home ground, with the margin narrowing on more reactive ground; by Australian training, supplier and industry sources for the above-ground, low-excavation mechanism and pod depth range; and by practitioner evidence (Cornell Engineers) for the way internal piling multiplies and erodes the pod's advantage. The 0 / 1 / 2+ precondition-failure bands are reasoned constructability judgement rather than measured thresholds, and the pile-position / set-out point is first-principles plus practitioner accounts rather than a measured study. Treat the entry as a constructability prompt, not a proven decision rule."
+            },
+            "relatedEntries": [
+              {
+                "id": "found-below-reactive-ground-vs-stiffened-slab-on-top",
+                "note": "The decision one level up. This entry assumes you are already comparing ground-bearing slabs; the related entry asks whether to pile below reactive ground or stiffen a slab on top of it in the first place."
+              },
+              {
+                "id": "waffle-pod-depth-availability",
+                "note": "The 'can you get it' counterpart to the depth advice here. This entry weighs which pod depth suits the site; the Logistics entry checks whether that depth is actually stocked locally or needs made-to-order lead time."
+              },
+              {
+                "id": "void-former-slab-vs-thick-raft",
+                "note": "The same slab-system family. This entry handles the ground-bearing choice (raft vs waffle pod); the other handles the case where the raft becomes a thick, heat-generating pour and a void-former slab on piles is weighed against it."
+              },
+              {
+                "id": "piled-ground-beams-vs-structural-slab-over-void",
+                "note": "Where piling becomes general across the footprint, this stops being a waffle-vs-raft decision and becomes which piled system is simplest. Hand off to that entry once internal piles are required throughout."
+              },
+              {
+                "id": "bored-concrete-piles-vs-screw-piles",
+                "note": "Upstream of the piling check in this entry — it settles which pile method suits the site, which in turn affects how much the pod's spoil advantage is spent. Weigh together when piling is on the table."
+              },
+              {
+                "id": "pvc-permanent-formwork-vs-blockwork",
+                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
+              }
+            ]
+          }
+        },
+        {
           "id": "void-former-slab-vs-thick-raft",
           "name": "Void-former slab vs. thick raft",
-          "available": true,
+          "available": false,
           "data": {
             "question": "Where a thick raft is proposed, has a void-former (biaxial) suspended slab on piles been weighed against it — considering not just concrete volume but the buildability of a large, thick pour and its heat-of-hydration cracking risk?",
             "parameter": "Foundation/slab system where a thick raft is proposed, assessed against a void-former slab for pour buildability, self-weight and early thermal cracking.",
@@ -1410,139 +1617,6 @@
           }
         },
         {
-          "id": "raft-slab-vs-waffle-pod",
-          "name": "Raft slab vs. waffle pod",
-          "available": false,
-          "data": {
-            "question": "Is the site flat, regular and lightly-loaded enough that a waffle pod earns its place — or does site complexity push the slab back to a stiffened raft?",
-            "parameter": "How many of the four raft-favouring site-complexity factors genuinely apply to the slab footprint.",
-            "keywords": [
-              "waffle pod",
-              "waffle raft",
-              "stiffened raft",
-              "raft slab",
-              "ground slab",
-              "slab on ground",
-              "footing system",
-              "polystyrene pods",
-              "void former slab",
-              "residential slab",
-              "reactive soil slab",
-              "edge beam",
-              "slab stiffening",
-              "above-ground slab",
-              "AS 2870"
-            ],
-            "elementType": [
-              "slab on ground",
-              "raft/footing"
-            ],
-            "constructionPhase": [
-              "founding/slab"
-            ],
-            "background": "The stiffened raft and the waffle pod raft are both ribbed ground-slab systems — a thin top slab over a grid of stiffening ribs — but they are built in opposite directions. A stiffened raft is formed <em>into</em> the ground: beam trenches are excavated, caged and poured monolithically with the slab. A waffle pod raft is formed <em>above</em> the ground: lightweight polystyrene pods are laid out on a cleared, level surface and the ribs and slab are poured over and between them, with no beam excavation at all.<br><br>The question is not which slab is stronger — both can be designed to carry the load and made compliant under AS 2870 for the relevant site class. It is whether the <em>way a waffle pod is built</em> still pays off on this particular site. The pod system's advantages — no trenching, less spoil to cart, lighter handling, more predictable concrete quantities, less wet-weather disruption — all depend on the slab being a flat, regular, above-ground platform. The further the site moves from that, the more the pod system has to be cut, stepped, edge-built and specially detailed, and the more its advantage erodes back toward what a stiffened raft would have given anyway.<br><br>The stiffened raft is the robust general-purpose fallback: it tolerates slope, irregular shapes, local thickening and concentrated loads because beams can be put wherever the load goes. The waffle pod is the efficiency option that only holds its advantage on a simple site. Four site-complexity factors are what pull the choice back toward the raft. Each is counted only where it materially affects the build, not where it is merely theoretical:<br><br><strong>Sloping ground / step-downs / cut-and-fill</strong> — the footprint is not flat, so the above-ground pod platform needs build-up, stepping or retaining that a trenched raft would handle in the dig.<br><strong>Irregular or complex footprint</strong> — many offsets, re-entrants, acute corners or complex edges that make the pod grid and edge detailing awkward.<br><strong>Heavy or concentrated loading</strong> — point loads, heavy two-storey-plus masonry or non-uniform loading that the thin top slab and standard rib grid are not a natural fit for, pushing toward local thickening better done as a stiffened raft.<br><strong>Pod system forced outside its standard layout</strong> — the design pushes the pods well beyond their standard configuration with heavy modification, special pods, many step-downs or unusual edge conditions, at which point the speed and material advantage is largely spent.<br><br>Where none of these apply, the waffle pod is the genuinely better-buildable choice and this entry treats it as such. Where they stack, the stiffened raft is usually the simpler build, and a waffle pod may be solving a problem the site does not have.",
-            "thresholds": [
-              {
-                "range": "0 factors",
-                "rating": "Best practice",
-                "color": "green",
-                "guidance": "The site is flat, the footprint regular, the loading light and even, and the pod layout can stay standard. This is exactly what the waffle pod system is designed for: above-ground construction, no beam trenching, less spoil to handle and cart, lighter components, more predictable concrete quantities and less wet-weather disruption. Choose the waffle pod here with confidence — do not default to a stiffened raft out of habit on a site that genuinely suits a pod."
-              },
-              {
-                "range": "1 factor",
-                "rating": "Consider",
-                "color": "yellow",
-                "guidance": "One complication applies. Open a comparison rather than abandoning the pod automatically, and look at what the single factor actually is. A mild, localised slope or a single step-down can often be absorbed with routine edge build-up without losing the pod's advantage. But check the fix honestly: if accommodating the one factor starts pulling the pod system out of its standard layout, the advantage may already be eroding and a stiffened raft may build just as easily. A single, manageable complication should inform the choice, not automatically flip it."
-              },
-              {
-                "range": "2 or more factors",
-                "rating": "Concern",
-                "color": "orange",
-                "guidance": "Two or more complications are stacking — slope with an irregular footprint, heavy loading with non-standard pod layout, step-downs with complex edges. The waffle pod is being pushed outside the simple flat-platform case it is good at, and the extra cutting, stepping, edge work and special detailing erode the speed and material savings that justified it. A stiffened raft is the likely better-buildable choice here, because beams and local thickening can follow the slope, shape and loads directly. Revert to a stiffened raft before the scheme is fixed, or record why the pod system still builds well on this particular site."
-              }
-            ],
-            "alternatives": [
-              {
-                "title": "Start the simple-site default at a waffle pod",
-                "description": "On a flat, regular, lightly-loaded residential footprint where the pod layout stays standard, the waffle pod is the buildability default — above-ground, low-spoil, lighter and quicker. Do not move to a stiffened raft without a site-specific reason."
-              },
-              {
-                "title": "Count only the genuine complications (0, 1, 2+)",
-                "description": "Count a factor only where it materially changes the build — slope only where it actually needs build-up or stepping, an irregular footprint only where the pod grid genuinely gets awkward, loading only where local thickening is really required, and 'non-standard' only where the pods are pushed well beyond their standard configuration."
-              },
-              {
-                "title": "One factor — compare, do not switch",
-                "description": "A single complication justifies a check, not an automatic change of system. A mild slope or one step-down can often be handled with routine edge build-up while keeping the pod's advantage; confirm the fix does not quietly drag the system out of its standard layout."
-              },
-              {
-                "title": "Two or more factors — revert to a stiffened raft",
-                "description": "When slope combines with an irregular shape, or heavy loading with a non-standard layout, the buildability case has shifted: a stiffened raft follows the slope, shape and loads directly with beams and local thickening. Compare them on their merits rather than forcing the pod."
-              },
-              {
-                "title": "Do not let the slab type be chosen on price alone",
-                "description": "A waffle pod that looks cheaper per square metre on a flat takeoff can lose that saving once a sloping or complex site forces cutting, stepping and special edge detailing. Weigh the built cost on this site, not the catalogue cost."
-              }
-            ],
-            "applicability": {
-              "appliesWhere": "This entry applies to lightly-to-moderately loaded residential and small-commercial ground floors where both a stiffened raft and a waffle pod raft could be made structurally compliant under AS 2870, and the designer is weighing which system builds better on this site. It is most relevant to single- and two-storey housing, additions and small-footprint commercial work where site shape, slope and spoil strongly influence buildability.<br><br>It does not apply where the soil engineering itself dictates the slab type on structural grounds (defer to the geotechnical and structural design and the AS 2870 site classification), where piles are required — that is the piled ground-floor entry — or where the governing problem is a very thick raft pour and its heat-of-hydration cracking risk, which is the void-former-slab-vs-thick-raft entry.",
-              "checks": [
-                {
-                  "title": "Site classification and structural design come first",
-                  "description": "The AS 2870 site class and the geotechnical and structural design govern whether each slab type is viable at all. This entry sits downstream of that decision — it compares buildability only between systems that are already structurally acceptable."
-                },
-                {
-                  "title": "Verify each complication is real, not theoretical",
-                  "description": "Do not count a factor just because it could exist — count it only where it materially changes how the slab is built. A gentle fall the dig already accommodates is not automatically a slope factor."
-                },
-                {
-                  "title": "The pod advantage depends on the pod staying standard",
-                  "description": "The waffle pod's speed, spoil and material savings assume a standard above-ground layout. Once the design needs heavy pod modification, many step-downs or unusual edges, re-test whether the advantage still exists."
-                },
-                {
-                  "title": "Slope is the strongest single signal",
-                  "description": "Industry guidance is most consistent on slope: on sloping ground a stiffened raft is normally the better-buildable option, because the pod platform otherwise needs build-up or stepping the raft handles in excavation."
-                },
-                {
-                  "title": "The decision is regional",
-                  "description": "Pod supply, trade familiarity, spoil-disposal cost and the local builder pool vary by region. Treat this as NSW-practice guidance supported by Australian industry sources, not a universal rule."
-                }
-              ],
-              "note": "Use the rating as a constructability review prompt, not a rule that a waffle pod must be abandoned above a set number of factors. The aim is to head off two opposite errors: specifying a waffle pod on a sloping, irregular or heavily-loaded site because it looks cheaper on a flat takeoff, and defaulting to a stiffened raft on a flat, simple, light site where the pod would build faster with less excavation and spoil."
-            },
-            "evidence": "<strong>Waffle pod buildability mechanism — trades-training guidance.</strong> RMIT's building-trades material describes the waffle raft as a wholly above-ground slab poured over a grid of polystyrene void forms, requiring no beam excavation and using materially less concrete and steel than a stiffened raft — on the order of a third less concrete and a fifth less steel. That is the buildability case in one line: no trenching, less spoil, lighter handling and more predictable quantities, but a system that assumes a flat site.<br><br><strong>The site-shape limit — industry journalism.</strong> Building Connection frames the trade directly: waffle slabs are cheaper and easier to install on very flat ground, but on sloping ground or complex designs a stiffened raft is normally the better option. This is the sentence the entry is built around — site complexity, not structural capacity, is what pushes the choice back to a raft.<br><br><strong>Supplier corroboration.</strong> Neumann Steel describes waffle pods as built on top of a cleared, level surface rather than in-ground, avoiding trenching and excavated-spoil disposal and being less interrupted by wet weather because they are installed on a level platform. Supplier evidence — useful for the mechanism rather than as independent confirmation.<br><br><strong>Threshold basis.</strong> The 0 / 1 / 2+ bands are reasoned design-stage constructability judgement, not measured thresholds, and each factor is itself a material / not-material call rather than a number. They scale the scrutiny that staying on — or moving away from — a waffle pod should attract on a given site, and should be refined with project examples and regional builder feedback.<br><br><strong>References</strong><br>RMIT Learning Lab. <em>Features of waffle raft slabs</em> (BCGBC4010A footing systems).<br>Building Connection (2018). <em>Reactive soil: a slab of confusion</em>.<br>Neumann Steel. <em>Raft Slab vs Waffle Slab — What's the Difference?</em>",
-            "examples": [],
-            "supportingImages": [],
-            "dateAdded": "2026-06-23",
-            "dateReviewed": "2026-06-23",
-            "location": {
-              "country": "Australia",
-              "state": "NSW"
-            },
-            "evidenceSupport": {
-              "level": "medium",
-              "summary": "Supported by trades-training guidance (RMIT) and industry journalism (Building Connection) that frame the waffle-vs-raft trade directly on site shape and complexity, with supplier corroboration (Neumann Steel) of the above-ground, low-spoil mechanism. The sources are Australian and on-point but industry/training rather than peer-reviewed or code-based, and the 0 / 1 / 2+ bands are reasoned constructability judgement rather than measured thresholds. Treat the entry as a constructability prompt, not a proven decision rule."
-            },
-            "relatedEntries": [
-              {
-                "id": "void-former-slab-vs-thick-raft",
-                "note": "The same slab-system family. This entry handles the ground-bearing choice (raft vs waffle pod); the other handles the case where the raft becomes a thick, heat-generating pour and a void-former slab on piles is weighed against it. Check it once the raft turns thick or heavy."
-              },
-              {
-                "id": "piled-ground-beams-vs-structural-slab-over-void",
-                "note": "The piled counterpart to this decision. If the site needs piles rather than a ground-bearing slab, the choice moves to that entry — ground beams vs a structural slab over an under-slab void."
-              },
-              {
-                "id": "bored-concrete-piles-vs-screw-piles",
-                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
-              },
-              {
-                "id": "pvc-permanent-formwork-vs-blockwork",
-                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
-              }
-            ]
-          }
-        },
-        {
           "id": "piled-ground-beams-vs-structural-slab-over-void",
           "name": "Piled ground floor: ground beams vs. structural slab over void",
           "available": false,
@@ -1603,6 +1677,75 @@
               {
                 "id": "latent-safety-risk-of-screw-pile-foundations",
                 "note": "If the piles are screw piles, the as-built verification burden in the Safety entry still applies regardless of which floor system is chosen above them."
+              }
+            ],
+            "thresholds": [],
+            "alternatives": [],
+            "applicability": {
+              "appliesWhere": "",
+              "checks": [],
+              "note": ""
+            }
+          }
+        },
+        {
+          "id": "found-below-reactive-ground-vs-stiffened-slab-on-top",
+          "name": "Found below reactive ground vs. stiffen a slab on top",
+          "available": false,
+          "data": {
+            "question": "On reactive ground, is it more buildable to pile down below the active zone, or to stiffen a slab and ride the movement on top of it?",
+            "parameter": "Foundation strategy on reactive ground — pile to a stable founding layer vs. stiffen a ground-bearing slab — assessed on construction consequences, not reactive-soil design.",
+            "keywords": [
+              "reactive soil",
+              "reactive clay",
+              "ground heave",
+              "piling vs slab",
+              "deep foundation vs raft",
+              "stiffened slab",
+              "founding depth",
+              "active zone"
+            ],
+            "elementType": [
+              "slab on ground",
+              "raft/footing",
+              "pile/pier/shaft"
+            ],
+            "constructionPhase": [
+              "founding/slab",
+              "founding/piling"
+            ],
+            "background": "On reactive ground — clay that heaves and shrinks with moisture — there are two broad ways to respond, and they are different construction jobs, not just different structural designs. One is to <strong>found below</strong> the active zone: pile or pier down to a more stable layer so the slab no longer relies on the moving surface clay. The other is to <strong>stiffen on top</strong>: build a more rigid ground-bearing slab (a deeper-ribbed raft or waffle) and ride the movement, controlling it with rigidity, perimeter detailing, drainage and articulation.<br><br>The buildability trade cuts both ways, which is what makes it a real decision. Founding below buys a slab that is largely indifferent to the surface clay, but it brings the piling rig, the spoil, the founding verification and the slab-to-pile integration onto the job. Stiffening on top keeps it a simple above-ground or shallow pour with no piling, but the slab now permanently rides ground movement and the result depends on perimeter detailing, drainage and articulation holding up over the slab's life. Neither is free; the choice is which set of construction problems you would rather own.<br><br>This is the front door to the slab/foundation cluster: settle this first, then the downstream entries pick up — if you stay shallow, which ground-bearing slab (raft vs waffle pod); if you go deep, which pile method, and how the floor gets from the piles to the slab.<br><br><strong>Scope guard:</strong> this entry is about the <em>buildability of the system choice</em>, not how to design for reactive soil. It compares the construction consequences of going deep versus staying shallow; the reactive-soil design itself stays with the engineer.",
+            "_evidenceAngle": "Mechanism legs: (1) deeper ribs / stiffer slabs resist reactive movement (pod-depth lever; general industry). (2) piling below the active zone removes reliance on surface clay but reintroduces rig/spoil/founding verification/slab-pile integration (ties to bored-vs-screw, piled-fork, and the screw-pile Safety entry). (3) practitioner guidance (Cornell) that problem/soft ground often forces internal piers anyway, which is itself a push toward founding-below thinking. Keep AS 2870 / site-class language OUT — frame reactivity as the physical heave/shrink mechanism only. No reactive-soil design content; buildability of the strategy choice only.",
+            "_thresholdSketch": "Likely categorical, default-and-deviate. Default leans to the simplest ground-bearing stiffened slab where reactivity is mild/moderate and can be ridden; deviate to founding-below as reactivity, active-zone depth, consequence/important structure, or proliferating internal piers stack up. Possible counting parameter: number of 'go-deep' triggers present (high reactivity, deep active zone, internal piers already required throughout, level-sensitive structure that cannot tolerate movement). Needs development — watch not to drift into structural design.",
+            "_todo": "Decide parameter shape (counting vs categorical). Source the deep-vs-shallow buildability trade beyond practitioner reasoning. Confirm cross-link directions. Make sure it reads as the 'front door' without overlapping the downstream entries.",
+            "examples": [],
+            "supportingImages": [],
+            "dateAdded": "2026-06-23",
+            "dateReviewed": "2026-06-23",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "DRAFT — not yet written up. The mechanism legs are supported (deeper ribs stiffen the slab; piling below the active zone removes reliance on surface clay but reintroduces rig, spoil, founding verification and slab-pile integration; practitioner accounts that problem ground forces internal piers). No direct comparative study sets the deep-vs-shallow buildability call for small AU residential work, so this will sit at Medium with a reasoned default-and-deviate structure."
+            },
+            "relatedEntries": [
+              {
+                "id": "raft-slab-vs-waffle-pod",
+                "note": "The shallow branch. If this entry lands on staying ground-bearing, the raft-vs-waffle entry then picks which slab."
+              },
+              {
+                "id": "bored-concrete-piles-vs-screw-piles",
+                "note": "The deep branch, part one. If this entry lands on founding below, this settles which pile method suits the site."
+              },
+              {
+                "id": "piled-ground-beams-vs-structural-slab-over-void",
+                "note": "The deep branch, part two. Once piling is chosen, this settles how the floor gets from the piles to the slab."
+              },
+              {
+                "id": "void-former-slab-vs-thick-raft",
+                "note": "Related slab-system decision where the pour itself becomes the problem — relevant if stiffening on top pushes the raft toward a thick, heat-generating pour."
               }
             ],
             "thresholds": [],
@@ -3441,6 +3584,66 @@
             "parameter": "Number of distinct concrete grades specified across the project relative to need.",
             "_evidenceAngle": "Logistics/buildability: each extra grade is a separate order, batch, delivery and test stream, and a wrong-pour opportunity, often for marginal structural benefit. Standards in the back of mind (don't drop below what an element needs); the point is rationalising the count. Practice references: ready-mix supply / site QA literature on order and placement error with many mixes; corroborate with error-rate / variety literature.",
             "_thresholdSketch": "Good: few, well-separated grades. Consider: several grades. Concern: many closely-spaced grades. Action required: grade proliferation with high wrong-pour risk and little structural justification."
+          }
+        },
+        {
+          "id": "waffle-pod-depth-availability",
+          "name": "Waffle pod depth availability",
+          "available": false,
+          "data": {
+            "question": "Is the specified waffle pod depth actually available from local suppliers, or does it need made-to-order lead time?",
+            "parameter": "Availability of the specified pod depth from local/regional suppliers, against the standard stocked range.",
+            "keywords": [
+              "waffle pod availability",
+              "pod depth",
+              "375mm pod",
+              "EPS supply",
+              "made to order pods",
+              "lead time",
+              "pod supplier",
+              "custom pod"
+            ],
+            "elementType": [
+              "slab on ground",
+              "raft/footing"
+            ],
+            "constructionPhase": [
+              "founding/slab",
+              "procurement"
+            ],
+            "background": "Waffle pods are 1090 mm square and come in a range of depths — 225 mm is the everyday residential size, with 150, 175, 300 and 375 mm also made and custom cuts available. But the range a designer can draw on is regional, not universal: the deeper 375 mm pod, and in some states the shallower 150/175 mm pods, are not stocked by every supplier and may be made-to-order with lead time and cartage. A depth specified at design stage because it suits the floor level or the slab-rigidity demand can become a programme problem if it cannot be sourced locally in time. This is the supply-chain counterpart to the depth choice made in the stiffened-raft-vs-waffle-pod entry: that entry weighs which depth suits the site; this one asks whether that depth is actually available.",
+            "_evidenceAngle": "Supplier-range evidence shows the depth menu and that availability is regional: Saddingtons (175/225/300/375), Hunter Pods (145/220/300/375), Styrovic (150/225/300/375), Polyfoam (150/175 standard in QLD, 175 made-to-order in TAS), Bildavoid technical spec (150/225/300 standard, 'other depths may be available depending on location'), Metro Supplies (150/175/225/300/375). Mechanism: standard stocked depths are quick; off-standard or deep depths mean made-to-order lead time and cartage. Keep this Logistics (availability / supply chain), not structural. Pairs with the stirrup/bar-availability logistics entries for house style.",
+            "_thresholdSketch": "Categorical availability bands. Best practice: specified depth is a standard stocked size with local suppliers — no lead-time risk. Consider: depth is made but regionally variable — confirm stock and lead time before locking the design. Concern/Action: depth needs made-to-order or custom manufacture, or is not available from a local supplier within the programme — confirm supply, or design to a stocked depth, before the design is fixed. Decide final band count and wording.",
+            "_todo": "Confirm current regional stock patterns (esp. 375 mm and 150/175 mm by state). Decide 3 vs 4 bands. Mirror house style of stirrup-bar-size-availability and slab-bar-diameter logistics entries. Cross-check cartage / minimum-order effects.",
+            "examples": [],
+            "supportingImages": [],
+            "dateAdded": "2026-06-23",
+            "dateReviewed": "2026-06-23",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "DRAFT — not yet written up. Multiple Australian suppliers confirm the standard pod menu (around 150–375 mm at 1090 mm square, 225 mm most common) and that the deeper and some shallower depths are regionally variable or made-to-order. The availability bands will be a reasoned supply-chain judgement rather than a measured threshold, so this is expected to sit at Medium."
+            },
+            "relatedEntries": [
+              {
+                "id": "raft-slab-vs-waffle-pod",
+                "note": "The design-side counterpart. That entry weighs which pod depth suits the site for floor level and rigidity; this one checks whether the chosen depth can actually be sourced locally in time."
+              },
+              {
+                "id": "stirrup-bar-size-availability-and-site-adaptability",
+                "note": "Both are 'is the specified size actually available locally' supply-chain questions — same logistics logic applied to a different product."
+              }
+            ],
+            "thresholds": [],
+            "alternatives": [],
+            "applicability": {
+              "appliesWhere": "",
+              "checks": [],
+              "note": ""
+            }
           }
         }
       ]
@@ -5288,7 +5491,10 @@
     "fragment|entry|isometric-overview-views-in-structural-drawing-sets|rpj2h1",
     "fragment|entry|piled-ground-beams-vs-structural-slab-over-void|1d1roql",
     "fragment|entry|raft-slab-vs-waffle-pod|zvftn9",
-    "fragment|update|void-former-slab-vs-thick-raft|jngsa"
+    "fragment|update|void-former-slab-vs-thick-raft|jngsa",
+    "fragment|update|raft-slab-vs-waffle-pod|ystflp",
+    "fragment|entry|waffle-pod-depth-availability|18nl42d",
+    "fragment|entry|found-below-reactive-ground-vs-stiffened-slab-on-top|1f3rxnt"
   ],
   "_rejected": [],
   "_reconsider": [
