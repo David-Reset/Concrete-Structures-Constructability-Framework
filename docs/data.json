@@ -346,10 +346,6 @@
               {
                 "id": "pvc-permanent-formwork-vs-blockwork",
                 "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
-              },
-              {
-                "id": "void-former-slab-vs-thick-raft",
-                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
               }
             ]
           }
@@ -1333,10 +1329,6 @@
                 "note": "Both depend on whether construction plant and workers can physically reach and work the element on this site — check site access together."
               },
               {
-                "id": "void-former-slab-vs-thick-raft",
-                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
-              },
-              {
                 "id": "pvc-permanent-formwork-vs-blockwork",
                 "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
               }
@@ -1530,10 +1522,6 @@
               {
                 "id": "waffle-pod-depth-availability",
                 "note": "The 'can you get it' counterpart to the depth advice here. This entry weighs which pod depth suits the site; the Logistics entry checks whether that depth is actually stocked locally or needs made-to-order lead time."
-              },
-              {
-                "id": "void-former-slab-vs-thick-raft",
-                "note": "The same slab-system family. This entry handles the ground-bearing choice (raft vs waffle pod); the other handles the case where the raft becomes a thick, heat-generating pour and a void-former slab on piles is weighed against it."
               },
               {
                 "id": "pile-supported-beam-and-slab-vs-flat-slab",
@@ -1788,10 +1776,6 @@
                 "note": "The ground-bearing counterpart, for when no piles are needed. That entry stays a slab-on-ground choice; this one picks up once the floor is suspended on piles and the ground is out of the load path."
               },
               {
-                "id": "void-former-slab-vs-thick-raft",
-                "note": "Where the pour itself becomes the problem; directly relevant when punching drives the flat plate into a thick, hot pour and beams plus a thin infill slab become the easier build."
-              },
-              {
                 "id": "bored-concrete-piles-vs-screw-piles",
                 "note": "Upstream pile-method choice; affects spoil, access, tolerance and the plant already on site. Weigh together."
               },
@@ -1803,91 +1787,32 @@
           }
         },
         {
-          "id": "void-former-slab-vs-thick-raft",
-          "name": "Void-former slab vs. thick raft",
-          "available": false,
-          "data": {
-            "question": "Where a thick raft is proposed, has a void-former (biaxial) suspended slab on piles been weighed against it — considering not just concrete volume but the buildability of a large, thick pour and its heat-of-hydration cracking risk?",
-            "parameter": "Foundation/slab system where a thick raft is proposed, assessed against a void-former slab for pour buildability, self-weight and early thermal cracking.",
-            "keywords": [
-              "thick raft",
-              "mass concrete",
-              "heat of hydration",
-              "early thermal cracking",
-              "biaxial voided slab",
-              "bubble deck",
-              "voided slab",
-              "self-weight reduction",
-              "staged pour",
-              "CIRIA C660",
-              "CIRIA C766"
-            ],
-            "elementType": [
-              "slab on ground",
-              "raft/footing"
-            ],
-            "constructionPhase": [
-              "founding/slab"
-            ],
-            "background": "A raft that keeps getting thicker eventually stops being an ordinary slab and starts behaving like a mass-concrete pour. Beyond a certain thickness the heat generated as the concrete cures cannot escape fast enough, the core runs much hotter than the surface, and the restrained contraction that follows drives early-age thermal cracking. At that point the raft is no longer just expensive in concrete — the <em>pour itself</em> has become the construction problem, needing mix control, pour planning, possible staging or layering, thermal monitoring and crack-control measures.<br><br>An internal biaxial voided slab removes concrete from the middle of the section, where it does least structural work. That cuts self-weight and — relevant here — cuts the volume of heat-generating concrete in the thickest part of the pour, which can ease the thermal problem rather than just trim the quantity. The trade is a more specialist system: void set-out and fixing are critical, buoyancy during the pour has to be controlled, and punching/shear zones near piles, columns and heavy loads need the voids omitted or detailed around.<br><br>The default is the solid raft. The void-former slab earns its place only where the raft has become thick and concrete-intensive enough that the pour is the real burden — not merely because removing concrete looks efficient on paper.",
-            "_evidenceAngle": "Strongest tie is the mass-concrete THERMAL angle (more rigorous than 'uses less concrete'): a thick raft is a large heat-of-hydration pour prone to early thermal cracking, hard to build well; a biaxial void slab sidesteps the thick-pour problem and cuts self-weight. Practice reference: CIRIA C660 (controlling early-age thermal cracking) as a construction-practice guide, NOT a code clause. Keep the AS mass-concrete provisions in the back of mind only. Supporting: Ju et al. (2019) monitored a thick raft, ~35°C core-to-surface peak; thickness >2.5 m gave >25°C difference above which crack control is needed. Biaxial-slab self-weight/material mechanism: Oukaili et al. (2024), Gajewski et al. (2023), Na & Paik (2019) — but these are suspended/commercial floor slabs, analogous at best to a ground raft.",
-            "_thresholdSketch": "Good/Consider by pour thickness + thermal risk: thin/normal → fine, solid raft is correct. Concern: thick raft with a real thermal-cracking control burden (monitoring, staging, mix control becoming necessary). Action required: very thick / mass-concrete pour where a void slab would clearly ease buildability — weigh it explicitly. Decide whether to anchor a band on a thickness figure (e.g. the ~2.5 m Ju finding) or keep it qualitative; the Ju threshold is from one study and mix/restraint/ambient-dependent, so probably qualitative with the figure as a flag.",
-            "_todo": "Write up evidence section in house style. Confirm whether to cite a thickness number in the bands or keep qualitative. Check the biaxial-slab papers are framed as analogous (floor/commercial), not as direct ground-raft evidence. Note this entry was the original stub — expanded here with background/keywords/metadata; the _evidenceAngle and _thresholdSketch are the original working notes, preserved.",
-            "examples": [],
-            "supportingImages": [],
-            "dateAdded": "2026-06-23",
-            "dateReviewed": "2026-06-23",
-            "location": {
-              "country": "Australia",
-              "state": "NSW"
-            },
-            "evidenceSupport": {
-              "level": "medium",
-              "summary": "DRAFT — not yet written up. The thermal mechanism is well supported (Ju et al. 2019 on thick-raft core-to-surface temperature and cracking risk; CIRIA C660/C766 as construction-practice references for early-age thermal crack control). The self-weight / concrete-reduction mechanism for biaxial voided slabs is peer-reviewed (Oukaili 2024, Gajewski 2023, Na & Paik 2019) but drawn from suspended and commercial floor slabs rather than residential ground rafts, so it transfers by analogy only. Expect Medium, with bands as reasoned constructability judgement keyed to pour thickness and thermal-control burden."
-            },
-            "relatedEntries": [
-              {
-                "id": "raft-slab-vs-waffle-pod",
-                "note": "The ground-bearing slab-selection entry. Start there; arrive here only once the raft option has turned thick and concrete-intensive enough that the pour is the problem."
-              },
-              {
-                "id": "pile-supported-beam-and-slab-vs-flat-slab",
-                "note": "Shares the voided / piled-slab theme from the piled side. Weigh together where piles are involved and the raft is heavy."
-              },
-              {
-                "id": "bored-concrete-piles-vs-screw-piles",
-                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
-              },
-              {
-                "id": "pvc-permanent-formwork-vs-blockwork",
-                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
-              }
-            ],
-            "thresholds": [],
-            "alternatives": [],
-            "applicability": {
-              "appliesWhere": "",
-              "checks": [],
-              "note": ""
-            }
-          }
-        },
-        {
           "id": "found-below-reactive-ground-vs-stiffened-slab-on-top",
           "name": "Found below reactive ground vs. stiffen a slab on top",
-          "available": false,
+          "available": true,
           "data": {
             "question": "On reactive ground, is it more buildable to pile down below the active zone, or to stiffen a slab and ride the movement on top of it?",
-            "parameter": "Foundation strategy on reactive ground — pile to a stable founding layer vs. stiffen a ground-bearing slab — assessed on construction consequences, not reactive-soil design.",
+            "parameter": "How many of the three conditions favouring founding below apply.",
             "keywords": [
               "reactive soil",
               "reactive clay",
+              "shrink-swell",
               "ground heave",
-              "piling vs slab",
+              "active zone",
+              "found below",
+              "stiffen on top",
+              "pile below active zone",
               "deep foundation vs raft",
               "stiffened slab",
+              "stiffened raft",
+              "waffle pod",
               "founding depth",
-              "active zone"
+              "piling vs slab",
+              "differential movement",
+              "articulation",
+              "perimeter detailing",
+              "screw pile",
+              "bored pier"
             ],
             "elementType": [
               "slab on ground",
@@ -1898,47 +1823,162 @@
               "founding/slab",
               "founding/piling"
             ],
-            "background": "On reactive ground — clay that heaves and shrinks with moisture — there are two broad ways to respond, and they are different construction jobs, not just different structural designs. One is to <strong>found below</strong> the active zone: pile or pier down to a more stable layer so the slab no longer relies on the moving surface clay. The other is to <strong>stiffen on top</strong>: build a more rigid ground-bearing slab (a deeper-ribbed raft or waffle) and ride the movement, controlling it with rigidity, perimeter detailing, drainage and articulation.<br><br>The buildability trade cuts both ways, which is what makes it a real decision. Founding below buys a slab that is largely indifferent to the surface clay, but it brings the piling rig, the spoil, the founding verification and the slab-to-pile integration onto the job. Stiffening on top keeps it a simple above-ground or shallow pour with no piling, but the slab now permanently rides ground movement and the result depends on perimeter detailing, drainage and articulation holding up over the slab's life. Neither is free; the choice is which set of construction problems you would rather own.<br><br>This is the front door to the slab/foundation cluster: settle this first, then the downstream entries pick up — if you stay shallow, which ground-bearing slab (raft vs waffle pod); if you go deep, which pile method, and how the floor gets from the piles to the slab.<br><br><strong>Scope guard:</strong> this entry is about the <em>buildability of the system choice</em>, not how to design for reactive soil. It compares the construction consequences of going deep versus staying shallow; the reactive-soil design itself stays with the engineer.",
-            "_evidenceAngle": "Mechanism legs: (1) deeper ribs / stiffer slabs resist reactive movement (pod-depth lever; general industry). (2) piling below the active zone removes reliance on surface clay but reintroduces rig/spoil/founding verification/slab-pile integration (ties to bored-vs-screw, piled-fork, and the screw-pile Safety entry). (3) practitioner guidance (Cornell) that problem/soft ground often forces internal piers anyway, which is itself a push toward founding-below thinking. Keep AS 2870 / site-class language OUT — frame reactivity as the physical heave/shrink mechanism only. No reactive-soil design content; buildability of the strategy choice only.",
-            "_thresholdSketch": "Likely categorical, default-and-deviate. Default leans to the simplest ground-bearing stiffened slab where reactivity is mild/moderate and can be ridden; deviate to founding-below as reactivity, active-zone depth, consequence/important structure, or proliferating internal piers stack up. Possible counting parameter: number of 'go-deep' triggers present (high reactivity, deep active zone, internal piers already required throughout, level-sensitive structure that cannot tolerate movement). Needs development — watch not to drift into structural design.",
-            "_todo": "Decide parameter shape (counting vs categorical). Source the deep-vs-shallow buildability trade beyond practitioner reasoning. Confirm cross-link directions. Make sure it reads as the 'front door' without overlapping the downstream entries.",
+            "background": "On reactive ground &mdash; clay that heaves and shrinks as its moisture changes &mdash; there are two broad ways to carry a light floor, and they are <strong>different construction jobs, not just different structural designs</strong>. One is to <strong>found below</strong> the active zone: pile or pier down to a more stable layer so the floor no longer relies on the moving surface clay. The other is to <strong>stiffen on top</strong>: build a more rigid ground-bearing slab &mdash; a deeper-ribbed raft or waffle &mdash; and ride the movement, controlling it with rigidity, perimeter detailing, drainage and articulation. This entry is the <strong>front door</strong> to the slab-and-foundation cluster: it settles the deep-versus-shallow question first, and the downstream entries then pick up whichever branch you land on.<br><br>The default is to <strong>stay shallow</strong>, because shallow is the simpler build: a shallow or above-ground pour, no rig, no spoil run, no founding verification and no slab-to-pile integration. Founding below buys a floor that is largely indifferent to the surface clay, but it brings the piling rig, the spoil, the founding check and the pile-head connection onto the job. Neither is free &mdash; the question is which set of construction problems you would rather own &mdash; so the entry counts <strong>how many of three conditions push you off the shallow default</strong>. None present means stiffening on top is the cleaner build; all three means the shallow slab is solving a problem the site will not let it solve, and founding below is the more honest job.<br><br><strong>Movement too big to ride.</strong> Where reactivity is high or the active zone is deep, slab stiffness stops being a credible answer on its own. You can keep deepening ribs, but past a point you are buying rigidity the floor still cannot fully use, and the residual movement lands on perimeter detailing and articulation to manage for the life of the floor.<br><br><strong>You are piling anyway.</strong> The whole saving of staying shallow is that you avoid the rig and the spoil. Where soft or problem ground already forces internal piers through the footprint &mdash; not just around the perimeter &mdash; that saving has already evaporated: the rig is mobilised, the spoil is going off site, and the floor is part-piled regardless. At that point founding properly below is often the tidier build than a stiffened slab threaded around piers it was trying to avoid.<br><br><strong>The structure cannot tolerate residual movement.</strong> Stiffening on top is a <em>manage-the-movement</em> strategy, not an eliminate-it one. Where the floor level is fixed, an accessibility threshold is in play, or the finishes are brittle or movement-sensitive, 'ride it and detail around it' is not an acceptable answer, and the case for taking the floor off the moving ground altogether strengthens.<br><br><strong>One trap on the shallow branch worth carrying here.</strong> If you stay shallow and the answer to reactivity is to keep <strong>thickening the raft</strong>, watch that the <em>pour itself</em> does not quietly become the construction problem &mdash; a raft driven thick enough is a large heat-generating pour that needs mix control, pour planning, possibly staging and thermal monitoring to build well. That creeping pour burden is itself a quiet nudge back toward founding below: if stiffening on top is only 'winning' by becoming a difficult mass pour, the shallow saving it was meant to protect is already being spent.<br><br>So the count routes you. Land on staying shallow and the next question is which ground-bearing slab &mdash; raft versus waffle pod. Land on founding below and the next questions are which pile method, then how the floor gets from the piles to the slab. This entry stops at the fork; it does not adjudicate the branches.<br><br><strong>Scope guard:</strong> this entry is about the <strong>buildability of the system choice</strong>, not how to design for reactive soil. It compares the construction consequences of going deep versus staying shallow; the reactive-soil assessment and the structural design itself stay with the engineer.",
+            "thresholds": [
+              {
+                "range": "0 apply",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "None of the three conditions is present: reactivity is mild-to-moderate and rideable, no internal piling is otherwise forced, and the structure can tolerate the residual movement a stiffened slab leaves. Staying shallow is the simpler build and the right default — a shallow or above-ground pour with no rig, spoil run or founding verification. Carry on to the ground-bearing slab choice: raft slab vs waffle pod. Do not reach for piles out of caution on a site a stiffened slab can ride."
+              },
+              {
+                "range": "1 applies",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "One condition is present. Staying shallow is still the likely build, but pressure-test it rather than defaulting — confirm the single trigger is real and not just conservative, and check it is not the leading edge of the other two (high reactivity often brings forced internal piers and tight movement tolerance with it). If it holds as a genuine one-off, proceed shallow to raft vs waffle pod, but note the deep branch exists."
+              },
+              {
+                "range": "2 apply",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Two conditions are present. This is now a genuinely balanced, deliberate system choice, not a default either way — the shallow saving is half-spent and founding below is a real contender. Decide it consciously and early, with the engineer's reactive-soil assessment in hand, rather than letting habit pick the stiffened slab. Whichever way it lands, hand off to the matching branch."
+              },
+              {
+                "range": "3 apply",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "All three conditions are present: the movement is too big to ride, the ground is forcing piles regardless, and the structure cannot tolerate residual movement. The simple shallow slab is effectively off the table — stiffening on top would be solving a problem the site will not let it solve. Found below: settle the pile method at bored vs screw piles, then how the floor meets the heads at pile-supported floor — flat plate vs beam-and-slab."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Default to staying shallow, then count the go-deep triggers",
+                "description": "The simpler build is a ground-bearing stiffened slab — a shallow or above-ground pour with no rig, spoil run, founding verification or pile-head connection. Treat that as the default and move off it only as the three conditions stack: count genuine triggers, and do not switch to piling on a single conservative worry."
+              },
+              {
+                "title": "Trigger one — is the movement too big to ride?",
+                "description": "Where reactivity is high or the active zone is deep, deepening ribs buys rigidity the floor cannot fully use, and the residual movement lands on perimeter detailing and articulation for the floor's life. If stiffness alone is not a credible answer, that is one trigger toward founding below. The reactive-soil assessment itself stays with the engineer."
+              },
+              {
+                "title": "Trigger two — are you piling anyway?",
+                "description": "The shallow saving is that you avoid the rig and the spoil. Where soft or problem ground already forces internal piers through the footprint, that saving is gone — the rig is on site and the floor is part-piled regardless. Founding properly below is often tidier than a stiffened slab threaded around piers it was trying to avoid."
+              },
+              {
+                "title": "Trigger three — can the structure tolerate residual movement?",
+                "description": "Stiffening on top manages movement, it does not remove it. A fixed floor level, an accessibility threshold, or brittle, movement-sensitive finishes mean 'ride it and detail around it' is not acceptable, and the case for taking the floor off the moving ground strengthens."
+              },
+              {
+                "title": "Watch the thickening-raft trap",
+                "description": "If you stay shallow and keep thickening the raft to chase rigidity, check the pour has not become the problem — a raft driven thick is a large heat-generating pour needing mix control, pour planning, possibly staging and thermal monitoring. A stiffened slab that only 'wins' by becoming a difficult mass pour has already spent the saving that justified staying shallow, which is itself a nudge back toward founding below."
+              },
+              {
+                "title": "Settle this fork before the downstream entries",
+                "description": "This is the front door, not the slab-selection itself. Land on shallow and read raft vs waffle pod; land on deep and read bored vs screw piles, then pile-supported floor. Decide deep-versus-shallow first so the downstream entries answer the right question — do not start sizing a waffle pod before you have confirmed you are staying ground-bearing at all."
+              },
+              {
+                "title": "Keep it a buildability call, not reactive-soil design",
+                "description": "The rating counts construction consequences — rig, spoil, founding verification, pile integration, perimeter detailing and the pour burden — not site reactivity numbers. The reactive-soil classification and the structural design stay with the engineer; use the count as a review prompt for which construction job to commit to."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to light, low-rise floors — typically residential — on reactive (shrink-swell) ground, where the foundation choice is between a ground-bearing stiffened slab (raft or waffle) that rides the movement and founding below the active zone on piles or piers. It is the system-selection fork upstream of the individual slab- and pile-choice entries.",
+              "checks": [
+                {
+                  "title": "Source of the reactivity and active-zone depth",
+                  "description": "The count leans on how reactive the ground is and how deep the active zone runs. That comes from the geotechnical assessment, not from this entry — confirm it before reading a high reactivity as a trigger."
+                },
+                {
+                  "title": "Whether internal piers are already forced",
+                  "description": "If soft or problem ground already requires piers through the footprint rather than only at the perimeter, the shallow saving is largely gone and trigger two is live. Check this against the geotechnical picture, not just the perimeter conditions."
+                },
+                {
+                  "title": "Floor-level and finish movement tolerance",
+                  "description": "A fixed floor level, an accessibility threshold, or brittle finishes can make residual movement unacceptable even where reactivity alone is rideable. Confirm what the structure above can actually tolerate."
+                },
+                {
+                  "title": "Regional plant, spoil and practice",
+                  "description": "The cost of founding below depends on local rig availability, spoil disposal and common practice. The deep build is a smaller step where piling plant is routine and a larger one where it must be mobilised specially — weigh the location tag before applying the guidance elsewhere."
+                }
+              ],
+              "note": "Use the count as a constructability review prompt for which construction job to commit to, not as a substitute for the reactive-soil assessment. The reactive-soil design stays with the engineer; this entry only weighs the buildability of going deep versus staying shallow."
+            },
+            "workedExample": {
+              "title": "Worked example — two sites, the same three triggers",
+              "caveat": "Site A and Site B are generic archetypes for illustration, not a real project. The verdict comes from counting the go-deep triggers, not from any drawing — you can run the same three checks on a site from words alone.",
+              "headline": "The same three triggers, opposite answers — and the count routes you to the next entry.",
+              "tableStyle": "soffitSheetBracing",
+              "tableHeaders": [
+                "Go-deep trigger",
+                "Site A — new house, moderately reactive level block",
+                "Site B — extension on highly reactive, soft ground"
+              ],
+              "tableColumnBands": [
+                "",
+                "green",
+                "red"
+              ],
+              "tableRows": [
+                [
+                  "Movement too big to ride",
+                  "No — moderate reactivity a stiffened slab can ride with normal perimeter detailing",
+                  "Yes — high reactivity and a deep active zone; stiffness alone is not a credible answer"
+                ],
+                [
+                  "Piling anyway",
+                  "No — firm, uniform ground; no internal piers forced",
+                  "Yes — soft spots already force piers through the footprint, so the rig and spoil are on site regardless"
+                ],
+                [
+                  "Structure can't tolerate movement",
+                  "No — new build, flexible finishes, floor level free to sit where it suits",
+                  "Yes — must match the existing floor level and tie into brittle finishes; residual movement is not acceptable"
+                ],
+                [
+                  "Triggers present",
+                  "0 → stay shallow → raft vs waffle pod",
+                  "3 → found below → bored vs screw piles, then pile-supported floor"
+                ]
+              ],
+              "howToUse": "Run the same three checks on your own site, count the genuine triggers, and read the band: 0 keeps you shallow and routes you to raft vs waffle pod; 3 takes the shallow slab off the table and routes you to the pile method then the pile-supported floor; 1 or 2 is a deliberate, decide-it-early call rather than a default. Note that Site B trips all three for different reasons — movement, forced piling and a fixed floor — which is exactly when stiffening on top stops being the simpler build.",
+              "assumptionsTitle": "Notes",
+              "assumptions": [
+                "Site A and Site B are illustrative archetypes; real sites mix reactivity, ground strength and floor-level constraints in their own way, which is why one or two triggers is treated as 'decide deliberately', not an automatic switch.",
+                "The reactivity and active-zone depth behind trigger one come from the geotechnical assessment, not from this entry. Confirm them before reading a high reactivity as a trigger.",
+                "Trigger two turns on whether piers are forced through the footprint, not just at the perimeter — perimeter-only edge thickening or isolated piers do not on their own spend the shallow saving.",
+                "This entry stops at the deep-versus-shallow fork. It does not size a slab or a pile — the downstream entries do that once the branch is settled."
+              ]
+            },
+            "evidence": "<strong>Mechanism &mdash; stiffening on top.</strong> The industry and training basis for riding reactive movement with a more rigid ground slab is the same depth-and-stiffness lever set out in the raft-versus-waffle entry: deeper ribs give a more rigid slab that better resists heave and shrink movement, which is why pod depth is treated there as a rigidity lever on reactive ground. Stiffening on top is therefore a real and common answer &mdash; but a manage-the-movement one, leaving residual movement to perimeter detailing, drainage and articulation, which is the limit this entry turns on.<br><br><strong>Mechanism &mdash; founding below.</strong> Founding below the active zone removes the floor's reliance on the moving surface clay, at the cost of bringing the piling rig, the spoil run, the founding verification and the slab-to-pile integration onto the job. These are the same construction burdens weighed in the pile-method and pile-supported-floor entries, applied here one level up to the decision of whether to take them on at all.<br><br><strong>Practitioner evidence &mdash; piling tends to multiply on problem ground.</strong> Practitioner guidance (Cornell Engineers) describes how soft or problem ground tends to force internal piers through the footprint rather than only at the perimeter &mdash; the same observation the raft-versus-waffle entry uses to show piling eroding the pod's advantage. Carried up to this fork, it is the basis for the second trigger: once the ground is forcing piers anyway, the shallow saving is already spent and founding properly below is often the tidier build.<br><br><strong>Confidence and limits.</strong> There is no direct comparative buildability study that sets the deep-versus-shallow call by reactivity for small Australian residential work, so the three-trigger count is reasoned, default-and-deviate constructability judgement rather than a measured threshold. The mechanism legs are each supported &mdash; slab stiffness against movement, the construction burden of founding below, and the tendency of problem ground to force piers &mdash; but the entry should be read as a structured review prompt for which construction job to own, not a proven decision rule. The reactive-soil classification and the structural design sit with the engineer.",
             "examples": [],
             "supportingImages": [],
             "dateAdded": "2026-06-23",
-            "dateReviewed": "2026-06-23",
+            "dateReviewed": "2026-06-24",
             "location": {
               "country": "Australia",
               "state": "NSW"
             },
             "evidenceSupport": {
               "level": "medium",
-              "summary": "DRAFT — not yet written up. The mechanism legs are supported (deeper ribs stiffen the slab; piling below the active zone removes reliance on surface clay but reintroduces rig, spoil, founding verification and slab-pile integration; practitioner accounts that problem ground forces internal piers). No direct comparative study sets the deep-vs-shallow buildability call for small AU residential work, so this will sit at Medium with a reasoned default-and-deviate structure."
+              "summary": "The mechanism legs are each supported: the stiffness-against-movement lever (the same depth/rigidity basis used in the raft-vs-waffle entry, from Australian industry and training sources), the construction burden of founding below (rig, spoil, founding verification and slab-to-pile integration, as weighed in the pile-method and pile-supported-floor entries), and the tendency of soft or problem ground to force internal piers through the footprint (practitioner guidance, Cornell Engineers). No direct comparative buildability study sets the deep-versus-shallow call by reactivity for small Australian residential work, so the three-trigger count is reasoned default-and-deviate constructability judgement rather than a measured threshold. Treat the entry as the system-selection front door and a review prompt, not a proven decision rule; the reactive-soil assessment and structural design stay with the engineer."
             },
             "relatedEntries": [
               {
                 "id": "raft-slab-vs-waffle-pod",
-                "note": "The shallow branch. If this entry lands on staying ground-bearing, the raft-vs-waffle entry then picks which slab."
+                "note": "The shallow branch. If this entry lands on staying ground-bearing, that entry picks which slab — stiffened raft vs waffle pod."
               },
               {
                 "id": "bored-concrete-piles-vs-screw-piles",
-                "note": "The deep branch, part one. If this entry lands on founding below, this settles which pile method suits the site."
+                "note": "The deep branch, part one. If this entry lands on founding below, that entry settles which pile method suits the site."
               },
               {
                 "id": "pile-supported-beam-and-slab-vs-flat-slab",
-                "note": "The deep branch, part two. Once piling is chosen, this settles how the floor gets from the piles to the slab."
+                "note": "The deep branch, part two. Once piling is chosen, that entry settles how the floor gets from the piles to the slab — flat plate vs beam-and-slab."
               },
               {
-                "id": "void-former-slab-vs-thick-raft",
-                "note": "Related slab-system decision where the pour itself becomes the problem — relevant if stiffening on top pushes the raft toward a thick, heat-generating pour."
+                "id": "latent-safety-risk-of-screw-pile-foundations",
+                "note": "Relevant on the deep branch if the piles are screw piles — the as-built verification and head-connection burden bears on the cost of founding below, and on uplift fixity on reactive ground."
               }
-            ],
-            "thresholds": [],
-            "alternatives": [],
-            "applicability": {
-              "appliesWhere": "",
-              "checks": [],
-              "note": ""
-            }
+            ]
           }
         }
       ]
@@ -4371,10 +4411,6 @@
               {
                 "id": "pvc-permanent-formwork-vs-blockwork",
                 "note": "Both are early system-selection decisions where constructability and risk, not just structural capacity, should drive the choice. Weigh them together when settling the scheme."
-              },
-              {
-                "id": "void-former-slab-vs-thick-raft",
-                "note": "Both are early system-selection decisions where constructability and risk, not just structural capacity, should drive the choice. Weigh them together when settling the scheme."
               }
             ]
           }
@@ -5697,7 +5733,8 @@
     "fragment|entry|waffle-pod-depth-availability|18nl42d",
     "fragment|entry|found-below-reactive-ground-vs-stiffened-slab-on-top|1f3rxnt",
     "fragment|update|raft-slab-vs-waffle-pod|11hr5r0",
-    "fragment|entry|pile-supported-beam-and-slab-vs-flat-slab|1607rdc"
+    "fragment|entry|pile-supported-beam-and-slab-vs-flat-slab|1607rdc",
+    "fragment|update|found-below-reactive-ground-vs-stiffened-slab-on-top|1u0rbe8"
   ],
   "_rejected": [],
   "_reconsider": [
