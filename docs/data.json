@@ -1536,7 +1536,7 @@
                 "note": "The same slab-system family. This entry handles the ground-bearing choice (raft vs waffle pod); the other handles the case where the raft becomes a thick, heat-generating pour and a void-former slab on piles is weighed against it."
               },
               {
-                "id": "piled-ground-beams-vs-structural-slab-over-void",
+                "id": "pile-supported-beam-and-slab-vs-flat-slab",
                 "note": "Where piling becomes general across the footprint, this stops being a waffle-vs-raft decision and becomes which piled system is simplest. Hand off to that entry once internal piles are required throughout."
               },
               {
@@ -1548,217 +1548,6 @@
                 "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
               }
             ]
-          }
-        },
-        {
-          "id": "void-former-slab-vs-thick-raft",
-          "name": "Void-former slab vs. thick raft",
-          "available": false,
-          "data": {
-            "question": "Where a thick raft is proposed, has a void-former (biaxial) suspended slab on piles been weighed against it — considering not just concrete volume but the buildability of a large, thick pour and its heat-of-hydration cracking risk?",
-            "parameter": "Foundation/slab system where a thick raft is proposed, assessed against a void-former slab for pour buildability, self-weight and early thermal cracking.",
-            "keywords": [
-              "thick raft",
-              "mass concrete",
-              "heat of hydration",
-              "early thermal cracking",
-              "biaxial voided slab",
-              "bubble deck",
-              "voided slab",
-              "self-weight reduction",
-              "staged pour",
-              "CIRIA C660",
-              "CIRIA C766"
-            ],
-            "elementType": [
-              "slab on ground",
-              "raft/footing"
-            ],
-            "constructionPhase": [
-              "founding/slab"
-            ],
-            "background": "A raft that keeps getting thicker eventually stops being an ordinary slab and starts behaving like a mass-concrete pour. Beyond a certain thickness the heat generated as the concrete cures cannot escape fast enough, the core runs much hotter than the surface, and the restrained contraction that follows drives early-age thermal cracking. At that point the raft is no longer just expensive in concrete — the <em>pour itself</em> has become the construction problem, needing mix control, pour planning, possible staging or layering, thermal monitoring and crack-control measures.<br><br>An internal biaxial voided slab removes concrete from the middle of the section, where it does least structural work. That cuts self-weight and — relevant here — cuts the volume of heat-generating concrete in the thickest part of the pour, which can ease the thermal problem rather than just trim the quantity. The trade is a more specialist system: void set-out and fixing are critical, buoyancy during the pour has to be controlled, and punching/shear zones near piles, columns and heavy loads need the voids omitted or detailed around.<br><br>The default is the solid raft. The void-former slab earns its place only where the raft has become thick and concrete-intensive enough that the pour is the real burden — not merely because removing concrete looks efficient on paper.",
-            "_evidenceAngle": "Strongest tie is the mass-concrete THERMAL angle (more rigorous than 'uses less concrete'): a thick raft is a large heat-of-hydration pour prone to early thermal cracking, hard to build well; a biaxial void slab sidesteps the thick-pour problem and cuts self-weight. Practice reference: CIRIA C660 (controlling early-age thermal cracking) as a construction-practice guide, NOT a code clause. Keep the AS mass-concrete provisions in the back of mind only. Supporting: Ju et al. (2019) monitored a thick raft, ~35°C core-to-surface peak; thickness >2.5 m gave >25°C difference above which crack control is needed. Biaxial-slab self-weight/material mechanism: Oukaili et al. (2024), Gajewski et al. (2023), Na & Paik (2019) — but these are suspended/commercial floor slabs, analogous at best to a ground raft.",
-            "_thresholdSketch": "Good/Consider by pour thickness + thermal risk: thin/normal → fine, solid raft is correct. Concern: thick raft with a real thermal-cracking control burden (monitoring, staging, mix control becoming necessary). Action required: very thick / mass-concrete pour where a void slab would clearly ease buildability — weigh it explicitly. Decide whether to anchor a band on a thickness figure (e.g. the ~2.5 m Ju finding) or keep it qualitative; the Ju threshold is from one study and mix/restraint/ambient-dependent, so probably qualitative with the figure as a flag.",
-            "_todo": "Write up evidence section in house style. Confirm whether to cite a thickness number in the bands or keep qualitative. Check the biaxial-slab papers are framed as analogous (floor/commercial), not as direct ground-raft evidence. Note this entry was the original stub — expanded here with background/keywords/metadata; the _evidenceAngle and _thresholdSketch are the original working notes, preserved.",
-            "examples": [],
-            "supportingImages": [],
-            "dateAdded": "2026-06-23",
-            "dateReviewed": "2026-06-23",
-            "location": {
-              "country": "Australia",
-              "state": "NSW"
-            },
-            "evidenceSupport": {
-              "level": "medium",
-              "summary": "DRAFT — not yet written up. The thermal mechanism is well supported (Ju et al. 2019 on thick-raft core-to-surface temperature and cracking risk; CIRIA C660/C766 as construction-practice references for early-age thermal crack control). The self-weight / concrete-reduction mechanism for biaxial voided slabs is peer-reviewed (Oukaili 2024, Gajewski 2023, Na & Paik 2019) but drawn from suspended and commercial floor slabs rather than residential ground rafts, so it transfers by analogy only. Expect Medium, with bands as reasoned constructability judgement keyed to pour thickness and thermal-control burden."
-            },
-            "relatedEntries": [
-              {
-                "id": "raft-slab-vs-waffle-pod",
-                "note": "The ground-bearing slab-selection entry. Start there; arrive here only once the raft option has turned thick and concrete-intensive enough that the pour is the problem."
-              },
-              {
-                "id": "piled-ground-beams-vs-structural-slab-over-void",
-                "note": "Shares the voided / piled-slab theme from the piled side. Weigh together where piles are involved and the raft is heavy."
-              },
-              {
-                "id": "bored-concrete-piles-vs-screw-piles",
-                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
-              },
-              {
-                "id": "pvc-permanent-formwork-vs-blockwork",
-                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
-              }
-            ],
-            "thresholds": [],
-            "alternatives": [],
-            "applicability": {
-              "appliesWhere": "",
-              "checks": [],
-              "note": ""
-            }
-          }
-        },
-        {
-          "id": "piled-ground-beams-vs-structural-slab-over-void",
-          "name": "Piled ground floor: ground beams vs. structural slab over void",
-          "available": false,
-          "data": {
-            "question": "Where piles are required under a ground floor, has a structural slab spanning to the piles over an under-slab void been weighed against the more familiar piles + ground beams + infill slab — on excavation, spoil, reinforcement congestion, pile tolerance and construction sequence?",
-            "parameter": "Piled ground-floor system selection: piles + ground beams vs. a pile-supported structural slab over an under-slab void former, assessed on excavation/spoil, reinforcement congestion, pile-tolerance sensitivity and pour sequence.",
-            "keywords": [
-              "ground beams",
-              "pile cap",
-              "piled slab",
-              "suspended slab on piles",
-              "structural slab over void",
-              "under-slab void former",
-              "heave void",
-              "piled raft",
-              "screw pile slab",
-              "pile head connection",
-              "reactive soil heave"
-            ],
-            "elementType": [
-              "pile/pier/shaft",
-              "ground beam",
-              "slab on ground"
-            ],
-            "constructionPhase": [
-              "founding/piling",
-              "founding/slab"
-            ],
-            "background": "Once piles are required under a ground floor, there are two broad ways to get from the piles to a floor. The familiar one is <strong>piles + ground beams + infill slab</strong>: ground beams run between pile heads along the load lines, the walls bear on the beams, and a slab spans or sits between them. The load path is clear — wall → ground beam → pile — and most builders know it. The alternative is a <strong>pile-supported structural slab over an under-slab void</strong>: the slab itself becomes a transfer element spanning between piles, with a sacrificial or compressible void former beneath it that creates a gap between the slab soffit and the ground.<br><br>The choice is not about which is stronger — both can be designed to work. It is about which process is the hard part on this site. Ground beams bring trench (or formwork) excavation, spoil, cages in trenches, and a more fragmented pour sequence, and they get awkward where there are many wall offsets, steps, corners or tight pile tolerances. A structural slab over a void can remove the beam trenching and give a flatter, cleaner platform to build off, and it isolates the slab from heaving or reactive ground — but the slab becomes thicker and more heavily reinforced, pile punching/shear zones now matter, pile-position tolerance becomes a slab-detailing issue, and the void former itself has to be set out, supported during the pour and inspected.<br><br>The default is piles + ground beams, because the load path and the trade knowledge are already there. The structural-slab-over-void option earns its place when the beam route's excavation, spoil, congestion or sequencing has become the real constructability problem, or when heave isolation is genuinely needed — not just because a flat slab looks tidier on paper.",
-            "_evidenceAngle": "Two threads. (1) Piles+ground beams as a COMBINED system, not 'piles under a slab' — NHBC 'Efficient design of piled foundations for low-rise housing' (optimum pile spacing ~3–5 m and beam size are coupled; fixity and construction-tolerance forces must be allowed for; cast-in-trench vs formwork depends on ground). (2) Under-slab void / piled-slab alternative is a recognised system — Allcon and Cordek (void formers create a cavity under the slab to stop heave transferring stress), Speedeck (piled raft = raft suspended on piles, fewer components, less excavation/spoil), QuadraBuild case study (suspended slab on helical piles). Keep AS 2870 reactive-soil framing in the back of mind; this is a buildability selection prompt, not a structural-capacity prompt.",
-            "_thresholdSketch": "Likely a counting/categorical parameter mirroring the family. Candidate triggers that push AWAY from ground beams toward a structural slab over void: (a) beam trenching deep/messy/spoil-intensive; (b) heave isolation genuinely required; (c) reinforcement congestion / fragmented sequencing at many offsets and corners; (d) pile tolerances make beam-to-pile detailing fragile; (e) a flat platform is materially simpler to build. Sketch: 0 triggers → stay with ground beams (familiar, clear load path). 1 → compare, do not switch. 2+ → actively weigh the structural slab over void. Needs refinement — watch that 'slab over void' carries its own burden (thicker slab, punching zones, void set-out/inspection), so it is not a free win.",
-            "_todo": "Confirm whether NHBC pile-spacing figures transfer to NSW residential screw/CFA practice. Decide final trigger list and whether 3 or 4 bands. Pull the heave-isolation mechanism cleanly from Allcon/Cordek without leaning on supplier marketing. Cross-check overlap with bored-vs-screw (method) and the Safety screw-pile entry.",
-            "examples": [],
-            "supportingImages": [],
-            "dateAdded": "2026-06-23",
-            "dateReviewed": "2026-06-23",
-            "location": {
-              "country": "Australia",
-              "state": "NSW"
-            },
-            "evidenceSupport": {
-              "level": "medium",
-              "summary": "DRAFT — not yet written up. Mechanism support exists: NHBC guidance treats piles + ground beams as a coupled system with optimum spacing/beam-size and construction-tolerance coordination; supplier and case-study sources (Allcon, Cordek, Speedeck, QuadraBuild) establish that pile-supported slabs over under-slab voids are a recognised system used for heave isolation and reduced excavation/spoil. No direct comparative study sets thresholds between the two for small AU piled ground floors, so this will sit at Medium and the bands will be reasoned constructability judgement."
-            },
-            "relatedEntries": [
-              {
-                "id": "raft-slab-vs-waffle-pod",
-                "note": "The ground-bearing counterpart. That entry covers the choice when no piles are needed; this one picks up once piles are required."
-              },
-              {
-                "id": "void-former-slab-vs-thick-raft",
-                "note": "Shares the under-slab / voided-slab theme. That entry weighs a void-former slab against a thick raft on pour buildability; this one weighs the piled slab-over-void against ground beams."
-              },
-              {
-                "id": "bored-concrete-piles-vs-screw-piles",
-                "note": "Upstream of this decision — it settles which pile method suits the site; this entry then settles how the floor gets from the piles. Weigh together."
-              },
-              {
-                "id": "latent-safety-risk-of-screw-pile-foundations",
-                "note": "If the piles are screw piles, the as-built verification burden in the Safety entry still applies regardless of which floor system is chosen above them."
-              }
-            ],
-            "thresholds": [],
-            "alternatives": [],
-            "applicability": {
-              "appliesWhere": "",
-              "checks": [],
-              "note": ""
-            }
-          }
-        },
-        {
-          "id": "found-below-reactive-ground-vs-stiffened-slab-on-top",
-          "name": "Found below reactive ground vs. stiffen a slab on top",
-          "available": false,
-          "data": {
-            "question": "On reactive ground, is it more buildable to pile down below the active zone, or to stiffen a slab and ride the movement on top of it?",
-            "parameter": "Foundation strategy on reactive ground — pile to a stable founding layer vs. stiffen a ground-bearing slab — assessed on construction consequences, not reactive-soil design.",
-            "keywords": [
-              "reactive soil",
-              "reactive clay",
-              "ground heave",
-              "piling vs slab",
-              "deep foundation vs raft",
-              "stiffened slab",
-              "founding depth",
-              "active zone"
-            ],
-            "elementType": [
-              "slab on ground",
-              "raft/footing",
-              "pile/pier/shaft"
-            ],
-            "constructionPhase": [
-              "founding/slab",
-              "founding/piling"
-            ],
-            "background": "On reactive ground — clay that heaves and shrinks with moisture — there are two broad ways to respond, and they are different construction jobs, not just different structural designs. One is to <strong>found below</strong> the active zone: pile or pier down to a more stable layer so the slab no longer relies on the moving surface clay. The other is to <strong>stiffen on top</strong>: build a more rigid ground-bearing slab (a deeper-ribbed raft or waffle) and ride the movement, controlling it with rigidity, perimeter detailing, drainage and articulation.<br><br>The buildability trade cuts both ways, which is what makes it a real decision. Founding below buys a slab that is largely indifferent to the surface clay, but it brings the piling rig, the spoil, the founding verification and the slab-to-pile integration onto the job. Stiffening on top keeps it a simple above-ground or shallow pour with no piling, but the slab now permanently rides ground movement and the result depends on perimeter detailing, drainage and articulation holding up over the slab's life. Neither is free; the choice is which set of construction problems you would rather own.<br><br>This is the front door to the slab/foundation cluster: settle this first, then the downstream entries pick up — if you stay shallow, which ground-bearing slab (raft vs waffle pod); if you go deep, which pile method, and how the floor gets from the piles to the slab.<br><br><strong>Scope guard:</strong> this entry is about the <em>buildability of the system choice</em>, not how to design for reactive soil. It compares the construction consequences of going deep versus staying shallow; the reactive-soil design itself stays with the engineer.",
-            "_evidenceAngle": "Mechanism legs: (1) deeper ribs / stiffer slabs resist reactive movement (pod-depth lever; general industry). (2) piling below the active zone removes reliance on surface clay but reintroduces rig/spoil/founding verification/slab-pile integration (ties to bored-vs-screw, piled-fork, and the screw-pile Safety entry). (3) practitioner guidance (Cornell) that problem/soft ground often forces internal piers anyway, which is itself a push toward founding-below thinking. Keep AS 2870 / site-class language OUT — frame reactivity as the physical heave/shrink mechanism only. No reactive-soil design content; buildability of the strategy choice only.",
-            "_thresholdSketch": "Likely categorical, default-and-deviate. Default leans to the simplest ground-bearing stiffened slab where reactivity is mild/moderate and can be ridden; deviate to founding-below as reactivity, active-zone depth, consequence/important structure, or proliferating internal piers stack up. Possible counting parameter: number of 'go-deep' triggers present (high reactivity, deep active zone, internal piers already required throughout, level-sensitive structure that cannot tolerate movement). Needs development — watch not to drift into structural design.",
-            "_todo": "Decide parameter shape (counting vs categorical). Source the deep-vs-shallow buildability trade beyond practitioner reasoning. Confirm cross-link directions. Make sure it reads as the 'front door' without overlapping the downstream entries.",
-            "examples": [],
-            "supportingImages": [],
-            "dateAdded": "2026-06-23",
-            "dateReviewed": "2026-06-23",
-            "location": {
-              "country": "Australia",
-              "state": "NSW"
-            },
-            "evidenceSupport": {
-              "level": "medium",
-              "summary": "DRAFT — not yet written up. The mechanism legs are supported (deeper ribs stiffen the slab; piling below the active zone removes reliance on surface clay but reintroduces rig, spoil, founding verification and slab-pile integration; practitioner accounts that problem ground forces internal piers). No direct comparative study sets the deep-vs-shallow buildability call for small AU residential work, so this will sit at Medium with a reasoned default-and-deviate structure."
-            },
-            "relatedEntries": [
-              {
-                "id": "raft-slab-vs-waffle-pod",
-                "note": "The shallow branch. If this entry lands on staying ground-bearing, the raft-vs-waffle entry then picks which slab."
-              },
-              {
-                "id": "bored-concrete-piles-vs-screw-piles",
-                "note": "The deep branch, part one. If this entry lands on founding below, this settles which pile method suits the site."
-              },
-              {
-                "id": "piled-ground-beams-vs-structural-slab-over-void",
-                "note": "The deep branch, part two. Once piling is chosen, this settles how the floor gets from the piles to the slab."
-              },
-              {
-                "id": "void-former-slab-vs-thick-raft",
-                "note": "Related slab-system decision where the pour itself becomes the problem — relevant if stiffening on top pushes the raft toward a thick, heat-generating pour."
-              }
-            ],
-            "thresholds": [],
-            "alternatives": [],
-            "applicability": {
-              "appliesWhere": "",
-              "checks": [],
-              "note": ""
-            }
           }
         },
         {
@@ -2011,6 +1800,145 @@
                 "note": "If the piles are screw piles, the as-built verification and head-connection burden applies whichever floor sits above, and bears on uplift fixity on reactive ground."
               }
             ]
+          }
+        },
+        {
+          "id": "void-former-slab-vs-thick-raft",
+          "name": "Void-former slab vs. thick raft",
+          "available": false,
+          "data": {
+            "question": "Where a thick raft is proposed, has a void-former (biaxial) suspended slab on piles been weighed against it — considering not just concrete volume but the buildability of a large, thick pour and its heat-of-hydration cracking risk?",
+            "parameter": "Foundation/slab system where a thick raft is proposed, assessed against a void-former slab for pour buildability, self-weight and early thermal cracking.",
+            "keywords": [
+              "thick raft",
+              "mass concrete",
+              "heat of hydration",
+              "early thermal cracking",
+              "biaxial voided slab",
+              "bubble deck",
+              "voided slab",
+              "self-weight reduction",
+              "staged pour",
+              "CIRIA C660",
+              "CIRIA C766"
+            ],
+            "elementType": [
+              "slab on ground",
+              "raft/footing"
+            ],
+            "constructionPhase": [
+              "founding/slab"
+            ],
+            "background": "A raft that keeps getting thicker eventually stops being an ordinary slab and starts behaving like a mass-concrete pour. Beyond a certain thickness the heat generated as the concrete cures cannot escape fast enough, the core runs much hotter than the surface, and the restrained contraction that follows drives early-age thermal cracking. At that point the raft is no longer just expensive in concrete — the <em>pour itself</em> has become the construction problem, needing mix control, pour planning, possible staging or layering, thermal monitoring and crack-control measures.<br><br>An internal biaxial voided slab removes concrete from the middle of the section, where it does least structural work. That cuts self-weight and — relevant here — cuts the volume of heat-generating concrete in the thickest part of the pour, which can ease the thermal problem rather than just trim the quantity. The trade is a more specialist system: void set-out and fixing are critical, buoyancy during the pour has to be controlled, and punching/shear zones near piles, columns and heavy loads need the voids omitted or detailed around.<br><br>The default is the solid raft. The void-former slab earns its place only where the raft has become thick and concrete-intensive enough that the pour is the real burden — not merely because removing concrete looks efficient on paper.",
+            "_evidenceAngle": "Strongest tie is the mass-concrete THERMAL angle (more rigorous than 'uses less concrete'): a thick raft is a large heat-of-hydration pour prone to early thermal cracking, hard to build well; a biaxial void slab sidesteps the thick-pour problem and cuts self-weight. Practice reference: CIRIA C660 (controlling early-age thermal cracking) as a construction-practice guide, NOT a code clause. Keep the AS mass-concrete provisions in the back of mind only. Supporting: Ju et al. (2019) monitored a thick raft, ~35°C core-to-surface peak; thickness >2.5 m gave >25°C difference above which crack control is needed. Biaxial-slab self-weight/material mechanism: Oukaili et al. (2024), Gajewski et al. (2023), Na & Paik (2019) — but these are suspended/commercial floor slabs, analogous at best to a ground raft.",
+            "_thresholdSketch": "Good/Consider by pour thickness + thermal risk: thin/normal → fine, solid raft is correct. Concern: thick raft with a real thermal-cracking control burden (monitoring, staging, mix control becoming necessary). Action required: very thick / mass-concrete pour where a void slab would clearly ease buildability — weigh it explicitly. Decide whether to anchor a band on a thickness figure (e.g. the ~2.5 m Ju finding) or keep it qualitative; the Ju threshold is from one study and mix/restraint/ambient-dependent, so probably qualitative with the figure as a flag.",
+            "_todo": "Write up evidence section in house style. Confirm whether to cite a thickness number in the bands or keep qualitative. Check the biaxial-slab papers are framed as analogous (floor/commercial), not as direct ground-raft evidence. Note this entry was the original stub — expanded here with background/keywords/metadata; the _evidenceAngle and _thresholdSketch are the original working notes, preserved.",
+            "examples": [],
+            "supportingImages": [],
+            "dateAdded": "2026-06-23",
+            "dateReviewed": "2026-06-23",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "DRAFT — not yet written up. The thermal mechanism is well supported (Ju et al. 2019 on thick-raft core-to-surface temperature and cracking risk; CIRIA C660/C766 as construction-practice references for early-age thermal crack control). The self-weight / concrete-reduction mechanism for biaxial voided slabs is peer-reviewed (Oukaili 2024, Gajewski 2023, Na & Paik 2019) but drawn from suspended and commercial floor slabs rather than residential ground rafts, so it transfers by analogy only. Expect Medium, with bands as reasoned constructability judgement keyed to pour thickness and thermal-control burden."
+            },
+            "relatedEntries": [
+              {
+                "id": "raft-slab-vs-waffle-pod",
+                "note": "The ground-bearing slab-selection entry. Start there; arrive here only once the raft option has turned thick and concrete-intensive enough that the pour is the problem."
+              },
+              {
+                "id": "pile-supported-beam-and-slab-vs-flat-slab",
+                "note": "Shares the voided / piled-slab theme from the piled side. Weigh together where piles are involved and the raft is heavy."
+              },
+              {
+                "id": "bored-concrete-piles-vs-screw-piles",
+                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
+              },
+              {
+                "id": "pvc-permanent-formwork-vs-blockwork",
+                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
+              }
+            ],
+            "thresholds": [],
+            "alternatives": [],
+            "applicability": {
+              "appliesWhere": "",
+              "checks": [],
+              "note": ""
+            }
+          }
+        },
+        {
+          "id": "found-below-reactive-ground-vs-stiffened-slab-on-top",
+          "name": "Found below reactive ground vs. stiffen a slab on top",
+          "available": false,
+          "data": {
+            "question": "On reactive ground, is it more buildable to pile down below the active zone, or to stiffen a slab and ride the movement on top of it?",
+            "parameter": "Foundation strategy on reactive ground — pile to a stable founding layer vs. stiffen a ground-bearing slab — assessed on construction consequences, not reactive-soil design.",
+            "keywords": [
+              "reactive soil",
+              "reactive clay",
+              "ground heave",
+              "piling vs slab",
+              "deep foundation vs raft",
+              "stiffened slab",
+              "founding depth",
+              "active zone"
+            ],
+            "elementType": [
+              "slab on ground",
+              "raft/footing",
+              "pile/pier/shaft"
+            ],
+            "constructionPhase": [
+              "founding/slab",
+              "founding/piling"
+            ],
+            "background": "On reactive ground — clay that heaves and shrinks with moisture — there are two broad ways to respond, and they are different construction jobs, not just different structural designs. One is to <strong>found below</strong> the active zone: pile or pier down to a more stable layer so the slab no longer relies on the moving surface clay. The other is to <strong>stiffen on top</strong>: build a more rigid ground-bearing slab (a deeper-ribbed raft or waffle) and ride the movement, controlling it with rigidity, perimeter detailing, drainage and articulation.<br><br>The buildability trade cuts both ways, which is what makes it a real decision. Founding below buys a slab that is largely indifferent to the surface clay, but it brings the piling rig, the spoil, the founding verification and the slab-to-pile integration onto the job. Stiffening on top keeps it a simple above-ground or shallow pour with no piling, but the slab now permanently rides ground movement and the result depends on perimeter detailing, drainage and articulation holding up over the slab's life. Neither is free; the choice is which set of construction problems you would rather own.<br><br>This is the front door to the slab/foundation cluster: settle this first, then the downstream entries pick up — if you stay shallow, which ground-bearing slab (raft vs waffle pod); if you go deep, which pile method, and how the floor gets from the piles to the slab.<br><br><strong>Scope guard:</strong> this entry is about the <em>buildability of the system choice</em>, not how to design for reactive soil. It compares the construction consequences of going deep versus staying shallow; the reactive-soil design itself stays with the engineer.",
+            "_evidenceAngle": "Mechanism legs: (1) deeper ribs / stiffer slabs resist reactive movement (pod-depth lever; general industry). (2) piling below the active zone removes reliance on surface clay but reintroduces rig/spoil/founding verification/slab-pile integration (ties to bored-vs-screw, piled-fork, and the screw-pile Safety entry). (3) practitioner guidance (Cornell) that problem/soft ground often forces internal piers anyway, which is itself a push toward founding-below thinking. Keep AS 2870 / site-class language OUT — frame reactivity as the physical heave/shrink mechanism only. No reactive-soil design content; buildability of the strategy choice only.",
+            "_thresholdSketch": "Likely categorical, default-and-deviate. Default leans to the simplest ground-bearing stiffened slab where reactivity is mild/moderate and can be ridden; deviate to founding-below as reactivity, active-zone depth, consequence/important structure, or proliferating internal piers stack up. Possible counting parameter: number of 'go-deep' triggers present (high reactivity, deep active zone, internal piers already required throughout, level-sensitive structure that cannot tolerate movement). Needs development — watch not to drift into structural design.",
+            "_todo": "Decide parameter shape (counting vs categorical). Source the deep-vs-shallow buildability trade beyond practitioner reasoning. Confirm cross-link directions. Make sure it reads as the 'front door' without overlapping the downstream entries.",
+            "examples": [],
+            "supportingImages": [],
+            "dateAdded": "2026-06-23",
+            "dateReviewed": "2026-06-23",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "DRAFT — not yet written up. The mechanism legs are supported (deeper ribs stiffen the slab; piling below the active zone removes reliance on surface clay but reintroduces rig, spoil, founding verification and slab-pile integration; practitioner accounts that problem ground forces internal piers). No direct comparative study sets the deep-vs-shallow buildability call for small AU residential work, so this will sit at Medium with a reasoned default-and-deviate structure."
+            },
+            "relatedEntries": [
+              {
+                "id": "raft-slab-vs-waffle-pod",
+                "note": "The shallow branch. If this entry lands on staying ground-bearing, the raft-vs-waffle entry then picks which slab."
+              },
+              {
+                "id": "bored-concrete-piles-vs-screw-piles",
+                "note": "The deep branch, part one. If this entry lands on founding below, this settles which pile method suits the site."
+              },
+              {
+                "id": "pile-supported-beam-and-slab-vs-flat-slab",
+                "note": "The deep branch, part two. Once piling is chosen, this settles how the floor gets from the piles to the slab."
+              },
+              {
+                "id": "void-former-slab-vs-thick-raft",
+                "note": "Related slab-system decision where the pour itself becomes the problem — relevant if stiffening on top pushes the raft toward a thick, heat-generating pour."
+              }
+            ],
+            "thresholds": [],
+            "alternatives": [],
+            "applicability": {
+              "appliesWhere": "",
+              "checks": [],
+              "note": ""
+            }
           }
         }
       ]
