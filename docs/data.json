@@ -161,16 +161,7 @@
               "level": "high",
               "summary": "Supported by formwork literature, industry consultation, physical formwork component dimensions, and a real project example."
             },
-            "relatedEntries": [
-              {
-                "id": "bored-concrete-piles-vs-screw-piles",
-                "note": "Both depend on whether construction plant and workers can physically reach and work the element on this site — check site access together."
-              },
-              {
-                "id": "confined-space-entry-at-pier-and-shaft-bases",
-                "note": "Both depend on whether construction plant and workers can physically reach and work the element on this site — check site access together."
-              }
-            ]
+            "relatedEntries": []
           }
         },
         {
@@ -337,14 +328,6 @@
             "relatedEntries": [
               {
                 "id": "structural-steel-vs-concrete-for-isolated-vertical-members",
-                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
-              },
-              {
-                "id": "bored-concrete-piles-vs-screw-piles",
-                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
-              },
-              {
-                "id": "pvc-permanent-formwork-vs-blockwork",
                 "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
               }
             ]
@@ -592,7 +575,8 @@
             "evidenceSupport": {
               "level": "high",
               "summary": "Supported by research on in-place strength reduction in poorly cured shallow elements, together with industry and regulator evidence that curing is often inadequate or unverified."
-            }
+            },
+            "relatedEntries": []
           }
         },
         {
@@ -731,10 +715,6 @@
               {
                 "id": "rock-sockets-vs-likely-available-drilling-plant",
                 "note": "Companion logistics entry. Once the socket is confirmed as necessary here, that entry covers whether it can be drilled with the plant likely to be available on the site."
-              },
-              {
-                "id": "bored-concrete-piles-vs-screw-piles",
-                "note": "Both concern foundation system selection where ground conditions and required embedment change the practical construction method."
               },
               {
                 "id": "confined-space-entry-at-pier-and-shaft-bases",
@@ -1069,14 +1049,6 @@
               {
                 "id": "conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors",
                 "note": "The repetition leg of this entry in detail: how formwork cycling on repeated floors drives the economy of in-situ concrete framing."
-              },
-              {
-                "id": "optional-pour-breaks-to-keep-concrete-trades-flowing",
-                "note": "Both concern the cost of concrete pour cycles; this entry can remove the cycle by changing material, that one reschedules it to protect the programme."
-              },
-              {
-                "id": "bored-concrete-piles-vs-screw-piles",
-                "note": "Companion material/system-choice question where a dry, fabricated alternative can remove a wet or plant-heavy in-situ process."
               }
             ]
           }
@@ -1327,10 +1299,6 @@
               {
                 "id": "confined-space-entry-at-pier-and-shaft-bases",
                 "note": "Both depend on whether construction plant and workers can physically reach and work the element on this site — check site access together."
-              },
-              {
-                "id": "pvc-permanent-formwork-vs-blockwork",
-                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
               }
             ]
           }
@@ -1527,18 +1495,6 @@
               {
                 "id": "waffle-pod-depth-availability",
                 "note": "The 'can you get it' counterpart to the depth advice here. This entry weighs which pod depth suits the site; the Logistics entry checks whether that depth is actually stocked locally or needs made-to-order lead time."
-              },
-              {
-                "id": "pile-supported-beam-and-slab-vs-flat-slab",
-                "note": "Where piling becomes general across the footprint, this stops being a waffle-vs-raft decision and becomes which piled system is simplest. Hand off to that entry once internal piles are required throughout."
-              },
-              {
-                "id": "bored-concrete-piles-vs-screw-piles",
-                "note": "Upstream of the piling check in this entry — it settles which pile method suits the site, which in turn affects how much the pod's spoil advantage is spent. Weigh together when piling is on the table."
-              },
-              {
-                "id": "pvc-permanent-formwork-vs-blockwork",
-                "note": "Both are early system-selection decisions where the constructability case — not just structural capacity — should drive the choice. Weigh them together when settling the scheme."
               }
             ]
           }
@@ -1785,10 +1741,6 @@
               {
                 "id": "found-below-reactive-ground-vs-stiffened-slab-on-top",
                 "note": "The decision one level up. Settles whether to pile below reactive ground at all; this entry then settles how the floor connects to the piles, with heave still live."
-              },
-              {
-                "id": "raft-slab-vs-waffle-pod",
-                "note": "The ground-bearing counterpart, for when no piles are needed. That entry stays a slab-on-ground choice; this one picks up once the floor is suspended on piles and the ground is out of the load path."
               },
               {
                 "id": "bored-concrete-piles-vs-screw-piles",
@@ -3745,10 +3697,6 @@
                 "note": "Both concern whether the design quietly assumes plant, attachments or access that may not be part of the normal construction setup — check equipment and access together."
               },
               {
-                "id": "bored-concrete-piles-vs-screw-piles",
-                "note": "Both concern foundation system selection where available plant, access and ground conditions can change the practical construction method."
-              },
-              {
                 "id": "confined-space-entry-at-pier-and-shaft-bases",
                 "note": "Both concern the constructability consequences of the chosen pier or pile detailing method."
               }
@@ -4105,10 +4053,6 @@
               {
                 "id": "raft-slab-vs-waffle-pod",
                 "note": "The design-side counterpart. That entry weighs which pod depth suits the site for floor level and rigidity; this one checks whether the chosen depth can actually be sourced locally in time."
-              },
-              {
-                "id": "stirrup-bar-size-availability-and-site-adaptability",
-                "note": "Both are 'is the specified size actually available locally' supply-chain questions — same logistics logic applied to a different product."
               }
             ],
             "thresholds": [],
@@ -4259,16 +4203,7 @@
               "level": "high",
               "summary": "Supported by safety-in-design literature, anthropometric/boot-size reasoning, practical site experience, and a clear worker fall-through mechanism."
             },
-            "relatedEntries": [
-              {
-                "id": "confined-space-entry-at-pier-and-shaft-bases",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              },
-              {
-                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              }
-            ]
+            "relatedEntries": []
           }
         },
         {
@@ -4374,12 +4309,7 @@
               "level": "high",
               "summary": "Supported by WHS duties and reporting requirements, confined-space guidance, fatality literature, and a clear safety-in-design elimination principle."
             },
-            "relatedEntries": [
-              {
-                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              }
-            ]
+            "relatedEntries": []
           }
         },
         {
@@ -4657,10 +4587,6 @@
               {
                 "id": "confined-space-entry-at-pier-and-shaft-bases",
                 "note": "Both are foundation-system decisions with a safety dimension: a bored pile creates a deep shaft with confined-space risk, while a screw pile trades that visible, manageable risk for a foundation whose adequacy cannot be verified. Weigh the safety trade-offs of the system together."
-              },
-              {
-                "id": "pvc-permanent-formwork-vs-blockwork",
-                "note": "Both are early system-selection decisions where constructability and risk, not just structural capacity, should drive the choice. Weigh them together when settling the scheme."
               }
             ]
           }
@@ -4818,10 +4744,6 @@
               "summary": "Supported by regulator alerts and safety reporting showing that freestanding or temporarily unsupported masonry walls have collapsed where final lateral restraints were missing, not yet installed or removed (SafeWork NSW, corroborated by WorkSafe Victoria), together with safe-design and temporary-works guidance placing the recognition and communication step in the designer&rsquo;s lane (NSW Safe Design of Structures Code with the WHS Regulation 295 duty; Temporary Works Forum Australia), and a responsibility precedent that an engineer&rsquo;s generic bracing note can be insufficient (ASI TN002). It sits at medium rather than high because the fatal-incident evidence is predominantly masonry rather than RC-specific and there is no dataset quantifying how often the dependency is missed; the entry rates the duty to identify and communicate the dependency, not any claim about frequency or about builders lacking knowledge. It does not require the permanent designer to design the temporary bracing."
             },
             "relatedEntries": [
-              {
-                "id": "confined-space-entry-at-pier-and-shaft-bases",
-                "note": "Both are safe-design entries where the permanent design creates a construction-stage hazard that should be designed out or communicated, not discovered on site."
-              },
               {
                 "id": "latent-safety-risk-of-screw-pile-foundations",
                 "note": "Both turn on a verifiability gap and a design-versus-install responsibility split &mdash; a hazard that can fall between parties."
@@ -5131,10 +5053,6 @@
               {
                 "id": "reinforcement-mat-fall-through-risk",
                 "note": "Both concern keeping workers safe while the structure is incomplete &mdash; check edges, openings and access together."
-              },
-              {
-                "id": "confined-space-entry-at-pier-and-shaft-bases",
-                "note": "Both turn on whether the design forces a worker into a construction-phase hazard that a detail change could remove."
               },
               {
                 "id": "conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors",
