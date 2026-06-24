@@ -1337,9 +1337,14 @@
         },
         {
           "id": "raft-slab-vs-waffle-pod",
-          "name": "Stiffened raft vs. waffle pod slab",
+          "name": "Ground-bearing choice: stiffened raft vs. waffle pod slab",
           "available": true,
           "data": {
+            "decisionPath": {
+              "role": "branch",
+              "branchKind": "ground-bearing",
+              "start": "found-below-reactive-ground-vs-stiffened-slab-on-top"
+            },
             "question": "Is there a genuine floor-level, excavation or footprint reason to choose a stiffened raft over a waffle pod slab?",
             "parameter": "How many of the three waffle-pod preconditions fail on this site.",
             "keywords": [
@@ -1540,9 +1545,14 @@
         },
         {
           "id": "pile-supported-beam-and-slab-vs-flat-slab",
-          "name": "Pile-supported floor: flat plate vs beam-and-slab",
+          "name": "Pile-supported choice: flat plate vs beam-and-slab",
           "available": true,
           "data": {
+            "decisionPath": {
+              "role": "branch",
+              "branchKind": "pile-supported",
+              "start": "found-below-reactive-ground-vs-stiffened-slab-on-top"
+            },
             "question": "Where a ground floor is carried on piles, has a flat plate spanning the pile heads been weighed against the more familiar beam-and-slab?",
             "parameter": "How many of the three conditions favouring beam-and-slab apply.",
             "keywords": [
@@ -1788,9 +1798,14 @@
         },
         {
           "id": "found-below-reactive-ground-vs-stiffened-slab-on-top",
-          "name": "Found below reactive ground vs. stiffen a slab on top",
+          "name": "Reactive-ground strategy: found below vs. stiffen on top",
           "available": true,
           "data": {
+            "decisionPath": {
+              "role": "start",
+              "groundBearing": "raft-slab-vs-waffle-pod",
+              "pileSupported": "pile-supported-beam-and-slab-vs-flat-slab"
+            },
             "question": "On reactive ground, is it more buildable to pile down below the active zone, or to stiffen a slab and ride the movement on top of it?",
             "parameter": "How many of the three conditions favouring founding below apply.",
             "keywords": [
