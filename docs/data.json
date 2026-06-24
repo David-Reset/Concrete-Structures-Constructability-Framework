@@ -1965,7 +1965,12 @@
             },
             "evidence": "<strong>Mechanism &mdash; stiffening on top.</strong> The industry and training basis for riding reactive movement with a more rigid ground slab is the same depth-and-stiffness lever set out in the raft-versus-waffle entry: deeper ribs give a more rigid slab that better resists heave and shrink movement, which is why pod depth is treated there as a rigidity lever on reactive ground. Stiffening on top is therefore a real and common answer &mdash; but a manage-the-movement one, leaving residual movement to perimeter detailing, drainage and articulation, which is the limit this entry turns on.<br><br><strong>Mechanism &mdash; founding below.</strong> Founding below the active zone removes the floor's reliance on the moving surface clay, at the cost of bringing the piling rig, the spoil run, the founding verification and the slab-to-pile integration onto the job. These are the same construction burdens weighed in the pile-method and pile-supported-floor entries, applied here one level up to the decision of whether to take them on at all.<br><br><strong>Practitioner evidence &mdash; piling tends to multiply on problem ground.</strong> Practitioner guidance (Cornell Engineers) describes how soft or problem ground tends to force internal piers through the footprint rather than only at the perimeter &mdash; the same observation the raft-versus-waffle entry uses to show piling eroding the pod's advantage. Carried up to this fork, it is the basis for the second trigger: once the ground is forcing piers anyway, the shallow saving is already spent and founding properly below is often the tidier build.<br><br><strong>Confidence and limits.</strong> There is no direct comparative buildability study that sets the deep-versus-shallow call by reactivity for small Australian residential work, so the three-trigger count is reasoned, default-and-deviate constructability judgement rather than a measured threshold. The mechanism legs are each supported &mdash; slab stiffness against movement, the construction burden of founding below, and the tendency of problem ground to force piers &mdash; but the entry should be read as a structured review prompt for which construction job to own, not a proven decision rule. The reactive-soil classification and the structural design sit with the engineer.",
             "examples": [],
-            "supportingImages": [],
+            "supportingImages": [
+              {
+                "image": "images/reactive-ground-strategy-found-below-vs-stiffen-on-top.webp",
+                "title": "<strong>Reactive ground strategy — found below vs stiffen on top</strong><br><br>The first decision on reactive ground is whether the primary support is taken below the movement zone, or whether the slab is stiffened to work within the active zone. This decision sets up the next constructability review: pile-supported floor system selection, or ground-bearing slab selection between stiffened raft and waffle pod options."
+              }
+            ],
             "dateAdded": "2026-06-23",
             "dateReviewed": "2026-06-24",
             "location": {
@@ -4712,29 +4717,160 @@
           }
         },
         {
-          "id": "edge-protection-requirements",
-          "name": "Edge protection requirements",
-          "available": false,
-          "draft": true,
+          "id": "slab-edges-and-openings-for-fall-protection",
+          "name": "Slab edges and openings that can accept fall protection",
+          "available": true,
           "data": {
-            "question": "Have the perimeter and penetration edges been designed so fall protection can be installed and anchored — cast-in points, a slab edge that takes a barrier — rather than leaving crews to improvise edge protection on a detail that does not accommodate it?",
-            "parameter": "Whether exposed edges, slab perimeters and large penetrations are designed to accept and anchor fall protection (cast-in sockets, suitable edge thickness/upstand).",
-            "_evidenceAngle": "Falls are a leading construction fatality category; designing-in anchorage/edge that suits proprietary edge protection removes an improvisation hazard. Same safety-in-design hierarchy-of-control basis as the confined-space and fall-through entries; corroborate with fall-from-height statistics for the scale of the hazard.",
-            "_thresholdSketch": "Good: edges accept standard edge protection / cast-in anchors shown. Concern: edge protection possible only by improvisation. Action required: detail actively prevents safe fall protection (e.g. thin or sloped edge with no anchorage).",
+            "question": "Can fall protection be attached to the slab edges and openings as detailed?",
+            "parameter": "Whether the edge or opening provides an attachment path for fall protection.",
+            "keywords": [
+              "edge protection",
+              "guardrail",
+              "handrail post",
+              "cast-in ferrule",
+              "cast-in socket",
+              "void",
+              "penetration",
+              "post-drilled anchor",
+              "clamp-on barrier",
+              "mesh barrier"
+            ],
+            "elementType": [
+              "slab"
+            ],
+            "constructionPhase": [
+              "formwork"
+            ],
+            "background": "Temporary fall protection &mdash; whoever supplies it and whatever the system &mdash; has to attach to something. On a concrete structure there are only three ways it can: <strong>clamp</strong> onto an edge, parapet, upstand or beam that is thick and flat enough to grip; <strong>post-fix</strong> into the concrete with drilled anchors; or mount to <strong>cast-in</strong> sockets, sleeves or ferrules placed before the pour. The contractor chooses and installs the system &mdash; that is their means and methods, and the framework has no part in it. But <strong>whether any of those three attachment paths is available is decided by the permanent design.</strong> That is the design lever, and it sits entirely on the structural drawings.<br><br>Most ordinary reinforced-concrete edges are not a problem: they can be clamped or drilled without much thought, so the cheapest and best fix is usually nothing more than an <strong>edge geometry that a standard clamp can grip</strong> &mdash; which costs the designer nothing. The entry bites in the narrower set of cases where the design has quietly removed the simple paths: thin, sloped, rebated or congested edges that will not clamp, large internal openings where there is nothing to clamp around, and &mdash; most sharply &mdash; <strong>post-tensioned slabs</strong>.<br><br>A post-tensioned edge or opening is the spine of this entry because it is where the design can remove the <em>safe</em> options without anyone noticing at drawing stage. Post-drilled fixings into PT slabs are not impossible &mdash; services are routinely hung off PT soffits &mdash; but drilling, coring or cutting a PT slab is a <strong>controlled penetration problem</strong>: tendon positions, drilling depth, fixing forces and engineer approval all have to be managed, and a diamond core can sever a strand easily. So <strong>post-fixed anchors should not be assumed as the ordinary fallback on a PT edge.</strong> Where a PT edge or opening cannot be clamped and no cast-in provision has been shown, the design may have left the contractor with no safe, non-improvised way to protect the edge &mdash; and the only decision that could have prevented it (a clampable edge, or cast-in anchorage) was a design-stage one.<br><br>Large openings deserve top billing alongside perimeter edges. A lift shaft, stair void or service penetration in a PT slab is often the worst case at once: you frequently cannot clamp around an internal opening, and drilling right beside it is precisely the PT problem.<br><br>This is not a request to add embedded hardware everywhere. It is a prompt to check, before the edge is formed, that an attachment path exists &mdash; and to <strong>provide one deliberately</strong> only where the design has taken the simple ones away.",
+            "thresholds": [
+              {
+                "range": "Attachment path available",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "The edge or opening geometry accepts a standard clamp or bracket system, <strong>or</strong> cast-in sockets, sleeves or anchors are shown where drilling is unsafe, undesirable or likely to clash with the structural system. The designer has left a safe, non-improvised path."
+              },
+              {
+                "range": "Post-fix only",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "Protection is workable but depends on drilling a conventional reinforced-concrete edge. Confirm edge thickness, cover, reinforcement congestion, embedment depth, edge distance and fixing loads before relying on it as the intended path."
+              },
+              {
+                "range": "Simple path removed",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "The edge is thin, sloped, rebated, irregular or congested, or the opening offers nothing to clamp around, and no cast-in provision is shown. Protection may still be possible, but the design is pushing the attachment problem onto the contractor after the concrete is formed."
+              },
+              {
+                "range": "No safe path",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "Typically a <strong>PT slab edge or PT opening edge</strong> where post-fixing should not be assumed, the geometry will not accept clamp-on protection, and no cast-in provision is shown. There is no obvious safe, non-improvised way to protect the edge as drawn."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to suspended slabs, perimeter edges and large openings where temporary fall protection will be needed during construction. It is concerned with whether the permanent edge or opening provides an attachment path for that protection &mdash; not with selecting, designing or installing the contractor&rsquo;s temporary system, which is means and methods and stays with the contractor.",
+              "checks": [
+                {
+                  "title": "The design decision, not the contractor&rsquo;s system",
+                  "description": "This entry is about whether the permanent edge or opening lets fall protection attach. Which barrier, mesh or scaffold system is chosen, and how it is installed and removed, is the contractor&rsquo;s responsibility. The designer&rsquo;s duty is to leave an attachment path; the contractor&rsquo;s duty to select and manage the system applies regardless."
+                },
+                {
+                  "title": "Ordinary edges are usually fine",
+                  "description": "A regular reinforced-concrete edge can usually be clamped or drilled without difficulty, so most edges raise no concern. The entry bites on post-tensioned edges and openings, large internal voids, and genuinely awkward edge geometry &mdash; not on every slab edge."
+                },
+                {
+                  "title": "Geometry first, hardware second",
+                  "description": "The cheapest path is an edge a standard clamp can grip, which needs no embedded hardware and no drilling. Cast-in provision is the deliberate fix for where drilling is unsafe &mdash; chiefly PT &mdash; not a default to add everywhere."
+                },
+                {
+                  "title": "The PT position is careful, not absolute",
+                  "description": "Post-drilled fixings into PT slabs are not forbidden; they are a controlled penetration requiring tendon location, depth control and engineer involvement. The point is that post-fixing should not be <em>assumed</em> as the fallback where no clamp or cast-in path has been provided."
+                }
+              ],
+              "note": "Use the rating as a safety-in-design prompt. The aim is to ask whether the edge or opening lets fall protection attach without improvisation, and to provide a path where the design has removed the simple ones &mdash; not to rule out any particular edge detail."
+            },
+            "alternatives": [
+              {
+                "title": "Reach for a clampable edge first",
+                "description": "The cheapest fix is geometric: an edge a standard clamp can grip needs no embedded hardware and no drilling. Resolve it by geometry before reaching for anything cast-in."
+              },
+              {
+                "title": "On PT edges and openings, show cast-in provision",
+                "description": "Where a PT edge cannot be clamped, place cast-in sockets or sleeves clear of tendons and stressing anchorages rather than assuming the contractor will drill, and coordinate their position with the likely system early."
+              },
+              {
+                "title": "Treat large openings and voids as the priority case",
+                "description": "Check lift shafts, stair voids and major penetrations explicitly &mdash; internal openings are where clamping fails and drilling is most constrained."
+              },
+              {
+                "title": "If post-fixing is the only path, confirm the edge can take it",
+                "description": "Check thickness, cover, edge distance and fixing loads, and that the fixing zone does not clash with reinforcement, tendons or anchorages."
+              },
+              {
+                "title": "Where you cannot resolve it on the drawings, flag it",
+                "description": "If an atypical edge or opening makes fall protection difficult to attach, record it as a construction-phase hazard for the builder rather than leaving it unstated."
+              }
+            ],
+            "workedExample": {
+              "title": "Worked example &mdash; the same check, opposite answers",
+              "caveat": "Generic archetypes for illustration, not a real project. The verdict comes from asking which of the three attachment paths the design has left open.",
+              "headline": "The same three attachment paths, opposite answers &mdash; and you can see why the call flips.",
+              "tableHeaders": [
+                "Attachment path",
+                "Conventional RC suspended-slab edge",
+                "PT transfer-slab balcony edge"
+              ],
+              "tableRows": [
+                [
+                  "Clamp to edge geometry",
+                  "Available &mdash; a regular square edge a standard clamp grips",
+                  "Not available &mdash; slim architectural edge, nothing to clamp"
+                ],
+                [
+                  "Post-fix with drilled anchors",
+                  "Available &mdash; ordinary RC, drilled with due care",
+                  "Should not be assumed &mdash; PT slab; drilling is a controlled penetration"
+                ],
+                [
+                  "Cast-in provision",
+                  "Not needed",
+                  "Not shown on the drawings"
+                ],
+                [
+                  "Result",
+                  "Best practice &mdash; an attachment path is open",
+                  "Action required &mdash; no safe path left as drawn"
+                ]
+              ],
+              "howToUse": "Run the same three checks on your own edge or opening and read the result. If any attachment path is open, the design is fine. If the geometry will not clamp <strong>and</strong> drilling is unsafe or controlled <strong>and</strong> no cast-in provision is shown, the design has removed the safe options &mdash; fix it before the edge is formed."
+            },
+            "evidence": "This entry rests on design-stage safety logic and fall-prevention duties, applied to the attachment path a permanent concrete edge leaves for temporary fall protection. The band states are a judged application of that evidence to edge and opening details; they are not measured thresholds.<br><br><strong>Why it matters &mdash; fall prevention and the hierarchy of control.</strong> Safe Work Australia&rsquo;s <em>Managing the risk of falls at workplaces</em> Code of Practice treats falls from height as a major construction fatality category and places physical fall-prevention &mdash; guardrails, barriers, edge protection &mdash; above harness-based fall-arrest in the hierarchy of control. The preferred control is therefore the very system that has to attach to the permanent edge, which is what makes the edge a safety-in-design matter rather than a contractor-only one.<br><br><strong>The design link &mdash; compatibility with the supporting structure.</strong> Safe Work Australia&rsquo;s <em>Safe design of structures</em> Code of Practice places a duty on building designers and engineers to consider hazards to construction workers, and to address unusual or atypical features that present construction-phase risk by removing the hazard or controlling it. An edge or opening that cannot accept fall protection is exactly such a feature. Temporary-edge-protection system literature reinforces the mechanism directly: a system&rsquo;s performance depends on the structure it attaches to and the attachment method available &mdash; clamp, post-fixed anchor, or cast-in socket &mdash; so the permanent edge either accommodates those methods or it does not.<br><br><strong>The post-tensioned position.</strong> Post-Tensioning Institute of Australia guidance on post-cut holes through post-tensioned slabs supports the careful PT wording: drilling, coring or cutting a PT slab is a controlled operation requiring tendon location, depth control and engineer involvement, not a casual site workaround. This grounds the &lsquo;no safe path&rsquo; band &mdash; that post-fixing should not be assumed as the fallback on a PT edge &mdash; without overstating it as a claim that PT slabs can never be drilled.<br><br><strong>The design-influences-safety principle.</strong> Behm (2005) reviewed construction fatality investigations and found a substantial share were linked to the design-for-construction-safety concept, meaning the contributing risk could have been reduced or eliminated had construction safety been considered during design. An edge detail that leaves fall protection no attachment path is such a design-influenced construction hazard.<br><br><strong>References</strong><br>Safe Work Australia. <em>Model Code of Practice: Managing the risk of falls at workplaces</em>.<br>Safe Work Australia. <em>Model Code of Practice: Safe design of structures</em>.<br>Post-Tensioning Institute of Australia. <em>Post Cut Holes through Post-Tensioned Slabs</em> (GN06).<br>Manufacturer temporary edge-protection system literature (attachment-method evidence).<br>Behm, M. (2005). Linking construction fatalities to the design for construction safety concept. <em>Safety Science, 43</em>(8), 589&ndash;611. https://doi.org/10.1016/j.ssci.2005.04.002",
+            "dateAdded": "2026-06-24",
+            "dateReviewed": "2026-06-24",
+            "location": {
+              "country": "Australia"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Supported by WHS fall-prevention guidance, the safe-design duty, temporary-edge-protection system literature showing how protection attaches to a structure, and PTIA guidance showing that post-drilling or cutting PT slabs is a controlled operation. The band ordering is a reasoned constructability judgement, because no peer-reviewed study was found specifically on temporary edge-protection anchorage to PT slab edges, and no universal numeric edge threshold applies."
+            },
             "relatedEntries": [
               {
                 "id": "reinforcement-mat-fall-through-risk",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+                "note": "Both concern keeping workers safe while the structure is incomplete &mdash; check edges, openings and access together."
               },
               {
                 "id": "confined-space-entry-at-pier-and-shaft-bases",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+                "note": "Both turn on whether the design forces a worker into a construction-phase hazard that a detail change could remove."
               },
               {
-                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
+                "id": "conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors",
+                "note": "Where post-tensioning has been chosen, check the PT edge and opening details for a fall-protection attachment path at the same time."
               }
-            ]
+            ],
+            "examples": [],
+            "supportingImages": []
           }
         }
       ]
@@ -5617,7 +5753,8 @@
     "fragment|entry|found-below-reactive-ground-vs-stiffened-slab-on-top|1f3rxnt",
     "fragment|update|raft-slab-vs-waffle-pod|11hr5r0",
     "fragment|entry|pile-supported-beam-and-slab-vs-flat-slab|1607rdc",
-    "fragment|update|found-below-reactive-ground-vs-stiffened-slab-on-top|1u0rbe8"
+    "fragment|update|found-below-reactive-ground-vs-stiffened-slab-on-top|1u0rbe8",
+    "fragment|entry|slab-edges-and-openings-for-fall-protection|jd2t1b"
   ],
   "_rejected": [],
   "_reconsider": [
