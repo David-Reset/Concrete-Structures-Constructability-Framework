@@ -1765,7 +1765,12 @@
             },
             "evidence": "<strong>Flat plate and punching.</strong> Concrete Society guidance on pile-supported floors establishes the core mechanism — load can transfer directly into the piles without beams, but punching around the heads may govern and local thickening may be needed, with span-to-depth limits and cracking recognised risks. Hulett's work on pile-supported concrete floors is the caution against treating the plate as tidy-and-done: cracking over piles, mid-span deflection and crack-avoidance margins all become live once a slab spans to pile heads. Together they support the lever that the flat plate is the cleaner build only while it stays structurally clean at the heads — and that a plate driven to thickenings has become a flat slab.<br><br><strong>Beam-and-slab as the conventional suspended floor.</strong> Across UK residential practice the suspended ground floor is overwhelmingly built on beams: beam-and-block on ground beams (or in-situ ground beams with an infill slab) is the dominant new-build ground floor where the floor cannot bear directly on the ground, and ground beams are the standard way to span between piles for low-rise work. The flat plate spanning supports, by contrast, is essentially a commercial and industrial slab technique rather than a residential one. This is the basis for treating beam-and-slab as the habit and the flat plate as the under-considered option — and it is established without leaning on a residential-slab standard.<br><br><strong>Heave isolation and the gap.</strong> A suspended floor is isolated from heaving clay by being lifted off the ground; where heave is a risk, practice guidance has a compressible material or void former provided below the floor so the swelling soil never loads it. The constructability reading carried here — that under a flat plate this gap is a placed void-former blanket, while under a beam-and-slab it is fill used as formwork that self-voids — is buildability reasoning consistent with that mechanism, not a measured rule, and the structural design of the isolation stays with the engineer.<br><br><strong>Span and grid economics.</strong> Comparative cost work on flat-plate versus beam-and-slab floors finds flat plate cheaper at tight spans but beam-and-slab cheaper as spans widen, with flat-slab dimensions commonly driven to where punching governs and reinforcement densities well above those of a solid slab. This is from elevated building floors rather than small piled ground floors, so it is carried as direction, not proof: removing beams simplifies the build only while the slab does not turn structurally demanding.<br><br><strong>What was not found.</strong> No source directly compares a residential pile-supported flat plate against a residential pile-supported beam-and-slab on build time, spoil, steel-fixing hours, concrete volume, cost or defect rate, and none sets the grid spacing or slab depth at which the answer flips. The 0/1/2/3 condition-count bands are constructability judgement, not a measured rule.<br><br><strong>References</strong><br>1. The Concrete Society. <em>Pile-supported floors</em> (technical guidance).<br>2. Hulett, T. (2011). <em>Design and construction of pile-supported concrete floors.</em> Concrete, September 2011.<br>3. UK suspended ground-floor practice: NHBC / LABC technical guidance and industry references on beam-and-block and ground-beam suspended floors; Designing Buildings, <em>Ground beams in construction</em> and <em>Beam and block floor construction</em>.<br>4. Practice guidance on void formers / compressible material below suspended floors over reactive or heave-prone ground.<br>5. <em>Comparative Cost Study of Reinforced Concrete Flat Slab and Slab-with-Beam Floor Systems</em> (elevated floors).",
             "examples": [],
-            "supportingImages": [],
+            "supportingImages": [
+              {
+                "image": "images/pile-supported-floor-system-beam-and-slab-vs-flat-plate.webp",
+                "title": "<strong>Pile-supported floor system — beam-and-slab vs flat plate</strong><br><br>Both options are pile-supported. The beam-and-slab option collects load through ground beams between pile heads, which introduces ground-beam trenches and beam cages. The flat-plate option keeps the working platform flatter by removing ground-beam trenches, but pile-head punching shear becomes a key design check and void formers may be needed below the slab."
+              }
+            ],
             "dateAdded": "2026-06-24",
             "dateReviewed": "2026-06-24",
             "location": {
@@ -3122,6 +3127,179 @@
           }
         },
         {
+          "id": "repetition-and-the-formwork-learning-curve",
+          "name": "Repetition and the formwork learning curve",
+          "available": true,
+          "data": {
+            "question": "Does the design repeat its formwork and element configurations enough for crews to build each type more than once?",
+            "parameter": "Whether the design repeats its formwork and element configurations, or fragments into one-offs. Read off the drawings as the ratio of repeated to one-off configurations.",
+            "keywords": [
+              "repetition",
+              "standardisation",
+              "learning curve",
+              "formwork reuse",
+              "formwork cycling",
+              "repeated floors",
+              "one-off configurations",
+              "beam depth consistency",
+              "set-down",
+              "floor plate repetition",
+              "buildability"
+            ],
+            "elementType": [
+              "slab",
+              "beam",
+              "column",
+              "frame"
+            ],
+            "constructionPhase": [
+              "formwork"
+            ],
+            "background": "Forming concrete is learned work. The first time a crew sets up a particular beam, hob or set-down they are slow, working out the panel layout, the bracing, and the pour and strip sequence for the first time. The second is quicker, the third quicker still, and after a handful of repeats the crew is at full speed and barely has to think about it. This is the <strong>learning curve</strong> &mdash; established as a general law of repeated manual production by Wright (1936), who found that unit labour time falls by a fixed percentage each time cumulative output doubles. It applies directly to a crew forming the same element again and again.<br><br>The design decides whether that learning ever happens. A floor with <strong>a few configuration types, each repeated many times</strong> lets the crew climb the curve on every type and then build most elements at the fast, practised rate. A floor <strong>fragmented into many one-off configurations</strong> keeps resetting them: every beam is a first beam, every hob a first hob, and the crew never gets out of the slow, relearning zone.<br><br>The point worth stating separately is that <strong>the penalty comes from variety itself, even when each element is individually simple</strong>. Twenty different-but-easy beams can take longer to form than twenty identical, slightly trickier ones &mdash; because the twenty easy ones never let anyone climb the curve, and the identical ones do. So the lever here is <em>not</em> &lsquo;make each detail simpler&rsquo; &mdash; that is the job of the related formwork-and-falsework-complexity entry. The lever here is to make the elements <strong>the same as each other</strong>, so the crew only has to learn each type once: keep beam depths consistent, hob sizes consistent, and set-downs and penetration patterns repeating floor to floor, rationalising the design down to a small family of repeated types.<br><br>There is a <strong>sister benefit</strong> worth noting, though it belongs more to the related entries: when elements are made identical, the <em>physical</em> formwork can be lifted and reused rather than refabricated, which is the economy the beam-soffit-formwork-proportions and post-tensioned formwork-cycling entries turn on. This entry&rsquo;s own contribution is the other half of the saving &mdash; the crew&rsquo;s hands and heads getting faster with each repeat &mdash; and that learning effect is what it is built around.",
+            "thresholds": [
+              {
+                "range": "Standardised and repeated",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "A small number of configuration types, each repeated many times across the floor and floor to floor. The design lets crews climb the curve on every type and build most elements at the practised rate."
+              },
+              {
+                "range": "Partly standardised",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "Some types repeat enough to gain from learning, but a meaningful share are one-offs. Part of the learning effect is realised, part is lost to elements built only once."
+              },
+              {
+                "range": "Mostly one-offs",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Few types recur often enough for a crew to get past first-time output. Most elements are effectively built cold, and the learning effect is largely unavailable."
+              },
+              {
+                "range": "Near-constant variation",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "Elements that could have been standardised differ with no structural reason &mdash; different beam depths, hob sizes or set-downs throughout &mdash; resetting the crew to first-time output across the floor."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to reinforced concrete buildings with numerous repeating elements &mdash; suspended floors, beams, hobs, set-downs, upstands and penetration patterns &mdash; where standardisation is a live design choice. It is most valuable where elements are numerous and the floor plate repeats up the building, because that is where lost learning compounds; on a small single-storey job with few elements the effect is minor.",
+              "checks": [
+                {
+                  "title": "Structural and architectural drivers may justify variation",
+                  "description": "Spans, loads, transfer conditions, services and architectural intent can all legitimately force different configurations. The entry asks whether variation was weighed against its construction cost, not that every element be made identical regardless."
+                },
+                {
+                  "title": "Some variation is unavoidable, and that is fine",
+                  "description": "The target is a small family of repeated types, not a single type. The rating turns on avoidable, no-reason variation, not on the existence of any difference at all."
+                },
+                {
+                  "title": "This is the economy view, not the safety view",
+                  "description": "The closely related formwork-and-falsework-complexity entry looks at the same one-off conditions from the safety angle &mdash; worker exposure and temporary-works failure. This entry is about build rate and cost. Weigh the two together, but they answer different questions."
+                },
+                {
+                  "title": "The count informs, it does not dictate",
+                  "description": "A high configuration count is a prompt to check whether the variety was deliberate, not an automatic fault."
+                }
+              ],
+              "note": "Use the rating as a design-stage prompt, not a prohibition. A varied, low-repetition design may still be the right answer once spans, architecture and programme are weighed &mdash; the rating asks that the cost of lost repetition was recognised and the standardisation option considered, not that variety be designed out at all costs."
+            },
+            "alternatives": [
+              {
+                "title": "Standardise dimensions where the structure allows",
+                "description": "Pull beam depths, hob sizes, set-downs and penetration patterns toward a small set of repeated values rather than sizing each in isolation. A type built many times pays the first-time learning back many times over."
+              },
+              {
+                "title": "Repeat floor to floor",
+                "description": "Keep the plate consistent up the building so each floor reuses the previous floor&rsquo;s learning &mdash; and, as a bonus, its physical forms &mdash; rather than starting each level fresh."
+              },
+              {
+                "title": "Count the configuration types",
+                "description": "Tally the distinct beam depths, hob sizes and set-downs the design forces and how often each recurs. A few types repeated many times is the target; a long list of one-offs is the warning sign."
+              },
+              {
+                "title": "Where variation is genuinely needed, cluster it",
+                "description": "Group like with like so the crew builds runs of the same type in sequence rather than alternating between types, keeping as much of the learning effect as the variation allows."
+              }
+            ],
+            "workedExample": {
+              "title": "Worked example — two beam layouts, the same beam count",
+              "caveat": "Site A and Site B are generic archetypes for illustration, not a real project. The verdict comes from counting the configuration types against the number of beams, not from any drawing — you can run the same check from words alone.",
+              "headline": "The same number of beams, opposite build rates — and you can see why from the variety count.",
+              "tableStyle": "soffitSheetBracing",
+              "tableHeaders": [
+                "Check",
+                "Site A — rationalised plate",
+                "Site B — one-off plate"
+              ],
+              "tableColumnBands": [
+                "",
+                "green",
+                "orange"
+              ],
+              "tableRows": [
+                [
+                  "Beams on the floor",
+                  "24",
+                  "24"
+                ],
+                [
+                  "Distinct beam configurations",
+                  "3 types, each built about 8 times",
+                  "12 types, most built once or twice"
+                ],
+                [
+                  "What the crew experiences",
+                  "Climbs three short curves early, then builds the bulk of the floor at the practised rate",
+                  "Nearly every beam is a first beam; the crew never gets past first-time output"
+                ],
+                [
+                  "Floor to floor",
+                  "Plate repeats up the building — each level reuses the learning, and the forms",
+                  "Plate changes each level — learning resets every floor"
+                ],
+                [
+                  "Verdict",
+                  "Best practice — high repetition, the curve is climbed",
+                  "Action required — near-constant variation resets the crew throughout"
+                ]
+              ],
+              "howToUse": "Count the configuration types against the number of elements on your own floor and read the band: a few types repeated many times sits at Best practice; a long list of one-offs with no structural reason for the difference sits at Concern or Action required.",
+              "assumptionsTitle": "Notes",
+              "assumptions": [
+                "Site A and Site B carry the same 24 beams; the difference is entirely in how many distinct types those beams fall into.",
+                "Each individual beam in Site B may be no harder to form than in Site A — the penalty is the variety, not the per-beam difficulty, which is what makes this distinct from the formwork-complexity entry."
+              ]
+            },
+            "evidence": "This entry is anchored by an established law of repeated production and corroborated by construction-specific measurement of the same effect on concrete floors. The bands are a reasoned application of that evidence to a given building&rsquo;s configuration count, not measured thresholds.<br><br><strong>The law.</strong> Wright (1936), studying aircraft manufacturing, established that unit labour time falls by a fixed percentage each time cumulative output doubles &mdash; the learning curve. The phenomenon is general to repeated manual production and maps directly onto a crew forming the same formwork configuration repeatedly. Unlike the framework&rsquo;s use of visual-clutter research in the callout entries, where no construction-specific study exists and the law carries the argument by inference, here the underlying law is reinforced by construction-specific measurement of the same effect.<br><br><strong>It is measured on concrete, not just inferred.</strong> Formwork is the dominant on-site activity in a concrete frame &mdash; L&ouml;fgren, Gylltoft and Kutti (2001) attribute roughly 49% of concrete-structure labour to formwork &mdash; so it is where repetition has the most leverage. On a 20-storey apartment building, Nguyen and Nguyen (2013) recorded a formwork learning rate of about 83.5% and a rebar learning rate of about 83.6% across the repeated floors, both inside the 70&ndash;90% band conventionally reported for repetitive construction. The rates this entry leans on are construction-specific and on point, not borrowed.<br><br><strong>Why repetition is the lever &mdash; the evidence is conditional.</strong> The most useful finding for this entry is that the construction learning-curve literature is mixed, and it splits exactly along the design lever. Jarkas and Horner (2011), analysing formwork inputs across 45 multi-storey reinforced-concrete frames, found very little evidence of a consistent learning rate across that varied set &mdash; the curve shows up where floors genuinely repeat and the elements are alike, and fades where the configurations differ. The measured effect appears precisely when the design has standardised and disappears when it has not, which is direct empirical support for the parameter rather than a magnitude to drop into a band. The 70&ndash;90% range is grounding that the effect is real and measurable, <strong>not</strong> a band boundary; the guidance bands remain categorical.<br><br><strong>The buildability principle.</strong> The foundational buildability literature already treats repetition and standardisation as primary design levers for construction efficiency (CIRIA, 1983), which places the standardise-versus-vary decision squarely within the designer&rsquo;s remit rather than the contractor&rsquo;s means and methods.<br><br><strong>Why this is Medium, not High.</strong> The mechanism is well supported by construction-specific, peer-reviewed measurement, so the case does not rest on analogy. Two things hold it at Medium. First, the magnitude is genuinely condition-dependent rather than a settled value &mdash; the same body of work that measures about 80% learning on repetitive floors also finds little or no learning where configurations vary (Jarkas &amp; Horner, 2011), so there is no single rate the entry can stand on. Second, the band ordering is a reasoned constructability judgement: there is no measured &lsquo;this many configurations is too many&rsquo; threshold, and no dataset ties a given configuration count to a build-rate penalty on a specific building. A documented project case mapping a configuration count to a measured penalty is what would move the entry toward High.<br><br><strong>References</strong><br>Wright, T. P. (1936). Factors affecting the cost of airplanes. <em>Journal of the Aeronautical Sciences, 3</em>(4), 122&ndash;128.<br>Nguyen, L. D., &amp; Nguyen, H. T. (2013). Relationship between building floor and construction labor productivity: A case of structural work. <em>Engineering, Construction and Architectural Management, 20</em>(6), 563&ndash;575. https://doi.org/10.1108/ECAM-03-2012-0034<br>Jarkas, A. M., &amp; Horner, R. M. W. (2011). Revisiting the applicability of learning curve theory to formwork labour productivity. <em>Construction Management and Economics, 29</em>(5), 483&ndash;493. https://doi.org/10.1080/01446193.2011.562911<br>L&ouml;fgren, I., Gylltoft, K., &amp; Kutti, T. (2001). <em>In-situ concrete building &ndash; Innovations in formwork.</em> Department of Structural Engineering, Chalmers University of Technology / Thomas Concrete Group.<br>CIRIA (1983). <em>Buildability: An assessment.</em> CIRIA Special Publication 26, London.",
+            "examples": [],
+            "supportingImages": [],
+            "dateAdded": "2026-06-24",
+            "dateReviewed": "2026-06-24",
+            "location": {
+              "country": "Australia"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Supported by the established learning-curve law (Wright, 1936) and, more directly, by construction-specific measurement of the same effect on repeated concrete floors &mdash; formwork and rebar learning rates around 83% where floors repeat (Nguyen &amp; Nguyen, 2013) &mdash; together with the buildability principle that repetition and standardisation drive construction efficiency (L&ouml;fgren et al., 2001; CIRIA, 1983). The same literature finds the effect largely disappears where configurations vary (Jarkas &amp; Horner, 2011), which corroborates the design lever directly. It sits at Medium rather than High because that magnitude is condition-dependent rather than a single settled value, and the band ordering is a reasoned constructability judgement with no measured configuration-count threshold."
+            },
+            "relatedEntries": [
+              {
+                "id": "beam-soffit-formwork-proportions",
+                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off &mdash; consider them together."
+              },
+              {
+                "id": "conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors",
+                "note": "Both turn on repetition paying off the formwork investment; the more the design repeats, the more the cycling and post-tensioning economics work."
+              },
+              {
+                "id": "formwork-and-falsework-complexity",
+                "note": "The safety view of the same count. That entry tallies one-off configurations for worker exposure and temporary-works risk; this one tallies them for lost crew learning and build rate. Same lever, weighed for two different reasons."
+              }
+            ]
+          }
+        },
+        {
           "id": "waterproofing-buildability",
           "name": "Waterproofing buildability",
           "available": false,
@@ -3131,28 +3309,6 @@
             "parameter": "Whether wet-area and external slabs provide the set-downs, falls, upstands and termination clearances a membrane needs (provided at design stage / drawn without coordination / left to site).",
             "_evidenceAngle": "Detailing root cause: the membrane can only work if the concrete gives it falls and terminations; fixing this after the pour means grinding falls or building up topping. Same shape as the drip-groove entry (a formed feature must be resolved before the pour). Practice references: AIW (Australian Institute of Waterproofing) and membrane-manufacturer detailing guidance; corroborate with the prevalence of waterproofing as a defect/rework category in building-defect studies.",
             "_thresholdSketch": "Good: falls, set-downs, upstands and terminations detailed. Concern: membrane required but slab is flat / no termination room. Action required: detail forces post-pour grinding or topping build-up to create falls."
-          }
-        },
-        {
-          "id": "repetition-and-the-formwork-learning-curve",
-          "name": "Repetition and the formwork learning curve",
-          "available": false,
-          "draft": true,
-          "data": {
-            "question": "Across the building, how many distinct formwork / element configurations has the design created — does the floor plate and detailing repeat enough for crews to climb the learning curve, or does near-constant variation reset the crew to slow, first-time output on every element?",
-            "parameter": "Number of distinct (non-repeating) formwork or element configurations across the structure relative to the number of elements — i.e. how much the design repeats vs varies.",
-            "_evidenceAngle": "Best indirect-evidence candidate in the set. Wright's learning curve (T. P. Wright, 1936, Factors Affecting the Cost of Airplanes, Journal of the Aeronautical Sciences) — unit labour time falls a fixed percentage each time cumulative output doubles — is canonical in manufacturing economics and applies directly to repeated formwork pours and repeated details. Same move as using Rosenholtz (visual clutter) for the callout entry: borrow a well-established law from an adjacent field to explain a construction effect. Reinforces the dimension's stated theme (standardisation, repetition, simplification).",
-            "_thresholdSketch": "Good: high repetition, few unique configurations. Consider: moderate variation. Concern: many one-off configurations limiting any learning effect. Action required: near-constant variation across elements that could have been standardised.",
-            "relatedEntries": [
-              {
-                "id": "beam-soffit-formwork-proportions",
-                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
-              },
-              {
-                "id": "conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors",
-                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
-              }
-            ]
           }
         }
       ]
@@ -5754,7 +5910,8 @@
     "fragment|update|raft-slab-vs-waffle-pod|11hr5r0",
     "fragment|entry|pile-supported-beam-and-slab-vs-flat-slab|1607rdc",
     "fragment|update|found-below-reactive-ground-vs-stiffened-slab-on-top|1u0rbe8",
-    "fragment|entry|slab-edges-and-openings-for-fall-protection|jd2t1b"
+    "fragment|entry|slab-edges-and-openings-for-fall-protection|jd2t1b",
+    "fragment|update|repetition-and-the-formwork-learning-curve|1ist0f8"
   ],
   "_rejected": [],
   "_reconsider": [
