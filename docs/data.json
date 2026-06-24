@@ -2759,10 +2759,6 @@
                 "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
               },
               {
-                "id": "slab-depth-consistency",
-                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
-              },
-              {
                 "id": "repetition-and-the-formwork-learning-curve",
                 "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
               }
@@ -3143,10 +3139,6 @@
             "_evidenceAngle": "Best indirect-evidence candidate in the set. Wright's learning curve (T. P. Wright, 1936, Factors Affecting the Cost of Airplanes, Journal of the Aeronautical Sciences) — unit labour time falls a fixed percentage each time cumulative output doubles — is canonical in manufacturing economics and applies directly to repeated formwork pours and repeated details. Same move as using Rosenholtz (visual clutter) for the callout entry: borrow a well-established law from an adjacent field to explain a construction effect. Reinforces the dimension's stated theme (standardisation, repetition, simplification).",
             "_thresholdSketch": "Good: high repetition, few unique configurations. Consider: moderate variation. Concern: many one-off configurations limiting any learning effect. Action required: near-constant variation across elements that could have been standardised.",
             "relatedEntries": [
-              {
-                "id": "slab-depth-consistency",
-                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
-              },
               {
                 "id": "beam-soffit-formwork-proportions",
                 "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
@@ -3789,40 +3781,6 @@
                 "note": "If tight access pushes the design toward screw piles, check whether the selected system can be verified as built before committing."
               }
             ]
-          }
-        },
-        {
-          "id": "slab-depth-consistency",
-          "name": "Slab depth consistency",
-          "available": false,
-          "draft": true,
-          "data": {
-            "question": "Do the suspended slabs share a consistent depth across the floor and up the building — letting one set of formwork and shoring cycle and reshore cleanly — or do varying depths fragment the formwork system and reshoring into many one-off setups?",
-            "parameter": "Number of distinct suspended-slab depths across the floor plate and up the building.",
-            "_evidenceAngle": "Buildability + reuse, no standards content. Consistent depth lets a single formwork/shoring set cycle and reshore (ties to the PT formwork-cycling entry and the learning-curve entry). Practice references: formwork/shoring cycling literature on reshore stacking needing matching levels. Pairs naturally with the repetition entry.",
-            "_thresholdSketch": "Good: one (or few) slab depths. Consider: a couple of depths. Concern: many depths fragmenting formwork/reshoring. Action required: depth varies so much a cycling system can't be sustained.",
-            "relatedEntries": [
-              {
-                "id": "beam-soffit-formwork-proportions",
-                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
-              },
-              {
-                "id": "conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors",
-                "note": "Both affect how economically formwork can be reused. The more the design standardises and repeats, the more formwork investment pays off — consider them together."
-              }
-            ]
-          }
-        },
-        {
-          "id": "concrete-grade-specification",
-          "name": "Concrete grade specification",
-          "available": false,
-          "draft": true,
-          "data": {
-            "question": "How many different concrete grades has the design specified across the project — is the number kept low enough for clean ordering, batching and placement, or do many closely-spaced grades multiply supply, QA and wrong-pour risk for little structural gain?",
-            "parameter": "Number of distinct concrete grades specified across the project relative to need.",
-            "_evidenceAngle": "Logistics/buildability: each extra grade is a separate order, batch, delivery and test stream, and a wrong-pour opportunity, often for marginal structural benefit. Standards in the back of mind (don't drop below what an element needs); the point is rationalising the count. Practice references: ready-mix supply / site QA literature on order and placement error with many mixes; corroborate with error-rate / variety literature.",
-            "_thresholdSketch": "Good: few, well-separated grades. Consider: several grades. Concern: many closely-spaced grades. Action required: grade proliferation with high wrong-pour risk and little structural justification."
           }
         },
         {
@@ -4754,36 +4712,6 @@
           }
         },
         {
-          "id": "temporary-works-stability",
-          "name": "Temporary works stability",
-          "available": false,
-          "draft": true,
-          "data": {
-            "question": "Does the permanent design provide what the structure needs to stand safely while it is only part-built — propping points, lateral restraint, a stable erection sequence — or does stability rely on elements that are not yet in place?",
-            "parameter": "Whether the design identifies how the partly-built structure is held stable during construction (props, bracing, pour/erection sequence) before the permanent load path is complete.",
-            "_evidenceAngle": "Safety-in-design + the principle that a structure stable when finished can be unstable mid-build (a slab relying on a wall not yet cast, a frame needing the floor diaphragm for stability). Anchor to design-for-construction-safety literature (Behm 2005, already cited in the confined-space entry) for the design-influences-safety link; corroborate with temporary-works guidance on the construction condition being a distinct load case.",
-            "_thresholdSketch": "Good: stable at every stage with permanent elements / clearly-flagged temp props. Concern: stability depends on an element installed later, not flagged. Action required: a credible collapse mechanism exists during a normal build sequence with nothing in the design addressing it.",
-            "relatedEntries": [
-              {
-                "id": "edge-protection-requirements",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              },
-              {
-                "id": "reinforcement-mat-fall-through-risk",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              },
-              {
-                "id": "confined-space-entry-at-pier-and-shaft-bases",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              },
-              {
-                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
-                "note": "Both concern keeping workers safe while the structure is incomplete — stability, edges and access during construction."
-              }
-            ]
-          }
-        },
-        {
           "id": "edge-protection-requirements",
           "name": "Edge protection requirements",
           "available": false,
@@ -4943,14 +4871,6 @@
                 "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
               },
               {
-                "id": "drawing-notation-clarity",
-                "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
-              },
-              {
-                "id": "detail-sheet-organisation",
-                "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
-              },
-              {
                 "id": "isometric-overview-views-in-structural-drawing-sets",
                 "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
               }
@@ -5062,14 +4982,6 @@
               "summary": "Supported by practical drawing examples and design-communication logic, but the evidence base is mainly practice-based and would benefit from further external literature or user feedback."
             },
             "relatedEntries": [
-              {
-                "id": "drawing-notation-clarity",
-                "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
-              },
-              {
-                "id": "detail-sheet-organisation",
-                "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
-              },
               {
                 "id": "isometric-overview-views-in-structural-drawing-sets",
                 "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
@@ -5338,56 +5250,12 @@
                 "note": "Companion Design Communication entry. Both concern whether the reader can connect information across the set; the overview is the wayfinding layer that routes them to the right detail and section."
               },
               {
-                "id": "detail-sheet-organisation",
-                "note": "Related findability entry. That one is about whether details are findable and grouped; this one is about understanding the spatial arrangement before hunting for a detail."
-              },
-              {
                 "id": "large-bar-callout-clarity",
                 "note": "Both prevent important information being technically present on the sheet but easy to miss."
               },
               {
                 "id": "temporary-stability-of-retained-or-part-built-structure",
                 "note": "Where staged isometrics are used, this Safety-in-Design entry is why the construction sequence matters."
-              }
-            ]
-          }
-        },
-        {
-          "id": "drawing-notation-clarity",
-          "name": "Drawing notation clarity",
-          "available": false,
-          "draft": true,
-          "data": {
-            "question": "Is the notation on the drawings legible and unambiguous at the scale and density the builder actually reads it — or do abbreviations, overlapping text and low contrast make callouts easy to misread?",
-            "parameter": "Legibility and unambiguity of drawing notation at working scale and density (abbreviation load, text overlap, contrast).",
-            "_evidenceAngle": "Sits alongside the existing 'Reinforcement callout clarity' entry but broader (all notation). Same indirect human-factors basis: visual clutter degrades search (Rosenholtz, Li & Nakano 2007) and information-cue overload slows and worsens interpretation. Make sure it does not just duplicate the callout entry — frame around general notation legibility.",
-            "_thresholdSketch": "Good: legible, low-ambiguity notation. Concern: dense/abbreviation-heavy notation easy to misread. Action required: notation a competent reader is likely to misinterpret at working scale.",
-            "relatedEntries": [
-              {
-                "id": "detail-sheet-organisation",
-                "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
-              },
-              {
-                "id": "isometric-overview-views-in-structural-drawing-sets",
-                "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
-              }
-            ]
-          }
-        },
-        {
-          "id": "detail-sheet-organisation",
-          "name": "Detail sheet organisation",
-          "available": false,
-          "draft": true,
-          "data": {
-            "question": "Are details organised and located so the builder can find the one they need when they need it — grouped logically, near their reference, consistently keyed — or are they scattered so the reader hunts across sheets to assemble one detail?",
-            "parameter": "Whether details are organised and located for retrieval (logical grouping, proximity to reference, consistent keying) vs scattered across sheets.",
-            "_evidenceAngle": "Pairs with the existing 'Details and schedule references' entry; same construction-communication basis (Foroughi Sabzevar et al. 2025 — non-self-contained docs that send the reader chasing across sheets are a top-ranked source of site confusion). Frame around organisation/findability, not cross-referencing per se, to stay distinct.",
-            "_thresholdSketch": "Good: details findable and logically grouped. Concern: scattered details needing cross-sheet assembly. Action required: organisation that reliably sends the reader hunting and inviting wrong-detail use.",
-            "relatedEntries": [
-              {
-                "id": "isometric-overview-views-in-structural-drawing-sets",
-                "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
               }
             ]
           }
