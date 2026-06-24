@@ -3302,13 +3302,129 @@
         {
           "id": "waterproofing-buildability",
           "name": "Waterproofing buildability",
-          "available": false,
-          "draft": true,
+          "available": true,
           "data": {
-            "question": "Does the concrete provide the geometry waterproofing actually needs — set-downs, falls to drainage, upstand heights, and termination room at penetrations and junctions — or is a membrane expected to perform on a flat slab with no falls and no room to turn up and terminate?",
-            "parameter": "Whether wet-area and external slabs provide the set-downs, falls, upstands and termination clearances a membrane needs (provided at design stage / drawn without coordination / left to site).",
-            "_evidenceAngle": "Detailing root cause: the membrane can only work if the concrete gives it falls and terminations; fixing this after the pour means grinding falls or building up topping. Same shape as the drip-groove entry (a formed feature must be resolved before the pour). Practice references: AIW (Australian Institute of Waterproofing) and membrane-manufacturer detailing guidance; corroborate with the prevalence of waterproofing as a defect/rework category in building-defect studies.",
-            "_thresholdSketch": "Good: falls, set-downs, upstands and terminations detailed. Concern: membrane required but slab is flat / no termination room. Action required: detail forces post-pour grinding or topping build-up to create falls."
+            "question": "Are the falls and set-downs for waterproofing needs formed in the pour, or left for later?",
+            "parameter": "Whether the set-downs and falls a membrane needs are resolved in the structural design, drawn without coordination, or left to resolve during construction.",
+            "keywords": [
+              "set-down",
+              "setdown",
+              "fall to waste",
+              "floor waste",
+              "upstand",
+              "turn-up",
+              "termination",
+              "hob",
+              "screed",
+              "topping",
+              "balcony",
+              "podium",
+              "planter",
+              "wet area",
+              "garage falls",
+              "by others",
+              "falls by others",
+              "building envelope by others",
+              "post-pour",
+              "grinding falls",
+              "head height",
+              "threshold",
+              "reo cover",
+              "regulated design",
+              "waterproofing consultant",
+              "hydraulic engineer",
+              "DBP Act"
+            ],
+            "elementType": [
+              "slab"
+            ],
+            "constructionPhase": [
+              "design & documentation",
+              "pour/placement"
+            ],
+            "background": "A waterproofed surface only works if the concrete gives it the geometry it needs: falls so water runs to the outlet rather than ponding, a set-down so the membrane can turn down below the finished floor and terminate, and room to turn up at walls, doorways and penetrations. That geometry is formed in the pour. Once the slab is cast there is no clean fix &mdash; only grinding falls into cured concrete, or building up a topping or screed, and the topping then steals head height and re-creates the very threshold problem it was meant to solve.<br><br>This entry is not about the structural engineer designing the waterproofing. The membrane system is the architect&rsquo;s or building designer&rsquo;s responsibility, often with a specialist waterproofing consultant on larger projects; the falls and drainage are usually the hydraulic engineer&rsquo;s. What the structural engineer owns is the concrete substrate &mdash; the set-down recess, the slab level, and whether the slab is cast graded or flat &mdash; because that is where the geometry is physically formed. A watertight, well-drained slab is a collaboration between the architect, the structural engineer and the hydraulic engineer; this entry is the structural engineer&rsquo;s part of it.<br><br>The reason it lands in the structural lane, and not just as a coordination courtesy, is cover. A wet-area set-down is a local reduction in slab depth. Designed in from the start, the engineer sets cover, bar positions and effective depth at the recess correctly. Resolved late, the recess is cut into a slab that was detailed flat &mdash; the top steel was placed for the original surface, so lowering that surface strips cover off it, a durability problem and, at the limit, a capacity one &mdash; or a topping is built up instead, adding load the slab was never designed for and breaking the threshold level. Either way, the as-built section is no longer the as-designed section.<br><br>This is also where the framework&rsquo;s purpose bites: get the first pass right so the work doesn&rsquo;t come back during construction. A house almost always has an architect or a draftsperson on the drawings, but rarely a hydraulic engineer or a waterproofing specialist &mdash; so the gap is not that nobody draws it, but that nobody with waterproofing expertise is in the room at design stage. The engineer is well placed to flag that specialist input is needed before the pour. The alternative sequence is the costly one: issue the slab, the builder engages the waterproofer mid-construction, the waterproofer returns with the falls, set-down and upstand they need, and the engineer is reworking a design that is already on site. Treating this as a professional-duty matter rather than a code one matters: under the NSW Design and Building Practitioners Act, waterproofing is a regulated building element whose statutory duty of care cannot be delegated, so a generic &lsquo;falls by others&rsquo; or &lsquo;building envelope by others&rsquo; note does not make an unbuildable detail buildable, and does not discharge the responsibility for the substrate the membrane depends on.",
+            "thresholds": [
+              {
+                "range": "In the pour",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "The set-downs, the falls (formed in the slab, or a coordinated screed depth), the upstand height and the termination room at doorways, penetrations and junctions are resolved in the structural design and coordinated with the architectural finished-floor levels, the drainage design and the waterproofing system. The set-down is accounted for in cover, bar positions and effective depth at the recess. The membrane has the room it needs, designed in before the pour, and nothing about the waterproofing forces a change to the slab later."
+              },
+              {
+                "range": "Partly coordinated",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "The geometry is broadly right, but one element is drawn without being reconciled &mdash; a set-down nominated but not dimensioned against the finished-floor build-up, a fall shown but not tied to the drainage outlet, or a threshold level not reconciled with the membrane turn-up. The risk is a late adjustment that eats into cover or head height. Reconcile the loose element before issue. Where there is no hydraulic engineer or waterproofing specialist on the job, confirm that specialist input is obtained before the pour, not after, so the coordination is closed while it is still cheap to close."
+              },
+              {
+                "range": "Left for later",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "The geometry is not there: a flat or level slab with no fall and no termination room, or a &lsquo;falls / building envelope by others&rsquo; note standing in for the detail. The membrane is being asked to perform on a surface it cannot work on, and resolving it later forces one of the bad fixes &mdash; grinding falls into the cured slab, a topping build-up that breaks the threshold and head height, or a recess cut into already-placed steel that strips cover. Resolve the geometry before the drawings are issued."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Resolve the geometry in the structural set, don&rsquo;t shed it",
+                "description": "Show the set-downs, falls and termination room, and account for the recess in cover and reinforcement. A &lsquo;by others&rsquo; note doesn&rsquo;t make an unbuildable detail buildable, and the duty over a regulated waterproofing element isn&rsquo;t discharged by delegating the substrate it relies on."
+              },
+              {
+                "title": "Get waterproofing input before the pour, not after",
+                "description": "Where there is no hydraulic engineer or waterproofing specialist on the job &mdash; common in residential &mdash; flag early that specialist input is needed, so the first pass carries the right geometry and the slab isn&rsquo;t reworked on site."
+              },
+              {
+                "title": "Coordinate the set-down against the finished-floor build-up",
+                "description": "A set-down is only right once it is dimensioned against the finishes, the drainage outlet and the membrane turn-up. Nominate it and reconcile it."
+              },
+              {
+                "title": "Decide where the fall lives",
+                "description": "Formed in the slab, or in a screed or topping &mdash; and if it is a topping, confirm it does not re-create the threshold or head-height problem, or add load the slab wasn&rsquo;t designed for."
+              }
+            ],
+            "evidence": "<strong>The consequence is recorded, not hypothetical.</strong> The NSW Building Commission&rsquo;s 2023 strata defects research found waterproofing to be the single most prevalent serious defect, present in 42% of affected buildings &mdash; the most common serious defect category across the survey. Independent academic work points the same way: Johnston and Reid&rsquo;s (2019) analysis of 212 building audit reports found that almost all buildings carried at least one defect, with water penetration among the most common. The hazard this entry addresses is one of the most frequently realised in the building stock, which is what gives the geometry decision its stakes.<br><br><strong>The cause sits at the design-stage coordination seam, and the research names this exact geometry.</strong> The Victorian Building Authority&rsquo;s 2024 water-ingress research identifies the causes of waterproofing failure as poor coordination and planning between practitioners from the initial design stage, together with an absent or unclear chain of responsibility &mdash; and where that coordination did not happen, the waterproofing systems failed. The regulator&rsquo;s own catalogue of what goes wrong names incorrect set-downs, incorrect falls and ponding, and missing terminations as recurring failure points, and concludes that water ingress is rarely a single error but a weakness running from design and documentation through to construction. This is a design-stage coordination story, not a site-workmanship one &mdash; which is precisely the seam this entry asks the structural engineer to close.<br><br><strong>The responsibility cannot be shed with a note (duty).</strong> Under the NSW Design and Building Practitioners Act 2020, waterproofing is a named regulated building element: a registered design practitioner must prepare and declare its design, and the Act&rsquo;s statutory duty of care is non-delegable. The High Court confirmed in <em>Pafburn Pty Ltd v The Owners &ndash; Strata Plan No 84674</em> (2024) that this duty cannot be discharged by delegating or entrusting the work to another competent person. That is the legal shape of why a generic &lsquo;by others&rsquo; note does not resolve the substrate a membrane depends on &mdash; the reflex the framework is correcting. This is used as the governing principle; the entry&rsquo;s specific claim is the constructability one, that the geometry has to be carried in the structural pour because that is the only place it can be formed.<br><br><strong>Whose design is whose (scope).</strong> This entry stays in the structural lane deliberately. The waterproofing system is the architect&rsquo;s or building designer&rsquo;s responsibility &mdash; the NSW design-practitioner classes include fire, facade, drainage, mechanical and structural specialties but no waterproofing class, so in practice it falls to the architectural design practitioner, developed with builders and specialist waterproofing consultants. The falls and drainage are the hydraulic engineer&rsquo;s. The structural engineer&rsquo;s role, as Australian guidance on watertight concrete makes clear, is collaboration on the concrete body &mdash; important especially for exposed and graded slabs, where a successful result depends on the architect, the structural engineer and the hydraulic engineer working together. The entry asks the structural engineer to own and coordinate the substrate geometry, not to author the waterproofing.<br><br><strong>What this entry does not claim.</strong> It does not claim the structural engineer designs the waterproofing system or the drainage &mdash; those sit with the architect, the waterproofing consultant and the hydraulic engineer. It puts no numbers on falls, set-down depth or termination heights; those come from the waterproofing design and the relevant standards, which the engineer already works to. It does not claim that good geometry waterproofs on its own &mdash; the system still has to be designed and installed &mdash; only that the membrane cannot work without the geometry. And it does not claim that <em>Pafburn</em> decides a structural engineer&rsquo;s liability for a &lsquo;by others&rsquo; note: <em>Pafburn</em> concerns a developer and head contractor and the proportionate-liability regime, and the position of downstream design consultants is less settled. It is used for the principle that a non-delegable duty over a regulated element is not discharged by entrusting it to others.<br><br><strong>References</strong><br>NSW Building Commission. <em>Research on serious building defects in NSW strata communities</em> (2023 Strata Defects Survey).<br>Johnston, N., &amp; Reid, S. (2019). <em>An examination of building defects in residential multi-owned properties.</em> Deakin University &amp; Griffith University.<br>Victorian Building Authority (2024). <em>Water ingress in buildings: balconies, roofs and drainage &mdash; research insights</em>, and the associated investigation of water leakage in concrete balconies.<br>Design and Building Practitioners Act 2020 (NSW), ss 36&ndash;39.<br>Pafburn Pty Ltd v The Owners &ndash; Strata Plan No 84674 [2024] HCA 49.",
+            "examples": [],
+            "supportingImages": [],
+            "dateAdded": "2026-06-25",
+            "dateReviewed": "2026-06-25",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "applicability": {
+              "appliesWhere": "This entry applies to wet-area and external above-ground slabs and decks that carry a membrane &mdash; bathrooms, laundries, balconies, terraces, podiums, planters and plant decks &mdash; and, in passing, to bare drained slabs that simply have to shed water, such as garages and outdoor pavement, which need adequate falls cast in even without a membrane. It is about the slab surface geometry that decides whether water can be shed and a membrane can fall, turn up and terminate. It does not cover the wall construction joint (a separate entry), the waterproofing system design itself (architect or waterproofing consultant), or the drainage design (hydraulic engineer) &mdash; this entry is the substrate those designs depend on.",
+              "checks": [
+                {
+                  "title": "Is the set-down in the structural design, with cover accounted for?",
+                  "description": "Confirm the set-down recess is in the structural design and that cover, bar positions and effective depth are set for it &mdash; rather than a late recess cut into already-placed steel."
+                },
+                {
+                  "title": "Is the fall formed, or only assumed in a screed?",
+                  "description": "Decide where the fall lives. If it is in a screed or topping, check it does not break the threshold or head height, or add load the slab was not designed for."
+                },
+                {
+                  "title": "Is there termination room at every junction?",
+                  "description": "Check the turn-up height and clearances at every doorway, penetration and junction, not just across the field of the slab."
+                },
+                {
+                  "title": "Who is giving the waterproofing input, and when?",
+                  "description": "If there is no hydraulic engineer or waterproofing specialist on the job, confirm the geometry input is obtained before the pour rather than after, so the design is right the first time."
+                }
+              ]
+            },
+            "evidenceSupport": {
+              "level": "high",
+              "summary": "The call &mdash; resolve the set-downs and falls a membrane needs in the structural design and coordinate them, rather than defer them to a &lsquo;by others&rsquo; note or a post-pour fix &mdash; is backed by regulator research that names these exact geometry failures and locates the cause at the design-stage coordination seam (VBA), by recorded consequence (waterproofing the most prevalent serious defect: NSW Building Commission, corroborated by Johnston &amp; Reid), and by a non-delegable statutory duty over waterproofing as a regulated building element (Design and Building Practitioners Act), confirmed by the High Court in Pafburn as not dischargeable by entrusting the work to others. The main limitation is that allocating the substrate geometry to the structural engineer specifically is a constructability and coordination position rather than a settled legal allocation &mdash; the waterproofing design sits with the architect or consultant and the falls and drainage with the hydraulic engineer &mdash; and Pafburn is a developer/head-contractor proportionate-liability case, so its application to a structural engineer&rsquo;s &lsquo;by others&rsquo; note is reasoned rather than decided."
+            },
+            "relatedEntries": [
+              {
+                "id": "non-moving-construction-joint-waterproofing",
+                "note": "Sibling waterproofing entry on a different surface: this entry covers the slab and deck surface geometry (falls, set-downs, upstands, membrane terminations); that one covers the wall construction joint. Coordinate so the slab-edge and wall-joint details meet cleanly and don&rsquo;t overlap in scope."
+              },
+              {
+                "id": "flat-soffit-detailing-at-minor-slab-setdowns",
+                "note": "The same wet-area top setdown seen from the soffit side: that entry weighs folding the soffit against keeping it flat and stepping the top. Here the setdown is about giving the membrane its drainage and termination room &mdash; consider the two together where one setdown drives both faces."
+              }
+            ]
           }
         }
       ]
@@ -5911,7 +6027,8 @@
     "fragment|entry|pile-supported-beam-and-slab-vs-flat-slab|1607rdc",
     "fragment|update|found-below-reactive-ground-vs-stiffened-slab-on-top|1u0rbe8",
     "fragment|entry|slab-edges-and-openings-for-fall-protection|jd2t1b",
-    "fragment|update|repetition-and-the-formwork-learning-curve|1ist0f8"
+    "fragment|update|repetition-and-the-formwork-learning-curve|1ist0f8",
+    "fragment|update|waterproofing-buildability|1tssztl"
   ],
   "_rejected": [],
   "_reconsider": [
