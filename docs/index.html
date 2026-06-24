@@ -69,6 +69,14 @@
   .entry-title{font-size:22px;font-weight:800;letter-spacing:-0.3px;margin-bottom:6px}
   .entry-meta{font-size:12px;color:var(--text-muted);margin-bottom:24px}
   .question-box{padding:20px 24px;background:var(--accent-glow);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;margin-bottom:28px}
+  .decision-path{padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;margin-bottom:20px}
+  .decision-path .dp-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
+  .decision-path .dp-text{font-size:13px;color:var(--text);line-height:1.6;opacity:0.9}
+  .decision-path .dp-routes{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+  .decision-path .dp-route{font-size:13px;color:var(--text);line-height:1.5}
+  .decision-path .dp-cue{color:var(--text-muted)}
+  .decision-path .dp-link{color:var(--accent);cursor:pointer;font-weight:600}
+  .decision-path .dp-link:hover{text-decoration:underline}
   .label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
   .img-hint{font-size:11px;color:var(--text-muted);opacity:0.75;margin:-2px 0 10px;display:flex;align-items:center;gap:5px}
   .img-hint svg{width:12px;height:12px;fill:var(--text-muted);flex-shrink:0}
@@ -2629,6 +2637,40 @@ function renderComments(d){
   return `<div class="comments-section"><div class="label">Comments (${cs.length})</div>${cards}</div>`;
 }
 
+// Orienting line for entries that sit in a small decision pathway.
+// role:"start" shows a forward map to its two branches; role:"branch" shows a
+// single backward precondition pointing to the strategy entry. Links resolve
+// through resolveEntryId so they survive renames and skip unavailable targets.
+function decisionPathPanel(d){
+  const dp=d.decisionPath; if(!dp) return '';
+  const link=id=>{const r=resolveEntryId(id); return r?`<span class="dp-link" onclick="goEntry('${r.dim.id}','${r.item.id}')">${r.item.name}</span>`:'';};
+  if(dp.role==='start'){
+    const gb=link(dp.groundBearing), ps=link(dp.pileSupported);
+    return `<div class="decision-path">
+      <div class="dp-label">Decision path · Start here</div>
+      <div class="dp-text">This is the first of the reactive-ground decisions. Settle deep-vs-shallow here, then read only the branch you land on:</div>
+      <div class="dp-routes">
+        ${gb?`<div class="dp-route"><span class="dp-cue">Staying ground-bearing →</span> ${gb}</div>`:''}
+        ${ps?`<div class="dp-route"><span class="dp-cue">Founding below, on piles →</span> ${ps}</div>`:''}
+      </div>
+    </div>`;
+  }
+  if(dp.role==='branch'){
+    const start=link(dp.start); if(!start) return '';
+    const kindLabel=dp.branchKind==='ground-bearing'?'Ground-bearing branch':dp.branchKind==='pile-supported'?'Pile-supported branch':'Branch';
+    const lead=dp.branchKind==='ground-bearing'
+      ?"Already settled on a ground-bearing slab? You're in the right place. If you haven't made that call yet, start with "
+      :dp.branchKind==='pile-supported'
+        ?"Already settled on founding below, on piles? You're in the right place. If you haven't made that call yet, start with "
+        :"This entry is one branch of a larger decision. If you haven't settled the strategy yet, start with ";
+    return `<div class="decision-path">
+      <div class="dp-label">Decision path · ${kindLabel}</div>
+      <div class="dp-text">${lead}${start}.</div>
+    </div>`;
+  }
+  return '';
+}
+
 function renderEntryDetail(){
   const dim=getDim(),item=getItem();
   if(!dim||!item||!item.available||!item.data){
@@ -2705,6 +2747,7 @@ function renderEntryDetail(){
     <div class="entry-title">${item.name}</div>
     <div class="entry-meta">Dimension: ${dim.name} · Reinforced Concrete ${regionSummary(d)?' · '+regionTag(d):''}</div>
     ${metaTagChips(d)?`<div class="entry-tag-row">${metaTagChips(d,true)}</div>`:''}
+    ${decisionPathPanel(d)}
     <div class="question-box"><div class="label label-accent">Design Question</div><div class="question-text">${d.question}</div></div>
     ${d.background?`<div class="label">Background</div><div class="consideration-text">${d.background}</div>`:''}
     <div class="param-box"><div class="label">Design Parameter</div><div class="param-value">${d.parameter}</div></div>
