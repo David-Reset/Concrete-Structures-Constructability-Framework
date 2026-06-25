@@ -1,11 +1,48 @@
 # Framework changelog
 
+## 2026-06-25
+
+**Summary:** 1 added · 0 edited · 0 deleted
+
+### Added
+- **Waterproofing buildability** (Detailing)
+
+### Notes
+- **Related-entries tightening pass.** Pruned the related-entries graph from 91 links to 71. Removed two kinds of weak link: mutually-exclusive alternatives (e.g. the pile-supported and ground-bearing slab choices no longer cross-link, since choosing one rules the other out) and broad thematic glue (links justified only by a shared category — "early system-selection decision", "keeping workers safe during construction" — rather than a shared physical element or decision). Upstream/parent decisions and genuine co-occurring concerns were kept. Three entries now carry no related entries by design (off-form upturns near obstructions, reinforcement mat fall-through risk, confined-space entry at pier and shaft bases); each remains reachable via incoming links.
+
+## 2026-06-24
+
+**Summary:** 3 added · 2 edited · 0 deleted
+
+### Added
+- **Pile-supported choice: flat plate vs beam-and-slab** (Construction Methods)
+- **Repetition and the formwork learning curve** (Detailing)
+- **Slab edges and openings that can accept fall protection** (Safety in Design)
+
+### Edited
+- **Ground-bearing choice: stiffened raft vs. waffle pod slab** (Construction Methods) — review pass.
+- **Reactive-ground strategy: found below vs. stiffen on top** (Construction Methods) — review pass.
+
+## 2026-06-23
+
+**Summary:** 3 added · 0 edited · 0 deleted
+
+### Added
+- **Ground-bearing choice: stiffened raft vs. waffle pod slab** (Construction Methods)
+- **Reactive-ground strategy: found below vs. stiffen on top** (Construction Methods)
+- **Waffle pod depth availability** (Logistics) — draft; not yet live.
+
+### Notes
+- Foundation cluster for light ground floors added: the upstream reactive-ground strategy (found below vs. stiffen on top) and the two slab choices beneath it — ground-bearing (raft vs. waffle pod) and pile-supported (flat plate vs. beam-and-slab, added the following day) — plus the waffle pod depth-availability logistics check.
+
 ## 2026-06-22
 
-**Summary:** 1 added · 0 reviewed · 0 deleted
+**Summary:** 3 added · 0 edited · 0 deleted
 
 ### Added
 - **Temporary stability of retained or part-built structure** (Safety in Design)
+- **Formwork and falsework complexity** (Safety in Design)
+- **Isometric overview views in structural drawing sets** (Design Communication)
 
 ## 2026-06-21
 
