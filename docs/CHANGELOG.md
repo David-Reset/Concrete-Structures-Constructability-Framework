@@ -2,7 +2,7 @@
 
 ## 2026-06-25
 
-**Summary:** 1 added · 3 reviewed · 0 deleted
+**Summary:** 1 added · 4 reviewed · 0 deleted
 
 ### Added
 - **Waterproofing buildability** (Detailing)
@@ -11,9 +11,10 @@
 - **Ground-bearing choice: stiffened raft vs. waffle pod slab** (Construction Methods)
 - **Piling plant on access-constrained sites** (Logistics)
 - **Slab edges and openings that can accept fall protection** (Safety in Design)
+- **Bored concrete piles vs. screw piles** (Construction Methods)
 
 ### Images
-- Add to `images/`: images/stiffened-raft-vs-waffle-pod-prep.webp, images/wet-area-set-down-waterproofing-buildability.webp, images/piling-plant-headroom-operating-envelope.webp, images/slab-edge-fall-protection-attachment-path.webp
+- Add to `images/`: images/stiffened-raft-vs-waffle-pod-prep.webp, images/wet-area-set-down-waterproofing-buildability.webp, images/piling-plant-headroom-operating-envelope.webp, images/slab-edge-fall-protection-attachment-path.webp, images/bored-pile-constraint-check.webp
 
 ### Notes
 - **Related-entries tightening pass.** Pruned the related-entries graph from 91 links to 71. Removed two kinds of weak link: mutually-exclusive alternatives (e.g. the pile-supported and ground-bearing slab choices no longer cross-link, since choosing one rules the other out) and broad thematic glue (links justified only by a shared category — "early system-selection decision", "keeping workers safe during construction" — rather than a shared physical element or decision). Upstream/parent decisions and genuine co-occurring concerns were kept. Three entries now carry no related entries by design (off-form upturns near obstructions, reinforcement mat fall-through risk, confined-space entry at pier and shaft bases); each remains reachable via incoming links.
