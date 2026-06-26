@@ -4031,19 +4031,23 @@
         {
           "id": "waffle-pod-depth-availability",
           "name": "Waffle pod depth availability",
-          "available": false,
+          "available": true,
           "data": {
-            "question": "Is the specified waffle pod depth actually available from local suppliers, or does it need made-to-order lead time?",
-            "parameter": "Availability of the specified pod depth from local/regional suppliers, against the standard stocked range.",
+            "question": "Is the specified waffle pod depth a standard stocked size for local NSW suppliers, or does it need made-to-order manufacture and lead time?",
+            "parameter": "Specified waffle pod depth, assessed against the depths normally stocked by local/regional NSW pod suppliers.",
             "keywords": [
               "waffle pod availability",
               "pod depth",
+              "225mm pod",
+              "300mm pod",
               "375mm pod",
               "EPS supply",
               "made to order pods",
               "lead time",
               "pod supplier",
-              "custom pod"
+              "custom pod",
+              "M class site",
+              "site classification"
             ],
             "elementType": [
               "slab on ground",
@@ -4053,35 +4057,110 @@
               "founding/slab",
               "procurement"
             ],
-            "background": "Waffle pods are 1090 mm square and come in a range of depths — 225 mm is the everyday residential size, with 150, 175, 300 and 375 mm also made and custom cuts available. But the range a designer can draw on is regional, not universal: the deeper 375 mm pod, and in some states the shallower 150/175 mm pods, are not stocked by every supplier and may be made-to-order with lead time and cartage. A depth specified at design stage because it suits the floor level or the slab-rigidity demand can become a programme problem if it cannot be sourced locally in time. This is the supply-chain counterpart to the depth choice made in the stiffened-raft-vs-waffle-pod entry: that entry weighs which depth suits the site; this one asks whether that depth is actually available.",
-            "_evidenceAngle": "Supplier-range evidence shows the depth menu and that availability is regional: Saddingtons (175/225/300/375), Hunter Pods (145/220/300/375), Styrovic (150/225/300/375), Polyfoam (150/175 standard in QLD, 175 made-to-order in TAS), Bildavoid technical spec (150/225/300 standard, 'other depths may be available depending on location'), Metro Supplies (150/175/225/300/375). Mechanism: standard stocked depths are quick; off-standard or deep depths mean made-to-order lead time and cartage. Keep this Logistics (availability / supply chain), not structural. Pairs with the stirrup/bar-availability logistics entries for house style.",
-            "_thresholdSketch": "Categorical availability bands. Best practice: specified depth is a standard stocked size with local suppliers — no lead-time risk. Consider: depth is made but regionally variable — confirm stock and lead time before locking the design. Concern/Action: depth needs made-to-order or custom manufacture, or is not available from a local supplier within the programme — confirm supply, or design to a stocked depth, before the design is fixed. Decide final band count and wording.",
-            "_todo": "Confirm current regional stock patterns (esp. 375 mm and 150/175 mm by state). Decide 3 vs 4 bands. Mirror house style of stirrup-bar-size-availability and slab-bar-diameter logistics entries. Cross-check cartage / minimum-order effects.",
-            "examples": [],
-            "supportingImages": [],
+            "background": "Waffle pods are EPS (polystyrene) void formers, 1090 mm square, made in a range of depths &mdash; roughly 145&ndash;150, 175, 225, 300 and 375 mm, with cut-to-size pods available. The depth a designer can draw on without programme risk is <strong>regional and stock-driven</strong>, not the full theoretical menu. A deeper pod forms a deeper rib and a stiffer slab, so the depth a slab needs rises with how reactive the ground is, and suppliers stock to match where most of the demand sits. The <strong>mid-range depths (225 and 300 mm) are the everyday sizes</strong>, held as standard by effectively every supplier, while the shallow (around 150 mm) and deep (375 mm) ends are made but harder to source: regionally variable, sometimes held only at certain branches, and in some places made-to-order. A depth specified at design stage because it suits the floor level or the slab-rigidity demand can become a programme problem if it cannot be sourced locally in time, because off-standard or custom depths bring made-to-order lead time, minimum-order quantities and cartage.<br><br>In Australia this depth-to-ground relationship is formalised: ground reactivity is assessed as a site classification (under AS 2870), and suppliers commonly label pod depths by the class they suit &mdash; for example a 225 mm pod for moderately reactive sites, 300 mm for highly reactive, and 375 mm for extremely reactive. These labels are a <strong>procurement convenience, not a design method</strong>, and the exact mapping varies between suppliers. The pod depth follows the engineer's slab design, not a depth read off a catalogue table. This entry is purely about whether the depth the design lands on can actually be sourced; it does not choose the depth and does not displace the structural design. It is the supply-chain counterpart to the depth choice weighed in the stiffened-raft-vs-waffle-pod entry: that entry asks which depth suits the site; this one asks whether that depth is on the shelf.",
+            "thresholds": [
+              {
+                "range": "225 or 300 mm",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "The everyday mid-range depths, and both are easy to get in NSW &mdash; held as standard by effectively every supplier. They cover the common-to-moderately-reactive ground that most residential slabs sit on (in Australia, the moderately and highly reactive site classes), so specifying within this range carries the lowest lead-time risk. Confirm structural adequacy of the depth in the usual way &mdash; availability is not the design driver."
+              },
+              {
+                "range": "150 or 375 mm",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "The shallow and deep ends of the range &mdash; made by many suppliers, but harder to get in NSW than the core sizes. The shallow pods (around 150 mm, including the less common 175 mm) suit lower-stiffness slabs, and the deep 375 mm pod suits the most reactive ground; neither is held by every branch, and 375 mm in particular is a standard stocked size in some regions but made-to-order in others. Confirm local branch stock and lead time before the depth is locked into the design, and check minimum-order and cartage effects on a small job."
+              },
+              {
+                "range": "Custom-cut depths",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "Any off-menu or cut-to-size depth, or any depth a local supplier cannot provide within the programme. These are made-to-order: they carry manufacturing lead time, minimum-order quantities and cartage, and a single non-standard depth can hold up the slab. Confirm supply in writing, or where the structural design allows, redesign to a stocked depth (225 or 300 mm) before the design is fixed."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to lightly-to-moderately loaded residential and small-commercial ground slabs using EPS waffle pods, where a pod depth has been selected and the question is whether that depth can be sourced from local/regional suppliers without made-to-order lead time. It is most relevant to single- and two-storey housing and additions in NSW, where the slab design lands on a standard pod depth.",
+              "checks": [
+                {
+                  "title": "Structural design remains controlling",
+                  "description": "The pod depth must first satisfy the engineer's slab design &mdash; the rib depth and slab stiffness required for the ground reactivity on this site (in Australia, designed to AS 2870). This entry does not justify changing a pod depth to suit availability where the structural design requires a particular depth. Where it permits a choice, prefer the more readily stocked depth."
+                },
+                {
+                  "title": "Depth follows the engineer's design, not a marketing table",
+                  "description": "Supplier literature often maps depth to the reactivity of the ground (and, in Australia, to the site class) as a convenience, but the mapping varies between suppliers and is not a design method. The depth comes from the engineer's slab design. Use the depth-to-ground labels only to understand why the mid-range depths are the stocked ones, not to select a pod."
+                },
+                {
+                  "title": "Confirm local branch stock and lead time",
+                  "description": "Availability is by supplier and by branch, not by the theoretical national range. Before relying on a depth, confirm the specific local branch holds it, and the lead time if it does not. This matters most for the shallow (145&ndash;175 mm) and deep (375 mm) pods, which are the regionally variable depths."
+                },
+                {
+                  "title": "Cartage and minimum-order on small jobs",
+                  "description": "EPS pods are bulky and light, so cartage and minimum-order quantities can dominate the cost of a small or off-standard order. A custom-cut or deep-pod order for a single dwelling can carry disproportionate delivery and minimum-quantity penalties compared with a standard 225 mm order."
+                },
+                {
+                  "title": "Regional availability",
+                  "description": "The stock pattern described here is for NSW supply and was reviewed against NSW-servicing suppliers. The standard-vs-made-to-order split (especially for 375 mm and the shallow pods) differs between states. Confirm the local pattern before applying the same ratings elsewhere."
+                }
+              ],
+              "note": "Use the rating as a procurement and programme review prompt, not as a rule about which pod depth is correct. The preferred depth is the one the structural design requires; where the design allows a choice, the more readily stocked depth reduces programme risk."
+            },
+            "alternatives": [
+              {
+                "title": "Design to a stocked depth where the structural design allows",
+                "description": "Where the structural design permits more than one depth, prefer 225 mm or 300 mm &mdash; the core stocked depths &mdash; over a shallow or custom depth that may be made-to-order. This keeps the slab on standard, readily available pods without changing the structural intent."
+              },
+              {
+                "title": "Confirm stock and lead time before the depth is locked",
+                "description": "For the regionally variable depths (145&ndash;175 mm and 375 mm), confirm the local branch holds the size, or the lead time if it must be manufactured, before the depth is fixed in the design and on the drawings. This converts a silent procurement risk into a known one early."
+              },
+              {
+                "title": "Allow cut-to-size only with lead time and cartage priced in",
+                "description": "Custom-cut pods are available and may be unavoidable on a particular design, but they are a made-to-order product. Where they are used, allow for manufacturing lead time, minimum-order quantities and cartage in the programme and budget rather than treating them as an off-the-shelf item."
+              }
+            ],
+            "evidence": "Evidence is based on a review of waffle pod supplier product information for NSW supply, read together with the physical relationship between pod depth, rib stiffness and ground reactivity.<br><br><strong>Supplier product information</strong><br>Pod ranges were reviewed across suppliers that manufacture for or service NSW construction, selected because they publish their stocked depth range and, in several cases, the ground reactivity each depth suits:<br><br><ul><li><strong>Saddingtons</strong> (Newcastle / Broadmeadow, NSW) &mdash; lists 175, 225, 300 and 375 mm pods, 1090 mm square.</li><li><strong>Hunter Pods</strong> (Hunter region, NSW) &mdash; lists 145 and 225 mm for moderately reactive sites, 300 mm for highly reactive and 375 mm for extremely reactive, with custom sizes and cut-to-size available.</li><li><strong>Polyfoam</strong> &mdash; lists 225 mm as standard for moderately reactive sites, 300 mm for highly reactive and 375 mm for extremely reactive, with 375 mm noted as a standard size in Queensland but made-to-order in Tasmania &mdash; a clear illustration of the regional standard-vs-made-to-order split.</li><li><strong>Bildavoid</strong> (technical specification) &mdash; lists 150, 225 and 300 mm as standard depths, noting that other depths may be available depending on location.</li><li><strong>Unipod</strong> &mdash; maps 225 mm to moderately reactive sites, 300 mm to highly reactive and 375 mm to extremely reactive, with cut-to-size custom pods available.</li></ul><br>Designers should treat the named suppliers as indicative of the NSW stock pattern rather than an exhaustive market review, and confirm the specific local branch range before relying on a depth.<br><br><strong>Supplier review findings</strong><br>The reviewed information shows a consistent pattern:<br><br><ul><li><strong>225 mm and 300 mm are the core stocked depths,</strong> listed as standard by every reviewed supplier, with 225 mm the most consistently held.</li><li><strong>The shallow (145&ndash;175 mm) and deep (375 mm) pods are made but regionally variable.</strong> The clearest example is the 375 mm pod being a stocked standard in one region and made-to-order in another.</li><li><strong>Cut-to-size pods are widely offered but are a made-to-order product,</strong> carrying lead time, minimum-order and cartage rather than off-the-shelf supply.</li></ul><br><strong>Why the mid-range depths are the stocked ones</strong><br>A deeper pod forms a deeper, stiffer rib, so deeper pods are reached for as ground reactivity rises. The mid-range depths cover the common ground conditions most residential slabs are built on, which is why suppliers hold them as standard; the shallow and deep ends serve the less common low- and high-reactivity extremes and are stocked less consistently. In Australia this depth-to-ground relationship is formalised as a site classification (under AS 2870), and suppliers commonly label their depths by the class each suits. The framework reports this mapping as supplier practice rather than relying on it, and treats the observed stocking pattern &mdash; not the classification labels &mdash; as the evidence for the bands. The depth-to-class labels are a procurement convenience, not a substitute for the engineer's slab design.<br><br><strong>Basis of the ratings</strong><br>The availability bands are a reasoned supply-chain judgement from the supplier review and the depth-stiffness logic above, not a measured stock survey. They scale the procurement scrutiny a specified depth should attract &mdash; lowest for the core stocked depths, higher for the regionally variable ones, highest for off-menu or custom depths &mdash; and should be refined with current local branch stock data and project examples.<br><br><strong>References</strong><br>Supplier product information: Saddingtons; Hunter Pods; Polyfoam; Bildavoid technical specification; Unipod. Reviewed for NSW supply.<br>Standards Australia. <em>AS 2870 Residential Slabs and Footings</em> &mdash; cited only for the Australian site-classification system referred to above, not as the basis of the availability ratings.",
+            "examples": [
+              {
+                "image": "images/waffle-pod-custom-depth-no-alternative.jpg",
+                "tag": "concern",
+                "caption": "PLACEHOLDER FOR YOUR SCREENSHOT — a slab detail calling up a non-standard or custom pod depth with no stocked alternative noted. If the depth cannot be sourced locally in time, the contractor must request a substitution or wait on a made-to-order run."
+              },
+              {
+                "image": "images/waffle-pod-standard-depth-specified.jpg",
+                "tag": "recommended",
+                "caption": "PLACEHOLDER FOR YOUR SCREENSHOT — a slab detail on a standard stocked depth (225 or 300 mm), readily available from NSW suppliers with no lead-time risk."
+              }
+            ],
+            "supportingImages": [
+              {
+                "image": "images/saddingtons-pod-depth-range.png",
+                "title": "<strong>PLACEHOLDER — Saddingtons pod range</strong><br>175, 225, 300 and 375 mm pods, 1090 mm square. Add your screenshot of the supplier's listed depth range."
+              },
+              {
+                "image": "images/hunter-pods-depth-by-site-class.png",
+                "title": "<strong>PLACEHOLDER — Hunter Pods depth-by-site-class</strong><br>145 / 225 mm for M sites, 300 mm for H, 375 mm for E, with cut-to-size available. Add your screenshot."
+              },
+              {
+                "image": "images/polyfoam-375-regional-availability.png",
+                "title": "<strong>PLACEHOLDER — Polyfoam 375 mm regional split</strong><br>375 mm shown as a standard size in one state and made-to-order in another &mdash; the clearest example of regional stock variability. Add your screenshot."
+              }
+            ],
             "dateAdded": "2026-06-23",
-            "dateReviewed": "2026-06-23",
+            "dateReviewed": "2026-06-26",
             "location": {
               "country": "Australia",
               "state": "NSW"
             },
             "evidenceSupport": {
               "level": "medium",
-              "summary": "DRAFT — not yet written up. Multiple Australian suppliers confirm the standard pod menu (around 150–375 mm at 1090 mm square, 225 mm most common) and that the deeper and some shallower depths are regionally variable or made-to-order. The availability bands will be a reasoned supply-chain judgement rather than a measured threshold, so this is expected to sit at Medium."
+              "summary": "Supported by a review of NSW waffle pod supplier ranges showing 225 mm and 300 mm as the core stocked depths held by every reviewed supplier, with the shallow (145–175 mm) and deep (375 mm) pods regionally variable or made-to-order, and by the physical link between pod depth, rib stiffness and ground reactivity that explains why the mid-range depths are the stocked ones. The availability bands are a reasoned supply-chain judgement rather than a measured stock survey, so the entry sits at Medium. Treat it as a procurement prompt, not a proven decision rule, and confirm current local branch stock."
             },
             "relatedEntries": [
               {
                 "id": "raft-slab-vs-waffle-pod",
                 "note": "The design-side counterpart. That entry weighs which pod depth suits the site for floor level and rigidity; this one checks whether the chosen depth can actually be sourced locally in time."
               }
-            ],
-            "thresholds": [],
-            "alternatives": [],
-            "applicability": {
-              "appliesWhere": "",
-              "checks": [],
-              "note": ""
-            }
+            ]
           }
         }
       ]
@@ -5971,7 +6050,8 @@
     "fragment|update|found-below-reactive-ground-vs-stiffened-slab-on-top|1u0rbe8",
     "fragment|entry|slab-edges-and-openings-for-fall-protection|jd2t1b",
     "fragment|update|repetition-and-the-formwork-learning-curve|1ist0f8",
-    "fragment|update|waterproofing-buildability|1tssztl"
+    "fragment|update|waterproofing-buildability|1tssztl",
+    "fragment|update|waffle-pod-depth-availability|5hhg5p"
   ],
   "_rejected": [],
   "_reconsider": [
