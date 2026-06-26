@@ -1,5 +1,12 @@
 # Framework changelog
 
+## 2026-06-26
+
+**Summary:** 0 added · 1 reviewed · 0 deleted
+
+### Reviewed
+- **Waffle pod depth availability** (Logistics)
+
 ## 2026-06-25
 
 **Summary:** 1 added · 4 reviewed · 0 deleted
