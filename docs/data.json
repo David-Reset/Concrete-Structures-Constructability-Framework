@@ -1967,6 +1967,282 @@
               }
             ]
           }
+        },
+        {
+          "id": "non-combustible-substructure-in-bushfire-areas",
+          "name": "Non-combustible substructure and floor in bushfire areas",
+          "available": true,
+          "data": {
+            "question": "In a bushfire area, is a combustible floor or pier undermining a non-combustible substructure?",
+            "parameter": "The bushfire attack level, and whether any load-bearing or subfloor element in the attack path is combustible.",
+            "keywords": [
+              "bushfire",
+              "wildfire",
+              "BAL",
+              "bushfire attack level",
+              "bushfire-prone",
+              "flame zone",
+              "ember",
+              "ember attack",
+              "firebrand",
+              "radiant heat",
+              "subfloor",
+              "timber pier",
+              "timber stumps",
+              "bearers",
+              "raised floor",
+              "suspended timber floor",
+              "non-combustible",
+              "combustible",
+              "concrete pier",
+              "concrete pile",
+              "WUI",
+              "wildland urban interface",
+              "deck",
+              "substructure",
+              "ignition"
+            ],
+            "elementType": [
+              "pile/pier/shaft",
+              "slab",
+              "footing"
+            ],
+            "constructionPhase": [
+              "design & documentation"
+            ],
+            "background": "Two different requirements both get called &lsquo;fire&rsquo; and are easily confused. One is the structural fire resistance an element needs against a fully developed fire <em>inside</em> the building. The other &mdash; the subject of this entry &mdash; is resistance to a bushfire attacking from <em>outside</em>. In a bushfire-prone area that external exposure is rated as a bushfire attack level, from low up to flame zone, driven by the surrounding vegetation, slope and separation. A building is attacked by three mechanisms: wind-driven embers (firebrands), radiant heat, and direct flame contact. Embers are the dominant cause of structure loss, arriving ahead of the fire front and continuing after it passes, and lodging wherever they can collect.<br><br>The constructability concern is a mismatched material scheme. A building can be given a durable, non-combustible concrete substructure &mdash; piles or footings &mdash; and then have its bushfire performance handed straight back to the weakest combustible link sitting on top: timber piers or stumps, timber bearers, or a suspended timber floor. A raised, open subfloor is precisely where wind-driven embers accumulate and lodge, so a combustible element in that position is an ignition point no matter how good the concrete beneath it is. The performance of the assembly is set by its most combustible structural element, not by its best one. Standing concrete piles on timber piers, or topping a non-combustible substructure with a combustible floor, partly wastes the very spend that made the substructure non-combustible.<br><br>The honest qualification is that timber is not categorically banned in bushfire areas. It can be used with appropriate detailing &mdash; bushfire-resisting species, enclosed subfloors and the like &mdash; and the requirements ramp up with the attack level. But where the rest of the substructure is already non-combustible, a combustible structural or subfloor element is usually the avoidable weak link, and a non-combustible substructure and floor is the naturally coherent answer to the exposure.<br><br>As with the structural-fire case, the number lives elsewhere. The bushfire attack level comes from a bushfire assessment prepared under the architect or a bushfire consultant, not from the structural set, so the structural engineer choosing the substructure material may do it without the attack level in front of them. This entry is a concept-stage material-coherence prompt to raise that question early; assessing the attack level and detailing any combustible element are the bushfire consultant&rsquo;s responsibility, not this entry&rsquo;s.",
+            "thresholds": [
+              {
+                "range": "Non-combustible throughout",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "Substructure and floor are non-combustible throughout &mdash; for example concrete piles or footings carrying a concrete floor &mdash; with no combustible structural or subfloor element in the attack path. A coherent scheme that suits both the exposure and the durable substructure, and concrete&rsquo;s natural fit. Confirm the attack level with the bushfire assessment and proceed."
+              },
+              {
+                "range": "Combustible, low exposure",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "A low attack level applies, or any combustible element is limited and appropriately detailed for the exposure. Plausibly fine, but confirm the attack level from the bushfire report and that the detailing matches it, rather than assuming a low exposure. Where the substructure is otherwise non-combustible, check whether a combustible element is the avoidable weak link."
+              },
+              {
+                "range": "Combustible in attack path",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "A combustible load-bearing or subfloor element sits in the attack path at a meaningful attack level &mdash; timber piers, bearers or a suspended timber floor &mdash; often above an otherwise non-combustible concrete substructure. The assembly&rsquo;s bushfire performance is being set by its most combustible element, and a raised open subfloor is where embers accumulate. The more severe the exposure the more pressing this is, and at flame zone the most severe exposure is being met by the least suitable material, leaving any non-combustible substructure beneath it partly wasted. Resolve the material before the substructure is fixed &mdash; keep the load path and subfloor non-combustible &mdash; or confirm with the bushfire consultant that the detailing genuinely carries the exposure. This flags an incoherent material scheme, not a prohibition on timber where it is properly detailed for the exposure."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Get the attack level before fixing the substructure",
+                "description": "At concept stage, obtain the site&rsquo;s bushfire attack level from the bushfire assessment (under the architect or bushfire consultant) before choosing the substructure and floor material. The attack level decides how exposed the elements are and whether a combustible one is acceptable."
+              },
+              {
+                "title": "Keep the load path and subfloor coherent with the substructure",
+                "description": "Where the substructure is non-combustible (concrete piles or footings), keep the elements above it &mdash; piers, bearers, floor &mdash; non-combustible too, so the assembly&rsquo;s bushfire performance is not set by a single combustible link. A concrete or other non-combustible floor system continues the substructure&rsquo;s logic."
+              },
+              {
+                "title": "Treat the raised subfloor as an ember trap",
+                "description": "An open, raised subfloor is where wind-driven embers collect and lodge. Avoid combustible structural or subfloor elements there; where a subfloor is unavoidable, enclosing or protecting it against ember entry is a recognised mitigation, to be coordinated with the bushfire consultant."
+              },
+              {
+                "title": "Don't undermine a non-combustible substructure",
+                "description": "Spending on concrete piles or footings and then standing them on timber piers, or topping them with a timber floor, in a bushfire area partly wastes that spend, because the most combustible structural element governs the result. If concrete is justified below, it is usually justified above."
+              },
+              {
+                "title": "Coordinate with the bushfire consultant",
+                "description": "Bushfire compliance &mdash; the attack-level assessment and the detailing of any combustible element &mdash; is the bushfire consultant&rsquo;s responsibility. Use this prompt to raise the material-coherence question early and confirm any retained timber is genuinely adequate for the attack level, rather than discovering the conflict late."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to the choice of substructure and floor material for a building in a bushfire-prone area, where a non-combustible substructure (such as concrete piles or footings) could be undermined by a combustible load-bearing or subfloor element above it. It is a concept-stage material-coherence prompt for the structural engineer. It does not assess the bushfire attack level or design the bushfire detailing, which are the bushfire consultant&rsquo;s responsibility, and it is not a prohibition on timber where that material is properly detailed for the exposure.",
+              "checks": [
+                {
+                  "title": "Where the attack level comes from",
+                  "description": "The bushfire attack level is set by a bushfire assessment under the architect or bushfire consultant, not by the structural design. Obtain it before choosing the substructure and floor material."
+                },
+                {
+                  "title": "The most combustible element governs",
+                  "description": "An assembly&rsquo;s bushfire performance is set by its weakest link in the attack path. A non-combustible substructure does not protect the building if a combustible pier, bearer or floor sits above it in the path of embers, radiant heat or flame."
+                },
+                {
+                  "title": "Raised subfloors collect embers",
+                  "description": "Open, raised subfloors are recognised ember-accumulation zones. Combustible elements there are ignition points; weigh whether the subfloor can be non-combustible or enclosed."
+                },
+                {
+                  "title": "Timber is allowed if detailed for the exposure",
+                  "description": "Combustible materials are not categorically barred in bushfire areas; they can be used with appropriate detailing, with requirements increasing as the attack level rises. The concern is an avoidable combustible weak link above a non-combustible substructure, not timber as such."
+                },
+                {
+                  "title": "Coherence of the spend",
+                  "description": "Where concrete is justified for the substructure (durability, exposure, founding), continuing non-combustible above it usually produces a more coherent and better-value scheme than reverting to combustible elements."
+                }
+              ],
+              "note": "Use the rating as a concept-stage review prompt, not a rule that bushfire-area buildings must be entirely concrete. The bands scale with how severe the exposure is and whether a combustible structural or subfloor element sits in the attack path. The bushfire-attack assessment and the detailing of any combustible element remain the bushfire consultant&rsquo;s responsibility under the relevant requirements."
+            },
+            "evidence": "<strong>How bushfires reach structures.</strong> Fire spreads to buildings in the wildland&ndash;urban interface by three pathways &mdash; radiant heat, direct flame contact, and ember (firebrand) attack &mdash; and across post-fire investigations embers are found to be directly or indirectly responsible for the majority of structure losses, travelling ahead of and behind the fire front and igniting wherever they accumulate (Cohen, 2000; Caton, Hakes, Gorham, Zhou, &amp; Gollner, 2017).<br><br><strong>Why combustible substructure elements are the weak link.</strong> Reviews of building response in these fires identify components and assemblies such as decks, subfloors and vents as key ignition vulnerabilities, with combustible elements in ember-exposed positions acting as ignition points and non-combustible materials reducing the likelihood of ignition (Hakes, Caton, Gorham, &amp; Gollner, 2017; Quarles, Valachovic, Nakamura, Nader, &amp; De Lasaux, 2010). Because the assembly ignites at its most exposed combustible element, a non-combustible substructure is undermined by a combustible pier, bearer or floor placed above it in the attack path.<br><br><strong>Basis of the bands.</strong> The bands scale with how severe the external exposure is and whether a combustible structural or subfloor element sits in the path of attack. The exposure tiers and their cut-points are reasoned practitioner judgement; the actual attack level for a given site is an output of a bushfire assessment, not of this entry.<br><br><strong>References</strong><br>Caton, S. E., Hakes, R. S. P., Gorham, D. J., Zhou, A., &amp; Gollner, M. J. (2017). Review of pathways for building fire spread in the wildland urban interface Part I: Exposure conditions. <em>Fire Technology</em>, 53, 429&ndash;473.<br>Cohen, J. D. (2000). Preventing disaster: Home ignitability in the wildland&ndash;urban interface. <em>Journal of Forestry</em>, 98(3), 15&ndash;21.<br>Hakes, R. S. P., Caton, S. E., Gorham, D. J., &amp; Gollner, M. J. (2017). A review of pathways for building fire spread in the wildland urban interface Part II: Response of components and systems and mitigation strategies in the United States. <em>Fire Technology</em>, 53, 475&ndash;515.<br>Quarles, S. L., Valachovic, Y., Nakamura, G. M., Nader, G. A., &amp; De Lasaux, M. J. (2010). <em>Home Survival in Wildfire-Prone Areas: Building Materials and Design Considerations</em> (ANR Publication 8393). University of California Agriculture and Natural Resources.",
+            "examples": [],
+            "supportingImages": [],
+            "dateAdded": "2026-06-27",
+            "dateReviewed": "2026-06-27",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "The core points are strongly and independently supported by wildland&ndash;urban interface research: ember attack drives the majority of structure losses (Cohen, 2000; Caton et al., 2017), and combustible building components including decks and subfloors are key ignition pathways while non-combustible materials reduce ignition (Hakes et al., 2017; Quarles et al., 2010). The &lsquo;most combustible element governs&rsquo; framing follows from this. The specific banding by attack level and the cut-points are reasoned practitioner judgement, and the actual attack level comes from a bushfire assessment, so treat the bands as a prompt."
+            },
+            "relatedEntries": [
+              {
+                "id": "fire-protection-cost-of-steel-beams-in-concrete-floors",
+                "note": "The companion fire entry: that one is about internal structural fire resistance (the rating a steel beam must hold in a fire inside the building); this one is about external bushfire attack on the substructure."
+              }
+            ]
+          }
+        },
+        {
+          "id": "fire-protection-cost-of-steel-beams-in-concrete-floors",
+          "name": "Fire protection cost of steel beams in concrete floors",
+          "available": true,
+          "data": {
+            "question": "Will a steel beam in a concrete floor still pay once its fire protection is costed?",
+            "parameter": "The fire rating required of the beam, and how much applied protection bare steel needs to reach it.",
+            "keywords": [
+              "steel beam",
+              "structural steel",
+              "composite floor",
+              "fire rating",
+              "FRL",
+              "fire resistance level",
+              "intumescent",
+              "fire protection",
+              "fireproofing",
+              "sprayed protection",
+              "board encasement",
+              "fire engineer",
+              "fire strategy",
+              "formwork saving",
+              "downstand",
+              "post-tensioned",
+              "PT slab",
+              "slender slab",
+              "concrete encased",
+              "concrete filled",
+              "CFST",
+              "false economy",
+              "passive fire protection",
+              "sprinkler concession"
+            ],
+            "elementType": [
+              "beam",
+              "slab"
+            ],
+            "constructionPhase": [
+              "design & documentation"
+            ],
+            "background": "A concrete floor does not force concrete beams beneath it. Steel beams are often dropped into a concrete floor for good reasons: they avoid forming and bracing a concrete downstand, they let a slender (often post-tensioned) slab bear on a shallow support, and they erect dry and out of sequence so the deck lands on a beam that is already up. The trouble is that one consequence of that choice is easy to leave out of the comparison &mdash; fire.<br><br>Structural steel loses strength quickly with temperature. It retains only about 60% of its ambient yield at around 550&nbsp;&deg;C and falls away sharply above that, so a fully stressed unprotected member can reach a critical temperature within minutes of fire exposure. To achieve a required fire rating, bare steel therefore needs an <em>applied</em> protection system &mdash; intumescent coating, board encasement, or sprayed cementitious or vermiculite &mdash; and each one adds a trade, a thickness, an inspection regime and sometimes a recoating liability over the building&rsquo;s life. Concrete gets its fire resistance for nothing in comparison: it heats slowly, and the cover already provided for durability keeps the bars below their critical temperature for the rated period. The fire resistance of a concrete beam is intrinsic to the section as drawn; the fire resistance of a steel beam is an add-on that has to be bought.<br><br>So the saving a steel beam offers is a <strong>gross</strong> saving. The formwork and depth it removes are real, but the <strong>net</strong> saving has to subtract the fire protection it then needs. Where the required rating is low or absent, steel wins comfortably. Where the rating is high, that subtraction can turn negative and quietly cancel the very reason the beam was made steel.<br><br>The awareness gap is structural. The required rating almost never originates on the structural set &mdash; it comes from the building&rsquo;s fire strategy and lives on the architectural or fire-and-life-safety drawings, in a fire engineer&rsquo;s report, or in the building surveyor&rsquo;s assessment. A structural engineer can therefore pick a steel beam without the rating in front of them, design it structurally, and only find downstream that it needs protection &mdash; by which point the formwork saving is already spent. Two levers move the rating before it is fixed: the building&rsquo;s construction type and whether it is sprinkler-protected, since a sprinkler concession can reduce or remove the rating entirely and change the whole calculation.<br><br>The choice is not simply steel versus concrete. Concrete-encasing the section, or using a concrete-filled hollow section &mdash; where the tube does double duty as permanent formwork and as protection &mdash; keeps part of the steel programme benefit while letting concrete carry the fire. This entry is a concept-stage prompt to weigh those options with the rating known; setting the required rating and the fire design itself remain the fire engineer&rsquo;s and building surveyor&rsquo;s work.",
+            "thresholds": [
+              {
+                "range": "No rating required",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "The element carries no required fire rating &mdash; for example some open-deck carparks, certain single-storey or low-rise cases, or a sprinkler or performance concession that removes it. Bare steel needs no protection, so the formwork- and depth-saving rationale stands on its own. Confirm the no-rating position against the fire strategy, then specify the steel beam with confidence."
+              },
+              {
+                "range": "Light protection",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "A modest rating applies (around 30&ndash;60 minutes). Bare steel needs only light applied protection, often a thin-film intumescent. The formwork saving probably still nets positive, but price the protection &mdash; including the inspection and any recoating life &mdash; and confirm it before assuming steel is the cheaper route."
+              },
+              {
+                "range": "Substantial protection",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "A moderate rating applies (around 90 minutes). Protection becomes substantial &mdash; thicker intumescent, board or sprayed systems &mdash; adding a trade, thickness, inspection and cost that eat into the formwork saving. A concrete beam reaches this rating largely through the cover it already has, and concrete-encased or concrete-filled steel is a hybrid worth pricing. Compare the net cost, not the gross."
+              },
+              {
+                "range": "Heavy protection",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "A high rating applies (around 120 minutes or more). Heavy applied protection is needed on every steel member. Concrete attains this rating inherently through its cover, so bare structural steel is usually the dearer and more complex route once fire is counted, and specifying it to save formwork is likely a false economy. Confirm the rating from the fire strategy and reprice before committing: keep the beam concrete, encase or fill the steel, or proceed with steel only if a clear reason survives the protection cost."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Get the required rating before fixing the material",
+                "description": "At concept stage, obtain the beam&rsquo;s required fire rating from the project fire strategy (or the fire engineer or building surveyor) rather than designing the member structurally and discovering the rating later. The material choice should be made with the rating in front of you, because it is the rating that decides whether steel still pays."
+              },
+              {
+                "title": "Compare net cost, not gross",
+                "description": "The formwork and depth saved by a steel beam is a gross figure. Subtract the applied fire protection &mdash; material, the extra trade, thickness, inspection and any recoating over the building life &mdash; before concluding steel is cheaper. The comparison that matters is net of protection."
+              },
+              {
+                "title": "Carry the rating onto the structural drawings",
+                "description": "The required fire rating usually lives on the architectural or fire drawings, not the structural set. Note it against the member on the structural drawings so the requirement travels with the beam to the contractor and certifier, rather than being discovered late or missed altogether."
+              },
+              {
+                "title": "Consider encasing or filling the steel",
+                "description": "Where a steel section is wanted but the rating is onerous, concrete-encasing the section or using a concrete-filled hollow section lets the concrete provide the fire resistance. A filled tube doubles as both permanent formwork and protection, capturing part of the steel programme benefit while avoiding a separate applied-protection system."
+              },
+              {
+                "title": "Keep the beam concrete where the rating is high",
+                "description": "Where a substantial rating applies and no clear reason ties the member to steel, a concrete beam achieves the rating through its cover with no added protection system. Reverting to concrete is often the simpler and cheaper answer once fire is counted."
+              },
+              {
+                "title": "Use the sprinkler and construction-type lever knowingly",
+                "description": "Whether the element needs a rating, and how high, depends on the building&rsquo;s construction type and whether it is sprinkler-protected. Where the fire strategy is still open, a sprinkler concession may reduce or remove the rating and make the steel option viable; treat this as a coordinated decision with the fire strategy, not an assumption."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies where a steel beam is being considered within a concrete floor &mdash; typically to avoid beam formwork or to keep a slender (often post-tensioned) slab &mdash; and the beam may carry a required fire rating. It is a concept-stage material-choice prompt. It does not apply where the element has no fire-resistance requirement, and it does not set the required rating or perform the fire design, which belong to the fire engineer and building surveyor.",
+              "checks": [
+                {
+                  "title": "Where the rating comes from",
+                  "description": "The required rating is set by the building&rsquo;s fire strategy (construction type, storeys, sprinklers), not by the structural design. Get it from the fire-and-life-safety documentation or the fire engineer before deciding the material."
+                },
+                {
+                  "title": "Whether the building is sprinkler-protected",
+                  "description": "Sprinkler protection and the construction type can lower or remove the required rating. The same beam can be unprotected steel in one fire strategy and need substantial protection in another."
+                },
+                {
+                  "title": "Gross saving vs net saving",
+                  "description": "The formwork and depth a steel beam saves is real, but the applied protection it then needs is a cost in the other direction. Judge the choice on the net position, including inspection and any recoating liability."
+                },
+                {
+                  "title": "Hybrid options",
+                  "description": "Concrete-encasing the section, or a concrete-filled hollow section, can keep a steel member while letting concrete provide the fire resistance. These sit between bare steel and a concrete beam and are worth pricing."
+                },
+                {
+                  "title": "Protection has a maintenance tail",
+                  "description": "Some applied protection systems carry an inspection and recoating obligation over the building life. This is a whole-of-life cost the bare-steel option imports and the concrete option does not."
+                }
+              ],
+              "note": "Use the rating as a concept-stage review prompt, not a rule against steel beams. Steel in a concrete floor is often the right answer where the rating is low or absent; the flag marks the case where an unexamined &lsquo;steel saves formwork&rsquo; default imports a fire-protection cost that can outweigh the saving. The required rating and the fire design remain the responsibility of the fire engineer and building surveyor under the relevant requirements."
+            },
+            "evidence": "<strong>Why bare steel needs added protection.</strong> Structural steel loses strength rapidly as it heats: it retains roughly 60% of its ambient yield strength at about 550&nbsp;&deg;C and continues to fall steeply above that, so a fully stressed unprotected member can reach a critical temperature within minutes of fire exposure (Buchanan &amp; Abu, 2017; Wang, 2002). Achieving a fire-resistance rating therefore requires an applied protection system &mdash; intumescent coating, board encasement, or sprayed cementitious or mineral protection &mdash; each of which is an additional passive-fire system carrying its own cost, installed thickness, inspection and, for some systems, a recoating obligation over the building life (Purkiss &amp; Li, 2014; Wang, 2002).<br><br><strong>Why concrete carries fire intrinsically.</strong> Concrete has low thermal conductivity and high thermal mass, so a section heats slowly and the reinforcement is shielded by its cover; the cover provided for durability also delays the bars reaching their critical temperature, allowing reinforced concrete members to achieve substantial fire-resistance periods without an applied protection system (Kodur, 2014; Buchanan &amp; Abu, 2017). The fire resistance is a property of the section as detailed rather than an added trade.<br><br><strong>Why the entry flags a net-versus-gross trap.</strong> Because the steel beam removes formwork and depth but then imports an applied protection cost, the constructability comparison must be made net of that protection, not on the formwork saving alone. The bands scale with how much protection bare steel needs to reach the required rating; the minute cut-points are reasoned practitioner judgement aligned with common rating tiers rather than measured thresholds, and the required rating itself is an output of the project fire strategy, not of this entry.<br><br><strong>References</strong><br>Buchanan, A. H., &amp; Abu, A. K. (2017). <em>Structural Design for Fire Safety</em> (2nd ed.). John Wiley &amp; Sons.<br>Kodur, V. (2014). Properties of concrete at elevated temperatures. <em>ISRN Civil Engineering</em>, 2014, Article 468510.<br>Purkiss, J. A., &amp; Li, L.-Y. (2014). <em>Fire Safety Engineering Design of Structures</em> (3rd ed.). CRC Press.<br>Wang, Y. C. (2002). <em>Steel and Composite Structures: Behaviour and Design for Fire Safety</em>. Spon Press.",
+            "examples": [],
+            "supportingImages": [],
+            "dateAdded": "2026-06-27",
+            "dateReviewed": "2026-06-27",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "The underlying physics is textbook and internationally established: steel loses strength rapidly with temperature and needs an applied protection system to achieve a rating, while concrete achieves fire resistance intrinsically through cover and low conductivity (Buchanan &amp; Abu, 2017; Wang, 2002; Kodur, 2014; Purkiss &amp; Li, 2014). The net-versus-gross framing follows directly. The minute cut-points between bands are reasoned practitioner judgement aligned with common rating tiers rather than measured thresholds, and the required rating is an output of the project fire strategy, so treat the bands as a prompt and refine the boundaries with project cost examples."
+            },
+            "relatedEntries": [
+              {
+                "id": "structural-steel-vs-concrete-for-isolated-vertical-members",
+                "note": "Companion material-choice prompt: that entry weighs vertical members (columns and walls) on formwork repetition; this one weighs floor beams on fire-protection cost."
+              },
+              {
+                "id": "non-combustible-substructure-in-bushfire-areas",
+                "note": "The other fire entry, and a useful contrast: this one is about internal structural fire resistance (the rating a beam must hold from a fire inside the building); that one is about external bushfire attack on the substructure."
+              }
+            ]
+          }
         }
       ]
     },
@@ -6051,7 +6327,9 @@
     "fragment|entry|slab-edges-and-openings-for-fall-protection|jd2t1b",
     "fragment|update|repetition-and-the-formwork-learning-curve|1ist0f8",
     "fragment|update|waterproofing-buildability|1tssztl",
-    "fragment|update|waffle-pod-depth-availability|5hhg5p"
+    "fragment|update|waffle-pod-depth-availability|5hhg5p",
+    "fragment|entry|non-combustible-substructure-in-bushfire-areas|17by3u5",
+    "fragment|entry|fire-protection-cost-of-steel-beams-in-concrete-floors|rnpo27"
   ],
   "_rejected": [],
   "_reconsider": [
