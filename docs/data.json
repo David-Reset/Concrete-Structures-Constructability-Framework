@@ -1399,6 +1399,9 @@
                 "slab-on-ground"
               ]
             ],
+            "triageExclude": [
+              "reactive-ground"
+            ],
             "constructionPhase": [
               "founding/slab"
             ],
@@ -4489,6 +4492,9 @@
               [
                 "slab-on-ground"
               ]
+            ],
+            "triageExclude": [
+              "reactive-ground"
             ],
             "constructionPhase": [
               "founding/slab",
