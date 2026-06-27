@@ -1856,9 +1856,9 @@ const TRIAGE={
   ],
   // STEP 3 — universal opt-ins. Apply to almost any RC job; default on.
   universal:[
-    {fact:'universal-drawing-clarity',label:'Drawing-clarity reviews',hint:'Reinforcement callouts, schedule references, large-bar callouts, overview views',default:true},
-    {fact:'universal-buildability',label:'General buildability good-practice',hint:'Formwork & falsework simplicity, repetition / learning curve',default:true},
-    {fact:'universal-site-safety',label:'Site & temporary-stability review',hint:'Retained, existing or part-built structure during construction',default:true},
+    {fact:'universal-drawing-clarity',label:'Drawing-clarity reviews',hint:'Reinforcement callouts, schedule references, large-bar callouts, overview views',default:false},
+    {fact:'universal-buildability',label:'General buildability good-practice',hint:'Formwork & falsework simplicity, repetition / learning curve',default:false},
+    {fact:'universal-site-safety',label:'Site & temporary-stability review',hint:'Retained, existing or part-built structure during construction',default:false},
   ],
   sourceText:{drawings:"You can read this from the drawings.",geotech:"From your geotechnical report or site info.",site:"From the site or project brief.",intent:"About a decision you may still be making."}
 };
@@ -1880,7 +1880,7 @@ const FACT_META=(()=>{
 let triage=null;
 
 function openTriage(){
-  const uni=new Set(TRIAGE.universal.filter(u=>u.default!==false).map(u=>u.fact));
+  const uni=new Set(TRIAGE.universal.filter(u=>u.default===true).map(u=>u.fact));
   triage={phase:'gates',gateSel:new Set(),answers:new Map(),qList:[],qIdx:0,uniSel:uni};
   paintTriage();
 }
@@ -1967,19 +1967,31 @@ function triageBack(){
   }
 }
 function triageUniversalHtml(){
+  const allOn=TRIAGE.universal.length>0&&TRIAGE.universal.every(u=>triage.uniSel.has(u.fact));
   const rows=TRIAGE.universal.map(u=>`<label class="triage-gate-row">
-    <input type="checkbox" class="triage-uni-check" value="${u.fact}" ${triage.uniSel.has(u.fact)?'checked':''}>
+    <input type="checkbox" class="triage-uni-check" value="${u.fact}" ${triage.uniSel.has(u.fact)?'checked':''} onchange="triageUniSync()">
     <span><span class="triage-gate-label">${escHtml(u.label)}</span>${u.hint?`<span class="triage-gate-hint">${escHtml(u.hint)}</span>`:''}</span>
   </label>`).join('');
   return `<div class="modal-title">Guided triage</div>
     <div class="triage-progress">Last step &mdash; general reviews</div>
-    <div class="triage-q">Include these good-practice reviews?</div>
-    <div class="triage-q-sub">These apply to almost any reinforced-concrete job. Leave ticked to include them, or untick any you don't want.</div>
+    <div class="triage-q">Include any of these good-practice reviews?</div>
+    <div class="triage-q-sub">These apply to almost any reinforced-concrete job &mdash; tick the ones you want, or leave them all off.</div>
+    <div class="ra-toolbar">
+      <label class="ra-selectall"><input type="checkbox" id="uniSelectAll" ${allOn?'checked':''} onchange="triageUniToggleAll(this)"> Select all</label>
+    </div>
     <ul class="triage-gate-list">${rows}</ul>
     <div class="modal-actions">
       <button class="entry-btn" onclick="triageBack()">&larr; Back</button>
       <button class="entry-btn primary" onclick="triageUniNext()">See results &rarr;</button>
     </div>`;
+}
+function triageUniToggleAll(src){
+  document.querySelectorAll('#triageOverlay .triage-uni-check').forEach(c=>{c.checked=src.checked;});
+}
+function triageUniSync(){
+  const checks=Array.from(document.querySelectorAll('#triageOverlay .triage-uni-check'));
+  const all=document.getElementById('uniSelectAll');
+  if(all)all.checked=checks.length>0&&checks.every(c=>c.checked);
 }
 function triageUniNext(){
   triage.uniSel=new Set(Array.from(document.querySelectorAll('#triageOverlay .triage-uni-check')).filter(c=>c.checked).map(c=>c.value));
@@ -2016,6 +2028,10 @@ function triageCollect(){
       if(!item.available||!item.data)continue;
       const trig=item.data.triage;
       if(!triggerMet(trig))continue;
+      // an entry can name facts that SUPPRESS it (e.g. a downstream entry hidden
+      // while an upstream decision is still open). If any excluded fact is established, skip.
+      const excl=item.data.triageExclude;
+      if(Array.isArray(excl)&&excl.some(f=>satisfied.has(f)))continue;
       const row={id:item.id,name:item.name,dimName:dim.name,dimIcon:dim.icon,reason:reasonFor(trig)};
       if(inList.has(item.id))skipped.push(row);else entries.push(row);
     }
