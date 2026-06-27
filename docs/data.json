@@ -34,6 +34,11 @@
             "elementType": [
               "wall"
             ],
+            "triage": [
+              [
+                "upstand-near-obstruction"
+              ]
+            ],
             "constructionPhase": [
               "formwork"
             ],
@@ -185,6 +190,11 @@
             ],
             "elementType": [
               "slab"
+            ],
+            "triage": [
+              [
+                "repeated-floors"
+              ]
             ],
             "constructionPhase": [
               "formwork",
@@ -356,6 +366,11 @@
               "slab",
               "beam"
             ],
+            "triage": [
+              [
+                "repeated-floors"
+              ]
+            ],
             "constructionPhase": [
               "pour/placement"
             ],
@@ -461,6 +476,12 @@
             "elementType": [
               "slab",
               "beam"
+            ],
+            "triage": [
+              [
+                "slab-suspended",
+                "beam-suspended"
+              ]
             ],
             "constructionPhase": [
               "curing"
@@ -615,6 +636,11 @@
             "elementType": [
               "pile/pier/shaft"
             ],
+            "triage": [
+              [
+                "founded-on-rock"
+              ]
+            ],
             "constructionPhase": [
               "founding/piling"
             ],
@@ -752,6 +778,11 @@
               "wall",
               "column",
               "pile/pier/shaft"
+            ],
+            "triage": [
+              [
+                "deep-vertical-at-slab"
+              ]
             ],
             "constructionPhase": [
               "pour/placement"
@@ -950,6 +981,11 @@
               "column",
               "wall"
             ],
+            "triage": [
+              [
+                "choosing-vertical-system"
+              ]
+            ],
             "constructionPhase": [
               "formwork"
             ],
@@ -1080,6 +1116,14 @@
             "elementType": [
               "wall"
             ],
+            "triage": [
+              [
+                "wall"
+              ],
+              [
+                "watertight"
+              ]
+            ],
             "constructionPhase": [
               "formwork"
             ],
@@ -1193,6 +1237,11 @@
             ],
             "elementType": [
               "pile/pier/shaft"
+            ],
+            "triage": [
+              [
+                "pile"
+              ]
             ],
             "constructionPhase": [
               "founding/piling"
@@ -1344,6 +1393,11 @@
             "elementType": [
               "slab on ground",
               "raft/footing"
+            ],
+            "triage": [
+              [
+                "slab-on-ground"
+              ]
             ],
             "constructionPhase": [
               "founding/slab"
@@ -1548,6 +1602,14 @@
               "pile/pier/shaft",
               "ground beam",
               "slab on ground"
+            ],
+            "triage": [
+              [
+                "pile"
+              ],
+              [
+                "slab-on-ground"
+              ]
             ],
             "constructionPhase": [
               "founding/piling",
@@ -1801,6 +1863,11 @@
               "raft/footing",
               "pile/pier/shaft"
             ],
+            "triage": [
+              [
+                "reactive-ground"
+              ]
+            ],
             "constructionPhase": [
               "founding/slab",
               "founding/piling"
@@ -2007,6 +2074,11 @@
               "slab",
               "footing"
             ],
+            "triage": [
+              [
+                "bushfire-area"
+              ]
+            ],
             "constructionPhase": [
               "design & documentation"
             ],
@@ -2136,6 +2208,11 @@
             "elementType": [
               "beam",
               "slab"
+            ],
+            "triage": [
+              [
+                "choosing-floor-framing"
+              ]
             ],
             "constructionPhase": [
               "design & documentation"
@@ -2276,6 +2353,11 @@
             ],
             "elementType": [
               "slab"
+            ],
+            "triage": [
+              [
+                "slab-level-change"
+              ]
             ],
             "constructionPhase": [
               "formwork"
@@ -2427,6 +2509,11 @@
             "elementType": [
               "slab"
             ],
+            "triage": [
+              [
+                "slab-level-change"
+              ]
+            ],
             "constructionPhase": [
               "formwork"
             ],
@@ -2544,6 +2631,15 @@
               "wall",
               "column"
             ],
+            "triage": [
+              [
+                "wall",
+                "column"
+              ],
+              [
+                "exposed-concrete"
+              ]
+            ],
             "constructionPhase": [
               "formwork"
             ],
@@ -2653,6 +2749,15 @@
             "elementType": [
               "slab",
               "beam"
+            ],
+            "triage": [
+              [
+                "slab-suspended",
+                "beam-suspended"
+              ],
+              [
+                "exposed-concrete"
+              ]
             ],
             "constructionPhase": [
               "formwork",
@@ -2788,6 +2893,11 @@
               "slab",
               "reinforcement"
             ],
+            "triage": [
+              [
+                "slab-suspended"
+              ]
+            ],
             "constructionPhase": [
               "reinforcement fixing"
             ],
@@ -2904,6 +3014,11 @@
             ],
             "elementType": [
               "beam"
+            ],
+            "triage": [
+              [
+                "beam-suspended"
+              ]
             ],
             "constructionPhase": [
               "formwork"
@@ -3224,6 +3339,14 @@
             "elementType": [
               "wall"
             ],
+            "triage": [
+              [
+                "wall"
+              ],
+              [
+                "watertight"
+              ]
+            ],
             "constructionPhase": [
               "pour/placement"
             ],
@@ -3389,6 +3512,11 @@
               "beam",
               "column",
               "frame"
+            ],
+            "triage": [
+              [
+                "universal-buildability"
+              ]
             ],
             "constructionPhase": [
               "formwork"
@@ -3576,6 +3704,11 @@
             "elementType": [
               "slab"
             ],
+            "triage": [
+              [
+                "watertight"
+              ]
+            ],
             "constructionPhase": [
               "design & documentation",
               "pour/placement"
@@ -3705,6 +3838,11 @@
               "reinforcement",
               "beam",
               "footing"
+            ],
+            "triage": [
+              [
+                "footing"
+              ]
             ],
             "constructionPhase": [
               "reinforcement fixing"
@@ -3874,6 +4012,11 @@
             "elementType": [
               "pile/pier/shaft"
             ],
+            "triage": [
+              [
+                "founded-on-rock"
+              ]
+            ],
             "constructionPhase": [
               "founding/piling"
             ],
@@ -4030,6 +4173,11 @@
               "slab",
               "reinforcement"
             ],
+            "triage": [
+              [
+                "slab-suspended"
+              ]
+            ],
             "constructionPhase": [
               "reinforcement fixing"
             ],
@@ -4155,6 +4303,14 @@
             ],
             "elementType": [
               "pile/pier/shaft"
+            ],
+            "triage": [
+              [
+                "pile"
+              ],
+              [
+                "access-constrained"
+              ]
             ],
             "constructionPhase": [
               "founding/piling"
@@ -4329,6 +4485,11 @@
               "slab on ground",
               "raft/footing"
             ],
+            "triage": [
+              [
+                "slab-on-ground"
+              ]
+            ],
             "constructionPhase": [
               "founding/slab",
               "procurement"
@@ -4472,6 +4633,11 @@
               "slab",
               "reinforcement"
             ],
+            "triage": [
+              [
+                "slab-suspended"
+              ]
+            ],
             "constructionPhase": [
               "reinforcement fixing"
             ],
@@ -4600,6 +4766,11 @@
             "elementType": [
               "pile/pier/shaft"
             ],
+            "triage": [
+              [
+                "pile"
+              ]
+            ],
             "constructionPhase": [
               "founding/piling"
             ],
@@ -4714,6 +4885,11 @@
             "elementType": [
               "slab",
               "reinforcement"
+            ],
+            "triage": [
+              [
+                "slab-suspended"
+              ]
             ],
             "constructionPhase": [
               "reinforcement fixing"
@@ -4839,6 +5015,14 @@
             ],
             "elementType": [
               "pile/pier/shaft"
+            ],
+            "triage": [
+              [
+                "pile"
+              ],
+              [
+                "considering-screw-piles"
+              ]
             ],
             "constructionPhase": [
               "founding/piling"
@@ -5011,6 +5195,11 @@
               "facade",
               "frame"
             ],
+            "triage": [
+              [
+                "universal-site-safety"
+              ]
+            ],
             "constructionPhase": [
               "demolition",
               "sequencing"
@@ -5172,6 +5361,11 @@
               "wall",
               "frame"
             ],
+            "triage": [
+              [
+                "universal-buildability"
+              ]
+            ],
             "constructionPhase": [
               "formwork"
             ],
@@ -5306,6 +5500,11 @@
             ],
             "elementType": [
               "slab"
+            ],
+            "triage": [
+              [
+                "slab-suspended"
+              ]
             ],
             "constructionPhase": [
               "formwork"
@@ -5475,6 +5674,11 @@
             ],
             "elementType": [
               "reinforcement"
+            ],
+            "triage": [
+              [
+                "universal-drawing-clarity"
+              ]
             ],
             "constructionPhase": [
               "design & documentation"
@@ -5692,6 +5896,11 @@
                 "id": "isometric-overview-views-in-structural-drawing-sets",
                 "note": "Both shape whether the builder can read, find and trust the drawings — review the documentation set's clarity together."
               }
+            ],
+            "triage": [
+              [
+                "universal-drawing-clarity"
+              ]
             ]
           }
         },
@@ -5718,6 +5927,11 @@
             "elementType": [
               "slab",
               "reinforcement"
+            ],
+            "triage": [
+              [
+                "universal-drawing-clarity"
+              ]
             ],
             "constructionPhase": [
               "design & documentation"
@@ -5845,6 +6059,11 @@
             ],
             "elementType": [
               "frame"
+            ],
+            "triage": [
+              [
+                "universal-drawing-clarity"
+              ]
             ],
             "constructionPhase": [
               "design & documentation"
