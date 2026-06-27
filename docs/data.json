@@ -2323,6 +2323,127 @@
               }
             ]
           }
+        },
+        {
+          "id": "construction-joint-necessity-and-placement",
+          "name": "Construction-joint necessity: where a pour must be broken, and where to place it",
+          "available": false,
+          "data": {
+            "question": "Where a pour is too large to place and finish before the previous concrete sets, limited by supply or pump reach, thick enough to generate significant heat of hydration, long enough to accumulate restraint shrinkage, or part of a watertight element — has a buildable construction-joint location been identified and detailed at design stage, rather than left for the contractor to break the pour wherever is convenient (or to form an uncontrolled cold joint when a pour overruns)?",
+            "parameter": "Whether the design identifies and locates the construction joints that the pour's size, supply rate, section thickness, length or watertightness will require.",
+            "keywords": [
+              "construction joint",
+              "pour break",
+              "day joint",
+              "cold joint",
+              "maximum pour size",
+              "placement rate",
+              "pump reach",
+              "heat of hydration",
+              "mass concrete",
+              "thermal cracking",
+              "drying shrinkage",
+              "restraint",
+              "waterstop"
+            ],
+            "elementType": [
+              "slab",
+              "beam",
+              "wall"
+            ],
+            "triage": [
+              [
+                "slab-suspended",
+                "beam-suspended",
+                "slab-on-ground",
+                "watertight"
+              ]
+            ],
+            "constructionPhase": [
+              "design & documentation",
+              "pour/placement"
+            ],
+            "background": "A construction joint is the deliberate plane where one concrete placement stops and the next begins. Some joints are optional and chosen for programme reasons (covered separately). This entry is about the joints a pour will <strong>need</strong> for physical reasons, and whether the design has located them — or left the contractor to break the pour wherever is convenient.<br><br>Several independent drivers can force or strongly favour a break. <strong>Placement rate and pour size:</strong> a continuous pour must reach each new layer of concrete before the layer beneath takes its initial set, or an uncontrolled cold joint forms. The volume that can be placed in one operation is therefore bounded by the supply rate (truck and pump throughput) and the placing and finishing crew — there is a practical maximum pour for a given session. <strong>Pump reach and access:</strong> a single placement can be limited by how far the concrete can be pumped or barrowed on the day. <strong>Heat of hydration:</strong> thick or large-volume sections generate internal heat as the cement hydrates; the temperature difference between the hot core and cooler surface can drive early thermal cracking, so large pours may need to be split or otherwise managed. <strong>Drying shrinkage and restraint:</strong> long continuous slabs and walls accumulate shrinkage against their restraints, and planned joints control where that movement is relieved rather than leaving it to crack at random. <strong>Watertightness:</strong> where the element must stay dry, every joint is a potential leakage path, so the number and location of joints must be deliberate and detailed (see the related waterstop entry).<br><br>The constructability issue is what happens when none of this is shown. If the drawings imply a single continuous pour that the site cannot actually achieve, the contractor must break it somewhere. Left to the moment, that break may land on a poor structural plane, at a leak-prone location in a watertight element, or — worst — appear as an unplanned cold joint when a pour simply overruns. Identifying a sound joint location and referencing a construction-joint detail during design keeps the decision with the engineer, where continuity reinforcement, the joint plane, shear transfer and any waterstop can be considered properly.",
+            "thresholds": [
+              {
+                "range": "Required joints located and detailed",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "Where the pour's size, supply rate, thickness, length or watertightness make a break necessary, the design shows a buildable construction-joint location on a sound plane and references a joint detail (continuity reinforcement; waterstop where the element is watertight; thermal/shrinkage considerations where the section is massive or long). The contractor builds to a considered joint rather than improvising one."
+              },
+              {
+                "range": "Break likely needed but none shown",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "The pour is plausibly beyond what can be placed in one operation, is thick or long enough for thermal or shrinkage effects, or is watertight — yet the drawings show no joint. Resolve it before issue: confirm whether a single pour is realistic and, if not, locate and detail the joint. Otherwise the break is made reactively on site, possibly in a poor or leak-prone position, or a cold joint forms uncontrolled."
+              },
+              {
+                "range": "Single pour genuinely feasible",
+                "rating": "Not applicable",
+                "color": "green",
+                "guidance": "The element is small enough to place, finish and supply in one operation, is not a massive section, is short, and is not watertight. No break is needed and none should be added — leave the contractor to pour it whole."
+              }
+            ],
+            "alternatives": [
+              {
+                "title": "Identify and detail the required construction-joint locations at design stage",
+                "description": "For pours that cannot sensibly be placed in one operation, or where thickness, length or watertightness call for control, mark a buildable joint location on a sound plane and reference a typical construction-joint detail (continuity steel, joint preparation, waterstop where wet). Place the joint where it is structurally and (where relevant) hydraulically acceptable, rather than leaving the contractor to break the pour under time pressure. Do not add joints to elements that can genuinely be poured whole."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "Reinforced-concrete pours large in plan or volume, thick (mass-concrete) sections, long continuous slabs or walls, and watertight elements — where the size, supply rate, thermal behaviour, shrinkage or leakage path means a single continuous pour is impractical or undesirable. It concerns whether a necessary break is located and detailed; it does not set the structural design of the joint itself, nor crack-control spacing, which are separate matters. Small, thin, short, non-watertight elements that can be poured whole are out of scope.",
+              "checks": [
+                {
+                  "title": "Estimate the practical maximum pour",
+                  "description": "From the likely supply rate (trucks per hour, pump throughput) and the placing/finishing crew, estimate the volume that can be placed before the first concrete sets. Compare with the element's volume to see whether one continuous pour is realistic."
+                },
+                {
+                  "title": "Pump reach and access",
+                  "description": "Check that the whole element can actually be reached in one placement with the plant likely on site. Limited reach or access can force a break regardless of volume."
+                },
+                {
+                  "title": "Thick / mass sections",
+                  "description": "For thick sections, consider heat of hydration and the core-to-surface temperature difference. Large pours may need splitting or other thermal-control measures to avoid early thermal cracking."
+                },
+                {
+                  "title": "Long continuous elements",
+                  "description": "For long slabs or walls, consider restraint and drying shrinkage. Planned joints relieve movement at chosen locations rather than letting cracks form at random."
+                },
+                {
+                  "title": "Watertightness",
+                  "description": "Where the element must stay dry, every joint is a potential leak path. Minimise and deliberately locate joints, and detail a waterstop. This is the case where joint location most clearly matters."
+                }
+              ],
+              "note": "Use the rating as a design-stage prompt: identify the breaks the pour will physically need and locate them well — and avoid adding joints to elements that can be poured whole."
+            },
+            "evidence": "<strong>DRAFT — evidence to be completed and verified.</strong> The mechanisms below are standard concrete-construction knowledge; the specific standards, clauses and any figures must be confirmed by a maintainer before this entry is published.<br><br><strong>Pour size and cold joints.</strong> A continuous placement must overlay each preceding layer before it takes initial set, or an uncontrolled cold joint results; the achievable pour size is bounded by supply and placing rate. (Reference: concrete placing guidance / AS 3600 and concrete-institute placement practice — to be cited.)<br><br><strong>Construction joints.</strong> Location, preparation, continuity reinforcement and shear transfer at construction joints are governed by the concrete structures standard and recommended practice. (Reference: AS 3600 construction-joint provisions — clause to be confirmed.)<br><br><strong>Heat of hydration / mass concrete.</strong> Thick sections develop internal temperature gradients that can cause early thermal cracking; guidance exists on section thickness thresholds and thermal control. (Reference: CIA / CCAA mass-concrete guidance — to be cited.)<br><br><strong>Drying shrinkage and restraint.</strong> Long restrained elements accumulate shrinkage; planned joints control crack location. (Reference: CIA shrinkage/crack-control guidance — to be cited.)<br><br><strong>Watertight joints.</strong> Each joint in a watertight element is a leakage path requiring deliberate location and a waterstop (see related entry). <br><br><strong>Scope.</strong> This entry prompts the design to locate physically necessary breaks; it does not replace the detailed design of the joint, thermal-control modelling, or crack-control spacing.",
+            "dateAdded": "2026-06-27",
+            "dateReviewed": "",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "supportingImages": [],
+            "evidenceSupport": {
+              "level": "low",
+              "summary": "DRAFT — the drivers (pour size/rate, heat of hydration, shrinkage, watertightness) are well-established concrete-construction mechanisms, but the threshold bands are provisional judgement and no specific standards, clauses or measured figures have yet been cited. Needs evidence added and verified before publishing."
+            },
+            "relatedEntries": [
+              {
+                "id": "optional-pour-breaks-to-keep-concrete-trades-flowing",
+                "note": "Companion entry: that one covers optional breaks chosen to keep trades flowing on repetitive work; this one covers breaks made necessary by the pour's size, thermal behaviour, length or watertightness."
+              },
+              {
+                "id": "non-moving-construction-joint-waterproofing",
+                "note": "Where a required break falls in a watertight element, that entry covers detailing the joint as a waterproofing system."
+              },
+              {
+                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
+                "note": "Both concern how the concrete is staged and where joints and sequence are set so the pour is controlled."
+              }
+            ],
+            "examples": []
+          }
         }
       ]
     },
@@ -6554,7 +6675,8 @@
     "fragment|update|waterproofing-buildability|1tssztl",
     "fragment|update|waffle-pod-depth-availability|5hhg5p",
     "fragment|entry|non-combustible-substructure-in-bushfire-areas|17by3u5",
-    "fragment|entry|fire-protection-cost-of-steel-beams-in-concrete-floors|rnpo27"
+    "fragment|entry|fire-protection-cost-of-steel-beams-in-concrete-floors|rnpo27",
+    "fragment|entry|construction-joint-necessity-and-placement|u5fbii"
   ],
   "_rejected": [],
   "_reconsider": [
