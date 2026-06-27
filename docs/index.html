@@ -232,6 +232,9 @@
   .triage-yesno{display:flex;gap:10px;margin-top:18px}
   .triage-yesno .entry-btn{flex:1;justify-content:center}
   .triage-empty{font-size:13.5px;color:var(--text);line-height:1.7}
+  .triage-q-source{font-size:12px;color:var(--text-muted);line-height:1.5;margin:2px 0 2px;font-style:italic}
+  .triage-yesno .entry-btn.ns{flex:1.1}
+  .triage-yesno .entry-btn.ns:not(.primary){color:var(--text-muted)}
 
   .examples-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px;margin-bottom:20px}
   .examples-grid.imgs-1{grid-template-columns:1fr}
@@ -1809,66 +1812,76 @@ function goEditEntry(dimId,id){const it=lookupItem(dimId,id);if(!it)return;windo
 // unknown IDs are silently ignored, so this block is safe to edit freely. To change the
 // questionnaire you only edit TRIAGE below — the engine underneath needs no changes.
 const TRIAGE={
-  intro:"Answer a few questions about what's on the architect's drawings and what you're still deciding. We'll gather the entries worth reviewing — you choose which to add to your project list.",
-  // STEP 1 — "What's in this job?" (multi-select). Selecting an option (a) surfaces the
-  // entries worth weighing simply because that element is present, and (b) unlocks the
-  // scenario questions that become relevant.
+  intro:"Answer a few quick questions about the job — most come straight off the architect's drawings, a couple from your geotech or what you're still deciding. We'll gather the entries worth reviewing; you choose which to add.",
+  // STEP 1 — gates. Each establishes a "fact". Presence facts (elements) plus the two
+  // glance-legible condition facts (exposed, watertight). Edit labels/hints freely.
   gates:[
-    {id:'slabs',label:'Suspended slabs',hint:'Suspended floors, transfer slabs, suspended ground floors',
-     surface:['hand-bendable-bar-sizes-for-slab-reinforcement','slab-bar-diameter-and-on-site-bending-equipment','reducing-grinder-cutting-from-large-slab-reinforcement-bars','large-bar-callout-clarity','reinforcement-mat-fall-through-risk','curing-shortfall-in-suspended-slabs-and-beams']},
-    {id:'beams',label:'Suspended beams or band beams',hint:'Beams forming part of a suspended floor',
-     surface:['curing-shortfall-in-suspended-slabs-and-beams','beam-soffit-formwork-proportions']},
-    {id:'footings',label:'Footings or ground beams',hint:'Pad/strip footings, pile caps, ground beams',
-     surface:['stirrup-bar-size-availability-and-site-adaptability']},
-    {id:'walls',label:'Concrete walls',hint:'Core walls, retaining walls, blade walls, upstands',
-     surface:[]},
-    {id:'piles',label:'Piles, piers or shafts',hint:'Bored, driven or screw piles; caissons',
-     surface:[]},
-    {id:'exposed',label:'Exposed / architectural concrete',hint:'Off-form faces, feature corners or soffits on show',
-     surface:['chamfered-exposed-external-corners','drip-grooves-on-exposed-soffit-edges']},
-    {id:'watertight',label:'Basement or watertight structure',hint:'Walls or tanks that must stay dry',
-     surface:['pvc-permanent-formwork-vs-blockwork','non-moving-construction-joint-waterproofing']},
+    {fact:'slab-suspended',label:'Suspended slabs',hint:'Suspended floors, transfer slabs — incl. ground floors carried on piles'},
+    {fact:'beam-suspended',label:'Suspended beams',hint:'Beams / band beams in a suspended floor, incl. beams spanning between piles'},
+    {fact:'slab-on-ground',label:'Ground floor cast on the ground',hint:'Ground-bearing slabs — raft or waffle pod'},
+    {fact:'footing',label:'Footings or ground beams',hint:'Pad/strip footings, pile caps, ground-bearing ground beams'},
+    {fact:'wall',label:'Concrete walls',hint:'Core walls, retaining walls, blade walls, upstands'},
+    {fact:'column',label:'Concrete columns',hint:'Formed concrete columns'},
+    {fact:'pile',label:'Piles, piers or shafts',hint:'Bored, driven or screw piles; caissons'},
+    {fact:'exposed-concrete',label:'Exposed / architectural concrete',hint:'Off-form faces, feature corners or soffits on show'},
+    {fact:'watertight',label:'Basement or watertight structure',hint:'Walls, tanks or wet areas that must stay dry'},
   ],
-  // STEP 2 — Scenario questions (plain yes/no, answerable from drawings or early intent).
-  // `gates` controls when a question appears (shown if ANY listed gate is selected; an empty
-  // or omitted list = always shown). A "yes" adds that question's `ids`.
+  // STEP 2 — questions. Each establishes one fact and is shown only when ANY of its `when`
+  // facts (Step-1 gates) is selected. Three answers: Yes / Not sure / No. "Not sure" still
+  // surfaces the entry — the point is to prompt consideration. `source` tags where the
+  // answer comes from so the user isn't hunting on a floor plan.
   questions:[
-    {id:'upturns',gates:['walls'],
-     prompt:'Are there concrete upturns, planters or upstands cast hard against an obstruction or boundary?',
-     ids:['off-form-concrete-upturns-near-obstructions']},
-    {id:'vertical-system',gates:['walls','beams','slabs'],
-     prompt:'Are you still choosing the vertical-member system that supports the floor (reinforced concrete vs a blockwork-and-steel alternative)?',
-     ids:['structural-steel-vs-concrete-for-isolated-vertical-members']},
-    {id:'repeated-floors',gates:['slabs','beams'],
-     prompt:'Does the building have repeated, similar suspended floors (a structure that repeats storey to storey)?',
-     ids:['conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors','optional-pour-breaks-to-keep-concrete-trades-flowing']},
-    {id:'level-changes',gates:['slabs'],
-     prompt:'Do the slabs include level changes — folds, steps or wet-area setdowns?',
-     ids:['suspended-slab-level-changes-folds','flat-soffit-detailing-at-minor-slab-setdowns']},
-    {id:'deep-vertical',gates:['slabs','beams','walls','piles','footings'],
-     prompt:'Is a slab, beam or pile cap cast against or above a deep vertical element (a tall wall, column or deep pile)?',
-     ids:['pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces']},
-    {id:'rock',gates:['piles','footings'],
-     prompt:'Are any foundations founded on, or socketed into, rock?',
-     ids:['rock-sockets-founding-on-rock-vs-drilled-socket','rock-sockets-vs-likely-available-drilling-plant','confined-space-entry-at-pier-and-shaft-bases']},
-    {id:'access',gates:['piles'],
-     prompt:'Is the site height- or width-constrained for piling plant (low headroom, tight access)?',
-     ids:['equipment-access-constraints']},
-    {id:'screw',gates:['piles'],
-     prompt:'Are screw piles being considered for the foundations?',
-     ids:['bored-concrete-piles-vs-screw-piles','latent-safety-risk-of-screw-pile-foundations']},
+    {fact:'repeated-floors',when:['slab-suspended','beam-suspended'],source:'drawings',
+     prompt:'Does the building have repeated, similar suspended floors (a structure that repeats storey to storey)?'},
+    {fact:'slab-level-change',when:['slab-suspended'],source:'drawings',
+     prompt:'Do the slabs include level changes — folds, steps or wet-area setdowns?'},
+    {fact:'upstand-near-obstruction',when:['wall'],source:'drawings',
+     prompt:'Are there upturns, planters or upstands cast hard against an obstruction or boundary?'},
+    {fact:'deep-vertical-at-slab',when:['slab-suspended','beam-suspended','footing','wall','column','pile'],source:'drawings',
+     prompt:'Is a slab, beam or pile cap cast against or above a deep vertical element (a tall wall, column or deep pile)?'},
+    {fact:'founded-on-rock',when:['footing','pile'],source:'geotech',
+     prompt:'Are any foundations founded on, or socketed into, rock?'},
+    {fact:'reactive-ground',when:['slab-on-ground','footing','pile'],source:'geotech',
+     prompt:'Is the site on reactive (expansive) ground?'},
+    {fact:'bushfire-area',when:['slab-on-ground','footing','pile'],source:'site',
+     prompt:'Is the site in a designated bushfire (BAL) area?'},
+    {fact:'access-constrained',when:['pile'],source:'site',
+     prompt:'Is the site height- or width-constrained for plant (low headroom, tight access at the pile)?'},
+    {fact:'choosing-vertical-system',when:['slab-suspended','beam-suspended'],source:'intent',
+     prompt:'Are you still choosing what supports the floor — reinforced concrete columns/walls vs a blockwork-and-steel combination?'},
+    {fact:'choosing-floor-framing',when:['slab-suspended','beam-suspended'],source:'intent',
+     prompt:'Are steel beams in the concrete floor still on the table (vs concrete beams)?'},
+    {fact:'considering-screw-piles',when:['pile'],source:'intent',
+     prompt:'Are screw piles being considered for the foundations?'},
   ],
-  // STEP 3 — Always offered: a documentation / drawing-clarity check.
-  always:{
-    prompt:'Would you like to include the drawing-clarity checks (reinforcement callouts, details and schedule references)?',
-    ids:['reinforcement-callout-clarity','details-and-schedule-references']
-  }
+  // STEP 3 — universal opt-ins. Apply to almost any RC job; default on.
+  universal:[
+    {fact:'universal-drawing-clarity',label:'Drawing-clarity reviews',hint:'Reinforcement callouts, schedule references, large-bar callouts, overview views',default:true},
+    {fact:'universal-buildability',label:'General buildability good-practice',hint:'Formwork & falsework simplicity, repetition / learning curve',default:true},
+    {fact:'universal-site-safety',label:'Site & temporary-stability review',hint:'Retained, existing or part-built structure during construction',default:true},
+  ],
+  sourceText:{drawings:"You can read this from the drawings.",geotech:"From your geotechnical report or site info.",site:"From the site or project brief.",intent:"About a decision you may still be making."}
 };
+
+// Human labels + kind for every fact, used to explain why an entry surfaced.
+const FACT_META=(()=>{
+  const m={};
+  const P={'slab-suspended':'Suspended slabs','beam-suspended':'Suspended beams','slab-on-ground':'Ground-bearing slab','footing':'Footings / ground beams','wall':'Concrete walls','column':'Concrete columns','pile':'Piles / piers'};
+  const C={'exposed-concrete':'Exposed concrete','watertight':'Watertight structure','repeated-floors':'Repeated floors','slab-level-change':'Slab level changes','upstand-near-obstruction':'Upstand near an obstruction','deep-vertical-at-slab':'Deep vertical element at a slab','founded-on-rock':'Founded on rock','reactive-ground':'Reactive ground','bushfire-area':'Bushfire area','access-constrained':'Constrained site access'};
+  const I={'choosing-vertical-system':'Choosing the vertical system','choosing-floor-framing':'Choosing the floor framing','considering-screw-piles':'Considering screw piles'};
+  const U={'universal-drawing-clarity':'Drawing clarity','universal-buildability':'Buildability good-practice','universal-site-safety':'Site & temporary stability'};
+  for(const k in P)m[k]={label:P[k],kind:'presence',pri:1};
+  for(const k in C)m[k]={label:C[k],kind:'condition',pri:3};
+  for(const k in I)m[k]={label:I[k],kind:'intent',pri:3};
+  for(const k in U)m[k]={label:U[k],kind:'universal',pri:2};
+  return m;
+})();
 
 let triage=null;
 
 function openTriage(){
-  triage={phase:'gates',gateSel:new Set(),qList:[],qIdx:0,qYes:new Set(),docYes:true};
+  const uni=new Set(TRIAGE.universal.filter(u=>u.default!==false).map(u=>u.fact));
+  triage={phase:'gates',gateSel:new Set(),answers:new Map(),qList:[],qIdx:0,uniSel:uni};
   paintTriage();
 }
 function closeTriage(){const o=document.getElementById('triageOverlay');if(o)o.remove();triage=null;}
@@ -1885,12 +1898,12 @@ function paintTriage(){
 function triageInner(){
   if(triage.phase==='gates')return triageGatesHtml();
   if(triage.phase==='questions')return triageQuestionHtml();
-  if(triage.phase==='doc')return triageDocHtml();
+  if(triage.phase==='universal')return triageUniversalHtml();
   return '';
 }
 function triageGatesHtml(){
   const rows=TRIAGE.gates.map(g=>`<label class="triage-gate-row">
-    <input type="checkbox" class="triage-gate-check" value="${g.id}" ${triage.gateSel.has(g.id)?'checked':''}>
+    <input type="checkbox" class="triage-gate-check" value="${g.fact}" ${triage.gateSel.has(g.fact)?'checked':''}>
     <span><span class="triage-gate-label">${escHtml(g.label)}</span>${g.hint?`<span class="triage-gate-hint">${escHtml(g.hint)}</span>`:''}</span>
   </label>`).join('');
   return `<div class="modal-title">Guided triage</div>
@@ -1907,36 +1920,42 @@ function triageGatesHtml(){
 function triageGatesNext(){
   const sel=new Set(Array.from(document.querySelectorAll('#triageOverlay .triage-gate-check')).filter(c=>c.checked).map(c=>c.value));
   triage.gateSel=sel;
-  triage.qList=TRIAGE.questions.filter(q=>!q.gates||q.gates.length===0||q.gates.some(g=>sel.has(g)));
-  // Drop any answers for questions that are no longer shown (gates changed on a Back/Next).
-  triage.qYes=new Set(Array.from(triage.qYes).filter(id=>triage.qList.some(q=>q.id===id)));
+  triage.qList=TRIAGE.questions.filter(q=>!q.when||q.when.length===0||q.when.some(f=>sel.has(f)));
+  // Drop answers for questions no longer shown (gates changed on a Back/Next).
+  const live=new Set(triage.qList.map(q=>q.fact));
+  Array.from(triage.answers.keys()).forEach(f=>{if(!live.has(f))triage.answers.delete(f);});
   triage.qIdx=0;
-  triage.phase=triage.qList.length?'questions':'doc';
+  triage.phase=triage.qList.length?'questions':'universal';
   paintTriage();
 }
 function triageQuestionHtml(){
   const q=triage.qList[triage.qIdx];
   const total=triage.qList.length;
+  const cur=triage.answers.get(q.fact);
+  const src=TRIAGE.sourceText[q.source]||'';
+  const sel=v=>cur===v?' primary':'';
   return `<div class="modal-title">Guided triage</div>
     <div class="triage-progress">Question ${triage.qIdx+1} of ${total}</div>
     <div class="triage-q">${escHtml(q.prompt)}</div>
+    ${src?`<div class="triage-q-source">${escHtml(src)}</div>`:''}
     <div class="triage-yesno">
-      <button class="entry-btn" onclick="triageAnswer(false)">No</button>
-      <button class="entry-btn primary" onclick="triageAnswer(true)">Yes</button>
+      <button class="entry-btn${sel('no')}" onclick="triageAnswer('no')">No</button>
+      <button class="entry-btn ns${sel('maybe')}" onclick="triageAnswer('maybe')">Not sure</button>
+      <button class="entry-btn${sel('yes')||(cur===undefined?' primary':'')}" onclick="triageAnswer('yes')">Yes</button>
     </div>
     <div class="modal-actions">
       <button class="entry-btn" onclick="triageBack()">&larr; Back</button>
     </div>`;
 }
-function triageAnswer(yes){
+function triageAnswer(val){
   const q=triage.qList[triage.qIdx];
-  if(yes)triage.qYes.add(q.id);else triage.qYes.delete(q.id);
+  triage.answers.set(q.fact,val);
   if(triage.qIdx<triage.qList.length-1){triage.qIdx++;}
-  else{triage.phase='doc';}
+  else{triage.phase='universal';}
   paintTriage();
 }
 function triageBack(){
-  if(triage.phase==='doc'){
+  if(triage.phase==='universal'){
     if(triage.qList.length){triage.phase='questions';triage.qIdx=triage.qList.length-1;}
     else{triage.phase='gates';}
     paintTriage();return;
@@ -1947,35 +1966,63 @@ function triageBack(){
     paintTriage();return;
   }
 }
-function triageDocHtml(){
+function triageUniversalHtml(){
+  const rows=TRIAGE.universal.map(u=>`<label class="triage-gate-row">
+    <input type="checkbox" class="triage-uni-check" value="${u.fact}" ${triage.uniSel.has(u.fact)?'checked':''}>
+    <span><span class="triage-gate-label">${escHtml(u.label)}</span>${u.hint?`<span class="triage-gate-hint">${escHtml(u.hint)}</span>`:''}</span>
+  </label>`).join('');
   return `<div class="modal-title">Guided triage</div>
-    <div class="triage-progress">Last step &mdash; drawing clarity</div>
-    <div class="triage-q">${escHtml(TRIAGE.always.prompt)}</div>
-    <div class="triage-yesno">
-      <button class="entry-btn" onclick="triageDoc(false)">Skip</button>
-      <button class="entry-btn primary" onclick="triageDoc(true)">Include</button>
-    </div>
+    <div class="triage-progress">Last step &mdash; general reviews</div>
+    <div class="triage-q">Include these good-practice reviews?</div>
+    <div class="triage-q-sub">These apply to almost any reinforced-concrete job. Leave ticked to include them, or untick any you don't want.</div>
+    <ul class="triage-gate-list">${rows}</ul>
     <div class="modal-actions">
       <button class="entry-btn" onclick="triageBack()">&larr; Back</button>
+      <button class="entry-btn primary" onclick="triageUniNext()">See results &rarr;</button>
     </div>`;
 }
-function triageDoc(yes){triage.docYes=yes;triageFinish();}
+function triageUniNext(){
+  triage.uniSel=new Set(Array.from(document.querySelectorAll('#triageOverlay .triage-uni-check')).filter(c=>c.checked).map(c=>c.value));
+  triageFinish();
+}
+// Build the set of established facts, then surface every available entry whose trigger is met.
 function triageCollect(){
-  const reason=new Map(); // id -> reason label (first reason wins for display)
-  const add=(id,why)=>{if(!reason.has(id))reason.set(id,why);};
-  TRIAGE.gates.forEach(g=>{if(triage.gateSel.has(g.id))(g.surface||[]).forEach(id=>add(id,g.label));});
-  triage.qList.forEach(q=>{if(triage.qYes.has(q.id))(q.ids||[]).forEach(id=>add(id,'Your answers'));});
-  if(triage.docYes)(TRIAGE.always.ids||[]).forEach(id=>add(id,'Drawing clarity'));
+  const satisfied=new Set();   // facts that count as present
+  const maybeFacts=new Set();  // facts established via "Not sure"
+  triage.gateSel.forEach(f=>satisfied.add(f));
+  triage.answers.forEach((val,f)=>{
+    if(val==='yes'){satisfied.add(f);}
+    else if(val==='maybe'){satisfied.add(f);maybeFacts.add(f);}
+  });
+  triage.uniSel.forEach(f=>satisfied.add(f));
+
+  // trigger = array of slots; each slot is an array of facts (OR within, AND across slots)
+  const triggerMet=trig=>Array.isArray(trig)&&trig.length>0&&trig.every(slot=>Array.isArray(slot)&&slot.some(f=>satisfied.has(f)));
+  // pick the most informative satisfied fact in a trigger to explain the suggestion
+  const reasonFor=trig=>{
+    const facts=[];
+    trig.forEach(slot=>slot.forEach(f=>{if(satisfied.has(f)&&!facts.includes(f))facts.push(f);}));
+    if(!facts.length)return '';
+    facts.sort((a,b)=>((FACT_META[b]?.pri||0)-(FACT_META[a]?.pri||0)));
+    const f=facts[0];
+    const lbl=FACT_META[f]?.label||f;
+    return maybeFacts.has(f)?`${lbl} (you weren't sure)`:lbl;
+  };
+
   const inList=new Set(getProjectList().ids);
   const entries=[],skipped=[];
-  reason.forEach((why,id)=>{
-    const r=resolveEntryId(id);
-    if(!r)return;
-    const row={id,name:r.item.name,dimName:r.dim.name,dimIcon:r.dim.icon,reason:why};
-    if(inList.has(id))skipped.push(row);else entries.push(row);
-  });
+  for(const dim of dimensions){
+    for(const item of dim.items){
+      if(!item.available||!item.data)continue;
+      const trig=item.data.triage;
+      if(!triggerMet(trig))continue;
+      const row={id:item.id,name:item.name,dimName:dim.name,dimIcon:dim.icon,reason:reasonFor(trig)};
+      if(inList.has(item.id))skipped.push(row);else entries.push(row);
+    }
+  }
   return {entries,skipped};
 }
+
 function triageFinish(){
   const {entries,skipped}=triageCollect();
   closeTriage();
