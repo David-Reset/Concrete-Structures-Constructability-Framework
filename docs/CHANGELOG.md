@@ -1,5 +1,14 @@
 # Framework changelog
 
+## 2026-06-27
+
+**Summary:** 3 added · 0 reviewed · 0 deleted
+
+### Added
+- **Non-combustible substructure and floor in bushfire areas** (Construction Methods)
+- **Fire protection cost of steel beams in concrete floors** (Construction Methods)
+- **Construction-joint necessity: where a pour must be broken, and where to place it** (Construction Methods)
+
 ## 2026-06-26
 
 **Summary:** 0 added · 1 reviewed · 0 deleted
