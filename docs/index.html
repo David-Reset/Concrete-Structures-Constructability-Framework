@@ -1832,27 +1832,27 @@ const TRIAGE={
   // answer comes from so the user isn't hunting on a floor plan.
   questions:[
     {fact:'repeated-floors',when:['slab-suspended','beam-suspended'],source:'drawings',
-     prompt:'Does the building have repeated, similar suspended floors (a structure that repeats storey to storey)?'},
+     prompt:'Do the suspended slabs repeat from level to level?'},
     {fact:'slab-level-change',when:['slab-suspended'],source:'drawings',
-     prompt:'Do the slabs include level changes — folds, steps or wet-area setdowns?'},
+     prompt:'Do the slabs have level changes — folds, steps or setdowns?'},
     {fact:'upstand-near-obstruction',when:['wall'],source:'drawings',
-     prompt:'Are there upturns, planters or upstands cast hard against an obstruction or boundary?'},
+     prompt:'Are any upstands, walls or planters cast hard against an obstruction or boundary?'},
     {fact:'deep-vertical-at-slab',when:['slab-suspended','beam-suspended','footing','wall','column','pile'],source:'drawings',
-     prompt:'Is a slab, beam or pile cap cast against or above a deep vertical element (a tall wall, column or deep pile)?'},
+     prompt:'Is a slab, beam or pile cap cast directly on top of a much deeper concrete element below it — for example a slab poured straight over the top of a deep pile, tall column or thick wall?'},
     {fact:'founded-on-rock',when:['footing','pile'],source:'geotech',
      prompt:'Are any foundations founded on, or socketed into, rock?'},
     {fact:'reactive-ground',when:['slab-on-ground','footing','pile'],source:'geotech',
      prompt:'Is the site on reactive (expansive) ground?'},
     {fact:'bushfire-area',when:['slab-on-ground','footing','pile'],source:'site',
-     prompt:'Is the site in a designated bushfire (BAL) area?'},
+     prompt:'Is the site in a bushfire (BAL) area?'},
     {fact:'access-constrained',when:['pile'],source:'site',
-     prompt:'Is the site height- or width-constrained for plant (low headroom, tight access at the pile)?'},
+     prompt:'Is site access potentially tight for machinery — low headroom for piling or narrow access overall?'},
     {fact:'choosing-vertical-system',when:['slab-suspended','beam-suspended'],source:'intent',
-     prompt:'Are you still choosing what supports the floor — reinforced concrete columns/walls vs a blockwork-and-steel combination?'},
+     prompt:'Still deciding the vertical supports for suspended concrete — concrete columns/walls, blockwork or steel?'},
     {fact:'choosing-floor-framing',when:['slab-suspended','beam-suspended'],source:'intent',
-     prompt:'Are steel beams in the concrete floor still on the table (vs concrete beams)?'},
+     prompt:'Could steel beams carry the slab instead of concrete ones?'},
     {fact:'considering-screw-piles',when:['pile'],source:'intent',
-     prompt:'Are screw piles being considered for the foundations?'},
+     prompt:'Are screw piles being considered?'},
   ],
   // STEP 3 — universal opt-ins. Apply to almost any RC job; default on.
   universal:[
@@ -1939,9 +1939,9 @@ function triageQuestionHtml(){
     <div class="triage-q">${escHtml(q.prompt)}</div>
     ${src?`<div class="triage-q-source">${escHtml(src)}</div>`:''}
     <div class="triage-yesno">
+      <button class="entry-btn${sel('yes')}" onclick="triageAnswer('yes')">Yes</button>
       <button class="entry-btn${sel('no')}" onclick="triageAnswer('no')">No</button>
       <button class="entry-btn ns${sel('maybe')}" onclick="triageAnswer('maybe')">Not sure</button>
-      <button class="entry-btn${sel('yes')||(cur===undefined?' primary':'')}" onclick="triageAnswer('yes')">Yes</button>
     </div>
     <div class="modal-actions">
       <button class="entry-btn" onclick="triageBack()">&larr; Back</button>
