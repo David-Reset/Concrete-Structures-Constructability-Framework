@@ -2323,127 +2323,6 @@
               }
             ]
           }
-        },
-        {
-          "id": "construction-joint-necessity-and-placement",
-          "name": "Construction-joint necessity: where a pour must be broken, and where to place it",
-          "available": false,
-          "data": {
-            "question": "Where a pour is too large to place and finish before the previous concrete sets, limited by supply or pump reach, thick enough to generate significant heat of hydration, long enough to accumulate restraint shrinkage, or part of a watertight element — has a buildable construction-joint location been identified and detailed at design stage, rather than left for the contractor to break the pour wherever is convenient (or to form an uncontrolled cold joint when a pour overruns)?",
-            "parameter": "Whether the design identifies and locates the construction joints that the pour's size, supply rate, section thickness, length or watertightness will require.",
-            "keywords": [
-              "construction joint",
-              "pour break",
-              "day joint",
-              "cold joint",
-              "maximum pour size",
-              "placement rate",
-              "pump reach",
-              "heat of hydration",
-              "mass concrete",
-              "thermal cracking",
-              "drying shrinkage",
-              "restraint",
-              "waterstop"
-            ],
-            "elementType": [
-              "slab",
-              "beam",
-              "wall"
-            ],
-            "triage": [
-              [
-                "slab-suspended",
-                "beam-suspended",
-                "slab-on-ground",
-                "watertight"
-              ]
-            ],
-            "constructionPhase": [
-              "design & documentation",
-              "pour/placement"
-            ],
-            "background": "A construction joint is the deliberate plane where one concrete placement stops and the next begins. Some joints are optional and chosen for programme reasons (covered separately). This entry is about the joints a pour will <strong>need</strong> for physical reasons, and whether the design has located them — or left the contractor to break the pour wherever is convenient.<br><br>Several independent drivers can force or strongly favour a break. <strong>Placement rate and pour size:</strong> a continuous pour must reach each new layer of concrete before the layer beneath takes its initial set, or an uncontrolled cold joint forms. The volume that can be placed in one operation is therefore bounded by the supply rate (truck and pump throughput) and the placing and finishing crew — there is a practical maximum pour for a given session. <strong>Pump reach and access:</strong> a single placement can be limited by how far the concrete can be pumped or barrowed on the day. <strong>Heat of hydration:</strong> thick or large-volume sections generate internal heat as the cement hydrates; the temperature difference between the hot core and cooler surface can drive early thermal cracking, so large pours may need to be split or otherwise managed. <strong>Drying shrinkage and restraint:</strong> long continuous slabs and walls accumulate shrinkage against their restraints, and planned joints control where that movement is relieved rather than leaving it to crack at random. <strong>Watertightness:</strong> where the element must stay dry, every joint is a potential leakage path, so the number and location of joints must be deliberate and detailed (see the related waterstop entry).<br><br>The constructability issue is what happens when none of this is shown. If the drawings imply a single continuous pour that the site cannot actually achieve, the contractor must break it somewhere. Left to the moment, that break may land on a poor structural plane, at a leak-prone location in a watertight element, or — worst — appear as an unplanned cold joint when a pour simply overruns. Identifying a sound joint location and referencing a construction-joint detail during design keeps the decision with the engineer, where continuity reinforcement, the joint plane, shear transfer and any waterstop can be considered properly.",
-            "thresholds": [
-              {
-                "range": "Required joints located and detailed",
-                "rating": "Best practice",
-                "color": "green",
-                "guidance": "Where the pour's size, supply rate, thickness, length or watertightness make a break necessary, the design shows a buildable construction-joint location on a sound plane and references a joint detail (continuity reinforcement; waterstop where the element is watertight; thermal/shrinkage considerations where the section is massive or long). The contractor builds to a considered joint rather than improvising one."
-              },
-              {
-                "range": "Break likely needed but none shown",
-                "rating": "Consider",
-                "color": "yellow",
-                "guidance": "The pour is plausibly beyond what can be placed in one operation, is thick or long enough for thermal or shrinkage effects, or is watertight — yet the drawings show no joint. Resolve it before issue: confirm whether a single pour is realistic and, if not, locate and detail the joint. Otherwise the break is made reactively on site, possibly in a poor or leak-prone position, or a cold joint forms uncontrolled."
-              },
-              {
-                "range": "Single pour genuinely feasible",
-                "rating": "Not applicable",
-                "color": "green",
-                "guidance": "The element is small enough to place, finish and supply in one operation, is not a massive section, is short, and is not watertight. No break is needed and none should be added — leave the contractor to pour it whole."
-              }
-            ],
-            "alternatives": [
-              {
-                "title": "Identify and detail the required construction-joint locations at design stage",
-                "description": "For pours that cannot sensibly be placed in one operation, or where thickness, length or watertightness call for control, mark a buildable joint location on a sound plane and reference a typical construction-joint detail (continuity steel, joint preparation, waterstop where wet). Place the joint where it is structurally and (where relevant) hydraulically acceptable, rather than leaving the contractor to break the pour under time pressure. Do not add joints to elements that can genuinely be poured whole."
-              }
-            ],
-            "applicability": {
-              "appliesWhere": "Reinforced-concrete pours large in plan or volume, thick (mass-concrete) sections, long continuous slabs or walls, and watertight elements — where the size, supply rate, thermal behaviour, shrinkage or leakage path means a single continuous pour is impractical or undesirable. It concerns whether a necessary break is located and detailed; it does not set the structural design of the joint itself, nor crack-control spacing, which are separate matters. Small, thin, short, non-watertight elements that can be poured whole are out of scope.",
-              "checks": [
-                {
-                  "title": "Estimate the practical maximum pour",
-                  "description": "From the likely supply rate (trucks per hour, pump throughput) and the placing/finishing crew, estimate the volume that can be placed before the first concrete sets. Compare with the element's volume to see whether one continuous pour is realistic."
-                },
-                {
-                  "title": "Pump reach and access",
-                  "description": "Check that the whole element can actually be reached in one placement with the plant likely on site. Limited reach or access can force a break regardless of volume."
-                },
-                {
-                  "title": "Thick / mass sections",
-                  "description": "For thick sections, consider heat of hydration and the core-to-surface temperature difference. Large pours may need splitting or other thermal-control measures to avoid early thermal cracking."
-                },
-                {
-                  "title": "Long continuous elements",
-                  "description": "For long slabs or walls, consider restraint and drying shrinkage. Planned joints relieve movement at chosen locations rather than letting cracks form at random."
-                },
-                {
-                  "title": "Watertightness",
-                  "description": "Where the element must stay dry, every joint is a potential leak path. Minimise and deliberately locate joints, and detail a waterstop. This is the case where joint location most clearly matters."
-                }
-              ],
-              "note": "Use the rating as a design-stage prompt: identify the breaks the pour will physically need and locate them well — and avoid adding joints to elements that can be poured whole."
-            },
-            "evidence": "<strong>DRAFT — evidence to be completed and verified.</strong> The mechanisms below are standard concrete-construction knowledge; the specific standards, clauses and any figures must be confirmed by a maintainer before this entry is published.<br><br><strong>Pour size and cold joints.</strong> A continuous placement must overlay each preceding layer before it takes initial set, or an uncontrolled cold joint results; the achievable pour size is bounded by supply and placing rate. (Reference: concrete placing guidance / AS 3600 and concrete-institute placement practice — to be cited.)<br><br><strong>Construction joints.</strong> Location, preparation, continuity reinforcement and shear transfer at construction joints are governed by the concrete structures standard and recommended practice. (Reference: AS 3600 construction-joint provisions — clause to be confirmed.)<br><br><strong>Heat of hydration / mass concrete.</strong> Thick sections develop internal temperature gradients that can cause early thermal cracking; guidance exists on section thickness thresholds and thermal control. (Reference: CIA / CCAA mass-concrete guidance — to be cited.)<br><br><strong>Drying shrinkage and restraint.</strong> Long restrained elements accumulate shrinkage; planned joints control crack location. (Reference: CIA shrinkage/crack-control guidance — to be cited.)<br><br><strong>Watertight joints.</strong> Each joint in a watertight element is a leakage path requiring deliberate location and a waterstop (see related entry). <br><br><strong>Scope.</strong> This entry prompts the design to locate physically necessary breaks; it does not replace the detailed design of the joint, thermal-control modelling, or crack-control spacing.",
-            "dateAdded": "2026-06-27",
-            "dateReviewed": "",
-            "location": {
-              "country": "Australia",
-              "state": "NSW"
-            },
-            "supportingImages": [],
-            "evidenceSupport": {
-              "level": "low",
-              "summary": "DRAFT — the drivers (pour size/rate, heat of hydration, shrinkage, watertightness) are well-established concrete-construction mechanisms, but the threshold bands are provisional judgement and no specific standards, clauses or measured figures have yet been cited. Needs evidence added and verified before publishing."
-            },
-            "relatedEntries": [
-              {
-                "id": "optional-pour-breaks-to-keep-concrete-trades-flowing",
-                "note": "Companion entry: that one covers optional breaks chosen to keep trades flowing on repetitive work; this one covers breaks made necessary by the pour's size, thermal behaviour, length or watertightness."
-              },
-              {
-                "id": "non-moving-construction-joint-waterproofing",
-                "note": "Where a required break falls in a watertight element, that entry covers detailing the joint as a waterproofing system."
-              },
-              {
-                "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
-                "note": "Both concern how the concrete is staged and where joints and sequence are set so the pour is controlled."
-              }
-            ],
-            "examples": []
-          }
         }
       ]
     },
@@ -5768,6 +5647,157 @@
               }
             ]
           }
+        },
+        {
+          "id": "temporary-construction-loading-of-permanent-works",
+          "name": "Temporary loading of permanent works during construction",
+          "available": true,
+          "data": {
+            "question": "Has the design resolved the temporary construction loads the permanent works must carry before completion &mdash; heavy materials, plant, or backpropping from above?",
+            "parameter": "Whether foreseeable construction-stage loading on the permanent works is resolved or flagged.",
+            "keywords": [
+              "backprop",
+              "reshoring",
+              "reshore",
+              "shoring",
+              "immature concrete",
+              "material storage",
+              "forklift",
+              "crane mat",
+              "maturity testing",
+              "pull-out test",
+              "ACI 347",
+              "temporary works engineer",
+              "construction live load",
+              "construction platform"
+            ],
+            "elementType": [
+              "slab",
+              "frame"
+            ],
+            "triage": [
+              [
+                "universal-site-safety"
+              ],
+              [
+                "slab-suspended"
+              ]
+            ],
+            "constructionPhase": [
+              "sequencing",
+              "pour/placement",
+              "formwork"
+            ],
+            "background": "A structure designed to carry its finished loads is not necessarily ready to carry what construction puts on it while it is still being built. The loads a slab or frame is checked against are the loads of the completed building &mdash; spread fairly evenly, and set by how the building will eventually be used. What happens during construction can be very different: heavy materials stacked in one place, machinery moving or standing on a slab, or &mdash; in multi-storey concrete work &mdash; the weight of freshly poured floors above being carried down through backprops onto slabs that may only be a few days old. These temporary loads can be heavier in one spot, and arrive far earlier, than anything the finished design allowed for.<br><br>The gap is widest on floors designed for light loads. A typical home or apartment floor carries little spare capacity, because the loads it will see in normal use are low &mdash; yet that same slim margin has to support wet concrete, formwork and stacked materials during construction. Early-age construction loading has been identified as potentially the most significant load a multi-storey concrete structure ever sees, so on lightly loaded floors the construction stage can be the worst case the slab faces, not the finished building.<br><br>Backpropping is where this most often slips through, because it is widely treated as the contractor&rsquo;s business. It is not purely a site matter: a backpropping arrangement is a real load passing through the permanent structure, and how it is set up &mdash; how many levels of props, and how stiff &mdash; decides which slabs carry what, and whether a young slab below is overloaded. The permanent-works designer does not have to design the props, but cannot treat the load passing through them as someone else&rsquo;s problem. The same goes for machinery standing or running on a basement lid or podium: wherever the permanent works are loaded before they are finished, or before their concrete has gained strength, the structure on site is not yet the structure shown on the drawings.",
+            "thresholds": [
+              {
+                "range": "Designed for or flagged",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "The construction-stage condition has been resolved or made visible. Either a construction load case is designed in where the temporary load is known and accepted by the designer &mdash; for example a basement lid or podium a crane or heavy machine must cross &mdash; or the documents flag that foreseeable heavy temporary loading (stacked materials, plant, or backpropped load from floors above) must be assessed, backpropped and strength-confirmed before it is applied, by the contractor or a temporary-works engineer. Where no significant temporary loading is foreseeable &mdash; loads stay on the ground or on separately designed temporary works &mdash; no special warning is needed, but the conclusion is reached rather than assumed."
+              },
+              {
+                "range": "Ordinary loading only",
+                "rating": "Consider",
+                "color": "yellow",
+                "guidance": "Only ordinary construction activity is expected &mdash; workers, hand tools, normal access &mdash; with no concentrated plant, stockpiles or backpropped loads foreseeable. Avoid loading the drawings with generic warnings for this. But before assuming the slab is fine, check whether it is suspended, early-age, over a basement, a transfer slab, or part of an incomplete load path, any of which can turn ordinary-looking loading into a construction-stage concern."
+              },
+              {
+                "range": "Heavy load, unflagged",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "The likely construction sequence will place concentrated plant, stacked materials or backpropped loads from above on the permanent works, but the documents are silent on whether the structure can carry them in its construction-stage condition, or whether backpropping or a temporary-works assessment is required. The dependency should be resolved and communicated before the design is issued."
+              },
+              {
+                "range": "Loaded before ready",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "A heavy temporary load is likely to be applied to an early-age slab, before its concrete strength is confirmed, or on a load path that is not yet complete &mdash; with no construction load case, backpropping requirement, strength hold point or assessment flagged. This is the condition most associated with overload, excessive deflection or cracking, and in the worst case collapse of a partly built structure, and it should be resolved before construction proceeds."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies where the permanent works are likely to be loaded during construction before they are acting as the finished structure &mdash; suspended slabs, podium slabs, basement lids, transfer slabs, and part-built concrete frames. It is most relevant on multi-storey concrete work where backpropping or reshoring is expected, on low-live-load floors such as residential, and where constrained site access makes the slab the obvious working and storage platform. It does not ask the designer to design the contractor&rsquo;s storage plan, set stockpile limits, or replace the temporary-works engineer; it is a design-stage prompt to identify and communicate a foreseeable construction-stage load condition.",
+              "checks": [
+                {
+                  "title": "Is the slab loaded before it&rsquo;s complete?",
+                  "description": "Distinguish the finished load path from each construction stage. A slab adequate once the frame and its supports are complete may be neither while it is being built nor while floors above are propped onto it."
+                },
+                {
+                  "title": "Is the concrete early-age?",
+                  "description": "Where loading is likely before the concrete has gained strength, the control is in-place strength reached, not age in days. Strength gain depends on mix, temperature, curing and member size, so a fixed waiting period is not a safe proxy."
+                },
+                {
+                  "title": "Is the load concentrated or eccentric?",
+                  "description": "A wheel, a machine leg or a concentrated stack of materials is not the distributed final-use load. Check whether the real temporary load is a point or patch load away from the stiff parts of the load path."
+                },
+                {
+                  "title": "Is backpropping carrying load through the structure?",
+                  "description": "Treat the reshoring/backpropping arrangement as a load path through the permanent works, and confirm the slabs receiving the reactions &mdash; often the youngest &mdash; can take them."
+                }
+              ]
+            },
+            "alternatives": [
+              {
+                "title": "Design in the loads you genuinely own",
+                "description": "Where a specific heavy temporary load is known and unavoidable (a crane or heavy machine on a basement lid or podium, a pump or material-hoist location), design the element for that construction load case as well as its final-use case. This is designing for a load you accept, not certifying someone else&rsquo;s stockpile."
+              },
+              {
+                "title": "Point heavy loading at the stiff load path, not the spans",
+                "description": "Where stockpiling or plant on a suspended slab is foreseeable, indicate that heavy temporary loads belong over or near columns, walls and beam lines &mdash; where the load path is short and direct &mdash; rather than mid-span. Give the load-path logic; leave the magnitude to the party imposing it."
+              },
+              {
+                "title": "Require loadable zones to stay backpropped",
+                "description": "Where the slab may be used as a platform, require that those areas remain backpropped or otherwise supported until the permanent load path is complete. Backpropping here guards serviceability as much as strength: an early-age slab can deflect and crack under load well before it is at risk of failure."
+              },
+              {
+                "title": "Own the load path through the props",
+                "description": "State any backpropping or reshoring the design relies on, or require a scheme by a competent temporary-works engineer, and confirm the slabs receiving the reactions can take them. The designer need not design the props, but does need the load path through them to work."
+              },
+              {
+                "title": "Require load-spreading for point loads",
+                "description": "Where a wheel, machine leg or concentrated stack is the problem, call for load-spreading &mdash; mats, a grillage, spreader panels &mdash; or restrict plant travel to band-beam or beam lines, to turn a point load into a patch the slab can accept."
+              },
+              {
+                "title": "Gate early loading by strength, not time",
+                "description": "Where loading before full strength is likely, require in-place strength confirmation (field-cured cylinders, maturity or pull-out) before the temporary load is applied, as a hold point keyed to strength reached rather than a fixed number of days."
+              },
+              {
+                "title": "Flag the requirement; don&rsquo;t certify the load",
+                "description": "Where temporary use is foreseeable but unresolved, add a specific note &mdash; tied to the element or stage, not a generic &lsquo;contractor to verify&rsquo; &mdash; requiring the contractor or temporary-works engineer to confirm capacity, backpropping, load path and strength before loading. The designer flags the need and the conditions; the party imposing the load owns its magnitude."
+              }
+            ],
+            "evidence": "This entry rests on temporary-works guidance, construction-loading research and field measurement, applied as a categorical design-stage prompt. The bands are a judged application of that evidence, not measured thresholds.<br><br><strong>Backpropping is a permanent-works concern, not only a contractor one.</strong> The IStructE Temporary Works Toolkit treats backpropping of concrete slabs during construction as commonly misunderstood and wrongly dismissed by permanent-works designers as a contractor matter, when it is a foreseeable load transferred through the permanent structure whose distribution the designer needs to understand. This is the basis for placing the recognition step in the designer&rsquo;s lane.<br><br><strong>The construction case can govern.</strong> Early-age construction loading has been identified, in the St George Wharf work reported through the Concrete Centre, as potentially the most significant load a multi-storey concrete structure experiences, with low-live-load residential floors carrying little spare capacity for the freshly cast concrete they must support during construction &mdash; supporting the point that final-use loads are not a safe proxy for the temporary case.<br><br><strong>The loads are real and measured.</strong> The US National Bureau of Standards field study of multistorey concrete construction found the critical construction live loads came not from workers but from stored materials and equipment placed shortly after casting, including a concentrated equipment load of roughly 1.6 tonnes &mdash; direct evidence that stacked materials and plant, not occupancy live load, drive the temporary case.<br><br><strong>The response is an engineering one, not a rule of thumb.</strong> ACI 347.2R, summarised by Stivaros, frames shoring and reshoring as requiring engineering analysis of construction-load distribution and early-age capacity, with the controls being to reduce the load through the shoring arrangement, change the mix, curing or strength development, or lengthen the construction cycle &mdash; and warns that construction load should not exceed the capacity of the partially completed structure. This underpins the state-based, not time-based, treatment.<br><br><strong>The duty to identify and communicate sits with the designer.</strong> The NSW Safe Design of Structures Code of Practice places construction-stage risks within the designer&rsquo;s duty, and its safety-in-design checklist expressly lists mobile-crane loads on slabs and crane loading and unloading &mdash; confirming that plant loads on permanent works are already a recognised safe-design consideration, not a novel claim.<br><br>Taken together, the evidence supports a categorical, state-based prompt: identify foreseeable construction-stage loading and resolve or flag it, rather than set universal load or age thresholds, which depend on the structure, the concrete strength, the load path and the construction sequence. It does not ask the permanent designer to design the temporary works or certify the contractor&rsquo;s loads.<br><br><strong>References</strong><br>IStructE. <em>Temporary Works Toolkit, Part 4: An introduction to backpropping of flat slabs</em>; <em>Part 6: Backpropping of flat slabs &mdash; design issues and worked examples</em>.<br>Concrete Centre / BRE. <em>Early-age construction loading</em> (St George Wharf).<br>National Bureau of Standards. <em>Evaluation of construction loads in multistory concrete buildings</em> (BSS 146).<br>Stivaros, P. C. (2006). <em>Shoring and Reshoring for Multistory Concrete Buildings</em>. Concrete International (ACI 347.2R).<br>SafeWork NSW. <em>Safe Design of Structures: Code of Practice</em>.",
+            "examples": [],
+            "dateAdded": "2026-06-29",
+            "dateReviewed": "2026-06-29",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "supportingImages": [],
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Supported by temporary-works guidance that places backpropping in the permanent designer&rsquo;s lane (IStructE), construction-loading research showing the early-age case can govern (Concrete Centre / St George Wharf), field measurement of real construction loads from stored materials and equipment (NBS BSS 146), shoring and reshoring engineering guidance (ACI 347.2R via Stivaros), and a safe-design duty that already names plant loads on slabs (SafeWork NSW). The call to identify and resolve or flag foreseeable construction-stage loading is well backed; the absence of universal numeric thresholds is deliberate, because the safe temporary load depends on project-specific strength, load path, backpropping and sequence. Set at medium for consistency with the related temporary-stability entry and because the most on-point research is largely overseas (UK/US) rather than local."
+            },
+            "relatedEntries": [
+              {
+                "id": "temporary-stability-of-retained-or-part-built-structure",
+                "note": "The gravity-loading counterpart: that entry asks whether the element stays standing when restraint is removed; this one asks whether it can carry the load construction puts on it."
+              },
+              {
+                "id": "curing-shortfall-in-suspended-slabs-and-beams",
+                "note": "Both turn on early-age concrete strength &mdash; curing shortfall is the slab never reaching the grade assumed; this is the slab being loaded before it has reached strength yet."
+              },
+              {
+                "id": "formwork-and-falsework-complexity",
+                "note": "Backpropping and reshoring are part of the temporary support this entry relies on."
+              },
+              {
+                "id": "conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors",
+                "note": "Formwork cycling, early stripping and reshoring change the construction-stage load on each repeated floor."
+              }
+            ]
+          }
         }
       ]
     },
@@ -6676,7 +6706,8 @@
     "fragment|update|waffle-pod-depth-availability|5hhg5p",
     "fragment|entry|non-combustible-substructure-in-bushfire-areas|17by3u5",
     "fragment|entry|fire-protection-cost-of-steel-beams-in-concrete-floors|rnpo27",
-    "fragment|entry|construction-joint-necessity-and-placement|u5fbii"
+    "fragment|entry|construction-joint-necessity-and-placement|u5fbii",
+    "fragment|entry|temporary-construction-loading-of-permanent-works|1scpwd6"
   ],
   "_rejected": [],
   "_reconsider": [
