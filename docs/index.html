@@ -1832,7 +1832,7 @@ const TRIAGE={
   // answer comes from so the user isn't hunting on a floor plan.
   questions:[
     {fact:'construction-stage-loading',when:['slab-suspended','beam-suspended'],source:'intent',
-     prompt:'While the building is going up, will any suspended slab carry heavy temporary loads before it’s finished — stacked materials, machinery standing on it, or the weight of newly poured floors above carried down through props?'},
+     prompt:'While the building is going up, will any suspended slab carry heavy temporary loads — stacked materials, machinery standing on it?'},
     {fact:'repeated-floors',when:['slab-suspended','beam-suspended'],source:'drawings',
      prompt:'Are the suspended concrete floors largely the same layout from one level to the next?'},
     {fact:'slab-level-change',when:['slab-suspended'],source:'drawings',
