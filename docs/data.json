@@ -6660,6 +6660,220 @@
       "note": "Suggested entries, suggested changes and comments do not appear automatically. They are reviewed and de-identified before being added to the framework."
     }
   },
+  "triageConfig": {
+    "intro": "Answer a few quick questions about the job — most come straight off the architect's drawings, a couple from your geotech or what you're still deciding. We'll gather the entries worth reviewing; you choose which to add.",
+    "sourceText": {
+      "drawings": "You can read this from the drawings.",
+      "geotech": "From your geotechnical report or site info.",
+      "site": "From the site or project brief.",
+      "intent": "About a decision you may still be making."
+    },
+    "gates": [
+      {
+        "fact": "slab-suspended",
+        "label": "Suspended slabs",
+        "hint": "Suspended floors, transfer slabs — incl. ground floors carried on piles",
+        "reason": "Suspended slabs"
+      },
+      {
+        "fact": "beam-suspended",
+        "label": "Suspended beams",
+        "hint": "Beams / band beams in a suspended floor, incl. beams spanning between piles",
+        "reason": "Suspended beams"
+      },
+      {
+        "fact": "slab-on-ground",
+        "label": "Ground floor cast on the ground",
+        "hint": "Ground-bearing slabs — raft or waffle pod",
+        "reason": "Ground-bearing slab"
+      },
+      {
+        "fact": "footing",
+        "label": "Footings or ground beams",
+        "hint": "Pad/strip footings, pile caps, ground-bearing ground beams",
+        "reason": "Footings / ground beams"
+      },
+      {
+        "fact": "wall",
+        "label": "Concrete walls",
+        "hint": "Core walls, retaining walls, blade walls, upstands",
+        "reason": "Concrete walls"
+      },
+      {
+        "fact": "column",
+        "label": "Concrete columns",
+        "hint": "Formed concrete columns",
+        "reason": "Concrete columns"
+      },
+      {
+        "fact": "pile",
+        "label": "Piles, piers or shafts",
+        "hint": "Bored, driven or screw piles; caissons",
+        "reason": "Piles / piers"
+      },
+      {
+        "fact": "exposed-concrete",
+        "label": "Exposed / architectural concrete",
+        "hint": "Off-form faces, feature corners or soffits on show",
+        "kind": "condition",
+        "reason": "Exposed concrete"
+      },
+      {
+        "fact": "watertight",
+        "label": "Basement or watertight structure",
+        "hint": "Walls, tanks or wet areas that must stay dry",
+        "kind": "condition",
+        "reason": "Watertight structure"
+      }
+    ],
+    "questions": [
+      {
+        "fact": "construction-stage-loading",
+        "when": [
+          "slab-suspended",
+          "beam-suspended"
+        ],
+        "source": "intent",
+        "prompt": "While the building is going up, will any suspended slab carry heavy temporary loads before it&rsquo;s finished &mdash; stacked materials, machinery standing on it, or the weight of newly poured floors above carried down through props?",
+        "reason": "Construction-stage loading"
+      },
+      {
+        "fact": "repeated-floors",
+        "when": [
+          "slab-suspended",
+          "beam-suspended"
+        ],
+        "source": "drawings",
+        "prompt": "Are the suspended concrete floors largely the same layout from one level to the next?",
+        "reason": "Repeated floors"
+      },
+      {
+        "fact": "slab-level-change",
+        "when": [
+          "slab-suspended"
+        ],
+        "source": "drawings",
+        "prompt": "Do the slabs have level changes — folds, steps or setdowns?",
+        "reason": "Slab level changes"
+      },
+      {
+        "fact": "upstand-near-obstruction",
+        "when": [
+          "wall"
+        ],
+        "source": "drawings",
+        "prompt": "Are any upstands, walls or planters cast hard against an obstruction or boundary?",
+        "reason": "Upstand near an obstruction"
+      },
+      {
+        "fact": "deep-vertical-at-slab",
+        "when": [
+          "slab-suspended",
+          "beam-suspended",
+          "footing",
+          "wall",
+          "column",
+          "pile"
+        ],
+        "source": "drawings",
+        "prompt": "Is a slab, beam or pile cap cast directly on top of a much deeper concrete element below it — for example a slab poured straight over the top of a deep pile, tall column or thick wall?",
+        "reason": "Deep vertical element at a slab"
+      },
+      {
+        "fact": "founded-on-rock",
+        "when": [
+          "footing",
+          "pile"
+        ],
+        "source": "geotech",
+        "prompt": "Are any foundations founded on, or socketed into, rock?",
+        "reason": "Founded on rock"
+      },
+      {
+        "fact": "reactive-ground",
+        "when": [
+          "slab-on-ground",
+          "footing",
+          "pile"
+        ],
+        "source": "geotech",
+        "prompt": "Is the site on reactive (expansive) ground?",
+        "reason": "Reactive ground"
+      },
+      {
+        "fact": "bushfire-area",
+        "when": [
+          "slab-on-ground",
+          "footing",
+          "pile"
+        ],
+        "source": "site",
+        "prompt": "Is the site in a bushfire (BAL) area?",
+        "reason": "Bushfire area"
+      },
+      {
+        "fact": "access-constrained",
+        "when": [
+          "pile"
+        ],
+        "source": "site",
+        "prompt": "Is site access potentially tight for machinery — low headroom for piling or narrow access overall?",
+        "reason": "Constrained site access"
+      },
+      {
+        "fact": "choosing-vertical-system",
+        "when": [
+          "slab-suspended",
+          "beam-suspended"
+        ],
+        "source": "intent",
+        "prompt": "Still deciding the vertical supports for suspended concrete — concrete columns/walls, blockwork or steel?",
+        "reason": "Choosing the vertical system"
+      },
+      {
+        "fact": "choosing-floor-framing",
+        "when": [
+          "slab-suspended",
+          "beam-suspended"
+        ],
+        "source": "intent",
+        "prompt": "Could steel beams carry the slab instead of concrete ones?",
+        "reason": "Choosing the floor framing"
+      },
+      {
+        "fact": "considering-screw-piles",
+        "when": [
+          "pile"
+        ],
+        "source": "intent",
+        "prompt": "Are screw piles being considered?",
+        "reason": "Considering screw piles"
+      }
+    ],
+    "universal": [
+      {
+        "fact": "universal-drawing-clarity",
+        "label": "Drawing-clarity reviews",
+        "hint": "Reinforcement callouts, schedule references, large-bar callouts, overview views",
+        "default": false,
+        "reason": "Drawing clarity"
+      },
+      {
+        "fact": "universal-buildability",
+        "label": "General buildability good-practice",
+        "hint": "Formwork & falsework simplicity, repetition / learning curve",
+        "default": false,
+        "reason": "Buildability good-practice"
+      },
+      {
+        "fact": "universal-site-safety",
+        "label": "Site & temporary-stability review",
+        "hint": "Retained, existing or part-built structure during construction",
+        "default": false,
+        "reason": "Site & temporary stability"
+      }
+    ]
+  },
   "_processed": [
     "fragment|entry|rock-sockets-with-excavator-mounted-augers|3iehqn",
     "fragment|entry|rock-sockets-with-excavator-mounted-augers-2|1wz6lky",
