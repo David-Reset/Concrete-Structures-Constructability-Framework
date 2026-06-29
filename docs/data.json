@@ -6734,7 +6734,7 @@
           "beam-suspended"
         ],
         "source": "intent",
-        "prompt": "While the building is going up, will any suspended slab carry heavy temporary loads before it&rsquo;s finished &mdash; stacked materials, machinery standing on it, or the weight of newly poured floors above carried down through props?",
+        "prompt": "While the building is going up, will any suspended slab carry heavy temporary loads — stacked materials, machinery standing on it?",
         "reason": "Construction-stage loading"
       },
       {
