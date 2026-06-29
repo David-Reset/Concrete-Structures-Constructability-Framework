@@ -1831,6 +1831,8 @@ const TRIAGE={
   // surfaces the entry — the point is to prompt consideration. `source` tags where the
   // answer comes from so the user isn't hunting on a floor plan.
   questions:[
+    {fact:'construction-stage-loading',when:['slab-suspended','beam-suspended'],source:'intent',
+     prompt:'While the building is going up, will any suspended slab carry heavy temporary loads before it&rsquo;s finished &mdash; stacked materials, machinery standing on it, or the weight of newly poured floors above carried down through props?'},
     {fact:'repeated-floors',when:['slab-suspended','beam-suspended'],source:'drawings',
      prompt:'Are the suspended concrete floors largely the same layout from one level to the next?'},
     {fact:'slab-level-change',when:['slab-suspended'],source:'drawings',
@@ -1867,7 +1869,7 @@ const TRIAGE={
 const FACT_META=(()=>{
   const m={};
   const P={'slab-suspended':'Suspended slabs','beam-suspended':'Suspended beams','slab-on-ground':'Ground-bearing slab','footing':'Footings / ground beams','wall':'Concrete walls','column':'Concrete columns','pile':'Piles / piers'};
-  const C={'exposed-concrete':'Exposed concrete','watertight':'Watertight structure','repeated-floors':'Repeated floors','slab-level-change':'Slab level changes','upstand-near-obstruction':'Upstand near an obstruction','deep-vertical-at-slab':'Deep vertical element at a slab','founded-on-rock':'Founded on rock','reactive-ground':'Reactive ground','bushfire-area':'Bushfire area','access-constrained':'Constrained site access'};
+  const C={'exposed-concrete':'Exposed concrete','watertight':'Watertight structure','repeated-floors':'Repeated floors','slab-level-change':'Slab level changes','upstand-near-obstruction':'Upstand near an obstruction','deep-vertical-at-slab':'Deep vertical element at a slab','founded-on-rock':'Founded on rock','reactive-ground':'Reactive ground','bushfire-area':'Bushfire area','access-constrained':'Constrained site access','construction-stage-loading':'Construction-stage loading'};
   const I={'choosing-vertical-system':'Choosing the vertical system','choosing-floor-framing':'Choosing the floor framing','considering-screw-piles':'Considering screw piles'};
   const U={'universal-drawing-clarity':'Drawing clarity','universal-buildability':'Buildability good-practice','universal-site-safety':'Site & temporary stability'};
   for(const k in P)m[k]={label:P[k],kind:'presence',pri:1};
