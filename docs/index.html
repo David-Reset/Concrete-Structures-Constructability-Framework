@@ -1811,7 +1811,7 @@ function goEditEntry(dimId,id){const it=lookupItem(dimId,id);if(!it)return;windo
 // in triage-questions.md. Only entry IDs that exist and are `available` are ever surfaced;
 // unknown IDs are silently ignored, so this block is safe to edit freely. To change the
 // questionnaire you only edit TRIAGE below — the engine underneath needs no changes.
-const TRIAGE={
+const DEFAULT_TRIAGE={
   intro:"Answer a few quick questions about the job — most come straight off the architect's drawings, a couple from your geotech or what you're still deciding. We'll gather the entries worth reviewing; you choose which to add.",
   // STEP 1 — gates. Each establishes a "fact". Presence facts (elements) plus the two
   // glance-legible condition facts (exposed, watertight). Edit labels/hints freely.
@@ -1832,7 +1832,7 @@ const TRIAGE={
   // answer comes from so the user isn't hunting on a floor plan.
   questions:[
     {fact:'construction-stage-loading',when:['slab-suspended','beam-suspended'],source:'intent',
-     prompt:'While the building is going up, will any suspended slab carry heavy temporary loads — stacked materials, machinery standing on it?'},
+     prompt:'While the building is going up, will any suspended slab carry heavy temporary loads before it&rsquo;s finished &mdash; stacked materials, machinery standing on it, or the weight of newly poured floors above carried down through props?'},
     {fact:'repeated-floors',when:['slab-suspended','beam-suspended'],source:'drawings',
      prompt:'Are the suspended concrete floors largely the same layout from one level to the next?'},
     {fact:'slab-level-change',when:['slab-suspended'],source:'drawings',
@@ -1866,7 +1866,7 @@ const TRIAGE={
 };
 
 // Human labels + kind for every fact, used to explain why an entry surfaced.
-const FACT_META=(()=>{
+const DEFAULT_FACT_META=(()=>{
   const m={};
   const P={'slab-suspended':'Suspended slabs','beam-suspended':'Suspended beams','slab-on-ground':'Ground-bearing slab','footing':'Footings / ground beams','wall':'Concrete walls','column':'Concrete columns','pile':'Piles / piers'};
   const C={'exposed-concrete':'Exposed concrete','watertight':'Watertight structure','repeated-floors':'Repeated floors','slab-level-change':'Slab level changes','upstand-near-obstruction':'Upstand near an obstruction','deep-vertical-at-slab':'Deep vertical element at a slab','founded-on-rock':'Founded on rock','reactive-ground':'Reactive ground','bushfire-area':'Bushfire area','access-constrained':'Constrained site access','construction-stage-loading':'Construction-stage loading'};
@@ -1878,6 +1878,21 @@ const FACT_META=(()=>{
   for(const k in U)m[k]={label:U[k],kind:'universal',pri:2};
   return m;
 })();
+
+// Derive fact metadata (label + priority) from a triage config, so the questionnaire
+// is fully data-driven: adding a question in data.json's triageConfig needs no code change.
+function buildFactMeta(T){
+  const m={};
+  (T.gates||[]).forEach(g=>{const cond=g.kind==='condition';m[g.fact]={label:g.reason||g.label||g.fact,kind:cond?'condition':'presence',pri:cond?3:1};});
+  (T.questions||[]).forEach(q=>{m[q.fact]={label:q.reason||(q.prompt||'').replace(/<[^>]+>/g,'').replace(/&[a-z]+;/g,' ').trim()||q.fact,kind:q.source==='intent'?'intent':'condition',pri:3};});
+  (T.universal||[]).forEach(u=>{m[u.fact]={label:u.reason||u.label||u.fact,kind:'universal',pri:2};});
+  return m;
+}
+
+// TRIAGE / FACT_META are loaded from data.json's triageConfig at startup; the DEFAULT_*
+// above are only a fallback if an older data.json without triageConfig is ever loaded.
+let TRIAGE=DEFAULT_TRIAGE;
+let FACT_META=DEFAULT_FACT_META;
 
 let triage=null;
 
@@ -2106,6 +2121,7 @@ async function loadData(){
   try{
     const resp=await fetch('data.json');
     const data=await resp.json();
+    if(data.triageConfig){TRIAGE=data.triageConfig;FACT_META=buildFactMeta(TRIAGE);}
     dimensions=data.dimensions;
     guide=data.guide||null;
     // Safety net: guarantee every entry has a unique id even if one was omitted in data.json.
