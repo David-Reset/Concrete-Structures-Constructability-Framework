@@ -872,6 +872,7 @@ const SEARCH_ENT={'&nbsp;':' ','&amp;':'&','&lt;':'<','&gt;':'>','&mdash;':'\u20
 function decodeEnt(s){return (s||'').replace(/&[a-z]+;|&#\d+;/g,m=>SEARCH_ENT[m]||m);}
 function cleanText(s){return decodeEnt(stripTags(s)).replace(/\s+/g,' ').trim();}
 function escHtml(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function safeText(s){return escHtml(decodeEnt(String(s||'')));}
 function searchRegionOptions(){
   const locs=new Map();
   dimensions.forEach(dim=>dim.items.forEach(it=>{
@@ -1832,7 +1833,7 @@ const DEFAULT_TRIAGE={
   // answer comes from so the user isn't hunting on a floor plan.
   questions:[
     {fact:'construction-stage-loading',when:['slab-suspended','beam-suspended'],source:'intent',
-     prompt:'While the building is going up, will any suspended slab carry heavy temporary loads before it&rsquo;s finished &mdash; stacked materials, machinery standing on it, or the weight of newly poured floors above carried down through props?'},
+     prompt:'While the building is going up, will any suspended slab carry heavy temporary loads — stacked materials, machinery standing on it?'},
     {fact:'repeated-floors',when:['slab-suspended','beam-suspended'],source:'drawings',
      prompt:'Are the suspended concrete floors largely the same layout from one level to the next?'},
     {fact:'slab-level-change',when:['slab-suspended'],source:'drawings',
@@ -1921,7 +1922,7 @@ function triageInner(){
 function triageGatesHtml(){
   const rows=TRIAGE.gates.map(g=>`<label class="triage-gate-row">
     <input type="checkbox" class="triage-gate-check" value="${g.fact}" ${triage.gateSel.has(g.fact)?'checked':''}>
-    <span><span class="triage-gate-label">${escHtml(g.label)}</span>${g.hint?`<span class="triage-gate-hint">${escHtml(g.hint)}</span>`:''}</span>
+    <span><span class="triage-gate-label">${safeText(g.label)}</span>${g.hint?`<span class="triage-gate-hint">${safeText(g.hint)}</span>`:''}</span>
   </label>`).join('');
   return `<div class="modal-title">Guided triage</div>
     <div class="ra-intro">${escHtml(TRIAGE.intro)}</div>
@@ -1953,8 +1954,8 @@ function triageQuestionHtml(){
   const sel=v=>cur===v?' primary':'';
   return `<div class="modal-title">Guided triage</div>
     <div class="triage-progress">Question ${triage.qIdx+1} of ${total}</div>
-    <div class="triage-q">${escHtml(q.prompt)}</div>
-    ${src?`<div class="triage-q-source">${escHtml(src)}</div>`:''}
+    <div class="triage-q">${safeText(q.prompt)}</div>
+    ${src?`<div class="triage-q-source">${safeText(src)}</div>`:''}
     <div class="triage-yesno">
       <button class="entry-btn${sel('yes')}" onclick="triageAnswer('yes')">Yes</button>
       <button class="entry-btn${sel('no')}" onclick="triageAnswer('no')">No</button>
@@ -1987,7 +1988,7 @@ function triageUniversalHtml(){
   const allOn=TRIAGE.universal.length>0&&TRIAGE.universal.every(u=>triage.uniSel.has(u.fact));
   const rows=TRIAGE.universal.map(u=>`<label class="triage-gate-row">
     <input type="checkbox" class="triage-uni-check" value="${u.fact}" ${triage.uniSel.has(u.fact)?'checked':''} onchange="triageUniSync()">
-    <span><span class="triage-gate-label">${escHtml(u.label)}</span>${u.hint?`<span class="triage-gate-hint">${escHtml(u.hint)}</span>`:''}</span>
+    <span><span class="triage-gate-label">${safeText(u.label)}</span>${u.hint?`<span class="triage-gate-hint">${safeText(u.hint)}</span>`:''}</span>
   </label>`).join('');
   return `<div class="modal-title">Guided triage</div>
     <div class="triage-progress">Last step &mdash; general reviews</div>
@@ -2074,9 +2075,9 @@ function showTriageResults(entries,skipped){
     const rows=entries.map(e=>`<label class="ra-row">
       <input type="checkbox" class="tr-check" value="${e.id}" checked onchange="updateTriageCount()">
       <span class="ra-text">
-        <span class="ra-name">${escHtml(e.name)}</span>
-        <span class="ra-dim"><span class="ico">${e.dimIcon||''}</span>${escHtml(e.dimName)}</span>
-        ${e.reason?`<span class="ra-note">Suggested by: ${escHtml(e.reason)}</span>`:''}
+        <span class="ra-name">${safeText(e.name)}</span>
+        <span class="ra-dim"><span class="ico">${e.dimIcon||''}</span>${safeText(e.dimName)}</span>
+        ${e.reason?`<span class="ra-note">Suggested by: ${safeText(e.reason)}</span>`:''}
       </span>
     </label>`).join('');
     const skipNote=skipped.length?`<div class="triage-q-sub" style="margin-top:10px">${skipped.length} suggested ${skipped.length===1?'entry is':'entries are'} already on your list and ${skipped.length===1?'was':'were'} left out.</div>`:'';
