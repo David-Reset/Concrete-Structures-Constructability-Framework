@@ -4576,24 +4576,20 @@
             ],
             "supportingImages": [
               {
-                "image": "images/polyfoam-waffle-pod-regional-availability.webp",
-                "title": "<strong>Polyfoam — regional standard vs made-to-order waffle pod depths</strong><br><br>Polyfoam lists 225 mm and 300 mm waffle pods as standard sizes, while other depths carry regional availability notes — for example 175 mm and 375 mm are standard in Queensland but made to order in Tasmania. This supports the entry’s logistics point that pod depth is not just a structural selection; less common depths should be checked with local suppliers before the design is issued."
+                "image": "images/saddingtons-pod-depth-range.png",
+                "title": "<strong>PLACEHOLDER — Saddingtons pod range</strong><br>175, 225, 300 and 375 mm pods, 1090 mm square. Add your screenshot of the supplier's listed depth range."
               },
               {
-                "image": "images/saddingtons-waffle-pod-depth-range.webp",
-                "title": "<strong>Saddingtons — published waffle pod depth range</strong><br><br>Saddingtons lists 1090 mm square waffle pods in four depths: 175, 225, 300 and 375 mm. This supports the entry’s point that multiple pod depths are commercially available, but it does not by itself prove they are all equally stocked or available at short notice for a local project."
+                "image": "images/hunter-pods-depth-by-site-class.png",
+                "title": "<strong>PLACEHOLDER — Hunter Pods depth-by-site-class</strong><br>145 / 225 mm for M sites, 300 mm for H, 375 mm for E, with cut-to-size available. Add your screenshot."
               },
               {
-                "image": "images/hunter-pods-depth-by-site-class.webp",
-                "title": "<strong>Hunter Pods — waffle pod depths by site classification</strong><br><br>Hunter Pods lists 145 mm and 225 mm waffle pods for M-class sites, 300 mm pods for H-class sites and 375 mm pods for E-class sites, with custom sizes available on request. This supports the entry’s point that pod depth is often selected around ground reactivity, but non-standard or project-specific sizes should still be treated as a supply and lead-time check."
-              },
-              {
-                "image": "images/bildavoid-waffle-pod-standard-depths.webp",
-                "title": "<strong>BildaVOID — standard waffle pod depths and location-dependent alternatives</strong><br><br>BildaVOID lists 1090 mm square waffle pods in 150, 225 and 300 mm depths, with other depths noted as potentially available depending on location. This supports the entry’s distinction between common stocked depths and less common depths that should trigger a local availability and lead-time check."
+                "image": "images/polyfoam-375-regional-availability.png",
+                "title": "<strong>PLACEHOLDER — Polyfoam 375 mm regional split</strong><br>375 mm shown as a standard size in one state and made-to-order in another &mdash; the clearest example of regional stock variability. Add your screenshot."
               }
             ],
             "dateAdded": "2026-06-23",
-            "dateReviewed": "2026-06-30",
+            "dateReviewed": "2026-06-26",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -5770,12 +5766,17 @@
             "evidence": "This entry rests on temporary-works guidance, construction-loading research and field measurement, applied as a categorical design-stage prompt. The bands are a judged application of that evidence, not measured thresholds.<br><br><strong>Backpropping is a permanent-works concern, not only a contractor one.</strong> The IStructE Temporary Works Toolkit treats backpropping of concrete slabs during construction as commonly misunderstood and wrongly dismissed by permanent-works designers as a contractor matter, when it is a foreseeable load transferred through the permanent structure whose distribution the designer needs to understand. This is the basis for placing the recognition step in the designer&rsquo;s lane.<br><br><strong>The construction case can govern.</strong> Early-age construction loading has been identified, in the St George Wharf work reported through the Concrete Centre, as potentially the most significant load a multi-storey concrete structure experiences, with low-live-load residential floors carrying little spare capacity for the freshly cast concrete they must support during construction &mdash; supporting the point that final-use loads are not a safe proxy for the temporary case.<br><br><strong>The loads are real and measured.</strong> The US National Bureau of Standards field study of multistorey concrete construction found the critical construction live loads came not from workers but from stored materials and equipment placed shortly after casting, including a concentrated equipment load of roughly 1.6 tonnes &mdash; direct evidence that stacked materials and plant, not occupancy live load, drive the temporary case.<br><br><strong>The response is an engineering one, not a rule of thumb.</strong> ACI 347.2R, summarised by Stivaros, frames shoring and reshoring as requiring engineering analysis of construction-load distribution and early-age capacity, with the controls being to reduce the load through the shoring arrangement, change the mix, curing or strength development, or lengthen the construction cycle &mdash; and warns that construction load should not exceed the capacity of the partially completed structure. This underpins the state-based, not time-based, treatment.<br><br><strong>The duty to identify and communicate sits with the designer.</strong> The NSW Safe Design of Structures Code of Practice places construction-stage risks within the designer&rsquo;s duty, and its safety-in-design checklist expressly lists mobile-crane loads on slabs and crane loading and unloading &mdash; confirming that plant loads on permanent works are already a recognised safe-design consideration, not a novel claim.<br><br>Taken together, the evidence supports a categorical, state-based prompt: identify foreseeable construction-stage loading and resolve or flag it, rather than set universal load or age thresholds, which depend on the structure, the concrete strength, the load path and the construction sequence. It does not ask the permanent designer to design the temporary works or certify the contractor&rsquo;s loads.<br><br><strong>References</strong><br>IStructE. <em>Temporary Works Toolkit, Part 4: An introduction to backpropping of flat slabs</em>; <em>Part 6: Backpropping of flat slabs &mdash; design issues and worked examples</em>.<br>Concrete Centre / BRE. <em>Early-age construction loading</em> (St George Wharf).<br>National Bureau of Standards. <em>Evaluation of construction loads in multistory concrete buildings</em> (BSS 146).<br>Stivaros, P. C. (2006). <em>Shoring and Reshoring for Multistory Concrete Buildings</em>. Concrete International (ACI 347.2R).<br>SafeWork NSW. <em>Safe Design of Structures: Code of Practice</em>.",
             "examples": [],
             "dateAdded": "2026-06-29",
-            "dateReviewed": "2026-06-29",
+            "dateReviewed": "2026-06-30",
             "location": {
               "country": "Australia",
               "state": "NSW"
             },
-            "supportingImages": [],
+            "supportingImages": [
+              {
+                "image": "images/finished-use-load-vs-construction-stage-reality.webp",
+                "title": "<strong>Finished-use loads vs construction-stage reality</strong><br><br>Suspended slabs are often considered in their completed-building condition, where loads are generally light and distributed. During construction, however, the same slab may be subjected to earlier, heavier and more concentrated loading from stored materials or construction equipment."
+              }
+            ],
             "evidenceSupport": {
               "level": "medium",
               "summary": "Supported by temporary-works guidance that places backpropping in the permanent designer&rsquo;s lane (IStructE), construction-loading research showing the early-age case can govern (Concrete Centre / St George Wharf), field measurement of real construction loads from stored materials and equipment (NBS BSS 146), shoring and reshoring engineering guidance (ACI 347.2R via Stivaros), and a safe-design duty that already names plant loads on slabs (SafeWork NSW). The call to identify and resolve or flag foreseeable construction-stage loading is well backed; the absence of universal numeric thresholds is deliberate, because the safe temporary load depends on project-specific strength, load path, backpropping and sequence. Set at medium for consistency with the related temporary-stability entry and because the most on-point research is largely overseas (UK/US) rather than local."
