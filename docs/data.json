@@ -4576,20 +4576,24 @@
             ],
             "supportingImages": [
               {
-                "image": "images/saddingtons-pod-depth-range.png",
-                "title": "<strong>PLACEHOLDER — Saddingtons pod range</strong><br>175, 225, 300 and 375 mm pods, 1090 mm square. Add your screenshot of the supplier's listed depth range."
+                "image": "images/polyfoam-waffle-pod-regional-availability.webp",
+                "title": "<strong>Polyfoam — regional standard vs made-to-order waffle pod depths</strong><br><br>Polyfoam lists 225 mm and 300 mm waffle pods as standard sizes, while other depths carry regional availability notes — for example 175 mm and 375 mm are standard in Queensland but made to order in Tasmania. This supports the entry’s logistics point that pod depth is not just a structural selection; less common depths should be checked with local suppliers before the design is issued."
               },
               {
-                "image": "images/hunter-pods-depth-by-site-class.png",
-                "title": "<strong>PLACEHOLDER — Hunter Pods depth-by-site-class</strong><br>145 / 225 mm for M sites, 300 mm for H, 375 mm for E, with cut-to-size available. Add your screenshot."
+                "image": "images/saddingtons-waffle-pod-depth-range.webp",
+                "title": "<strong>Saddingtons — published waffle pod depth range</strong><br><br>Saddingtons lists 1090 mm square waffle pods in four depths: 175, 225, 300 and 375 mm. This supports the entry’s point that multiple pod depths are commercially available, but it does not by itself prove they are all equally stocked or available at short notice for a local project."
               },
               {
-                "image": "images/polyfoam-375-regional-availability.png",
-                "title": "<strong>PLACEHOLDER — Polyfoam 375 mm regional split</strong><br>375 mm shown as a standard size in one state and made-to-order in another &mdash; the clearest example of regional stock variability. Add your screenshot."
+                "image": "images/hunter-pods-depth-by-site-class.webp",
+                "title": "<strong>Hunter Pods — waffle pod depths by site classification</strong><br><br>Hunter Pods lists 145 mm and 225 mm waffle pods for M-class sites, 300 mm pods for H-class sites and 375 mm pods for E-class sites, with custom sizes available on request. This supports the entry’s point that pod depth is often selected around ground reactivity, but non-standard or project-specific sizes should still be treated as a supply and lead-time check."
+              },
+              {
+                "image": "images/bildavoid-waffle-pod-standard-depths.webp",
+                "title": "<strong>BildaVOID — standard waffle pod depths and location-dependent alternatives</strong><br><br>BildaVOID lists 1090 mm square waffle pods in 150, 225 and 300 mm depths, with other depths noted as potentially available depending on location. This supports the entry’s distinction between common stocked depths and less common depths that should trigger a local availability and lead-time check."
               }
             ],
             "dateAdded": "2026-06-23",
-            "dateReviewed": "2026-06-26",
+            "dateReviewed": "2026-06-30",
             "location": {
               "country": "Australia",
               "state": "NSW"
