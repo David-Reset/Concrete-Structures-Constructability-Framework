@@ -170,6 +170,11 @@
   .comment-date{font-size:11px;color:var(--text-muted)}
   .comment-region{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;padding:2px 8px;background:var(--surface-light);border:1px solid var(--border);border-radius:4px}
   .comment-body{font-size:13px;color:var(--text);line-height:1.6;opacity:0.9}
+  .comment-images{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-top:12px}
+  .comment-image-fig{margin:0}
+  .comment-image-fig img{width:100%;height:120px;object-fit:cover;border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:opacity .15s}
+  .comment-image-fig img:hover{opacity:.85}
+  .comment-image-cap{font-size:11px;color:var(--text-muted);line-height:1.4;margin-top:4px}
 
   .entry-actions{margin-top:28px;padding-top:20px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:10px}
   .entry-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;transition:all 0.2s}
@@ -2705,7 +2710,7 @@ function renderDimensionView(){
 // Renders approved comments stored on the entry (d.comments). Tolerant of missing
 // fields: name defaults to "Anonymous"; role, date, region, verified are optional.
 function renderComments(d){
-  const cs=(d.comments||[]).filter(c=>c&&c.body);
+  const cs=(d.comments||[]).filter(c=>c&&(c.body||(Array.isArray(c.images)&&c.images.length)));
   if(!cs.length)return '';
   const cards=cs.map(c=>{
     const by=c.by||'Anonymous';
@@ -2715,7 +2720,16 @@ function renderComments(d){
     const regionTxt=c.region?(typeof c.region==='string'?c.region:locTag(c.region)):'';
     const region=regionTxt?`<span class="comment-region">${regionTxt}</span>`:'';
     const regional=c.about&&/region/i.test(c.about)?`<span class="comment-flag">Regional</span>`:'';
-    return `<div class="comment-card"><div class="comment-head"><span class="comment-by">${by}</span>${role}${verified}${regional}${date}${region}</div><div class="comment-body">${c.body}</div></div>`;
+    // Optional images: each entry may be a bare "images/x.jpg" string or an {image,caption} object.
+    const imgs=(Array.isArray(c.images)?c.images:[]).map(im=>typeof im==='string'?{image:im}:im).filter(im=>im&&im.image);
+    const gallery=imgs.length?`<div class="comment-images">${imgs.map(im=>{
+      const src=escAttr(im.image);
+      const click=escAttr(escJsSingle(im.image));
+      const cap=im.caption?`<figcaption class="comment-image-cap">${im.caption}</figcaption>`:'';
+      return `<figure class="comment-image-fig"><img src="${src}" alt="${escAttr(im.caption||'')}" onclick="openLightbox('${click}')">${cap}</figure>`;
+    }).join('')}</div>`:'';
+    const body=c.body?`<div class="comment-body">${c.body}</div>`:'';
+    return `<div class="comment-card"><div class="comment-head"><span class="comment-by">${by}</span>${role}${verified}${regional}${date}${region}</div>${body}${gallery}</div>`;
   }).join('');
   return `<div class="comments-section"><div class="label">Comments (${cs.length})</div>${cards}</div>`;
 }
