@@ -6874,6 +6874,35 @@
       }
     ]
   },
+  "config": {
+    "elementVocab": [
+      "footing",
+      "raft/footing",
+      "ground beam",
+      "pile/pier/shaft",
+      "slab on ground",
+      "slab",
+      "beam",
+      "wall",
+      "column",
+      "frame",
+      "facade",
+      "reinforcement"
+    ],
+    "phaseVocab": [
+      "design & documentation",
+      "procurement",
+      "founding/piling",
+      "founding/slab",
+      "formwork",
+      "reinforcement fixing",
+      "pour/placement",
+      "curing",
+      "stripping",
+      "sequencing",
+      "demolition"
+    ]
+  },
   "_processed": [
     "fragment|entry|rock-sockets-with-excavator-mounted-augers|3iehqn",
     "fragment|entry|rock-sockets-with-excavator-mounted-augers-2|1wz6lky",
