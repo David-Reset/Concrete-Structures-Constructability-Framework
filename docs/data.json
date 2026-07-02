@@ -6613,10 +6613,21 @@
         }
       ],
       "triageDetail": {
-        "title": "The guided way to do step one",
-        "text": "<strong>Guided triage</strong> &mdash; the Run guided triage button beside the search box &mdash; does the finding for you. Tick which elements and conditions are in the job, straight off the architect's drawings, then answer a short run of Yes / No / Not sure questions, shown only where they're relevant and each tagged with where the answer comes from (the drawings, the geotech, the site, or a decision you're still making). <strong>Not sure</strong> still surfaces the entry, on purpose. Triage then hands you a checklist of suggested entries, each showing what prompted it; untick anything that doesn't apply and choose the list they go on."
+        "title": "What is guided triage?",
+        "text": "Guided triage is for when you don't know what to look for. It asks a few questions about your project and suggests entries to review, which you add to a project review list. Open it from <strong>Run guided triage</strong>, beside the search box."
+      },
+      "browseDetail": {
+        "title": "Browsing by region, element or stage",
+        "text": "You can also browse yourself: by dimension, or by filtering every entry by region, element (slabs, beams, walls and so on) or construction stage &mdash; across all five dimensions or within one. Handy when you want, say, just the entries about slabs."
       },
       "note": "A project review list turns your selected entries into a project-specific constructability checklist. It lives in your browser (no login) and is a prompt for design review, not proof that a project complies with any standard."
+    },
+    "why": {
+      "title": "Why it exists",
+      "paras": [
+        "A compliant design isn't automatically a buildable one. Much of what decides whether a detail is quick, cheap and safe to build is learned on site &mdash; held by the people who build it, rarely written down, and slow to reach the people who draw it. The framework exists to close that gap: to put constructability knowledge in front of a designer at the moment of a decision, and to keep growing as the industry does rather than settle into a fixed document.",
+        "Adding to it pays the contributor back. Setting down an entry &mdash; the parameter you'd check, the thresholds you'd use, the evidence behind them &mdash; forces the kind of clear thinking that deepens your own understanding of the detail, not only everyone else's. The engineers with the most to share tend to gain the most from sharing it."
+      ]
     },
     "contributing": {
       "title": "Contributing feedback",
