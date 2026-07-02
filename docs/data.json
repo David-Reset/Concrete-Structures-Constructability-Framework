@@ -6404,7 +6404,7 @@
       "caption": "Compliance tells you what the design must be. The framework helps with the other half of the job: whether what you have drawn can be built safely and practically."
     },
     "howToUse": {
-      "title": "How to use it",
+      "title": "How to use the framework",
       "intro": "Use it in two ways:",
       "points": [
         "As a <strong>reference library</strong> &mdash; search or browse for a design decision and read its guidance, thresholds, examples and evidence.",
@@ -6611,7 +6611,7 @@
       ]
     },
     "why": {
-      "title": "Why it exists",
+      "title": "Why the framework exists",
       "paras": [
         "A compliant design isn't automatically a buildable one. Much of what decides whether a detail is quick, cheap and safe to build is learned on site &mdash; held by the people who build it, rarely written down, and slow to reach the people who draw it. The framework exists to close that gap: to put constructability knowledge in front of a designer at the moment of a decision, and to keep growing as the industry does rather than settle into a fixed document.",
         "There is a direct benefit to contributing, too. Writing an entry &mdash; the parameter you'd check, the thresholds you'd use, the evidence behind them &mdash; forces the kind of clear thinking that deepens your own understanding of a detail, not only everyone else's. The engineers with the most to share tend to gain the most from setting it down."
