@@ -2592,7 +2592,7 @@ function toggleFaq(i){
 function renderGuideView(){
   if(!guide)return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><p class="section-desc">Guide content not found. Make sure data.json includes a "guide" object.</p></div>`;
   const g=guide;
-  let html=`<div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">${g.icon}</span><h1 class="dim-header-title">${g.title}</h1></div><p class="section-desc">${g.intro}</p>`;
+  let html=`<div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">${g.icon}</span><h1 class="dim-header-title">${g.title}</h1></div>${g.intro?`<p class="section-desc">${g.intro}</p>`:''}`;
 
   // What is the framework — two obligations, each side ending in its own tool card
   if(g.whatIs){
@@ -2608,9 +2608,11 @@ function renderGuideView(){
     if(w.caption){html+=`<div class="whatis-caption">${w.caption}</div>`;}
   }
 
-  // How to use it — the two ways, stated after what-it-is has been established
+  // How to use it — the two ways as bullets, stated after what-it-is has been established
   if(g.howToUse){
-    html+=`<div class="label" style="margin-top:36px">${g.howToUse.title}</div><p class="guide-sub">${g.howToUse.text}</p>`;
+    const h=g.howToUse;
+    const pts=(h.points||[]).map(p=>`<li>${p}</li>`).join('');
+    html+=`<div class="label" style="margin-top:36px">${h.title}</div>${h.intro?`<p class="guide-sub">${h.intro}</p>`:''}${pts?`<ul class="whatis-items">${pts}</ul>`:''}${h.note?`<p class="guide-sub">${h.note}</p>`:''}`;
   }
 
   // Five dimensions / root-cause explanation — routing first, before the rating mechanics
