@@ -2661,6 +2661,13 @@ function renderGuideView(){
     html+=`<div class="label" style="margin-top:24px">${c.title}</div><p class="guide-sub">${c.intro}</p><div class="dimension-guide-grid">${cards}</div>${c.note?`<div class="guide-more">${c.note}</div>`:''}`;
   }
 
+  // Maintenance pathways
+  if(g.maintenance){
+    const m=g.maintenance;
+    const cards=(m.items||[]).map(it=>`<div class="dimension-guide-card"><div class="dimension-guide-label">${it.label}</div><div class="dimension-guide-text">${it.text}</div></div>`).join('');
+    html+=`<div class="label" style="margin-top:24px">${m.title}</div><p class="guide-sub">${m.intro}</p><div class="dimension-guide-grid">${cards}</div>${m.note?`<div class="guide-more">${m.note}</div>`:''}`;
+  }
+
   // FAQ accordion
   if(g.faq){
     html+=`<div class="guide-h">${g.faq.title}</div><div class="faq-list">${g.faq.items.map((f,i)=>`<div class="faq-item"><div class="faq-q" onclick="toggleFaq(${i})"><span>${f.q}</span><span class="faq-chevron" id="faq-chev-${i}">+</span></div><div class="faq-a" id="faq-a-${i}">${f.a}</div></div>`).join('')}</div>`;
