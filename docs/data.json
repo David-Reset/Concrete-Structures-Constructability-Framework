@@ -6599,16 +6599,20 @@
           "a": "BIM and AI tools can support coordination, modelling, checking, optimisation and faster design production. This framework works earlier: it helps the engineer question the design decision before it becomes locked in. It asks whether the chosen detail, method, material or assumption is appropriate for the way the structure will actually be built. The focus is the decision itself, not only the review of a developing model."
         },
         {
+          "q": "When should I use guided triage instead of searching?",
+          "a": "Use search or browse when you already know the design decision you want guidance on. Use guided triage when you know the project but not yet which entries apply: it asks a few questions about the job and suggests entries to review, so you don't have to know what to look for in advance. Triage only ever suggests &mdash; you choose what to keep &mdash; and its results feed straight into a project review list."
+        },
+        {
           "q": "What is the project review list for?",
-          "a": "The project review list lets you collect framework entries that are relevant to a particular project. Instead of reading entries one by one and losing track of them, you can save the checks you want to apply and export them as a project-specific constructability review checklist."
+          "a": "A project review list lets you collect the framework entries relevant to a particular project, instead of reading them one by one and losing track. You can keep a separate list for each project, add an entry to more than one list at once, give each list a name and purpose, and export it as a project-specific constructability review checklist."
         },
         {
           "q": "Is my project review list public?",
-          "a": "No. The project review list is stored locally in your browser. It does not require login and is not published to the framework. If you clear your browser data or use a different device, the list may not be there."
+          "a": "No. Your project review lists are stored locally in your browser, need no login, and are not published to the framework. If you clear your browser data or switch device they may not follow you &mdash; use <strong>Export list as file</strong> to save a backup you can re-import anywhere, which updates the same list rather than making a copy."
         },
         {
           "q": "In the project review list, what is the project purpose field for?",
-          "a": "The project purpose field appears in the exported PDF/checklist and can be edited to suit the project or audience. It explains why the selected entries are being reviewed and helps frame the export as a constructability review aid rather than a compliance certificate or formal sign-off."
+          "a": "Each list has a purpose statement that appears in the copied checklist and in the PDF and Markdown exports. It explains why the entries are being reviewed and frames the export as a constructability review aid rather than a compliance certificate or formal sign-off. Edit it to suit the project or audience."
         },
         {
           "q": "What is the difference between a comment and a suggested change?",
@@ -6634,30 +6638,34 @@
     },
     "projectListWorkflow": {
       "title": "Using the framework on a project",
-      "intro": "The framework can be used as more than a reference library. When you are reviewing a real project, you can collect the entries that matter to that job into a private project review list and export them as a project-specific constructability review checklist.",
+      "intro": "The framework is more than a reference library. On a real job you gather the entries that matter, collect them into a project review list &mdash; you can keep one per project &mdash; and export a project-specific constructability review checklist. The whole path, end to end:",
       "steps": [
         {
-          "label": "Find relevant entries",
-          "value": "Search or browse",
-          "sub": "Use the search box, dimension pages and region filter to find entries that match the design decisions on your project."
+          "label": "Find the entries",
+          "value": "Triage, search or browse",
+          "sub": "Run guided triage to have the framework suggest entries from a few questions about the job, or search and browse the dimensions yourself."
         },
         {
-          "label": "Build a project review list",
-          "value": "Add to project review list",
-          "sub": "Open a relevant entry and add it to the project review list. The list stays in your browser and does not require login."
+          "label": "Collect them",
+          "value": "Add to a review list",
+          "sub": "On any entry, choose which list it belongs on &mdash; tick more than one to add it to several at once. Keep a separate list for each project; lists stay in your browser, no login."
         },
         {
-          "label": "Describe the review",
+          "label": "Name and describe",
           "value": "Name and purpose",
-          "sub": "Give the list a project name and edit the project purpose field so the exported checklist explains what the review is being used for."
+          "sub": "Give each list a project name and a short purpose statement. The purpose appears on every export, so the checklist explains what the review is for."
         },
         {
-          "label": "Use the output",
-          "value": "Copy or export",
-          "sub": "Export the selected entries as a checklist or PDF. The output is a constructability review aid, not a compliance certificate or formal sign-off."
+          "label": "Export or share",
+          "value": "Link, PDF, checklist",
+          "sub": "Copy a live share link, download a PDF or editable Markdown, copy a plain-text checklist, or export the list as a backup file you can re-import on any device."
         }
       ],
-      "note": "The project review list is intended to turn selected framework entries into a project-specific constructability review checklist. It is local to the browser, temporary by nature, and should be treated as a prompt for design review rather than proof that a project complies with any standard."
+      "triageDetail": {
+        "title": "The guided way to do step one",
+        "text": "<strong>Guided triage</strong> &mdash; the Run guided triage button beside the search box &mdash; does the finding for you. Tick which elements and conditions are in the job, straight off the architect's drawings, then answer a short run of Yes / No / Not sure questions, shown only where they're relevant and each tagged with where the answer comes from (the drawings, the geotech, the site, or a decision you're still making). <strong>Not sure</strong> still surfaces the entry, on purpose. Triage then hands you a checklist of suggested entries, each showing what prompted it; untick anything that doesn't apply and choose the list they go on."
+      },
+      "note": "A project review list turns the entries you pick into a project-specific constructability review checklist. Lists live in your browser (no login) &mdash; export a backup file if you want to keep one or move it to another device &mdash; and are best treated as a prompt for design review, not proof that a project complies with any standard."
     },
     "contributing": {
       "title": "Contributing feedback",
