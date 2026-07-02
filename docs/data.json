@@ -6362,10 +6362,10 @@
     }
   ],
   "guide": {
-    "title": "How to use this framework",
+    "title": "Guide & FAQ",
     "icon": "🧭",
     "tagline": "New here? Start with this. What the framework is, how to read an entry, and how the ratings are meant to be used.",
-    "intro": "Use this framework in two ways. First, as a searchable library of constructability entries: browse or search for a design decision and read the relevant guidance, thresholds, examples and evidence. Second, as a project review tool: save relevant entries to a project review list and export them as a project-specific constructability checklist. Use the framework to inform your own engineering judgement &mdash; not as fixed answers, but as prompts for thinking through how your design will actually be built.",
+    "intro": "What the framework is, how the ratings are meant to be used, and how to put it to work on a real project. New here? Start with what it's for.",
     "whatIs": {
       "title": "What is this framework?",
       "intro": "Structural designers operate under two parallel bodies of obligation: <em>compliance</em> and <em>professional duty</em>. This framework helps with <strong><em>professional duty</em></strong>. It does not help you check codes, interpret Australian Standards, or determine whether a design is structurally adequate. It helps designers think about whether what they have drawn can be built safely and practically, and it now supports both single-entry review and project-specific constructability checklists. Just as importantly, the framework is a starting point for discussion rather than a settled rulebook. Its aim is to put practical constructability ideas into the open, rate them honestly, and encourage the field measurements, studies and literature that can test and refine them — bringing construction and design closer together.",
@@ -6402,6 +6402,10 @@
         }
       ],
       "caption": "Compliance tells you what the design must be. The framework helps with the other half of the job: whether what you have drawn can be built safely and practically."
+    },
+    "howToUse": {
+      "title": "How to use it",
+      "text": "Use this framework in two ways. First, as a searchable library of constructability entries: browse or search for a design decision and read the relevant guidance, thresholds, examples and evidence. Second, as a project review tool: save relevant entries to a project review list and export them as a project-specific constructability checklist. Use the framework to inform your own engineering judgement &mdash; not as fixed answers, but as prompts for thinking through how your design will actually be built."
     },
     "dimensionsGuide": {
       "title": "The five dimensions",
@@ -6483,64 +6487,6 @@
           "rating": "Action required",
           "color": "red",
           "meaning": "A constructability challenge to deliberately address before construction. A prompt to evaluate and decide — not an automatic prohibition."
-        }
-      ]
-    },
-    "anatomy": {
-      "title": "Anatomy of an entry",
-      "intro": "Every entry follows the same layout. Below is a real entry from the framework &mdash; <strong>Off-form concrete upturns near obstructions</strong> &mdash; with each field labelled. These are the live entry components, not screenshots, so they always match what you see in the framework itself.",
-      "entryRef": {
-        "id": "off-form-concrete-upturns-near-obstructions"
-      },
-      "fields": [
-        {
-          "label": "Design Question",
-          "caption": "The specific question the entry answers. If this is your question, the entry is relevant to your decision."
-        },
-        {
-          "label": "Design Parameter",
-          "caption": "The project-specific condition checked by the entry. It may be measured from drawings, confirmed from site conditions, selected by the designer, checked with suppliers, or judged from the documentation."
-        },
-        {
-          "label": "Design Guidance",
-          "caption": "Threshold bands or described states that rate the project condition as Best practice, Consider, Concern or Action required. This is the heart of the entry."
-        },
-        {
-          "label": "Applicability and Limitations",
-          "caption": "Where the entry applies, what to check before relying on it, and a reminder that the rating is a review prompt — not a rule."
-        },
-        {
-          "label": "Recommended Actions",
-          "caption": "Practical options to consider if you land in Concern or Action required. A starting point for the decision, not a fixed instruction."
-        }
-      ],
-      "moreFields": "Entries may also include a <strong>Background</strong> (why the issue matters), an <strong>Evidence Basis</strong> (how the guidance was established, with references), and <strong>Evidence Support</strong> (a Low, Medium or High indicator showing how much supporting information sits behind the entry). Entries may also include <strong>Examples</strong> and <strong>Supporting Images</strong> &mdash; real, de-identified drawings and site photographs showing the issue in practice. Some entries also link to <strong>Related Entries</strong> &mdash; other entries worth considering alongside this one. At the bottom of each live entry you can add the entry to a <strong>project review list</strong>, suggest a change, or add a reviewed comment."
-    },
-    "trace": {
-      "title": "How an entry works: condition → band → response",
-      "intro": "Every entry runs the same way. Identify the relevant project condition, compare it with the threshold bands or described states, read the rating, and decide the appropriate response. Using the off-form upturn entry as a worked example:",
-      "steps": [
-        {
-          "label": "Project condition",
-          "value": "Clearance = 500 mm",
-          "sub": "measured between the upturn face and the nearest boundary or permanent obstruction"
-        },
-        {
-          "label": "Falls in band",
-          "value": "350 – 700 mm",
-          "sub": "compare the condition with the threshold list",
-          "color": "orange"
-        },
-        {
-          "label": "Rating",
-          "value": "Concern",
-          "sub": "coil ties can't be used; threaded bar only, tightened at arm's length",
-          "color": "orange"
-        },
-        {
-          "label": "Response",
-          "value": "Consider alternatives",
-          "sub": "go to Recommended Actions — permanent formwork, blockwork, reposition, or precast"
         }
       ]
     },
