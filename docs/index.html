@@ -2608,11 +2608,14 @@ function renderGuideView(){
     if(w.caption){html+=`<div class="whatis-caption">${w.caption}</div>`;}
   }
 
-  // How to use it — the two ways as bullets, stated after what-it-is has been established
+  // How to use it — consolidated: the two ways, then finding entries, then building a review list
   if(g.howToUse){
     const h=g.howToUse;
     const pts=(h.points||[]).map(p=>`<li>${p}</li>`).join('');
-    html+=`<div class="label" style="margin-top:36px">${h.title}</div>${h.intro?`<p class="guide-sub">${h.intro}</p>`:''}${pts?`<ul class="whatis-items">${pts}</ul>`:''}${h.note?`<p class="guide-sub">${h.note}</p>`:''}`;
+    html+=`<div class="label" style="margin-top:36px">${h.title}</div>${h.intro?`<p class="guide-sub">${h.intro}</p>`:''}${pts?`<ul class="whatis-items">${pts}</ul>`:''}${h.aside?`<p class="guide-sub">${h.aside}</p>`:''}`;
+    if(h.finding){html+=`<div class="label" style="margin-top:24px">${h.finding.title}</div><p class="guide-sub">${h.finding.text}</p>`;}
+    if(h.steps&&h.steps.length){const st=h.steps.map((s,i)=>`<div class="trace-step"><div class="trace-step-label">${s.label}</div><div class="trace-step-value">${s.value}</div><div class="trace-step-sub">${s.sub}</div></div>${i<h.steps.length-1?'<div class="trace-arrow">→</div>':''}`).join('');html+=`${h.flowTitle?`<div class="label" style="margin-top:24px">${h.flowTitle}</div>`:''}<div class="trace-flow">${st}</div>`;}
+    if(h.note){html+=`<div class="guide-more">${h.note}</div>`;}
   }
 
   // Five dimensions / root-cause explanation — routing first, before the rating mechanics
@@ -2642,16 +2645,6 @@ function renderGuideView(){
       return `<div class="shape-card"><div class="shape-tag">${s.shape}</div><div class="shape-param">${sd?sd.parameter:''}</div><div class="shape-desc">${s.desc}</div><div class="threshold-list shape-thresholds">${sd?gThresholds(sd,true):''}</div>${found?`<div class="shape-link" onclick="goEntry('${found.dim.id}','${found.item.id}')">See full entry →</div>`:''}</div>`;
     }).join('');
     html+=`<div class="label" style="margin-top:36px">${g.shapes.title}</div><p class="guide-sub">${g.shapes.intro}</p><div class="shape-grid">${cards}</div>`;
-  }
-
-  // Using the framework on a project — one end-to-end flow with guided triage folded in as step one
-  if(g.projectListWorkflow){
-    const pr=g.projectListWorkflow;
-    const steps=(pr.steps||[]).map((s,i)=>`<div class="trace-step"><div class="trace-step-label">${s.label}</div><div class="trace-step-value">${s.value}</div><div class="trace-step-sub">${s.sub}</div></div>${i<(pr.steps||[]).length-1?'<div class="trace-arrow">→</div>':''}`).join('');
-    html+=`<div class="label" style="margin-top:36px">${pr.title}</div><p class="guide-sub">${pr.intro}</p><div class="trace-flow">${steps}</div>`;
-    if(pr.triageDetail){html+=`<div class="label" style="margin-top:24px">${pr.triageDetail.title}</div><p class="guide-sub">${pr.triageDetail.text}</p>`;}
-    if(pr.browseDetail){html+=`<div class="label" style="margin-top:20px">${pr.browseDetail.title}</div><p class="guide-sub">${pr.browseDetail.text}</p>`;}
-    if(pr.note){html+=`<div class="guide-more">${pr.note}</div>`;}
   }
 
   // Why the framework exists, and why contributing is worth it
