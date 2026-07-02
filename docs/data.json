@@ -6623,6 +6623,33 @@
         }
       ]
     },
+    "triageGuide": {
+      "title": "Guided triage &mdash; let the framework find the entries",
+      "intro": "Searching and browsing assume you already know what to look for. Guided triage works the other way round: it asks a few quick questions about the job and gathers the entries worth reviewing for you. Open it from <strong>Run guided triage</strong> on the home page, beside the search box. Nothing is ever added automatically &mdash; triage only suggests; you decide what to keep.",
+      "steps": [
+        {
+          "label": "Step 1 &mdash; what's in the job?",
+          "value": "Tick the elements",
+          "sub": "Tick the structural elements and conditions the design includes &mdash; suspended slabs and beams, ground slabs, footings, walls, columns, piles, plus exposed or watertight concrete. It all reads straight off the architect's drawings."
+        },
+        {
+          "label": "Step 2 &mdash; a few questions",
+          "value": "Yes / No / Not sure",
+          "sub": "A short run of questions, showing only the ones relevant to what you ticked. Each says where the answer comes from &mdash; the drawings, the geotech, the site, or a decision you're still making. <strong>Not sure</strong> still surfaces the entry: the aim is to prompt a look, not to filter."
+        },
+        {
+          "label": "Step 3 &mdash; general reviews",
+          "value": "Optional opt-ins",
+          "sub": "A few good-practice reviews that suit almost any concrete job &mdash; drawing clarity, buildability, and site and temporary stability. Off by default; tick any you want included."
+        },
+        {
+          "label": "Result",
+          "value": "A checklist to add",
+          "sub": "The entries worth reviewing, each showing what prompted it. Untick anything that doesn't apply, then add the rest to a project review list &mdash; you choose which one."
+        }
+      ],
+      "note": "Triage is the guided alternative to searching and browsing &mdash; most useful when you know the project but not yet which entries apply. It draws on the same entries as the rest of the framework; it just comes to you with the questions. Because everything it finds can be unticked, and entries already on your chosen list are left out, it's safe to run again as the design develops. Its output flows straight into the project review list described next."
+    },
     "projectListWorkflow": {
       "title": "Using the framework on a project",
       "intro": "The framework can be used as more than a reference library. When you are reviewing a real project, you can collect the entries that matter to that job into a private project review list and export them as a project-specific constructability review checklist.",
