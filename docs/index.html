@@ -488,6 +488,8 @@
 
   /* ===== GUIDE VIEW ===== */
   .guide-sub{font-size:13px;color:var(--text-muted);line-height:1.6;max-width:660px;margin:6px 0 14px}
+  .guide-h{font-size:19px;font-weight:700;color:var(--text);letter-spacing:-0.2px;margin:46px 0 0;padding-top:22px;border-top:1px solid var(--border)}
+  .guide-h.first{margin-top:26px;padding-top:0;border-top:none}
   .guide-callout{margin-top:22px;padding:18px 22px;background:var(--yellow-bg);border:1px solid rgba(234,179,8,0.28);border-left:3px solid var(--yellow);border-radius:0 8px 8px 0}
   .guide-point{margin-bottom:14px} .guide-point:last-child{margin-bottom:0}
   .guide-point-lead{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
@@ -2604,7 +2606,7 @@ function renderGuideView(){
       const payoff=(c.foot||c.card)?`<div class="whatis-payoff ${c.kind}">${lead}${card}</div>`:'';
       return `<div class="whatis-col ${c.kind}"><div class="whatis-heading">${c.heading}</div><div class="whatis-sub">${c.sub}</div><ul class="whatis-items">${items}</ul>${payoff}</div>`;
     }).join('');
-    html+=`<div class="label" style="margin-top:30px">${w.title}</div><p class="guide-sub">${w.intro}</p><div class="whatis-grid">${cols}</div>`;
+    html+=`<div class="guide-h first">${w.title}</div><p class="guide-sub">${w.intro}</p><div class="whatis-grid">${cols}</div>`;
     if(w.caption){html+=`<div class="whatis-caption">${w.caption}</div>`;}
   }
 
@@ -2612,7 +2614,7 @@ function renderGuideView(){
   if(g.howToUse){
     const h=g.howToUse;
     const pts=(h.points||[]).map(p=>`<li>${p}</li>`).join('');
-    html+=`<div class="label" style="margin-top:36px">${h.title}</div>${h.intro?`<p class="guide-sub">${h.intro}</p>`:''}${pts?`<ul class="whatis-items">${pts}</ul>`:''}${h.aside?`<p class="guide-sub">${h.aside}</p>`:''}`;
+    html+=`<div class="guide-h">${h.title}</div>${h.intro?`<p class="guide-sub">${h.intro}</p>`:''}${pts?`<ul class="whatis-items">${pts}</ul>`:''}${h.aside?`<p class="guide-sub">${h.aside}</p>`:''}`;
     if(h.finding){html+=`<div class="label" style="margin-top:24px">${h.finding.title}</div><p class="guide-sub">${h.finding.text}</p>`;}
     if(h.steps&&h.steps.length){const st=h.steps.map((s,i)=>`<div class="trace-step"><div class="trace-step-label">${s.label}</div><div class="trace-step-value">${s.value}</div><div class="trace-step-sub">${s.sub}</div></div>${i<h.steps.length-1?'<div class="trace-arrow">→</div>':''}`).join('');html+=`${h.flowTitle?`<div class="label" style="margin-top:24px">${h.flowTitle}</div>`:''}<div class="trace-flow">${st}</div>`;}
     if(h.note){html+=`<div class="guide-more">${h.note}</div>`;}
@@ -2625,12 +2627,12 @@ function renderGuideView(){
       if(!dim)return '';
       return `<div class="dimension-guide-card"><div class="dimension-guide-icon">${dim.icon}</div><div class="dimension-guide-name">${dim.name}</div><div class="dimension-guide-label">Root cause</div><div class="dimension-guide-text">${it.rootCause}</div><div class="dimension-guide-question">${it.question}</div></div>`;
     }).join('');
-    html+=`<div class="label" style="margin-top:36px">${g.dimensionsGuide.title}</div><p class="guide-sub">${g.dimensionsGuide.intro}</p><div class="dimension-guide-grid">${cards}</div>${g.dimensionsGuide.note?`<div class="guide-more">${g.dimensionsGuide.note}</div>`:''}`;
+    html+=`<div class="guide-h">The dimensions and the ratings</div><div class="label" style="margin-top:22px">${g.dimensionsGuide.title}</div><p class="guide-sub">${g.dimensionsGuide.intro}</p><div class="dimension-guide-grid">${cards}</div>${g.dimensionsGuide.note?`<div class="guide-more">${g.dimensionsGuide.note}</div>`:''}`;
   }
 
   // Rating legend in the four live colours — defined before the callout that references them
   if(g.ratingLegend){
-    html+=`<div class="label" style="margin-top:32px">${g.ratingLegend.title}</div><p class="guide-sub">${g.ratingLegend.intro}</p><div class="legend-grid">${g.ratingLegend.items.map(it=>`<div class="legend-item" style="background:${bgVar(it.color)};border:1px solid ${colorVar(it.color)}33"><div class="legend-dot" style="background:${colorVar(it.color)}"></div><div><div class="legend-rating" style="color:${colorVar(it.color)}">${it.rating}</div><div class="legend-meaning">${it.meaning}</div></div></div>`).join('')}</div>`;
+    html+=`<div class="label" style="margin-top:24px">${g.ratingLegend.title}</div><p class="guide-sub">${g.ratingLegend.intro}</p><div class="legend-grid">${g.ratingLegend.items.map(it=>`<div class="legend-item" style="background:${bgVar(it.color)};border:1px solid ${colorVar(it.color)}33"><div class="legend-dot" style="background:${colorVar(it.color)}"></div><div><div class="legend-rating" style="color:${colorVar(it.color)}">${it.rating}</div><div class="legend-meaning">${it.meaning}</div></div></div>`).join('')}</div>`;
   }
 
   // Engineering-judgement callout, immediately after the ratings it interprets
@@ -2644,24 +2646,24 @@ function renderGuideView(){
       const found=findEntryById(s.entryRef.id),sd=found?found.item.data:null;
       return `<div class="shape-card"><div class="shape-tag">${s.shape}</div><div class="shape-param">${sd?sd.parameter:''}</div><div class="shape-desc">${s.desc}</div><div class="threshold-list shape-thresholds">${sd?gThresholds(sd,true):''}</div>${found?`<div class="shape-link" onclick="goEntry('${found.dim.id}','${found.item.id}')">See full entry →</div>`:''}</div>`;
     }).join('');
-    html+=`<div class="label" style="margin-top:36px">${g.shapes.title}</div><p class="guide-sub">${g.shapes.intro}</p><div class="shape-grid">${cards}</div>`;
+    html+=`<div class="label" style="margin-top:24px">${g.shapes.title}</div><p class="guide-sub">${g.shapes.intro}</p><div class="shape-grid">${cards}</div>`;
   }
 
   // Why the framework exists, and why contributing is worth it
   if(g.why){
-    html+=`<div class="label" style="margin-top:36px">${g.why.title}</div>${(g.why.paras||[]).map(p=>`<p class="guide-sub">${p}</p>`).join('')}`;
+    html+=`<div class="guide-h">${g.why.title}</div>${(g.why.paras||[]).map(p=>`<p class="guide-sub">${p}</p>`).join('')}`;
   }
 
   // Contribution pathways
   if(g.contributing){
     const c=g.contributing;
     const cards=(c.items||[]).map(it=>`<div class="dimension-guide-card"><div class="dimension-guide-label">${it.label}</div><div class="dimension-guide-text">${it.text}</div></div>`).join('');
-    html+=`<div class="label" style="margin-top:36px">${c.title}</div><p class="guide-sub">${c.intro}</p><div class="dimension-guide-grid">${cards}</div>${c.note?`<div class="guide-more">${c.note}</div>`:''}`;
+    html+=`<div class="label" style="margin-top:24px">${c.title}</div><p class="guide-sub">${c.intro}</p><div class="dimension-guide-grid">${cards}</div>${c.note?`<div class="guide-more">${c.note}</div>`:''}`;
   }
 
   // FAQ accordion
   if(g.faq){
-    html+=`<div class="label" style="margin-top:36px">${g.faq.title}</div><div class="faq-list">${g.faq.items.map((f,i)=>`<div class="faq-item"><div class="faq-q" onclick="toggleFaq(${i})"><span>${f.q}</span><span class="faq-chevron" id="faq-chev-${i}">+</span></div><div class="faq-a" id="faq-a-${i}">${f.a}</div></div>`).join('')}</div>`;
+    html+=`<div class="guide-h">${g.faq.title}</div><div class="faq-list">${g.faq.items.map((f,i)=>`<div class="faq-item"><div class="faq-q" onclick="toggleFaq(${i})"><span>${f.q}</span><span class="faq-chevron" id="faq-chev-${i}">+</span></div><div class="faq-a" id="faq-a-${i}">${f.a}</div></div>`).join('')}</div>`;
   }
 
   return `<div class="content animate-in">${html}</div>`;
