@@ -6407,10 +6407,33 @@
       "title": "How to use it",
       "intro": "Use it in two ways:",
       "points": [
-        "<strong>A searchable library</strong> &mdash; browse or search for a design decision and read the relevant guidance, thresholds, examples and evidence.",
-        "<strong>A project review tool</strong> &mdash; save the relevant entries to a project review list and export them as a project-specific constructability checklist."
+        "As a <strong>reference library</strong> &mdash; search or browse for a design decision and read its guidance, thresholds, examples and evidence.",
+        "As a <strong>project review tool</strong> &mdash; collect the entries that matter to a job into a review list and export a project-specific constructability checklist."
       ],
-      "note": "Either way, use it to inform your own engineering judgement &mdash; not as fixed answers, but as prompts for thinking through how your design will actually be built."
+      "aside": "Either way, use it to inform your own engineering judgement &mdash; not as fixed answers, but as prompts for thinking through how your design will actually be built.",
+      "finding": {
+        "title": "Finding entries",
+        "text": "There are three routes to the entries you need. <strong>Guided triage</strong>, for when you don't yet know what to look for, asks a few questions about your project and suggests entries to review. <strong>Search</strong> takes you to an entry by keyword. <strong>Browsing</strong> filters every entry by region, element or construction stage, across all five dimensions or within one &mdash; so you can review only the entries concerning a given element, such as slabs."
+      },
+      "flowTitle": "Building a project review list",
+      "steps": [
+        {
+          "label": "Collect them",
+          "value": "Add to a review list",
+          "sub": "Add the entries that apply to a project review list &mdash; keep one per project."
+        },
+        {
+          "label": "Name and describe",
+          "value": "Name and purpose",
+          "sub": "Name the list and add a purpose; both appear on the export."
+        },
+        {
+          "label": "Export or share",
+          "value": "Link, PDF, checklist",
+          "sub": "Copy a live share link, or export a PDF, Markdown, checklist or backup file."
+        }
+      ],
+      "note": "A project review list turns your selected entries into a project-specific constructability checklist. It lives in your browser (no login) and is a prompt for design review, not proof that a project complies with any standard."
     },
     "dimensionsGuide": {
       "title": "The five dimensions",
@@ -6587,46 +6610,11 @@
         }
       ]
     },
-    "projectListWorkflow": {
-      "title": "Using the framework on a project",
-      "intro": "The framework is more than a reference library. On a real job you can gather the entries that matter, build a project review list, and export it as a project-specific constructability checklist:",
-      "steps": [
-        {
-          "label": "Find the entries",
-          "value": "Triage, search or browse",
-          "sub": "Run guided triage, or search and browse the dimensions yourself."
-        },
-        {
-          "label": "Collect them",
-          "value": "Add to a review list",
-          "sub": "Add entries to a project review list &mdash; keep one per project."
-        },
-        {
-          "label": "Name and describe",
-          "value": "Name and purpose",
-          "sub": "Name the list and add a purpose; both show on the export."
-        },
-        {
-          "label": "Export or share",
-          "value": "Link, PDF, checklist",
-          "sub": "Copy a live share link, or export a PDF, Markdown, checklist or backup file."
-        }
-      ],
-      "triageDetail": {
-        "title": "What is guided triage?",
-        "text": "Guided triage is for when you don't know what to look for. It asks a few questions about your project and suggests entries to review, which you add to a project review list. Open it from <strong>Run guided triage</strong>, beside the search box."
-      },
-      "browseDetail": {
-        "title": "Browsing by region, element or stage",
-        "text": "You can also browse yourself: by dimension, or by filtering every entry by region, element (slabs, beams, walls and so on) or construction stage &mdash; across all five dimensions or within one. Handy when you want, say, just the entries about slabs."
-      },
-      "note": "A project review list turns your selected entries into a project-specific constructability checklist. It lives in your browser (no login) and is a prompt for design review, not proof that a project complies with any standard."
-    },
     "why": {
       "title": "Why it exists",
       "paras": [
         "A compliant design isn't automatically a buildable one. Much of what decides whether a detail is quick, cheap and safe to build is learned on site &mdash; held by the people who build it, rarely written down, and slow to reach the people who draw it. The framework exists to close that gap: to put constructability knowledge in front of a designer at the moment of a decision, and to keep growing as the industry does rather than settle into a fixed document.",
-        "Adding to it pays the contributor back. Setting down an entry &mdash; the parameter you'd check, the thresholds you'd use, the evidence behind them &mdash; forces the kind of clear thinking that deepens your own understanding of the detail, not only everyone else's. The engineers with the most to share tend to gain the most from sharing it."
+        "There is a direct benefit to contributing, too. Writing an entry &mdash; the parameter you'd check, the thresholds you'd use, the evidence behind them &mdash; forces the kind of clear thinking that deepens your own understanding of a detail, not only everyone else's. The engineers with the most to share tend to gain the most from setting it down."
       ]
     },
     "contributing": {
