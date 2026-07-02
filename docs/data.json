@@ -6368,11 +6368,11 @@
     "intro": "",
     "whatIs": {
       "title": "What is this framework?",
-      "intro": "Structural designers operate under two parallel bodies of obligation: <em>compliance</em> and <em>professional duty</em>. This framework helps with <strong><em>professional duty</em></strong>. It does not help you check codes, interpret Australian Standards, or determine whether a design is structurally adequate. It helps designers think about whether what they have drawn can be built safely and practically. It organises that thinking across five dimensions of reinforced-concrete constructability. Just as importantly, the framework is a starting point for discussion rather than a settled rulebook. Its aim is to put practical constructability ideas into the open, rate them honestly, and encourage the field measurements, studies and literature that can test and refine them — bringing construction and design closer together.",
+      "intro": "Structural designers operate under two parallel bodies of obligation: <em>structural compliance</em> and <em>professional duty</em>. This framework helps with <strong><em>professional duty</em></strong>. It does not help you check codes, interpret Australian Standards, or determine whether a design is structurally adequate. It helps designers think about whether what they have drawn can be built safely and practically. It organises that thinking across five dimensions of reinforced-concrete constructability. Just as importantly, the framework is a starting point for discussion rather than a settled rulebook. Its aim is to put practical constructability ideas into the open, rate them honestly, and encourage the field measurements, studies and literature that can test and refine them — bringing construction and design closer together.",
       "columns": [
         {
           "kind": "compliance",
-          "heading": "Compliance",
+          "heading": "Structural compliance",
           "sub": "What your design must be",
           "items": [
             "AS 1170 &mdash; design actions",
@@ -6613,8 +6613,8 @@
     "why": {
       "title": "Why the framework exists",
       "paras": [
-        "A compliant design isn't automatically a buildable one. Much of what decides whether a detail is quick, cheap and safe to build is learned on site &mdash; held by the people who build it, rarely written down, and slow to reach the people who draw it. The framework exists to close that gap: to put constructability knowledge in front of a designer at the moment of a decision, and to keep growing as the industry does rather than settle into a fixed document.",
-        "There is a direct benefit to contributing, too. Writing an entry &mdash; the parameter you'd check, the thresholds you'd use, the evidence behind them &mdash; forces the kind of clear thinking that deepens your own understanding of a detail, not only everyone else's. The engineers with the most to share tend to gain the most from setting it down."
+        "A compliant design isn't automatically a buildable one. Much of what decides whether a detail is safe and efficient to build is learned on site &mdash; held by the people who build it, rarely written down, and slow to reach the people who draw it. The framework exists to close that gap: to put constructability knowledge in front of the designer during initial decision making, and to keep growing as the industry does rather than settle into a fixed document.",
+        "Contributing is also a way to sharpen practice. Turning site experience into a framework entry means naming the design parameter, setting out the thresholds or recommended response, and explaining the evidence behind it. That process makes practical knowledge easier to share, but it also tests the contributor's own reasoning by forcing assumptions, limits and evidence into the open."
       ]
     },
     "contributing": {
@@ -6635,6 +6635,25 @@
         }
       ],
       "note": "Suggested entries, suggested changes and comments do not appear automatically. They are reviewed and de-identified before being added to the framework."
+    },
+    "maintenance": {
+      "title": "Contributing maintenance",
+      "intro": "The framework is also open to people who want to help maintain it, not only submit feedback. Maintenance means reviewing suggestions, de-identifying examples, checking evidence support, keeping images tidy, and making sure the published data remains healthy. This work is handled through three local browser tools:",
+      "items": [
+        {
+          "label": "Data Manager",
+          "text": "The main review and publishing tool. It turns form responses into structured entries, edits and comments; lets a maintainer accept, reject, revise and publish submissions; and exports the updated <code>data.json</code>."
+        },
+        {
+          "label": "Image Formatter",
+          "text": "Prepares images for the framework. It renames, resizes and re-encodes photographs, screenshots and diagrams for the <code>images</code> folder, checks for filename clashes, and strips embedded metadata during re-encoding."
+        },
+        {
+          "label": "Framework Doctor",
+          "text": "Runs a read-only health check before publishing. It compares <code>data.json</code> with the <code>images</code> folder, flags missing or orphan images, and reports data-integrity issues that should be fixed before committing changes."
+        }
+      ],
+      "note": "All three tools run locally in the maintainer's browser. Nothing is uploaded; the tools only read or write the files the maintainer chooses."
     }
   },
   "triageConfig": {
