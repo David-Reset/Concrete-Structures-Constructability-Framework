@@ -4576,20 +4576,24 @@
             ],
             "supportingImages": [
               {
-                "image": "images/saddingtons-pod-depth-range.png",
-                "title": "<strong>PLACEHOLDER — Saddingtons pod range</strong><br>175, 225, 300 and 375 mm pods, 1090 mm square. Add your screenshot of the supplier's listed depth range."
+                "image": "images/polyfoam-waffle-pod-regional-availability.webp",
+                "title": "<strong>Polyfoam — regional standard vs made-to-order waffle pod depths</strong><br><br>Polyfoam lists 225 mm and 300 mm waffle pods as standard sizes, while other depths carry regional availability notes — for example 175 mm and 375 mm are standard in Queensland but made to order in Tasmania. This supports the entry’s logistics point that pod depth is not just a structural selection; less common depths should be checked with local suppliers before the design is issued."
               },
               {
-                "image": "images/hunter-pods-depth-by-site-class.png",
-                "title": "<strong>PLACEHOLDER — Hunter Pods depth-by-site-class</strong><br>145 / 225 mm for M sites, 300 mm for H, 375 mm for E, with cut-to-size available. Add your screenshot."
+                "image": "images/saddingtons-waffle-pod-depth-range.webp",
+                "title": "<strong>Saddingtons — published waffle pod depth range</strong><br><br>Saddingtons lists 1090 mm square waffle pods in four depths: 175, 225, 300 and 375 mm. This supports the entry’s point that multiple pod depths are commercially available, but it does not by itself prove they are all equally stocked or available at short notice for a local project."
               },
               {
-                "image": "images/polyfoam-375-regional-availability.png",
-                "title": "<strong>PLACEHOLDER — Polyfoam 375 mm regional split</strong><br>375 mm shown as a standard size in one state and made-to-order in another &mdash; the clearest example of regional stock variability. Add your screenshot."
+                "image": "images/hunter-pods-depth-by-site-class.webp",
+                "title": "<strong>Hunter Pods — waffle pod depths by site classification</strong><br><br>Hunter Pods lists 145 mm and 225 mm waffle pods for M-class sites, 300 mm pods for H-class sites and 375 mm pods for E-class sites, with custom sizes available on request. This supports the entry’s point that pod depth is often selected around ground reactivity, but non-standard or project-specific sizes should still be treated as a supply and lead-time check."
+              },
+              {
+                "image": "images/bildavoid-waffle-pod-standard-depths.webp",
+                "title": "<strong>BildaVOID — standard waffle pod depths and location-dependent alternatives</strong><br><br>BildaVOID lists 1090 mm square waffle pods in 150, 225 and 300 mm depths, with other depths noted as potentially available depending on location. This supports the entry’s distinction between common stocked depths and less common depths that should trigger a local availability and lead-time check."
               }
             ],
             "dateAdded": "2026-06-23",
-            "dateReviewed": "2026-06-26",
+            "dateReviewed": "2026-07-02",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -6353,10 +6357,10 @@
     }
   ],
   "guide": {
-    "title": "Guide & FAQ",
+    "title": "How to use this framework",
     "icon": "🧭",
     "tagline": "New here? Start with this. What the framework is, how to read an entry, and how the ratings are meant to be used.",
-    "intro": "What the framework is, how the ratings are meant to be used, and how to put it to work on a real project. New here? Start with what it's for.",
+    "intro": "Use this framework in two ways. First, as a searchable library of constructability entries: browse or search for a design decision and read the relevant guidance, thresholds, examples and evidence. Second, as a project review tool: save relevant entries to a project review list and export them as a project-specific constructability checklist. Use the framework to inform your own engineering judgement &mdash; not as fixed answers, but as prompts for thinking through how your design will actually be built.",
     "whatIs": {
       "title": "What is this framework?",
       "intro": "Structural designers operate under two parallel bodies of obligation: <em>compliance</em> and <em>professional duty</em>. This framework helps with <strong><em>professional duty</em></strong>. It does not help you check codes, interpret Australian Standards, or determine whether a design is structurally adequate. It helps designers think about whether what they have drawn can be built safely and practically, and it now supports both single-entry review and project-specific constructability checklists. Just as importantly, the framework is a starting point for discussion rather than a settled rulebook. Its aim is to put practical constructability ideas into the open, rate them honestly, and encourage the field measurements, studies and literature that can test and refine them — bringing construction and design closer together.",
@@ -6393,10 +6397,6 @@
         }
       ],
       "caption": "Compliance tells you what the design must be. The framework helps with the other half of the job: whether what you have drawn can be built safely and practically."
-    },
-    "howToUse": {
-      "title": "How to use it",
-      "text": "Use this framework in two ways. First, as a searchable library of constructability entries: browse or search for a design decision and read the relevant guidance, thresholds, examples and evidence. Second, as a project review tool: save relevant entries to a project review list and export them as a project-specific constructability checklist. Use the framework to inform your own engineering judgement &mdash; not as fixed answers, but as prompts for thinking through how your design will actually be built."
     },
     "dimensionsGuide": {
       "title": "The five dimensions",
@@ -6478,6 +6478,64 @@
           "rating": "Action required",
           "color": "red",
           "meaning": "A constructability challenge to deliberately address before construction. A prompt to evaluate and decide — not an automatic prohibition."
+        }
+      ]
+    },
+    "anatomy": {
+      "title": "Anatomy of an entry",
+      "intro": "Every entry follows the same layout. Below is a real entry from the framework &mdash; <strong>Off-form concrete upturns near obstructions</strong> &mdash; with each field labelled. These are the live entry components, not screenshots, so they always match what you see in the framework itself.",
+      "entryRef": {
+        "id": "off-form-concrete-upturns-near-obstructions"
+      },
+      "fields": [
+        {
+          "label": "Design Question",
+          "caption": "The specific question the entry answers. If this is your question, the entry is relevant to your decision."
+        },
+        {
+          "label": "Design Parameter",
+          "caption": "The project-specific condition checked by the entry. It may be measured from drawings, confirmed from site conditions, selected by the designer, checked with suppliers, or judged from the documentation."
+        },
+        {
+          "label": "Design Guidance",
+          "caption": "Threshold bands or described states that rate the project condition as Best practice, Consider, Concern or Action required. This is the heart of the entry."
+        },
+        {
+          "label": "Applicability and Limitations",
+          "caption": "Where the entry applies, what to check before relying on it, and a reminder that the rating is a review prompt — not a rule."
+        },
+        {
+          "label": "Recommended Actions",
+          "caption": "Practical options to consider if you land in Concern or Action required. A starting point for the decision, not a fixed instruction."
+        }
+      ],
+      "moreFields": "Entries may also include a <strong>Background</strong> (why the issue matters), an <strong>Evidence Basis</strong> (how the guidance was established, with references), and <strong>Evidence Support</strong> (a Low, Medium or High indicator showing how much supporting information sits behind the entry). Entries may also include <strong>Examples</strong> and <strong>Supporting Images</strong> &mdash; real, de-identified drawings and site photographs showing the issue in practice. Some entries also link to <strong>Related Entries</strong> &mdash; other entries worth considering alongside this one. At the bottom of each live entry you can add the entry to a <strong>project review list</strong>, suggest a change, or add a reviewed comment."
+    },
+    "trace": {
+      "title": "How an entry works: condition → band → response",
+      "intro": "Every entry runs the same way. Identify the relevant project condition, compare it with the threshold bands or described states, read the rating, and decide the appropriate response. Using the off-form upturn entry as a worked example:",
+      "steps": [
+        {
+          "label": "Project condition",
+          "value": "Clearance = 500 mm",
+          "sub": "measured between the upturn face and the nearest boundary or permanent obstruction"
+        },
+        {
+          "label": "Falls in band",
+          "value": "350 – 700 mm",
+          "sub": "compare the condition with the threshold list",
+          "color": "orange"
+        },
+        {
+          "label": "Rating",
+          "value": "Concern",
+          "sub": "coil ties can't be used; threaded bar only, tightened at arm's length",
+          "color": "orange"
+        },
+        {
+          "label": "Response",
+          "value": "Consider alternatives",
+          "sub": "go to Recommended Actions — permanent formwork, blockwork, reposition, or precast"
         }
       ]
     },
@@ -6568,33 +6626,6 @@
           "a": "Real examples make constructability issues easier to understand, but they are included as learning examples, not criticism of any designer, contractor, project or client. Project names, company names, site locations and identifying information should be removed before examples are included in the framework."
         }
       ]
-    },
-    "triageGuide": {
-      "title": "Guided triage &mdash; let the framework find the entries",
-      "intro": "Searching and browsing assume you already know what to look for. Guided triage works the other way round: it asks a few quick questions about the job and gathers the entries worth reviewing for you. Open it from <strong>Run guided triage</strong> on the home page, beside the search box. Nothing is ever added automatically &mdash; triage only suggests; you decide what to keep.",
-      "steps": [
-        {
-          "label": "Step 1 &mdash; what's in the job?",
-          "value": "Tick the elements",
-          "sub": "Tick the structural elements and conditions the design includes &mdash; suspended slabs and beams, ground slabs, footings, walls, columns, piles, plus exposed or watertight concrete. It all reads straight off the architect's drawings."
-        },
-        {
-          "label": "Step 2 &mdash; a few questions",
-          "value": "Yes / No / Not sure",
-          "sub": "A short run of questions, showing only the ones relevant to what you ticked. Each says where the answer comes from &mdash; the drawings, the geotech, the site, or a decision you're still making. <strong>Not sure</strong> still surfaces the entry: the aim is to prompt a look, not to filter."
-        },
-        {
-          "label": "Step 3 &mdash; general reviews",
-          "value": "Optional opt-ins",
-          "sub": "A few good-practice reviews that suit almost any concrete job &mdash; drawing clarity, buildability, and site and temporary stability. Off by default; tick any you want included."
-        },
-        {
-          "label": "Result",
-          "value": "A checklist to add",
-          "sub": "The entries worth reviewing, each showing what prompted it. Untick anything that doesn't apply, then add the rest to a project review list &mdash; you choose which one."
-        }
-      ],
-      "note": "Triage is the guided alternative to searching and browsing &mdash; most useful when you know the project but not yet which entries apply. It draws on the same entries as the rest of the framework; it just comes to you with the questions. Because everything it finds can be unticked, and entries already on your chosen list are left out, it's safe to run again as the design develops. Its output flows straight into the project review list described next."
     },
     "projectListWorkflow": {
       "title": "Using the framework on a project",
