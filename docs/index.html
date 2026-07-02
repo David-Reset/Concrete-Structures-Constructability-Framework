@@ -2650,7 +2650,13 @@ function renderGuideView(){
     const steps=(pr.steps||[]).map((s,i)=>`<div class="trace-step"><div class="trace-step-label">${s.label}</div><div class="trace-step-value">${s.value}</div><div class="trace-step-sub">${s.sub}</div></div>${i<(pr.steps||[]).length-1?'<div class="trace-arrow">→</div>':''}`).join('');
     html+=`<div class="label" style="margin-top:36px">${pr.title}</div><p class="guide-sub">${pr.intro}</p><div class="trace-flow">${steps}</div>`;
     if(pr.triageDetail){html+=`<div class="label" style="margin-top:24px">${pr.triageDetail.title}</div><p class="guide-sub">${pr.triageDetail.text}</p>`;}
+    if(pr.browseDetail){html+=`<div class="label" style="margin-top:20px">${pr.browseDetail.title}</div><p class="guide-sub">${pr.browseDetail.text}</p>`;}
     if(pr.note){html+=`<div class="guide-more">${pr.note}</div>`;}
+  }
+
+  // Why the framework exists, and why contributing is worth it
+  if(g.why){
+    html+=`<div class="label" style="margin-top:36px">${g.why.title}</div>${(g.why.paras||[]).map(p=>`<p class="guide-sub">${p}</p>`).join('')}`;
   }
 
   // Contribution pathways
