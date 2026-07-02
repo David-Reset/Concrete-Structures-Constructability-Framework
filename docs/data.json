@@ -6365,7 +6365,7 @@
     "title": "Guide & FAQ",
     "icon": "🧭",
     "tagline": "New here? Start with this. What the framework is, how to read an entry, and how the ratings are meant to be used.",
-    "intro": "What the framework is, how the ratings are meant to be used, and how to put it to work on a real project. New here? Start with what it's for.",
+    "intro": "",
     "whatIs": {
       "title": "What is this framework?",
       "intro": "Structural designers operate under two parallel bodies of obligation: <em>compliance</em> and <em>professional duty</em>. This framework helps with <strong><em>professional duty</em></strong>. It does not help you check codes, interpret Australian Standards, or determine whether a design is structurally adequate. It helps designers think about whether what they have drawn can be built safely and practically, and it now supports both single-entry review and project-specific constructability checklists. Just as importantly, the framework is a starting point for discussion rather than a settled rulebook. Its aim is to put practical constructability ideas into the open, rate them honestly, and encourage the field measurements, studies and literature that can test and refine them — bringing construction and design closer together.",
@@ -6405,7 +6405,12 @@
     },
     "howToUse": {
       "title": "How to use it",
-      "text": "Use this framework in two ways. First, as a searchable library of constructability entries: browse or search for a design decision and read the relevant guidance, thresholds, examples and evidence. Second, as a project review tool: save relevant entries to a project review list and export them as a project-specific constructability checklist. Use the framework to inform your own engineering judgement &mdash; not as fixed answers, but as prompts for thinking through how your design will actually be built."
+      "intro": "Use it in two ways:",
+      "points": [
+        "<strong>A searchable library</strong> &mdash; browse or search for a design decision and read the relevant guidance, thresholds, examples and evidence.",
+        "<strong>A project review tool</strong> &mdash; save the relevant entries to a project review list and export them as a project-specific constructability checklist."
+      ],
+      "note": "Either way, use it to inform your own engineering judgement &mdash; not as fixed answers, but as prompts for thinking through how your design will actually be built."
     },
     "dimensionsGuide": {
       "title": "The five dimensions",
@@ -6554,7 +6559,7 @@
         },
         {
           "q": "Is my project review list public?",
-          "a": "No. Your project review lists are stored locally in your browser, need no login, and are not published to the framework. If you clear your browser data or switch device they may not follow you &mdash; use <strong>Export list as file</strong> to save a backup you can re-import anywhere, which updates the same list rather than making a copy."
+          "a": "No. Your project review lists are stored locally in your browser, need no login, and are not published to the framework. If you clear your browser data or switch device they may not follow you &mdash; use <strong>Export list as file</strong> to save a backup you can re-import later, which updates the same list rather than making a copy."
         },
         {
           "q": "In the project review list, what is the project purpose field for?",
@@ -6584,34 +6589,34 @@
     },
     "projectListWorkflow": {
       "title": "Using the framework on a project",
-      "intro": "The framework is more than a reference library. On a real job you gather the entries that matter, collect them into a project review list &mdash; you can keep one per project &mdash; and export a project-specific constructability review checklist. The whole path, end to end:",
+      "intro": "The framework is more than a reference library. On a real job you can gather the entries that matter, build a project review list, and export it as a project-specific constructability checklist:",
       "steps": [
         {
           "label": "Find the entries",
           "value": "Triage, search or browse",
-          "sub": "Run guided triage to have the framework suggest entries from a few questions about the job, or search and browse the dimensions yourself."
+          "sub": "Run guided triage, or search and browse the dimensions yourself."
         },
         {
           "label": "Collect them",
           "value": "Add to a review list",
-          "sub": "On any entry, choose which list it belongs on &mdash; tick more than one to add it to several at once. Keep a separate list for each project; lists stay in your browser, no login."
+          "sub": "Add entries to a project review list &mdash; keep one per project."
         },
         {
           "label": "Name and describe",
           "value": "Name and purpose",
-          "sub": "Give each list a project name and a short purpose statement. The purpose appears on every export, so the checklist explains what the review is for."
+          "sub": "Name the list and add a purpose; both show on the export."
         },
         {
           "label": "Export or share",
           "value": "Link, PDF, checklist",
-          "sub": "Copy a live share link, download a PDF or editable Markdown, copy a plain-text checklist, or export the list as a backup file you can re-import on any device."
+          "sub": "Copy a live share link, or export a PDF, Markdown, checklist or backup file."
         }
       ],
       "triageDetail": {
         "title": "The guided way to do step one",
         "text": "<strong>Guided triage</strong> &mdash; the Run guided triage button beside the search box &mdash; does the finding for you. Tick which elements and conditions are in the job, straight off the architect's drawings, then answer a short run of Yes / No / Not sure questions, shown only where they're relevant and each tagged with where the answer comes from (the drawings, the geotech, the site, or a decision you're still making). <strong>Not sure</strong> still surfaces the entry, on purpose. Triage then hands you a checklist of suggested entries, each showing what prompted it; untick anything that doesn't apply and choose the list they go on."
       },
-      "note": "A project review list turns the entries you pick into a project-specific constructability review checklist. Lists live in your browser (no login) &mdash; export a backup file if you want to keep one or move it to another device &mdash; and are best treated as a prompt for design review, not proof that a project complies with any standard."
+      "note": "A project review list turns your selected entries into a project-specific constructability checklist. It lives in your browser (no login) and is a prompt for design review, not proof that a project complies with any standard."
     },
     "contributing": {
       "title": "Contributing feedback",
