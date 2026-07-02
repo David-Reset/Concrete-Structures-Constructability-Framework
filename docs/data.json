@@ -6368,7 +6368,7 @@
     "intro": "",
     "whatIs": {
       "title": "What is this framework?",
-      "intro": "Structural designers operate under two parallel bodies of obligation: <em>compliance</em> and <em>professional duty</em>. This framework helps with <strong><em>professional duty</em></strong>. It does not help you check codes, interpret Australian Standards, or determine whether a design is structurally adequate. It helps designers think about whether what they have drawn can be built safely and practically, and it now supports both single-entry review and project-specific constructability checklists. Just as importantly, the framework is a starting point for discussion rather than a settled rulebook. Its aim is to put practical constructability ideas into the open, rate them honestly, and encourage the field measurements, studies and literature that can test and refine them — bringing construction and design closer together.",
+      "intro": "Structural designers operate under two parallel bodies of obligation: <em>compliance</em> and <em>professional duty</em>. This framework helps with <strong><em>professional duty</em></strong>. It does not help you check codes, interpret Australian Standards, or determine whether a design is structurally adequate. It helps designers think about whether what they have drawn can be built safely and practically. It organises that thinking across five dimensions of reinforced-concrete constructability. Just as importantly, the framework is a starting point for discussion rather than a settled rulebook. Its aim is to put practical constructability ideas into the open, rate them honestly, and encourage the field measurements, studies and literature that can test and refine them — bringing construction and design closer together.",
       "columns": [
         {
           "kind": "compliance",
@@ -6420,7 +6420,7 @@
         {
           "label": "Collect them",
           "value": "Add to a review list",
-          "sub": "Add the entries that apply to a project review list &mdash; keep one per project."
+          "sub": "Add the entries that apply to a project review list."
         },
         {
           "label": "Name and describe",
