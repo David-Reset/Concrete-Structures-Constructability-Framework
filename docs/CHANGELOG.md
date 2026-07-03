@@ -2,10 +2,11 @@
 
 ## 2026-07-03
 
-**Summary:** 1 reviewed
+**Summary:** 2 reviewed
 
 ### Reviewed
 - **Rock sockets vs. likely available drilling plant** (Logistics)
+- **Concrete columns/walls vs a blockwork-and-steel combination** (Construction Methods)
 
 ## 2026-07-02
 
