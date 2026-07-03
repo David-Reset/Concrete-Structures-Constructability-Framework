@@ -6614,7 +6614,7 @@
       "title": "Why the framework exists",
       "paras": [
         "A compliant design isn't automatically a buildable one. Much of what decides whether a detail is safe and efficient to build is learned on site &mdash; held by the people who build it, rarely written down, and slow to reach the people who draw it. The framework exists to close that gap: to put constructability knowledge in front of the designer during initial decision making, and to keep growing as the industry does rather than settle into a fixed document.",
-        "Contributing is also a way to sharpen practice. Turning site experience into a framework entry means naming the design parameter, setting out the thresholds or recommended response, and explaining the evidence behind it. That process makes practical knowledge easier to share, but it also tests the contributor's own reasoning by forcing assumptions, limits and evidence into the open."
+        "Contributing is also a way to learn a detail more deeply. Turning site experience into a framework entry is a form of teaching: the contributor has to name the design parameter, explain the threshold or recommended response, and make the evidence and limits clear enough for someone else to use. That process often sharpens the contributor's own understanding as much as it helps the next designer."
       ]
     },
     "contributing": {
@@ -6642,15 +6642,15 @@
       "items": [
         {
           "label": "Data Manager",
-          "text": "The main review and publishing tool. It turns form responses into structured entries, edits and comments; lets a maintainer accept, reject, revise and publish submissions; and exports the updated <code>data.json</code>."
+          "text": "The main review and publishing tool. It turns form responses into structured entries, edits and comments; lets a maintainer accept, reject, revise and publish submissions; and exports the updated framework data."
         },
         {
           "label": "Image Formatter",
-          "text": "Prepares images for the framework. It renames, resizes and re-encodes photographs, screenshots and diagrams for the <code>images</code> folder, checks for filename clashes, and strips embedded metadata during re-encoding."
+          "text": "Prepares images for the framework. It renames, resizes and re-encodes photographs, screenshots and diagrams for the images folder, checks for filename clashes, and removes hidden location, camera and device information."
         },
         {
           "label": "Framework Doctor",
-          "text": "Runs a read-only health check before publishing. It compares <code>data.json</code> with the <code>images</code> folder, flags missing or orphan images, and reports data-integrity issues that should be fixed before committing changes."
+          "text": "A read-only health check. It compares the main data file with the images folder, flags missing or orphan images, and reports data-integrity issues that should be fixed before committing changes."
         }
       ],
       "note": "All three tools run locally in the maintainer's browser. Nothing is uploaded; the tools only read or write the files the maintainer chooses."
