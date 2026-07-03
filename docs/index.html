@@ -722,13 +722,16 @@ function itemMatchesFilter(item){
     const hit=f.state?R.some(r=>r.country===f.country&&(r.state===f.state||!r.state)):R.some(r=>r.country===f.country);
     if(!hit)return false;
   }
+  // Facets combine with AND, both across categories and within one: an entry must
+  // carry EVERY selected element tag AND EVERY selected stage tag (and match the
+  // region). Adding chips only ever narrows the list.
   if(state.elementFilter&&state.elementFilter.length){
     const tags=(item.data&&item.data.elementType)||[];
-    if(!state.elementFilter.some(v=>tags.includes(v)))return false;
+    if(!state.elementFilter.every(v=>tags.includes(v)))return false;
   }
   if(state.phaseFilter&&state.phaseFilter.length){
     const tags=(item.data&&item.data.constructionPhase)||[];
-    if(!state.phaseFilter.some(v=>tags.includes(v)))return false;
+    if(!state.phaseFilter.every(v=>tags.includes(v)))return false;
   }
   return true;
 }
