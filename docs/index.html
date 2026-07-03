@@ -65,6 +65,12 @@
   .item-name{font-size:14px;font-weight:600} .item-meta{font-size:11px;color:var(--text-muted);margin-top:4px}
   .item-arrow{color:var(--accent);font-size:18px}
   .item-coming{font-size:10px;color:var(--text-muted);padding:4px 10px;background:var(--surface-light);border-radius:4px;border:1px solid var(--border)}
+  .item-main{display:flex;gap:14px;align-items:flex-start;min-width:0}
+  .list-thumb{width:56px;height:56px;border-radius:8px;border:1px solid var(--border);background:var(--surface-light);position:relative;flex-shrink:0;cursor:pointer;overflow:hidden}
+  .list-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .list-thumb:hover{border-color:var(--accent)}
+  .list-thumb-x{position:absolute;right:3px;bottom:3px;width:15px;height:15px;background:rgba(10,15,26,0.82);border-radius:3px;display:flex;align-items:center;justify-content:center}
+  .list-thumb-x svg{width:9px;height:9px;fill:none;stroke:var(--text-muted);stroke-width:1.3}
 
   .entry-title{font-size:22px;font-weight:800;letter-spacing:-0.3px;margin-bottom:6px}
   .entry-meta{font-size:12px;color:var(--text-muted);margin-bottom:24px}
@@ -857,7 +863,7 @@ function runSearch(q){
       if(best>0){score+=best;coverage++;}
     });
     if(coverage>0)matched.push({dimId:dim.id,id:it.id,name:it.name,dimName:dim.name,dimIcon:dim.icon,
-      location:it.data.location||null,confirmations:it.data.confirmations||null,evidenceSupport:it.data.evidenceSupport||null,dateAdded:it.data.dateAdded||'',dateReviewed:it.data.dateReviewed||'',coverage,score,snippet:buildSnippet(fields,flat)});
+      location:it.data.location||null,confirmations:it.data.confirmations||null,evidenceSupport:it.data.evidenceSupport||null,dateAdded:it.data.dateAdded||'',dateReviewed:it.data.dateReviewed||'',listImage:it.data.listImage||'',coverage,score,snippet:buildSnippet(fields,flat)});
   });
   if(!matched.length)return [];
   matched.sort((a,b)=>b.score-a.score||b.coverage-a.coverage);
@@ -888,6 +894,14 @@ function highlightTerms(text,terms){
 }
 function escAttr(s){return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function escJsSingle(s){return String(s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\r?\n/g,'');}
+// Optional lead-image thumbnail for list rows. Returns '' when the entry has no
+// listImage, so rows without one render exactly as before. Click enlarges via the
+// existing lightbox; stopPropagation keeps the click off the row's open handler.
+function listThumb(d){
+  const src=d&&d.listImage?d.listImage:'';
+  if(!src)return '';
+  return `<div class="list-thumb" onclick="event.stopPropagation();openLightbox('${escJsSingle(src)}')" title="Click to enlarge"><img src="${escAttr(src)}" alt="" loading="lazy"><span class="list-thumb-x"><svg viewBox="0 0 10 10"><path d="M1 4 V1 H4 M6 1 H9 V4 M9 6 V9 H6 M4 9 H1 V6"/></svg></span></div>`;
+}
 // --- snippet text hygiene: entry fields contain HTML (<br>,<em>,<strong>) + entities ---
 function stripTags(s){return (s||'').replace(/<[^>]*>/g,' ');}
 const SEARCH_ENT={'&nbsp;':' ','&amp;':'&','&lt;':'<','&gt;':'>','&mdash;':'\u2014','&ndash;':'\u2013','&le;':'\u2264','&ge;':'\u2265','&times;':'\u00d7','&deg;':'\u00b0','&rsquo;':'\u2019','&lsquo;':'\u2018','&prime;':'\u2032','&radic;':'\u221a','&ouml;':'\u00f6'};
@@ -923,7 +937,7 @@ function renderSearchResults(){
   if(!res.length){
     return `<div class="search-empty"><div class="search-empty-title">No entries match “${escAttr(q)}”${searchRegion?' in this region':''}.</div><div class="search-empty-sub">Try fewer or different words${searchRegion?', widen the region,':''} or browse the dimensions below. If the framework doesn't cover this yet, you can <span class="search-empty-link" onclick="goSuggest()">suggest a new entry</span>.</div></div>`;
   }
-  const rows=res.map(r=>{const support=r.evidenceSupport?evidenceSupportPill({evidenceSupport:r.evidenceSupport}):'';const supportRow=support?`<div class="search-result-meta">${support}</div>`:'';const reviewed=dateMeta(r);const right=`<div style="text-align:right;flex-shrink:0"><div class="item-arrow">→</div>${reviewed}</div>`;return `<div class="item-row available search-result" onclick="goEntry('${r.dimId}','${r.id}')"><div class="search-result-main"><div class="search-result-top"><span class="item-name">${escHtml(r.name)}</span><span class="related-dim"><span class="ico">${r.dimIcon}</span>${escHtml(r.dimName)}</span>${regionTag(r)}</div>${r.snippet?`<div class="search-snippet">${r.snippet}</div>`:''}${supportRow}</div>${right}</div>`}).join('');
+  const rows=res.map(r=>{const support=r.evidenceSupport?evidenceSupportPill({evidenceSupport:r.evidenceSupport}):'';const supportRow=support?`<div class="search-result-meta">${support}</div>`:'';const reviewed=dateMeta(r);const right=`<div style="text-align:right;flex-shrink:0"><div class="item-arrow">→</div>${reviewed}</div>`;const thumb=listThumb(r);const mainDiv=`<div class="search-result-main"><div class="search-result-top"><span class="item-name">${escHtml(r.name)}</span><span class="related-dim"><span class="ico">${r.dimIcon}</span>${escHtml(r.dimName)}</span>${regionTag(r)}</div>${r.snippet?`<div class="search-snippet">${r.snippet}</div>`:''}${supportRow}</div>`;const leftBlock=thumb?`<div class="item-main">${thumb}${mainDiv}</div>`:mainDiv;return `<div class="item-row available search-result" onclick="goEntry('${r.dimId}','${r.id}')">${leftBlock}${right}</div>`}).join('');
   return `<div class="search-count">${res.length} ${res.length===1?'entry':'entries'} found</div><div class="item-list search-list">${rows}</div>`;
 }
 function onSearchInput(v){
@@ -1852,7 +1866,7 @@ function renderProjectListView(){
   const name=escAttr(list.name||'');
   const purpose=escAttr((list.purpose!==undefined?list.purpose:DEFAULT_PROJECT_PURPOSE)||'');
   const cards=ordered.map(({dim,item,data})=>{
-    return `<div class="project-card"><div class="project-card-main"><div class="project-card-title">${escHtml(item.name)}</div><div class="project-card-meta"><strong>Dimension:</strong> ${escHtml(dim.name)}</div><div class="project-card-question"><strong>Design question:</strong><br>${data.question||''}</div><div class="project-card-meta"><strong>Design parameter:</strong> ${data.parameter||''}</div></div><div class="project-card-actions"><button class="entry-btn" onclick="goEntry('${dim.id}','${item.id}')">Open entry →</button><button class="entry-btn danger" onclick="removeFromProjectList('${item.id}')">Remove</button></div></div>`;
+    return `<div class="project-card">${listThumb(data)}<div class="project-card-main"><div class="project-card-title">${escHtml(item.name)}</div><div class="project-card-meta"><strong>Dimension:</strong> ${escHtml(dim.name)}</div><div class="project-card-question"><strong>Design question:</strong><br>${data.question||''}</div><div class="project-card-meta"><strong>Design parameter:</strong> ${data.parameter||''}</div></div><div class="project-card-actions"><button class="entry-btn" onclick="goEntry('${dim.id}','${item.id}')">Open entry →</button><button class="entry-btn danger" onclick="removeFromProjectList('${item.id}')">Remove</button></div></div>`;
   }).join('');
   const empty=`<div class="project-empty"><div class="project-empty-title">Your project review list is empty.</div><div class="project-empty-sub">Open any live entry and use <strong>Add to project review list</strong>. The list stays in this browser and can be exported as a project checklist later.</div></div>`;
   const exportHelp=`<div class="project-export-card"><div class="project-export-title">Export options</div><div class="project-export-grid"><div class="project-export-item"><strong>Copy share link</strong><span>Copies a link that reopens this live framework with the same entries pre-selected — hand someone a review set that stays current, instead of a frozen PDF.</span></div><div class="project-export-item"><strong>Copy project checklist</strong><span>Copies a plain-text project checklist to the clipboard, ready to paste into an email, meeting note, design review or QA record.</span></div><div class="project-export-item"><strong>Download PDF</strong><span>Downloads a professional checklist document with the selected entries, design questions, design parameters and clickable framework links.</span></div><div class="project-export-item"><strong>Download Markdown</strong><span>Downloads an editable .md checklist for GitHub, Notion, Obsidian, project notes or later conversion into another document.</span></div><div class="project-export-item"><strong>Export list as file</strong><span>Saves this list as a small file you own — your durable backup. Re-import it here later (on any device) to carry on; it updates this same list instead of making a copy.</span></div></div></div>`;
@@ -2554,7 +2568,10 @@ function renderRecentRow(e){
   const support=evidenceSupportPill(d);
   const param=d.parameter?`<div class="evidence-index-meta"><strong>Parameter:</strong> ${d.parameter}</div>`:'';
   const right=`<div style="text-align:right;flex-shrink:0"><div class="item-arrow">→</div>${dateMeta(d)}</div>`;
-  return `<div class="item-row available evidence-index-result" onclick="goEntry('${dim.id}','${it.id}')"><div class="evidence-index-main"><div class="evidence-index-top"><span class="item-name">${escHtml(it.name)}</span><span class="related-dim"><span class="ico">${dim.icon}</span>${escHtml(dim.name)}</span>${loc}</div>${param}${support?`<div class="search-result-meta">${support}</div>`:''}</div>${right}</div>`;
+  const thumb=listThumb(d);
+  const mainDiv=`<div class="evidence-index-main"><div class="evidence-index-top"><span class="item-name">${escHtml(it.name)}</span><span class="related-dim"><span class="ico">${dim.icon}</span>${escHtml(dim.name)}</span>${loc}</div>${param}${support?`<div class="search-result-meta">${support}</div>`:''}</div>`;
+  const leftBlock=thumb?`<div class="item-main">${thumb}${mainDiv}</div>`:mainDiv;
+  return `<div class="item-row available evidence-index-result" onclick="goEntry('${dim.id}','${it.id}')">${leftBlock}${right}</div>`;
 }
 // The home-page "Recent activity" strip exists to signal the framework is alive.
 // It orders by most recent activity (added OR revised), so a freshly reworked old
@@ -2818,7 +2835,10 @@ function renderDimensionView(){
     const right=item.available?`<div style="text-align:right"><div class="item-arrow">→</div>${item.data?dateMeta(item.data):''}</div>`:'<div class="item-coming">Coming soon</div>';
     const support=item.available&&item.data?evidenceSupportPill(item.data):'';
     const meta=item.available&&item.data?`<div class="item-meta">Parameter: ${item.data.parameter}</div>${support?`<div class="item-meta" style="margin-top:8px">${support}</div>`:''}`:'';
-    return `<div class="${cls}" ${onclick} ${hidden}><div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><div class="item-name">${item.name}</div>${loc}${item.available?metaTagChips(item.data):''}</div>${meta}</div>${right}</div>`;
+    const thumb=item.available?listThumb(item.data):'';
+    const textBlock=`<div style="min-width:0"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><div class="item-name">${item.name}</div>${loc}${item.available?metaTagChips(item.data):''}</div>${meta}</div>`;
+    const leftBlock=thumb?`<div class="item-main">${thumb}${textBlock}</div>`:textBlock;
+    return `<div class="${cls}" ${onclick} ${hidden}>${leftBlock}${right}</div>`;
   }).join('');
 
   let guidanceHtml='';
