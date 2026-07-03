@@ -328,6 +328,15 @@
   .facet-clear:hover{text-decoration:underline}
   .facet-crosslink{background:none;border:none;color:var(--link);font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;padding:0}
   .facet-crosslink:hover{text-decoration:underline}
+  .list-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .list-toolbar{display:flex;justify-content:flex-end;margin:2px 0 12px}
+  .sort-control{display:flex;align-items:center;gap:8px}
+  .sort-label{font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+  .sort-select{background:var(--surface-light);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:6px 12px;font-size:12px;font-family:inherit;cursor:pointer;outline:none}
+  .sort-select:focus{border-color:var(--accent)}
+  .sort-dir{background:var(--surface-light);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:6px 11px;font-size:12px;font-family:inherit;cursor:pointer;outline:none;white-space:nowrap;transition:all .15s}
+  .sort-dir:hover:not(.disabled){border-color:var(--accent);color:var(--text)}
+  .sort-dir.disabled{opacity:.4;cursor:default}
   .meta-tag{display:inline-block;font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:999px;line-height:1.5;white-space:nowrap;background:var(--surface-light);border:1px solid var(--border);color:var(--text-muted)}
   .meta-tag.el{color:var(--accent);border-color:var(--accent)}
   .entry-tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
@@ -607,7 +616,7 @@
 // ===== STATE =====
 let dimensions = [];
 let guide = null;
-let state = { view:'home', dimId:null, itemId:null, locationFilter:null, evidenceFilter:'all', sharedPreview:null, elementFilter:[], phaseFilter:[] };
+let state = { view:'home', dimId:null, itemId:null, locationFilter:null, evidenceFilter:'all', sharedPreview:null, elementFilter:[], phaseFilter:[], sortMode:'default', sortDir:'desc' };
 let searchQuery='';
 let searchRegion=null;
 
@@ -2342,7 +2351,8 @@ function renderBrowseView(){
   const active=(state.locationFilter||state.elementFilter.length||state.phaseFilter.length);
   const all=allAvailableEntries();
   const filtered=all.filter(e=>itemMatchesFilter(e.item));
-  const rows=filtered.map(renderRecentRow).join('');
+  const sorted=applyEntrySort(filtered,e=>e.data,e=>e.item&&e.item.name,()=>true);
+  const rows=sorted.map(renderRecentRow).join('');
   const clear=active?`<button class="facet-clear" onclick="clearAllFilters()">Clear</button>`:'';
   const countText=active?`${filtered.length} of ${all.length} entries`:`All ${all.length} entries`;
   const empty=filtered.length?'':`<div class="project-empty"><div class="project-empty-title">No entries match those filters.</div><div class="project-empty-sub">Region, element and stage are combined — an entry must match all of the active ones. Try removing one.</div></div>`;
@@ -2354,6 +2364,7 @@ function renderBrowseView(){
     <div class="facet-row"><span class="facet-label">Stage</span><div class="facet-chips">${phChips}</div></div>
     <div class="facet-foot"><span class="facet-count">${countText}</span>${clear}</div>
   </div>
+  <div class="list-toolbar">${renderSortControl()}</div>
   <div class="item-list">${rows}</div>${empty}</div>`;
 }
 function renderBreadcrumb(){
@@ -2412,14 +2423,66 @@ function dateMeta(o){
   const upd=(rev&&rev>added)?`<div class="item-meta" style="margin-top:2px;color:var(--link)">updated ${fmtDate(rev)}</div>`:'';
   return `<div class="item-meta">Added ${fmtDate(added)}</div>${upd}`;
 }
-// Live entries that carry a dateAdded, newest first. Ties break on dateReviewed
-// then name so the order is stable. Pass n to cap the list (e.g. the home page 3).
+// The date an entry was last "touched" — the later of when it was added and when
+// it was last reviewed. This is what the home strip and by-date view order on, so
+// a revised old entry surfaces alongside brand-new ones (recent *activity*).
+function activityDate(d){const a=d&&d.dateAdded?d.dateAdded:'';const r=d&&d.dateReviewed?d.dateReviewed:'';return a>r?a:r;}
+
+// ===== ENTRY SORTING (shared across the browse + dimension views) =====
+// One preference, remembered per browser, applied everywhere: 'default' keeps each
+// list's authored/curated order untouched; 'added'/'reviewed' sort by date with a
+// direction toggle. Undated or not-yet-live entries always sink to the bottom, so
+// the arrow only ever reorders dated, available entries.
+const SORT_MODE_KEY='entrySort.mode.v1', SORT_DIR_KEY='entrySort.dir.v1';
+function loadSortPref(){try{
+  const m=localStorage.getItem(SORT_MODE_KEY);
+  if(m==='added'||m==='reviewed'||m==='default')state.sortMode=m;
+  const d=localStorage.getItem(SORT_DIR_KEY);
+  if(d==='asc'||d==='desc')state.sortDir=d;
+}catch(e){}}
+function setSortMode(v){state.sortMode=(v==='added'||v==='reviewed')?v:'default';try{localStorage.setItem(SORT_MODE_KEY,state.sortMode);}catch(e){}render();}
+function toggleSortDir(){if(state.sortMode==='default')return;state.sortDir=state.sortDir==='asc'?'desc':'asc';try{localStorage.setItem(SORT_DIR_KEY,state.sortDir);}catch(e){}render();}
+// The date a row is keyed on for the current sort. 'reviewed' falls back to the
+// added date when an entry has never been revised, so it still slots in sensibly.
+function entrySortValue(data,key){
+  if(!data)return '';
+  if(key==='added')return data.dateAdded||'';
+  if(key==='reviewed')return data.dateReviewed||data.dateAdded||'';
+  return '';
+}
+// Returns a sorted COPY; never mutates the input. In 'default' mode the list is
+// returned untouched so the caller's authored order is preserved.
+function applyEntrySort(list,getData,getName,getAvail){
+  if(state.sortMode==='default')return list;
+  const dir=state.sortDir==='asc'?-1:1; // base order is desc = newest first
+  const key=state.sortMode;
+  return list.slice().sort((a,b)=>{
+    const aAv=getAvail?!!getAvail(a):true,bAv=getAvail?!!getAvail(b):true;
+    if(aAv!==bAv)return aAv?-1:1;             // available entries first, always
+    const av=entrySortValue(getData(a),key),bv=entrySortValue(getData(b),key);
+    if(!!av!==!!bv)return av?-1:1;            // dated entries before undated, always
+    if(av!==bv)return (av<bv?1:-1)*dir;       // newest first, flipped by the arrow
+    return (getName(a)||'').localeCompare(getName(b)||'');
+  });
+}
+function renderSortControl(){
+  const mode=state.sortMode,dir=state.sortDir,isDefault=mode==='default';
+  const opt=(v,l)=>`<option value="${v}"${mode===v?' selected':''}>${l}</option>`;
+  const arrowTxt=dir==='asc'?'\u2191 Oldest':'\u2193 Newest';
+  const arrowTitle=isDefault?'Pick a date sort to change direction':(dir==='asc'?'Oldest first — click for newest':'Newest first — click for oldest');
+  return `<div class="sort-control"><span class="sort-label">Sort</span><select class="sort-select" onchange="setSortMode(this.value)">${opt('default','Framework order')}${opt('added','Date added')}${opt('reviewed','Date updated')}</select><button class="sort-dir${isDefault?' disabled':''}" ${isDefault?'disabled ':''}onclick="toggleSortDir()" title="${arrowTitle}">${arrowTxt}</button></div>`;
+}
+// Live entries ordered by most recent activity — the later of dateAdded and
+// dateReviewed — newest first, so a freshly revised old entry surfaces alongside
+// brand-new ones. Ties break on dateAdded then name so the order is stable. Pass
+// n to cap the list (e.g. the home page 3).
 function recentEntries(n){
-  const list=allAvailableEntries().filter(e=>e.data&&e.data.dateAdded);
+  const list=allAvailableEntries().filter(e=>e.data&&(e.data.dateAdded||e.data.dateReviewed));
   list.sort((a,b)=>{
-    if(a.data.dateAdded!==b.data.dateAdded)return a.data.dateAdded<b.data.dateAdded?1:-1;
-    const ar=a.data.dateReviewed||'',br=b.data.dateReviewed||'';
-    if(ar!==br)return ar<br?1:-1;
+    const aa=activityDate(a.data),ba=activityDate(b.data);
+    if(aa!==ba)return aa<ba?1:-1;
+    const ad=a.data.dateAdded||'',bd=b.data.dateAdded||'';
+    if(ad!==bd)return ad<bd?1:-1;
     return (a.item.name||'').localeCompare(b.item.name||'');
   });
   return n?list.slice(0,n):list;
@@ -2432,7 +2495,9 @@ function renderRecentRow(e){
   const right=`<div style="text-align:right;flex-shrink:0"><div class="item-arrow">→</div>${dateMeta(d)}</div>`;
   return `<div class="item-row available evidence-index-result" onclick="goEntry('${dim.id}','${it.id}')"><div class="evidence-index-main"><div class="evidence-index-top"><span class="item-name">${escHtml(it.name)}</span><span class="related-dim"><span class="ico">${dim.icon}</span>${escHtml(dim.name)}</span>${loc}</div>${param}${support?`<div class="search-result-meta">${support}</div>`:''}</div>${right}</div>`;
 }
-// The home-page "Recently added" strip exists to signal the framework is alive.
+// The home-page "Recent activity" strip exists to signal the framework is alive.
+// It orders by most recent activity (added OR revised), so a freshly reworked old
+// entry counts as recent, not just brand-new additions.
 // It is a single collapsible: COLLAPSED BY DEFAULT, but the header line still
 // carries the signal (the date of the newest entry) so the closed state isn't
 // dead. Expanding reveals the rows; the open/closed choice is remembered per
@@ -2445,10 +2510,10 @@ function renderRecentlyAdded(){
   const recent=recentEntries(3);
   if(!recent.length)return '';
   const expanded=isRecentExpanded();
-  const latest=(recent[0]&&recent[0].data)?fmtDate(recent[0].data.dateAdded):'';
+  const latest=(recent[0]&&recent[0].data)?fmtDate(activityDate(recent[0].data)):'';
   const sig=latest?`<span class="recent-toggle-sig">latest ${latest}</span>`:'';
   const icon=expanded?'\u2212':'+'; // − when open, + when closed
-  const header=`<div class="recent-toggle" role="button" tabindex="0" aria-expanded="${expanded}" aria-label="${expanded?'Collapse':'Expand'} recently added entries" onclick="toggleRecentExpanded()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleRecentExpanded();}"><span class="recent-toggle-icon">${icon}</span><span class="recent-toggle-label">Recently added</span>${sig}</div>`;
+  const header=`<div class="recent-toggle" role="button" tabindex="0" aria-expanded="${expanded}" aria-label="${expanded?'Collapse':'Expand'} recent activity" onclick="toggleRecentExpanded()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleRecentExpanded();}"><span class="recent-toggle-icon">${icon}</span><span class="recent-toggle-label">Recent activity</span>${sig}</div>`;
   if(!expanded)return `<div class="recent-wrap">${header}</div>`;
   const rows=recent.map(renderRecentRow).join('');
   return `<div class="recent-wrap">${header}<div class="item-list" style="margin-top:12px">${rows}</div><div style="margin-top:13px"><span class="breadcrumb-link" style="font-size:12px;font-weight:600" onclick="goByDate()">View all entries by date →</span></div></div>`;
@@ -2457,7 +2522,7 @@ function renderByDateView(){
   const list=recentEntries();
   const rows=list.map(renderRecentRow).join('');
   const n=list.length;
-  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">🕑</span><h1 class="dim-header-title">All entries by date</h1></div><p class="section-desc">Every live entry, newest first by the date it was added. Where an entry has been revised since, the date it was last updated is shown too.</p><div class="label">${n} ${n===1?'entry':'entries'}</div><div class="item-list">${rows}</div></div>`;
+  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">🕑</span><h1 class="dim-header-title">All entries by date</h1></div><p class="section-desc">Every live entry, most recent activity first — a brand-new entry and a revision to an existing one both count as activity. Each row shows when it was added and, where it has been revised since, when it was last updated.</p><div class="label">${n} ${n===1?'entry':'entries'}</div><div class="item-list">${rows}</div></div>`;
 }
 
 // ===== EVIDENCE SUPPORT INDEX =====
@@ -2681,7 +2746,8 @@ function renderDimensionView(){
   
   let filterHtml=renderFacetFilters(dim);
 
-  const items=dim.items.map((item,i)=>{
+  const ordered=applyEntrySort(dim.items,it=>it.data,it=>it.name,it=>!!it.available);
+  const items=ordered.map((item,i)=>{
     const matches=itemMatchesFilter(item);
     const hidden=anyFacetActive()&&!matches&&item.available?'style="display:none"':'';
     const cls=item.available?'item-row available':'item-row unavailable';
@@ -2698,7 +2764,7 @@ function renderDimensionView(){
     guidanceHtml=`<div style="margin-top:20px;margin-bottom:24px;padding:18px 22px;background:var(--surface);border:1px solid var(--border);border-radius:10px;"><div class="label" style="margin-bottom:10px">General Guidance</div>${dim.generalGuidance.map(g=>`<div style="display:flex;gap:10px;margin-bottom:8px;align-items:flex-start;"><div style="color:var(--accent);font-size:14px;margin-top:1px;flex-shrink:0;">•</div><div style="font-size:13px;color:var(--text);line-height:1.6;opacity:0.9;">${g}</div></div>`).join('')}</div>`;
   }
 
-  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">${dim.icon}</span><h1 class="dim-header-title">${dim.name}</h1></div><p class="section-desc">${dim.description}</p>${guidanceHtml}${filterHtml}<div class="label">Entries</div><div class="item-list">${items}</div><div class="suggest-banner" onclick="goSuggest('${dim.id}')"><div class="suggest-banner-text"><div class="suggest-banner-title">Missing something in ${dim.name}?</div><div class="suggest-banner-sub">Suggest a new entry for this dimension — the form opens filed under ${dim.name}.</div></div><div class="suggest-banner-btn">Suggest an entry →</div></div></div>`;
+  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">${dim.icon}</span><h1 class="dim-header-title">${dim.name}</h1></div><p class="section-desc">${dim.description}</p>${guidanceHtml}${filterHtml}<div class="list-head"><div class="label" style="margin-bottom:0">Entries</div>${renderSortControl()}</div><div class="item-list">${items}</div><div class="suggest-banner" onclick="goSuggest('${dim.id}')"><div class="suggest-banner-text"><div class="suggest-banner-title">Missing something in ${dim.name}?</div><div class="suggest-banner-sub">Suggest a new entry for this dimension — the form opens filed under ${dim.name}.</div></div><div class="suggest-banner-btn">Suggest an entry →</div></div></div>`;
 }
 
 // Renders approved comments stored on the entry (d.comments). Tolerant of missing
@@ -2923,6 +2989,7 @@ window.addEventListener('hashchange',()=>{state.sharedPreview=null;parseHash();r
 // ===== INIT =====
 async function init(){
   await loadData();
+  loadSortPref();
   parseHash();
   render();
   handleShareLink();
