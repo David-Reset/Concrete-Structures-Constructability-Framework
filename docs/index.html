@@ -1174,8 +1174,28 @@ let _relatedTargets=[];
 let _bulkPending=[];
 function closeAddPicker(){const m=document.getElementById('addPickerOverlay');if(m)m.remove();}
 function lpChecks(){return Array.from(document.querySelectorAll('#addPickerOverlay .lp-check'));}
+// A list worth choosing between: it has a name, or it already holds entries. The
+// fresh workspace always contains one empty, unnamed default list — that one isn't
+// a real choice, so it's excluded here (and the picker skips straight to naming
+// when it's all that exists).
+function meaningfulLists(ws){return (ws||getWorkspace()).lists.filter(l=>(l.name&&l.name.trim())||l.ids.length>0);}
+function firstEmptyUnnamedList(ws){return ws.lists.find(l=>!(l.name&&l.name.trim())&&l.ids.length===0);}
+// First-run flow: no real list exists yet, so name one up front, make it active,
+// and hand its id to the caller to drop entries straight onto. Reuses the empty
+// default list if present so we never leave a stray behind.
+function nameFirstList(onNamed){
+  promptListName('Name your project review list',function(name){
+    if(name===null)return;
+    const ws=getWorkspace();
+    let target=firstEmptyUnnamedList(ws);
+    if(!target){target={id:genListId(),name:'',purpose:DEFAULT_PROJECT_PURPOSE,ids:[],created:todayStr(),updated:todayStr()};ws.lists.push(target);}
+    target.name=name;target.updated=todayStr();ws.activeId=target.id;
+    saveWorkspace(ws);
+    onNamed(target.id);
+  },'Create list',undefined,'Start your first project review list by giving it a name \u2014 then this goes straight onto it. You can keep the suggested name.');
+}
 function lpListRowsHtml(checkedSet){
-  return getWorkspace().lists.map(l=>{
+  return meaningfulLists().map(l=>{
     const nm=l.name&&l.name.trim()?escHtml(l.name):'Untitled list';
     const cnt=l.ids.length;
     const ck=checkedSet.has(l.id)?'checked':'';
@@ -1248,6 +1268,18 @@ function lpNewList(){
 }
 function openAddPicker(entryId){
   closeAddPicker();
+  // Nothing worth choosing between yet — name a list first, then drop this entry on.
+  if(meaningfulLists().length===0){
+    nameFirstList(function(listId){
+      const ws=getWorkspace();
+      const l=ws.lists.find(x=>x.id===listId);
+      if(l&&!l.ids.includes(entryId)){l.ids.push(entryId);l.updated=todayStr();}
+      saveWorkspace(ws);render();
+      const related=relatedNotInLists(entryId,[listId]);
+      if(related&&related.length)showRelatedAddPanel(entryId,related,[listId]);
+    });
+    return;
+  }
   const r=resolveEntryId(entryId);
   const ename=r?escHtml(r.item.name):'this entry';
   const checked=new Set(entryListIds(entryId));
@@ -1308,6 +1340,11 @@ function nameUnnamedTargets(listIds){
 function openBulkAddPicker(ids){
   _bulkPending=ids.slice();
   closeAddPicker();
+  // No real list yet — name one first, then drop the whole set onto it.
+  if(meaningfulLists().length===0){
+    nameFirstList(function(listId){addManyToLists(ids,[listId]);});
+    return;
+  }
   const n=ids.length;
   const overlay=document.createElement('div');
   overlay.className='modal-overlay';overlay.id='addPickerOverlay';overlay.onclick=closeAddPicker;
