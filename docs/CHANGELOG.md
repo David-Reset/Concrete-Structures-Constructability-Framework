@@ -1,5 +1,19 @@
 # Framework changelog
 
+## 2026-07-03
+
+**Summary:** 1 reviewed
+
+### Reviewed
+- **Rock sockets vs. likely available drilling plant** (Logistics)
+
+## 2026-07-02
+
+**Summary:** 1 reviewed
+
+### Reviewed
+- **Non-combustible substructure and floor in bushfire areas** (Construction Methods)
+
 ## 2026-06-30
 
 **Summary:** 2 reviewed
