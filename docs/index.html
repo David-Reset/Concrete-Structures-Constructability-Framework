@@ -2513,7 +2513,7 @@ function renderRecentlyAdded(){
   const latest=(recent[0]&&recent[0].data)?fmtDate(activityDate(recent[0].data)):'';
   const sig=latest?`<span class="recent-toggle-sig">latest ${latest}</span>`:'';
   const icon=expanded?'\u2212':'+'; // − when open, + when closed
-  const header=`<div class="recent-toggle" role="button" tabindex="0" aria-expanded="${expanded}" aria-label="${expanded?'Collapse':'Expand'} recent activity" onclick="toggleRecentExpanded()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleRecentExpanded();}"><span class="recent-toggle-icon">${icon}</span><span class="recent-toggle-label">Recent activit</span>${sig}</div>`;
+  const header=`<div class="recent-toggle" role="button" tabindex="0" aria-expanded="${expanded}" aria-label="${expanded?'Collapse':'Expand'} recent activity" onclick="toggleRecentExpanded()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleRecentExpanded();}"><span class="recent-toggle-icon">${icon}</span><span class="recent-toggle-label">Recent activity</span>${sig}</div>`;
   if(!expanded)return `<div class="recent-wrap">${header}</div>`;
   const rows=recent.map(renderRecentRow).join('');
   return `<div class="recent-wrap">${header}<div class="item-list" style="margin-top:12px">${rows}</div><div style="margin-top:13px"><span class="breadcrumb-link" style="font-size:12px;font-weight:600" onclick="goByDate()">View all entries by date →</span></div></div>`;
