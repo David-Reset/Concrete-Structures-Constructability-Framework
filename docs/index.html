@@ -322,6 +322,8 @@
   .facet-chip{font-family:inherit;font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;border:1px solid var(--border);background:var(--surface-light);color:var(--text-muted);cursor:pointer;transition:all .15s}
   .facet-chip:hover{border-color:var(--accent);color:var(--text)}
   .facet-chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .facet-chip.dead{opacity:.4;cursor:default;color:var(--text-muted)}
+  .facet-chip.dead:hover{border-color:var(--border);color:var(--text-muted)}
   .facet-foot{display:flex;align-items:center;gap:14px}
   .facet-count{font-size:11px;color:var(--text-muted)}
   .facet-clear{margin-left:auto;background:none;border:none;color:var(--link);font-size:12px;font-weight:600;cursor:pointer;font-family:inherit}
@@ -760,8 +762,9 @@ function renderFacetFilters(dim){
     }
     region=`<div class="facet-row"><span class="facet-label">Region</span><select class="facet-select" onchange="setLocationFilter(this.value)">${opts}</select></div>`;
   }
-  const elChips=elVals.map(v=>`<button class="facet-chip${state.elementFilter.includes(v)?' on':''}" onclick="toggleElementFilter('${escAttr(v)}')">${escHtml(v)}</button>`).join('');
-  const phChips=phVals.map(v=>`<button class="facet-chip${state.phaseFilter.includes(v)?' on':''}" onclick="togglePhaseFilter('${escAttr(v)}')">${escHtml(v)}</button>`).join('');
+  const scopeItems=dim.items.filter(it=>it.available);
+  const elChips=elVals.map(v=>facetChip(scopeItems,'elementType',v,state.elementFilter.includes(v),'toggleElementFilter')).join('');
+  const phChips=phVals.map(v=>facetChip(scopeItems,'constructionPhase',v,state.phaseFilter.includes(v),'togglePhaseFilter')).join('');
   const elRow=elVals.length?`<div class="facet-row"><span class="facet-label">Element</span><div class="facet-chips">${elChips}</div></div>`:'';
   const phRow=phVals.length?`<div class="facet-row"><span class="facet-label">Stage</span><div class="facet-chips">${phChips}</div></div>`:'';
   const active=anyFacetActive();
@@ -2328,6 +2331,21 @@ function renderHeader(){
 
 function globalFacetValues(field){const s=new Set();allAvailableEntries().forEach(e=>{if(Array.isArray(e.data[field]))e.data[field].forEach(v=>s.add(v));});return s;}
 function facetCount(field,v){return allAvailableEntries().filter(e=>Array.isArray(e.data[field])&&e.data[field].includes(v)).length;}
+// Contextual count: of the in-scope `items` that already pass every active filter,
+// how many also carry tag v — i.e. exactly how many entries would remain if this
+// chip were added. Because facets AND together, this updates as selections change:
+// pick "slab" and the other chips drop to their overlap with slab.
+function contextualFacetCount(items,field,v){
+  return items.filter(it=>it&&it.available&&it.data&&itemMatchesFilter(it)&&Array.isArray(it.data[field])&&it.data[field].includes(v)).length;
+}
+// One facet chip carrying its live contextual count. An unselected chip whose
+// count is 0 is a dead end (clicking it would empty the list), so it's dimmed and
+// disabled; selected chips stay clickable so they can always be turned off.
+function facetChip(items,field,v,selected,toggleFn){
+  const n=contextualFacetCount(items,field,v);
+  const dead=!selected&&n===0;
+  return `<button class="facet-chip${selected?' on':''}${dead?' dead':''}"${dead?' disabled':''} onclick="${toggleFn}('${escAttr(v)}')">${escHtml(v)}<span class="facet-chip-n">${n}</span></button>`;
+}
 // All locations across every live entry (cross-cutting), as Map<country, Set<state>>.
 function globalLocations(){const locs=new Map();allAvailableEntries().forEach(e=>{entryRegions(e.data).forEach(r=>{if(!locs.has(r.country))locs.set(r.country,new Set());if(r.state)locs.get(r.country).add(r.state);});});return locs;}
 function browseRegionOptions(){
@@ -2347,10 +2365,11 @@ function browseElement(v){state.locationFilter=null;state.phaseFilter=[];state.e
 function browseStage(v){state.locationFilter=null;state.elementFilter=[];state.phaseFilter=[v];const was=state.view;window.location.hash='browse';if(was==='browse')render();}
 // Cross-cutting browse: every live entry across all five dimensions, narrowed by region, element and/or stage.
 function renderBrowseView(){
+  const scopeItems=allAvailableEntries().map(e=>e.item);
   const elVals=orderFacet(globalFacetValues('elementType'),ELEMENT_ORDER);
   const phVals=orderFacet(globalFacetValues('constructionPhase'),PHASE_ORDER);
-  const elChips=elVals.map(v=>`<button class="facet-chip${state.elementFilter.includes(v)?' on':''}" onclick="toggleElementFilter('${escAttr(v)}')">${escHtml(v)}<span class="facet-chip-n">${facetCount('elementType',v)}</span></button>`).join('');
-  const phChips=phVals.map(v=>`<button class="facet-chip${state.phaseFilter.includes(v)?' on':''}" onclick="togglePhaseFilter('${escAttr(v)}')">${escHtml(v)}<span class="facet-chip-n">${facetCount('constructionPhase',v)}</span></button>`).join('');
+  const elChips=elVals.map(v=>facetChip(scopeItems,'elementType',v,state.elementFilter.includes(v),'toggleElementFilter')).join('');
+  const phChips=phVals.map(v=>facetChip(scopeItems,'constructionPhase',v,state.phaseFilter.includes(v),'togglePhaseFilter')).join('');
   const active=(state.locationFilter||state.elementFilter.length||state.phaseFilter.length);
   const all=allAvailableEntries();
   const filtered=all.filter(e=>itemMatchesFilter(e.item));
@@ -2360,7 +2379,7 @@ function renderBrowseView(){
   const countText=active?`${filtered.length} of ${all.length} entries`:`All ${all.length} entries`;
   const empty=filtered.length?'':`<div class="project-empty"><div class="project-empty-title">No entries match those filters.</div><div class="project-empty-sub">Region, element and stage are combined — an entry must match all of the active ones. Try removing one.</div></div>`;
   const regionRow=globalLocations().size?`<div class="facet-row"><span class="facet-label">Region</span><select class="facet-select" onchange="setLocationFilter(this.value)">${browseRegionOptions()}</select></div>`:'';
-  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">🧭</span><h1 class="dim-header-title">Browse all entries</h1></div><p class="section-desc">Every live entry across all five dimensions, narrowed by the region its evidence was gathered in, the structural element it concerns, or the construction stage it affects — for example, everything for <em>NSW</em>, all <em>wall</em> entries, or everything at <em>reinforcement fixing</em>. The number on each chip is how many entries carry that tag.</p>
+  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">🧭</span><h1 class="dim-header-title">Browse all entries</h1></div><p class="section-desc">Every live entry across all five dimensions, narrowed by the region its evidence was gathered in, the structural element it concerns, or the construction stage it affects — for example, everything for <em>NSW</em>, all <em>wall</em> entries, or everything at <em>reinforcement fixing</em>. The number on each chip is how many of the entries currently shown carry that tag, so it drops as you narrow; a chip showing 0 leads nowhere and is greyed out.</p>
   <div class="facet-filter">
     ${regionRow}
     <div class="facet-row"><span class="facet-label">Element</span><div class="facet-chips">${elChips}</div></div>
