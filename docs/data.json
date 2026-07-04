@@ -349,8 +349,6 @@
           "id": "optional-pour-breaks-to-keep-concrete-trades-flowing",
           "name": "Optional pour breaks to keep concrete trades flowing",
           "available": true,
-          "draft": false,
-          "_status": "REBUILT — parameter shortened; background rewritten around optional pour breaks, crew continuity and formwork crew remobilisation; Löfgren man-hour image added.",
           "data": {
             "question": "On repetitive suspended concrete, has an optional pour-break (construction-joint) location been shown and detailed at design stage, so the contractor can stage the work and keep the forming and fixing crews moving &mdash; rather than the structure defaulting to a single continuous pour because a break was never offered?",
             "parameter": "Whether the design enables an optional pour break where it would help the programme.",
@@ -425,7 +423,7 @@
             },
             "evidence": "<strong>Workflow and zoning (the mechanism).</strong> Takt and location-based planning improve construction workflow by breaking repetitive work into zones so trades can flow through the work rather than queue behind one large activity. Frandson (2019) shows this programme logic in Figure 9-4: for a sequence of repeating activities, increasing the number of zones reduces the overall time to complete the sequence, with the reduction greatest where many activities follow one another. This supports the staging logic of the entry, but it is not a concrete-placement rule and does not set a maximum pour size.<br><br><strong>Formwork dominates the labour.</strong> L&ouml;fgren et al. (2001) provide a man-hour breakdown for concrete structures showing formwork as the dominant labour activity: approximately 49% of the man-hours, compared with 22% for reinforcement and 11% for concrete operations. This supports the entry&rsquo;s focus on keeping the forming and fixing crews flowing, rather than treating the concrete placing crew as the main programme driver.<br><br><strong>Crew continuity.</strong> The practical programme risk is that a specialist crew with no next zone available may be moved to another site. Once that happens, the programme depends not only on when the concrete is ready, but on when the crew can return. An optional pour break can reduce this risk where the work repeats by giving the formwork and reinforcement crews a planned next zone to move into while earlier concrete gains strength.<br><br><strong>Scope of the evidence.</strong> The evidence supports the programme and workflow logic of planned staging. It does not replace concrete-specific guidance on construction-joint design, reinforcement continuity, shear transfer, waterstops, cold joints, concrete setting time or placement limits. Those matters must still be designed and specified separately. The rating is therefore a constructability prompt: where repetitive concrete work would benefit from staging, the design should make an acceptable optional break available rather than leaving the issue to be raised under construction pressure.<br><br><strong>References</strong><br>Frandson, A. (2019). <em>Takt Time Planning as a Work Structuring Method to Improve Construction Work Flow.</em> PhD dissertation, University of California, Berkeley (Figure 9-4).<br>L&ouml;fgren, I., Gylltoft, K., &amp; Kutti, T. (2001). <em>In-situ concrete building &ndash; Innovations in Formwork.</em> Department of Structural Engineering, Chalmers University of Technology / Thomas Concrete Group.",
             "dateAdded": "2026-06-08",
-            "dateReviewed": "2026-06-09",
+            "dateReviewed": "2026-07-04",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -453,7 +451,10 @@
                 "id": "curing-shortfall-in-suspended-slabs-and-beams",
                 "note": "Both concern how the concrete is staged and poured in sequence so trades keep flowing and joints and settlement are controlled."
               }
-            ]
+            ],
+            "examples": [],
+            "listImageCaption": "GPT 5.5 Generated",
+            "listImage": "images/optional-pour-break-trade-flow.webp"
           }
         },
         {
@@ -591,7 +592,7 @@
               }
             ],
             "dateAdded": "2026-06-05",
-            "dateReviewed": "2026-06-05",
+            "dateReviewed": "2026-07-04",
             "location": {
               "country": "Australia"
             },
@@ -599,7 +600,9 @@
               "level": "high",
               "summary": "Supported by research on in-place strength reduction in poorly cured shallow elements, together with industry and regulator evidence that curing is often inadequate or unverified."
             },
-            "relatedEntries": []
+            "relatedEntries": [],
+            "listImageCaption": "GPT 5.5 Generated",
+            "listImage": "images/curing-shortfall-suspended-slabs-beams.webp"
           }
         },
         {
@@ -730,7 +733,7 @@
               }
             ],
             "dateAdded": "2026-06-15",
-            "dateReviewed": "2026-06-15",
+            "dateReviewed": "2026-07-04",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -748,7 +751,9 @@
                 "id": "confined-space-entry-at-pier-and-shaft-bases",
                 "note": "Both concern the constructability consequences of the chosen pier or pile detailing method."
               }
-            ]
+            ],
+            "listImageCaption": "GPT 5.5 Generated",
+            "listImage": "images/rock-socket-defined-function.webp"
           }
         },
         {
@@ -1153,7 +1158,7 @@
             "supportingImages": [],
             "evidence": "<strong>Blockwork is the economical default, and the exposed look is native to it.</strong> It uses a widely available masonry trade with no form hire and can be left fair-faced, where a permanent-formwork wall's polymer face must be finished to match. Where the wall isn't waterproofing-critical, none of that burden arises.<br><br><strong>For a dry block basement, masonry's own guidance offers only secondary strategies.</strong> The CMAA <em>Single-Leaf Masonry Design Manual</em> states that a dry blockwork basement requires either tanking behind the wall before backfill, or a drain and false wall in front. That's the admission: the manual can't offer the block body itself as the barrier &mdash; only added systems around it, and those aren't equal (tanking is a buried barrier, drainage merely relieves head, a false wall manages leakage after the wall is already wet).<br><br><strong>Why those lines are weak is established in our wall-base waterproofing entry.</strong> <a href=\"#detailing/non-moving-construction-joint-waterproofing\">Waterproofing the non-moving construction joint at wall base</a> sets out, on peer-reviewed and practitioner evidence, that a buried membrane is the least verifiable line, that subsoil drainage silts and clogs, and that a wet core drives reinforcement corrosion &mdash; which is what condemns the false wall in particular, since managed leakage leaves the block damp and hides that corrosion. With the masonry guidance above, that makes the case without a direct leak-test comparison.<br><br><strong>What this entry does not claim.</strong> Not that blockwork is unsuitable below grade, that tanking never works, or that blockwork fails on reinforcement congestion (N20 appears throughout standard masonry details). Only that blockwork is the sensible default until the inside face must stay dry under head &mdash; at which point it depends on secondary lines weaker than a watertight concrete body and sealed joint.<br><br><strong>References</strong><br>Concrete Masonry Association of Australia. <em>Concrete Masonry &mdash; Single-Leaf Masonry Design Manual.</em><br>Membrane, drainage and corrosion evidence is set out in the linked construction-joint waterproofing entry (Cho et al., 2019; Song et al., 2017; Huang et al., 2022; NRCS, 2022) rather than repeated here.",
             "dateAdded": "2026-06-18",
-            "dateReviewed": "2026-06-18",
+            "dateReviewed": "2026-07-04",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -1215,7 +1220,9 @@
                 }
               ],
               "note": "A review prompt, not a prohibition on blockwork and not an instruction to override the architect. Where the specified system suits the wall &mdash; blockwork on an external or drained wall &mdash; there's nothing to raise. Apply the entry only on a genuine waterproofing mismatch, and even then a deliberately resolved blockwork strategy may be the right answer."
-            }
+            },
+            "listImageCaption": "GPT 5.5 Generated",
+            "listImage": "images/permanent-formwork-vs-blockwork-basement-moisture.webp"
           }
         },
         {
@@ -1339,7 +1346,7 @@
               }
             ],
             "dateAdded": "2026-06-19",
-            "dateReviewed": "2026-06-19",
+            "dateReviewed": "2026-07-04",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -1361,7 +1368,9 @@
                 "id": "confined-space-entry-at-pier-and-shaft-bases",
                 "note": "Both depend on whether construction plant and workers can physically reach and work the element on this site — check site access together."
               }
-            ]
+            ],
+            "listImageCaption": "GPT 5.5 Generated",
+            "listImage": "images/bored-pile-constraint-check.webp"
           }
         },
         {
@@ -1552,7 +1561,7 @@
               }
             ],
             "dateAdded": "2026-06-23",
-            "dateReviewed": "2026-06-24",
+            "dateReviewed": "2026-07-04",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -1570,7 +1579,9 @@
                 "id": "waffle-pod-depth-availability",
                 "note": "The 'can you get it' counterpart to the depth advice here. This entry weighs which pod depth suits the site; the Logistics entry checks whether that depth is actually stocked locally or needs made-to-order lead time."
               }
-            ]
+            ],
+            "listImageCaption": "GPT 5.5 Generated",
+            "listImage": "images/waffle-pod-vs-stiffened-raft-slab.webp"
           }
         },
         {
@@ -1810,7 +1821,7 @@
               }
             ],
             "dateAdded": "2026-06-24",
-            "dateReviewed": "2026-06-24",
+            "dateReviewed": "2026-07-04",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -1832,7 +1843,9 @@
                 "id": "latent-safety-risk-of-screw-pile-foundations",
                 "note": "If the piles are screw piles, the as-built verification and head-connection burden applies whichever floor sits above, and bears on uplift fixity on reactive ground."
               }
-            ]
+            ],
+            "listImageCaption": "GPT 5.5 Generated",
+            "listImage": "images/pile-supported-flat-plate-vs-beam-and-slab.webp"
           }
         },
         {
@@ -2016,7 +2029,7 @@
               }
             ],
             "dateAdded": "2026-06-23",
-            "dateReviewed": "2026-06-24",
+            "dateReviewed": "2026-07-04",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -2042,7 +2055,9 @@
                 "id": "latent-safety-risk-of-screw-pile-foundations",
                 "note": "Relevant on the deep branch if the piles are screw piles — the as-built verification and head-connection burden bears on the cost of founding below, and on uplift fixity on reactive ground."
               }
-            ]
+            ],
+            "listImageCaption": "GPT 5.5 Generated",
+            "listImage": "images/reactive-ground-strategy-found-below-vs-stiffen-on-top.webp"
           }
         },
         {
@@ -2315,7 +2330,7 @@
             "examples": [],
             "supportingImages": [],
             "dateAdded": "2026-06-27",
-            "dateReviewed": "2026-06-27",
+            "dateReviewed": "2026-07-04",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -2333,7 +2348,9 @@
                 "id": "non-combustible-substructure-in-bushfire-areas",
                 "note": "The other fire entry, and a useful contrast: this one is about internal structural fire resistance (the rating a beam must hold from a fire inside the building); that one is about external bushfire attack on the substructure."
               }
-            ]
+            ],
+            "listImageCaption": "GPT 5.5 Generated",
+            "listImage": "images/steel-beam-fire-protection-in-concrete-floors.webp"
           }
         }
       ]
@@ -2453,7 +2470,7 @@
               }
             ],
             "dateAdded": "2026-03-10",
-            "dateReviewed": "2026-05-13",
+            "dateReviewed": "2026-07-04",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -2501,7 +2518,9 @@
                 "id": "waterproofing-buildability",
                 "note": "All involve changes in slab level (folds, setdowns, falls) and the geometry the following trades must build and waterproof against."
               }
-            ]
+            ],
+            "listImageCaption": "GPT 5.5 Generated",
+            "listImage": "images/suspended-slab-level-change-options.webp"
           }
         },
         {
@@ -2724,7 +2743,7 @@
               }
             ],
             "dateAdded": "2026-05-27",
-            "dateReviewed": "2026-05-27",
+            "dateReviewed": "2026-07-04",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -2742,7 +2761,9 @@
             "evidenceSupport": {
               "level": "medium",
               "summary": "Supported by concrete detailing guidance, drawing practice, and practical constructability logic, but the evidence base is relatively narrow and thresholds are deliberately simple."
-            }
+            },
+            "listImageCaption": "GPT 5.5 Generated",
+            "listImage": "images/sharp-vs-chamfered-concrete-corners.webp"
           }
         },
         {
@@ -3656,7 +3677,7 @@
             "examples": [],
             "supportingImages": [],
             "dateAdded": "2026-06-24",
-            "dateReviewed": "2026-06-24",
+            "dateReviewed": "2026-07-04",
             "location": {
               "country": "Australia"
             },
@@ -3677,7 +3698,9 @@
                 "id": "formwork-and-falsework-complexity",
                 "note": "The safety view of the same count. That entry tallies one-off configurations for worker exposure and temporary-works risk; this one tallies them for lost crew learning and build rate. Same lever, weighed for two different reasons."
               }
-            ]
+            ],
+            "listImageCaption": "GPT 5.5 Generated",
+            "listImage": "images/repetition-formwork-learning-curve.webp"
           }
         },
         {
@@ -3776,7 +3799,7 @@
               }
             ],
             "dateAdded": "2026-06-25",
-            "dateReviewed": "2026-06-25",
+            "dateReviewed": "2026-07-04",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -3815,7 +3838,9 @@
                 "id": "flat-soffit-detailing-at-minor-slab-setdowns",
                 "note": "The same wet-area top setdown seen from the soffit side: that entry weighs folding the soffit against keeping it flat and stepping the top. Here the setdown is about giving the membrane its drainage and termination room &mdash; consider the two together where one setdown drives both faces."
               }
-            ]
+            ],
+            "listImageCaption": "GPT 5.5 Generated",
+            "listImage": "images/wet-area-set-down-waterproofing-buildability.webp"
           }
         }
       ]
@@ -5310,7 +5335,7 @@
             "evidence": "This entry rests on regulator incident evidence and safe-design duties, applied to retained or part-built structure. The band states are a judged application of that evidence, not measured thresholds.<br><br><strong>The hazard is real and recorded.</strong> SafeWork NSW reported fatal and serious masonry-wall collapse incidents on Sydney sites and identified the lack of lateral support from permanent returns, floor or wall frames or roof structures &mdash; missing, not yet installed, or removed during demolition &mdash; as the usual contributing factor. WorkSafe Victoria gives independent corroboration, warning that unstable or inadequately braced masonry walls expose workers and the public to death or serious injury, and that temporary bracing should be retained until the final structural elements provide adequate lateral support.<br><br><strong>The recommended response is a design-stage one.</strong> The SafeWork NSW alert recommends identifying, before construction, which walls need temporary support, and including temporary support locations and designs in the construction drawings &mdash; placing the recognition step at design stage rather than leaving it to site judgement.<br><br><strong>The communication duty sits with the designer.</strong> The NSW Safe Design of Structures Code of Practice says designers must provide information on the conditions necessary for the structure to be without risk during construction, expressly including temporary work required to construct or renovate the building as designed, such as bracing of frames. It also requires a written safety report for design-specific construction hazards under WHS Regulation 295.<br><br><strong>Temporary-works guidance sets the boundary.</strong> The Engineers Australia / Temporary Works Forum Australia guidance states that the greatest opportunity to eliminate temporary-works risk is during permanent works design, and that permanent designers should communicate residual risks and temporary conditions so temporary-works designers and site teams can manage them &mdash; without making the permanent engineer responsible for designing every brace.<br><br><strong>A responsibility precedent.</strong> Australian Steel Institute Technical Note TN002 describes a steel-frame collapse during erection where the engineer&rsquo;s generic &lsquo;contractor to brace as required&rsquo; note was reportedly held insufficient, the court finding that the engineer needed to make the need for temporary bracing explicit. It is steel-specific and is used as an analogue, not a general rule.<br><br>Taken together, the evidence supports a design-stage recognition and communication prompt. It does not support a broad claim that builders generally fail to understand freestanding-wall risk &mdash; in some recorded cases the risk was treated as obvious &mdash; so the entry rates the duty to identify and communicate the dependency, not any claim about how often it is missed.<br><br><strong>References</strong><br>SafeWork NSW. (2017). <em>Dangers from masonry walls on construction or demolition sites</em> [safety alert].<br>WorkSafe Victoria. (2014, reviewed 2022). <em>Danger of freestanding masonry walls</em> [safety alert].<br>SafeWork NSW. <em>Safe Design of Structures: Code of Practice</em>.<br>Engineers Australia / Temporary Works Forum Australia. (2020). <em>Temporary Works Risk Guidance</em> (TWfAU2020:01).<br>Hogan, T. J. / Australian Steel Institute. (2011). <em>Technical Note TN002: Issues with Temporary Bracing of Steel Structures</em> (Version 2).",
             "examples": [],
             "dateAdded": "2026-06-22",
-            "dateReviewed": "2026-06-22",
+            "dateReviewed": "2026-07-04",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -5342,7 +5367,9 @@
                 "id": "pour-sequencing-for-deep-vertical-concrete-elements-at-slab-interfaces",
                 "note": "Both turn on construction-stage behaviour differing from the completed-condition behaviour the design was checked for."
               }
-            ]
+            ],
+            "listImageCaption": "GPT 5.5 Generated",
+            "listImage": "images/temporary-stability-loss-of-restraint-sequence.webp"
           }
         },
         {
@@ -5467,7 +5494,7 @@
             "evidence": "<strong>Simplification is a recognised designer lever.</strong> Safe Work Australia&rsquo;s <em>General Guide for Formwork and Falsework</em> states that designers of the permanent structure can simplify the temporary works and minimise risk by considering alternative designs, minimising columns and cantilevered floor sections, reducing variation in floor depth, and allowing sufficient clearance and safe access for moving large or heavy components. The same guide sets out the construction-stage load case the temporary works must carry &mdash; dead and live loads, workers, plant, stacked material, wet concrete, point loads, prestressing-related redistribution, and erection and dismantling sequence &mdash; and lists controls including building as designed, not altering without authority, inspecting and certifying before loading, avoiding point loads, providing adequate foundations and not exceeding prop working loads. Its falsework controls also require that no one be beneath falsework while it is loaded, that dismantling proceed in reverse order of erection, that back-propping be verified before support is released, and that formwork generally be removed before falsework so material does not fall onto people below.<br><br><strong>Why complexity is a safety issue, not only a cost one.</strong> Formwork is the dominant on-site activity in a concrete frame: L&ouml;fgren et al. (2001) attribute roughly 49% of concrete-structure labour to formwork against about 11% to concrete operations, and Jarkas (2010) measured repetition and standardisation improving formwork labour productivity. Because formwork is where most of the on-site work &mdash; and therefore most of the worker exposure &mdash; sits, reducing its extent and complexity reduces exposure. Analyses of falsework failures find that the majority occur during concrete placement (Hadipriono &amp; Wang, 1986), the moment of greatest load and the greatest number of people at risk, which is why an unflagged construction-stage loading or removal condition is consequential.<br><br><strong>The construction stage of concrete is genuinely hazardous.</strong> Major construction-stage concrete collapses &mdash; 2000 Commonwealth Avenue, Boston (1971) and Skyline Plaza, Bailey&rsquo;s Crossroads (1973) &mdash; were driven by loading or removing support before the concrete had gained strength, not by geometric complexity as such. They are cited here to support the removal-as-a-condition point (recommended action 5): temporary support tied to achieved strength rather than elapsed time.<br><br><strong>Formwork design and certification quality is a current concern.</strong> SafeWork NSW&rsquo;s 2024 formwork safety alert recorded an increased number of inadequate installation designs and certifications, with risks including formwork collapse, falls from height and falling objects.<br><br><strong>The communication duty sits with the designer.</strong> The NSW <em>Safe Design of Structures</em> Code of Practice requires designers to provide information on the conditions necessary for a structure to be without risk during construction, expressly including temporary work required to build it, and a written safety report for design-specific construction hazards under WHS Regulation 295. A 2025 CROSS report reinforces this at the temporary-works interface: the permanent works designer should make clear the loading, stability and assumed construction-sequence assumptions so the temporary-works designer can manage construction-stage risk. Engineers Australia / Temporary Works Forum Australia guidance adds that the greatest opportunity to eliminate temporary-works risk is during permanent works design.<br><br><strong>What the evidence does and does not show.</strong> The simplification levers, the formwork and falsework load case and the falsework safety controls are stated directly in the guidance, and the dominance of formwork in concrete labour and the timing of falsework failures are measured. The evidence does not quantify how often complex permanent design leads to an incident; the link from complexity to risk is a reasoned one &mdash; more and more bespoke temporary works to erect, brace, access and remove, against a backdrop where most falsework fails during the pour. The bands are therefore recognition and communication prompts, not measured thresholds.<br><br><strong>References</strong><br>Safe Work Australia. (2014). <em>General Guide for Formwork and Falsework</em>.<br>SafeWork NSW. (2024). <em>Formwork installation design and certification safety alert</em>.<br>SafeWork NSW. <em>Safe Design of Structures: Code of Practice</em>; NSW <em>Work Health and Safety Regulation</em>, s295.<br>CROSS Safety. (2025). <em>Temporary works designers not given access to permanent works calculations</em> (Report ID 1481).<br>Engineers Australia / Temporary Works Forum Australia. (2020). <em>Temporary Works Risk Guidance</em> (TWfAU2020:01).<br>L&ouml;fgren, I., Gylltoft, K., &amp; Kutti, T. (2001). <em>In-situ concrete building &ndash; Innovations in Formwork</em>. Chalmers University of Technology / Thomas Concrete Group.<br>Jarkas, A. M. (2010). Buildability factors affecting formwork labour productivity of building floors. <em>Canadian Journal of Civil Engineering</em>, 37(10), 1383&ndash;1394.<br>Hadipriono, F. C., &amp; Wang, H. K. (1986). Analysis of causes of falsework failures in concrete structures. <em>Journal of Construction Engineering and Management</em>, 112(1), 112&ndash;121.<br>Feld, J., &amp; Carper, K. L. (1997). <em>Construction Failure</em> (2nd ed.). Wiley.",
             "examples": [],
             "dateAdded": "2026-06-22",
-            "dateReviewed": "2026-06-30",
+            "dateReviewed": "2026-07-04",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -5507,7 +5534,9 @@
                 "id": "temporary-stability-of-retained-or-part-built-structure",
                 "note": "Companion safety entry: that one covers an element being unstable before its permanent restraint exists; this one covers the formwork and falsework system the permanent design relies on."
               }
-            ]
+            ],
+            "listImageCaption": "GPT 5.5 Generated",
+            "listImage": "images/formwork-falsework-complexity-slab-geometry.webp"
           }
         },
         {
@@ -5646,7 +5675,7 @@
             },
             "evidence": "This entry rests on design-stage safety logic and fall-prevention duties, applied to the attachment path a permanent concrete edge leaves for temporary fall protection. The band states are a judged application of that evidence to edge and opening details; they are not measured thresholds.<br><br><strong>Why it matters &mdash; fall prevention and the hierarchy of control.</strong> Safe Work Australia&rsquo;s <em>Managing the risk of falls at workplaces</em> Code of Practice treats falls from height as a major construction fatality category and places physical fall-prevention &mdash; guardrails, barriers, edge protection &mdash; above harness-based fall-arrest in the hierarchy of control. The preferred control is therefore the very system that has to attach to the permanent edge, which is what makes the edge a safety-in-design matter rather than a contractor-only one.<br><br><strong>The design link &mdash; compatibility with the supporting structure.</strong> Safe Work Australia&rsquo;s <em>Safe design of structures</em> Code of Practice places a duty on building designers and engineers to consider hazards to construction workers, and to address unusual or atypical features that present construction-phase risk by removing the hazard or controlling it. An edge or opening that cannot accept fall protection is exactly such a feature. Temporary-edge-protection system literature reinforces the mechanism directly: a system&rsquo;s performance depends on the structure it attaches to and the attachment method available &mdash; clamp, post-fixed anchor, or cast-in socket &mdash; so the permanent edge either accommodates those methods or it does not.<br><br><strong>The post-tensioned position.</strong> Post-Tensioning Institute of Australia guidance on post-cut holes through post-tensioned slabs supports the careful PT wording: drilling, coring or cutting a PT slab is a controlled operation requiring tendon location, depth control and engineer involvement, not a casual site workaround. This grounds the &lsquo;no safe path&rsquo; band &mdash; that post-fixing should not be assumed as the fallback on a PT edge &mdash; without overstating it as a claim that PT slabs can never be drilled.<br><br><strong>The design-influences-safety principle.</strong> Behm (2005) reviewed construction fatality investigations and found a substantial share were linked to the design-for-construction-safety concept, meaning the contributing risk could have been reduced or eliminated had construction safety been considered during design. An edge detail that leaves fall protection no attachment path is such a design-influenced construction hazard.<br><br><strong>References</strong><br>Safe Work Australia. <em>Model Code of Practice: Managing the risk of falls at workplaces</em>.<br>Safe Work Australia. <em>Model Code of Practice: Safe design of structures</em>.<br>Post-Tensioning Institute of Australia. <em>Post Cut Holes through Post-Tensioned Slabs</em> (GN06).<br>Manufacturer temporary edge-protection system literature (attachment-method evidence).<br>Behm, M. (2005). Linking construction fatalities to the design for construction safety concept. <em>Safety Science, 43</em>(8), 589&ndash;611. https://doi.org/10.1016/j.ssci.2005.04.002",
             "dateAdded": "2026-06-24",
-            "dateReviewed": "2026-06-24",
+            "dateReviewed": "2026-07-04",
             "location": {
               "country": "Australia"
             },
@@ -5670,7 +5699,9 @@
                 "image": "images/slab-edge-fall-protection-attachment-path.webp",
                 "title": "<strong>Slab edge attachment path for fall protection</strong><br><br>A robust slab edge gives the contractor straightforward options for temporary fall protection, such as clamping or cast-in fixing. Thin PT edges, congested anchorage zones or constrained façades may still be workable, but they need early review because simple post-fixing may not be practical.<br>"
               }
-            ]
+            ],
+            "listImageCaption": "GPT 5.5 Generated",
+            "listImage": "images/slab-edge-fall-protection-attachment-path.webp"
           }
         },
         {
@@ -5791,7 +5822,7 @@
             "evidence": "This entry rests on temporary-works guidance, construction-loading research and field measurement, applied as a categorical design-stage prompt. The bands are a judged application of that evidence, not measured thresholds.<br><br><strong>Backpropping is a permanent-works concern, not only a contractor one.</strong> The IStructE Temporary Works Toolkit treats backpropping of concrete slabs during construction as commonly misunderstood and wrongly dismissed by permanent-works designers as a contractor matter, when it is a foreseeable load transferred through the permanent structure whose distribution the designer needs to understand. This is the basis for placing the recognition step in the designer&rsquo;s lane.<br><br><strong>The construction case can govern.</strong> Early-age construction loading has been identified, in the St George Wharf work reported through the Concrete Centre, as potentially the most significant load a multi-storey concrete structure experiences, with low-live-load residential floors carrying little spare capacity for the freshly cast concrete they must support during construction &mdash; supporting the point that final-use loads are not a safe proxy for the temporary case.<br><br><strong>The loads are real and measured.</strong> The US National Bureau of Standards field study of multistorey concrete construction found the critical construction live loads came not from workers but from stored materials and equipment placed shortly after casting, including a concentrated equipment load of roughly 1.6 tonnes &mdash; direct evidence that stacked materials and plant, not occupancy live load, drive the temporary case.<br><br><strong>The response is an engineering one, not a rule of thumb.</strong> ACI 347.2R, summarised by Stivaros, frames shoring and reshoring as requiring engineering analysis of construction-load distribution and early-age capacity, with the controls being to reduce the load through the shoring arrangement, change the mix, curing or strength development, or lengthen the construction cycle &mdash; and warns that construction load should not exceed the capacity of the partially completed structure. This underpins the state-based, not time-based, treatment.<br><br><strong>The duty to identify and communicate sits with the designer.</strong> The NSW Safe Design of Structures Code of Practice places construction-stage risks within the designer&rsquo;s duty, and its safety-in-design checklist expressly lists mobile-crane loads on slabs and crane loading and unloading &mdash; confirming that plant loads on permanent works are already a recognised safe-design consideration, not a novel claim.<br><br>Taken together, the evidence supports a categorical, state-based prompt: identify foreseeable construction-stage loading and resolve or flag it, rather than set universal load or age thresholds, which depend on the structure, the concrete strength, the load path and the construction sequence. It does not ask the permanent designer to design the temporary works or certify the contractor&rsquo;s loads.<br><br><strong>References</strong><br>IStructE. <em>Temporary Works Toolkit, Part 4: An introduction to backpropping of flat slabs</em>; <em>Part 6: Backpropping of flat slabs &mdash; design issues and worked examples</em>.<br>Concrete Centre / BRE. <em>Early-age construction loading</em> (St George Wharf).<br>National Bureau of Standards. <em>Evaluation of construction loads in multistory concrete buildings</em> (BSS 146).<br>Stivaros, P. C. (2006). <em>Shoring and Reshoring for Multistory Concrete Buildings</em>. Concrete International (ACI 347.2R).<br>SafeWork NSW. <em>Safe Design of Structures: Code of Practice</em>.",
             "examples": [],
             "dateAdded": "2026-06-29",
-            "dateReviewed": "2026-06-30",
+            "dateReviewed": "2026-07-04",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -5823,7 +5854,9 @@
                 "id": "conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors",
                 "note": "Formwork cycling, early stripping and reshoring change the construction-stage load on each repeated floor."
               }
-            ]
+            ],
+            "listImageCaption": "GPT 5.5 Generated",
+            "listImage": "images/finished-use-load-vs-construction-stage-reality.webp"
           }
         }
       ]
