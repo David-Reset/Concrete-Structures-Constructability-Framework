@@ -295,6 +295,9 @@
   .recent-toggle:hover .recent-toggle-label{color:var(--text)}
   .recent-toggle-sig{font-size:11.5px;color:var(--text-muted);font-weight:500;letter-spacing:.2px}
   .lightbox img{max-width:90vw;max-height:90vh;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,0.5)}
+  .lightbox-inner{display:flex;flex-direction:column;align-items:center;gap:10px;max-width:90vw}
+  .lightbox-inner.has-cap img{max-height:82vh}
+  .lightbox-cap{color:#e2e8f0;font-size:13px;line-height:1.4;text-align:center;max-width:520px}
 
 
   .evidence-support-pill{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;border-radius:4px;padding:2px 8px;background:var(--surface-light);border:1px solid var(--border)}
@@ -900,7 +903,9 @@ function escJsSingle(s){return String(s||'').replace(/\\/g,'\\\\').replace(/'/g,
 function listThumb(d){
   const src=d&&d.listImage?d.listImage:'';
   if(!src)return '';
-  return `<div class="list-thumb" onclick="event.stopPropagation();openLightbox('${escJsSingle(src)}')" title="Click to enlarge"><img src="${escAttr(src)}" alt="" loading="lazy"><span class="list-thumb-x"><svg viewBox="0 0 10 10"><path d="M1 4 V1 H4 M6 1 H9 V4 M9 6 V9 H6 M4 9 H1 V6"/></svg></span></div>`;
+  const cap=d&&d.listImageCaption?d.listImageCaption:'';
+  const capArg=cap?`,'${escAttr(escJsSingle(cap))}'`:'';
+  return `<div class="list-thumb" onclick="event.stopPropagation();openLightbox('${escAttr(escJsSingle(src))}'${capArg})" title="Click to enlarge"><img src="${escAttr(src)}" alt="" loading="lazy"><span class="list-thumb-x"><svg viewBox="0 0 10 10"><path d="M1 4 V1 H4 M6 1 H9 V4 M9 6 V9 H6 M4 9 H1 V6"/></svg></span></div>`;
 }
 // --- snippet text hygiene: entry fields contain HTML (<br>,<em>,<strong>) + entities ---
 function stripTags(s){return (s||'').replace(/<[^>]*>/g,' ');}
@@ -3015,7 +3020,7 @@ function renderEntryDetail(){
 }
 
 // ===== LIGHTBOX =====
-function openLightbox(src){const lb=document.createElement('div');lb.className='lightbox';lb.onclick=()=>lb.remove();lb.innerHTML=`<img src="${src}">`;document.body.appendChild(lb)}
+function openLightbox(src,caption){const lb=document.createElement('div');lb.className='lightbox';lb.onclick=()=>lb.remove();const cap=caption?`<div class="lightbox-cap">${escHtml(caption)}</div>`:'';lb.innerHTML=`<div class="lightbox-inner${caption?' has-cap':''}"><img src="${src}">${cap}</div>`;document.body.appendChild(lb)}
 
 // ===== HASH-BASED NAVIGATION =====
 function goHome(){window.location.hash=''}
