@@ -157,7 +157,7 @@
               }
             ],
             "dateAdded": "2026-04-02",
-            "dateReviewed": "2026-05-13",
+            "dateReviewed": "2026-07-04",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -166,7 +166,9 @@
               "level": "high",
               "summary": "Supported by formwork literature, industry consultation, physical formwork component dimensions, and a real project example."
             },
-            "relatedEntries": []
+            "relatedEntries": [],
+            "listImage": "images/off-form-upturn-clearance-near-obstruction.webp",
+            "listImageCaption": "GPT 5.5 Generated"
           }
         },
         {
@@ -1091,8 +1093,7 @@
                 "id": "conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors",
                 "note": "The repetition leg of this entry in detail: how formwork cycling on repeated floors drives the economy of in-situ concrete framing."
               }
-            ],
-            "listImage": "images/concrete-vs-blockwork-steel-support-choice.webp"
+            ]
           }
         },
         {
