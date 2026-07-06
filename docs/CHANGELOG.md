@@ -1,5 +1,12 @@
 # Framework changelog
 
+## 2026-07-06
+
+**Summary:** 1 reviewed
+
+### Reviewed
+- **Suspended slabs: is the soffit-formwork zone workable?** (Construction Methods)
+
 ## 2026-07-03
 
 **Summary:** 2 reviewed
