@@ -2352,6 +2352,144 @@
             "listImageCaption": "GPT 5.5 Generated",
             "listImage": "images/steel-beam-fire-protection-in-concrete-floors.webp"
           }
+        },
+        {
+          "id": "suspended-slab-soffit-formwork-zone",
+          "name": "Suspended slabs: is the soffit-formwork zone workable?",
+          "available": true,
+          "data": {
+            "question": "Can this suspended slab be formed and stripped using conventional soffit formwork?",
+            "parameter": "Suitability of the zone below the slab for conventional soffit formwork — its erection, support, safe access and stripping — not just nominal clearance.",
+            "keywords": [
+              "Bondek",
+              "KingFlor",
+              "Condeck",
+              "Reflor",
+              "ArmourDeck",
+              "BlueDeck",
+              "sacrificial formwork",
+              "falsework",
+              "low clearance slab",
+              "crawl space slab",
+              "suspended slab close to ground"
+            ],
+            "elementType": [
+              "slab"
+            ],
+            "triage": [
+              [
+                "constrained-soffit-zone"
+              ]
+            ],
+            "constructionPhase": [
+              "formwork",
+              "stripping"
+            ],
+            "background": "Every suspended slab needs a zone below it in which to build, support and later strip the soffit formwork. For a typical elevated floor that zone is simply the storey below, and it is rarely in question. The issue arises when that zone is constrained &mdash; most commonly where the slab sits close to the ground, but equally over a crawl space, over sloping or uneven ground, or over obstructions &mdash; because conventional soffit formwork is only available if the space below can physically take the temporary-works system.<br><br>Conventional formwork is not just plywood under concrete: it is frames or props, bases, bearers, joists, plywood, bracing, safe access, and an orderly stripping sequence. The underside zone has to suit the actual system, not merely offer some nominal clearance. Height is the obvious constraint &mdash; a slab may be too low for standard frames, props, U-heads or stripping &mdash; but it is not the only one. The zone may be over ground too soft or uneven to base props and soleplates on, too narrow for the required layout, or broken up by beams, walls, footings, steps or services. In any of these cases conventional soffit formwork can be slow, unsafe, or effectively unavailable even though the slab itself is structurally sound.<br><br>Where the conventional formwork zone is not available, the design needs a deliberate construction-method response, and the answer is not automatically profiled steel deck. If the void below the slab serves no function, engineered compacted fill may let the slab be formed and poured as a slab-on-fill condition. If the slab must stay suspended, permanent profiled steel deck formwork or another stay-in-place system may avoid building and stripping a full plywood soffit from a crawl-space or obstructed zone. Otherwise the slab or its support arrangement may need to change.",
+            "thresholds": [
+              {
+                "range": "Formwork zone workable",
+                "rating": "Best practice",
+                "color": "green",
+                "guidance": "The zone below the slab suits conventional soffit formwork: enough height for the selected frames or props and their adjustment range, enough width for layout and bracing, stable support for bases or soleplates, safe worker access, and room to strip and dismantle. Conventional formwork remains available and is often the most flexible option — particularly for irregular geometry, setdowns, penetrations or a required flat formed soffit."
+              },
+              {
+                "range": "Formwork zone borderline",
+                "rating": "Concern",
+                "color": "orange",
+                "guidance": "The zone is marginal — low, tight, over uneven or sloping ground, or partly obstructed — so conventional formwork can neither be assumed nor clearly ruled out. At design stage there is usually no appointed contractor to confirm the method with, so don't leave it as an assumed site issue. If you have a builder or formwork contractor you have worked with, seek their read on whether the zone suits their system; either way, carry a realistic fallback (permanent profiled steel deck, forming on compacted fill, or a revised support arrangement) so the design does not depend on formwork access that may not exist."
+              },
+              {
+                "range": "Formwork zone not available",
+                "rating": "Action required",
+                "color": "red",
+                "guidance": "Do not assume conventional soffit formwork. Where the underside zone is too low, uneven, narrow, obstructed, unstable, or lacks stripping access, resolve the forming method before the slab system is locked in — forming on compacted fill, permanent profiled steel deck, another stay-in-place system, precast, or changing the slab/support arrangement."
+              }
+            ],
+            "applicability": {
+              "appliesWhere": "This entry applies to suspended reinforced-concrete slabs close to ground, above uneven ground, above crawl-space-type voids, above existing obstructions, or in any location where there may not be enough underside space to erect, support and strip conventional soffit formwork.",
+              "checks": [
+                {
+                  "title": "Does the slab actually need to remain suspended?",
+                  "description": "If the void below the slab is not required for ventilation, drainage, access, services, reactive-ground movement, flooding, termite inspection or another project reason, forming on engineered compacted fill may be simpler than creating a difficult suspended-slab formwork problem."
+                },
+                {
+                  "title": "Check the actual formwork system, not just the nominal height",
+                  "description": "A workable formwork zone depends on frame height, prop adjustment range, U-head removal, bearer and joist depth, base plates or soleplates, bracing, worker access and the stripping sequence. A clearance that looks adequate dimensionally may still not suit the selected system."
+                },
+                {
+                  "title": "Ground condition below the slab matters",
+                  "description": "Uneven, sloping, soft or unfinished ground may make conventional formwork impractical even where there is some height below the slab. The support base for frames, props and soleplates must be stable and suitable for construction loads."
+                },
+                {
+                  "title": "Width and obstruction matter as much as height",
+                  "description": "A void may be high enough but too narrow, or broken by walls, footings, steps, piles, services or retaining elements. If frames, bearers, props and workers cannot be positioned and later removed, conventional formwork may still be unavailable."
+                },
+                {
+                  "title": "Permanent steel deck formwork is not automatic",
+                  "description": "Profiled steel deck formwork may still require temporary propping or bearer lines. It must also satisfy deck span, bearing, fixing, fire rating, durability, corrosion exposure, services, ceiling/soffit finish, penetrations, edge trims and reinforcement requirements."
+                },
+                {
+                  "title": "Forming on fill changes the design problem",
+                  "description": "If compacted fill is used as the forming/support surface, confirm whether the slab is still intended to span or whether it becomes a slab-on-fill/slab-on-ground condition. Check compaction, drainage, ground movement, termite/ventilation requirements, waterproofing and long-term support assumptions."
+                }
+              ],
+              "note": "Use the rating as a construction-method review prompt. Action required does not mean the slab cannot be built; it means the assumed forming method is unresolved and must be changed, confirmed or designed before issue."
+            },
+            "alternatives": [
+              {
+                "title": "Form on compacted fill where the void is not required",
+                "description": "If the slab does not need to remain suspended, consider raising the underside with engineered compacted fill and placing the slab on fill rather than forming a suspended soffit. This may remove the need for temporary soffit formwork entirely. Confirm geotechnical suitability, compaction requirements, drainage, termite inspection/ventilation, services, waterproofing and whether the slab design should change from spanning to ground-supported."
+              },
+              {
+                "title": "Use permanent profiled steel deck formwork where the slab must remain suspended",
+                "description": "Where the slab still needs to span and conventional soffit formwork cannot be erected or stripped practically, consider permanent profiled steel deck formwork such as Bondek or equivalent. The benefit is that the deck remains in place as the soffit form, reducing the need to build and strip a full plywood soffit system in a restricted zone. Check deck span, temporary propping/bearer lines, end bearing, fixings, fire design, durability, corrosion exposure, ceiling/services, penetrations and edge details."
+              },
+              {
+                "title": "Use another stay-in-place or sacrificial formwork system",
+                "description": "If profiled steel deck is unsuitable, consider another permanent or sacrificial formwork system that can be installed and left in place without relying on difficult stripping access below."
+              },
+              {
+                "title": "Change the support arrangement or slab geometry",
+                "description": "Add or relocate beams/walls, reduce spans, adjust levels, change the floor build-up or revise the structural system so the floor can be built using a realistic method."
+              },
+              {
+                "title": "Pin down the formwork system before issue if the zone is marginal",
+                "description": "If conventional formwork is being carried through a borderline zone, don't leave the system generic — nail down the assumed frame size, prop adjustment range, bearer/joist depth, bases/soleplates, bracing, access and stripping sequence. At design stage there is usually no appointed contractor, so if you have a builder or formwork contractor you have worked with, get their read on whether it fits; if you cannot, treat the zone as unresolved and design in a fallback rather than assuming it will work."
+              }
+            ],
+            "evidence": "SafeWork NSW's <em>Formwork Code of Practice</em> is the main evidence source for this entry. It supports treating the underside zone as a design-stage constructability issue because it applies to people who design, construct, erect, alter, maintain, dismantle or remove formwork, and it uses the term formwork to include both formwork and falsework unless otherwise specified. It describes conventional formwork as timber and plywood with supporting elements such as frames, props and bracing, and says conventional systems should be constructed to predetermined standard designs including bearer spacing, plywood spans, frame spacing, adjustable bases, post-head types and extensions, suitable footings and foundations. The code also says ground conditions must remain stable while supporting loads, and that stripping/dismantling should be orderly and systematic, with attention to manual-task hazards from awkward postures, repetitive handling and limited task variety.<br><br>SafeWork SA's hazardous manual task guidance adds a specific stripping-clearance point directly relevant to low or awkward underside zones. When planning conventional formwork systems, it says slab height, frame configuration and U-head jack lengths should be considered to ensure adequate vertical clearance for safe load release and stripping. It also says conventional formwork systems should have sufficient headroom during stripping to allow U-head jacks to be removed before the formwork frames are dismantled. This supports the entry's focus on whether the underside zone suits the actual formwork system, rather than relying only on a nominal vertical clearance below the slab.<br><br>Smith and Hanna (1993) provide indirect academic support for the constructability logic. They state that formwork productivity may be affected by design, site conditions and formwork system factors; that design factors increase or decrease the time required to fabricate, erect and dismantle forms; and that site factors include the area available for storage, access to the formwork area, and the planning and sequential arrangement of formwork operations. They also describe formwork system selection as the most important factor for labour productivity, with influences such as modularity, hardware and loose parts, and list irregular floor heights and sloped or stepped surfaces among design factors influencing formwork productivity. This source does not discuss low-clearance suspended slabs or permanent profiled steel deck formwork directly, so it is used only to support the general principle that design geometry, site access and system selection affect formwork productivity and should not be left as an assumed site issue.<br><br>Lysaght's BONDEK design and construction guide is used only to support one recommended action: permanent profiled steel deck formwork. It states that BONDEK acts as permanent formwork with minimal propping, requires no stripping of the formwork face, is fast and easy to install with less handling, and has ribs that create a safe working platform. It also notes that temporary propping may still be required depending on span, and that props should remain during laying, concrete placement and until the concrete has set. This supports why permanent steel deck may be useful where a full temporary plywood soffit system cannot practically be erected and stripped from below, but it does not prove that BONDEK is the correct answer in every low-clearance case and it does not set a clearance threshold.<br><br>Because none of these sources fixes a numeric clearance at which conventional formwork becomes impractical &mdash; it depends on the selected formwork system, slab height, ground condition, width, obstructions and support layout &mdash; this entry uses categorical bands rather than clearance cut-offs.<br><br><strong>References</strong><br>SafeWork NSW. (2021). <em>Formwork Code of Practice</em>.<br>SafeWork SA. (2026). <em>Formwork &mdash; hazardous manual tasks in construction</em>.<br>Smith, G. R., &amp; Hanna, A. S. (1993). Factors influencing formwork productivity. <em>Canadian Journal of Civil Engineering</em>, 20(1), 144&ndash;153.<br>Lysaght. (2023). <em>LYSAGHT BONDEK&reg; Structural Steel Decking &mdash; Design and Construction Guide</em>.",
+            "evidenceSupport": {
+              "level": "medium",
+              "summary": "Supported mainly by SafeWork formwork guidance showing that conventional formwork depends on a suitable support, access and stripping zone, with Smith and Hanna (1993) providing indirect academic support that design, site access and formwork-system selection affect productivity, and Lysaght product guidance supporting permanent profiled steel deck as one possible response. The evidence supports the mechanism but not a universal numeric clearance threshold, so the workable/unworkable formwork-zone decision remains project- and system-specific."
+            },
+            "dateAdded": "2026-07-06",
+            "dateReviewed": "2026-07-06",
+            "location": {
+              "country": "Australia",
+              "state": "NSW"
+            },
+            "relatedEntries": [
+              {
+                "id": "temporary-construction-loading-of-permanent-works",
+                "note": "If the solution relies on fill, temporary propping, deck formwork or partially cured concrete, construction-stage support and loading should also be checked."
+              },
+              {
+                "id": "formwork-and-falsework-complexity",
+                "note": "This entry is a specific case of formwork becoming impractical because the temporary-works zone is constrained."
+              },
+              {
+                "id": "pile-supported-beam-and-slab-vs-flat-slab",
+                "note": "Both are early suspended-floor system choices where the structural arrangement affects how the floor can actually be built."
+              },
+              {
+                "id": "flat-soffit-detailing-at-minor-slab-setdowns",
+                "note": "Relevant where a flat formed soffit is required and permanent profiled steel deck would create an unacceptable underside profile."
+              }
+            ],
+            "examples": [],
+            "supportingImages": []
+          }
         }
       ]
     },
@@ -6776,6 +6914,15 @@
         "source": "drawings",
         "prompt": "Do the slabs have level changes — folds, steps or setdowns?",
         "reason": "Slab level changes"
+      },
+      {
+        "fact": "constrained-soffit-zone",
+        "when": [
+          "slab-suspended"
+        ],
+        "source": "drawings",
+        "prompt": "Is any suspended slab close to the ground, over a crawl space, or over uneven or obstructed ground below?",
+        "reason": "Constrained soffit-formwork zone"
       },
       {
         "fact": "upstand-near-obstruction",
