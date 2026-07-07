@@ -1,5 +1,15 @@
 # Framework changelog
 
+## 2026-07-07
+
+**Summary:** 4 reviewed
+
+### Reviewed
+- **Pour sequencing for deep vertical concrete elements at slab interfaces (example: walls/columns/piles)** (Construction Methods)
+- **Drip grooves on exposed soffit edges** (Detailing)
+- **Confined-space entry at pier and shaft bases** (Safety in Design)
+- **Beam soffit formwork proportions** (Detailing)
+
 ## 2026-07-06
 
 **Summary:** 1 reviewed
