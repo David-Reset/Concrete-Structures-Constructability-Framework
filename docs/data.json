@@ -3485,7 +3485,9 @@
                   "880 mm"
                 ]
               ]
-            }
+            },
+            "listImageCaption": "GPT 5.5 Generated",
+            "listImage": "images/soffit-beam-formwork-hero.webp"
           }
         },
         {
