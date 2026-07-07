@@ -6373,14 +6373,14 @@
             ],
             "supportingImages": [],
             "dateAdded": "2026-06-15",
-            "dateReviewed": "2026-06-15",
+            "dateReviewed": "2026-07-08",
             "location": {
               "country": "Australia",
               "state": "NSW"
             },
             "evidenceSupport": {
-              "level": "medium",
-              "summary": "Supported by practical drawing examples and communication logic, with indirect support from visual-clutter and information-overload literature. The threshold remains judgement-based because this is a drawing-clarity issue rather than a measured numerical limit."
+              "level": "low",
+              "summary": "Rests on drawing-communication reasoning and two illustrative drawing examples, with visual-clutter literature borrowed by analogy from the related reinforcement-callout entry; there is no on-point standard, no measurement, and no documented real case specific to large-bar callouts, so the recommendation is reasoned practitioner judgement."
             },
             "relatedEntries": [
               {
