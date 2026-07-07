@@ -761,8 +761,8 @@
           "name": "Pour sequencing for deep vertical concrete elements at slab interfaces (example: walls/columns/piles)",
           "available": true,
           "data": {
-            "question": "Where a slab, beam, ground beam or pile cap is cast against or above a deep vertical concrete element, has the design made the intended pour sequence clear and considered plastic settlement, construction-joint and water-ingress risks?",
-            "parameter": "Depth difference between the slab or horizontal member and the deeper vertical concrete element at the interface (mm).",
+            "question": "Where a shallow concrete element, such as a slab or beam, meets a much deeper element, such as a wall or column, is the pour sequence clear?",
+            "parameter": "Pour strategy at a deep-to-shallow concrete interface.",
             "keywords": [
               "plastic settlement",
               "differential settlement",
@@ -797,16 +797,22 @@
             "background": "Fresh concrete continues to settle while it is still plastic. In shallow or uniform slab sections this movement is usually small, but it can become significant where a much deeper vertical concrete section is cast against a thinner slab or horizontal member.<br><br>This entry is not intended to suggest that normal monolithic beam-and-slab construction is poor practice. Integral beams, band beams, drop panels, slab thickenings and drop edge beams are commonly poured with slabs. The issue is whether the design recognises the scale of differential plastic settlement where the vertical depth becomes large.<br><br>For full-height walls, columns and deep piers or piles, the usual constructability response is to pour the vertical element separately, stop it at the intended joint or soffit, and show starter bars, laps, couplers or continuity reinforcement as required.<br><br>For deep drop edge beams, downstand beams or slab-on-ground edge conditions, a separate pour may not always be the best response. A construction joint near ground level, external exposure or a retaining condition can introduce water ingress risk. In those cases, a controlled monolithic pour may be preferable, provided settlement, compaction, vibration, possible revibration and reinforcement congestion are considered.<br><br>Additional reinforcement is not a substitute for pour sequence. Trimmer bars at a re-entrant corner help control hardened-concrete tensile cracking. Plastic settlement occurs while the concrete is still fresh, before the reinforcement is acting in the normal hardened-concrete way. Reinforcement can also restrain settlement and contribute to cracking or bleed-water pockets around bars.",
             "thresholds": [
               {
-                "range": "Clear pour strategy",
+                "range": "Pour sequence clear",
                 "rating": "Best practice",
                 "color": "green",
-                "guidance": "The intended pour sequence is clear. For walls, columns, piers and piles, this normally means the vertical element is poured separately to the intended joint or soffit, with starter bars, laps, couplers or continuity reinforcement shown as required. For deep drop edge beams, downstand beams, slab thickenings, pile caps or ground beams, this may mean a monolithic pour is deliberately retained, with the construction method able to manage settlement, compaction and water ingress risk."
+                "guidance": "The drawings make the intended pour sequence clear. The deeper element is either poured first to a deliberate joint, with starter bars shown, or a monolithic pour is clearly intended and buildable."
               },
               {
-                "range": "Unclear or accidental monolithic pour",
+                "range": "Sequence unclear",
                 "rating": "Consider",
                 "color": "yellow",
-                "guidance": "A deep vertical concrete element is shown monolithic with a much shallower slab or horizontal member, but the pour strategy is unclear. This is especially relevant where a full-height wall, column, pier or pile appears to be poured at the same time as the slab, beam, ground beam or pile cap above; or where a deep drop edge beam or downstand beam is shown without recognition of plastic settlement, compaction, revibration or water-ingress implications."
+                "guidance": "A shallow element meets a much deeper element, but the drawings do not make clear whether the work is intended to be poured together or staged. Review the detail and make the intended sequence clear before issue."
+              },
+              {
+                "rating": "Action Required",
+                "color": "red",
+                "range": "High-risk sequence implied",
+                "guidance": "The detail appears to force a deep element to be poured together with the shallow element where that is likely to create placement, compaction, settlement or joint problems. Resolve the sequence before issue."
               }
             ],
             "workedExample": {
@@ -922,7 +928,7 @@
               }
             ],
             "dateAdded": "2026-06-05",
-            "dateReviewed": "2026-06-12",
+            "dateReviewed": "2026-07-07",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -2911,8 +2917,8 @@
           "name": "Drip grooves on exposed soffit edges",
           "available": true,
           "data": {
-            "question": "On exposed soffit edges where a drip groove is required, has the groove been detailed at the design stage with reinforcement cover maintained from the root of the groove &mdash; rather than left as a site rectification or drawn without coordinating cover?",
-            "parameter": "Treatment of drip grooves on exposed soffit edges (detailed with cover maintained at design stage / drawn without cover coordination / omitted and left to site).",
+            "question": "Where a drip groove is required on an exposed soffit edge, has it been formed and coordinated at design stage with cover maintained?",
+            "parameter": "Drip groove detailing and cover coordination.",
             "keywords": [
               "drip edge",
               "weather groove",
@@ -3014,7 +3020,7 @@
               }
             ],
             "dateAdded": "2026-06-02",
-            "dateReviewed": "2026-06-02",
+            "dateReviewed": "2026-07-07",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -3034,7 +3040,9 @@
                 "id": "flat-soffit-detailing-at-minor-slab-setdowns",
                 "note": "All are treatments of the same exposed formed faces — coordinate the edge, corner and soffit details so they don't clash."
               }
-            ]
+            ],
+            "listImageCaption": "GPT 5.5 Generated",
+            "listImage": "images/drip-groove-soffit-water-path.webp"
           }
         },
         {
@@ -4943,8 +4951,8 @@
           "name": "Confined-space entry at pier and shaft bases",
           "available": true,
           "data": {
-            "question": "When a pier or shaft is connected to rock or otherwise completed at its base, does the detail require a worker to enter the excavation to install it, or can the work be done from the surface?",
-            "parameter": "Whether the pier or shaft base detail requires a worker to enter the excavation to install it (judged: socket into rock &mdash; cast from the top &mdash; entry into shaft).",
+            "question": "Can the pier or shaft base detail be completed from the surface, without a worker entering the excavation?",
+            "parameter": "Method required to complete the pier or shaft base detail.",
             "keywords": [
               "pile cage",
               "bored pier",
@@ -5032,7 +5040,7 @@
               }
             ],
             "dateAdded": "2026-06-02",
-            "dateReviewed": "2026-06-05",
+            "dateReviewed": "2026-07-07",
             "location": {
               "country": "Australia"
             },
