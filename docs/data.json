@@ -6807,7 +6807,7 @@
     "why": {
       "title": "Why the framework exists",
       "paras": [
-        "A compliant design isn't automatically a buildable one. Much of what decides whether a detail is quick, cheap and safe to build is learned on site &mdash; held by the people who build it, rarely written down, and slow to reach the people who draw it. The framework exists to close that gap: to put constructability knowledge in front of a designer at the moment of a decision, and to keep growing as the industry does rather than settle into a fixed document.",
+        "A compliant design isn't automatically a buildable one. Much of what decides whether a detail is safe and efficient to build is learned on site &mdash; held by the people who build it, rarely written down, and slow to reach the people who draw it. The framework exists to close that gap: to put constructability knowledge in front of a designer at the moment of a decision, and to keep growing as the industry does rather than settle into a fixed document.",
         "There is a direct benefit to contributing, too. Writing an entry &mdash; the parameter you'd check, the thresholds you'd use, the evidence behind them &mdash; forces the kind of clear thinking that deepens your own understanding of a detail, not only everyone else's. The engineers with the most to share tend to gain the most from setting it down."
       ]
     },
@@ -6829,6 +6829,25 @@
         }
       ],
       "note": "Suggested entries, suggested changes and comments do not appear automatically. They are reviewed and de-identified before being added to the framework."
+    },
+    "maintenance": {
+      "title": "Maintaining the framework",
+      "intro": "Contributions never go live on their own. A maintainer reviews and de-identifies every submission, then uses three browser-based tools to turn it into published content. Each tool runs entirely on your own machine and uploads nothing.",
+      "items": [
+        {
+          "label": "Data Manager",
+          "text": "The main content tool. It turns Google Form responses into structured entries, edits and comments, lets you check and clean each one, manage drafts and comments, and exports an updated data.json."
+        },
+        {
+          "label": "Framework Doctor",
+          "text": "A read-only health check. It reports missing images (referenced but not in the folder) and orphan images (in the folder but unused), plus data-integrity checks. Run it before you commit."
+        },
+        {
+          "label": "Image Formatter",
+          "text": "Prepares images for the images folder. It re-encodes and renames them, warns on filename clashes, and strips embedded metadata such as GPS and camera info — a useful privacy step for site photographs."
+        }
+      ],
+      "note": "Suggested entries, suggested changes and comments do not appear automatically. They are reviewed and de-identified before being added."
     }
   },
   "triageConfig": {
