@@ -194,6 +194,16 @@
   .suggest-banner-sub{font-size:12px;color:var(--text-muted);line-height:1.5;margin-top:3px;max-width:560px}
   .suggest-banner-btn{flex-shrink:0;font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap}
 
+  .guide-band{display:flex;align-items:center;gap:18px;margin:0 0 4px;padding:18px 22px;border-radius:12px;cursor:pointer;transition:all 0.2s;background:linear-gradient(135deg,rgba(59,130,246,0.13),rgba(99,102,241,0.06));border:1px solid rgba(59,130,246,0.45)}
+  .guide-band:hover{border-color:var(--accent);background:linear-gradient(135deg,rgba(59,130,246,0.2),rgba(99,102,241,0.1))}
+  .guide-band-icon{font-size:30px;line-height:1;flex-shrink:0}
+  .guide-band-text{flex:1;min-width:0}
+  .guide-band-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .guide-band-pill{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#fff;background:var(--accent);padding:3px 9px;border-radius:20px}
+  .guide-band-title{font-size:16px;font-weight:700;color:var(--text);letter-spacing:-0.2px}
+  .guide-band-sub{font-size:12.5px;color:var(--text-muted);line-height:1.5;margin-top:5px;max-width:620px}
+  .guide-band-btn{flex-shrink:0;font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap}
+
   .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn 0.2s ease}
   .modal{background:var(--surface);border:1px solid var(--border);border-radius:12px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;padding:26px 28px;animation:fadeIn 0.25s ease}
   .modal-title{font-size:19px;font-weight:800;letter-spacing:-0.3px;margin-bottom:14px}
@@ -606,6 +616,7 @@
     .examples-grid.imgs-1 .example-caption,.supporting-images-grid.imgs-1 .supporting-image-title{border-left:none;border-top:1px solid var(--border)}
     .project-export-grid{grid-template-columns:1fr} .legend-grid{grid-template-columns:1fr} .shape-grid{grid-template-columns:1fr} .dimension-guide-grid{grid-template-columns:1fr} .whatis-grid{grid-template-columns:1fr} .evidence-summary-grid{grid-template-columns:1fr 1fr}
     .anatomy-block{grid-template-columns:1fr;gap:12px} .trace-arrow{transform:rotate(90deg);width:100%;justify-content:center}
+    .guide-band{flex-wrap:wrap;gap:12px} .guide-band-icon{font-size:26px} .guide-band-btn{width:100%}
   }
 </style>
 <script>
@@ -2465,7 +2476,7 @@ function renderBreadcrumb(){
 
 function renderHomeView(){
   const cards=dimensions.map(d=>`<div class="dim-card" onclick="goDimension('${d.id}')"><div class="dim-icon">${d.icon}</div><div class="dim-name">${d.name}</div><div class="dim-desc">${d.description}</div><div class="dim-count">${d.items.length} items →</div></div>`).join('');
-  const guideCard=guide?`<div class="dim-card guide-card" onclick="goGuide()"><div class="guide-pill">Start here</div><div class="dim-icon">${guide.icon}</div><div class="dim-name">${guide.title}</div><div class="dim-desc">${guide.tagline}</div><div class="dim-count">Open guide →</div></div>`:'';
+  const guideBand=guide?`<div class="guide-band" onclick="goGuide()"><div class="guide-band-icon">${guide.icon}</div><div class="guide-band-text"><div class="guide-band-head"><span class="guide-band-pill">Start here</span><span class="guide-band-title">${guide.title}</span></div><div class="guide-band-sub">${guide.tagline}</div></div><div class="guide-band-btn">Open guide →</div></div>`:'';
   const evCounts=evidenceSupportCounts();
   const evidenceBanner=`<div class="suggest-banner evidence-index-banner" onclick="goEvidenceSupport('all')"><div class="suggest-banner-text"><div class="suggest-banner-title">Evidence support index</div><div class="suggest-banner-sub">View all ${evCounts.all} live entries by evidence support level — High, Medium or Low.</div></div><div class="suggest-banner-btn">View index →</div></div>`;
   const browseBanner=`<div class="suggest-banner browse-banner" onclick="goBrowse()"><div class="suggest-banner-text"><div class="suggest-banner-title">Browse all entries — by region, element or stage</div><div class="suggest-banner-sub">See every live entry across all five dimensions, narrowed by the region its evidence was gathered in, the structural element it concerns, or the construction stage it affects.</div></div><div class="suggest-banner-btn">Browse →</div></div>`;
@@ -2479,7 +2490,7 @@ function renderHomeView(){
     </div>
     <div id="search-region-wrap" class="search-region-wrap" style="display:${has?'flex':'none'}"><span class="search-region-label">Narrow to region</span><select id="search-region" class="search-region" onchange="onSearchRegion(this.value)">${searchRegionOptions()}</select></div>
   </div>`;
-  return `<div class="content animate-in"><div style="margin-bottom:18px"><h1 class="section-title">Find constructability guidance</h1><p class="section-desc">Describe your design problem to search across all five dimensions — or browse the dimensions below.</p></div>${searchHero}<div id="search-results">${renderSearchResults()}</div><div id="dim-grid-wrap" style="display:${has?'none':''}">${renderRecentlyAdded()}<div style="margin:28px 0 8px"><div class="label">Browse by dimension</div></div><div class="dim-grid">${guideCard}${cards}</div>${browseBanner}${evidenceBanner}<div class="suggest-banner" onclick="goSuggest()"><div class="suggest-banner-text"><div class="suggest-banner-title">Don't see your issue?</div><div class="suggest-banner-sub">Suggest a new constructability entry — every submission is reviewed and structured by the framework team.</div></div><div class="suggest-banner-btn">Suggest an entry →</div></div></div></div>`;
+  return `<div class="content animate-in"><div style="margin-bottom:18px"><h1 class="section-title">Find constructability guidance</h1><p class="section-desc">Describe your design problem to search across all five dimensions — or browse the dimensions below.</p></div>${searchHero}<div id="search-results">${renderSearchResults()}</div><div id="dim-grid-wrap" style="display:${has?'none':''}">${guideBand}${renderRecentlyAdded()}<div style="margin:28px 0 8px"><div class="label">Browse by dimension</div></div><div class="dim-grid">${cards}</div>${browseBanner}${evidenceBanner}<div class="suggest-banner" onclick="goSuggest()"><div class="suggest-banner-text"><div class="suggest-banner-title">Don't see your issue?</div><div class="suggest-banner-sub">Suggest a new constructability entry — every submission is reviewed and structured by the framework team.</div></div><div class="suggest-banner-btn">Suggest an entry →</div></div></div></div>`;
 }
 
 
