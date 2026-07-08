@@ -604,6 +604,67 @@
   .faq-chevron{color:var(--accent);font-size:20px;font-weight:400;flex-shrink:0;line-height:1}
   .faq-a{display:none;padding:0 18px 16px;font-size:13px;color:var(--text);line-height:1.65;opacity:0.85}
   .faq-a.open{display:block}
+  /* ===== GUIDE MANUALS (sub-pages) ===== */
+  .manual-cta{display:flex;align-items:center;gap:16px;margin:22px 0 4px;padding:16px 20px;border-radius:12px;cursor:pointer;transition:all 0.2s;background:linear-gradient(135deg,rgba(59,130,246,0.13),rgba(99,102,241,0.06));border:1px solid rgba(59,130,246,0.45)}
+  .manual-cta:hover{border-color:var(--accent);background:linear-gradient(135deg,rgba(59,130,246,0.2),rgba(99,102,241,0.1))}
+  .manual-cta-mark{width:30px;height:30px;flex-shrink:0;border-radius:8px;background:var(--accent);color:#fff;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center}
+  .manual-cta-text{flex:1;min-width:0}
+  .manual-cta-title{font-size:14px;font-weight:700;color:var(--text)}
+  .manual-cta-sub{font-size:12.5px;color:var(--text-muted);line-height:1.5;margin-top:3px}
+  .manual-cta-btn{flex-shrink:0;font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap}
+  .anat-wrap{margin-top:24px;display:flex;flex-direction:column;gap:18px}
+  .anat-step{padding:18px 20px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+  .anat-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
+  .anat-num{width:26px;height:26px;flex-shrink:0;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+  .anat-name{font-size:15px;font-weight:700;color:var(--text)}
+  .anat-teach{font-size:12.5px;color:var(--text-muted);line-height:1.55;margin-top:2px}
+  .anat-content{padding-left:38px}
+  .anat-q{font-size:14px;font-weight:600;color:var(--text);line-height:1.5}
+  .anat-loc{font-size:12px;color:var(--text-muted);margin-top:6px}
+  .anat-param{font-size:13.5px;color:var(--text);background:var(--surface-light);border:1px solid var(--border);border-radius:8px;padding:10px 14px;line-height:1.5}
+  .anat-action{font-size:13px;color:var(--text);line-height:1.6;opacity:0.92}
+  .anat-ev{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+  .anat-ev-pill{font-size:11px;font-weight:700;letter-spacing:0.5px;padding:4px 10px;border-radius:20px;white-space:nowrap}
+  .anat-ev-sum{font-size:12.5px;color:var(--text-muted);line-height:1.55;flex:1;min-width:200px}
+  .mock-block{margin-top:30px}
+  .mock-cap{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:700;margin-bottom:8px}
+  .mock-frame{margin-top:12px;padding:22px 20px;background:var(--bg);border:1px solid var(--border);border-radius:12px}
+  .mock-row-label{font-size:11px;color:var(--text-muted);margin-bottom:8px}
+  .anno-wrap{position:relative;display:inline-block}
+  .anno-ring{position:absolute;inset:-8px -10px;border:2px solid var(--yellow);border-radius:26px;pointer-events:none}
+  .anno-ring.wide{inset:-8px -8px;border-radius:14px}
+  .anno-note{display:flex;gap:8px;align-items:flex-start;margin-top:16px;font-size:12.5px;color:var(--text);opacity:0.9;line-height:1.55;max-width:460px}
+  .anno-arrow{color:var(--yellow);font-weight:800;flex-shrink:0}
+  .mock-modal{max-width:360px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+  .mock-modal-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:12px}
+  .mock-pick{display:flex;align-items:center;gap:10px;padding:9px 0;font-size:13px;color:var(--text);border-top:1px solid var(--border)}
+  .mock-pick:first-of-type{border-top:none}
+  .mock-check{width:18px;height:18px;flex-shrink:0;border:1.5px solid var(--border);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;color:transparent}
+  .mock-check.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .mock-newrow{margin-top:10px;font-size:13px;font-weight:600;color:var(--accent)}
+  .mock-input{display:inline-block;font-size:14px;color:var(--text);background:var(--surface);border:1px solid var(--accent);border-radius:8px;padding:9px 14px;min-width:280px}
+  .mock-privacy{display:flex;gap:8px;align-items:flex-start;margin-top:18px;font-size:12.5px;color:var(--text-muted);line-height:1.55;max-width:460px}
+  .mock-lock{flex-shrink:0}
+  .mock-export-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:12px}
+  .mock-export{padding:14px 12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;text-align:center;font-size:12.5px;font-weight:600;color:var(--text)}
+  .mock-export-ico{font-size:22px;margin-bottom:6px}
+  .pdf-frame{margin-top:16px;background:#fff;border:1px solid var(--border);border-radius:8px;padding:18px 20px;box-shadow:0 2px 14px rgba(0,0,0,0.25)}
+  .pdf-frame-head{font-size:13px;font-weight:700;color:#1c2430;border-bottom:1px solid #d3dbe8;padding-bottom:10px;margin-bottom:10px}
+  .pdf-line{font-size:12.5px;color:#1c2430;padding:6px 0;display:flex;align-items:center;gap:9px}
+  .pdf-line em{color:#5a6678;font-style:italic}
+  .pdf-box{width:13px;height:13px;flex-shrink:0;border:1.5px solid #5a6678;border-radius:3px}
+  .pdf-frame-foot{margin-top:12px;font-size:11px;color:#8894a6;font-style:italic;border-top:1px dashed #d3dbe8;padding-top:10px}
+  .tool-grid{display:flex;flex-direction:column;gap:14px;margin-top:24px}
+  .tool-card{padding:20px 22px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+  .tool-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .tool-ico{font-size:24px;line-height:1}
+  .tool-name{font-size:16px;font-weight:700;color:var(--text)}
+  .tool-what{font-size:13px;color:var(--text);line-height:1.6;opacity:0.9}
+  .tool-io{margin-top:12px;font-size:12.5px;color:var(--text-muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tool-io-tag{font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--accent);background:var(--accent-glow);padding:2px 8px;border-radius:12px}
+  .tool-io-tag.out{color:var(--green);background:var(--green-bg)}
+  .tool-io-arrow{color:var(--text-muted)}
+  .tool-when{margin-top:12px;font-size:12.5px;color:var(--text);line-height:1.55;opacity:0.9}
   .faq-a a,.evidence-text a,.consideration-text a,.applicability-text a,.alt-desc a,.alt-text a,.threshold-guidance a,.worked-example-headline a,.evidence-support-text a,.example-desc a,.ra-note a{color:var(--link);font-weight:600;text-decoration:underline;text-underline-offset:2px}
   .faq-a a:hover,.evidence-text a:hover,.consideration-text a:hover,.applicability-text a:hover,.alt-desc a:hover,.alt-text a:hover,.threshold-guidance a:hover,.worked-example-headline a:hover,.evidence-support-text a:hover,.example-desc a:hover,.ra-note a:hover{color:var(--link-hover)}
 
@@ -2387,7 +2448,7 @@ function renderSharedPreview(){
 function render(){
   const app=document.getElementById('app');
   if(state.sharedPreview){app.innerHTML=renderHeader()+renderSharedPreview();return;}
-  app.innerHTML=renderHeader()+(state.view==='guide'?renderBreadcrumb()+renderGuideView():state.view==='evidence'?renderBreadcrumb()+renderEvidenceSupportView():state.view==='projectIndex'?renderBreadcrumb()+renderProjectIndexView():state.view==='projectList'?renderBreadcrumb()+renderProjectListView():state.view==='entry'?renderBreadcrumb()+renderEntryDetail():state.view==='dimension'?renderBreadcrumb()+renderDimensionView():state.view==='byDate'?renderBreadcrumb()+renderByDateView():state.view==='browse'?renderBreadcrumb()+renderBrowseView():renderHomeView());
+  app.innerHTML=renderHeader()+(state.view==='guide'?renderBreadcrumb()+renderGuideView():state.view==='guideManual'?renderBreadcrumb()+renderGuideManualView():state.view==='evidence'?renderBreadcrumb()+renderEvidenceSupportView():state.view==='projectIndex'?renderBreadcrumb()+renderProjectIndexView():state.view==='projectList'?renderBreadcrumb()+renderProjectListView():state.view==='entry'?renderBreadcrumb()+renderEntryDetail():state.view==='dimension'?renderBreadcrumb()+renderDimensionView():state.view==='byDate'?renderBreadcrumb()+renderByDateView():state.view==='browse'?renderBreadcrumb()+renderBrowseView():renderHomeView());
 }
 
 function renderHeader(){
@@ -2461,6 +2522,7 @@ function renderBreadcrumb(){
   const dim=getDim(),item=getItem();
   let h='<div class="breadcrumb"><span class="breadcrumb-link" onclick="goHome()">Framework</span>';
   if(state.view==='guide'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">'+(guide?guide.title:'Guide')+'</span></div>'; }
+  if(state.view==='guideManual'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-link" onclick="goGuide()">'+(guide?guide.title:'Guide')+'</span><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">'+manualTitle(state.manualId)+'</span></div>'; }
   if(state.view==='evidence'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Evidence support index</span></div>'; }
   if(state.view==='projectIndex'){return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-current">My project review lists</span></div>';}
   if(state.view==='projectList'){const _ln=getProjectList().name;return h+'<span class="breadcrumb-sep">›</span><span class="breadcrumb-link" onclick="goProjectLists()">My project review lists</span><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">'+escHtml(_ln||'Untitled list')+'</span></div>';}
@@ -2778,6 +2840,7 @@ function renderGuideView(){
     if(h.finding){html+=`<div class="label" style="margin-top:24px">${h.finding.title}</div><p class="guide-sub">${h.finding.text}</p>`;}
     if(h.steps&&h.steps.length){const st=h.steps.map((s,i)=>`<div class="trace-step"><div class="trace-step-label">${s.label}</div><div class="trace-step-value">${s.value}</div><div class="trace-step-sub">${s.sub}</div></div>${i<h.steps.length-1?'<div class="trace-arrow">→</div>':''}`).join('');html+=`${h.flowTitle?`<div class="label" style="margin-top:24px">${h.flowTitle}</div>`:''}<div class="trace-flow">${st}</div>`;}
     if(h.note){html+=`<div class="guide-more">${h.note}</div>`;}
+    html+=manualCta('review-lists','Project review lists','See the button, the list picker, naming and privacy, and what an exported checklist looks like.');
   }
 
   // Five dimensions / root-cause explanation — routing first, before the rating mechanics
@@ -2807,6 +2870,7 @@ function renderGuideView(){
       return `<div class="shape-card"><div class="shape-tag">${s.shape}</div><div class="shape-param">${sd?sd.parameter:''}</div><div class="shape-desc">${s.desc}</div><div class="threshold-list shape-thresholds">${sd?gThresholds(sd,true):''}</div>${found?`<div class="shape-link" onclick="goEntry('${found.dim.id}','${found.item.id}')">See full entry →</div>`:''}</div>`;
     }).join('');
     html+=`<div class="label" style="margin-top:24px">${g.shapes.title}</div><p class="guide-sub">${g.shapes.intro}</p><div class="shape-grid">${cards}</div>`;
+    html+=manualCta('read-entry','How to read an entry','A worked, annotated entry — what every part means, and how condition &rarr; band &rarr; response works.');
   }
 
   // Why the framework exists, and why contributing is worth it
@@ -2826,6 +2890,7 @@ function renderGuideView(){
     const m=g.maintenance;
     const cards=(m.items||[]).map(it=>`<div class="dimension-guide-card"><div class="dimension-guide-label">${it.label}</div><div class="dimension-guide-text">${it.text}</div></div>`).join('');
     html+=`<div class="label" style="margin-top:24px">${m.title}</div><p class="guide-sub">${m.intro}</p><div class="dimension-guide-grid">${cards}</div>${m.note?`<div class="guide-more">${m.note}</div>`:''}`;
+    html+=manualCta('maintenance','Maintainer tools','A walkthrough of the Data Manager, Framework Doctor and Image Formatter, and the order to run them in.');
   }
 
   // FAQ accordion
@@ -3047,6 +3112,161 @@ function toggleTheme(){
   applyTheme(cur==='light'?'dark':'light');
 }
 function goGuide(){window.location.hash='guide'}
+function goGuideManual(id){window.location.hash='guide/'+id;}
+
+// ===== GUIDE SUB-PAGES (visual manuals) =====
+const GUIDE_MANUALS={
+  'read-entry':'How to read an entry',
+  'review-lists':'Project review lists',
+  'maintenance':'Maintainer tools'
+};
+function manualTitle(id){return GUIDE_MANUALS[id]||'Manual';}
+
+// A "Learn more" card shown inline in the guide hub, next to the topic it explains.
+function manualCta(id,title,sub){
+  return `<div class="manual-cta" onclick="goGuideManual('${id}')">
+    <div class="manual-cta-mark">?</div>
+    <div class="manual-cta-text"><div class="manual-cta-title">Learn more &mdash; ${title}</div><div class="manual-cta-sub">${sub}</div></div>
+    <div class="manual-cta-btn">Open manual &rarr;</div>
+  </div>`;
+}
+
+function renderGuideManualView(){
+  const id=state.manualId;
+  let body='';
+  if(id==='read-entry')body=manualReadEntry();
+  else if(id==='review-lists')body=manualReviewLists();
+  else if(id==='maintenance')body=manualMaintenance();
+  else body=`<p class="section-desc">That manual doesn't exist yet. <span class="breadcrumb-link" onclick="goGuide()">Back to the guide &rarr;</span></p>`;
+  const back=`<div class="back-link" onclick="goGuide()">&larr; Back to the guide</div>`;
+  return `<div class="content animate-in">${back}${body}</div>`;
+}
+
+// Small labelled part used in the annotated anatomy.
+function anatStep(n,name,teach,content){
+  return `<div class="anat-step"><div class="anat-head"><div class="anat-num">${n}</div><div><div class="anat-name">${name}</div><div class="anat-teach">${teach}</div></div></div><div class="anat-content">${content}</div></div>`;
+}
+
+// MANUAL 1 — How to read an entry (worked, annotated, using a real live entry).
+function manualReadEntry(){
+  const TEACH_ID='reinforcement-mat-fall-through-risk';
+  const found=findEntryById(TEACH_ID);
+  let hero=`<div class="dim-header"><span class="dim-header-icon">&#128269;</span><h1 class="dim-header-title">How to read an entry</h1></div>
+    <p class="section-desc">Every entry in the framework &mdash; across all five dimensions &mdash; is built the same way. Learn one and you can read them all. The logic is always <strong>condition &rarr; band &rarr; response</strong>: you check one thing about your design, see which band it falls in, and read what to do. Here is a real entry with each part labelled.</p>`;
+  if(!found){return hero+`<div class="guide-more">The example entry isn't loaded, but the structure below still applies to every entry.</div>`;}
+  const d=found.item.data, dim=found.dim;
+  const loc=d&&typeof regionTag==='function'?regionTag(d):'';
+  const bands=(d.thresholds||[]).map(t=>`<div class="threshold-band" style="background:${bgVar(t.color)};border:1px solid ${colorVar(t.color)}33;"><div class="threshold-range" style="color:${colorVar(t.color)}">${t.range}</div><div style="flex:1"><div class="threshold-rating" style="color:${colorVar(t.color)}">${t.rating}</div><div class="threshold-guidance">${t.guidance}</div></div></div>`).join('');
+  const a0=(d.alternatives||[]).filter(Boolean)[0];
+  const actionContent=a0?(typeof a0==='string'?a0:`<strong>${a0.title}</strong> &mdash; ${a0.description}`):'';
+  const ev=d.evidenceSupport;
+  const evColor=ev?(ev.level==='high'?'green':ev.level==='medium'?'yellow':'orange'):'yellow';
+  const evContent=ev?`<div class="anat-ev"><span class="anat-ev-pill" style="background:${bgVar(evColor)};color:${colorVar(evColor)};border:1px solid ${colorVar(evColor)}55">${(ev.level||'').toUpperCase()} support</span><span class="anat-ev-sum">${ev.summary||''}</span></div>`:'';
+
+  let steps='';
+  steps+=anatStep(1,'The design question','What the entry helps you decide. If this isn\u2019t your question, it isn\u2019t your entry.',`<div class="anat-q">${d.question||''}</div>${loc?`<div class="anat-loc">Evidence gathered in ${loc} \u2014 provenance, not a restriction.</div>`:''}`);
+  steps+=anatStep(2,'The design parameter','The one thing you measure, count, choose or assess from your own drawings.',`<div class="anat-param">${d.parameter||''}</div>`);
+  steps+=anatStep(3,'The bands','Your parameter lands in one band. The colour is the rating, consistent across the whole framework.',`<div class="threshold-list">${bands}</div>`);
+  if(actionContent)steps+=anatStep(4,'The recommended action','What to do if you land in a Concern or Action-required band. Options, not orders.',`<div class="anat-action">${actionContent}</div>`);
+  if(evContent)steps+=anatStep(5,'Evidence support','How much the numbers behind the entry can be leaned on \u2014 not how important the issue is.',evContent);
+
+  const footer=`<div class="guide-callout" style="margin-top:30px"><div class="label" style="color:var(--yellow)">What isn\u2019t shown here</div><div class="guide-point-text">A real entry may also carry a background, applicability notes, evidence basis, example drawings, related entries and reader comments. Those add depth but aren\u2019t needed to read the entry \u2014 you meet them by opening it.</div></div>
+    <div class="manual-cta" onclick="goEntry('${dim.id}','${found.item.id}')"><div class="manual-cta-mark">&rarr;</div><div class="manual-cta-text"><div class="manual-cta-title">See this entry live</div><div class="manual-cta-sub">Open ${found.item.name} in ${dim.name}.</div></div><div class="manual-cta-btn">Open entry &rarr;</div></div>`;
+
+  return hero+`<div class="anat-wrap">${steps}</div>${footer}`;
+}
+
+// MANUAL 2 — Project review lists (annotated UI, built from the real components).
+function manualReviewLists(){
+  const hero=`<div class="dim-header"><span class="dim-header-icon">&#128203;</span><h1 class="dim-header-title">Project review lists</h1></div>
+    <p class="section-desc">A project review list collects the entries that matter to one job, so you can export a project-specific constructability checklist. Lists live in your browser only \u2014 no login, nothing published \u2014 so there is nothing to break. Here is how each part works.</p>`;
+
+  const s1=`<div class="mock-block"><div class="mock-cap">1 &middot; Adding an entry</div>
+    <p class="guide-sub">On any live entry, use <strong>Add to project review list</strong>. Once it\u2019s on a list the same button remembers, and shows how many lists it sits on.</p>
+    <div class="mock-frame">
+      <div class="mock-row-label">Before</div>
+      <button class="entry-btn entry-top-project-btn"><span class="ico">&#65291;</span> Add to project review list</button>
+      <div class="mock-row-label" style="margin-top:16px">After &mdash; same button, now with a count</div>
+      <div class="anno-wrap">
+        <button class="entry-btn entry-top-project-btn added"><span class="ico">&#10003;</span> On 2 review lists</button>
+        <span class="anno-ring"></span>
+      </div>
+      <div class="anno-note"><span class="anno-arrow">&#8593;</span> The count is the app showing you where this entry already lives. Tap it any time to change which lists it\u2019s on.</div>
+    </div></div>`;
+
+  const s2=`<div class="mock-block"><div class="mock-cap">2 &middot; The list picker &mdash; ticks, not commitment</div>
+    <p class="guide-sub">The picker shows every list with a checkbox. Tick one or several to add at once; un-tick to remove. Nothing is permanent.</p>
+    <div class="mock-frame">
+      <div class="mock-modal">
+        <div class="mock-modal-title">Add to project review lists</div>
+        <div class="mock-pick"><span class="mock-check on">&#10003;</span> 42 Harbour St \u2014 slab &amp; footings</div>
+        <div class="mock-pick"><span class="mock-check on">&#10003;</span> Depot expansion \u2014 stage 2</div>
+        <div class="mock-pick"><span class="mock-check"></span> Precast yard review</div>
+        <div class="mock-newrow">+ New list\u2026</div>
+      </div>
+      <div class="anno-note">Two ticked means the entry shows <strong>On 2 review lists</strong>. Un-ticking here removes it \u2014 the same toggle both ways.</div>
+    </div></div>`;
+
+  const s3=`<div class="mock-block"><div class="mock-cap">3 &middot; Name it, and keep it private</div>
+    <p class="guide-sub">New lists suggest a generic name you can replace. Name it something you\u2019ll recognise \u2014 the project address works well \u2014 and add a purpose that appears on the export.</p>
+    <div class="mock-frame">
+      <div class="mock-row-label">List name</div>
+      <div class="anno-wrap">
+        <div class="mock-input">42 Harbour St \u2014 slab &amp; footings</div>
+        <span class="anno-ring wide"></span>
+      </div>
+      <div class="anno-note"><span class="anno-arrow">&#8593;</span> Rename &ldquo;Project review list 1&rdquo; to the site address or job number.</div>
+      <div class="mock-privacy"><span class="mock-lock">&#128274;</span> Your lists are stored in this browser only. They are never published to the framework, and no one else can see them.</div>
+    </div></div>`;
+
+  const s4=`<div class="mock-block"><div class="mock-cap">4 &middot; Export or share</div>
+    <p class="guide-sub">Any list exports to PDF, Markdown or the clipboard as a checklist with links back to the full entries \u2014 ready for an email, a design review or a QA record. A share link reopens the live framework with the same entries pre-selected.</p>
+    <div class="mock-export-grid">
+      <div class="mock-export"><div class="mock-export-ico">&#128196;</div>PDF checklist</div>
+      <div class="mock-export"><div class="mock-export-ico">&#128221;</div>Markdown</div>
+      <div class="mock-export"><div class="mock-export-ico">&#128279;</div>Share link</div>
+      <div class="mock-export"><div class="mock-export-ico">&#128190;</div>Backup file</div>
+    </div>
+    <div class="pdf-frame">
+      <div class="pdf-frame-head">Constructability review checklist &mdash; 42 Harbour St</div>
+      <div class="pdf-line"><span class="pdf-box"></span> Reinforcement mat fall-through risk &middot; <em>Safety in design</em></div>
+      <div class="pdf-line"><span class="pdf-box"></span> Stirrup bar size availability &middot; <em>Logistics</em></div>
+      <div class="pdf-line"><span class="pdf-box"></span> Reinforcement callout clarity &middot; <em>Design communication</em></div>
+      <div class="pdf-frame-foot">Placeholder preview &mdash; drop a real screenshot of an exported PDF here.</div>
+    </div></div>`;
+
+  return hero+s1+s2+s3+s4;
+}
+
+// MANUAL 3 — Maintainer tools.
+function manualMaintenance(){
+  const hero=`<div class="dim-header"><span class="dim-header-icon">&#128736;</span><h1 class="dim-header-title">Maintainer tools</h1></div>
+    <p class="section-desc">Nothing submitted through a form goes live on its own. A maintainer reviews and de-identifies every item, then uses three browser-based tools to turn it into published content. Each tool is a single HTML file you open locally \u2014 it runs entirely on your machine and uploads nothing.</p>`;
+
+  const tool=(icon,name,what,io,when)=>`<div class="tool-card"><div class="tool-head"><span class="tool-ico">${icon}</span><div class="tool-name">${name}</div></div>
+    <div class="tool-what">${what}</div>
+    <div class="tool-io"><span class="tool-io-tag">In</span> ${io[0]} <span class="tool-io-arrow">&rarr;</span> <span class="tool-io-tag out">Out</span> ${io[1]}</div>
+    <div class="tool-when"><strong>Use it when:</strong> ${when}</div></div>`;
+
+  const cards=`<div class="tool-grid">
+    ${tool('&#128229;','Data Manager','Turns Google Form responses into structured entries, edits and comments. Work through an inbox, de-identify as you go, manage drafts and comments, then export.',['Current data.json + response CSVs','Updated data.json'],'you are publishing new entries, applying suggested edits, or approving comments.')}
+    ${tool('&#129658;','Framework Doctor','A read-only health check. Reports missing images (referenced but absent \u2014 these break the live site) and orphan images (present but unused), plus data-integrity checks. Changes nothing.',['data.json + the images folder','A plain-text report'],'you are about to commit, and want to catch broken image links first.')}
+    ${tool('&#128247;','Image Formatter','Re-encodes and renames images for the images folder, warns on filename clashes with one-click make-unique, and strips embedded metadata such as GPS and camera info.',['One or many raw images','Clean, uniquely-named image files'],'you have new photos or drawings to add \u2014 especially site photographs.')}
+  </div>`;
+
+  const flow=`<div class="label" style="margin-top:30px">The order to run them in</div>
+    <div class="trace-flow">
+      <div class="trace-step"><div class="trace-step-label">Review</div><div class="trace-step-value">Data Manager</div><div class="trace-step-sub">Accept, de-identify, publish; export data.json.</div></div>
+      <div class="trace-arrow">&rarr;</div>
+      <div class="trace-step"><div class="trace-step-label">Prepare images</div><div class="trace-step-value">Image Formatter</div><div class="trace-step-sub">Re-encode, rename, strip metadata; add to images/.</div></div>
+      <div class="trace-arrow">&rarr;</div>
+      <div class="trace-step"><div class="trace-step-label">Check</div><div class="trace-step-value">Framework Doctor</div><div class="trace-step-sub">Catch missing or orphan images, then commit.</div></div>
+    </div>`;
+
+  const note=`<div class="guide-callout" style="margin-top:26px"><div class="label" style="color:var(--yellow)">Why review is manual</div><div class="guide-point-text">Suggested entries, edits and comments never appear automatically. Reviewing by hand keeps the framework accurate and de-identified \u2014 no project, company, client or designer names, and no GPS or camera data left in photographs.</div></div>`;
+
+  return hero+cards+flow+note;
+}
 function goEvidenceSupport(level){state.evidenceFilter=level||'all';window.location.hash='evidence-support';if(state.view==='evidence')render();}
 function goByDate(){window.location.hash='by-date'}
 function goDimension(id){state.locationFilter=null;state.elementFilter=[];state.phaseFilter=[];window.location.hash=id}
@@ -3062,6 +3282,7 @@ function parseHash(){
   const hash=window.location.hash.replace(/^#\/?/,'');
   if(!hash){state.view='home';state.dimId=null;state.itemId=null;state.locationFilter=null;}
   else if(hash==='guide'){state.view='guide';state.dimId=null;state.itemId=null;state.locationFilter=null;}
+  else if(hash.startsWith('guide/')){state.view='guideManual';state.manualId=hash.slice(6);state.dimId=null;state.itemId=null;state.locationFilter=null;}
   else if(hash==='evidence-support'){state.view='evidence';state.dimId=null;state.itemId=null;state.locationFilter=null;if(!state.evidenceFilter)state.evidenceFilter='all';}
   else if(hash==='project-lists'||hash==='review-lists'){state.view='projectIndex';state.dimId=null;state.itemId=null;state.locationFilter=null;}
   else if(hash==='project-list'||hash==='review-list'){state.view='projectList';state.dimId=null;state.itemId=null;state.locationFilter=null;}
