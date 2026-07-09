@@ -665,6 +665,10 @@
   .tool-io-tag.out{color:var(--green);background:var(--green-bg)}
   .tool-io-arrow{color:var(--text-muted)}
   .tool-when{margin-top:12px;font-size:12.5px;color:var(--text);line-height:1.55;opacity:0.9}
+  .app-footer{max-width:900px;margin:44px auto 0;padding:20px 32px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .app-footer-text{font-size:12px;color:var(--text-muted);line-height:1.5}
+  .app-footer-link{font-size:12px;font-weight:700;color:var(--accent);text-decoration:none;white-space:nowrap}
+  .app-footer-link:hover{text-decoration:underline}
   .faq-a a,.evidence-text a,.consideration-text a,.applicability-text a,.alt-desc a,.alt-text a,.threshold-guidance a,.worked-example-headline a,.evidence-support-text a,.example-desc a,.ra-note a{color:var(--link);font-weight:600;text-decoration:underline;text-underline-offset:2px}
   .faq-a a:hover,.evidence-text a:hover,.consideration-text a:hover,.applicability-text a:hover,.alt-desc a:hover,.alt-text a:hover,.threshold-guidance a:hover,.worked-example-headline a:hover,.evidence-support-text a:hover,.example-desc a:hover,.ra-note a:hover{color:var(--link-hover)}
 
@@ -1120,6 +1124,11 @@ const FORMS={
     nameField:'entry.528194579',
     linkField:'entry.1843851936'
   }
+};
+// External project links. This site is published with GitHub Pages; the repository
+// holds the README, the licences, and the maintainer tools.
+const LINKS={
+  repo:'https://github.com/david-reset/Concrete-Structures-Constructability-Framework'
 };
 // Canonical public deep link to an entry (strips a trailing index.html so it
 // matches the GitHub Pages directory URL; the #dimId/id hash drives routing).
@@ -2445,10 +2454,13 @@ function renderSharedPreview(){
 }
 
 // ===== RENDER =====
+function renderFooter(){
+  return `<div class="app-footer"><span class="app-footer-text">An open, GitHub-hosted framework \u2014 code under AGPL-3.0, content under CC BY-SA 4.0.</span><a class="app-footer-link" href="${LINKS.repo}" target="_blank" rel="noopener">View source on GitHub \u2197</a></div>`;
+}
 function render(){
   const app=document.getElementById('app');
   if(state.sharedPreview){app.innerHTML=renderHeader()+renderSharedPreview();return;}
-  app.innerHTML=renderHeader()+(state.view==='guide'?renderBreadcrumb()+renderGuideView():state.view==='guideManual'?renderBreadcrumb()+renderGuideManualView():state.view==='evidence'?renderBreadcrumb()+renderEvidenceSupportView():state.view==='projectIndex'?renderBreadcrumb()+renderProjectIndexView():state.view==='projectList'?renderBreadcrumb()+renderProjectListView():state.view==='entry'?renderBreadcrumb()+renderEntryDetail():state.view==='dimension'?renderBreadcrumb()+renderDimensionView():state.view==='byDate'?renderBreadcrumb()+renderByDateView():state.view==='browse'?renderBreadcrumb()+renderBrowseView():renderHomeView());
+  app.innerHTML=renderHeader()+(state.view==='guide'?renderBreadcrumb()+renderGuideView():state.view==='guideManual'?renderBreadcrumb()+renderGuideManualView():state.view==='evidence'?renderBreadcrumb()+renderEvidenceSupportView():state.view==='projectIndex'?renderBreadcrumb()+renderProjectIndexView():state.view==='projectList'?renderBreadcrumb()+renderProjectListView():state.view==='entry'?renderBreadcrumb()+renderEntryDetail():state.view==='dimension'?renderBreadcrumb()+renderDimensionView():state.view==='byDate'?renderBreadcrumb()+renderByDateView():state.view==='browse'?renderBreadcrumb()+renderBrowseView():renderHomeView())+renderFooter();
 }
 
 function renderHeader(){
@@ -2883,6 +2895,7 @@ function renderGuideView(){
     const c=g.contributing;
     const cards=(c.items||[]).map(it=>`<div class="dimension-guide-card"><div class="dimension-guide-label">${it.label}</div><div class="dimension-guide-text">${it.text}</div></div>`).join('');
     html+=`<div class="label" style="margin-top:24px">${c.title}</div><p class="guide-sub">${c.intro}</p><div class="dimension-guide-grid">${cards}</div>${c.note?`<div class="guide-more">${c.note}</div>`:''}`;
+    html+=manualCta('contributing','Contributing','How to add a comment or fill out the new-entry and change forms — they&rsquo;re short Google Forms, and nothing publishes automatically.');
   }
 
   // Maintenance pathways
@@ -3118,6 +3131,7 @@ function goGuideManual(id){window.location.hash='guide/'+id;}
 const GUIDE_MANUALS={
   'read-entry':'How to read an entry',
   'review-lists':'Project review lists',
+  'contributing':'Contributing',
   'maintenance':'Maintainer tools'
 };
 function manualTitle(id){return GUIDE_MANUALS[id]||'Manual';}
@@ -3136,6 +3150,7 @@ function renderGuideManualView(){
   let body='';
   if(id==='read-entry')body=manualReadEntry();
   else if(id==='review-lists')body=manualReviewLists();
+  else if(id==='contributing')body=manualContributing();
   else if(id==='maintenance')body=manualMaintenance();
   else body=`<p class="section-desc">That manual doesn't exist yet. <span class="breadcrumb-link" onclick="goGuide()">Back to the guide &rarr;</span></p>`;
   const back=`<div class="back-link" onclick="goGuide()">&larr; Back to the guide</div>`;
@@ -3238,10 +3253,48 @@ function manualReviewLists(){
   return hero+s1+s2+s3+s4;
 }
 
-// MANUAL 3 — Maintainer tools.
+// MANUAL 3 — Contributing (how the Google Forms work).
+function manualContributing(){
+  const hero=`<div class="dim-header"><span class="dim-header-icon">&#9997;</span><h1 class="dim-header-title">Contributing</h1></div>
+    <p class="section-desc">The framework improves through the people who use it. There are three ways to contribute, and all three are short Google Forms &mdash; you don&rsquo;t edit anything directly. Nothing you submit appears on the site automatically: every item is reviewed and de-identified first.</p>`;
+
+  const path=(icon,name,what,how,btn)=>`<div class="tool-card"><div class="tool-head"><span class="tool-ico">${icon}</span><div class="tool-name">${name}</div></div>
+    <div class="tool-what">${what}</div>
+    <div class="tool-when" style="margin-top:10px"><strong>How:</strong> ${how}</div>
+    <div style="margin-top:14px">${btn}</div></div>`;
+
+  const paths=`<div class="tool-grid">
+    ${path('&#10133;','Suggest a new entry',
+      'Use this when the framework doesn&rsquo;t yet cover a constructability issue. A good entry is a specific, design-stage issue you can check from drawings, specifications or design decisions &mdash; for example &ldquo;drip grooves on exposed soffit edges&rdquo;, not &ldquo;waterproofing&rdquo;.',
+      'The form walks you through it. You don&rsquo;t need every field &mdash; submit what you know and a reviewer structures the rest. Choose the dimension by the <strong>root cause</strong>, or pick &ldquo;Not sure&rdquo;.',
+      `<button class="entry-btn primary" onclick="goSuggest()">Open the new-entry form &rarr;</button>`)}
+    ${path('&#9998;','Suggest a change',
+      'Use this to correct, clarify or strengthen an existing entry &mdash; better evidence, an adjusted threshold, regional feedback, an extra example, or a clearer action.',
+      'Best launched from the entry itself: the <strong>Suggest a change</strong> button at the bottom of any entry opens the form already linked to it, so your change attaches to the right entry. You can also open the blank form below.',
+      `<button class="entry-btn" onclick="window.open(FORMS.edit.base,'_blank')">Open the change form &rarr;</button>`)}
+    ${path('&#128172;','Add a comment',
+      'Use this for a practical observation, a question, or a regional note that should sit beneath an entry without changing the entry itself.',
+      'Best launched from the entry&rsquo;s <strong>Add a comment</strong> button, which links your comment to that entry. Comments are shown anonymously by default, once reviewed.',
+      `<button class="entry-btn" onclick="window.open(FORMS.comment.base,'_blank')">Open the comment form &rarr;</button>`)}
+  </div>`;
+
+  const good=`<div class="label" style="margin-top:30px">What makes a good submission</div>
+    <div class="anat-wrap" style="margin-top:14px;gap:12px">
+      <div class="anat-step"><div class="anat-name">Be specific and checkable</div><div class="anat-teach">A design-stage issue that can be measured, counted, chosen or assessed &mdash; not a broad topic.</div></div>
+      <div class="anat-step"><div class="anat-name">De-identify everything</div><div class="anat-teach">No project, company, client or designer names, no site addresses or title blocks &mdash; in text or images.</div></div>
+      <div class="anat-step"><div class="anat-name">Submit what you know</div><div class="anat-teach">You don&rsquo;t need every field. The framework team reviews, edits and structures each item before it publishes.</div></div>
+    </div>
+    <div class="manual-cta" onclick="window.open('examples/Off-form-wall-example.pdf','_blank')"><div class="manual-cta-mark">&#128196;</div><div class="manual-cta-text"><div class="manual-cta-title">See a completed submission</div><div class="manual-cta-sub">An example of a new entry as it was submitted through the form (PDF).</div></div><div class="manual-cta-btn">Open example &rarr;</div></div>
+    <div class="guide-callout" style="margin-top:22px"><div class="label" style="color:var(--yellow)">Before you submit</div><div class="guide-point-text">Submissions are reviewed before publishing and, if used, released under the framework&rsquo;s CC BY-SA licence. Reviewing by hand is what keeps the framework accurate and free of identifying detail.</div></div>`;
+
+  return hero+paths+good;
+}
+
+// MANUAL 4 — Maintainer tools.
 function manualMaintenance(){
   const hero=`<div class="dim-header"><span class="dim-header-icon">&#128736;</span><h1 class="dim-header-title">Maintainer tools</h1></div>
-    <p class="section-desc">Nothing submitted through a form goes live on its own. A maintainer reviews and de-identifies every item, then uses three browser-based tools to turn it into published content. Each tool is a single HTML file you open locally \u2014 it runs entirely on your machine and uploads nothing.</p>`;
+    <p class="section-desc">Nothing submitted through a form goes live on its own. A maintainer reviews and de-identifies every item, then uses three browser-based tools to turn it into published content. Each tool is a single HTML file you open locally \u2014 it runs entirely on your machine and uploads nothing.</p>
+    <div class="manual-cta" onclick="window.open(LINKS.repo,'_blank')"><div class="manual-cta-mark">&#9733;</div><div class="manual-cta-text"><div class="manual-cta-title">The tools live in the GitHub repository</div><div class="manual-cta-sub">This site is published with GitHub Pages. The repo holds the README, the licences, data.json and the three tools in the tools/ folder.</div></div><div class="manual-cta-btn">Open the repo \u2192</div></div>`;
 
   const tool=(icon,name,what,io,when)=>`<div class="tool-card"><div class="tool-head"><span class="tool-ico">${icon}</span><div class="tool-name">${name}</div></div>
     <div class="tool-what">${what}</div>
