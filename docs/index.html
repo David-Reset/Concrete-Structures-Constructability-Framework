@@ -1314,6 +1314,19 @@ function lpListRowsHtml(checkedSet){
     return `<label class="ra-row"><input type="checkbox" class="lp-check" value="${l.id}" ${ck}><span class="ra-text"><span class="ra-name">${nm}</span><span class="ra-dim">${cnt} ${cnt===1?'entry':'entries'}</span></span></label>`;
   }).join('');
 }
+// Like lpListRowsHtml, but for the bulk (triage) flow: annotates each list with
+// how many of the entries being added it already contains, so the user can see
+// up front that a chosen list won't get duplicates.
+function bulkListRowsHtml(ids){
+  const set=new Set(ids);
+  return meaningfulLists().map(l=>{
+    const nm=l.name&&l.name.trim()?escHtml(l.name):'Untitled list';
+    const cnt=l.ids.length;
+    const already=l.ids.filter(x=>set.has(x)).length;
+    const note=already?` &middot; already has ${already} of these`:'';
+    return `<label class="ra-row"><input type="checkbox" class="lp-check" value="${l.id}"><span class="ra-text"><span class="ra-name">${nm}</span><span class="ra-dim">${cnt} ${cnt===1?'entry':'entries'}${note}</span></span></label>`;
+  }).join('');
+}
 // Create a list without navigating away (keeps the picker open).
 function createListSilently(name,ids){
   const ws=getWorkspace();
@@ -1462,8 +1475,8 @@ function openBulkAddPicker(ids){
   overlay.className='modal-overlay';overlay.id='addPickerOverlay';overlay.onclick=closeAddPicker;
   overlay.innerHTML=`<div class="modal" onclick="event.stopPropagation()">
     <div class="modal-title">Add ${n} ${n===1?'entry':'entries'} to project review lists</div>
-    <div class="ra-intro">Choose which list(s) these ${n} ${n===1?'entry':'entries'} should go onto.</div>
-    <div class="ra-list" id="lpList">${lpListRowsHtml(new Set())}</div>
+    <div class="ra-intro">Choose which list(s) these ${n} ${n===1?'entry':'entries'} should go onto. If a list already has some of them, only the missing ones are added.</div>
+    <div class="ra-list" id="lpList">${bulkListRowsHtml(ids)}</div>
     <div class="lp-newrow"><button class="entry-btn" onclick="lpNewList()">+ New list…</button></div>
     <div class="modal-actions">
       <button class="entry-btn" onclick="closeAddPicker()">Cancel</button>
@@ -1478,9 +1491,33 @@ function confirmBulkAddPicker(){
   closeAddPicker();
   if(!chosen.length||!ids.length)return;
   const ws=getWorkspace();
+  const set=new Set(ids);
+  // Work out, per chosen list, how many are new vs already present — BEFORE adding.
+  const summary=ws.lists.filter(l=>chosen.includes(l.id)).map(l=>{
+    const already=l.ids.filter(x=>set.has(x)).length;
+    return {name:l.name,already,added:ids.length-already};
+  });
   const toName=ws.lists.filter(l=>chosen.includes(l.id)&&l.ids.length===0&&!(l.name&&l.name.trim())).map(l=>l.id);
   addManyToLists(ids,chosen);
-  nameUnnamedTargets(toName);
+  // If a freshly-made list still needs a name, that naming prompt is its own feedback;
+  // otherwise show a short summary of what landed where.
+  if(toName.length)nameUnnamedTargets(toName);
+  else showBulkAddSummary(ids.length,summary);
+}
+function closeBulkSummary(){const m=document.getElementById('bulkSummaryOverlay');if(m)m.remove();}
+function showBulkAddSummary(total,summary){
+  const lines=summary.map(s=>{
+    const nm=s.name&&s.name.trim()?escHtml(s.name):'Untitled list';
+    let detail;
+    if(s.added===0)detail=`all ${total} already on it &mdash; nothing to add`;
+    else if(s.already===0)detail=`added ${s.added}`;
+    else detail=`added ${s.added}, ${s.already} already there`;
+    return `<div class="triage-empty" style="margin-top:6px"><strong>${nm}</strong> &mdash; ${detail}</div>`;
+  }).join('');
+  const o=document.createElement('div');
+  o.className='modal-overlay';o.id='bulkSummaryOverlay';o.onclick=closeBulkSummary;
+  o.innerHTML=`<div class="modal" onclick="event.stopPropagation()"><div class="modal-title">Added to your ${summary.length===1?'list':'lists'}</div>${lines}<div class="modal-actions"><button class="entry-btn primary" onclick="closeBulkSummary()">Done</button></div></div>`;
+  document.body.appendChild(o);
 }
 // Add several entries to several lists at once (no removals).
 function addManyToLists(ids,listIds){
@@ -2211,8 +2248,12 @@ function triageCollect(){
     return maybeFacts.has(f)?`${lbl} (you weren't sure)`:lbl;
   };
 
-  const inList=new Set(getProjectList().ids);
-  const entries=[],skipped=[];
+  // Triage surfaces every matching entry. It does NOT filter against any project
+  // review list here: the list you're triaging for isn't chosen until the add step,
+  // so removing entries now would silently drop them from an unrelated active list.
+  // De-duplication happens per-destination-list when you actually add (addManyToLists),
+  // and the add picker tells you how many a chosen list already holds.
+  const entries=[];
   for(const dim of dimensions){
     for(const item of dim.items){
       if(!item.available||!item.data)continue;
@@ -2222,25 +2263,22 @@ function triageCollect(){
       // while an upstream decision is still open). If any excluded fact is established, skip.
       const excl=item.data.triageExclude;
       if(Array.isArray(excl)&&excl.some(f=>satisfied.has(f)))continue;
-      const row={id:item.id,name:item.name,dimName:dim.name,dimIcon:dim.icon,reason:reasonFor(trig)};
-      if(inList.has(item.id))skipped.push(row);else entries.push(row);
+      entries.push({id:item.id,name:item.name,dimName:dim.name,dimIcon:dim.icon,reason:reasonFor(trig)});
     }
   }
-  return {entries,skipped};
+  return {entries};
 }
 
 function triageFinish(){
-  const {entries,skipped}=triageCollect();
+  const {entries}=triageCollect();
   closeTriage();
-  showTriageResults(entries,skipped);
+  showTriageResults(entries);
 }
-function showTriageResults(entries,skipped){
+function showTriageResults(entries){
   const n=entries.length;
   let body;
   if(!n){
-    const msg=skipped.length
-      ?`Everything this triage suggested is already on your project review list &mdash; nothing more to add.`
-      :`No entries matched these answers. Try the search above, or browse the dimensions &mdash; and if the framework doesn't cover your issue, you can <span class="search-empty-link" onclick="closeTriageResults();goSuggest()">suggest a new entry</span>.`;
+    const msg=`No entries matched these answers. Try the search above, or browse the dimensions &mdash; and if the framework doesn't cover your issue, you can <span class="search-empty-link" onclick="closeTriageResults();goSuggest()">suggest a new entry</span>.`;
     body=`<div class="triage-empty">${msg}</div>
       <div class="modal-actions"><button class="entry-btn primary" onclick="closeTriageResults()">Done</button></div>`;
   }else{
@@ -2252,14 +2290,12 @@ function showTriageResults(entries,skipped){
         ${e.reason?`<span class="ra-note">Suggested by: ${safeText(e.reason)}</span>`:''}
       </span>
     </label>`).join('');
-    const skipNote=skipped.length?`<div class="triage-q-sub" style="margin-top:10px">${skipped.length} suggested ${skipped.length===1?'entry is':'entries are'} already on your list and ${skipped.length===1?'was':'were'} left out.</div>`:'';
-    body=`<div class="ra-intro">Based on your answers, these ${n} ${n===1?'entry is':'entries are'} worth reviewing. Untick anything that doesn't apply, then add the rest to your project review list.</div>
+    body=`<div class="ra-intro">Based on your answers, these ${n} ${n===1?'entry is':'entries are'} worth reviewing. Untick anything that doesn't apply, then add the rest to a project review list.</div>
       <div class="ra-toolbar">
         <label class="ra-selectall"><input type="checkbox" id="trSelectAll" checked onchange="toggleAllTriage(this)"> Select all</label>
         <span class="ra-count" id="trCount"></span>
       </div>
       <div class="ra-list">${rows}</div>
-      ${skipNote}
       <div class="modal-actions">
         <button class="entry-btn" onclick="closeTriageResults()">Cancel</button>
         <button class="entry-btn primary" id="trAddBtn" onclick="confirmTriageAdd()">Add selected</button>
