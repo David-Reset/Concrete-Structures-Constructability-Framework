@@ -4369,7 +4369,7 @@
             ],
             "triage": [
               [
-                "slab-suspended"
+                "large-bars"
               ]
             ],
             "constructionPhase": [
@@ -5089,7 +5089,7 @@
             ],
             "triage": [
               [
-                "slab-suspended"
+                "large-bars"
               ]
             ],
             "constructionPhase": [
@@ -5398,7 +5398,7 @@
             ],
             "triage": [
               [
-                "universal-site-safety"
+                "retained-or-staged"
               ]
             ],
             "constructionPhase": [
@@ -6044,7 +6044,13 @@
             ],
             "triage": [
               [
-                "universal-drawing-clarity"
+                "slab-suspended",
+                "beam-suspended",
+                "slab-on-ground",
+                "footing",
+                "wall",
+                "column",
+                "pile"
               ]
             ],
             "constructionPhase": [
@@ -6297,7 +6303,7 @@
             ],
             "triage": [
               [
-                "universal-drawing-clarity"
+                "large-bars"
               ]
             ],
             "constructionPhase": [
@@ -6429,7 +6435,7 @@
             ],
             "triage": [
               [
-                "universal-drawing-clarity"
+                "benefit-from-isometric"
               ]
             ],
             "constructionPhase": [
@@ -6914,6 +6920,13 @@
         "hint": "Walls, tanks or wet areas that must stay dry",
         "kind": "condition",
         "reason": "Watertight structure"
+      },
+      {
+        "fact": "retained-or-staged",
+        "label": "Retained or existing structure to stay standing",
+        "hint": "Walls left from demolition, an adjacent retaining wall by new footings, or a frame only braced once complete",
+        "kind": "condition",
+        "reason": "Retained / part-built structure"
       }
     ],
     "questions": [
@@ -6945,6 +6958,15 @@
         "source": "drawings",
         "prompt": "Do the slabs have level changes — folds, steps or setdowns?",
         "reason": "Slab level changes"
+      },
+      {
+        "fact": "large-bars",
+        "when": [
+          "slab-suspended"
+        ],
+        "source": "drawings",
+        "prompt": "Are you planning to use any reinforcement bars 20 mm or larger — or are any already shown?",
+        "reason": "Large reinforcement bars"
       },
       {
         "fact": "constrained-soffit-zone",
@@ -7047,13 +7069,25 @@
         "source": "intent",
         "prompt": "Are screw piles being considered?",
         "reason": "Considering screw piles"
+      },
+      {
+        "fact": "benefit-from-isometric",
+        "when": [
+          "slab-suspended",
+          "beam-suspended",
+          "wall",
+          "column"
+        ],
+        "source": "drawings",
+        "prompt": "Could the overall design, or a detail within it, be easier to build if the set included an isometric or 3D view?",
+        "reason": "An isometric view could aid buildability"
       }
     ],
     "universal": [
       {
         "fact": "universal-drawing-clarity",
         "label": "Drawing-clarity reviews",
-        "hint": "Reinforcement callouts, schedule references, large-bar callouts, overview views",
+        "hint": "Whether details and schedules cross-reference clearly enough to build from",
         "default": false,
         "reason": "Drawing clarity"
       },
@@ -7063,13 +7097,6 @@
         "hint": "Formwork & falsework simplicity, repetition / learning curve",
         "default": false,
         "reason": "Buildability good-practice"
-      },
-      {
-        "fact": "universal-site-safety",
-        "label": "Site & temporary-stability review",
-        "hint": "Retained, existing or part-built structure during construction",
-        "default": false,
-        "reason": "Site & temporary stability"
       }
     ]
   },
