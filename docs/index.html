@@ -1075,6 +1075,18 @@ function firstExampleEntry(){
   return null;
 }
 function openExampleEntry(){const ex=firstExampleEntry();if(ex)window.open(entryUrl(ex.dimId,ex.id),'_blank');}
+// Navigate to an example entry in-app and scroll to its footer action buttons
+// (where "Add a comment" / "Suggest a change" live), not the top of the entry.
+function openExampleEntryFooter(){
+  const ex=firstExampleEntry();if(!ex)return;
+  goEntry(ex.dimId,ex.id);
+  let tries=0;
+  (function scrollWhenReady(){
+    const el=document.getElementById('entry-actions-anchor');
+    if(el){el.scrollIntoView({behavior:'smooth',block:'center'});return;}
+    if(tries++<25)setTimeout(scrollWhenReady,40);
+  })();
+}
 function closeSuggestPanel(){const m=document.querySelector('.modal-overlay');if(m)m.remove();}
 function showSuggestPanel(dimId){
   closeSuggestPanel();
@@ -3099,7 +3111,7 @@ function renderEntryDetail(){
     ${evidenceSupportBox(d)}
     ${regionLogHtml(d)}
     ${renderComments(d)}
-    <div class="entry-actions">
+    <div class="entry-actions" id="entry-actions-anchor">
       <button class="entry-btn" onclick="goComment('${dim.id}','${item.id}')"><span class="ico">💬</span> Add a comment</button>
       <button class="entry-btn" onclick="goEditEntry('${dim.id}','${item.id}')"><span class="ico">✏️</span> Suggest a change</button>
       <div class="entry-actions-hint">A comment is a community note shown under this entry. Suggesting a change proposes an edit to the entry itself. Both are reviewed and de-identified before publishing — please don't include project, company, client, or designer names.</div>
@@ -3284,14 +3296,14 @@ function manualContributing(){
         </div>
         <div class="anno-note"><span class="anno-arrow">&#8593;</span> These open the comment or change form with the entry name and a rename-proof link already filled in. Comments appear anonymously by default, once reviewed.</div>
       </div>
-      <div class="shape-link" style="margin-top:10px" onclick="openExampleEntry()">Open an example entry to see them &rarr;</div>
+      <div class="shape-link" style="margin-top:10px" onclick="openExampleEntryFooter()">Open an example entry to see them &rarr;</div>
     </div>`;
 
   const paths=newEntry+fromEntry;
 
   const good=`<div class="label" style="margin-top:30px">What makes a good submission</div>
     <div class="anat-wrap" style="margin-top:14px;gap:12px">
-      <div class="anat-step"><div class="anat-name">Be specific and checkable</div><div class="anat-teach">A design-stage issue that can be measured, counted, chosen or assessed &mdash; not a broad topic.</div></div>
+      <div class="anat-step"><div class="anat-name">Be specific, not broad</div><div class="anat-teach">A design-stage issue that can be measured, counted, chosen or assessed &mdash; not a broad topic.</div></div>
       <div class="anat-step"><div class="anat-name">De-identify everything</div><div class="anat-teach">No project, company, client or designer names, no site addresses or title blocks &mdash; in text or images.</div></div>
       <div class="anat-step"><div class="anat-name">Submit what you know</div><div class="anat-teach">You don&rsquo;t need every field. The framework team reviews, edits and structures each item before it publishes.</div></div>
     </div>
