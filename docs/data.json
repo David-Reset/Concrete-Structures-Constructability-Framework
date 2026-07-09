@@ -6937,7 +6937,7 @@
           "beam-suspended"
         ],
         "source": "intent",
-        "prompt": "While the building is going up, will any suspended slab carry heavy temporary loads — stacked materials, machinery standing on it?",
+        "prompt": "While the building is going up, will any suspended slab carry heavy temporary loads — stacked materials, machinery?",
         "reason": "Construction-stage loading"
       },
       {
@@ -6965,7 +6965,7 @@
           "slab-suspended"
         ],
         "source": "drawings",
-        "prompt": "Are you planning to use any reinforcement bars 20 mm or larger — or are any already shown?",
+        "prompt": "Are you planning to use any reinforcement bars 20 mm or larger?",
         "reason": "Large reinforcement bars"
       },
       {
@@ -6997,7 +6997,7 @@
           "pile"
         ],
         "source": "drawings",
-        "prompt": "Is a slab, beam or pile cap cast directly on top of a much deeper concrete element below it — for example a slab poured straight over the top of a deep pile, tall column or thick wall?",
+        "prompt": "Is a slender element (slab, shallow beam, etc.) cast directly on top of a much deeper concrete element (wall, column, etc)?",
         "reason": "Deep vertical element at a slab"
       },
       {
