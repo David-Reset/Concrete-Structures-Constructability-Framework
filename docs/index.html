@@ -3263,20 +3263,31 @@ function manualContributing(){
     <div class="tool-when" style="margin-top:10px"><strong>How:</strong> ${how}</div>
     <div style="margin-top:14px">${btn}</div></div>`;
 
-  const paths=`<div class="tool-grid">
-    ${path('&#10133;','Suggest a new entry',
-      'Use this when the framework doesn&rsquo;t yet cover a constructability issue. A good entry is a specific, design-stage issue you can check from drawings, specifications or design decisions &mdash; for example &ldquo;drip grooves on exposed soffit edges&rdquo;, not &ldquo;waterproofing&rdquo;.',
-      'The form walks you through it. You don&rsquo;t need every field &mdash; submit what you know and a reviewer structures the rest. Choose the dimension by the <strong>root cause</strong>, or pick &ldquo;Not sure&rdquo;.',
-      `<button class="entry-btn primary" onclick="goSuggest()">Open the new-entry form &rarr;</button>`)}
-    ${path('&#9998;','Suggest a change',
-      'Use this to correct, clarify or strengthen an existing entry &mdash; better evidence, an adjusted threshold, regional feedback, an extra example, or a clearer action.',
-      'Best launched from the entry itself: the <strong>Suggest a change</strong> button at the bottom of any entry opens the form already linked to it, so your change attaches to the right entry. You can also open the blank form below.',
-      `<button class="entry-btn" onclick="window.open(FORMS.edit.base,'_blank')">Open the change form &rarr;</button>`)}
-    ${path('&#128172;','Add a comment',
-      'Use this for a practical observation, a question, or a regional note that should sit beneath an entry without changing the entry itself.',
-      'Best launched from the entry&rsquo;s <strong>Add a comment</strong> button, which links your comment to that entry. Comments are shown anonymously by default, once reviewed.',
-      `<button class="entry-btn" onclick="window.open(FORMS.comment.base,'_blank')">Open the comment form &rarr;</button>`)}
-  </div>`;
+  // New entry — genuinely global, so it's fine to launch from here. Shown as the
+  // real "Suggest an entry" banner that appears on the home page and dimension pages.
+  const newEntry=`<div class="label" style="margin-top:26px">Suggest a new entry</div>
+    <p class="guide-sub">Use this when the framework doesn&rsquo;t yet cover an issue. A good entry is a specific, design-stage issue you can check from drawings, specifications or design decisions &mdash; for example &ldquo;drip grooves on exposed soffit edges&rdquo;, not &ldquo;waterproofing&rdquo;. You don&rsquo;t need every field; a reviewer structures the rest.</p>
+    <div class="mock-block" style="margin-top:14px"><div class="mock-cap">On the home page and at the foot of each dimension</div>
+      <div class="suggest-banner" onclick="goSuggest()"><div class="suggest-banner-text"><div class="suggest-banner-title">Don&rsquo;t see your issue?</div><div class="suggest-banner-sub">Suggest a new constructability entry &mdash; every submission is reviewed and structured by the framework team.</div></div><div class="suggest-banner-btn">Suggest an entry &rarr;</div></div>
+    </div>`;
+
+  // Change & comment — launched from the entry so the form arrives prefilled and
+  // attached. We SHOW the real entry-footer buttons rather than link a blank form.
+  const fromEntry=`<div class="label" style="margin-top:30px">Suggest a change, or add a comment</div>
+    <p class="guide-sub">Both of these are launched from the entry itself &mdash; the buttons at the bottom of every entry. Opening them there means the form arrives <strong>already linked to that entry</strong>, so your change or comment attaches to the right one and comes through prefilled. That&rsquo;s why there&rsquo;s no blank form here: a blank one would reach the reviewer with no entry attached.</p>
+    <div class="mock-block" style="margin-top:14px"><div class="mock-cap">At the bottom of every entry</div>
+      <div class="mock-frame">
+        <div class="mock-row-label">Entry footer</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <span class="entry-btn" style="cursor:default"><span class="ico">&#128172;</span> Add a comment</span>
+          <span class="entry-btn" style="cursor:default"><span class="ico">&#9998;</span> Suggest a change</span>
+        </div>
+        <div class="anno-note"><span class="anno-arrow">&#8593;</span> These open the comment or change form with the entry name and a rename-proof link already filled in. Comments appear anonymously by default, once reviewed.</div>
+      </div>
+      <div class="shape-link" style="margin-top:10px" onclick="openExampleEntry()">Open an example entry to see them &rarr;</div>
+    </div>`;
+
+  const paths=newEntry+fromEntry;
 
   const good=`<div class="label" style="margin-top:30px">What makes a good submission</div>
     <div class="anat-wrap" style="margin-top:14px;gap:12px">
