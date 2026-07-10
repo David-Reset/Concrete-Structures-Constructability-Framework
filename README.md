@@ -118,9 +118,9 @@ As you read, you can collect the entries that apply to a particular job into a *
 ```
 
 - **index.html** — the framework shell. Contains all CSS, navigation, and rendering logic. You generally don't need to edit this.
-- **data.json** — all framework content lives here. For routine additions you no longer hand-edit this file: the Data Manager (`tools/framework-data-manager.html`) reads the form responses and writes the updated file for you (see the [Maintainer's Manual](manual/index.html)). You only edit it by hand for the rare change the tools don't cover — the reactive-ground decision path. Each entry includes a `location` field specifying the country and optionally the state where the evidence was gathered. The file also carries a hidden `_processed` key that the Data Manager uses to remember which form responses it has already handled; the live site ignores it.
+- **data.json** — all framework content lives here. For routine additions you no longer hand-edit this file: the Data Manager (`tools/framework-data-manager.html`) reads the form responses and writes the updated file for you (see the [Maintainer's Manual](https://david-reset.github.io/Concrete-Structures-Constructability-Framework/manual/)). You only edit it by hand for the rare change the tools don't cover — the reactive-ground decision path. Each entry includes a `location` field specifying the country and optionally the state where the evidence was gathered. The file also carries a hidden `_processed` key that the Data Manager uses to remember which form responses it has already handled; the live site ignores it.
 - **images/** — all photographs and drawings referenced by entries in data.json.
-- **tools/** — three standalone, browser-based maintainer tools plus the evidence-rating rubric. Each tool runs entirely on your own machine (nothing is uploaded); the [Maintainer's Manual](manual/index.html) explains how to use them.
+- **tools/** — three standalone, browser-based maintainer tools plus the evidence-rating rubric. Each tool runs entirely on your own machine (nothing is uploaded); the [Maintainer's Manual](https://david-reset.github.io/Concrete-Structures-Constructability-Framework/manual/) explains how to use them.
 
 ## Ethics and anonymity
 
@@ -142,7 +142,7 @@ For example, the "Off-form concrete walls near obstructions" entry sits under **
 
 When submitting an entry, ask: *what design decision caused this issue?* That points you to the right dimension.
 
-Issues often touch more than one area even though each entry lives in a single dimension. Rather than duplicating an entry across dimensions, the framework links related entries together — so a designer reading one is pointed to the others worth considering, without the same issue being maintained in several places. These links are managed in the Data Manager (see the [Maintainer's Manual](manual/index.html)).
+Issues often touch more than one area even though each entry lives in a single dimension. Rather than duplicating an entry across dimensions, the framework links related entries together — so a designer reading one is pointed to the others worth considering, without the same issue being maintained in several places. These links are managed in the Data Manager (see the [Maintainer's Manual](https://david-reset.github.io/Concrete-Structures-Constructability-Framework/manual/)).
 
 ### Suggesting a new entry
 
@@ -162,7 +162,7 @@ All submissions — new entries, edits, and comments — are reviewed before bei
 
 ### Maintaining the framework
 
-If you look after this framework — reviewing submissions, publishing entries, managing images — the full step-by-step guide is the **[Maintainer's Manual](manual/index.html)**. It follows a real entry through each tool, from a form response all the way to going live, and assumes no prior familiarity. Start there.
+If you look after this framework — reviewing submissions, publishing entries, managing images — the full step-by-step guide is the **[Maintainer's Manual](https://david-reset.github.io/Concrete-Structures-Constructability-Framework/manual/)**. It follows a real entry through each tool, from a form response all the way to going live, and assumes no prior familiarity. Start there.
 
 The tools, in short: three browser-based tools live in the `tools/` folder. Each is a single HTML file you open locally — they run entirely in your browser, upload nothing, and read or write only the files you hand them (`data.json`, images and `CHANGELOG.md`).
 
