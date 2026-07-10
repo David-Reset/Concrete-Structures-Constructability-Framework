@@ -331,7 +331,7 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
     <p>Whenever submissions have built up, you run the same six steps. Each tool's own pages explain these in depth, with a full worked example.</p>
     <ol class="routine">
       <li><span class="step-title">Download the responses</span><span class="step-detail">In Google Forms, export each form's responses as a CSV — up to three files (new entries, edits, comments).</span></li>
-      <li><span class="step-title">Work the inbox in the Data Manager</span><span class="step-detail">Load <code>data.json</code> and the CSVs, then go through each submission: de-identify it, tidy it, and accept or reject it.</span></li>
+      <li><span class="step-title">Work the inbox in the Data Manager</span><span class="step-detail">Load <code>data.json</code>, then in the Submission inbox drop the response CSVs, decide on each submission, and click Apply decisions.</span></li>
       <li><span class="step-title">Publish the drafts</span><span class="step-detail">Accepted entries wait as hidden drafts. Review them together, then publish and download the updated <code>data.json</code>.</span></li>
       <li><span class="step-title">Prepare the images</span><span class="step-detail">Run any new photos through the Image Formatter to rename, shrink and strip location data, then drop them in <code>images/</code>.</span></li>
       <li><span class="step-title">Run the Doctor</span><span class="step-detail">Point the Framework Doctor at your updated <code>data.json</code> and <code>images/</code> folder to catch anything missing before it goes live.</span></li>
@@ -392,8 +392,8 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
     <p>These chapters follow one real submission — <strong>“Off-form concrete upturns near obstructions”</strong> — the whole way from the inbox to published. Do it once with this example and you'll know the pattern for every entry after. Start at chapter&nbsp;1.</p>
 
     <div class="chapters">
-      <a class="chapter" href="#dm-load"><span class="cn">1</span><div class="cbody"><h3>Load your files</h3><p>Open the tool and hand it the current <code>data.json</code> plus the form-response CSVs.</p></div></a>
-      <a class="chapter" href="#dm-inbox"><span class="cn">2</span><div class="cbody"><h3>The submission inbox</h3><p>Find the new submission, understand the card, and the three actions on every item.</p></div></a>
+      <a class="chapter" href="#dm-load"><span class="cn">1</span><div class="cbody"><h3>Load your files</h3><p>Open the tool and load the current <code>data.json</code> (and optional <code>CHANGELOG.md</code>).</p></div></a>
+      <a class="chapter" href="#dm-inbox"><span class="cn">2</span><div class="cbody"><h3>The submission inbox</h3><p>Drop the response CSVs here, decide on each item, then click Apply decisions.</p></div></a>
       <a class="chapter" href="#dm-reviewing"><span class="cn">3</span><div class="cbody"><h3>Reviewing a new entry</h3><p>De-identify, set the dimension and id, and fill the question, background and parameter.</p></div></a>
       <a class="chapter" href="#dm-bands"><span class="cn">4</span><div class="cbody"><h3>Threshold bands</h3><p>The heart of an entry: ranges, ratings and the colour scale a reader sees.</p></div></a>
       <a class="chapter" href="#dm-publishing"><span class="cn">5</span><div class="cbody"><h3>Drafts &amp; publishing</h3><p>Review your drafts together, publish, download the updated <code>data.json</code>, and the changelog.</p></div></a>
@@ -406,89 +406,87 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
     </div>
         </div>
         <div class="subpage" id="page-dm-load">
-<div class="crumbs"><a href="#home">Overview</a> › <a href="#dm-home">Data Manager</a> › <span>Load your files</span></div>
+    <div class="crumbs"><a href="#home">Overview</a> › <a href="#dm-home">Data Manager</a> › <span>Load your files</span></div>
     <p class="page-eyebrow">Chapter 1</p>
     <h1>Load your files</h1>
-    <p class="lede">Open the tool and give it the two things it needs: the current content, and the new submissions to process.</p>
-
+    <p class="lede">Give the tool the current content. This screen loads <em>only</em> <code>data.json</code> — the form-response CSVs come later, in the Submission inbox.</p>
     <div class="walk">
       <div class="wstep">
         <h3>Open the Data Manager</h3>
         <p class="goal">Get the tool running in your browser.</p>
-        <p class="do">The tool lives in the repository at <code>tools/framework-data-manager.html</code>. Open it in your browser — double-clicking works, since it runs entirely offline. You'll land on <strong>“1 · Load data.json”</strong>, with <em>“Load data.json to begin.”</em> at the bottom.</p>
+        <p class="do">The tool lives at <code>tools/framework-data-manager.html</code>. Open it in your browser — double-clicking works, since it runs entirely offline. <span class="muted">(Opened directly as a file its auto-recovery is off, so be sure to <strong>export</strong> at the end to save your work — chapter 5.)</span></p>
         <p class="click">👉 <span><b>Open</b> <code>tools/framework-data-manager.html</code></span></p>
       </div>
-
       <div class="wstep">
-        <h3>Load the current data.json (and the form responses)</h3>
-        <p class="goal">Hand it the live content plus the new submissions.</p>
-        <p class="do">First give it the <strong>current <code>data.json</code></strong> from the repository. Then drop in the response CSVs from Google Forms — up to three (new entries, edits, comments), in any order. Each box only accepts its own file type, and the tool works out which form each CSV came from. A <strong>Loaded files</strong> list confirms what's in, and anything already processed is skipped, so you can't import the same response twice.</p>
-        <div class="mk">
-          <div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html</span></div>
-          <div class="mk-body">
-            <p class="mk-h"><span class="num">1 ·</span> Load data.json</p>
-            <p class="mk-sub">Drop the current file to begin. Response CSVs can be added after.</p>
-            <div class="mk-drops">
-              <div class="mk-drop filled"><div class="lab">Current data.json ✓</div><div class="hint">data.json loaded — 63 entries</div></div>
-              <div class="mk-drop"><div class="lab">Current CHANGELOG.md <span style="font-weight:400;color:var(--text-muted)">(optional)</span></div><div class="hint">or drop a file here</div></div>
-            </div>
-            <div class="mk-drop" style="margin-top:10px"><div class="lab">Form responses (CSV)</div><div class="hint">drop new-entry, edit and comment CSVs here — any order</div></div>
-            <div class="mk-loaded"><div class="row"><span class="tick">✓</span> data.json <span style="opacity:.6">— current content</span></div><div class="row"><span class="tick">✓</span> New entry suggestions.csv <span style="opacity:.6">— 1 new response</span></div></div>
+        <h3>Load the current data.json</h3>
+        <p class="goal">Load the live content so you can browse, edit and add to it.</p>
+        <p class="do">Drop in the current <code>data.json</code> from the repository (or use <strong>Choose File</strong>). Optionally add the current <code>CHANGELOG.md</code> too — your changes this session are added on top of it at export. Everything stays in your browser; nothing is uploaded. <strong>There is no CSV box here</strong> — form responses are added later, in the Submission inbox.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html</span></div><div class="mk-body">
+          <p class="mk-h"><span class="num">1 ·</span> Load data.json</p>
+          <p class="mk-sub">Load the current data.json to browse and edit every entry. When you're done you export an updated file with a summary of what changed.</p>
+          <div class="mk-drops">
+            <div class="mk-drop"><div class="lab">Current data.json</div><div class="hint">Choose File · or drop a file here</div></div>
+            <div class="mk-drop"><div class="lab">Current CHANGELOG.md <span style="font-weight:400;color:var(--text-muted)">(optional — added on top)</span></div><div class="hint">Choose File · or drop a file here</div></div>
           </div>
-          <span class="pin" style="top:78px;left:26px">1</span><span class="pin" style="top:150px;left:26px">2</span><span class="pin" style="top:214px;left:26px">3</span>
-        </div>
-        <ul class="pins-key">
-          <li><span class="n">1</span> Load the current <code>data.json</code> first — the tool needs it to assign ids and skip responses it has already handled.</li>
-          <li><span class="n">2</span> Then drop the response CSVs. <code>CHANGELOG.md</code> is optional; new changes get added on top of it.</li>
-          <li><span class="n">3</span> The <strong>Loaded files</strong> list is your confirmation. Remove anything with its <strong>×</strong> if you drop the wrong file.</li>
-        </ul>
-        <p class="click">👉 <span><b>Drop</b> data.json, then the response CSV(s)</span></p>
+          <div class="mk-loaded"><div class="row"><span style="border:1px solid var(--green);color:var(--green);border-radius:4px;padding:0 6px;font-size:.68rem;font-family:'JetBrains Mono',monospace">ok</span> <strong>data.json loaded</strong> <span style="opacity:.6">— 41 entries across 5 dimensions</span></div></div>
+        </div></div>
+        <p class="click">👉 <span><b>Drop</b> data.json (CHANGELOG.md optional)</span></p>
+      </div>
+      <div class="wstep">
+        <h3>The tabs appear</h3>
+        <p class="goal">Once data.json is loaded, the five tabs unlock.</p>
+        <p class="do">As soon as the file loads you'll see five tabs: <strong>Browse entries</strong>, <strong>Triage map</strong>, <strong>Submission inbox</strong>, <strong>Drafts</strong> and <strong>Rejected submissions</strong>. To process new form responses, go to the <strong>Submission inbox</strong> — the next chapter.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html</span></div><div class="mk-body">
+          <div class="mk-tabs" style="margin-bottom:0"><span class="mk-tab on">Browse entries</span><span class="mk-tab">Triage map</span><span class="mk-tab">Submission inbox</span><span class="mk-tab">Drafts</span><span class="mk-tab">Rejected submissions</span></div>
+        </div></div>
       </div>
     </div>
-
-    <div class="callout info"><h3>Nothing leaves your computer</h3><p>The tool never uploads anything. Loading a file just lets the page read it in your browser; the originals on disk aren't changed until you export at the end.</p></div>
-
+    <div class="callout info"><h3>Nothing leaves your computer</h3><p>Loading a file just lets the page read it in your browser. Your <code>data.json</code> on disk isn't changed until you export at the end.</p></div>
     <div class="pager">
       <a href="#dm-home"><div class="dir">← Back</div><div class="ttl">Data Manager overview</div></a>
       <a class="next" href="#dm-inbox"><div class="dir">Next →</div><div class="ttl">2 · The submission inbox</div></a>
     </div>
         </div>
         <div class="subpage" id="page-dm-inbox">
-<div class="crumbs"><a href="#home">Overview</a> › <a href="#dm-home">Data Manager</a> › <span>The submission inbox</span></div>
+    <div class="crumbs"><a href="#home">Overview</a> › <a href="#dm-home">Data Manager</a> › <span>The submission inbox</span></div>
     <p class="page-eyebrow">Chapter 2</p>
     <h1>The submission inbox</h1>
-    <p class="lede">Where new form responses wait for you. Nothing here is live until you review and accept it.</p>
-
+    <p class="lede">This is where form responses come in — and the only place they can. Nothing touches <code>data.json</code> until you decide on each item and click <strong>Apply decisions</strong>.</p>
     <div class="walk">
       <div class="wstep">
-        <h3>Open the Submission inbox</h3>
-        <p class="goal">Find the new submission waiting to be reviewed.</p>
-        <p class="do">Click the <strong>Submission inbox</strong> tab. The number on it is how many items wait. Our example — <em>“Off-form concrete upturns near obstructions”</em> — shows up as a <strong>New entry</strong> card.</p>
-        <div class="mk">
-          <div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html</span></div>
-          <div class="mk-body">
-            <div class="mk-tabs"><span class="mk-tab">Browse entries</span><span class="mk-tab">Triage map</span><span class="mk-tab on">Submission inbox <span class="mk-badge">1</span></span><span class="mk-tab">Drafts</span><span class="mk-tab">Rejected submissions</span></div>
-            <div class="mk-card">
-              <div class="mk-card-head"><span class="mk-type">New entry</span><span class="mk-card-name">Off-form concrete upturns near obstructions</span><span class="mk-time">submitted 2 Mar</span></div>
-              <div class="mk-card-body"><p class="muted" style="margin:0;font-size:0.9rem">The response arrives pre-filled into the entry editor below the header. You read it, tidy it, de-identify it, then accept or reject.</p><div class="mk-actions"><span class="mk-btn ghost">⊙ Preview</span><span class="mk-btn accept">Accept</span><span class="mk-btn reject">Reject</span></div></div>
-            </div>
+        <h3>Open the Submission inbox and add the CSVs</h3>
+        <p class="goal">Bring the form responses into the tool.</p>
+        <p class="do">Click the <strong>Submission inbox</strong> tab. Drop your form-response CSVs into <strong>Add CSV responses</strong> (several at once is fine). The tool sorts new entries, edits and comments automatically. You can also drop a <strong>JSON fragment</strong> into the box beside it — a single new entry, an update to an existing entry (matched by its id), or a comment.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Submission inbox</span></div><div class="mk-body">
+          <div class="mk-tabs"><span class="mk-tab">Browse entries</span><span class="mk-tab">Triage map</span><span class="mk-tab on">Submission inbox</span><span class="mk-tab">Drafts</span><span class="mk-tab">Rejected submissions</span></div>
+          <p class="mk-sub" style="margin-bottom:12px">Form responses land <strong>here only</strong> — nothing enters data.json until you click <strong>Apply decisions</strong>. Accepted → drafts (hidden). Rejected → set aside in the Rejected tab and remembered. Undecided → stays and comes back next time.</p>
+          <div class="mk-drops">
+            <div class="mk-drop"><div class="lab">Add CSV responses</div><div class="hint">Choose Files · or drop files here</div></div>
+            <div class="mk-drop"><div class="lab">Add JSON fragment</div><div class="hint">a new entry, an update, or a comment</div></div>
           </div>
-          <span class="pin" style="top:26px;left:250px">1</span><span class="pin" style="bottom:24px;left:150px">2</span>
-        </div>
-        <ul class="pins-key">
-          <li><span class="n">1</span> The <strong>Submission inbox</strong> tab, with a badge for how many items wait. <strong>Drafts</strong> (accepted, not yet published) sits two tabs to the right.</li>
-          <li><span class="n">2</span> Every card ends with the same three actions: <strong>Preview</strong>, <strong>Accept</strong>, <strong>Reject</strong>. Don't press anything yet — read it first.</li>
-        </ul>
-        <p class="click">👉 <span><b>Click</b> the Submission inbox tab</span></p>
+        </div></div>
+        <p class="click">👉 <span><b>Drop</b> the response CSVs in “Add CSV responses”</span></p>
       </div>
-
       <div class="wstep">
-        <h3>Know the three kinds of item</h3>
-        <p class="goal">The inbox mixes three types of submission — they're handled differently.</p>
-        <p class="do">Each card is tagged with its type. A <strong>New entry</strong> is a brand-new topic to add. An <strong>Edit</strong> proposes a change to an entry that's already live, shown next to the current version so you can apply it in place. A <strong>Comment</strong> is a practical note from a reader to approve, tidy or skip. This chapter, and the next few, follow the <strong>New entry</strong> path; edits and comments have their own chapter.</p>
+        <h3>Decide on each item</h3>
+        <p class="goal">Every item waits as “undecided” until you choose.</p>
+        <p class="do">Each response is a card you can open, read, tidy and de-identify (chapters 3–4). Then set its decision: <strong>Accept</strong> or <strong>Reject</strong>. Leave anything you're unsure about <strong>undecided</strong> — it stays in the inbox and comes back next time you load the same CSV. Rejecting lets you note a reason that's remembered.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Submission inbox</span></div><div class="mk-body">
+          <div class="mk-card"><div class="mk-card-head"><span class="mk-type">New entry</span><span class="mk-card-name">Off-form concrete upturns near obstructions</span><span class="mk-time" style="border:1px solid var(--border);border-radius:4px;padding:1px 7px;text-transform:uppercase;font-size:.62rem">undecided</span></div><div class="mk-card-body"><div class="mk-actions"><span class="mk-btn ghost">⊙ Preview</span><span class="mk-btn accept">Accept</span><span class="mk-btn reject">Reject</span></div></div></div>
+        </div></div>
+        <p class="click">👉 <span><b>Accept</b> or <b>Reject</b> each card (or leave it undecided)</span></p>
+      </div>
+      <div class="wstep">
+        <h3>Click Apply decisions</h3>
+        <p class="goal">Commit all your decisions at once.</p>
+        <p class="do">When you've been through the inbox, the counter reads <em>“N pending · N accepted · N rejected.”</em> Click <strong>Apply decisions</strong>. Accepted items become hidden <strong>drafts</strong>; rejected items move to the <strong>Rejected</strong> tab and are remembered so they won't reappear (you can send them back for review later). This changes the in-memory data only — <strong>nothing is saved until you export</strong> (chapter 5).</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Submission inbox</span></div><div class="mk-body">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface)"><span class="mk-time" style="font-size:.85rem">0 pending · 1 accepted · 0 rejected</span><span class="mk-btn" style="background:var(--accent);border-color:var(--accent);color:#fff">Apply decisions (1)</span></div>
+        </div></div>
+        <p class="click">👉 <span><b>Click</b> Apply decisions</span></p>
       </div>
     </div>
-
+    <div class="callout"><h3>Three destinations</h3><p><strong>Accepted → Drafts</strong> (hidden until you publish). <strong>Rejected → Rejected tab</strong> (remembered, won't come back). <strong>Undecided → stays</strong> in the inbox for next time. Nothing is written to <code>data.json</code> until you export.</p></div>
     <div class="pager">
       <a href="#dm-load"><div class="dir">← Back</div><div class="ttl">1 · Load your files</div></a>
       <a class="next" href="#dm-reviewing"><div class="dir">Next →</div><div class="ttl">3 · Reviewing a new entry</div></a>
@@ -535,7 +533,7 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
         <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — entry editor</span></div><div class="mk-body">
           <div class="mk-field"><span class="mk-label">Search keywords</span><div class="mk-chips"><span class="mk-chip">upstand</span><span class="mk-chip">nib</span><span class="mk-chip">kerb</span><span class="mk-chip">parapet</span><span class="mk-chip">blade wall</span><span class="mk-chip">single-sided formwork</span><span class="mk-chip">tight access</span><span class="mk-chip">no room to form</span></div></div>
           <div class="mk-field"><span class="mk-label">Element(s)</span><div class="mk-chips"><span class="mk-chip on">wall</span><span class="mk-chip">slab</span><span class="mk-chip">beam</span><span class="mk-chip">column</span></div></div>
-          <div class="mk-field"><span class="mk-label">Lifecycle stage(s)</span><div class="mk-chips"><span class="mk-chip on">formwork</span><span class="mk-chip">reinforcement</span><span class="mk-chip">pour</span><span class="mk-chip">curing</span></div></div>
+          <div class="mk-field"><span class="mk-label">Lifecycle stage(s)</span><div class="mk-chips"><span class="mk-chip on">formwork</span><span class="mk-chip">reinforcement fixing</span><span class="mk-chip">pour/placement</span><span class="mk-chip">curing</span><span class="mk-chip">stripping</span></div></div>
         </div></div>
         <p class="click">👉 <span><b>Add</b> a handful of keywords · <b>tick</b> the element and stage</span></p>
       </div>
@@ -580,65 +578,53 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
         <p class="click">👉 <span><b>Click</b> Preview · read it as a visitor would</span></p>
       </div>
       <div class="wstep">
-        <h3>Accept it</h3>
-        <p class="goal">Send the reviewed entry to Drafts.</p>
-        <p class="do">Happy with it? Press <strong>Accept</strong>. The card marks itself <em>“✓ Will be applied”</em> and the entry moves to the <strong>Drafts</strong> tab — accepted, but not yet live. (Press <strong>Reject</strong> instead and you can add a reason that stays with the record, then send it back to the inbox later — nothing is ever forced through.)</p>
-        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Submission inbox</span></div><div class="mk-body"><div class="mk-card">
-          <div class="mk-card-head"><span class="mk-type">New entry</span><span class="mk-card-name">Off-form concrete upturns near obstructions</span><span class="mk-time" style="color:var(--green)">✓ Will be applied</span></div>
-          <div class="mk-card-body"><div class="mk-actions"><span class="mk-btn ghost">Undo</span><span class="mk-btn ghost">⊙ Preview</span></div></div>
-        </div></div></div>
-        <p class="click">👉 <span><b>Click</b> Accept</span></p>
+        <h3>Set its decision to Accept</h3>
+        <p class="goal">Mark the reviewed entry to be added.</p>
+        <p class="do">Happy with it? Set the card's decision to <strong>Accept</strong> (its badge turns green). Nothing happens to <code>data.json</code> yet — the entry is added as a hidden <strong>draft</strong> only when you click <strong>Apply decisions</strong> back in the inbox (chapter 2). Prefer to reject? Set <strong>Reject</strong> and note a reason; leave it <strong>undecided</strong> to return to later.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Submission inbox</span></div><div class="mk-body"><div class="mk-card"><div class="mk-card-head"><span class="mk-type">New entry</span><span class="mk-card-name">Off-form concrete upturns near obstructions</span><span class="mk-time" style="color:var(--green);border:1px solid var(--green);border-radius:4px;padding:1px 7px;text-transform:uppercase;font-size:.62rem">accepted</span></div><div class="mk-card-body"><div class="mk-actions"><span class="mk-btn accept">Accept</span><span class="mk-btn reject">Reject</span></div></div></div></div></div>
+        <p class="click">👉 <span><b>Set</b> the card to Accept</span></p>
       </div>
     </div>
-    <div class="callout info"><h3>It's now a Draft</h3><p>The entry is accepted but invisible to the public. Repeat chapters 2–4 for every item in the inbox, then move on to publishing.</p></div>
+    <div class="callout info"><h3>Then Apply decisions</h3><p>Repeat chapters 3–4 for every item, set each to Accept or Reject, then click <strong>Apply decisions</strong> in the inbox. Accepted items become hidden drafts — publishing them is chapter 5.</p></div>
     <div class="pager">
       <a href="#dm-reviewing"><div class="dir">← Back</div><div class="ttl">3 · Reviewing a new entry</div></a>
       <a class="next" href="#dm-publishing"><div class="dir">Next →</div><div class="ttl">5 · Drafts &amp; publishing</div></a>
     </div>
         </div>
         <div class="subpage" id="page-dm-publishing">
-<div class="crumbs"><a href="#home">Overview</a> › <a href="#dm-home">Data Manager</a> › <span>Drafts &amp; publishing</span></div>
+    <div class="crumbs"><a href="#home">Overview</a> › <a href="#dm-home">Data Manager</a> › <span>Drafts &amp; publishing</span></div>
     <p class="page-eyebrow">Chapter 5</p>
     <h1>Drafts &amp; publishing</h1>
-    <p class="lede">Review everything you've accepted, publish it, download the updated data.json, and update the changelog.</p>
-    <p>Once you've worked through the whole inbox, everything you accepted is waiting in <strong>Drafts</strong> — reviewed, but not yet on the live site. Publishing turns those drafts into the real <code>data.json</code> you push to GitHub.</p>
+    <p class="lede">Clicking <strong>Apply decisions</strong> turned your accepted items into hidden <strong>drafts</strong>. Publishing makes them live, then exporting produces the <code>data.json</code> you commit.</p>
     <div class="walk">
       <div class="wstep">
         <h3>Open the Drafts tab</h3>
-        <p class="goal">See everything you've accepted this session in one place.</p>
-        <p class="do">Click <strong>Drafts</strong>. Each accepted entry is listed here. Nothing on this tab is public yet — it's your staging area.</p>
+        <p class="goal">See everything you accepted, still hidden from the public.</p>
+        <p class="do">Click <strong>Drafts</strong>. Every accepted entry sits here as a draft — in the data, but not shown on the live site. The tool flags any draft still missing a required piece (question, parameter, thresholds, or where it applies) so you can finish it before it goes live.</p>
         <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html</span></div><div class="mk-body">
           <div class="mk-tabs"><span class="mk-tab">Browse entries</span><span class="mk-tab">Triage map</span><span class="mk-tab">Submission inbox</span><span class="mk-tab on">Drafts <span class="mk-badge">1</span></span><span class="mk-tab">Rejected submissions</span></div>
-          <div class="mk-card"><div class="mk-card-head"><span class="mk-type" style="color:var(--accent);background:var(--accent-glow);border-color:var(--accent)">Draft</span><span class="mk-card-name">Off-form concrete upturns near obstructions</span><span class="mk-time">Construction Methods</span></div><div class="mk-card-body"><div class="mk-actions"><span class="mk-btn ghost">⊙ Preview</span><span class="mk-btn ghost">Edit</span><span class="mk-btn ghost">Back to inbox</span></div></div></div>
+          <div class="mk-card"><div class="mk-card-head"><span class="mk-type" style="color:var(--yellow);background:var(--yellow-bg);border-color:var(--yellow)">Draft</span><span class="mk-card-name">Off-form concrete upturns near obstructions</span><span class="mk-time">Construction Methods</span></div><div class="mk-card-body"><div class="mk-actions"><span class="mk-btn ghost">⊙ Preview</span><span class="mk-btn ghost">Edit</span></div></div></div>
         </div></div>
         <p class="click">👉 <span><b>Click</b> the Drafts tab</span></p>
       </div>
       <div class="wstep">
-        <h3>Review them together</h3>
-        <p class="goal">One last look across everything before it goes live.</p>
-        <p class="do">Preview each draft one more time. This is where you catch anything odd that only shows up when you see the batch side by side — a duplicate, a wrong dimension, an entry that should really link to another. If something needs more work, you can edit it or send it back to the inbox.</p>
+        <h3>Publish each draft</h3>
+        <p class="goal">Flip a finished draft from hidden to live.</p>
+        <p class="do">Open a draft and switch its status from <strong>Draft</strong> to <strong>Live</strong> with the status toggle — that's what makes it appear on the site. Only publish drafts you're happy with; anything not ready can stay a draft and simply won't be shown.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — entry editor</span></div><div class="mk-body"><div class="mk-field"><span class="mk-label">Status</span><div class="mk-chips"><span class="mk-chip">Draft</span><span class="mk-chip on">Live</span></div></div></div></div>
+        <p class="click">👉 <span><b>Set</b> the entry to Live</span></p>
       </div>
       <div class="wstep">
-        <h3>Export the updated data.json</h3>
-        <p class="goal">Produce the file you'll commit.</p>
-        <p class="do">Open the <strong>Export data.json</strong> section and run the <strong>Health check</strong> first — it flags obvious problems (a missing field, a broken link) before you ship. When it's clean, download the updated <code>data.json</code>. This is the single file the live site reads, so this download <em>is</em> the publish.</p>
-        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Export</span></div><div class="mk-body">
-          <p class="mk-h">Export data.json</p>
-          <div class="mk-loaded"><div class="row"><span class="tick">✓</span> Health check passed — no problems found</div><div class="row"><span class="tick">✓</span> 1 new entry, 0 edits applied</div></div>
-          <div class="mk-actions"><span class="mk-btn">Re-check</span><span class="mk-btn primary" style="background:var(--accent);border-color:var(--accent);color:#fff">⬇ Download data.json</span></div>
-        </div></div>
-        <p class="click">👉 <span><b>Run</b> the Health check · <b>Download</b> data.json</span></p>
-      </div>
-      <div class="wstep">
-        <h3>Update the changelog</h3>
-        <p class="goal">Keep a plain record of what changed.</p>
-        <p class="do">The <strong>Changelog</strong> section lists what this session added or changed and lets you download an updated <code>CHANGELOG.md</code>. Grab it — it's a small courtesy to the next person (or future you) that makes the history readable at a glance.</p>
-        <p class="click">👉 <span><b>Download</b> the updated CHANGELOG.md</span></p>
+        <h3>Run the health check, then export</h3>
+        <p class="goal">Produce the updated files you'll commit.</p>
+        <p class="do">Press <strong>🔍 Check</strong> to run a health check across every entry, then <strong>Export data.json</strong>. Export downloads the updated <code>data.json</code> (with a summary of exactly what changed) and adds your changes on top of <code>CHANGELOG.md</code>. <strong>Nothing is saved to disk until you export</strong> — this is the step that actually saves your work.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html</span></div><div class="mk-body"><div class="mk-actions" style="padding-top:0"><span class="mk-btn">🔍 Check</span><span class="mk-btn" style="background:var(--accent);border-color:var(--accent);color:#fff">Export data.json</span></div></div></div>
+        <p class="click">👉 <span><b>Check</b>, then <b>Export data.json</b></span></p>
       </div>
       <div class="wstep">
         <h3>Commit &amp; push</h3>
-        <p class="goal">Put the new files in the repository so the live site updates.</p>
-        <p class="do">Replace <code>data.json</code> and <code>CHANGELOG.md</code> in the repository with your downloads (and add any new images — see the Image Formatter guide), then commit and push to GitHub. Give the Doctor a run first if you added images. The live site rebuilds itself from what you push.</p>
+        <p class="goal">Put the files in the repository so the site updates.</p>
+        <p class="do">Replace <code>data.json</code> and <code>CHANGELOG.md</code> in the repository with your exports (and add any new images — see the Image Formatter guide), then commit and push to GitHub. Run the Doctor first if you added images. The live site rebuilds itself from what you push.</p>
       </div>
     </div>
     <div class="pager">
@@ -651,18 +637,18 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
     <p class="page-eyebrow">Chapter 6</p>
     <h1>Edits &amp; comments</h1>
     <p class="lede">The other two kinds of submission — proposed changes to live entries, and reader comments — and how they differ from a new entry.</p>
-    <p>New entries are only one of three things that land in the inbox. The other two are handled a little differently — but the same rules apply: read carefully, de-identify, and nothing goes live until you accept it.</p>
+    <p>New entries are only one of three things that land in the inbox. They arrive in the same inbox and are decided the same way — <strong>Accept</strong>, <strong>Reject</strong> or leave <strong>undecided</strong>, then <strong>Apply decisions</strong>. The same rules apply: read carefully, de-identify, and nothing goes live until you apply your decisions.</p>
     <h2>Edits — a proposed change to a live entry</h2>
-    <p>An <strong>Edit</strong> is someone suggesting a change to an entry that's already published. The tool shows the proposed wording against what's currently live, so you can see exactly what would change and apply it (or adjust it) in place. You're not creating a new entry — you're updating an existing one, keeping its id.</p>
+    <p>An <strong>Edit</strong> is someone suggesting a change to an entry that's already published. The tool shows the proposed wording against what's currently live, so you can see exactly what would change. Accepting it updates that existing entry (matched by its id) rather than creating a new one.</p>
     <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Submission inbox</span></div><div class="mk-body"><div class="mk-card">
       <div class="mk-card-head"><span class="mk-type" style="color:var(--yellow);background:var(--yellow-bg);border-color:var(--yellow)">Edit</span><span class="mk-card-name">Off-form concrete upturns near obstructions</span><span class="mk-time">proposed change</span></div>
-      <div class="mk-card-body"><div class="mk-field"><span class="mk-label">Currently live</span><div class="mk-input area">Coil ties cannot be used below 700&nbsp;mm.</div></div><div class="mk-field"><span class="mk-label">Proposed</span><div class="mk-input area" style="border-color:var(--yellow)">Coil ties cannot be used below 700&nbsp;mm (plywood + timbers + bolt). Threaded bar only.</div></div><div class="mk-actions"><span class="mk-btn ghost">⊙ Preview</span><span class="mk-btn accept">Apply change</span><span class="mk-btn reject">Reject</span></div></div>
+      <div class="mk-card-body"><div class="mk-field"><span class="mk-label">Currently live</span><div class="mk-input area">Coil ties cannot be used below 700&nbsp;mm.</div></div><div class="mk-field"><span class="mk-label">Proposed</span><div class="mk-input area" style="border-color:var(--yellow)">Coil ties cannot be used below 700&nbsp;mm (plywood + timbers + bolt). Threaded bar only.</div></div><div class="mk-actions"><span class="mk-btn ghost">⊙ Preview</span><span class="mk-btn accept">Accept</span><span class="mk-btn reject">Reject</span></div></div>
     </div></div></div>
     <h2>Comments — a note from a reader</h2>
-    <p>A <strong>Comment</strong> is a short practical note left against an entry — a field tip, a caveat, a “watch out for…”. You approve it (tidying the wording and de-identifying as always), or skip it. Approved comments appear under the entry on the live site.</p>
+    <p>A <strong>Comment</strong> is a short practical note left against an entry — a field tip, a caveat, a “watch out for…”. Accept it (tidying the wording and de-identifying as always) and it appears under the entry on the live site; reject it to set it aside.</p>
     <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Submission inbox</span></div><div class="mk-body"><div class="mk-card">
       <div class="mk-card-head"><span class="mk-type" style="color:var(--accent);background:var(--accent-glow);border-color:var(--accent)">Comment</span><span class="mk-card-name">Off-form concrete upturns near obstructions</span><span class="mk-time">reader note</span></div>
-      <div class="mk-card-body"><div class="mk-input area">On tight sites we've had success casting the upturn separately after the slab, with a kicker and a single-sided form tied back to cast-in ferrules.</div><div class="mk-actions"><span class="mk-btn accept">Approve</span><span class="mk-btn ghost">Edit wording</span><span class="mk-btn reject">Skip</span></div></div>
+      <div class="mk-card-body"><div class="mk-input area">On tight sites we've had success casting the upturn separately after the slab, with a kicker and a single-sided form tied back to cast-in ferrules.</div><div class="mk-actions"><span class="mk-btn accept">Accept</span><span class="mk-btn ghost">⊙ Preview</span><span class="mk-btn reject">Reject</span></div></div>
     </div></div></div>
     <div class="callout info"><h3>Same discipline every time</h3><p>Whether it's a new entry, an edit or a comment: read every word, strip anything identifying, and only then accept. That habit is the whole job.</p></div>
     <div class="pager">
