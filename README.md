@@ -106,6 +106,7 @@ As you read, you can collect the entries that apply to a particular job into a *
 ├── data.json           # All framework content (entries, guidance, thresholds, comments)
 ├── images/             # Example drawings and site photographs
 ├── examples/           # Example form submission (PDF)
+├── manual/             # Maintainer's manual (step-by-step website — how to run everything)
 ├── tools/              # Maintainer tools — run locally in a browser; nothing is uploaded
 │   ├── framework-data-manager.html      # Turn form responses into data.json; manage the inbox, drafts and comments
 │   ├── framework-doctor.html            # Health-check data.json against the images folder
@@ -117,9 +118,9 @@ As you read, you can collect the entries that apply to a particular job into a *
 ```
 
 - **index.html** — the framework shell. Contains all CSS, navigation, and rendering logic. You generally don't need to edit this.
-- **data.json** — all framework content lives here. For routine additions you no longer hand-edit this file: the Data Manager (`tools/framework-data-manager.html`) reads the form responses and writes the updated file for you (see [Maintainer tools](#maintainer-tools) and [Reviewing and publishing submissions](#reviewing-and-publishing-submissions-maintainers)). You can still edit it directly for the few advanced changes the tool doesn't cover, such as the decision-path wiring on the reactive-ground entries. Each entry includes a `location` field specifying the country and optionally the state where the evidence was gathered. The file also carries a hidden `_processed` key that the Data Manager uses to remember which form responses it has already handled; the live site ignores it.
+- **data.json** — all framework content lives here. For routine additions you no longer hand-edit this file: the Data Manager (`tools/framework-data-manager.html`) reads the form responses and writes the updated file for you (see the [Maintainer's Manual](manual/index.html)). You only edit it by hand for the rare change the tools don't cover — the reactive-ground decision path. Each entry includes a `location` field specifying the country and optionally the state where the evidence was gathered. The file also carries a hidden `_processed` key that the Data Manager uses to remember which form responses it has already handled; the live site ignores it.
 - **images/** — all photographs and drawings referenced by entries in data.json.
-- **tools/** — three standalone, browser-based maintainer tools plus the evidence-rating rubric. Each tool runs entirely on your own machine (nothing is uploaded) and is described under [Maintainer tools](#maintainer-tools).
+- **tools/** — three standalone, browser-based maintainer tools plus the evidence-rating rubric. Each tool runs entirely on your own machine (nothing is uploaded); the [Maintainer's Manual](manual/index.html) explains how to use them.
 
 ## Ethics and anonymity
 
@@ -141,7 +142,7 @@ For example, the "Off-form concrete walls near obstructions" entry sits under **
 
 When submitting an entry, ask: *what design decision caused this issue?* That points you to the right dimension.
 
-Issues often touch more than one area even though each entry lives in a single dimension. Rather than duplicating an entry across dimensions, the framework links related entries together — so a designer reading one is pointed to the others worth considering, without the same issue being maintained in several places. See [Related entries](#related-entries-cross-references) below.
+Issues often touch more than one area even though each entry lives in a single dimension. Rather than duplicating an entry across dimensions, the framework links related entries together — so a designer reading one is pointed to the others worth considering, without the same issue being maintained in several places. These links are managed in the Data Manager (see the [Maintainer's Manual](manual/index.html)).
 
 ### Suggesting a new entry
 
@@ -159,63 +160,18 @@ To share a practical observation, a question, or regional feedback on a specific
 
 All submissions — new entries, edits, and comments — are reviewed before being incorporated into the framework to ensure quality, consistency, and adherence to the anonymity standards described above. Nothing submitted through a form appears on the site automatically.
 
-### Maintainer tools
+### Maintaining the framework
 
-Three browser-based tools live in the `tools/` folder. Each one is a single HTML file you open locally (double-click, or serve it) — they run entirely in your browser, upload nothing, and read or write only the files you hand them (`data.json`, images, and `CHANGELOG.md`). The rubric beside them is a written reference, not a program.
+If you look after this framework — reviewing submissions, publishing entries, managing images — the full step-by-step guide is the **[Maintainer's Manual](manual/index.html)**. It follows a real entry through each tool, from a form response all the way to going live, and assumes no prior familiarity. Start there.
 
-- **Data Manager** (`tools/framework-data-manager.html`) — the main content tool. It turns Google Form responses into properly structured `data.json`: load the current `data.json` and the response CSVs, then work through an inbox of new entries, edits and comments. You can accept an item, reject it (with an optional reason that is kept with the record), send a rejected item back to the inbox for another look, manage an entry's comments, and review unpublished **drafts** before publishing them. It exports an updated `data.json`. This is the tool the workflow below uses.
-- **Framework Doctor** (`tools/framework-doctor.html`) — a read-only health check. Load `data.json` and point it at the `images/` folder, and it reports **missing images** (referenced by an entry but not in the folder — these break on the live site) and **orphan images** (in the folder but referenced by nothing — safe to delete), along with data-integrity and overview checks. It changes nothing; you can copy or download the report as plain text. Run it before you commit.
-- **Image Formatter** (`tools/framework-image-formatter.html`) — prepares images for the `images/` folder. Drop in one or many images and it re-encodes them (WebP, PNG, JPEG, or keep original, with a per-image override), and checks each filename for clashes against `data.json` and the other images, with one-click **make-unique** naming. Because re-encoding rewrites the file, it also strips embedded metadata such as GPS coordinates and camera/device info — a useful privacy step for site photographs.
-- **Evidence rating rubric** (`tools/evidence-rating-rubric.md`) — the rule maintainers follow when assigning an entry's High / Medium / Low evidence support and writing its summary. See [Evidence support](#evidence-support).
+The tools, in short: three browser-based tools live in the `tools/` folder. Each is a single HTML file you open locally — they run entirely in your browser, upload nothing, and read or write only the files you hand them (`data.json`, images and `CHANGELOG.md`).
 
-### Reviewing and publishing submissions (maintainers)
+- **Data Manager** (`tools/framework-data-manager.html`) — the main tool. Turns Google Form responses into structured `data.json`: work through an inbox of new entries, edits and comments, de-identify and tidy each one, review unpublished drafts, and export the updated file. It also manages the "related entries" links between entries and repairs broken ones.
+- **Framework Doctor** (`tools/framework-doctor.html`) — a read-only health check. Reports missing images (referenced by an entry but not in the folder) and orphans (in the folder but unused), and changes nothing. Run it before you commit.
+- **Image Formatter** (`tools/framework-image-formatter.html`) — re-encodes and uniquely names images for the `images/` folder, and strips embedded GPS and camera metadata in the process.
+- **Evidence rating rubric** (`tools/evidence-rating-rubric.md`) — the reference maintainers follow when assigning an entry's evidence support. See [Evidence support](#evidence-support).
 
-Form responses never go live on their own — nothing user-submitted is published until a maintainer has reviewed and de-identified it. This is handled by the **Data Manager** (`tools/framework-data-manager.html`), a self-contained tool that runs entirely in your browser (nothing is uploaded). It turns the raw form responses into properly structured entries, edits, and comments, lets you check and clean each one, and exports an updated `data.json`.
-
-1. In Google Forms, open each form's **Responses** tab and download the responses as CSV (**⋮ → Download responses (.csv)**). You may have up to three CSVs — new entries, edits, and comments.
-2. Open `tools/framework-data-manager.html` in your browser (you can just double-click it — it works offline and uploads nothing).
-3. Load the current `data.json`, then drag in the response CSV(s) — one, two, or all three, in any order. Each box accepts only its own file type, and the Data Manager detects each form type automatically from the column headers and skips any response you've already processed. A **Loaded files** list shows what's in, and you can unload any file with its **×**.
-4. Work through each item:
-   - **New entries** arrive pre-filled and structured. Pick the dimension (if the submitter chose "Not sure"), confirm the auto-generated stable `id` (it warns if the id already exists), fill the `range` for each threshold band, add search keywords, and attach any de-identified images. A live preview beside each field shows exactly how it will look on the site.
-   - **Edits** show the proposed change next to the live entry, so you apply it in place.
-   - **Comments** show the parsed comment to approve, tidy, or skip; the displayed name follows the submitter's choice (or "Anonymous").
-5. **De-identify as you go** — remove any project, company, client, or designer names, site addresses, or title blocks from text and images.
-6. Decide each item: accept it, or reject it with an optional reason that stays with the record. A rejected item can later be **sent back to the inbox** for another look without being forced through, and accepted-but-unpublished entries collect under **Drafts** so you can review and publish them in a batch. When you're done, click **Download updated data.json**.
-7. Prepare any new images with the **[Image Formatter](#maintainer-tools)** (re-encode and give them unique names), then add them to the `images/` folder.
-8. Run the **[Framework Doctor](#maintainer-tools)** over the updated `data.json` and `images/` folder to catch missing or orphaned images before they reach the live site, then commit and push `data.json` (and images).
-
-Formatting is built in so you never need to write HTML: type normally, press Enter for line breaks, and use the **B** / **I** buttons or **Ctrl/⌘+B** / **Ctrl/⌘+I** to bold or italicise. The Data Manager also records which responses it has handled (via the hidden `_processed` key in `data.json`), so re-loading the same CSV later won't import anything twice.
-
-### Editing data.json directly
-
-For the few changes the Data Manager doesn't cover — the decision-path wiring on the reactive-ground entries, bulk edits, or fixing a small typo — you can still edit `data.json` by hand. Each entry is a JSON object inside its dimension's `items` array. A few rules to keep in mind:
-
-- **Stable `id`** — every entry has a permanent `id`: a lowercase, hyphenated slug derived from the name (e.g. `"id": "drip-grooves-on-exposed-soffit-edges"`). This is the entry's permanent address — it appears in the entry's URL (`#dimId/id`) and is how other entries cross-reference it. **Once an entry is live, never change its `id`**, as doing so breaks shared links, bookmarks, and cross-references. The display `name` can change freely; the `id` should not.
-- **`location`** — `"location": {"country": "Australia", "state": "NSW"}`; use just `country` if the evidence applies nationally, or include `state` if it is region-specific.
-- **`evidenceSupport`** — optional but recommended for live entries. Use `level` as `low`, `medium`, or `high`, with a short `summary` explaining the rating. Example: `"evidenceSupport": {"level": "medium", "summary": "Supported by workflow literature and practical programme logic, but thresholds would benefit from further project examples."}`.
-- **Images** — place files in the `images/` folder with descriptive filenames and reference them as `"images/your-filename.jpg"`. Keep filenames unique (the Data Manager warns you if a name is already in use, and the Image Formatter can give them unique names).
-- Leave the `_processed` key alone — it belongs to the Data Manager.
-
-### Related entries (cross-references)
-
-Related entries are the "see also" links shown at the bottom of an entry, pointing a designer to others worth considering alongside it. **These are fully managed in the Data Manager** — open any entry and use its **Links** button (the *Related entries* panel) to add or remove a link, write the optional note explaining why the two are related, and repair any broken links. Linking is automatically two-way, so you author each link once. You do not need to touch `data.json` to manage these.
-
-For reference (and for the occasional hand-edit), each link is stored as an entry in a `relatedEntries` array on the entry's `data` object:
-
-```json
-"relatedEntries": [
-  {
-    "id": "drip-grooves-on-exposed-soffit-edges",
-    "note": "Both are edge treatments on the same formed face — coordinate them so the chamfer and drip groove don't clash."
-  }
-]
-```
-
-- Each link references the target by its stable `id` (not by position or display name), so links survive entries being reordered **and** renamed.
-- `note` is optional — a short sentence explaining why the other entry is relevant. If omitted, just the link is shown.
-- An entry can list as many related entries as needed, including entries in other dimensions.
-- **Author each link once.** Links are automatically two-way: if entry A lists entry B, then entry B will also show A, without B needing a `relatedEntries` field of its own. There is no need — and you should avoid — adding the same pairing on both sides, as it will only drift out of sync. Add a link on both sides only if you genuinely want a *different* note in each direction.
-- Links to entries that are not yet `available` are silently skipped, so you can author a link ahead of the target entry going live without producing a dead link.
+Almost everything is done inside the tools. The one thing edited by hand in `data.json` is the branching *decision path* that links the reactive-ground entries together; the manual shows exactly what that looks like.
 
 ### Search keywords (optional)
 
