@@ -6,186 +6,280 @@
 <title>Maintainer's Manual · Constructability Framework</title>
 <script>(function(){try{var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',(t==='light'||t==='dark')?t:'dark');}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
+/* ============================================================
+   Maintainer's Manual — shared styles (multi-page docs site)
+   Dark by default; light via [data-theme="light"] (matches the framework).
+   ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-:root{--bg:#0a0f1a;--surface:#111827;--surface-light:#1a2234;--border:#2a3548;--text:#e2e8f0;--text-muted:#8899aa;--accent:#3b82f6;--accent-glow:rgba(59,130,246,0.15);--red:#ef4444;--orange:#f97316;--yellow:#eab308;--green:#22c55e;--red-bg:rgba(239,68,68,0.12);--orange-bg:rgba(249,115,22,0.12);--yellow-bg:rgba(234,179,8,0.1);--green-bg:rgba(34,197,94,0.1);--link:#60a5fa;--link-hover:#93c5fd;--img-bg:#1e2a3a;--border-strong:#3a4763;color-scheme:dark}
-:root[data-theme="light"]{--bg:#f4f6fb;--surface:#ffffff;--surface-light:#eef2f8;--border:#d3dbe8;--text:#1c2430;--text-muted:#5a6678;--accent:#2563eb;--accent-glow:rgba(37,99,235,0.10);--red:#dc2626;--orange:#ea580c;--yellow:#b45309;--green:#16a34a;--red-bg:rgba(220,38,38,0.10);--orange-bg:rgba(234,88,12,0.10);--yellow-bg:rgba(180,83,9,0.10);--green-bg:rgba(22,163,74,0.10);--link:#2563eb;--link-hover:#1d4ed8;--img-bg:#e2e8f0;--border-strong:#b9c4d6;color-scheme:light}
+
+:root{
+  --bg:#0a0f1a; --surface:#111827; --surface-light:#1a2234;
+  --border:#2a3548; --text:#e2e8f0; --text-muted:#8899aa;
+  --accent:#3b82f6; --accent-glow:rgba(59,130,246,0.15);
+  --red:#ef4444; --orange:#f97316; --yellow:#eab308; --green:#22c55e;
+  --red-bg:rgba(239,68,68,0.12); --orange-bg:rgba(249,115,22,0.12);
+  --yellow-bg:rgba(234,179,8,0.1); --green-bg:rgba(34,197,94,0.1);
+  --link:#60a5fa; --link-hover:#93c5fd; --img-bg:#1e2a3a;
+  --border-strong:#3a4763;
+  color-scheme:dark;
+}
+:root[data-theme="light"]{
+  --bg:#f4f6fb; --surface:#ffffff; --surface-light:#eef2f8;
+  --border:#d3dbe8; --text:#1c2430; --text-muted:#5a6678;
+  --accent:#2563eb; --accent-glow:rgba(37,99,235,0.10);
+  --red:#dc2626; --orange:#ea580c; --yellow:#b45309; --green:#16a34a;
+  --red-bg:rgba(220,38,38,0.10); --orange-bg:rgba(234,88,12,0.10);
+  --yellow-bg:rgba(180,83,9,0.10); --green-bg:rgba(22,163,74,0.10);
+  --link:#2563eb; --link-hover:#1d4ed8; --img-bg:#e2e8f0;
+  --border-strong:#b9c4d6;
+  color-scheme:light;
+}
+
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:120px}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{margin:0;background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
-.wrap{max-width:860px;margin:0 auto;padding:0 24px}
-code,.mono{font-family:'JetBrains Mono',monospace;font-size:0.88em}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
-.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:var(--surface);border-bottom:1px solid var(--border)}
-.topbar-brand{display:flex;align-items:center;gap:12px;color:var(--text);text-decoration:none;font-weight:600}
-.topbar-logo{width:32px;height:32px;border-radius:8px;color:#fff;font-weight:800;font-size:16px;background:linear-gradient(135deg,var(--accent),#6366f1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.topbar-brand small{display:block;font-size:11px;color:var(--text-muted);font-weight:400;line-height:1}
-.topbar-actions{display:flex;align-items:center;gap:12px}
-.theme-toggle-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:var(--surface-light);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:16px;line-height:1;cursor:pointer;transition:all .2s;flex-shrink:0}
-.theme-toggle-btn:hover{border-color:var(--accent);background:var(--accent-glow)}
-.topbar-site{font-size:0.85rem;color:var(--link);text-decoration:none;white-space:nowrap}
-.topbar-site:hover{color:var(--link-hover)}
-.tocbar{position:sticky;top:63px;z-index:10;background:var(--bg);border-bottom:1px solid var(--border);padding:10px 0}
-.tocbar .wrap{display:flex;gap:6px;overflow-x:auto;font-size:0.82rem}
-.tocbar a{white-space:nowrap;padding:5px 10px;border-radius:6px;color:var(--text-muted);text-decoration:none}
-.tocbar a:hover{background:var(--surface-light);color:var(--text)}
-header.hero{padding:56px 0 40px;border-bottom:1px solid var(--border)}
-.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin:0 0 18px}
-h1{font-size:2.5rem;line-height:1.12;font-weight:600;margin:0 0 20px;letter-spacing:-0.02em}
-.lede{font-size:1.2rem;color:var(--text);margin:0 0 14px;max-width:46ch}
-.promise{display:inline-block;margin-top:10px;padding:10px 16px;background:var(--accent-glow);border:1px solid var(--accent);border-radius:8px;font-size:0.95rem;font-weight:500;color:var(--text)}
-.promise strong{color:var(--accent)}
-section{padding:48px 0;border-bottom:1px solid var(--border)}
-.sec-label{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin:0 0 8px}
-h2{font-size:1.7rem;font-weight:600;margin:0 0 16px;letter-spacing:-0.01em}
-h2+p{margin-top:0}
+html{scroll-behavior:smooth; scroll-padding-top:80px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{animation:none!important;transition:none!important}}
+body{margin:0; background:var(--bg); color:var(--text); font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif; line-height:1.65; font-size:16px; -webkit-font-smoothing:antialiased}
+code,.mono{font-family:'JetBrains Mono',monospace; font-size:0.88em}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:4px}
+strong{font-weight:600}
+kbd{font-family:'JetBrains Mono',monospace; font-size:0.82em; background:var(--surface-light); border:1px solid var(--border); border-radius:5px; padding:1px 6px}
+a{color:var(--link); text-decoration:none}
+a:hover{color:var(--link-hover)}
+
+/* ---- top bar with section nav ---- */
+.topbar{position:sticky; top:0; z-index:30; display:flex; align-items:center; gap:20px; padding:12px 24px; background:var(--surface); border-bottom:1px solid var(--border)}
+.topbar-brand{display:flex; align-items:center; gap:12px; color:var(--text); font-weight:600; flex-shrink:0}
+.topbar-logo{width:32px; height:32px; border-radius:8px; color:#fff; font-weight:800; font-size:16px; background:linear-gradient(135deg,var(--accent),#6366f1); display:flex; align-items:center; justify-content:center}
+.topbar-brand small{display:block; font-size:11px; color:var(--text-muted); font-weight:400; line-height:1}
+.topnav{display:flex; gap:4px; flex:1; overflow-x:auto}
+.topnav a{padding:7px 12px; border-radius:7px; font-size:0.9rem; color:var(--text-muted); white-space:nowrap}
+.topnav a:hover{background:var(--surface-light); color:var(--text)}
+.topnav a.on{color:var(--text); background:var(--accent-glow); font-weight:500}
+.topbar-actions{display:flex; align-items:center; gap:12px; flex-shrink:0}
+.theme-toggle-btn{display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; background:var(--surface-light); border:1px solid var(--border); border-radius:8px; color:var(--text); font-size:16px; line-height:1; cursor:pointer; transition:all .2s}
+.theme-toggle-btn:hover{border-color:var(--accent); background:var(--accent-glow)}
+.topbar-site{font-size:0.85rem; color:var(--link); white-space:nowrap}
+@media(max-width:720px){.topbar-brand small{display:none} .topbar-site{display:none}}
+
+/* ---- docs layout: sidebar + content ---- */
+.layout{display:grid; grid-template-columns:250px 1fr; max-width:1180px; margin:0 auto; align-items:start}
+.sidebar{position:sticky; top:63px; align-self:start; height:calc(100vh - 63px); overflow-y:auto; padding:26px 16px 40px; border-right:1px solid var(--border)}
+.sidebar .side-group{font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-muted); margin:18px 0 8px; padding:0 10px}
+.sidebar .side-group:first-child{margin-top:0}
+.sidebar a{display:flex; gap:9px; align-items:baseline; padding:7px 10px; border-radius:7px; color:var(--text-muted); font-size:0.9rem; line-height:1.4}
+.sidebar a:hover{background:var(--surface-light); color:var(--text)}
+.sidebar a.on{background:var(--accent-glow); color:var(--accent); font-weight:600}
+.sidebar a .st{font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:var(--accent); opacity:.8; flex-shrink:0}
+.sidebar a.soon{opacity:.65}
+.sidebar a.soon .tag{font-size:0.65rem; color:var(--text-muted); border:1px solid var(--border); border-radius:5px; padding:0 5px; margin-left:auto; align-self:center}
+.content{min-width:0; padding:34px 40px 80px}
+@media(max-width:860px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static; height:auto; border-right:none; border-bottom:1px solid var(--border); padding:14px 16px; display:flex; flex-wrap:wrap; gap:4px}
+  .sidebar .side-group{width:100%; margin:6px 0 2px}
+  .content{padding:26px 20px 70px}
+}
+
+/* ---- centered (home) wrapper ---- */
+.wrap{max-width:860px; margin:0 auto; padding:0 24px}
+
+/* ---- page header / breadcrumb ---- */
+.crumbs{font-size:0.82rem; color:var(--text-muted); margin-bottom:14px}
+.crumbs a{color:var(--text-muted)} .crumbs a:hover{color:var(--text)}
+.crumbs span{color:var(--text)}
+.page-eyebrow{font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin:0 0 12px}
+h1{font-size:2.1rem; line-height:1.15; font-weight:600; margin:0 0 16px; letter-spacing:-0.02em}
+.content h1{font-size:1.9rem}
+.lede{font-size:1.15rem; color:var(--text); margin:0 0 16px; max-width:56ch}
+h2{font-size:1.45rem; font-weight:600; margin:36px 0 14px; letter-spacing:-0.01em}
+h3.sub{font-size:1.12rem; font-weight:600; margin:26px 0 10px}
 p{margin:0 0 16px}
 .muted{color:var(--text-muted)}
-a{color:var(--link);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .12s}
-a:hover{border-bottom-color:var(--link-hover);color:var(--link-hover)}
-strong{font-weight:600}
-kbd{font-family:'JetBrains Mono',monospace;font-size:0.82em;background:var(--surface-light);border:1px solid var(--border);border-radius:5px;padding:1px 6px}
-figure{margin:28px 0 12px;padding:24px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
-figure svg{display:block;width:100%;height:auto}
-figcaption{margin-top:14px;font-size:0.9rem;color:var(--text-muted)}
-.dia-box{fill:var(--surface-light);stroke:var(--border);stroke-width:1}
-.dia-tool{fill:var(--accent-glow);stroke:var(--accent);stroke-width:1.3}
-.dia-repo{fill:none;stroke:var(--border);stroke-width:1;stroke-dasharray:4 4}
-.dia-t{fill:var(--text);font-weight:600;font-size:13px;font-family:'IBM Plex Sans',sans-serif}
-.dia-ts{fill:var(--text-muted);font-size:11px;font-family:'IBM Plex Sans',sans-serif}
-.dia-repo-label{fill:var(--text-muted);font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;font-family:'JetBrains Mono',monospace}
-.dia-arr{stroke:var(--text-muted);stroke-width:1.4;fill:none}
-.dia-arr-dash{stroke:var(--text-muted);stroke-width:1;stroke-dasharray:4 3;fill:none}
-.legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:16px;font-size:0.85rem;color:var(--text-muted)}
-.legend span{display:inline-flex;align-items:center;gap:8px}
-.swatch{width:16px;height:12px;border-radius:3px;display:inline-block}
-.sw-tool{background:var(--accent-glow);border:1.3px solid var(--accent)}
-.sw-neutral{background:var(--surface-light);border:1px solid var(--border)}
-ol.routine{list-style:none;counter-reset:step;margin:24px 0 0;padding:0}
-ol.routine li{counter-increment:step;position:relative;padding:0 0 22px 52px;margin:0}
-ol.routine li:not(:last-child){border-left:1px solid var(--border);margin-left:15px;padding-left:37px}
+
+/* pager (prev / next within a tool) */
+.pager{display:flex; justify-content:space-between; gap:12px; margin-top:44px; padding-top:22px; border-top:1px solid var(--border)}
+.pager a{display:block; flex:1; padding:14px 16px; border:1px solid var(--border); border-radius:10px; color:var(--text); transition:border-color .12s}
+.pager a:hover{border-color:var(--accent)}
+.pager .dir{font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px}
+.pager .ttl{font-weight:600; font-size:0.98rem; margin-top:2px}
+.pager a.next{text-align:right}
+.pager a.disabled{opacity:.4; pointer-events:none}
+
+/* hero (home) */
+header.hero{padding:52px 0 40px; border-bottom:1px solid var(--border)}
+.eyebrow{font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin:0 0 18px}
+.promise{display:inline-block; margin-top:10px; padding:10px 16px; background:var(--accent-glow); border:1px solid var(--accent); border-radius:8px; font-size:0.95rem; font-weight:500; color:var(--text)}
+.promise strong{color:var(--accent)}
+section.home-sec{padding:44px 0; border-bottom:1px solid var(--border)}
+.sec-label{font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin:0 0 8px}
+
+/* diagram */
+figure{margin:26px 0 12px; padding:24px; background:var(--surface); border:1px solid var(--border); border-radius:12px}
+figure svg{display:block; width:100%; height:auto}
+figcaption{margin-top:14px; font-size:0.9rem; color:var(--text-muted)}
+.dia-box{fill:var(--surface-light); stroke:var(--border); stroke-width:1}
+.dia-tool{fill:var(--accent-glow); stroke:var(--accent); stroke-width:1.3}
+.dia-repo{fill:none; stroke:var(--border); stroke-width:1; stroke-dasharray:4 4}
+.dia-t{fill:var(--text); font-weight:600; font-size:13px; font-family:'IBM Plex Sans',sans-serif}
+.dia-ts{fill:var(--text-muted); font-size:11px; font-family:'IBM Plex Sans',sans-serif}
+.dia-repo-label{fill:var(--text-muted); font-size:11px; font-weight:500; letter-spacing:1px; text-transform:uppercase; font-family:'JetBrains Mono',monospace}
+.dia-arr{stroke:var(--text-muted); stroke-width:1.4; fill:none}
+.dia-arr-dash{stroke:var(--text-muted); stroke-width:1; stroke-dasharray:4 3; fill:none}
+.legend{display:flex; flex-wrap:wrap; gap:18px; margin-top:16px; font-size:0.85rem; color:var(--text-muted)}
+.legend span{display:inline-flex; align-items:center; gap:8px}
+.swatch{width:16px; height:12px; border-radius:3px; display:inline-block}
+.sw-tool{background:var(--accent-glow); border:1.3px solid var(--accent)}
+.sw-neutral{background:var(--surface-light); border:1px solid var(--border)}
+
+/* routine list */
+ol.routine{list-style:none; counter-reset:step; margin:24px 0 0; padding:0}
+ol.routine li{counter-increment:step; position:relative; padding:0 0 22px 52px; margin:0}
+ol.routine li:not(:last-child){border-left:1px solid var(--border); margin-left:15px; padding-left:37px}
 ol.routine li:last-child{padding-left:52px}
-ol.routine li::before{content:counter(step);position:absolute;left:0;top:-2px;width:31px;height:31px;margin-left:-15px;background:var(--surface);border:1px solid var(--accent);color:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:14px}
+ol.routine li::before{content:counter(step); position:absolute; left:0; top:-2px; width:31px; height:31px; margin-left:-15px; background:var(--surface); border:1px solid var(--accent); color:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-weight:500; font-size:14px}
 ol.routine li:last-child::before{margin-left:0}
-ol.routine .step-title{font-weight:600;display:block;margin-bottom:2px}
-ol.routine .step-detail{color:var(--text-muted);font-size:0.95rem}
-.cards{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px}
+ol.routine .step-title{font-weight:600; display:block; margin-bottom:2px}
+ol.routine .step-detail{color:var(--text-muted); font-size:0.95rem}
+
+/* cards */
+.cards{display:grid; grid-template-columns:1fr; gap:14px; margin-top:24px}
 @media(min-width:640px){.cards{grid-template-columns:1fr 1fr}}
-.card{display:block;padding:22px;background:var(--surface);border:1px solid var(--border);border-radius:12px;color:var(--text);transition:border-color .12s,transform .12s}
-.card:hover{border-color:var(--accent);transform:translateY(-2px);border-bottom-color:var(--accent)}
-.card.big{grid-column:1/-1;border-color:var(--accent)}
-.card .card-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);font-weight:500}
+.card{display:block; padding:22px; background:var(--surface); border:1px solid var(--border); border-radius:12px; color:var(--text); transition:border-color .12s, transform .12s}
+.card:hover{border-color:var(--accent); transform:translateY(-2px)}
+.card.big{grid-column:1/-1; border-color:var(--accent)}
+.card .card-tag{font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--accent); font-weight:500}
 .card.soon .card-tag{color:var(--text-muted)}
-.card h3{margin:8px 0 6px;font-size:1.15rem;font-weight:600}
-.card p{margin:0;color:var(--text-muted);font-size:0.95rem}
-.card .arrow{margin-top:12px;font-size:0.9rem;color:var(--accent);font-weight:500}
-.callout{margin-top:24px;padding:22px 24px;background:var(--surface-light);border:1px solid var(--border);border-left:3px solid var(--orange);border-radius:0 10px 10px 0}
+.card h3{margin:8px 0 6px; font-size:1.15rem; font-weight:600}
+.card p{margin:0; color:var(--text-muted); font-size:0.95rem}
+.card .arrow{margin-top:12px; font-size:0.9rem; color:var(--accent); font-weight:500}
+
+/* sub-page index cards (numbered) on a tool hub */
+.chapters{display:grid; gap:12px; margin-top:22px}
+.chapter{display:flex; gap:16px; align-items:flex-start; padding:18px 20px; background:var(--surface); border:1px solid var(--border); border-radius:12px; color:var(--text); transition:border-color .12s}
+.chapter:hover{border-color:var(--accent)}
+.chapter .cn{flex-shrink:0; width:34px; height:34px; border-radius:9px; background:var(--accent-glow); color:var(--accent); font-family:'JetBrains Mono',monospace; font-weight:600; display:flex; align-items:center; justify-content:center}
+.chapter.soon{opacity:.7} .chapter.soon .cn{background:var(--surface-light); color:var(--text-muted)}
+.chapter .cbody h3{margin:0 0 3px; font-size:1.05rem; font-weight:600}
+.chapter .cbody p{margin:0; font-size:0.92rem; color:var(--text-muted)}
+.chapter .tag{margin-left:auto; align-self:center; font-size:0.68rem; color:var(--text-muted); border:1px solid var(--border); border-radius:6px; padding:2px 7px; white-space:nowrap}
+
+/* callout */
+.callout{margin:22px 0; padding:20px 22px; background:var(--surface-light); border:1px solid var(--border); border-left:3px solid var(--orange); border-radius:0 10px 10px 0}
 .callout.info{border-left-color:var(--accent)}
-.callout h3{margin:0 0 8px;font-size:1.05rem;font-weight:600}
-.callout p{margin:0;font-size:0.95rem;color:var(--text-muted)}
+.callout h3{margin:0 0 8px; font-size:1.02rem; font-weight:600}
+.callout p{margin:0; font-size:0.95rem; color:var(--text-muted)}
 .callout p+p{margin-top:10px}
-footer{padding:44px 0 72px;color:var(--text-muted);font-size:0.9rem}
+
+/* footer */
+footer{padding:40px 0 60px; color:var(--text-muted); font-size:0.9rem; border-top:1px solid var(--border); margin-top:40px}
+footer .wrap{padding:0 24px}
 footer a{color:var(--link)}
-footer p{margin:0 0 8px}
-.walk{counter-reset:wstep;margin-top:8px}
-.wstep{counter-increment:wstep;position:relative;padding:34px 0 34px 62px;border-bottom:1px solid var(--border)}
+.content footer{margin-top:60px}
+
+/* ---- walkthrough steps + rebuilt screen mockups ---- */
+.walk{counter-reset:wstep; margin-top:10px}
+.wstep{counter-increment:wstep; position:relative; padding:28px 0 28px 60px; border-bottom:1px solid var(--border)}
 .wstep:last-child{border-bottom:none}
-.wstep::before{content:counter(wstep);position:absolute;left:0;top:34px;width:40px;height:40px;background:var(--accent);color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:18px}
-.wstep h3{margin:2px 0 6px;font-size:1.3rem;font-weight:600;letter-spacing:-0.01em}
-.wstep .goal{color:var(--text-muted);font-size:0.95rem;margin:0 0 18px}
-@media(max-width:600px){.wstep{padding-left:0;padding-top:64px}.wstep::before{top:0}}
-.do{margin:16px 0}
-.click{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;background:var(--accent-glow);border:1px solid var(--accent);border-radius:8px;font-size:0.9rem;font-weight:500;color:var(--text)}
+.wstep::before{content:counter(wstep); position:absolute; left:0; top:28px; width:38px; height:38px; background:var(--accent); color:#fff; border-radius:10px; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-weight:500; font-size:17px}
+.wstep h3{margin:2px 0 6px; font-size:1.2rem; font-weight:600; letter-spacing:-0.01em}
+.wstep .goal{color:var(--text-muted); font-size:0.95rem; margin:0 0 16px}
+@media(max-width:560px){.wstep{padding-left:0; padding-top:58px} .wstep::before{top:0}}
+.do{margin:14px 0}
+.click{display:inline-flex; align-items:center; gap:8px; padding:6px 12px; background:var(--accent-glow); border:1px solid var(--accent); border-radius:8px; font-size:0.9rem; font-weight:500; color:var(--text)}
 .click b{color:var(--accent)}
-.mk{position:relative;margin:18px 0 8px;background:var(--bg);border:1px solid var(--border-strong);border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.18)}
-.mk-chrome{display:flex;align-items:center;gap:8px;padding:9px 14px;background:var(--surface);border-bottom:1px solid var(--border)}
-.mk-dot{width:10px;height:10px;border-radius:50%;background:var(--border-strong)}
-.mk-file{margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted)}
-.mk-body{padding:18px;overflow-x:auto}
-.mk-h{font-size:1.15rem;font-weight:700;margin:0 0 4px;letter-spacing:-0.3px}
+.mk{position:relative; margin:16px 0 8px; background:var(--bg); border:1px solid var(--border-strong); border-radius:12px; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,0.18)}
+.mk-chrome{display:flex; align-items:center; gap:8px; padding:9px 14px; background:var(--surface); border-bottom:1px solid var(--border)}
+.mk-dot{width:10px; height:10px; border-radius:50%; background:var(--border-strong)}
+.mk-file{margin-left:8px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-muted)}
+.mk-body{padding:18px; overflow-x:auto}
+.mk-h{font-size:1.15rem; font-weight:700; margin:0 0 4px; letter-spacing:-0.3px}
 .mk-h .num{color:var(--accent)}
-.mk-sub{font-size:0.85rem;color:var(--text-muted);margin:0 0 14px}
-.mk-drops{display:grid;gap:10px;grid-template-columns:1fr 1fr}
+.mk-sub{font-size:0.85rem; color:var(--text-muted); margin:0 0 14px}
+.mk-drops{display:grid; gap:10px; grid-template-columns:1fr 1fr}
 @media(max-width:520px){.mk-drops{grid-template-columns:1fr}}
-.mk-drop{border:1.5px dashed var(--border-strong);border-radius:8px;padding:14px;background:var(--surface)}
-.mk-drop .lab{font-size:0.85rem;font-weight:600;margin-bottom:4px}
-.mk-drop .hint{font-size:0.78rem;color:var(--text-muted);font-style:italic}
-.mk-drop.filled{border-style:solid;border-color:var(--green)}
-.mk-loaded{margin-top:12px;font-size:0.82rem;color:var(--text-muted)}
-.mk-loaded .row{display:flex;align-items:center;gap:8px;padding:5px 0}
+.mk-drop{border:1.5px dashed var(--border-strong); border-radius:8px; padding:14px; background:var(--surface)}
+.mk-drop .lab{font-size:0.85rem; font-weight:600; margin-bottom:4px}
+.mk-drop .hint{font-size:0.78rem; color:var(--text-muted); font-style:italic}
+.mk-drop.filled{border-style:solid; border-color:var(--green)}
+.mk-loaded{margin-top:12px; font-size:0.82rem; color:var(--text-muted)}
+.mk-loaded .row{display:flex; align-items:center; gap:8px; padding:5px 0}
 .mk-loaded .tick{color:var(--green)}
-.mk-tabs{display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--border);margin-bottom:16px}
-.mk-tab{padding:9px 14px;font-size:0.85rem;color:var(--text-muted);border-bottom:2px solid transparent;cursor:default;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
-.mk-tab.on{color:var(--text);border-bottom-color:var(--accent);font-weight:600}
-.mk-badge{background:var(--accent);color:#fff;font-size:0.7rem;font-weight:600;border-radius:10px;padding:1px 7px;font-family:'JetBrains Mono',monospace}
-.mk-card{border:1px solid var(--border);border-radius:10px;background:var(--surface);overflow:hidden}
-.mk-card-head{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--border);flex-wrap:wrap}
-.mk-type{font-size:0.7rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--green);background:var(--green-bg);border:1px solid var(--green);border-radius:6px;padding:2px 8px}
-.mk-card-name{font-weight:600;font-size:0.98rem;flex:1;min-width:140px}
-.mk-time{font-size:0.75rem;color:var(--text-muted);font-family:'JetBrains Mono',monospace}
+.mk-tabs{display:flex; flex-wrap:wrap; gap:4px; border-bottom:1px solid var(--border); margin-bottom:16px}
+.mk-tab{padding:9px 14px; font-size:0.85rem; color:var(--text-muted); border-bottom:2px solid transparent; display:inline-flex; align-items:center; gap:6px; white-space:nowrap}
+.mk-tab.on{color:var(--text); border-bottom-color:var(--accent); font-weight:600}
+.mk-badge{background:var(--accent); color:#fff; font-size:0.7rem; font-weight:600; border-radius:10px; padding:1px 7px; font-family:'JetBrains Mono',monospace}
+.mk-card{border:1px solid var(--border); border-radius:10px; background:var(--surface); overflow:hidden}
+.mk-card-head{display:flex; align-items:center; gap:10px; padding:12px 14px; border-bottom:1px solid var(--border); flex-wrap:wrap}
+.mk-type{font-size:0.7rem; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; color:var(--green); background:var(--green-bg); border:1px solid var(--green); border-radius:6px; padding:2px 8px}
+.mk-card-name{font-weight:600; font-size:0.98rem; flex:1; min-width:140px}
+.mk-time{font-size:0.75rem; color:var(--text-muted); font-family:'JetBrains Mono',monospace}
 .mk-card-body{padding:14px}
 .mk-field{margin-bottom:14px}
 .mk-field:last-child{margin-bottom:0}
-.mk-label{display:block;font-size:0.78rem;font-weight:600;color:var(--text-muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.4px}
-.mk-input{background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:9px 11px;font-size:0.9rem;color:var(--text)}
+.mk-label{display:block; font-size:0.78rem; font-weight:600; color:var(--text-muted); margin-bottom:5px; text-transform:uppercase; letter-spacing:0.4px}
+.mk-input{background:var(--bg); border:1px solid var(--border); border-radius:7px; padding:9px 11px; font-size:0.9rem; color:var(--text)}
 .mk-input.area{line-height:1.5}
-.mk-input.select{display:flex;align-items:center;justify-content:space-between}
-.mk-input.select::after{content:"\25BE";color:var(--text-muted)}
-.mk-id{font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--accent)}
-.mk-chips{display:flex;flex-wrap:wrap;gap:6px}
-.mk-chip{font-size:0.8rem;background:var(--surface-light);border:1px solid var(--border);border-radius:20px;padding:3px 10px;color:var(--text)}
-.mk-chip.on{background:var(--accent-glow);border-color:var(--accent);color:var(--accent);font-weight:500}
-.mk-bands{display:grid;gap:8px}
-.mk-band{display:grid;grid-template-columns:110px 1fr;gap:12px;align-items:start;padding:10px 12px;border:1px solid var(--border);border-left-width:4px;border-radius:8px;background:var(--surface)}
-.mk-band.green{border-left-color:var(--green)}
-.mk-band.yellow{border-left-color:var(--yellow)}
-.mk-band.orange{border-left-color:var(--orange)}
-.mk-band.red{border-left-color:var(--red)}
-.mk-band .rng{font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:600}
-.mk-band .rate{font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;display:block;margin-top:3px}
-.mk-band.green .rate{color:var(--green)}.mk-band.yellow .rate{color:var(--yellow)}
-.mk-band.orange .rate{color:var(--orange)}.mk-band.red .rate{color:var(--red)}
-.mk-band .gd{font-size:0.85rem;color:var(--text-muted);line-height:1.5}
-.mk-actions{display:flex;gap:8px;flex-wrap:wrap;padding-top:14px;margin-top:4px}
-.mk-btn{font-size:0.85rem;font-weight:500;border-radius:7px;padding:7px 14px;border:1px solid var(--border);background:var(--surface-light);color:var(--text)}
-.mk-btn.accept{background:var(--green);border-color:var(--green);color:#fff}
-.mk-btn.reject{background:transparent;border-color:var(--red);color:var(--red)}
+.mk-input.select{display:flex; align-items:center; justify-content:space-between}
+.mk-input.select::after{content:"\25BE"; color:var(--text-muted)}
+.mk-id{font-family:'JetBrains Mono',monospace; font-size:0.82rem; color:var(--accent)}
+.mk-chips{display:flex; flex-wrap:wrap; gap:6px}
+.mk-chip{font-size:0.8rem; background:var(--surface-light); border:1px solid var(--border); border-radius:20px; padding:3px 10px; color:var(--text)}
+.mk-chip.on{background:var(--accent-glow); border-color:var(--accent); color:var(--accent); font-weight:500}
+.mk-bands{display:grid; gap:8px}
+.mk-band{display:grid; grid-template-columns:110px 1fr; gap:12px; align-items:start; padding:10px 12px; border:1px solid var(--border); border-left-width:4px; border-radius:8px; background:var(--surface)}
+.mk-band.green{border-left-color:var(--green)} .mk-band.yellow{border-left-color:var(--yellow)}
+.mk-band.orange{border-left-color:var(--orange)} .mk-band.red{border-left-color:var(--red)}
+.mk-band .rng{font-family:'JetBrains Mono',monospace; font-size:0.85rem; font-weight:600}
+.mk-band .rate{font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.4px; display:block; margin-top:3px}
+.mk-band.green .rate{color:var(--green)} .mk-band.yellow .rate{color:var(--yellow)}
+.mk-band.orange .rate{color:var(--orange)} .mk-band.red .rate{color:var(--red)}
+.mk-band .gd{font-size:0.85rem; color:var(--text-muted); line-height:1.5}
+.mk-actions{display:flex; gap:8px; flex-wrap:wrap; padding-top:14px; margin-top:4px}
+.mk-btn{font-size:0.85rem; font-weight:500; border-radius:7px; padding:7px 14px; border:1px solid var(--border); background:var(--surface-light); color:var(--text)}
+.mk-btn.accept{background:var(--green); border-color:var(--green); color:#fff}
+.mk-btn.reject{background:transparent; border-color:var(--red); color:var(--red)}
 .mk-btn.ghost{background:transparent}
-.mk-preview{border:1px solid var(--border);border-radius:10px;padding:16px;background:var(--surface)}
-.mk-preview .pv-name{font-weight:700;font-size:1.05rem;margin-bottom:2px}
-.mk-preview .pv-dim{font-size:0.78rem;color:var(--text-muted);margin-bottom:12px}
-.pin{position:absolute;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;font-size:0.8rem;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px var(--bg);font-family:'JetBrains Mono',monospace;z-index:2}
-.pins-key{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
-.pins-key li{display:flex;gap:10px;align-items:flex-start;font-size:0.9rem}
-.pins-key .n{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;font-size:0.75rem;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace}
-.tool-band{padding-top:40px}
-.tool-band h2{font-size:2rem}
+.mk-preview{border:1px solid var(--border); border-radius:10px; padding:16px; background:var(--surface)}
+.mk-preview .pv-name{font-weight:700; font-size:1.05rem; margin-bottom:2px}
+.mk-preview .pv-dim{font-size:0.78rem; color:var(--text-muted); margin-bottom:12px}
+.pin{position:absolute; width:24px; height:24px; border-radius:50%; background:var(--accent); color:#fff; font-weight:700; font-size:0.8rem; display:flex; align-items:center; justify-content:center; box-shadow:0 0 0 3px var(--bg); font-family:'JetBrains Mono',monospace; z-index:2}
+.pins-key{list-style:none; margin:14px 0 0; padding:0; display:grid; gap:8px}
+.pins-key li{display:flex; gap:10px; align-items:flex-start; font-size:0.9rem}
+.pins-key .n{flex-shrink:0; width:22px; height:22px; border-radius:50%; background:var(--accent); color:#fff; font-weight:700; font-size:0.75rem; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace}
+
+/* stub note */
+.stub{margin-top:24px; padding:26px; border:1px dashed var(--border-strong); border-radius:12px; background:var(--surface); text-align:center; color:var(--text-muted)}
+.stub strong{color:var(--text)}
+
+/* code block + prose lists (added for advanced pages) */
+pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--accent); border-radius:8px; padding:14px 16px; overflow-x:auto; font-family:'JetBrains Mono',monospace; font-size:0.82rem; line-height:1.6; color:var(--text); margin:16px 0}
+.content ul,.content ol{margin:0 0 16px; padding-left:22px}
+.content li{margin:6px 0}
+.content ul li::marker{color:var(--accent)}
+
+/* single-file page switching */
+.section{display:none}
+.subpage{display:none}
 </style>
 </head>
 <body>
 
 <div class="topbar">
-  <a class="topbar-brand" href="#top">
-    <span class="topbar-logo">C</span>
-    <span>Maintainer's Manual<small>Constructability Framework</small></span>
-  </a>
+  <div class="topbar-brand"><span class="topbar-logo">C</span><span>Maintainer's Manual<small>Constructability Framework</small></span></div>
+  <nav class="topnav">
+    <a href="#home">Overview</a>
+    <a href="#dm-home">Data Manager</a>
+    <a href="#image-formatter">Image Formatter</a>
+    <a href="#framework-doctor">Framework Doctor</a>
+  </nav>
   <div class="topbar-actions">
     <button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch between light and dark theme" aria-label="Toggle colour theme"><span id="theme-toggle-icon">🌙</span></button>
     <a class="topbar-site" href="https://david-reset.github.io/Concrete-Structures-Constructability-Framework/" target="_blank" rel="noopener">Live site ↗</a>
   </div>
 </div>
 
-<div class="tocbar">
-  <div class="wrap">
-    <a href="#top">Overview</a>
-    <a href="#routine">The routine</a>
-    <a href="#data-manager">Data Manager</a>
-    <a href="#image-formatter">Image Formatter</a>
-    <a href="#doctor">Doctor</a>
-  </div>
-</div>
-
-<header class="hero" id="top">
+<div class="section" id="section-home">
+<header class="hero">
   <div class="wrap">
     <p class="eyebrow">Maintainer's manual</p>
     <h1>Keeping the framework alive</h1>
@@ -195,10 +289,10 @@ footer p{margin:0 0 8px}
   </div>
 </header>
 
-<section id="big-picture">
+<section class="home-sec">
   <div class="wrap">
     <p class="sec-label">The big picture</p>
-    <h2>What you're actually maintaining</h2>
+    <h1 style="font-size:1.7rem">What you're actually maintaining</h1>
     <p>The framework is a website (<code>index.html</code>) that reads its entire contents from one file — <code>data.json</code> — plus a folder of images. That's it. <strong>You never edit the website's code.</strong> Your whole job is to keep <code>data.json</code> and the <code>images/</code> folder correct and up to date.</p>
     <p>Three small tools do that work. Each is a single web page you open on your own computer — they run entirely in your browser, upload nothing, and only read or write the files you hand them. Here's how everything fits together:</p>
     <figure>
@@ -227,19 +321,14 @@ footer p{margin:0 0 8px}
       <figcaption>Solid arrows show content being created. The dashed arrow shows the Doctor only <em>reading</em> — it never changes anything. The <strong>Repo</strong> box is what you commit and push; the live site rebuilds itself from it.</figcaption>
       <div class="legend"><span><span class="swatch sw-tool"></span> Tools you operate</span><span><span class="swatch sw-neutral"></span> Files &amp; inputs</span></div>
     </figure>
-    <div class="cards">
-      <a class="card big" href="#data-manager"><span class="card-tag">Start here · the main tool</span><h3>Data Manager</h3><p>Turn raw form responses into structured, published entries. Where you'll spend almost all your time.</p><div class="arrow">Jump to the walkthrough →</div></a>
-      <a class="card soon" href="#image-formatter"><span class="card-tag">Coming next</span><h3>Image Formatter</h3><p>Clean, rename and re-encode photos before they go in <code>images/</code>, and strip GPS data.</p></a>
-      <a class="card soon" href="#doctor"><span class="card-tag">Coming next</span><h3>Framework Doctor</h3><p>A read-only health check. Run it before every commit.</p></a>
-    </div>
   </div>
 </section>
 
-<section id="routine">
+<section class="home-sec">
   <div class="wrap">
     <p class="sec-label">The routine</p>
-    <h2>The loop you'll repeat</h2>
-    <p>Whenever submissions have built up, you run the same six steps. The rest of this manual is just each of these explained slowly, with a full example. This is the whole job on one screen.</p>
+    <h1 style="font-size:1.7rem">The loop you'll repeat</h1>
+    <p>Whenever submissions have built up, you run the same six steps. Each tool's own pages explain these in depth, with a full worked example.</p>
     <ol class="routine">
       <li><span class="step-title">Download the responses</span><span class="step-detail">In Google Forms, export each form's responses as a CSV — up to three files (new entries, edits, comments).</span></li>
       <li><span class="step-title">Work the inbox in the Data Manager</span><span class="step-detail">Load <code>data.json</code> and the CSVs, then go through each submission: de-identify it, tidy it, and accept or reject it.</span></li>
@@ -251,213 +340,522 @@ footer p{margin:0 0 8px}
   </div>
 </section>
 
-<section id="data-manager" class="tool-band">
+<section class="home-sec">
   <div class="wrap">
-    <p class="sec-label">The main tool · walkthrough</p>
-    <h2>Data Manager</h2>
-    <p>Turn a raw form response into a properly structured, published entry — reviewed, de-identified and checked. We'll follow one real submission, <strong>“Off-form concrete upturns near obstructions”</strong>, from the inbox to accepted. Do it once with this example and you'll know the pattern for every entry after it. Each screen below is a faithful rebuild of the actual tool, not a photo, so it stays accurate as the tool is tweaked.</p>
-    <p class="muted">It has five tabs. You'll mostly use two: <strong>Submission inbox</strong> (new responses) and <strong>Drafts</strong> (accepted, waiting to publish). The others are <strong>Browse entries</strong>, <strong>Triage map</strong> and <strong>Rejected submissions</strong>.</p>
+    <p class="sec-label">The tools</p>
+    <h1 style="font-size:1.7rem">Pick a tool to learn</h1>
+    <p>Each has its own set of pages — an overview, then step-by-step chapters. Start with the Data Manager; it's the one you'll live in.</p>
+    <div class="cards">
+      <a class="card big" href="#dm-home"><span class="card-tag">Start here · the main tool</span><h3>Data Manager</h3><p>Turn raw form responses into structured, published entries — reviewing, de-identifying, editing and publishing. Its own overview plus chapters for each stage.</p><div class="arrow">Open the Data Manager guide →</div></a>
+      <a class="card" href="#image-formatter"><span class="card-tag">Supporting tool</span><h3>Image Formatter</h3><p>Clean, rename and re-encode photos before they go in <code>images/</code>, and strip GPS and camera data.</p><div class="arrow">Open the guide →</div></a>
+      <a class="card" href="#framework-doctor"><span class="card-tag">Supporting tool</span><h3>Framework Doctor</h3><p>A read-only health check. Run it before every commit to catch missing or orphaned images.</p><div class="arrow">Open the guide →</div></a>
+    </div>
+    <div class="callout"><h3>The one thing the tools don't do</h3><p>Almost everything happens inside the tools — including the “related entries” links between entries, which are managed in the Data Manager. The single exception is the branching <em>decision path</em> that links the reactive-ground entries, edited by hand in <code>data.json</code>. The Data Manager guide has a page showing exactly how.</p></div>
   </div>
+</section>
+</div>
 
-  <div class="walk wrap">
-    <div class="wstep">
-      <h3>Open the Data Manager</h3>
-      <p class="goal">Get the tool running in your browser.</p>
-      <p class="do">The tool lives in the repository at <code>tools/framework-data-manager.html</code>. Open it in your browser — double-clicking works, since it runs entirely offline. You'll land on <strong>“1 · Load data.json”</strong>, with <em>“Load data.json to begin.”</em> at the bottom.</p>
-      <p class="click">👉 <span><b>Open</b> <code>tools/framework-data-manager.html</code></span></p>
+<div class="section" id="section-dm">
+  <div class="layout">
+      <aside class="sidebar">
+        <div class="side-group">Data Manager</div>
+        <a href="#dm-home">Overview</a>
+        <a href="#dm-load"><span class="st">1</span> Load your files</a>
+        <a href="#dm-inbox"><span class="st">2</span> The submission inbox</a>
+        <a href="#dm-reviewing"><span class="st">3</span> Reviewing a new entry</a>
+        <a href="#dm-bands"><span class="st">4</span> Threshold bands</a>
+        <a href="#dm-publishing"><span class="st">5</span> Drafts &amp; publishing</a>
+        <a href="#dm-edits"><span class="st">6</span> Edits &amp; comments</a>
+        <div class="side-group">Advanced</div>
+        <a href="#dm-decision-path">Decision path (by hand)</a>
+      </aside>
+      <main class="content">
+        <div class="subpage" id="page-dm-home">
+<div class="crumbs"><a href="#home">Overview</a> › <span>Data Manager</span></div>
+    <p class="page-eyebrow">The main tool</p>
+    <h1>Data Manager</h1>
+    <p class="lede">The tool you'll live in. It turns raw form responses into properly structured, de-identified entries in <code>data.json</code> — the file the live site reads.</p>
+
+    <p>It's a single web page. You open it on your own computer; it runs in your browser, uploads nothing, and only touches the files you hand it. People submit ideas, edits and comments through the Google Forms; the Data Manager helps you review each one and turn the good ones into clean entries.</p>
+
+    <h2>The five tabs</h2>
+    <p>Everything happens across five tabs at the top of the tool. You'll spend nearly all your time in the first two:</p>
+    <ul>
+      <li><strong>Submission inbox</strong> — new form responses waiting to be reviewed. A badge shows how many.</li>
+      <li><strong>Drafts</strong> — entries you've accepted but not yet published. They're invisible to the public until you publish.</li>
+      <li><strong>Browse entries</strong> — everything already live, for editing or reordering.</li>
+      <li><strong>Triage map</strong> — how entries are surfaced to designers by the site's triage questions.</li>
+      <li><strong>Rejected submissions</strong> — things you turned down, kept in case you change your mind.</li>
+    </ul>
+
+    <h2>Work through it in order</h2>
+    <p>These chapters follow one real submission — <strong>“Off-form concrete upturns near obstructions”</strong> — the whole way from the inbox to published. Do it once with this example and you'll know the pattern for every entry after. Start at chapter&nbsp;1.</p>
+
+    <div class="chapters">
+      <a class="chapter" href="#dm-load"><span class="cn">1</span><div class="cbody"><h3>Load your files</h3><p>Open the tool and hand it the current <code>data.json</code> plus the form-response CSVs.</p></div></a>
+      <a class="chapter" href="#dm-inbox"><span class="cn">2</span><div class="cbody"><h3>The submission inbox</h3><p>Find the new submission, understand the card, and the three actions on every item.</p></div></a>
+      <a class="chapter" href="#dm-reviewing"><span class="cn">3</span><div class="cbody"><h3>Reviewing a new entry</h3><p>De-identify, set the dimension and id, and fill the question, background and parameter.</p></div></a>
+      <a class="chapter" href="#dm-bands"><span class="cn">4</span><div class="cbody"><h3>Threshold bands</h3><p>The heart of an entry: ranges, ratings and the colour scale a reader sees.</p></div></a>
+      <a class="chapter" href="#dm-publishing"><span class="cn">5</span><div class="cbody"><h3>Drafts &amp; publishing</h3><p>Review your drafts together, publish, download the updated <code>data.json</code>, and the changelog.</p></div></a>
+      <a class="chapter" href="#dm-edits"><span class="cn">6</span><div class="cbody"><h3>Edits &amp; comments</h3><p>The other two kinds of submission and how they differ from a new entry.</p></div></a>
     </div>
 
-    <div class="wstep">
-      <h3>Load the current data.json (and the form responses)</h3>
-      <p class="goal">Give the tool the live content plus the new submissions to process.</p>
-      <p class="do">First hand it the <strong>current <code>data.json</code></strong> from the repository. Then drop in the response CSVs from Google Forms — up to three (new entries, edits, comments), any order. Each box only accepts its own file type, and the tool works out which form each CSV came from. A <strong>Loaded files</strong> list confirms what's in, and anything already processed is skipped.</p>
-      <div class="mk">
-        <div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html</span></div>
-        <div class="mk-body">
-          <p class="mk-h"><span class="num">1 ·</span> Load data.json</p>
-          <p class="mk-sub">Drop the current file to begin. Response CSVs can be added after.</p>
-          <div class="mk-drops">
-            <div class="mk-drop filled"><div class="lab">Current data.json ✓</div><div class="hint">data.json loaded — 63 entries</div></div>
-            <div class="mk-drop"><div class="lab">Current CHANGELOG.md <span style="font-weight:400;color:var(--text-muted)">(optional)</span></div><div class="hint">or drop a file here</div></div>
-          </div>
-          <div class="mk-drop" style="margin-top:10px"><div class="lab">Form responses (CSV)</div><div class="hint">drop new-entry, edit and comment CSVs here — any order</div></div>
-          <div class="mk-loaded"><div class="row"><span class="tick">✓</span> data.json <span style="opacity:.6">— current content</span></div><div class="row"><span class="tick">✓</span> New entry suggestions.csv <span style="opacity:.6">— 1 new response</span></div></div>
+    <div class="pager">
+      <a class="disabled">&nbsp;</a>
+      <a class="next" href="#dm-load"><div class="dir">Next →</div><div class="ttl">1 · Load your files</div></a>
+    </div>
         </div>
-        <span class="pin" style="top:78px;left:26px">1</span><span class="pin" style="top:150px;left:26px">2</span><span class="pin" style="top:214px;left:26px">3</span>
-      </div>
-      <ul class="pins-key">
-        <li><span class="n">1</span> Load the current <code>data.json</code> first — the tool needs it to assign ids and skip responses it has already handled.</li>
-        <li><span class="n">2</span> Then drop the response CSVs. <code>CHANGELOG.md</code> is optional; new changes get added on top of it.</li>
-        <li><span class="n">3</span> The <strong>Loaded files</strong> list is your confirmation. Remove anything with its <strong>×</strong> if you drop the wrong file.</li>
-      </ul>
-      <p class="click">👉 <span><b>Drop</b> data.json, then the response CSV(s)</span></p>
-    </div>
+        <div class="subpage" id="page-dm-load">
+<div class="crumbs"><a href="#home">Overview</a> › <a href="#dm-home">Data Manager</a> › <span>Load your files</span></div>
+    <p class="page-eyebrow">Chapter 1</p>
+    <h1>Load your files</h1>
+    <p class="lede">Open the tool and give it the two things it needs: the current content, and the new submissions to process.</p>
 
-    <div class="wstep">
-      <h3>Open the Submission inbox</h3>
-      <p class="goal">Find the new submission waiting to be reviewed.</p>
-      <p class="do">Click the <strong>Submission inbox</strong> tab. The number on it is how many items wait. Our example shows up as a <strong>New entry</strong> card. Nothing here is live yet: a response never reaches the site until you've reviewed and accepted it.</p>
-      <div class="mk">
-        <div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html</span></div>
-        <div class="mk-body">
-          <div class="mk-tabs"><span class="mk-tab">Browse entries</span><span class="mk-tab">Triage map</span><span class="mk-tab on">Submission inbox <span class="mk-badge">1</span></span><span class="mk-tab">Drafts</span><span class="mk-tab">Rejected submissions</span></div>
-          <div class="mk-card">
-            <div class="mk-card-head"><span class="mk-type">New entry</span><span class="mk-card-name">Off-form concrete upturns near obstructions</span><span class="mk-time">submitted 2 Mar</span></div>
-            <div class="mk-card-body"><p class="muted" style="margin:0;font-size:0.9rem">The response arrives pre-filled into the entry editor below the header. You read it, tidy it, de-identify it, then accept or reject — the next steps walk through each field.</p><div class="mk-actions"><span class="mk-btn ghost">⊙ Preview</span><span class="mk-btn accept">Accept</span><span class="mk-btn reject">Reject</span></div></div>
+    <div class="walk">
+      <div class="wstep">
+        <h3>Open the Data Manager</h3>
+        <p class="goal">Get the tool running in your browser.</p>
+        <p class="do">The tool lives in the repository at <code>tools/framework-data-manager.html</code>. Open it in your browser — double-clicking works, since it runs entirely offline. You'll land on <strong>“1 · Load data.json”</strong>, with <em>“Load data.json to begin.”</em> at the bottom.</p>
+        <p class="click">👉 <span><b>Open</b> <code>tools/framework-data-manager.html</code></span></p>
+      </div>
+
+      <div class="wstep">
+        <h3>Load the current data.json (and the form responses)</h3>
+        <p class="goal">Hand it the live content plus the new submissions.</p>
+        <p class="do">First give it the <strong>current <code>data.json</code></strong> from the repository. Then drop in the response CSVs from Google Forms — up to three (new entries, edits, comments), in any order. Each box only accepts its own file type, and the tool works out which form each CSV came from. A <strong>Loaded files</strong> list confirms what's in, and anything already processed is skipped, so you can't import the same response twice.</p>
+        <div class="mk">
+          <div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html</span></div>
+          <div class="mk-body">
+            <p class="mk-h"><span class="num">1 ·</span> Load data.json</p>
+            <p class="mk-sub">Drop the current file to begin. Response CSVs can be added after.</p>
+            <div class="mk-drops">
+              <div class="mk-drop filled"><div class="lab">Current data.json ✓</div><div class="hint">data.json loaded — 63 entries</div></div>
+              <div class="mk-drop"><div class="lab">Current CHANGELOG.md <span style="font-weight:400;color:var(--text-muted)">(optional)</span></div><div class="hint">or drop a file here</div></div>
+            </div>
+            <div class="mk-drop" style="margin-top:10px"><div class="lab">Form responses (CSV)</div><div class="hint">drop new-entry, edit and comment CSVs here — any order</div></div>
+            <div class="mk-loaded"><div class="row"><span class="tick">✓</span> data.json <span style="opacity:.6">— current content</span></div><div class="row"><span class="tick">✓</span> New entry suggestions.csv <span style="opacity:.6">— 1 new response</span></div></div>
           </div>
+          <span class="pin" style="top:78px;left:26px">1</span><span class="pin" style="top:150px;left:26px">2</span><span class="pin" style="top:214px;left:26px">3</span>
         </div>
-        <span class="pin" style="top:26px;left:250px">1</span><span class="pin" style="bottom:24px;left:150px">2</span>
+        <ul class="pins-key">
+          <li><span class="n">1</span> Load the current <code>data.json</code> first — the tool needs it to assign ids and skip responses it has already handled.</li>
+          <li><span class="n">2</span> Then drop the response CSVs. <code>CHANGELOG.md</code> is optional; new changes get added on top of it.</li>
+          <li><span class="n">3</span> The <strong>Loaded files</strong> list is your confirmation. Remove anything with its <strong>×</strong> if you drop the wrong file.</li>
+        </ul>
+        <p class="click">👉 <span><b>Drop</b> data.json, then the response CSV(s)</span></p>
       </div>
-      <ul class="pins-key">
-        <li><span class="n">1</span> The <strong>Submission inbox</strong> tab, with a badge for how many items wait. <strong>Drafts</strong> (accepted, not yet published) sits two tabs right.</li>
-        <li><span class="n">2</span> Every card ends with the same three actions: <strong>Preview</strong>, <strong>Accept</strong>, <strong>Reject</strong>. Don't press anything yet — read it first.</li>
-      </ul>
-      <p class="click">👉 <span><b>Click</b> the Submission inbox tab</span></p>
     </div>
 
-    <div class="wstep">
-      <h3>Read it — and de-identify as you go</h3>
-      <p class="goal">Make sure nothing identifying a person, company or site reaches the live page.</p>
-      <p class="do">This is the one non-negotiable rule of the whole job. As you read each field, <strong>remove anything identifying</strong>: project, company, client or designer names, site addresses, and title blocks in images. The submitter's contact details sit in a separate box that is <strong>never published</strong> — but their free-text answers can still contain names, so read every field before you accept.</p>
-      <div class="callout"><h3>If in doubt, take it out</h3><p>Rewriting “on the Bligh Street job for Acme Builders” as “on a recent project” loses nothing useful and protects everyone. Keep the engineering detail; strip the identity.</p></div>
-      <p class="click">👉 <span><b>Scan</b> every field for names, addresses and title blocks</span></p>
+    <div class="callout info"><h3>Nothing leaves your computer</h3><p>The tool never uploads anything. Loading a file just lets the page read it in your browser; the originals on disk aren't changed until you export at the end.</p></div>
+
+    <div class="pager">
+      <a href="#dm-home"><div class="dir">← Back</div><div class="ttl">Data Manager overview</div></a>
+      <a class="next" href="#dm-inbox"><div class="dir">Next →</div><div class="ttl">2 · The submission inbox</div></a>
+    </div>
+        </div>
+        <div class="subpage" id="page-dm-inbox">
+<div class="crumbs"><a href="#home">Overview</a> › <a href="#dm-home">Data Manager</a> › <span>The submission inbox</span></div>
+    <p class="page-eyebrow">Chapter 2</p>
+    <h1>The submission inbox</h1>
+    <p class="lede">Where new form responses wait for you. Nothing here is live until you review and accept it.</p>
+
+    <div class="walk">
+      <div class="wstep">
+        <h3>Open the Submission inbox</h3>
+        <p class="goal">Find the new submission waiting to be reviewed.</p>
+        <p class="do">Click the <strong>Submission inbox</strong> tab. The number on it is how many items wait. Our example — <em>“Off-form concrete upturns near obstructions”</em> — shows up as a <strong>New entry</strong> card.</p>
+        <div class="mk">
+          <div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html</span></div>
+          <div class="mk-body">
+            <div class="mk-tabs"><span class="mk-tab">Browse entries</span><span class="mk-tab">Triage map</span><span class="mk-tab on">Submission inbox <span class="mk-badge">1</span></span><span class="mk-tab">Drafts</span><span class="mk-tab">Rejected submissions</span></div>
+            <div class="mk-card">
+              <div class="mk-card-head"><span class="mk-type">New entry</span><span class="mk-card-name">Off-form concrete upturns near obstructions</span><span class="mk-time">submitted 2 Mar</span></div>
+              <div class="mk-card-body"><p class="muted" style="margin:0;font-size:0.9rem">The response arrives pre-filled into the entry editor below the header. You read it, tidy it, de-identify it, then accept or reject.</p><div class="mk-actions"><span class="mk-btn ghost">⊙ Preview</span><span class="mk-btn accept">Accept</span><span class="mk-btn reject">Reject</span></div></div>
+            </div>
+          </div>
+          <span class="pin" style="top:26px;left:250px">1</span><span class="pin" style="bottom:24px;left:150px">2</span>
+        </div>
+        <ul class="pins-key">
+          <li><span class="n">1</span> The <strong>Submission inbox</strong> tab, with a badge for how many items wait. <strong>Drafts</strong> (accepted, not yet published) sits two tabs to the right.</li>
+          <li><span class="n">2</span> Every card ends with the same three actions: <strong>Preview</strong>, <strong>Accept</strong>, <strong>Reject</strong>. Don't press anything yet — read it first.</li>
+        </ul>
+        <p class="click">👉 <span><b>Click</b> the Submission inbox tab</span></p>
+      </div>
+
+      <div class="wstep">
+        <h3>Know the three kinds of item</h3>
+        <p class="goal">The inbox mixes three types of submission — they're handled differently.</p>
+        <p class="do">Each card is tagged with its type. A <strong>New entry</strong> is a brand-new topic to add. An <strong>Edit</strong> proposes a change to an entry that's already live, shown next to the current version so you can apply it in place. A <strong>Comment</strong> is a practical note from a reader to approve, tidy or skip. This chapter, and the next few, follow the <strong>New entry</strong> path; edits and comments have their own chapter.</p>
+      </div>
     </div>
 
-    <div class="wstep">
-      <h3>Check the dimension and confirm the id</h3>
-      <p class="goal">File the entry under the right dimension and lock in its permanent address.</p>
-      <p class="do">Each entry belongs to one of the five dimensions. Ours is a construction-method question, so it goes under <strong>Construction Methods</strong>. (If the submitter chose “Not sure”, you pick it here.) The tool generates a stable <strong>id</strong> from the name and warns if it's taken. <strong>Once an entry is live, never change its id</strong> — it would break saved links and related-entry connections.</p>
-      <div class="mk">
-        <div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — entry editor</span></div>
-        <div class="mk-body">
+    <div class="pager">
+      <a href="#dm-load"><div class="dir">← Back</div><div class="ttl">1 · Load your files</div></a>
+      <a class="next" href="#dm-reviewing"><div class="dir">Next →</div><div class="ttl">3 · Reviewing a new entry</div></a>
+    </div>
+        </div>
+        <div class="subpage" id="page-dm-reviewing">
+<div class="crumbs"><a href="#home">Overview</a> › <a href="#dm-home">Data Manager</a> › <span>Reviewing a new entry</span></div>
+    <p class="page-eyebrow">Chapter 3</p>
+    <h1>Reviewing a new entry</h1>
+    <p class="lede">De-identify the submission, set its dimension and id, then fill the design question, background and parameter.</p>
+    <div class="walk">
+      <div class="wstep">
+        <h3>De-identify as you read</h3>
+        <p class="goal">Make sure nothing identifying a person, company or site reaches the live page.</p>
+        <p class="do">This is the one non-negotiable rule of the whole job. As you read each field, <strong>remove anything identifying</strong>: project, company, client or designer names, site addresses, and title blocks in images. The framework is anonymous by design. The submitter's contact details sit in a separate box that is <strong>never published</strong> — but their free-text answers can still contain names, so read every field before you accept.</p>
+        <div class="callout"><h3>If in doubt, take it out</h3><p>Rewriting “on the Bligh Street job for Acme Builders” as “on a recent project” loses nothing useful and protects everyone. Keep the engineering detail; strip the identity.</p></div>
+      </div>
+      <div class="wstep">
+        <h3>Check the dimension and confirm the id</h3>
+        <p class="goal">File the entry under the right dimension and lock in its permanent address.</p>
+        <p class="do">Each entry belongs to one of the five dimensions. Ours is a construction-method question, so it goes under <strong>Construction Methods</strong>. (If the submitter chose “Not sure”, you pick it here.) The tool generates a stable <strong>id</strong> from the name and warns if it's already taken. <strong>Once an entry is live, never change its id</strong> — it would break saved links and related-entry connections.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — entry editor</span></div><div class="mk-body">
           <div class="mk-field"><span class="mk-label">Dimension</span><div class="mk-input select">Construction Methods</div></div>
           <div class="mk-field"><span class="mk-label">Entry name</span><div class="mk-input">Off-form concrete upturns near obstructions</div></div>
           <div class="mk-field"><span class="mk-label">Stable id (auto)</span><div class="mk-input"><span class="mk-id">off-form-concrete-upturns-near-obstructions</span></div></div>
-        </div>
+        </div></div>
+        <p class="click">👉 <span><b>Set</b> the dimension · <b>confirm</b> the id is unique</span></p>
       </div>
-      <p class="click">👉 <span><b>Set</b> the dimension · <b>confirm</b> the id is unique</span></p>
-    </div>
-
-    <div class="wstep">
-      <h3>Fill the design question, background and parameter</h3>
-      <p class="goal">The words a reader sees at the top of the entry.</p>
-      <p class="do">These arrive pre-filled from the form. Read them, tidy the wording, de-identify. The <strong>design question</strong> is what the entry answers; the <strong>background</strong> explains why it matters; the <strong>design parameter</strong> is the single measurable thing the thresholds are based on. You never write HTML — type, press <kbd>Enter</kbd> for a line break, and use <strong>B</strong>/<strong>I</strong> (or <kbd>Ctrl/⌘+B</kbd>) to bold or italicise.</p>
-      <div class="mk">
-        <div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — entry editor</span></div>
-        <div class="mk-body">
+      <div class="wstep">
+        <h3>Fill the design question, background and parameter</h3>
+        <p class="goal">The words a reader sees at the top of the entry.</p>
+        <p class="do">These arrive pre-filled from the form. Read them, tidy the wording, de-identify. The <strong>design question</strong> is what the entry answers; the <strong>background</strong> explains why it matters; the <strong>design parameter</strong> is the single measurable thing the thresholds are based on. You never write HTML — type, press <kbd>Enter</kbd> for a line break, and use <strong>B</strong>/<strong>I</strong> (or <kbd>Ctrl/⌘+B</kbd>) to bold or italicise.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — entry editor</span></div><div class="mk-body">
           <div class="mk-field"><span class="mk-label">Design question</span><div class="mk-input area">When designing concrete upturns near obstructions, what clearance is required for conventional formwork, and at what point should alternative systems be considered?</div></div>
           <div class="mk-field"><span class="mk-label">Design parameter</span><div class="mk-input area">Available clearance between upturn face and nearest obstruction (mm)</div></div>
           <div class="mk-field"><span class="mk-label">Background</span><div class="mk-input area">Conventional off-form concrete upturns require practical access to both sides of the formwork for placement, bracing, tying, bolt-up, stripping and inspection. This assumption breaks down when upturns are positioned close to existing fences, retaining walls, boundaries or other obstructions…</div></div>
-        </div>
+        </div></div>
+        <p class="click">👉 <span><b>Read, tidy and de-identify</b> each field</span></p>
       </div>
-      <p class="click">👉 <span><b>Read, tidy and de-identify</b> each field</span></p>
-    </div>
-
-    <div class="wstep">
-      <h3>Set the threshold bands</h3>
-      <p class="goal">The heart of the entry: what each range of the parameter means for buildability.</p>
-      <p class="do">Each band is a range of the design parameter, a rating, and its guidance. The submitter provides the guidance; <strong>you fill in the range for each band</strong>. The four ratings carry fixed colours — <span style="color:var(--green)">Best practice</span>, <span style="color:var(--yellow)">Consider</span>, <span style="color:var(--orange)">Concern</span>, <span style="color:var(--red)">Action required</span> — so severity reads at a glance. A live preview shows exactly how it will look on the site.</p>
-      <div class="mk">
-        <div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — threshold bands</span></div>
-        <div class="mk-body">
-          <div class="mk-bands">
-            <div class="mk-band green"><div><span class="rng">≥ 1000 mm</span><span class="rate">Best practice</span></div><div class="gd">Full access for formwork placement, bracing, bolt-up, and stripping. Both coil tie and threaded bar systems feasible.</div></div>
-            <div class="mk-band yellow"><div><span class="rng">700 – 1000 mm</span><span class="rate">Consider</span></div><div class="gd">Coil tie system feasible but access is tight — a person cannot comfortably work behind the upturn. Consider whether alternatives would be simpler.</div></div>
-            <div class="mk-band orange"><div><span class="rng">350 – 700 mm</span><span class="rate">Concern</span></div><div class="gd">Coil ties cannot be used (plywood + timbers + bolt = 700 mm minimum). Threaded bar only, tightened by reaching in at arm's length. Only for upturns/walls up to ~1200 mm high.</div></div>
-            <div class="mk-band red"><div><span class="rng">&lt; 350 mm</span><span class="rate">Action required</span></div><div class="gd">Conventional double-sided off-form construction is unlikely to be feasible without redesign, specialist one-sided forming, temporary access from the adjacent side, or an alternative construction system.</div></div>
-          </div>
-        </div>
-      </div>
-      <p class="click">👉 <span><b>Fill the range</b> for every band · check the colours read correctly</span></p>
-    </div>
-
-    <div class="wstep">
-      <h3>Add search keywords, element and stage</h3>
-      <p class="goal">Help people find the entry, and tag what it applies to.</p>
-      <p class="do">Search already works on everything written in the entry, so keywords are a top-up: words a searcher might type that aren't already in the text — trade slang (“reo”), other names (“upstand”, “nib”, “kerb”, “parapet”), or the plain way someone describes the problem (“no room to form”). Then tag the <strong>element(s)</strong> and <strong>lifecycle stage(s)</strong> it applies to.</p>
-      <div class="mk">
-        <div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — entry editor</span></div>
-        <div class="mk-body">
+      <div class="wstep">
+        <h3>Add search keywords, element and stage</h3>
+        <p class="goal">Help people find the entry, and tag what it applies to.</p>
+        <p class="do">Search already works on everything written in the entry, so keywords are a top-up: words a searcher might type that aren't already in the text — trade slang (“reo”), other names (“upstand”, “nib”, “kerb”, “parapet”), or the plain way someone describes the problem (“no room to form”). Then tag the <strong>element(s)</strong> and <strong>lifecycle stage(s)</strong> it applies to.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — entry editor</span></div><div class="mk-body">
           <div class="mk-field"><span class="mk-label">Search keywords</span><div class="mk-chips"><span class="mk-chip">upstand</span><span class="mk-chip">nib</span><span class="mk-chip">kerb</span><span class="mk-chip">parapet</span><span class="mk-chip">blade wall</span><span class="mk-chip">single-sided formwork</span><span class="mk-chip">tight access</span><span class="mk-chip">no room to form</span></div></div>
           <div class="mk-field"><span class="mk-label">Element(s)</span><div class="mk-chips"><span class="mk-chip on">wall</span><span class="mk-chip">slab</span><span class="mk-chip">beam</span><span class="mk-chip">column</span></div></div>
           <div class="mk-field"><span class="mk-label">Lifecycle stage(s)</span><div class="mk-chips"><span class="mk-chip on">formwork</span><span class="mk-chip">reinforcement</span><span class="mk-chip">pour</span><span class="mk-chip">curing</span></div></div>
-        </div>
+        </div></div>
+        <p class="click">👉 <span><b>Add</b> a handful of keywords · <b>tick</b> the element and stage</span></p>
       </div>
-      <p class="click">👉 <span><b>Add</b> a handful of keywords · <b>tick</b> the element and stage</span></p>
     </div>
-
-    <div class="wstep">
-      <h3>Preview it</h3>
-      <p class="goal">See the entry exactly as a visitor to the site will.</p>
-      <p class="do">Press <strong>Preview</strong> on the card to open the live-site view. This is your last read-through: check the wording, that the bands make sense in order, and — one more time — that nothing identifying slipped through. If something's off, close the preview and fix the field.</p>
-      <div class="mk">
-        <div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">Preview — live-site view</span></div>
-        <div class="mk-body">
-          <div class="mk-preview">
-            <div class="pv-name">Off-form concrete upturns near obstructions</div>
-            <div class="pv-dim">Construction Methods · 📍 NSW, Australia</div>
-            <div class="mk-bands">
-              <div class="mk-band green"><div><span class="rng">≥ 1000 mm</span><span class="rate">Best practice</span></div><div class="gd">Full access for formwork placement, bracing, bolt-up, and stripping.</div></div>
-              <div class="mk-band orange"><div><span class="rng">350 – 700 mm</span><span class="rate">Concern</span></div><div class="gd">Coil ties cannot be used. Threaded bar only, tightened by reaching in at arm's length.</div></div>
-              <div class="mk-band red"><div><span class="rng">&lt; 350 mm</span><span class="rate">Action required</span></div><div class="gd">Conventional double-sided off-form construction is unlikely to be feasible without redesign…</div></div>
-            </div>
+    <div class="pager">
+      <a href="#dm-inbox"><div class="dir">← Back</div><div class="ttl">2 · The submission inbox</div></a>
+      <a class="next" href="#dm-bands"><div class="dir">Next →</div><div class="ttl">4 · Threshold bands</div></a>
+    </div>
+        </div>
+        <div class="subpage" id="page-dm-bands">
+<div class="crumbs"><a href="#home">Overview</a> › <a href="#dm-home">Data Manager</a> › <span>Threshold bands</span></div>
+    <p class="page-eyebrow">Chapter 4</p>
+    <h1>Threshold bands</h1>
+    <p class="lede">The heart of an entry: the ranges of the design parameter, their ratings, and the colour scale a reader sees at a glance.</p>
+    <p>Threshold bands are the heart of an entry. Each band is a <strong>range</strong> of the design parameter, a <strong>rating</strong>, and the <strong>guidance</strong> shown for that range. The submitter provides the guidance; <strong>you fill in the range for each band</strong>. The four ratings carry fixed colours, so a reader sees the severity at a glance:</p>
+    <div class="walk">
+      <div class="wstep">
+        <h3>Set the range for each band</h3>
+        <p class="goal">Turn the submitter's guidance into ordered, colour-coded ranges.</p>
+        <p class="do">Work from best to worst. Each band's colour is fixed by its rating — <span style="color:var(--green)">Best practice</span>, <span style="color:var(--yellow)">Consider</span>, <span style="color:var(--orange)">Concern</span>, <span style="color:var(--red)">Action required</span> — so you only choose the numbers. A live preview beside each field shows how it will look on the site.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — threshold bands</span></div><div class="mk-body"><div class="mk-bands">
+          <div class="mk-band green"><div><span class="rng">≥ 1000 mm</span><span class="rate">Best practice</span></div><div class="gd">Full access for formwork placement, bracing, bolt-up, and stripping. Both coil tie and threaded bar systems feasible.</div></div>
+          <div class="mk-band yellow"><div><span class="rng">700 – 1000 mm</span><span class="rate">Consider</span></div><div class="gd">Coil tie system feasible but access is tight — a person cannot comfortably work behind the upturn. Consider whether alternatives would be simpler.</div></div>
+          <div class="mk-band orange"><div><span class="rng">350 – 700 mm</span><span class="rate">Concern</span></div><div class="gd">Coil ties cannot be used (plywood + timbers + bolt = 700 mm minimum). Threaded bar only, tightened by reaching in at arm's length. Only for upturns/walls up to ~1200 mm high.</div></div>
+          <div class="mk-band red"><div><span class="rng">&lt; 350 mm</span><span class="rate">Action required</span></div><div class="gd">Conventional double-sided off-form construction is unlikely to be feasible without redesign, specialist one-sided forming, temporary access from the adjacent side, or an alternative construction system.</div></div>
+        </div></div></div>
+        <p class="click">👉 <span><b>Fill the range</b> for every band · check the colours read in order</span></p>
+      </div>
+      <div class="wstep">
+        <h3>Preview it</h3>
+        <p class="goal">See the entry exactly as a visitor will.</p>
+        <p class="do">Press <strong>Preview</strong> on the card to open the live-site view. This is your last read-through: check the wording, that the bands run in order, and — one more time — that nothing identifying slipped through. If something's off, close the preview and fix the field.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">Preview — live-site view</span></div><div class="mk-body"><div class="mk-preview">
+          <div class="pv-name">Off-form concrete upturns near obstructions</div>
+          <div class="pv-dim">Construction Methods · 📍 NSW, Australia</div>
+          <div class="mk-bands">
+            <div class="mk-band green"><div><span class="rng">≥ 1000 mm</span><span class="rate">Best practice</span></div><div class="gd">Full access for formwork placement, bracing, bolt-up, and stripping.</div></div>
+            <div class="mk-band orange"><div><span class="rng">350 – 700 mm</span><span class="rate">Concern</span></div><div class="gd">Coil ties cannot be used. Threaded bar only, tightened by reaching in at arm's length.</div></div>
+            <div class="mk-band red"><div><span class="rng">&lt; 350 mm</span><span class="rate">Action required</span></div><div class="gd">Conventional double-sided off-form construction is unlikely to be feasible without redesign…</div></div>
           </div>
-        </div>
+        </div></div></div>
+        <p class="click">👉 <span><b>Click</b> Preview · read it as a visitor would</span></p>
       </div>
-      <p class="click">👉 <span><b>Click</b> Preview · read it as a visitor would</span></p>
+      <div class="wstep">
+        <h3>Accept it</h3>
+        <p class="goal">Send the reviewed entry to Drafts.</p>
+        <p class="do">Happy with it? Press <strong>Accept</strong>. The card marks itself <em>“✓ Will be applied”</em> and the entry moves to the <strong>Drafts</strong> tab — accepted, but not yet live. (Press <strong>Reject</strong> instead and you can add a reason that stays with the record, then send it back to the inbox later — nothing is ever forced through.)</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Submission inbox</span></div><div class="mk-body"><div class="mk-card">
+          <div class="mk-card-head"><span class="mk-type">New entry</span><span class="mk-card-name">Off-form concrete upturns near obstructions</span><span class="mk-time" style="color:var(--green)">✓ Will be applied</span></div>
+          <div class="mk-card-body"><div class="mk-actions"><span class="mk-btn ghost">Undo</span><span class="mk-btn ghost">⊙ Preview</span></div></div>
+        </div></div></div>
+        <p class="click">👉 <span><b>Click</b> Accept</span></p>
+      </div>
     </div>
+    <div class="callout info"><h3>It's now a Draft</h3><p>The entry is accepted but invisible to the public. Repeat chapters 2–4 for every item in the inbox, then move on to publishing.</p></div>
+    <div class="pager">
+      <a href="#dm-reviewing"><div class="dir">← Back</div><div class="ttl">3 · Reviewing a new entry</div></a>
+      <a class="next" href="#dm-publishing"><div class="dir">Next →</div><div class="ttl">5 · Drafts &amp; publishing</div></a>
+    </div>
+        </div>
+        <div class="subpage" id="page-dm-publishing">
+<div class="crumbs"><a href="#home">Overview</a> › <a href="#dm-home">Data Manager</a> › <span>Drafts &amp; publishing</span></div>
+    <p class="page-eyebrow">Chapter 5</p>
+    <h1>Drafts &amp; publishing</h1>
+    <p class="lede">Review everything you've accepted, publish it, download the updated data.json, and update the changelog.</p>
+    <p>Once you've worked through the whole inbox, everything you accepted is waiting in <strong>Drafts</strong> — reviewed, but not yet on the live site. Publishing turns those drafts into the real <code>data.json</code> you push to GitHub.</p>
+    <div class="walk">
+      <div class="wstep">
+        <h3>Open the Drafts tab</h3>
+        <p class="goal">See everything you've accepted this session in one place.</p>
+        <p class="do">Click <strong>Drafts</strong>. Each accepted entry is listed here. Nothing on this tab is public yet — it's your staging area.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html</span></div><div class="mk-body">
+          <div class="mk-tabs"><span class="mk-tab">Browse entries</span><span class="mk-tab">Triage map</span><span class="mk-tab">Submission inbox</span><span class="mk-tab on">Drafts <span class="mk-badge">1</span></span><span class="mk-tab">Rejected submissions</span></div>
+          <div class="mk-card"><div class="mk-card-head"><span class="mk-type" style="color:var(--accent);background:var(--accent-glow);border-color:var(--accent)">Draft</span><span class="mk-card-name">Off-form concrete upturns near obstructions</span><span class="mk-time">Construction Methods</span></div><div class="mk-card-body"><div class="mk-actions"><span class="mk-btn ghost">⊙ Preview</span><span class="mk-btn ghost">Edit</span><span class="mk-btn ghost">Back to inbox</span></div></div></div>
+        </div></div>
+        <p class="click">👉 <span><b>Click</b> the Drafts tab</span></p>
+      </div>
+      <div class="wstep">
+        <h3>Review them together</h3>
+        <p class="goal">One last look across everything before it goes live.</p>
+        <p class="do">Preview each draft one more time. This is where you catch anything odd that only shows up when you see the batch side by side — a duplicate, a wrong dimension, an entry that should really link to another. If something needs more work, you can edit it or send it back to the inbox.</p>
+      </div>
+      <div class="wstep">
+        <h3>Export the updated data.json</h3>
+        <p class="goal">Produce the file you'll commit.</p>
+        <p class="do">Open the <strong>Export data.json</strong> section and run the <strong>Health check</strong> first — it flags obvious problems (a missing field, a broken link) before you ship. When it's clean, download the updated <code>data.json</code>. This is the single file the live site reads, so this download <em>is</em> the publish.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Export</span></div><div class="mk-body">
+          <p class="mk-h">Export data.json</p>
+          <div class="mk-loaded"><div class="row"><span class="tick">✓</span> Health check passed — no problems found</div><div class="row"><span class="tick">✓</span> 1 new entry, 0 edits applied</div></div>
+          <div class="mk-actions"><span class="mk-btn">Re-check</span><span class="mk-btn primary" style="background:var(--accent);border-color:var(--accent);color:#fff">⬇ Download data.json</span></div>
+        </div></div>
+        <p class="click">👉 <span><b>Run</b> the Health check · <b>Download</b> data.json</span></p>
+      </div>
+      <div class="wstep">
+        <h3>Update the changelog</h3>
+        <p class="goal">Keep a plain record of what changed.</p>
+        <p class="do">The <strong>Changelog</strong> section lists what this session added or changed and lets you download an updated <code>CHANGELOG.md</code>. Grab it — it's a small courtesy to the next person (or future you) that makes the history readable at a glance.</p>
+        <p class="click">👉 <span><b>Download</b> the updated CHANGELOG.md</span></p>
+      </div>
+      <div class="wstep">
+        <h3>Commit &amp; push</h3>
+        <p class="goal">Put the new files in the repository so the live site updates.</p>
+        <p class="do">Replace <code>data.json</code> and <code>CHANGELOG.md</code> in the repository with your downloads (and add any new images — see the Image Formatter guide), then commit and push to GitHub. Give the Doctor a run first if you added images. The live site rebuilds itself from what you push.</p>
+      </div>
+    </div>
+    <div class="pager">
+      <a href="#dm-bands"><div class="dir">← Back</div><div class="ttl">4 · Threshold bands</div></a>
+      <a class="next" href="#dm-edits"><div class="dir">Next →</div><div class="ttl">6 · Edits &amp; comments</div></a>
+    </div>
+        </div>
+        <div class="subpage" id="page-dm-edits">
+<div class="crumbs"><a href="#home">Overview</a> › <a href="#dm-home">Data Manager</a> › <span>Edits &amp; comments</span></div>
+    <p class="page-eyebrow">Chapter 6</p>
+    <h1>Edits &amp; comments</h1>
+    <p class="lede">The other two kinds of submission — proposed changes to live entries, and reader comments — and how they differ from a new entry.</p>
+    <p>New entries are only one of three things that land in the inbox. The other two are handled a little differently — but the same rules apply: read carefully, de-identify, and nothing goes live until you accept it.</p>
+    <h2>Edits — a proposed change to a live entry</h2>
+    <p>An <strong>Edit</strong> is someone suggesting a change to an entry that's already published. The tool shows the proposed wording against what's currently live, so you can see exactly what would change and apply it (or adjust it) in place. You're not creating a new entry — you're updating an existing one, keeping its id.</p>
+    <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Submission inbox</span></div><div class="mk-body"><div class="mk-card">
+      <div class="mk-card-head"><span class="mk-type" style="color:var(--yellow);background:var(--yellow-bg);border-color:var(--yellow)">Edit</span><span class="mk-card-name">Off-form concrete upturns near obstructions</span><span class="mk-time">proposed change</span></div>
+      <div class="mk-card-body"><div class="mk-field"><span class="mk-label">Currently live</span><div class="mk-input area">Coil ties cannot be used below 700&nbsp;mm.</div></div><div class="mk-field"><span class="mk-label">Proposed</span><div class="mk-input area" style="border-color:var(--yellow)">Coil ties cannot be used below 700&nbsp;mm (plywood + timbers + bolt). Threaded bar only.</div></div><div class="mk-actions"><span class="mk-btn ghost">⊙ Preview</span><span class="mk-btn accept">Apply change</span><span class="mk-btn reject">Reject</span></div></div>
+    </div></div></div>
+    <h2>Comments — a note from a reader</h2>
+    <p>A <strong>Comment</strong> is a short practical note left against an entry — a field tip, a caveat, a “watch out for…”. You approve it (tidying the wording and de-identifying as always), or skip it. Approved comments appear under the entry on the live site.</p>
+    <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Submission inbox</span></div><div class="mk-body"><div class="mk-card">
+      <div class="mk-card-head"><span class="mk-type" style="color:var(--accent);background:var(--accent-glow);border-color:var(--accent)">Comment</span><span class="mk-card-name">Off-form concrete upturns near obstructions</span><span class="mk-time">reader note</span></div>
+      <div class="mk-card-body"><div class="mk-input area">On tight sites we've had success casting the upturn separately after the slab, with a kicker and a single-sided form tied back to cast-in ferrules.</div><div class="mk-actions"><span class="mk-btn accept">Approve</span><span class="mk-btn ghost">Edit wording</span><span class="mk-btn reject">Skip</span></div></div>
+    </div></div></div>
+    <div class="callout info"><h3>Same discipline every time</h3><p>Whether it's a new entry, an edit or a comment: read every word, strip anything identifying, and only then accept. That habit is the whole job.</p></div>
+    <div class="pager">
+      <a href="#dm-publishing"><div class="dir">← Back</div><div class="ttl">5 · Drafts &amp; publishing</div></a>
+      <a class="next" href="#dm-decision-path"><div class="dir">Next →</div><div class="ttl">Decision path (by hand)</div></a>
+    </div>
+        </div>
+        <div class="subpage" id="page-dm-decision-path">
+<div class="crumbs"><a href="#home">Overview</a> › <a href="#dm-home">Data Manager</a> › <span>Decision path</span></div>
+    <p class="page-eyebrow">Advanced</p>
+    <h1>Decision path (by hand)</h1>
+    <p class="lede">The one thing the tool doesn't manage: the branching decision path that links the reactive-ground entries, edited directly in data.json.</p>
+    <p>Almost everything in the framework is managed inside the tools — including the “related entries” links between entries. There is exactly <strong>one</strong> thing that isn't, and this page is the whole of it. If you never touch the reactive-ground entries, you'll never need this.</p>
+    <h2>What it is</h2>
+    <p>A handful of entries about building on <strong>reactive ground</strong> form a small branching decision. One entry is the <em>start</em> — it asks the top-level question and points to two follow-on entries, one for each branch. It looks like this on the live site:</p>
+    <figure>
+      <svg viewBox="0 0 680 210" role="img" xmlns="http://www.w3.org/2000/svg">
+        <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect class="dia-tool" x="190" y="16" width="300" height="46" rx="8"/><text class="dia-t" x="340" y="35" text-anchor="middle">Found below vs stiffen slab on top</text><text class="dia-ts" x="340" y="51" text-anchor="middle">the start entry · role: "start"</text>
+        <rect class="dia-box" x="30" y="140" width="270" height="46" rx="8"/><text class="dia-t" x="165" y="159" text-anchor="middle">Stiffened raft vs waffle pod</text><text class="dia-ts" x="165" y="175" text-anchor="middle">groundBearing branch</text>
+        <rect class="dia-box" x="380" y="140" width="270" height="46" rx="8"/><text class="dia-t" x="515" y="159" text-anchor="middle">Flat plate vs beam-and-slab</text><text class="dia-ts" x="515" y="175" text-anchor="middle">pileSupported branch</text>
+        <path class="dia-arr" d="M300 62 L300 100 L165 100 L165 138" marker-end="url(#ah)"/>
+        <path class="dia-arr" d="M380 62 L380 100 L515 100 L515 138" marker-end="url(#ah)"/>
+        <text class="dia-ts" x="230" y="94" text-anchor="middle">staying ground-bearing</text>
+        <text class="dia-ts" x="452" y="94" text-anchor="middle">founding below, on piles</text>
+      </svg>
+      <figcaption>The start entry branches into two follow-on entries. The wiring that makes this happen is a small <code>decisionPath</code> field, edited by hand.</figcaption>
+    </figure>
+    <h2>How it's stored</h2>
+    <p>It's a small <code>decisionPath</code> object on the <code>data</code> of each entry. The <strong>start</strong> entry declares itself and names its two branches by their ids:</p>
+    <pre class="cb">"decisionPath": {
+  "role": "start",
+  "groundBearing": "raft-slab-vs-waffle-pod",
+  "pileSupported": "pile-supported-beam-and-slab-vs-flat-slab"
+}</pre>
+    <p>Each of the two <strong>branch</strong> entries points back up to the start:</p>
+    <pre class="cb">"decisionPath": {
+  "start": "found-below-reactive-ground-vs-stiffened-slab-on-top"
+}</pre>
+    <h2>How to edit it</h2>
+    <ol>
+      <li>Open <code>data.json</code> in a text editor.</li>
+      <li>Find the entry by its <code>id</code> (the same stable id the Data Manager shows).</li>
+      <li>Add or adjust the <code>decisionPath</code> object on that entry's <code>data</code>, using the shapes above. The ids in it must match real entry ids exactly.</li>
+      <li>Save, then open the live site (or the Data Manager preview) to confirm the “Decision path” box appears and its links work.</li>
+    </ol>
+    <div class="callout"><h3>This is the only hand-edit</h3><p>Related-entry “see also” links are <em>not</em> edited here — those are managed in the Data Manager with the <strong>Links</strong> button. The <code>decisionPath</code> wiring on the reactive-ground entries is the single exception, and this page is all of it.</p></div>
+    <div class="pager">
+      <a href="#dm-edits"><div class="dir">← Back</div><div class="ttl">6 · Edits &amp; comments</div></a>
+      <a class="disabled">&nbsp;</a>
+    </div>
+        </div>
+      </main>
+  </div>
+</div>
 
-    <div class="wstep">
-      <h3>Accept it</h3>
-      <p class="goal">Send the reviewed entry to Drafts, ready to publish.</p>
-      <p class="do">Happy with it? Press <strong>Accept</strong>. The card marks itself <em>“✓ Will be applied”</em> and the entry moves to the <strong>Drafts</strong> tab — accepted, but not yet on the live site. (Press <strong>Reject</strong> instead and you can add a reason that stays with the record, then send it back to the inbox later — nothing is ever forced through.)</p>
-      <div class="mk">
-        <div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Submission inbox</span></div>
-        <div class="mk-body">
-          <div class="mk-card">
-            <div class="mk-card-head"><span class="mk-type">New entry</span><span class="mk-card-name">Off-form concrete upturns near obstructions</span><span class="mk-time" style="color:var(--green)">✓ Will be applied</span></div>
-            <div class="mk-card-body"><div class="mk-actions"><span class="mk-btn ghost">Undo</span><span class="mk-btn ghost">⊙ Preview</span></div></div>
+<div class="section" id="section-image-formatter">
+  <div class="layout"><div style="display:none"></div>
+    <main class="content" style="grid-column:1/-1">
+<div class="crumbs"><a href="#home">Overview</a> › <span>Image Formatter</span></div>
+    <p class="page-eyebrow">Supporting tool</p>
+    <h1>Image Formatter</h1>
+    <p class="lede">Get photos and drawings ready for the framework: consistent format, sensible size, unique names — and, importantly, GPS and camera data stripped out.</p>
+    <p>Why it exists: images that go straight from a phone into the repo are huge, carry embedded location data, and often clash with names already in use. This tool fixes all three in one pass. It runs in your browser and uploads nothing.</p>
+
+    <div class="walk">
+      <div class="wstep" id="load">
+        <h3>Load data.json and add your images</h3>
+        <p class="goal">Let the tool see which image names are already taken, then bring in the new ones.</p>
+        <p class="do">Drop in the current <code>data.json</code> first — the tool reads it so it can give every new image a name that doesn't collide with an existing one. Then add the images you want to prepare (drag them in or browse).</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-image-formatter.html</span></div><div class="mk-body">
+          <p class="mk-h"><span class="num">1 ·</span> Load data.json</p>
+          <div class="mk-drop filled" style="margin-bottom:10px"><div class="lab">data.json ✓</div><div class="hint">existing framework images found — new names will avoid clashes</div></div>
+          <p class="mk-h" style="margin-top:6px"><span class="num">2 ·</span> Add images</p>
+          <div class="mk-drop"><div class="lab">Drop images here</div><div class="hint">JPEG, PNG or WebP — drag in or browse</div></div>
+        </div></div>
+        <p class="click">👉 <span><b>Drop</b> data.json, then <b>add</b> your images</span></p>
+      </div>
+
+      <div class="wstep" id="output">
+        <h3>Choose the output settings</h3>
+        <p class="goal">One set of settings applied to every image.</p>
+        <p class="do">Pick the <strong>format</strong> (WebP is a good default — small and sharp), a <strong>maximum long side</strong> so large photos get resized down, and a <strong>quality</strong> level. These apply to all the images at once; you can still override a single image in the next step.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-image-formatter.html</span></div><div class="mk-body">
+          <p class="mk-h"><span class="num">3 ·</span> Output settings</p>
+          <div class="mk-field"><span class="mk-label">Output format</span><div class="mk-input select">WebP (all)</div></div>
+          <div class="mk-field"><span class="mk-label">Resize — max long side</span><div class="mk-input select">1600 px</div></div>
+          <div class="mk-field"><span class="mk-label">Quality</span><div class="mk-input select">82</div></div>
+        </div></div>
+        <p class="click">👉 <span><b>Set</b> format, size and quality</span></p>
+      </div>
+
+      <div class="wstep" id="download">
+        <h3>Download and place them in images/</h3>
+        <p class="goal">Get clean, uniquely-named files and drop them in the repo.</p>
+        <p class="do">Each image shows its new, unique name and its converted size. Rename any if you like, or override the format for one, then download. Move the downloaded files into the repository's <code>images/</code> folder. When you reference an image in an entry, you use this name.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-image-formatter.html</span></div><div class="mk-body">
+          <p class="mk-h"><span class="num">4 ·</span> Images to download</p>
+          <div class="mk-loaded" style="font-size:0.85rem">
+            <div class="row"><span class="tick">✓</span> <span class="mk-id">off-form-upturn-tight-access.webp</span> <span style="opacity:.6">— 1600px · 148 KB</span></div>
+            <div class="row"><span class="tick">✓</span> <span class="mk-id">off-form-upturn-threaded-bar.webp</span> <span style="opacity:.6">— 1600px · 121 KB</span></div>
           </div>
-        </div>
+          <div class="mk-actions"><span class="mk-btn">Rename</span><span class="mk-btn primary" style="background:var(--accent);border-color:var(--accent);color:#fff">⬇ Download all</span></div>
+        </div></div>
+        <p class="click">👉 <span><b>Download</b> · move the files into <code>images/</code></span></p>
       </div>
-      <p class="click">👉 <span><b>Click</b> Accept</span></p>
     </div>
-  </div>
 
-  <div class="wrap" style="padding-top:8px">
-    <div class="callout info"><h3>Your entry is now a Draft</h3><p>You've turned one form response into a clean, reviewed entry. It sits in <strong>Drafts</strong>, invisible to the public. When you've worked the whole inbox, you review the drafts together, <strong>publish</strong> them, and <strong>download the updated <code>data.json</code></strong> — then prepare images and run the Doctor before committing. That publishing half is the next part of this section, which I'm building next.</p></div>
+    <div class="callout"><h3>Location data is removed for you</h3><p>Re-encoding strips the embedded EXIF metadata — including GPS coordinates and camera details — so a site photo can't quietly reveal where it was taken. That happens automatically; you don't have to do anything.</p></div>
+    </main>
   </div>
-</section>
+</div>
 
-<section id="image-formatter" class="tool-band">
-  <div class="wrap">
-    <p class="sec-label">Supporting tool · walkthrough</p>
-    <h2>Image Formatter</h2>
-    <p class="muted">Coming next — the same step-by-step treatment: loading <code>data.json</code>, adding images, output settings (format, resize, quality), and downloading uniquely-named files with GPS/camera data stripped.</p>
-  </div>
-</section>
+<div class="section" id="section-framework-doctor">
+  <div class="layout"><div style="display:none"></div>
+    <main class="content" style="grid-column:1/-1">
+<div class="crumbs"><a href="#home">Overview</a> › <span>Framework Doctor</span></div>
+    <p class="page-eyebrow">Supporting tool</p>
+    <h1>Framework Doctor</h1>
+    <p class="lede">A read-only health check. It looks at your <code>data.json</code> and your <code>images/</code> folder and tells you what doesn't match — before it reaches the live site.</p>
+    <p>The Doctor never changes anything. It only reports. Run it as the last step before you commit, so you never push an entry that points at an image you forgot to add.</p>
 
-<section id="doctor" class="tool-band">
-  <div class="wrap">
-    <p class="sec-label">Supporting tool · walkthrough</p>
-    <h2>Framework Doctor</h2>
-    <p class="muted">Coming next — a short one: point it at <code>data.json</code> and the <code>images/</code> folder, read the report of missing and orphaned images, and clear it before you commit.</p>
+    <div class="walk">
+      <div class="wstep" id="run">
+        <h3>Run the check</h3>
+        <p class="goal">Give it the two things it compares.</p>
+        <p class="do">Open <code>tools/framework-doctor.html</code>, drop in your updated <code>data.json</code>, and point it at your <code>images/</code> folder. It compares the image names entries refer to against the files actually present.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-doctor.html</span></div><div class="mk-body">
+          <div class="mk-drops">
+            <div class="mk-drop filled"><div class="lab">data.json ✓</div><div class="hint">64 entries scanned</div></div>
+            <div class="mk-drop filled"><div class="lab">images/ folder ✓</div><div class="hint">211 files</div></div>
+          </div>
+        </div></div>
+        <p class="click">👉 <span><b>Load</b> data.json and the images folder</span></p>
+      </div>
+
+      <div class="wstep" id="report">
+        <h3>Read the report and act on it</h3>
+        <p class="goal">Two kinds of problem to clear.</p>
+        <p class="do"><strong>Missing</strong> means an entry refers to an image that isn't in the folder — that one will look broken on the live site, so add the file (via the Image Formatter) or fix the reference. <strong>Orphaned</strong> means an image sits in the folder that no entry uses — harmless, but worth tidying. Aim for zero missing before you commit.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-doctor.html — report</span></div><div class="mk-body">
+          <div class="mk-loaded" style="font-size:0.9rem">
+            <div class="row"><span class="tick" style="color:var(--green)">●</span> <strong>Missing images: 0</strong> <span style="opacity:.6">— every referenced image is present</span></div>
+            <div class="row"><span style="color:var(--yellow)">●</span> <strong>Orphaned images: 2</strong> <span style="opacity:.6">— in the folder but unused</span></div>
+          </div>
+          <div class="mk-loaded" style="margin-top:6px;font-size:0.82rem"><div class="row" style="opacity:.75"><span class="mk-id">old-detail-v1.png</span> · <span class="mk-id">unused-sketch.jpg</span></div></div>
+        </div></div>
+        <p class="click">👉 <span><b>Clear</b> anything under “Missing” before you commit</span></p>
+      </div>
+    </div>
+
+    <div class="callout info"><h3>Last stop before commit</h3><p>Nothing here changes your files — the Doctor just looks. Run it after you've exported <code>data.json</code> and added your images, as the final check before pushing to GitHub.</p></div>
+    </main>
   </div>
-</section>
+</div>
 
 <footer>
   <div class="wrap">
     <p>Maintainer's manual for the <a href="https://david-reset.github.io/Concrete-Structures-Constructability-Framework/" target="_blank" rel="noopener">Constructability Framework for Reinforced Concrete Design</a>.</p>
-    <p class="muted">The tools run locally in your browser and upload nothing. Nothing here replaces engineering judgement — it just keeps the framework running.</p>
+    <p class="muted">The tools run locally in your browser and upload nothing. Nothing here replaces engineering judgement.</p>
   </div>
 </footer>
 
 <script>
 (function(){
-  function applyTheme(t){var theme=t==='light'?'light':'dark';document.documentElement.setAttribute('data-theme',theme);try{localStorage.setItem('theme',theme);}catch(e){}var ic=document.getElementById('theme-toggle-icon');if(ic)ic.textContent=theme==='light'?'\u2600\uFE0F':'\uD83C\uDF19';}
-  function toggleTheme(){var cur=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';applyTheme(cur==='light'?'dark':'light');}
-  window.toggleTheme=toggleTheme;
-  document.addEventListener('DOMContentLoaded',function(){var cur=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';var ic=document.getElementById('theme-toggle-icon');if(ic)ic.textContent=cur==='light'?'\u2600\uFE0F':'\uD83C\uDF19';});
+  function applyTheme(t){var th=t==='light'?'light':'dark';document.documentElement.setAttribute('data-theme',th);try{localStorage.setItem('theme',th);}catch(e){}var ic=document.getElementById('theme-toggle-icon');if(ic)ic.textContent=th==='light'?'\u2600\uFE0F':'\uD83C\uDF19';}
+  window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';applyTheme(c==='light'?'dark':'light');};
+
+  function render(id){
+    if(!id) id='home';
+    var isDM=id.indexOf('dm')===0;
+    var secs=document.querySelectorAll('.section');
+    for(var i=0;i<secs.length;i++) secs[i].style.display='none';
+    if(isDM){
+      document.getElementById('section-dm').style.display='';
+      var subs=document.querySelectorAll('#section-dm .subpage');
+      for(var j=0;j<subs.length;j++) subs[j].style.display='none';
+      var pg=document.getElementById('page-'+id)||document.getElementById('page-dm-home');
+      pg.style.display='';
+      var links=document.querySelectorAll('#section-dm .sidebar a');
+      for(var k=0;k<links.length;k++) links[k].classList.toggle('on',links[k].getAttribute('href')==='#'+id);
+    } else {
+      var sec=document.getElementById('section-'+id);
+      if(!sec){sec=document.getElementById('section-home');id='home';}
+      sec.style.display='';
+    }
+    var tn=document.querySelectorAll('.topnav a');
+    for(var n=0;n<tn.length;n++){var h=tn[n].getAttribute('href').slice(1);tn[n].classList.toggle('on',(h===id)||(h==='dm-home'&&isDM));}
+    var ic=document.getElementById('theme-toggle-icon');if(ic){var cur=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';ic.textContent=cur==='light'?'\u2600\uFE0F':'\uD83C\uDF19';}
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange',function(){render(location.hash.slice(1));});
+  render(location.hash.slice(1)||'home');
 })();
 </script>
 </body>
