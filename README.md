@@ -29,7 +29,6 @@ Every entry in the framework follows the same general display format:
 
 - **Design Question** — what specific design question is being answered
 - **Location** — the country and/or state where the evidence was gathered, shown near the entry heading (see [Regional applicability](#regional-applicability))
-- **Tags** — the structural element(s) and construction stage(s) the entry relates to, shown as chips and used by the element and stage filters
 - **Background** — why this matters for constructability *(optional)*
 - **Design Parameter** — what the engineer can measure, count, or assess from their drawings
 - **Design Guidance** — threshold bands rated as Best practice, Consider, Concern, or Action required
@@ -76,15 +75,12 @@ As the framework grows and receives contributions from different regions, users 
 ### Live site
 The framework is hosted at: <a href="https://david-reset.github.io/Concrete-Structures-Constructability-Framework/" target="_blank"><strong>https://david-reset.github.io/Concrete-Structures-Constructability-Framework/</strong></a>
 
-Browse by dimension, read the general guidance, then explore specific entries relevant to your design decisions. Within each dimension you can filter entries by **region**, by **structural element** (slab, wall, column, pile…), and by **construction stage** (formwork, pour, curing…) to focus on what's relevant.
+Browse by dimension, read the general guidance, then explore specific entries relevant to your design decisions. Use the region filter within each dimension to focus on entries relevant to your location.
 
 ### Searching
 The home page has a search box that looks across **all five dimensions at once**. Describe your design problem in plain language — for example "wall close to a boundary", "stirrup size", or "curing" — and the framework returns the entries that best match, ranked with the strongest match first. You can also narrow results to a region.
 
 Search is **automatic**: it reads the text already written in each entry (the name, design question, background and guidance) and matches your words against it. You don't need to know an entry's name, and nothing has to be tagged for an entry to be found. Rarer, more specific words (such as "boundary" or "stirrup") count for more than common ones (such as "wall" or "concrete"), and weak, incidental matches are dropped so results stay relevant. Maintainers can optionally reinforce this with [search keywords](#search-keywords-optional) on individual entries.
-
-### Guided triage
-If you're not sure what to search for, **Run guided triage** on the home page asks a few quick questions about the job — first which structural elements are present (suspended slabs, walls, piles…), then a handful of follow-ups drawn from the drawings, the geotech report, the site brief, or decisions you're still making. It gathers the entries worth reviewing and lets you add the ones you choose straight to a project review list. The questionnaire is part of the framework content (it lives in `data.json`), so maintainers can adjust it as the framework grows.
 
 ### Building project review lists
 As you read, you can collect the entries that apply to a particular job into a **project review list**, then export that list as a project-specific constructability checklist. You can keep **several named lists at once** — one per project — and switch between them.
@@ -107,7 +103,7 @@ As you read, you can collect the entries that apply to a particular job into a *
 
 ```
 ├── index.html          # Framework interface (styling and rendering)
-├── data.json           # All framework content (entries, guidance, thresholds, comments, triage questionnaire, tags)
+├── data.json           # All framework content (entries, guidance, thresholds, comments)
 ├── images/             # Example drawings and site photographs
 ├── examples/           # Example form submission (PDF)
 ├── tools/              # Maintainer tools — run locally in a browser; nothing is uploaded
@@ -121,7 +117,7 @@ As you read, you can collect the entries that apply to a particular job into a *
 ```
 
 - **index.html** — the framework shell. Contains all CSS, navigation, and rendering logic. You generally don't need to edit this.
-- **data.json** — all framework content lives here. For routine additions you no longer hand-edit this file: the Data Manager (`tools/framework-data-manager.html`) reads the form responses and writes the updated file for you (see [Maintainer tools](#maintainer-tools) and [Reviewing and publishing submissions](#reviewing-and-publishing-submissions-maintainers)). You can still edit it directly for advanced changes such as cross-references. Each entry includes a `location` field, the `elementType` and `constructionPhase` tags, and a `triage` trigger. The file also holds the guided-triage questionnaire (`triageConfig`) and the tag vocabularies (`config`), plus a hidden `_processed` key the Data Manager uses to remember which form responses it has already handled; the live site ignores it.
+- **data.json** — all framework content lives here. For routine additions you no longer hand-edit this file: the Data Manager (`tools/framework-data-manager.html`) reads the form responses and writes the updated file for you (see [Maintainer tools](#maintainer-tools) and [Reviewing and publishing submissions](#reviewing-and-publishing-submissions-maintainers)). You can still edit it directly for the few advanced changes the tool doesn't cover, such as the decision-path wiring on the reactive-ground entries. Each entry includes a `location` field specifying the country and optionally the state where the evidence was gathered. The file also carries a hidden `_processed` key that the Data Manager uses to remember which form responses it has already handled; the live site ignores it.
 - **images/** — all photographs and drawings referenced by entries in data.json.
 - **tools/** — three standalone, browser-based maintainer tools plus the evidence-rating rubric. Each tool runs entirely on your own machine (nothing is uploaded) and is described under [Maintainer tools](#maintainer-tools).
 
@@ -167,20 +163,20 @@ All submissions — new entries, edits, and comments — are reviewed before bei
 
 Three browser-based tools live in the `tools/` folder. Each one is a single HTML file you open locally (double-click, or serve it) — they run entirely in your browser, upload nothing, and read or write only the files you hand them (`data.json`, images, and `CHANGELOG.md`). The rubric beside them is a written reference, not a program.
 
-- **Data Manager** (`tools/framework-data-manager.html`) — the main content tool. It turns Google Form responses into properly structured `data.json`: load the current `data.json` and the response CSVs, then work through an inbox of new entries, edits and comments. You can accept an item, reject it (with an optional reason that is kept with the record), send a rejected item back to the inbox for another look, manage an entry's comments, and review unpublished **drafts** before publishing them. A **Triage map** tab edits which questionnaire answers surface each entry, with a plain-English "Surfaces when…" summary, validation and a dry-run simulator; a **tag manager** edits the element and stage vocabularies (add a tag inline while tagging an entry, or rename/remove one and have affected entries repointed). Saving an edited entry stamps its review date automatically. It exports an updated `data.json`. This is the tool the workflow below uses.
+- **Data Manager** (`tools/framework-data-manager.html`) — the main content tool. It turns Google Form responses into properly structured `data.json`: load the current `data.json` and the response CSVs, then work through an inbox of new entries, edits and comments. You can accept an item, reject it (with an optional reason that is kept with the record), send a rejected item back to the inbox for another look, manage an entry's comments, and review unpublished **drafts** before publishing them. It exports an updated `data.json`. This is the tool the workflow below uses.
 - **Framework Doctor** (`tools/framework-doctor.html`) — a read-only health check. Load `data.json` and point it at the `images/` folder, and it reports **missing images** (referenced by an entry but not in the folder — these break on the live site) and **orphan images** (in the folder but referenced by nothing — safe to delete), along with data-integrity and overview checks. It changes nothing; you can copy or download the report as plain text. Run it before you commit.
 - **Image Formatter** (`tools/framework-image-formatter.html`) — prepares images for the `images/` folder. Drop in one or many images and it re-encodes them (WebP, PNG, JPEG, or keep original, with a per-image override), and checks each filename for clashes against `data.json` and the other images, with one-click **make-unique** naming. Because re-encoding rewrites the file, it also strips embedded metadata such as GPS coordinates and camera/device info — a useful privacy step for site photographs.
 - **Evidence rating rubric** (`tools/evidence-rating-rubric.md`) — the rule maintainers follow when assigning an entry's High / Medium / Low evidence support and writing its summary. See [Evidence support](#evidence-support).
 
 ### Reviewing and publishing submissions (maintainers)
 
-Form responses never go live on their own — nothing user-submitted is published until a maintainer has reviewed and de-identified it. This is handled by the **Data Manager** (`tools/framework-data-manager.html`). It turns the raw form responses into properly structured entries, edits, and comments, lets you check and clean each one, and exports an updated `data.json`.
+Form responses never go live on their own — nothing user-submitted is published until a maintainer has reviewed and de-identified it. This is handled by the **Data Manager** (`tools/framework-data-manager.html`), a self-contained tool that runs entirely in your browser (nothing is uploaded). It turns the raw form responses into properly structured entries, edits, and comments, lets you check and clean each one, and exports an updated `data.json`.
 
 1. In Google Forms, open each form's **Responses** tab and download the responses as CSV (**⋮ → Download responses (.csv)**). You may have up to three CSVs — new entries, edits, and comments.
-2. Open `tools/framework-data-manager.html` in your browser (you can just double-click it).
+2. Open `tools/framework-data-manager.html` in your browser (you can just double-click it — it works offline and uploads nothing).
 3. Load the current `data.json`, then drag in the response CSV(s) — one, two, or all three, in any order. Each box accepts only its own file type, and the Data Manager detects each form type automatically from the column headers and skips any response you've already processed. A **Loaded files** list shows what's in, and you can unload any file with its **×**.
 4. Work through each item:
-   - **New entries** arrive pre-filled and structured. Pick the dimension (if the submitter chose "Not sure"), confirm the auto-generated stable `id` (it warns if the id already exists), tag the structural element(s) and construction stage(s), set which triage answers should surface the entry, fill the `range` for each threshold band, add search keywords, and attach any de-identified images. A live preview beside each field shows exactly how it will look on the site.
+   - **New entries** arrive pre-filled and structured. Pick the dimension (if the submitter chose "Not sure"), confirm the auto-generated stable `id` (it warns if the id already exists), fill the `range` for each threshold band, add search keywords, and attach any de-identified images. A live preview beside each field shows exactly how it will look on the site.
    - **Edits** show the proposed change next to the live entry, so you apply it in place.
    - **Comments** show the parsed comment to approve, tidy, or skip; the displayed name follows the submitter's choice (or "Anonymous").
 5. **De-identify as you go** — remove any project, company, client, or designer names, site addresses, or title blocks from text and images.
@@ -192,7 +188,7 @@ Formatting is built in so you never need to write HTML: type normally, press Ent
 
 ### Editing data.json directly
 
-For changes the Data Manager doesn't cover — adding cross-references between entries, bulk edits, or fixing a small typo — you can still edit `data.json` by hand. Each entry is a JSON object inside its dimension's `items` array. A few rules to keep in mind:
+For the few changes the Data Manager doesn't cover — the decision-path wiring on the reactive-ground entries, bulk edits, or fixing a small typo — you can still edit `data.json` by hand. Each entry is a JSON object inside its dimension's `items` array. A few rules to keep in mind:
 
 - **Stable `id`** — every entry has a permanent `id`: a lowercase, hyphenated slug derived from the name (e.g. `"id": "drip-grooves-on-exposed-soffit-edges"`). This is the entry's permanent address — it appears in the entry's URL (`#dimId/id`) and is how other entries cross-reference it. **Once an entry is live, never change its `id`**, as doing so breaks shared links, bookmarks, and cross-references. The display `name` can change freely; the `id` should not.
 - **`location`** — `"location": {"country": "Australia", "state": "NSW"}`; use just `country` if the evidence applies nationally, or include `state` if it is region-specific.
@@ -202,7 +198,9 @@ For changes the Data Manager doesn't cover — adding cross-references between e
 
 ### Related entries (cross-references)
 
-Cross-references are added by editing `data.json` directly — the Data Manager doesn't manage them. An entry can point to others that a designer should consider alongside it. Add a `relatedEntries` array to the entry's `data` object:
+Related entries are the "see also" links shown at the bottom of an entry, pointing a designer to others worth considering alongside it. **These are fully managed in the Data Manager** — open any entry and use its **Links** button (the *Related entries* panel) to add or remove a link, write the optional note explaining why the two are related, and repair any broken links. Linking is automatically two-way, so you author each link once. You do not need to touch `data.json` to manage these.
+
+For reference (and for the occasional hand-edit), each link is stored as an entry in a `relatedEntries` array on the entry's `data` object:
 
 ```json
 "relatedEntries": [
