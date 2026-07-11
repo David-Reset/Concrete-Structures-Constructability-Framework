@@ -94,33 +94,43 @@ As you read, you can collect the entries that apply to a particular job into a *
 
 ### Running locally
 1. Clone or download this repository
-2. Serve the files using any local web server (e.g. `python -m http.server` or VS Code Live Server)
-3. Open `index.html` in your browser
+2. Serve the **`docs/`** folder with any local web server — e.g. `cd docs && python -m http.server`, or point VS Code Live Server at `docs/index.html`
+3. Open the address it gives you in your browser
 
-> **Note:** Opening index.html directly as a file won't work — browsers block local JSON loading for security. You need a local server or host it online.
+> **Note:** Opening `docs/index.html` directly as a file won't work — browsers block local JSON loading for security. You need a local server, or the live site.
+>
+> The maintainer **tools** are different: they're in `tools/`, and each is a single self-contained page you can just double-click. No server needed.
 
 ## Repository structure
 
 ```
-├── index.html          # Framework interface (styling and rendering)
-├── data.json           # All framework content (entries, guidance, thresholds, comments)
-├── images/             # Example drawings and site photographs
-├── examples/           # Example form submission (PDF)
-├── manual/             # Maintainer's manual (step-by-step website — how to run everything)
+├── docs/               # The published website — GitHub Pages serves the site from this folder
+│   ├── index.html          # Framework interface (styling and rendering)
+│   ├── data.json           # All framework content (entries, guidance, thresholds, comments)
+│   ├── images/             # Example drawings and site photographs
+│   ├── CHANGELOG.md        # Running record of what changed and when
+│   └── manual/             # Maintainer's manual (step-by-step website — how to run everything)
 ├── tools/              # Maintainer tools — run locally in a browser; nothing is uploaded
 │   ├── framework-data-manager.html      # Turn form responses into data.json; manage the inbox, drafts and comments
 │   ├── framework-doctor.html            # Health-check data.json against the images folder
 │   ├── framework-image-formatter.html   # Re-encode and rename images for the images/ folder
-│   └── evidence-rating-rubric.md        # How maintainers assign High / Medium / Low evidence support
+│   ├── evidence-rating-rubric.md        # How maintainers assign High / Medium / Low evidence support
+│   ├── triage-rating-rubric.md          # How maintainers decide when an entry surfaces on a job
+│   └── entry-quality-rubric.md          # How maintainers judge whether an entry is well framed
+├── examples/           # Example form submission (PDF)
 ├── LICENSE             # AGPL-3.0 (code)
 ├── LICENSE-CONTENT     # CC BY-SA 4.0 (content)
 └── README.md
 ```
 
-- **index.html** — the framework shell. Contains all CSS, navigation, and rendering logic. You generally don't need to edit this.
-- **data.json** — all framework content lives here. For routine additions you no longer hand-edit this file: the Data Manager (`tools/framework-data-manager.html`) reads the form responses and writes the updated file for you (see the [Maintainer's Manual](https://david-reset.github.io/Concrete-Structures-Constructability-Framework/manual/)). You only edit it by hand for the rare change the tools don't cover — the reactive-ground decision path. Each entry includes a `location` field specifying the country and optionally the state where the evidence was gathered. The file also carries a hidden `_processed` key that the Data Manager uses to remember which form responses it has already handled; the live site ignores it.
-- **images/** — all photographs and drawings referenced by entries in data.json.
-- **tools/** — three standalone, browser-based maintainer tools plus the evidence-rating rubric. Each tool runs entirely on your own machine (nothing is uploaded); the [Maintainer's Manual](https://david-reset.github.io/Concrete-Structures-Constructability-Framework/manual/) explains how to use them.
+Two folders matter. **`docs/` is the published site** — everything the public sees is served straight out of it, which is why `data.json` and `images/` live there and not at the top level. **`tools/` is not part of the site**: the maintainer tools are pages you open on your own machine, so they sit outside `docs/`.
+
+- **docs/** — the published website. GitHub Pages serves the live site from this folder, so anything in it is public.
+- **docs/index.html** — the framework shell. Contains all CSS, navigation, and rendering logic. You generally don't need to edit this.
+- **docs/data.json** — all framework content lives here. For routine additions you no longer hand-edit this file: the Data Manager (`tools/framework-data-manager.html`) reads the form responses and writes the updated file for you (see the [Maintainer's Manual](https://david-reset.github.io/Concrete-Structures-Constructability-Framework/manual/)). You only edit it by hand for the rare change the tools don't cover — the reactive-ground decision path. Each entry includes a `location` field specifying the country and optionally the state where the evidence was gathered. The file also carries a hidden `_processed` key that the Data Manager uses to remember which form responses it has already handled; the live site ignores it.
+- **docs/images/** — all photographs and drawings referenced by entries in `data.json`.
+- **docs/CHANGELOG.md** — the running record of changes; the Data Manager appends to it at export.
+- **tools/** — three standalone, browser-based maintainer tools plus the three rubrics they use. Deliberately outside `docs/`, so they aren't published with the site. Each tool runs entirely on your own machine (nothing is uploaded); the [Maintainer's Manual](https://david-reset.github.io/Concrete-Structures-Constructability-Framework/manual/) explains how to use them.
 
 ## Ethics and anonymity
 
@@ -164,12 +174,17 @@ All submissions — new entries, edits, and comments — are reviewed before bei
 
 If you look after this framework — reviewing submissions, publishing entries, managing images — the full step-by-step guide is the **[Maintainer's Manual](https://david-reset.github.io/Concrete-Structures-Constructability-Framework/manual/)**. It follows a real entry through each tool, from a form response all the way to going live, and assumes no prior familiarity. Start there.
 
-The tools, in short: three browser-based tools live in the `tools/` folder. Each is a single HTML file you open locally — they run entirely in your browser, upload nothing, and read or write only the files you hand them (`data.json`, images and `CHANGELOG.md`).
+The tools, in short: three browser-based tools live in the `tools/` folder. Each is a single HTML file you open locally — they run entirely in your browser, upload nothing, and read or write only the files you hand them (`docs/data.json`, images and `docs/CHANGELOG.md`).
 
 - **Data Manager** (`tools/framework-data-manager.html`) — the main tool. Turns Google Form responses into structured `data.json`: work through an inbox of new entries, edits and comments, de-identify and tidy each one, review unpublished drafts, and export the updated file. It also manages the "related entries" links between entries and repairs broken ones.
-- **Framework Doctor** (`tools/framework-doctor.html`) — a read-only health check. Reports missing images (referenced by an entry but not in the folder) and orphans (in the folder but unused), and changes nothing. Run it before you commit.
-- **Image Formatter** (`tools/framework-image-formatter.html`) — re-encodes and uniquely names images for the `images/` folder, and strips embedded GPS and camera metadata in the process.
-- **Evidence rating rubric** (`tools/evidence-rating-rubric.md`) — the reference maintainers follow when assigning an entry's evidence support. See [Evidence support](#evidence-support).
+- **Framework Doctor** (`tools/framework-doctor.html`) — a read-only health check on `docs/`. Reports missing images, duplicate entry ids, broken cross-references, case-mismatched filenames (which work locally but break on the live server), finished drafts you forgot to publish, oversized images and internal notes about to be published. It changes nothing. Run it before you commit.
+- **Image Formatter** (`tools/framework-image-formatter.html`) — re-encodes and uniquely names images for the `docs/images/` folder, and strips embedded GPS and camera metadata in the process.
+
+The three rubrics beside them are written references, not programs. The Data Manager can load them and use them to drive an AI review; you can equally read them yourself:
+
+- **Evidence rating rubric** (`tools/evidence-rating-rubric.md`) — how to assign an entry's evidence support (High / Medium / Low). See [Evidence support](#evidence-support).
+- **Triage rating rubric** (`tools/triage-rating-rubric.md`) — how to decide which jobs an entry should surface on.
+- **Entry quality rubric** (`tools/entry-quality-rubric.md`) — how to judge whether an entry is *well framed*: one clear question, one parameter you can act on, bands that follow from it.
 
 Almost everything is done inside the tools. The one thing edited by hand in `data.json` is the branching *decision path* that links the reactive-ground entries together; the manual shows exactly what that looks like.
 
