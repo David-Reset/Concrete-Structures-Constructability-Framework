@@ -326,6 +326,34 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
 
 <section class="home-sec">
   <div class="wrap">
+    <p class="sec-label">Before you start</p>
+    <h1 style="font-size:1.7rem">Where the files live — and how to get them</h1>
+    <p>Everything you maintain lives in one place: the <strong>GitHub repository</strong> that the live site is served from. That repository is the single source of truth. Your session always starts by taking a copy of a file out of it, and ends by putting an updated copy back.</p>
+    <p>At the top level of the repo you'll find:</p>
+    <ul>
+      <li><code>data.json</code> — <strong>all</strong> the content: every entry, threshold, comment and rubric. This is the file you load into the tools, and the file you commit back.</li>
+      <li><code>images/</code> — every photograph and drawing the entries point at.</li>
+      <li><code>tools/</code> — the three maintainer tools themselves, plus the rubrics. These are the pages you open.</li>
+      <li><code>CHANGELOG.md</code> — the running record of what changed and when.</li>
+    </ul>
+
+    <h2 style="font-size:1.15rem;margin-top:26px">Getting the current data.json</h2>
+    <p>The Data Manager can't fetch anything by itself — it's an offline page, and you hand it the file. So before every session, get a <strong>fresh</strong> copy:</p>
+    <ol class="routine">
+      <li><span class="step-title">Open the repository on GitHub</span><span class="step-detail">The same repo the live site is published from: <a href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework" target="_blank" rel="noopener">the framework repository</a>.</span></li>
+      <li><span class="step-title">Click <code>data.json</code> in the file list</span><span class="step-detail">GitHub shows it as a preview — don't copy the text out of the page.</span></li>
+      <li><span class="step-title">Use the download button</span><span class="step-detail">On the file view, the <strong>download raw file</strong> button (the ⤓ icon, top-right of the file box) saves the real file. Do the same for <code>CHANGELOG.md</code> if you want your changes appended to it.</span></li>
+    </ol>
+    <p>If you work with git, <code>git pull</code> in your local clone does the same job and is less fiddly — the file is simply there on disk.</p>
+
+    <div class="callout"><h3>Always start from a fresh copy</h3><p>This is the one mistake that quietly destroys other people's work. The Data Manager exports a <strong>whole, complete <code>data.json</code></strong> — not a patch. If you start from a copy you downloaded last month and someone has published entries since, your export will not merge with theirs; it will <strong>replace</strong> them, silently reverting everything they added. Download <code>data.json</code> again at the start of every session, even if you're sure nothing has changed.</p></div>
+
+    <div class="callout info"><h3>And where it goes back</h3><p>When you're finished, the updated <code>data.json</code>, any new files in <code>images/</code>, and the updated <code>CHANGELOG.md</code> are committed and pushed back to the same repository. The live site rebuilds itself from them — there is nothing else to deploy. That's the last step of the loop below.</p></div>
+  </div>
+</section>
+
+<section class="home-sec">
+  <div class="wrap">
     <p class="sec-label">The routine</p>
     <h1 style="font-size:1.7rem">The loop you'll repeat</h1>
     <p>Whenever submissions have built up, you run the same six steps. Each tool's own pages explain these in depth, with a full worked example.</p>
@@ -416,13 +444,13 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
       <div class="wstep">
         <h3>Open the Data Manager</h3>
         <p class="goal">Get the tool running in your browser.</p>
-        <p class="do">The tool lives at <code>tools/framework-data-manager.html</code>. Open it in your browser — double-clicking works, since it runs entirely offline. <span class="muted">(Opened directly as a file its auto-recovery is off, so be sure to <strong>export</strong> at the end to save your work — chapter 5.)</span></p>
+        <p class="do">The tool lives at <code>tools/framework-data-manager.html</code>. Open it in your browser — double-clicking works, since it runs entirely offline. <span class="muted">(Opened directly as a file its auto-recovery is off, so be sure to <strong>export</strong> at the end to save your work — chapter 6.)</span></p>
         <p class="click">👉 <span><b>Open</b> <code>tools/framework-data-manager.html</code></span></p>
       </div>
       <div class="wstep">
         <h3>Load the current data.json</h3>
         <p class="goal">Load the live content so you can browse, edit and add to it.</p>
-        <p class="do">Drop in the current <code>data.json</code> from the repository (or use <strong>Choose File</strong>). Optionally add the current <code>CHANGELOG.md</code> too — your changes this session are added on top of it at export. Everything stays in your browser; nothing is uploaded. <strong>There is no CSV box here</strong> — form responses are added later, in the Submission inbox.</p>
+        <p class="do">First, <strong>get the file</strong>: open the repository on GitHub, click <code>data.json</code>, and use the <strong>download raw file</strong> button (⤓) to save it — or <code>git pull</code> if you keep a local clone. Grab it fresh every session, never a copy from last time (see <a href="#home">Where the files live</a> — a stale copy silently reverts other people's work). Then drop it in here (or use <strong>Choose File</strong>). Optionally add the current <code>CHANGELOG.md</code> too — your changes this session are added on top of it at export. Everything stays in your browser; nothing is uploaded. <strong>There is no CSV box here</strong> — form responses are added later, in the Submission inbox.</p>
         <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html</span></div><div class="mk-body">
           <p class="mk-h"><span class="num">1 ·</span> Load data.json</p>
           <p class="mk-sub">Load the current data.json to browse and edit every entry. When you're done you export an updated file with a summary of what changed.</p>
@@ -481,7 +509,7 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
       <div class="wstep">
         <h3>Click Apply decisions</h3>
         <p class="goal">Commit all your decisions at once.</p>
-        <p class="do">When you've been through the inbox, the counter reads <em>“N pending · N accepted · N rejected.”</em> Click <strong>Apply decisions</strong>. Accepted items become hidden <strong>drafts</strong>; rejected items move to the <strong>Rejected</strong> tab and are remembered so they won't reappear (you can send them back for review later). This changes the in-memory data only — <strong>nothing is saved until you export</strong> (chapter 5).</p>
+        <p class="do">When you've been through the inbox, the counter reads <em>“N pending · N accepted · N rejected.”</em> Click <strong>Apply decisions</strong>. Accepted items become hidden <strong>drafts</strong>; rejected items move to the <strong>Rejected</strong> tab and are remembered so they won't reappear (you can send them back for review later). This changes the in-memory data only — <strong>nothing is saved until you export</strong> (chapter 6).</p>
         <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Submission inbox</span></div><div class="mk-body">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface)"><span class="mk-time" style="font-size:.85rem">0 pending · 1 accepted · 0 rejected</span><span class="mk-btn" style="background:var(--accent);border-color:var(--accent);color:#fff">Apply decisions (1)</span></div>
         </div></div>
@@ -588,7 +616,7 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
         <p class="click">👉 <span><b>Set</b> the card to Accept</span></p>
       </div>
     </div>
-    <div class="callout info"><h3>Then Apply decisions</h3><p>Repeat chapters 3–4 for every item, set each to Accept or Reject, then click <strong>Apply decisions</strong> in the inbox. Accepted items become hidden drafts — publishing them is chapter 5.</p></div>
+    <div class="callout info"><h3>Then Apply decisions</h3><p>Repeat chapters 3–4 for every item, set each to Accept or Reject, then click <strong>Apply decisions</strong> in the inbox. Accepted items become hidden drafts — publishing them is chapter 6.</p></div>
     <div class="pager">
       <a href="#dm-reviewing"><div class="dir">← Back</div><div class="ttl">3 · Reviewing a new entry</div></a>
       <a class="next" href="#dm-ai-review"><div class="dir">Next →</div><div class="ttl">5 · Reviewing with an AI</div></a>
@@ -835,28 +863,28 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
           <p class="mk-h"><span class="num">1 ·</span> Load data.json</p>
           <div class="mk-drop filled" style="margin-bottom:10px"><div class="lab">data.json ✓</div><div class="hint">existing framework images found — new names will avoid clashes</div></div>
           <p class="mk-h" style="margin-top:6px"><span class="num">2 ·</span> Add images</p>
-          <div class="mk-drop"><div class="lab">Drop images here</div><div class="hint">JPEG, PNG or WebP — drag in or browse</div></div>
+          <div class="mk-drop"><div class="lab">Drop images here</div><div class="hint">PNG, JPG, WebP, GIF, BMP — drop one or many</div></div>
         </div></div>
         <p class="click">👉 <span><b>Drop</b> data.json, then <b>add</b> your images</span></p>
       </div>
 
       <div class="wstep" id="output">
         <h3>Choose the output settings</h3>
-        <p class="goal">One set of settings applied to every image.</p>
-        <p class="do">Pick the <strong>format</strong> (WebP is a good default — small and sharp), a <strong>maximum long side</strong> so large photos get resized down, and a <strong>quality</strong> level. These apply to all the images at once; you can still override a single image in the next step.</p>
+        <p class="goal">One set of settings applied to every image — but not every image wants the same ones.</p>
+        <p class="do">There are three controls: the <strong>format</strong>, a <strong>maximum long side</strong> (large photos are scaled down to it), and a <strong>quality</strong> slider running from 0.50 to 1.00, default <strong>0.88</strong>. They apply to the whole batch — but each row can override the format individually in the next step, so a mixed batch is fine. <strong>Which format you pick actually matters</strong>; the next box explains when to use which.</p>
         <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-image-formatter.html</span></div><div class="mk-body">
           <p class="mk-h"><span class="num">3 ·</span> Output settings</p>
           <div class="mk-field"><span class="mk-label">Output format</span><div class="mk-input select">WebP (all)</div></div>
           <div class="mk-field"><span class="mk-label">Resize — max long side</span><div class="mk-input select">1600 px</div></div>
-          <div class="mk-field"><span class="mk-label">Quality</span><div class="mk-input select">82</div></div>
+          <div class="mk-field"><span class="mk-label">Quality <span style="opacity:.6;font-weight:400">(JPEG / WebP only)</span></span><div class="mk-input select">0.88</div></div>
         </div></div>
-        <p class="click">👉 <span><b>Set</b> format, size and quality</span></p>
+        <p class="click">👉 <span><b>Set</b> format, size and quality — see the guide below</span></p>
       </div>
 
       <div class="wstep" id="download">
         <h3>Download and place them in images/</h3>
         <p class="goal">Get clean, uniquely-named files and drop them in the repo.</p>
-        <p class="do">Each image shows its new, unique name and its converted size. Rename any if you like, or override the format for one, then download. Move the downloaded files into the repository's <code>images/</code> folder. When you reference an image in an entry, you use this name.</p>
+        <p class="do">Each image shows its new, unique name and its converted size. Rename any if you like, and — importantly — <strong>override the format on any single row</strong> (the dropdown on the row): that's how you send one marked-up drawing out as PNG while the rest of the batch stays WebP. Then download. Move the downloaded files into the repository's <code>images/</code> folder. When you reference an image in an entry, you use this name.</p>
         <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-image-formatter.html</span></div><div class="mk-body">
           <p class="mk-h"><span class="num">4 ·</span> Images to download</p>
           <div class="mk-loaded" style="font-size:0.85rem">
@@ -869,6 +897,20 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
       </div>
     </div>
 
+    <h2>Which format, and when</h2>
+    <p>WebP is the default for a reason — for a <em>photograph</em> it gives the smallest file at a given quality, and every current browser reads it. But it is a <strong>lossy</strong> format: it throws detail away to save space, and the first thing to suffer is fine, high-contrast detail — exactly what a bar callout, a dimension string or a scanned note is made of. If you send a drawing through WebP at the default settings, the text goes soft and mushy, and no amount of zooming on the live site brings it back.</p>
+    <p>So pick by <strong>what's in the image</strong>, not by habit:</p>
+    <ul>
+      <li><strong>WebP</strong> — <em>photographs.</em> Site photos, formwork, pours, general condition shots. The default. Quality 0.88 is plenty.</li>
+      <li><strong>PNG</strong> — <em>anything with lettering or line work.</em> Screenshots, CAD or Revit extracts, marked-up drawings, diagrams, sketches, tables, anything with small text, thin lines or sharp edges — and anything needing transparency. PNG is <strong>lossless</strong>: what goes in comes out, text stays crisp. Files are bigger, and that is the correct trade for a drawing nobody can read otherwise. <strong>The quality slider does nothing for PNG</strong> — it's lossless either way, so don't go hunting for it.</li>
+      <li><strong>JPEG</strong> — only when something old needs to open it. It's lossy like WebP but bigger; there's rarely a reason to choose it for the framework.</li>
+      <li><strong>Keep each original format</strong> — a mixed batch where the originals were already sensible.</li>
+    </ul>
+
+    <div class="callout"><h3>The resize is what usually ruins the text — not the format</h3><p>If your image has small writing in it, the most damaging setting isn't the codec, it's <strong>Resize — max long side</strong>. The default <strong>1600&nbsp;px</strong> is right for photographs and will happily shrink a 4000&nbsp;px drawing down until the callouts are three pixels tall and permanently unreadable. For anything you expect a reader to <em>read</em>, choose <strong>2000&nbsp;px</strong>, or <strong>Keep original size</strong>. Do this <em>and</em> use PNG — getting one right and the other wrong still gives you a bad image.</p></div>
+
+    <div class="callout info"><h3>A rule of thumb</h3><p><strong>Can someone read words in it?</strong> → <strong>PNG</strong>, and <strong>2000&nbsp;px or original</strong>. Quality slider irrelevant.<br><strong>Is it just a photo?</strong> → <strong>WebP</strong>, <strong>1600&nbsp;px</strong>, quality <strong>0.88</strong>. Leave everything alone.<br><strong>A photo where fine detail really matters</strong> (a hairline crack, a tight bar clash)? → stay on WebP but push quality to <strong>0.95–1.00</strong> and go up to <strong>2000&nbsp;px</strong>. Note that even at 1.00 WebP is still lossy — if it has to be pixel-perfect, use PNG.</p><p style="margin-top:8px">Always check the result before you download: the tool shows you the converted file, so <strong>open it and look at the smallest text in it</strong>. If you can't read it in the preview, a reader on the live site can't either.</p></div>
+
     <div class="callout"><h3>Location data is removed for you</h3><p>Re-encoding strips the embedded EXIF metadata — including GPS coordinates and camera details — so a site photo can't quietly reveal where it was taken. That happens automatically; you don't have to do anything.</p></div>
     </main>
   </div>
@@ -880,14 +922,14 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
 <div class="crumbs"><a href="#home">Overview</a> › <span>Framework Doctor</span></div>
     <p class="page-eyebrow">Supporting tool</p>
     <h1>Framework Doctor</h1>
-    <p class="lede">A read-only health check. It looks at your <code>data.json</code> and your <code>images/</code> folder and tells you what doesn't match — before it reaches the live site.</p>
-    <p>The Doctor never changes anything. It only reports. Run it as the last step before you commit, so you never push an entry that points at an image you forgot to add.</p>
+    <p class="lede">A read-only health check. It reads your <code>data.json</code> and your <code>images/</code> folder and reports everything that will bite you once it's live — broken images, dead cross-references, drafts you forgot to publish, and private notes about to be published.</p>
+    <p>The Doctor never changes anything. It only reports. Run it as the last step before every commit. It catches a specific class of problem that is invisible locally and obvious to everyone the moment it's deployed.</p>
 
     <div class="walk">
       <div class="wstep" id="run">
         <h3>Run the check</h3>
         <p class="goal">Give it the two things it compares.</p>
-        <p class="do">Open <code>tools/framework-doctor.html</code>, drop in your updated <code>data.json</code>, and point it at your <code>images/</code> folder. It compares the image names entries refer to against the files actually present.</p>
+        <p class="do">Open <code>tools/framework-doctor.html</code>, drop in your <strong>updated</strong> <code>data.json</code> (the one you just exported — not the one you started the session with), and point it at your <code>images/</code> folder. If you don't keep a local clone, the quickest way to get that folder is from the GitHub repo: <strong>Code → Download ZIP</strong>, unzip it, then pick the <code>images</code> folder with the button (or open it and drag the files in).</p>
         <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-doctor.html</span></div><div class="mk-body">
           <div class="mk-drops">
             <div class="mk-drop filled"><div class="lab">data.json ✓</div><div class="hint">64 entries scanned</div></div>
@@ -899,20 +941,51 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
 
       <div class="wstep" id="report">
         <h3>Read the report and act on it</h3>
-        <p class="goal">Two kinds of problem to clear.</p>
-        <p class="do"><strong>Missing</strong> means an entry refers to an image that isn't in the folder — that one will look broken on the live site, so add the file (via the Image Formatter) or fix the reference. <strong>Orphaned</strong> means an image sits in the folder that no entry uses — harmless, but worth tidying. Aim for zero missing before you commit.</p>
+        <p class="goal">Errors, warnings and notes — in that order of urgency.</p>
+        <p class="do">The report is a list of checks, each marked as an <strong>error</strong>, a <strong>warning</strong> or a <strong>note</strong>. Clear every error before you commit; read the warnings; treat the notes as housekeeping. What each one means is set out below.</p>
         <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-doctor.html — report</span></div><div class="mk-body">
-          <div class="mk-loaded" style="font-size:0.9rem">
+          <div class="mk-loaded" style="font-size:0.88rem">
             <div class="row"><span class="tick" style="color:var(--green)">●</span> <strong>Missing images: 0</strong> <span style="opacity:.6">— every referenced image is present</span></div>
-            <div class="row"><span style="color:var(--yellow)">●</span> <strong>Orphaned images: 2</strong> <span style="opacity:.6">— in the folder but unused</span></div>
+            <div class="row"><span class="tick" style="color:var(--green)">●</span> <strong>Entry ids: 0</strong> <span style="opacity:.6">— no clashes</span></div>
+            <div class="row"><span style="color:var(--red)">●</span> <strong>Cross-references: 1</strong> <span style="opacity:.6">— a related-entry link points at nothing</span></div>
+            <div class="row"><span style="color:var(--yellow)">●</span> <strong>Case mismatches: 1</strong> <span style="opacity:.6">— works locally, 404s on the live site</span></div>
+            <div class="row"><span style="color:var(--yellow)">●</span> <strong>Live entries — completeness: 0</strong> <span style="opacity:.6">— nothing half-built is public</span></div>
+            <div class="row"><span style="opacity:.6">●</span> <strong>Complete but unpublished: 1</strong> <span style="opacity:.6">— a finished draft you forgot</span></div>
+            <div class="row"><span style="opacity:.6">●</span> <strong>Internal notes in published file: 0</strong></div>
+            <div class="row"><span style="opacity:.6">●</span> <strong>Oversized images: 2</strong> <span style="opacity:.6">— over 600 KB</span></div>
+            <div class="row"><span style="opacity:.6">●</span> <strong>Orphan files: 2</strong> <span style="opacity:.6">— in the folder but unused</span></div>
           </div>
-          <div class="mk-loaded" style="margin-top:6px;font-size:0.82rem"><div class="row" style="opacity:.75"><span class="mk-id">old-detail-v1.png</span> · <span class="mk-id">unused-sketch.jpg</span></div></div>
+          <div class="mk-loaded" style="margin-top:6px;font-size:0.82rem"><div class="row" style="opacity:.75"><span class="mk-id">Detail-A.webp</span> <span style="opacity:.7">— folder has: detail-a.webp</span></div></div>
         </div></div>
         <p class="click">👉 <span><b>Clear</b> anything under “Missing” before you commit</span></p>
       </div>
     </div>
 
-    <div class="callout info"><h3>Last stop before commit</h3><p>Nothing here changes your files — the Doctor just looks. Run it after you've exported <code>data.json</code> and added your images, as the final check before pushing to GitHub.</p></div>
+    <h2>What it checks — and what to do about it</h2>
+
+    <h3 style="font-size:1rem;margin-top:22px">Errors — fix these before you commit</h3>
+    <ul>
+      <li><strong>Missing images</strong> — an entry points at a file that isn't in the folder. It <em>will</em> show as broken on the live site. Add the file (via the Image Formatter) or fix the reference.</li>
+      <li><strong>Entry ids</strong> — two entries share an id, or an id is malformed. Ids are how everything else finds an entry, so a clash breaks links and comments.</li>
+      <li><strong>Cross-references</strong> — a "related entry" link points at an id that no longer exists (usually something renamed or removed). The link is dead on the site.</li>
+    </ul>
+
+    <h3 style="font-size:1rem;margin-top:22px">Warnings — read these carefully</h3>
+    <ul>
+      <li><strong>Case mismatches</strong> — the reference and the real filename differ only in capitalisation (<code>Detail-A.webp</code> vs <code>detail-a.webp</code>). <strong>This is the nastiest bug in the whole system</strong>, because Windows and macOS don't care about case, so it works perfectly on your machine — and the server the live site runs on <em>is</em> case-sensitive, so it 404s for everyone else. You cannot catch this by testing locally. Fix every one.</li>
+      <li><strong>Live entries — completeness</strong> — a published entry is missing something it should have (question, parameter, bands, applicability). It's live and half-built.</li>
+      <li><strong>Non-web formats</strong> — an entry references a format browsers may not display (anything outside PNG, JPG, JPEG, WebP, GIF, SVG). Run it through the Image Formatter.</li>
+    </ul>
+
+    <h3 style="font-size:1rem;margin-top:22px">Notes — housekeeping</h3>
+    <ul>
+      <li><strong>Internal notes in published file</strong> — an entry carries internal working fields (anything starting with <code>_</code>) that would ship in the public file. Worth clearing: the published <code>data.json</code> is world-readable, and this is where a stray private note would leak.</li>
+      <li><strong>Complete but unpublished</strong> — a draft that looks finished but is still hidden. Almost always an entry you meant to publish and forgot. Go back to the Data Manager and publish it.</li>
+      <li><strong>Oversized images</strong> — a file over <strong>600&nbsp;KB</strong>. Not broken, just slow. Re-run it through the Image Formatter — though if it's a large drawing you deliberately kept at full size so the text stays readable, leave it alone. That's a judgement call, which is why it's only a note.</li>
+      <li><strong>Orphan files</strong> — an image in the folder that nothing references. Harmless; delete it when you're tidying.</li>
+    </ul>
+
+    <div class="callout info"><h3>Last stop before commit</h3><p>Nothing here changes your files — the Doctor just looks. Run it after you've exported <code>data.json</code> and added your images, as the final check before pushing to GitHub. Zero errors is the bar; the case-mismatch warning is the one that will embarrass you if you skip it.</p></div>
     </main>
   </div>
 </div>
