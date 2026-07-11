@@ -285,7 +285,7 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
     <h1>Keeping the framework alive</h1>
     <p class="lede">How to review submissions, publish entries and manage images for the Constructability Framework — written for someone who has never opened these tools.</p>
     <p class="muted" style="max-width:52ch">Every task is a real worked example, start to finish, with a picture of what should be on your screen at each step and exactly what to click next.</p>
-    <div class="promise">If you can follow instructions, <strong>you can run this</strong>.</div>
+    <div class="promise">Everything you need is <strong>in one place</strong>.</div>
   </div>
 </header>
 
@@ -293,7 +293,7 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
   <div class="wrap">
     <p class="sec-label">The big picture</p>
     <h1 style="font-size:1.7rem">What you're actually maintaining</h1>
-    <p>The framework is a website (<code>index.html</code>) that reads its entire contents from one file — <code>data.json</code> — plus a folder of images. That's it. <strong>You never edit the website's code.</strong> Your whole job is to keep <code>data.json</code> and the <code>images/</code> folder correct and up to date.</p>
+    <p>The framework is a website (<code>docs/index.html</code>) that reads its entire contents from one file — <code>docs/data.json</code> — plus a folder of images. That's it. <strong>You never edit the website's code.</strong> Your whole job is to keep <code>data.json</code> and the <code>docs/images/</code> folder correct and up to date.</p>
     <p>Three small tools do that work. Each is a single web page you open on your own computer — they run entirely in your browser, upload nothing, and only read or write the files you hand them. Here's how everything fits together:</p>
     <figure>
       <svg viewBox="0 0 680 344" role="img" aria-labelledby="diaTitle diaDesc" xmlns="http://www.w3.org/2000/svg">
@@ -329,26 +329,33 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
     <p class="sec-label">Before you start</p>
     <h1 style="font-size:1.7rem">Where the files live — and how to get them</h1>
     <p>Everything you maintain lives in one place: the <strong>GitHub repository</strong> that the live site is served from. That repository is the single source of truth. Your session always starts by taking a copy of a file out of it, and ends by putting an updated copy back.</p>
-    <p>At the top level of the repo you'll find:</p>
+    <p>The repo has two folders that matter to you, and they do different jobs:</p>
     <ul>
-      <li><code>data.json</code> — <strong>all</strong> the content: every entry, threshold, comment and rubric. This is the file you load into the tools, and the file you commit back.</li>
-      <li><code>images/</code> — every photograph and drawing the entries point at.</li>
-      <li><code>tools/</code> — the three maintainer tools themselves, plus the rubrics. These are the pages you open.</li>
-      <li><code>CHANGELOG.md</code> — the running record of what changed and when.</li>
+      <li><code>docs/</code> — <strong>this is the published website.</strong> Everything the public sees is served straight out of this folder:
+        <ul style="margin-top:6px">
+          <li><code>docs/data.json</code> — <strong>all</strong> the content: every entry, threshold, comment and rubric. The file you load into the tools and commit back.</li>
+          <li><code>docs/images/</code> — every photograph and drawing the entries point at.</li>
+          <li><code>docs/index.html</code> — the site itself. You never edit this.</li>
+          <li><code>docs/CHANGELOG.md</code> — the running record of what changed and when.</li>
+          <li><code>docs/manual/</code> — this manual.</li>
+        </ul>
+      </li>
+      <li><code>tools/</code> — the three maintainer tools and the three rubrics. <strong>Not inside <code>docs/</code></strong>, because they aren't part of the public site — they're pages you open on your own machine.</li>
     </ul>
 
     <h2 style="font-size:1.15rem;margin-top:26px">Getting the current data.json</h2>
     <p>The Data Manager can't fetch anything by itself — it's an offline page, and you hand it the file. So before every session, get a <strong>fresh</strong> copy:</p>
     <ol class="routine">
-      <li><span class="step-title">Open the repository on GitHub</span><span class="step-detail">The same repo the live site is published from: <a href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework" target="_blank" rel="noopener">the framework repository</a>.</span></li>
-      <li><span class="step-title">Click <code>data.json</code> in the file list</span><span class="step-detail">GitHub shows it as a preview — don't copy the text out of the page.</span></li>
-      <li><span class="step-title">Use the download button</span><span class="step-detail">On the file view, the <strong>download raw file</strong> button (the ⤓ icon, top-right of the file box) saves the real file. Do the same for <code>CHANGELOG.md</code> if you want your changes appended to it.</span></li>
+      <li><span class="step-title">Open the repository on GitHub</span><span class="step-detail"><a href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework" target="_blank" rel="noopener">The framework repository</a> — the same repo the live site is published from.</span></li>
+      <li><span class="step-title">Open the <code>docs</code> folder</span><span class="step-detail"><strong><code>data.json</code> is not at the top level.</strong> It's inside <code>docs/</code>, along with the site itself. Click into <code>docs</code> first — then click <code>data.json</code>.</span></li>
+      <li><span class="step-title">Use the download button</span><span class="step-detail">GitHub shows the file as a preview — <strong>don't copy the text out of the page</strong>. Use the <strong>download raw file</strong> button (the ⤓ icon, top-right of the file box) to save the real file. Do the same for <code>docs/CHANGELOG.md</code> if you want your changes appended to it.</span></li>
     </ol>
-    <p>If you work with git, <code>git pull</code> in your local clone does the same job and is less fiddly — the file is simply there on disk.</p>
+    <p>The direct link, if you'd rather skip the clicking: <a href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework/blob/main/docs/data.json" target="_blank" rel="noopener">docs/data.json on GitHub</a>.</p>
+    <p>If you work with git, <code>git pull</code> in your local clone does the same job and is less fiddly — the file is simply there at <code>docs/data.json</code> on disk.</p>
 
     <div class="callout"><h3>Always start from a fresh copy</h3><p>This is the one mistake that quietly destroys other people's work. The Data Manager exports a <strong>whole, complete <code>data.json</code></strong> — not a patch. If you start from a copy you downloaded last month and someone has published entries since, your export will not merge with theirs; it will <strong>replace</strong> them, silently reverting everything they added. Download <code>data.json</code> again at the start of every session, even if you're sure nothing has changed.</p></div>
 
-    <div class="callout info"><h3>And where it goes back</h3><p>When you're finished, the updated <code>data.json</code>, any new files in <code>images/</code>, and the updated <code>CHANGELOG.md</code> are committed and pushed back to the same repository. The live site rebuilds itself from them — there is nothing else to deploy. That's the last step of the loop below.</p></div>
+    <div class="callout info"><h3>And where it goes back</h3><p>When you're finished, the updated <code>docs/data.json</code>, any new files in <code>docs/images/</code>, and the updated <code>docs/CHANGELOG.md</code> are committed and pushed back to the same repository — <strong>back into <code>docs/</code>, where they came from</strong>. The live site rebuilds itself from them — there is nothing else to deploy. That's the last step of the loop below.</p></div>
   </div>
 </section>
 
@@ -361,8 +368,8 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
       <li><span class="step-title">Download the responses</span><span class="step-detail">In Google Forms, export each form's responses as a CSV — up to three files (new entries, edits, comments).</span></li>
       <li><span class="step-title">Work the inbox in the Data Manager</span><span class="step-detail">Load <code>data.json</code>, then in the Submission inbox drop the response CSVs, decide on each submission, and click Apply decisions.</span></li>
       <li><span class="step-title">Publish the drafts</span><span class="step-detail">Accepted entries wait as hidden drafts. Review them together, then publish and download the updated <code>data.json</code>.</span></li>
-      <li><span class="step-title">Prepare the images</span><span class="step-detail">Run any new photos through the Image Formatter to rename, shrink and strip location data, then drop them in <code>images/</code>.</span></li>
-      <li><span class="step-title">Run the Doctor</span><span class="step-detail">Point the Framework Doctor at your updated <code>data.json</code> and <code>images/</code> folder to catch anything missing before it goes live.</span></li>
+      <li><span class="step-title">Prepare the images</span><span class="step-detail">Run any new photos through the Image Formatter to rename, shrink and strip location data, then drop them in <code>docs/images/</code>.</span></li>
+      <li><span class="step-title">Run the Doctor</span><span class="step-detail">Point the Framework Doctor at your updated <code>data.json</code> and <code>docs/images/</code> folder to catch anything missing before it goes live.</span></li>
       <li><span class="step-title">Commit &amp; push</span><span class="step-detail">Push <code>data.json</code>, the new images and <code>CHANGELOG.md</code> to GitHub. The live site updates itself.</span></li>
     </ol>
   </div>
@@ -375,7 +382,7 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
     <p>Each has its own set of pages — an overview, then step-by-step chapters. Start with the Data Manager; it's the one you'll live in.</p>
     <div class="cards">
       <a class="card big" href="#dm-home"><span class="card-tag">Start here · the main tool</span><h3>Data Manager</h3><p>Turn raw form responses into structured, published entries — reviewing, de-identifying, editing and publishing. Its own overview plus chapters for each stage.</p><div class="arrow">Open the Data Manager guide →</div></a>
-      <a class="card" href="#image-formatter"><span class="card-tag">Supporting tool</span><h3>Image Formatter</h3><p>Clean, rename and re-encode photos before they go in <code>images/</code>, and strip GPS and camera data.</p><div class="arrow">Open the guide →</div></a>
+      <a class="card" href="#image-formatter"><span class="card-tag">Supporting tool</span><h3>Image Formatter</h3><p>Clean, rename and re-encode photos before they go in <code>docs/images/</code>, and strip GPS and camera data.</p><div class="arrow">Open the guide →</div></a>
       <a class="card" href="#framework-doctor"><span class="card-tag">Supporting tool</span><h3>Framework Doctor</h3><p>A read-only health check. Run it before every commit to catch missing or orphaned images.</p><div class="arrow">Open the guide →</div></a>
     </div>
     <div class="callout"><h3>The one thing the tools don't do</h3><p>Almost everything happens inside the tools — including the “related entries” links between entries, which are managed in the Data Manager. The single exception is the branching <em>decision path</em> that links the reactive-ground entries, edited by hand in <code>data.json</code>. The Data Manager guide has a page showing exactly how.</p></div>
@@ -450,7 +457,7 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
       <div class="wstep">
         <h3>Load the current data.json</h3>
         <p class="goal">Load the live content so you can browse, edit and add to it.</p>
-        <p class="do">First, <strong>get the file</strong>: open the repository on GitHub, click <code>data.json</code>, and use the <strong>download raw file</strong> button (⤓) to save it — or <code>git pull</code> if you keep a local clone. Grab it fresh every session, never a copy from last time (see <a href="#home">Where the files live</a> — a stale copy silently reverts other people's work). Then drop it in here (or use <strong>Choose File</strong>). Optionally add the current <code>CHANGELOG.md</code> too — your changes this session are added on top of it at export. Everything stays in your browser; nothing is uploaded. <strong>There is no CSV box here</strong> — form responses are added later, in the Submission inbox.</p>
+        <p class="do">First, <strong>get the file</strong>: open the repository on GitHub, click into the <strong><code>docs</code></strong> folder (it's <em>not</em> at the top level), click <code>data.json</code>, and use the <strong>download raw file</strong> button (⤓) to save it — or <code>git pull</code> if you keep a local clone. Grab it fresh every session, never a copy from last time (see <a href="#home">Where the files live</a> — a stale copy silently reverts other people's work). Then drop it in here (or use <strong>Choose File</strong>). Optionally add the current <code>CHANGELOG.md</code> too — your changes this session are added on top of it at export. Everything stays in your browser; nothing is uploaded. <strong>There is no CSV box here</strong> — form responses are added later, in the Submission inbox.</p>
         <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html</span></div><div class="mk-body">
           <p class="mk-h"><span class="num">1 ·</span> Load data.json</p>
           <p class="mk-sub">Load the current data.json to browse and edit every entry. When you're done you export an updated file with a summary of what changed.</p>
@@ -884,7 +891,7 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
       <div class="wstep" id="download">
         <h3>Download and place them in images/</h3>
         <p class="goal">Get clean, uniquely-named files and drop them in the repo.</p>
-        <p class="do">Each image shows its new, unique name and its converted size. Rename any if you like, and — importantly — <strong>override the format on any single row</strong> (the dropdown on the row): that's how you send one marked-up drawing out as PNG while the rest of the batch stays WebP. Then download. Move the downloaded files into the repository's <code>images/</code> folder. When you reference an image in an entry, you use this name.</p>
+        <p class="do">Each image shows its new, unique name and its converted size. Rename any if you like, and — importantly — <strong>override the format on any single row</strong> (the dropdown on the row): that's how you send one marked-up drawing out as PNG while the rest of the batch stays WebP. Then download. Move the downloaded files into the repository's <code>docs/images/</code> folder. When you reference an image in an entry, you use this name.</p>
         <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-image-formatter.html</span></div><div class="mk-body">
           <p class="mk-h"><span class="num">4 ·</span> Images to download</p>
           <div class="mk-loaded" style="font-size:0.85rem">
@@ -893,7 +900,7 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
           </div>
           <div class="mk-actions"><span class="mk-btn">Rename</span><span class="mk-btn primary" style="background:var(--accent);border-color:var(--accent);color:#fff">⬇ Download all</span></div>
         </div></div>
-        <p class="click">👉 <span><b>Download</b> · move the files into <code>images/</code></span></p>
+        <p class="click">👉 <span><b>Download</b> · move the files into <code>docs/images/</code></span></p>
       </div>
     </div>
 
@@ -922,14 +929,14 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
 <div class="crumbs"><a href="#home">Overview</a> › <span>Framework Doctor</span></div>
     <p class="page-eyebrow">Supporting tool</p>
     <h1>Framework Doctor</h1>
-    <p class="lede">A read-only health check. It reads your <code>data.json</code> and your <code>images/</code> folder and reports everything that will bite you once it's live — broken images, dead cross-references, drafts you forgot to publish, and private notes about to be published.</p>
+    <p class="lede">A read-only health check. It reads your <code>data.json</code> and your <code>docs/images/</code> folder and reports everything that will bite you once it's live — broken images, dead cross-references, drafts you forgot to publish, and private notes about to be published.</p>
     <p>The Doctor never changes anything. It only reports. Run it as the last step before every commit. It catches a specific class of problem that is invisible locally and obvious to everyone the moment it's deployed.</p>
 
     <div class="walk">
       <div class="wstep" id="run">
         <h3>Run the check</h3>
         <p class="goal">Give it the two things it compares.</p>
-        <p class="do">Open <code>tools/framework-doctor.html</code>, drop in your <strong>updated</strong> <code>data.json</code> (the one you just exported — not the one you started the session with), and point it at your <code>images/</code> folder. If you don't keep a local clone, the quickest way to get that folder is from the GitHub repo: <strong>Code → Download ZIP</strong>, unzip it, then pick the <code>images</code> folder with the button (or open it and drag the files in).</p>
+        <p class="do">Open <code>tools/framework-doctor.html</code>, drop in your <strong>updated</strong> <code>data.json</code> (the one you just exported — not the one you started the session with), and point it at your <code>docs/images/</code> folder. If you don't keep a local clone, the quickest way to get that folder is from the GitHub repo: <strong>Code → Download ZIP</strong>, unzip it, then pick the <code>docs/images</code> folder with the button (or open it and drag the files in).</p>
         <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-doctor.html</span></div><div class="mk-body">
           <div class="mk-drops">
             <div class="mk-drop filled"><div class="lab">data.json ✓</div><div class="hint">64 entries scanned</div></div>
