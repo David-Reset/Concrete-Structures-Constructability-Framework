@@ -733,6 +733,15 @@
     .seq-btn{flex:0 0 auto;padding:9px 10px}
     .seq-pos{flex:1;border:none}
     .seq-src{max-width:none}
+    /* --- original mobile rules; these must stay INSIDE the media query --- */
+    .dim-grid{grid-template-columns:1fr} .examples-grid,.examples-grid.imgs-1,.examples-grid.imgs-2{grid-template-columns:1fr}
+    .supporting-images-grid,.supporting-images-grid.imgs-1,.supporting-images-grid.imgs-2{grid-template-columns:1fr} .date-stamp{flex-direction:column;gap:8px}
+    .examples-grid.imgs-1 .example-card,.supporting-images-grid.imgs-1 .supporting-image-card{flex-direction:column}
+    .examples-grid.imgs-1 .example-card img,.supporting-images-grid.imgs-1 .supporting-image-card img{width:100%;max-width:100%}
+    .examples-grid.imgs-1 .example-caption,.supporting-images-grid.imgs-1 .supporting-image-title{border-left:none;border-top:1px solid var(--border)}
+    .project-export-grid{grid-template-columns:1fr} .legend-grid{grid-template-columns:1fr} .shape-grid{grid-template-columns:1fr} .dimension-guide-grid{grid-template-columns:1fr} .whatis-grid{grid-template-columns:1fr} .evidence-summary-grid{grid-template-columns:1fr 1fr}
+    .anatomy-block{grid-template-columns:1fr;gap:12px} .trace-arrow{transform:rotate(90deg);width:100%;justify-content:center}
+    .guide-band{flex-wrap:wrap;gap:12px} .guide-band-icon{font-size:26px} .guide-band-btn{width:100%}
   }
   /* Phone only: the breadcrumb ("Framework > Element and stage behaviour > Curing
      shortfall in suspended slabs and beams") wraps to three lines and eats the
@@ -743,15 +752,6 @@
   html.phone .breadcrumb{display:none}
   html.phone .entry-topbar{position:sticky;top:0;z-index:50;margin:0 -16px 16px;padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--border)}
   html.phone .entry-topbar .back-link{font-size:13px;font-weight:600;min-height:36px;display:inline-flex;align-items:center}
-    .dim-grid{grid-template-columns:1fr} .examples-grid,.examples-grid.imgs-1,.examples-grid.imgs-2{grid-template-columns:1fr}
-    .supporting-images-grid,.supporting-images-grid.imgs-1,.supporting-images-grid.imgs-2{grid-template-columns:1fr} .date-stamp{flex-direction:column;gap:8px}
-    .examples-grid.imgs-1 .example-card,.supporting-images-grid.imgs-1 .supporting-image-card{flex-direction:column}
-    .examples-grid.imgs-1 .example-card img,.supporting-images-grid.imgs-1 .supporting-image-card img{width:100%;max-width:100%}
-    .examples-grid.imgs-1 .example-caption,.supporting-images-grid.imgs-1 .supporting-image-title{border-left:none;border-top:1px solid var(--border)}
-    .project-export-grid{grid-template-columns:1fr} .legend-grid{grid-template-columns:1fr} .shape-grid{grid-template-columns:1fr} .dimension-guide-grid{grid-template-columns:1fr} .whatis-grid{grid-template-columns:1fr} .evidence-summary-grid{grid-template-columns:1fr 1fr}
-    .anatomy-block{grid-template-columns:1fr;gap:12px} .trace-arrow{transform:rotate(90deg);width:100%;justify-content:center}
-    .guide-band{flex-wrap:wrap;gap:12px} .guide-band-icon{font-size:26px} .guide-band-btn{width:100%}
-  }
 </style>
 <script>
   /* Apply saved/system theme before paint to avoid a flash of the wrong theme. */
