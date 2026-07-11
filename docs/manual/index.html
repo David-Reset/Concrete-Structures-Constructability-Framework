@@ -364,8 +364,9 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
         <a href="#dm-inbox"><span class="st">2</span> The submission inbox</a>
         <a href="#dm-reviewing"><span class="st">3</span> Reviewing a new entry</a>
         <a href="#dm-bands"><span class="st">4</span> Threshold bands</a>
-        <a href="#dm-publishing"><span class="st">5</span> Drafts &amp; publishing</a>
-        <a href="#dm-edits"><span class="st">6</span> Edits &amp; comments</a>
+        <a href="#dm-ai-review"><span class="st">5</span> Reviewing with an AI</a>
+        <a href="#dm-publishing"><span class="st">6</span> Drafts &amp; publishing</a>
+        <a href="#dm-edits"><span class="st">7</span> Edits &amp; comments</a>
         <div class="side-group">Advanced</div>
         <a href="#dm-decision-path">Decision path (by hand)</a>
       </aside>
@@ -396,8 +397,9 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
       <a class="chapter" href="#dm-inbox"><span class="cn">2</span><div class="cbody"><h3>The submission inbox</h3><p>Drop the response CSVs here, decide on each item, then click Apply decisions.</p></div></a>
       <a class="chapter" href="#dm-reviewing"><span class="cn">3</span><div class="cbody"><h3>Reviewing a new entry</h3><p>De-identify, set the dimension and id, and fill the question, background and parameter.</p></div></a>
       <a class="chapter" href="#dm-bands"><span class="cn">4</span><div class="cbody"><h3>Threshold bands</h3><p>The heart of an entry: ranges, ratings and the colour scale a reader sees.</p></div></a>
-      <a class="chapter" href="#dm-publishing"><span class="cn">5</span><div class="cbody"><h3>Drafts &amp; publishing</h3><p>Review your drafts together, publish, download the updated <code>data.json</code>, and the changelog.</p></div></a>
-      <a class="chapter" href="#dm-edits"><span class="cn">6</span><div class="cbody"><h3>Edits &amp; comments</h3><p>The other two kinds of submission and how they differ from a new entry.</p></div></a>
+      <a class="chapter" href="#dm-ai-review"><span class="cn">5</span><div class="cbody"><h3>Reviewing with an AI</h3><p>Optional. Hand entries to an AI with the quality rubric; it hands back the improved entry for you to check.</p></div></a>
+      <a class="chapter" href="#dm-publishing"><span class="cn">6</span><div class="cbody"><h3>Drafts &amp; publishing</h3><p>Review your drafts together, publish, download the updated <code>data.json</code>, and the changelog.</p></div></a>
+      <a class="chapter" href="#dm-edits"><span class="cn">7</span><div class="cbody"><h3>Edits &amp; comments</h3><p>The other two kinds of submission and how they differ from a new entry.</p></div></a>
     </div>
 
     <div class="pager">
@@ -456,7 +458,7 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
       <div class="wstep">
         <h3>Open the Submission inbox and add the CSVs</h3>
         <p class="goal">Bring the form responses into the tool.</p>
-        <p class="do">Click the <strong>Submission inbox</strong> tab. Drop your form-response CSVs into <strong>Add CSV responses</strong> (several at once is fine). The tool sorts new entries, edits and comments automatically. You can also drop a <strong>JSON fragment</strong> into the box beside it — a single new entry, an update to an existing entry (matched by its id), or a comment.</p>
+        <p class="do">Click the <strong>Submission inbox</strong> tab. Drop your form-response CSVs into <strong>Add CSV responses</strong> (several at once is fine). The tool sorts new entries, edits and comments automatically. You can also drop a <strong>JSON fragment</strong> into the box beside it — a single new entry, an update to an existing entry (matched by its id), or a comment. This is also where an <strong>AI-reviewed entry comes back</strong> (chapter&nbsp;5).</p>
         <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Submission inbox</span></div><div class="mk-body">
           <div class="mk-tabs"><span class="mk-tab">Browse entries</span><span class="mk-tab">Triage map</span><span class="mk-tab on">Submission inbox</span><span class="mk-tab">Drafts</span><span class="mk-tab">Rejected submissions</span></div>
           <p class="mk-sub" style="margin-bottom:12px">Form responses land <strong>here only</strong> — nothing enters data.json until you click <strong>Apply decisions</strong>. Accepted → drafts (hidden). Rejected → set aside in the Rejected tab and remembered. Undecided → stays and comes back next time.</p>
@@ -487,6 +489,7 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
       </div>
     </div>
     <div class="callout"><h3>Three destinations</h3><p><strong>Accepted → Drafts</strong> (hidden until you publish). <strong>Rejected → Rejected tab</strong> (remembered, won't come back). <strong>Undecided → stays</strong> in the inbox for next time. Nothing is written to <code>data.json</code> until you export.</p></div>
+    <div class="callout info"><h3>Stuck with a badly-framed submission?</h3><p>Before you spend an hour rewriting a messy submission by hand, consider handing it to an AI: <strong>🤖 Entry quality review</strong> (in this inbox, or on any new-entry card) sends it out with the quality rubric and brings back a tightened version — keywords filled in, question sharpened — straight into the same card, for you to check and edit. <a href="#dm-ai-review">Chapter 5 walks through it</a>. It's entirely optional; chapters 3–4 do the same job by hand.</p></div>
     <div class="pager">
       <a href="#dm-load"><div class="dir">← Back</div><div class="ttl">1 · Load your files</div></a>
       <a class="next" href="#dm-reviewing"><div class="dir">Next →</div><div class="ttl">3 · Reviewing a new entry</div></a>
@@ -588,12 +591,121 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
     <div class="callout info"><h3>Then Apply decisions</h3><p>Repeat chapters 3–4 for every item, set each to Accept or Reject, then click <strong>Apply decisions</strong> in the inbox. Accepted items become hidden drafts — publishing them is chapter 5.</p></div>
     <div class="pager">
       <a href="#dm-reviewing"><div class="dir">← Back</div><div class="ttl">3 · Reviewing a new entry</div></a>
-      <a class="next" href="#dm-publishing"><div class="dir">Next →</div><div class="ttl">5 · Drafts &amp; publishing</div></a>
+      <a class="next" href="#dm-ai-review"><div class="dir">Next →</div><div class="ttl">5 · Reviewing with an AI</div></a>
+    </div>
+        </div>
+        <div class="subpage" id="page-dm-ai-review">
+    <div class="crumbs"><a href="#home">Overview</a> › <a href="#dm-home">Data Manager</a> › <span>Reviewing with an AI</span></div>
+    <p class="page-eyebrow">Chapter 5</p>
+    <h1>Reviewing with an AI</h1>
+    <p class="lede">An optional second opinion. You hand entries to any AI along with the rubric that defines “good”, and it hands them back improved — or rated. You review everything before it changes a thing.</p>
+
+    <p>This is the one part of the tool that involves something outside your browser, so it's worth being clear about how it works. The Data Manager <strong>never talks to an AI itself</strong>. It writes a <code>.json</code> file; you give that file to whatever AI you like; you drop the reply back in. Nothing is uploaded, nothing is automatic, and nothing is saved until you export — exactly like the rest of the tool.</p>
+
+    <h2>Two different reviews</h2>
+    <p>There are two buttons and they do genuinely different jobs. Don't mix them up:</p>
+    <ul>
+      <li><strong>🤖 Entry quality review</strong> — is the entry <em>well framed?</em> One clear question, one parameter you can act on, bands that follow from it, the right dimension, useful search keywords. It hands back <strong>the improved entry</strong>. Use it on new submissions while they're still in the inbox.</li>
+      <li><strong>🤖 Evidence &amp; triage review</strong> — how <em>well-supported</em> is the guidance, and <em>when should it surface</em> on a job? It hands back a rating and a set of triage triggers, which you apply field by field. Use it on entries that are already in <code>data.json</code>.</li>
+    </ul>
+    <div class="callout"><h3>The line an AI review will not cross</h3><p>A quality review may <strong>reframe</strong> an entry — reword the question, tighten the parameter, rename a band, move it to a better dimension, add keywords. It must <strong>not re-author the guidance</strong>: it won't move a threshold from 200&nbsp;mm to 250&nbsp;mm, change what a band means, or invent evidence. Whether a number is <em>right</em> is a question for the evidence rubric and for people who know the answer — not for a reframing pass. If an AI ever hands back a changed threshold, reject it.</p></div>
+
+    <h2>The quality review, step by step</h2>
+    <div class="walk">
+      <div class="wstep">
+        <h3>Load the entry-quality rubric — once</h3>
+        <p class="goal">Teach the tool what “well framed” means.</p>
+        <p class="do">Click <strong>🤖 Entry quality review</strong> (top toolbar, or in the Submission inbox). Drop <code>entry-quality-rubric.md</code> into the rubric box. You only ever do this once: the rubric is <strong>saved inside <code>data.json</code></strong> and travels with the file, so it's baked into every request from then on. Re-drop the file to update it if the rubric changes.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Entry quality review</span></div><div class="mk-body">
+          <p class="mk-sub" style="margin-bottom:12px"><strong>1 · Entry quality rubric</strong> <span style="opacity:.6">(saved in data.json)</span></p>
+          <div class="mk-drops">
+            <div class="mk-drop filled"><div class="lab">Entry quality rubric ✓</div><div class="hint">entry-quality-rubric.md · loaded</div></div>
+          </div>
+        </div></div>
+        <p class="click">👉 <span><b>Drop</b> entry-quality-rubric.md — once, ever</span></p>
+      </div>
+
+      <div class="wstep">
+        <h3>Pick the entries</h3>
+        <p class="goal">Choose what gets reviewed — one entry or twenty.</p>
+        <p class="do">The picker lists two groups: <strong>Pending in the inbox</strong> (submissions you've loaded but not yet applied) and <strong>Already in data.json</strong> (live entries and drafts). Tick whichever you want. Inbox rows are selected by default, since that's the usual case. An entry with <strong>no dimension yet</strong> is fine — it's flagged, and the AI is asked to choose one. Then click <strong>Download review request</strong>.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Entry quality review</span></div><div class="mk-body">
+          <p class="mk-sub" style="margin-bottom:10px"><strong>2 · Entries to review</strong> — 2 selected</p>
+          <div class="mk-loaded" style="font-size:0.86rem">
+            <div class="row" style="opacity:.55;font-size:.7rem;text-transform:uppercase;letter-spacing:1px">Pending in the inbox</div>
+            <div class="row">☑ <strong>Off-form concrete upturns near obstructions</strong> <span class="mk-badge">inbox</span> <span class="mk-badge">no dimension</span></div>
+            <div class="row" style="opacity:.55;font-size:.7rem;text-transform:uppercase;letter-spacing:1px;margin-top:8px">Already in data.json</div>
+            <div class="row">☑ <span style="opacity:.85">Pier base detail — surface completion</span></div>
+          </div>
+          <div class="mk-actions" style="margin-top:10px"><span class="mk-btn" style="background:var(--accent);border-color:var(--accent);color:#fff">⬇ Download review request (.json)</span></div>
+        </div></div>
+        <p class="click">👉 <span><b>Tick</b> the entries · <b>Download</b> the request</span></p>
+      </div>
+
+      <div class="wstep">
+        <h3>Hand the file to an AI</h3>
+        <p class="goal">Get the improved entries back.</p>
+        <p class="do">Open any capable AI and upload (or paste) the <code>.json</code> file you just downloaded. You don't need to write a prompt — the file already contains the full rubric, the five dimensions and what each covers, the instructions, and the exact output shape required. Ask it to follow the instructions in the file. It replies with JSON: <strong>save that as a <code>.json</code> file</strong>, or copy it.</p>
+        <p class="click">👉 <span><b>Upload</b> the request · <b>Save</b> the AI's JSON reply</span></p>
+      </div>
+
+      <div class="wstep">
+        <h3>Drop the reply back in</h3>
+        <p class="goal">The reviewed entries return to the inbox — not to <code>data.json</code>.</p>
+        <p class="do">Drop the AI's reply into the box at the bottom of the review window (or into <strong>Add JSON fragment</strong> in the Submission inbox — same thing). It lands in the <strong>inbox</strong> as an ordinary reviewable item. An entry that was <em>pending in the inbox</em> is <strong>updated in place</strong> — same card, same id, no duplicate. An entry that was <em>already in data.json</em> comes back as an <strong>update</strong> showing which fields differ from the live version.</p>
+        <p class="click">👉 <span><b>Drop</b> the reply · it reappears in the Submission inbox</span></p>
+      </div>
+
+      <div class="wstep">
+        <h3>Read what it changed, then decide</h3>
+        <p class="goal">You are still the one who accepts it.</p>
+        <p class="do">The card now carries a blue <strong>AI quality review applied</strong> banner listing exactly which fields changed, and the AI's reasons for the <em>editorial</em> ones — a reworded question, a tightened parameter, a renamed band. Small silent fixes (keywords, typos, de-identification) aren't explained; they don't need to be. If the AI <strong>moved the entry to a different dimension</strong>, you get an orange warning — check that one properly. Everything below the banner is a normal, fully editable entry form: change anything you disagree with, then <strong>Accept</strong> as usual and click <strong>Apply decisions</strong>.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Submission inbox</span></div><div class="mk-body">
+          <div class="mk-card"><div class="mk-card-head"><span class="mk-type">New entry</span><span class="mk-card-name">Off-form concrete upturns near obstructions</span><span class="mk-time" style="border:1px solid var(--border);border-radius:4px;padding:1px 7px;text-transform:uppercase;font-size:.62rem">undecided</span></div><div class="mk-card-body">
+            <div style="border:1px solid var(--accent);border-radius:9px;padding:10px 12px;margin-bottom:10px">
+              <div style="color:var(--accent);font-weight:700;font-size:.78rem;margin-bottom:3px">🤖 AI quality review applied</div>
+              <div style="font-size:.84rem">Changed: <strong>dimension, question, parameter, thresholds, keywords</strong>. Everything below is editable — nothing is saved until you accept and then export.</div>
+              <div style="font-size:.84rem;color:var(--orange);font-weight:600;margin-top:6px">⚠ The AI moved this entry to a different <strong>dimension</strong> — check that before accepting.</div>
+              <div style="margin-top:8px;padding-top:7px;border-top:1px dashed var(--border);font-size:.82rem;opacity:.8">
+                <div style="text-transform:uppercase;letter-spacing:.6px;font-size:.62rem;opacity:.7;margin-bottom:4px">What it changed, and why</div>
+                <div>The question stacked two decisions — split it and kept the first.</div>
+                <div>Parameter was a paragraph describing the bands; shortened to the thing being measured.</div>
+              </div>
+            </div>
+            <div class="mk-actions"><span class="mk-btn ghost">⊙ Preview</span><span class="mk-btn accept">Accept</span><span class="mk-btn reject">Reject</span></div>
+          </div></div>
+        </div></div>
+        <p class="click">👉 <span><b>Read</b> the banner · <b>Edit</b> anything you disagree with · <b>Accept</b></span></p>
+      </div>
+    </div>
+
+    <div class="callout info"><h3>A shortcut for a single entry</h3><p>You don't have to open the review window at all. Expand any new-entry card in the inbox and click <strong>🤖 Send to AI review</strong> — it downloads a request for just that one entry. The reply comes back into the same card. Handy when one submission is clearly a mess and the rest are fine.</p></div>
+
+    <h2>The evidence &amp; triage review</h2>
+    <p>The second button, <strong>🤖 Evidence &amp; triage review</strong>, works on the same principle — load the rubrics once, pick entries, download a request, drop the reply back — but it answers different questions and behaves differently at the end.</p>
+    <div class="walk">
+      <div class="wstep">
+        <h3>What it gives you</h3>
+        <p class="goal">A rating and a trigger, not a rewrite.</p>
+        <p class="do">For each entry it returns an <strong>evidence-support level</strong> (Low / Medium / High, with a one-line summary) and a <strong>triage trigger</strong> — the combination of facts about a job that should make this entry surface. It may also propose <strong>new facts</strong> for the triage vocabulary if no existing one fits. It deliberately <strong>doesn't touch the question, bands or wording</strong> — that's the quality review's job.</p>
+      </div>
+      <div class="wstep">
+        <h3>How you apply it</h3>
+        <p class="goal">Suggestion by suggestion.</p>
+        <p class="do">The reply opens a review screen rather than dropping into the inbox, because these map onto specific fields. You see each suggestion beside the entry's current value, edit it if you want, and apply the ones you agree with. The AI's <em>rationale</em> is shown for you to read — it's never applied. Same rule as always: nothing is saved until you export <code>data.json</code>.</p>
+      </div>
+    </div>
+
+    <div class="callout"><h3>You can do this without the tool at all</h3><p>Nothing stops you copying an entry and the contents of <code>entry-quality-rubric.md</code> straight into an AI chat and asking it to check the framing. The buttons just make it repeatable: the right rubric every time, the id preserved, and the reply flowing back into the inbox instead of being retyped by hand.</p></div>
+
+    <div class="pager">
+      <a href="#dm-bands"><div class="dir">← Back</div><div class="ttl">4 · Threshold bands</div></a>
+      <a class="next" href="#dm-publishing"><div class="dir">Next →</div><div class="ttl">6 · Drafts &amp; publishing</div></a>
     </div>
         </div>
         <div class="subpage" id="page-dm-publishing">
     <div class="crumbs"><a href="#home">Overview</a> › <a href="#dm-home">Data Manager</a> › <span>Drafts &amp; publishing</span></div>
-    <p class="page-eyebrow">Chapter 5</p>
+    <p class="page-eyebrow">Chapter 6</p>
     <h1>Drafts &amp; publishing</h1>
     <p class="lede">Clicking <strong>Apply decisions</strong> turned your accepted items into hidden <strong>drafts</strong>. Publishing makes them live, then exporting produces the <code>data.json</code> you commit.</p>
     <div class="walk">
@@ -628,13 +740,13 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
       </div>
     </div>
     <div class="pager">
-      <a href="#dm-bands"><div class="dir">← Back</div><div class="ttl">4 · Threshold bands</div></a>
-      <a class="next" href="#dm-edits"><div class="dir">Next →</div><div class="ttl">6 · Edits &amp; comments</div></a>
+      <a href="#dm-ai-review"><div class="dir">← Back</div><div class="ttl">5 · Reviewing with an AI</div></a>
+      <a class="next" href="#dm-edits"><div class="dir">Next →</div><div class="ttl">7 · Edits &amp; comments</div></a>
     </div>
         </div>
         <div class="subpage" id="page-dm-edits">
 <div class="crumbs"><a href="#home">Overview</a> › <a href="#dm-home">Data Manager</a> › <span>Edits &amp; comments</span></div>
-    <p class="page-eyebrow">Chapter 6</p>
+    <p class="page-eyebrow">Chapter 7</p>
     <h1>Edits &amp; comments</h1>
     <p class="lede">The other two kinds of submission — proposed changes to live entries, and reader comments — and how they differ from a new entry.</p>
     <p>New entries are only one of three things that land in the inbox. They arrive in the same inbox and are decided the same way — <strong>Accept</strong>, <strong>Reject</strong> or leave <strong>undecided</strong>, then <strong>Apply decisions</strong>. The same rules apply: read carefully, de-identify, and nothing goes live until you apply your decisions.</p>
@@ -652,7 +764,7 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
     </div></div></div>
     <div class="callout info"><h3>Same discipline every time</h3><p>Whether it's a new entry, an edit or a comment: read every word, strip anything identifying, and only then accept. That habit is the whole job.</p></div>
     <div class="pager">
-      <a href="#dm-publishing"><div class="dir">← Back</div><div class="ttl">5 · Drafts &amp; publishing</div></a>
+      <a href="#dm-publishing"><div class="dir">← Back</div><div class="ttl">6 · Drafts &amp; publishing</div></a>
       <a class="next" href="#dm-decision-path"><div class="dir">Next →</div><div class="ttl">Decision path (by hand)</div></a>
     </div>
         </div>
@@ -697,7 +809,7 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
     </ol>
     <div class="callout"><h3>This is the only hand-edit</h3><p>Related-entry “see also” links are <em>not</em> edited here — those are managed in the Data Manager with the <strong>Links</strong> button. The <code>decisionPath</code> wiring on the reactive-ground entries is the single exception, and this page is all of it.</p></div>
     <div class="pager">
-      <a href="#dm-edits"><div class="dir">← Back</div><div class="ttl">6 · Edits &amp; comments</div></a>
+      <a href="#dm-edits"><div class="dir">← Back</div><div class="ttl">7 · Edits &amp; comments</div></a>
       <a class="disabled">&nbsp;</a>
     </div>
         </div>
