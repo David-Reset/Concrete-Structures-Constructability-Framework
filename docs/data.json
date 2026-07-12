@@ -5475,8 +5475,8 @@
               }
             ],
             "evidenceSupport": {
-              "level": "directional",
-              "summary": "The duty is directly on point: the NSW Safe Design of Structures Code requires designers to state the conditions needed for the structure to be safe during construction, expressly including bracing, with a written report under WHS Regulation 295 — and Temporary Works Forum guidance independently places the recognition step with the permanent designer. The recorded fatal collapses are predominantly masonry rather than reinforced concrete, so the harm that gives the duty its force here is demonstrated in an adjacent material system, and the ASI bracing-note precedent is steel-specific."
+              "level": "established",
+              "summary": "The call is set by a duty that is directly on point: the NSW Safe Design of Structures Code requires designers to provide the conditions necessary for the structure to be without risk during construction, expressly including bracing, with a written report under WHS Regulation 295 — and the SafeWork NSW alert recommends the same design-stage step, identifying which walls need temporary support and showing it on the construction drawings. Engineers Australia and the Temporary Works Forum independently place that recognition step with the permanent designer, and a documented steel-frame collapse records a generic ‘contractor to brace’ note failing in practice. The recorded fatal collapses are predominantly masonry, so the consequence is best documented in a different material system, and how often the dependency is missed is not quantified."
             },
             "relatedEntries": [
               {
