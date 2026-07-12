@@ -1245,7 +1245,13 @@ const FORMS={
 // External project links. This site is published with GitHub Pages; the repository
 // holds the README, the licences, and the maintainer tools.
 const LINKS={
-  repo:'https://github.com/david-reset/Concrete-Structures-Constructability-Framework'
+  repo:'https://github.com/david-reset/Concrete-Structures-Constructability-Framework',
+  // The maintainer's manual is published inside docs/, so it is part of this site.
+  manual:'manual/',
+  // The tools and rubrics are NOT: they live in tools/, outside docs/, so GitHub Pages
+  // never serves them. These point at the files on GitHub, where they can be downloaded.
+  toolsFolder:'https://github.com/david-reset/Concrete-Structures-Constructability-Framework/tree/main/tools',
+  file:n=>'https://github.com/david-reset/Concrete-Structures-Constructability-Framework/blob/main/tools/'+n
 };
 // Canonical public deep link to an entry (strips a trailing index.html so it
 // matches the GitHub Pages directory URL; the #dimId/id hash drives routing).
@@ -2086,71 +2092,16 @@ function goComment(dimId,id){const it=lookupItem(dimId,id);if(!it)return;window.
 function goEditEntry(dimId,id){const it=lookupItem(dimId,id);if(!it)return;window.open(prefillUrl(FORMS.edit,it.name,entryUrl(dimId,id)),'_blank');}
 
 // ===== GUIDED TRIAGE =====
-// Editable question model. The authoring guide and the full entry->question mapping live
-// in triage-questions.md. Only entry IDs that exist and are `available` are ever surfaced;
-// unknown IDs are silently ignored, so this block is safe to edit freely. To change the
-// questionnaire you only edit TRIAGE below — the engine underneath needs no changes.
-const DEFAULT_TRIAGE={
-  intro:"Answer a few quick questions about the job — most come straight off the architect's drawings, a couple from your geotech or what you're still deciding. We'll gather the entries worth reviewing; you choose which to add.",
-  // STEP 1 — gates. Each establishes a "fact". Presence facts (elements) plus the two
-  // glance-legible condition facts (exposed, watertight). Edit labels/hints freely.
-  gates:[
-    {fact:'slab-suspended',label:'Suspended slabs',hint:'Suspended floors, transfer slabs — incl. ground floors carried on piles'},
-    {fact:'beam-suspended',label:'Suspended beams',hint:'Beams / band beams in a suspended floor, incl. beams spanning between piles'},
-    {fact:'slab-on-ground',label:'Ground floor cast on the ground',hint:'Ground-bearing slabs — raft or waffle pod'},
-    {fact:'footing',label:'Footings or ground beams',hint:'Pad/strip footings, pile caps, ground-bearing ground beams'},
-    {fact:'wall',label:'Concrete walls',hint:'Core walls, retaining walls, blade walls, upstands'},
-    {fact:'column',label:'Concrete columns',hint:'Formed concrete columns'},
-    {fact:'pile',label:'Piles, piers or shafts',hint:'Bored, driven or screw piles; caissons'},
-    {fact:'exposed-concrete',label:'Exposed / architectural concrete',hint:'Off-form faces, feature corners or soffits on show'},
-    {fact:'watertight',label:'Basement or watertight structure',hint:'Walls, tanks or wet areas that must stay dry'},
-  ],
-  // STEP 2 — questions. Each establishes one fact and is shown only when ANY of its `when`
-  // facts (Step-1 gates) is selected. Three answers: Yes / Not sure / No. "Not sure" still
-  // surfaces the entry — the point is to prompt consideration. `source` tags where the
-  // answer comes from so the user isn't hunting on a floor plan.
-  questions:[
-    {fact:'construction-stage-loading',when:['slab-suspended','beam-suspended'],source:'intent',
-     prompt:'While the building is going up, will any suspended slab carry heavy temporary loads — stacked materials, machinery standing on it?'},
-    {fact:'repeated-floors',when:['slab-suspended','beam-suspended'],source:'drawings',
-     prompt:'Are the suspended concrete floors largely the same layout from one level to the next?'},
-    {fact:'slab-level-change',when:['slab-suspended'],source:'drawings',
-     prompt:'Do the slabs have level changes — folds, steps or setdowns?'},
-    {fact:'upstand-near-obstruction',when:['wall'],source:'drawings',
-     prompt:'Are any upstands, walls or planters cast hard against an obstruction or boundary?'},
-    {fact:'deep-vertical-at-slab',when:['slab-suspended','beam-suspended','footing','wall','column','pile'],source:'drawings',
-     prompt:'Is a slab, beam or pile cap cast directly on top of a much deeper concrete element below it — for example a slab poured straight over the top of a deep pile, tall column or thick wall?'},
-    {fact:'founded-on-rock',when:['footing','pile'],source:'geotech',
-     prompt:'Are any foundations founded on, or socketed into, rock?'},
-    {fact:'reactive-ground',when:['slab-on-ground','footing','pile'],source:'geotech',
-     prompt:'Is the site on reactive (expansive) ground?'},
-    {fact:'bushfire-area',when:['slab-on-ground','footing','pile'],source:'site',
-     prompt:'Is the site in a bushfire (BAL) area?'},
-    {fact:'access-constrained',when:['pile'],source:'site',
-     prompt:'Is site access potentially tight for machinery — low headroom for piling or narrow access overall?'},
-    {fact:'choosing-vertical-system',when:['slab-suspended','beam-suspended'],source:'intent',
-     prompt:'Still deciding the vertical supports for suspended concrete — concrete columns/walls, blockwork or steel?'},
-    {fact:'choosing-floor-framing',when:['slab-suspended','beam-suspended'],source:'intent',
-     prompt:'Could steel beams carry the slab instead of concrete ones?'},
-    {fact:'considering-screw-piles',when:['pile'],source:'intent',
-     prompt:'Are screw piles being considered?'},
-  ],
-  // There is no opt-in step. Advice is either universal in scope (an entry flagged
-  // `standing`, always shown) or conditional (a gate or a question). See the triage rubric.
-  sourceText:{drawings:"You can read this from the drawings.",geotech:"From your geotechnical report or site info.",site:"From the site or project brief.",intent:"About a decision you may still be making."}
-};
-
-// Human labels + kind for every fact, used to explain why an entry surfaced.
-const DEFAULT_FACT_META=(()=>{
-  const m={};
-  const P={'slab-suspended':'Suspended slabs','beam-suspended':'Suspended beams','slab-on-ground':'Ground-bearing slab','footing':'Footings / ground beams','wall':'Concrete walls','column':'Concrete columns','pile':'Piles / piers'};
-  const C={'exposed-concrete':'Exposed concrete','watertight':'Watertight structure','repeated-floors':'Repeated floors','slab-level-change':'Slab level changes','upstand-near-obstruction':'Upstand near an obstruction','deep-vertical-at-slab':'Deep vertical element at a slab','founded-on-rock':'Founded on rock','reactive-ground':'Reactive ground','bushfire-area':'Bushfire area','access-constrained':'Constrained site access','construction-stage-loading':'Construction-stage loading'};
-  const I={'choosing-vertical-system':'Choosing the vertical system','choosing-floor-framing':'Choosing the floor framing','considering-screw-piles':'Considering screw piles'};
-  for(const k in P)m[k]={label:P[k],kind:'presence',pri:1};
-  for(const k in C)m[k]={label:C[k],kind:'condition',pri:3};
-  for(const k in I)m[k]={label:I[k],kind:'intent',pri:3};
-  return m;
-})();
+// The questionnaire is entirely data-driven: gates, questions, `when` conditions and
+// source text all come from data.json's `triageConfig`, and the entry triggers come from
+// each entry's `triage` / `standing` fields. There is deliberately NO hard-coded fallback
+// vocabulary here — a stale copy of the facts would silently reintroduce triggers that no
+// longer match the data (a fact that has since been split, a `when` that has since been
+// broadened), and a silently wrong questionnaire is worse than none. If `triageConfig` is
+// missing, triage is disabled and says so; the rest of the site works normally.
+//
+// The rules the vocabulary and triggers follow are in tools/triage-rating-rubric.md.
+// To change the questionnaire, edit data.json in the Data Manager — no code change needed.
 
 // Derive fact metadata (label + priority) from a triage config, so the questionnaire
 // is fully data-driven: adding a question in data.json's triageConfig needs no code change.
@@ -2161,14 +2112,19 @@ function buildFactMeta(T){
   return m;
 }
 
-// TRIAGE / FACT_META are loaded from data.json's triageConfig at startup; the DEFAULT_*
-// above are only a fallback if an older data.json without triageConfig is ever loaded.
-let TRIAGE=DEFAULT_TRIAGE;
-let FACT_META=DEFAULT_FACT_META;
+// Set at startup from data.json. Null means: no triage vocabulary was loaded.
+let TRIAGE=null;
+let FACT_META={};
+function triageAvailable(){return !!(TRIAGE&&(TRIAGE.gates||[]).length);}
 
 let triage=null;
 
 function openTriage(){
+  if(!triageAvailable()){
+    console.error('Guided triage unavailable: data.json has no triageConfig. The questionnaire is defined in data.json, not in this file.');
+    alert('Guided triage is unavailable — the framework data is missing its triage questions. Search and browse still work.');
+    return;
+  }
   triage={phase:'gates',gateSel:new Set(),answers:new Map(),qList:[],qIdx:0};
   paintTriage();
 }
@@ -2391,7 +2347,13 @@ async function loadData(){
   try{
     const resp=await fetch('data.json');
     const data=await resp.json();
-    if(data.triageConfig){TRIAGE=data.triageConfig;FACT_META=buildFactMeta(TRIAGE);}
+    if(data.triageConfig&&(data.triageConfig.gates||[]).length){
+      TRIAGE=data.triageConfig;FACT_META=buildFactMeta(TRIAGE);
+    }else{
+      // Fail loudly rather than falling back to a hard-coded vocabulary: a stale fact list
+      // would surface the wrong entries, and no one would ever see it happen.
+      console.error('data.json has no usable triageConfig — guided triage is disabled. Export a fresh data.json from the Data Manager.');
+    }
     dimensions=data.dimensions;
     guide=data.guide||null;
     // Safety net: guarantee every entry has a unique id even if one was omitted in data.json.
@@ -2668,12 +2630,13 @@ function renderHomeView(){
   const browseBanner=`<div class="suggest-banner browse-banner" onclick="goBrowse()"><div class="suggest-banner-text"><div class="suggest-banner-title">Browse all entries — by region, element or stage</div><div class="suggest-banner-sub">See every live entry across all five dimensions, narrowed by the region its evidence was gathered in, the structural element it concerns, or the construction stage it affects.</div></div><div class="suggest-banner-btn">Browse →</div></div>`;
   const has=searchQuery.trim().length>0;
   const searchIcon='<svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z"/></svg>';
+  const triageLaunch=triageAvailable()?`<div class="triage-launch">
+      <button class="triage-btn" onclick="openTriage()"><span class="ico">&#8983;</span> Run guided triage</button>
+      <span class="triage-launch-hint">Not sure what to search for? Answer a few questions about your project and we'll suggest entries to review.</span>
+    </div>`:'';
   const searchHero=`<div class="search-hero">
     <div class="search-bar">${searchIcon}<input id="search-input" class="search-input" type="text" autocomplete="off" spellcheck="false" placeholder="Describe your design problem — e.g. “wall close to a boundary”, “stirrup size”, “curing”" value="${escAttr(searchQuery)}" oninput="onSearchInput(this.value)"><div id="search-clear" class="search-clear" style="display:${searchQuery?'flex':'none'}" onclick="clearSearch()">✕</div></div>
-    <div class="triage-launch">
-      <button class="triage-btn" onclick="openTriage()"><span class="ico">⌗</span> Run guided triage</button>
-      <span class="triage-launch-hint">Not sure what to search for? Answer a few questions about your project and we'll suggest entries to review.</span>
-    </div>
+    ${triageLaunch}
     <div id="search-region-wrap" class="search-region-wrap" style="display:${has?'flex':'none'}"><span class="search-region-label">Narrow to region</span><select id="search-region" class="search-region" onchange="onSearchRegion(this.value)">${searchRegionOptions()}</select></div>
   </div>`;
   homeNavCtx();
@@ -3476,7 +3439,8 @@ function manualContributing(){
 function manualMaintenance(){
   const hero=`<div class="dim-header"><span class="dim-header-icon">&#128736;</span><h1 class="dim-header-title">Maintainer tools</h1></div>
     <p class="section-desc">Nothing submitted through a form goes live on its own. A maintainer reviews and de-identifies every item, then uses three browser-based tools to turn it into published content. Each tool is a single HTML file you open locally \u2014 it runs entirely on your machine and uploads nothing.</p>
-    <div class="manual-cta" onclick="window.open(LINKS.repo,'_blank')"><div class="manual-cta-mark">&#9733;</div><div class="manual-cta-text"><div class="manual-cta-title">The tools live in the GitHub repository</div><div class="manual-cta-sub">This site is published with GitHub Pages. The repo holds the README, the licences, data.json and the three tools in the tools/ folder.</div></div><div class="manual-cta-btn">Open the repo \u2192</div></div>`;
+    <div class="manual-cta" onclick="window.open(LINKS.manual,'_blank')"><div class="manual-cta-mark">&#128218;</div><div class="manual-cta-text"><div class="manual-cta-title">The Maintainer's Manual \u2014 the full step-by-step guide</div><div class="manual-cta-sub">Follows one real submission through every tool, from a form response to going live: the inbox, threshold bands, AI review, triage, drafts and publishing. Assumes no prior familiarity. If you are maintaining this framework, start there.</div></div><div class="manual-cta-btn">Open the manual \u2192</div></div>
+    <div class="manual-cta" onclick="window.open(LINKS.repo,'_blank')"><div class="manual-cta-mark">&#9733;</div><div class="manual-cta-text"><div class="manual-cta-title">Everything lives in the GitHub repository</div><div class="manual-cta-sub">This site is published with GitHub Pages from the docs/ folder. The repo also holds the README, the licences, and the three tools and three rubrics in tools/.</div></div><div class="manual-cta-btn">Open the repo \u2192</div></div>`;
 
   const tool=(icon,name,what,io,when)=>`<div class="tool-card"><div class="tool-head"><span class="tool-ico">${icon}</span><div class="tool-name">${name}</div></div>
     <div class="tool-what">${what}</div>
@@ -3500,7 +3464,27 @@ function manualMaintenance(){
 
   const note=`<div class="guide-callout" style="margin-top:26px"><div class="label" style="color:var(--yellow)">Why review is manual</div><div class="guide-point-text">Suggested entries, edits and comments never appear automatically. Reviewing by hand keeps the framework accurate and de-identified \u2014 no project, company, client or designer names, and no GPS or camera data left in photographs.</div></div>`;
 
-  return hero+cards+flow+note;
+
+  // The tools and rubrics are outside docs/, so they cannot be linked as site pages —
+  // these go to the files on GitHub, where "download raw file" saves a working copy.
+  const fileRow=(name,what)=>`<li><a href="${LINKS.file(name)}" target="_blank" rel="noopener"><code>${name}</code></a> &mdash; ${what}</li>`;
+  const files=`<div class="label" style="margin-top:30px">Get the files</div>
+    <p class="section-desc">The tools and rubrics sit in the repository's <a href="${LINKS.toolsFolder}" target="_blank" rel="noopener"><code>tools/</code> folder</a> &mdash; deliberately outside <code>docs/</code>, so they are not published with this site. Open a file on GitHub and use its <strong>download raw file</strong> button (&#10515;) to save a real copy; each tool is then just an HTML file you double-click. The content itself lives in <code>docs/data.json</code>, which the Data Manager reads and writes.</p>
+    <div class="label" style="margin-top:18px">The three tools</div>
+    <ul class="whatis-items">
+      ${fileRow('framework-data-manager.html','the main tool: form responses in, structured entries out.')}
+      ${fileRow('framework-doctor.html','read-only health check on docs/. Run it before you commit.')}
+      ${fileRow('framework-image-formatter.html','re-encodes and renames images, and strips GPS and camera metadata.')}
+    </ul>
+    <div class="label" style="margin-top:18px">The three rubrics</div>
+    <p class="section-desc">Written references, not programs. Each is also saved <em>inside</em> <code>data.json</code>, which is what lets the Data Manager hand it to an AI review \u2014 so if you edit one of these files, re-drop it into the tool, or the old version keeps being used.</p>
+    <ul class="whatis-items">
+      ${fileRow('evidence-rating-rubric.md','how an entry\u2019s evidence support is set: Established, Directional, Indicative or Reasoned.')}
+      ${fileRow('triage-rating-rubric.md','how it is decided which jobs an entry surfaces on in guided triage.')}
+      ${fileRow('entry-quality-rubric.md','how it is judged whether an entry is well framed: one question, one parameter, bands that follow.')}
+    </ul>`;
+
+  return hero+cards+flow+files+note;
 }
 function goEvidenceSupport(level){state.evidenceFilter=level||'all';window.location.hash='evidence-support';if(state.view==='evidence')render();}
 function goByDate(){window.location.hash='by-date'}
