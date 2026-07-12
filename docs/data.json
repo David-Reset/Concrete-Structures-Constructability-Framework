@@ -6807,7 +6807,7 @@
           "text": "Prepares images for the images folder. It re-encodes and renames them, warns on filename clashes, and strips embedded metadata such as GPS and camera info — a useful privacy step for site photographs."
         }
       ],
-      "note": "Suggested entries, suggested changes and comments do not appear automatically. They are reviewed and de-identified before being added."
+      "note": "Suggested entries, suggested changes and comments do not appear automatically. They are reviewed and de-identified before being added.<br><br>If you are the one doing that reviewing, the <strong><a href=\"manual/\" target=\"_blank\" rel=\"noopener\">Maintainer’s Manual</a></strong> is the full step-by-step guide — it follows one real submission through every tool, from a form response to going live. The tools themselves, and the three rubrics they apply, are in the <a href=\"https://github.com/david-reset/Concrete-Structures-Constructability-Framework/tree/main/tools\" target=\"_blank\" rel=\"noopener\"><code>tools/</code> folder</a> of the repository."
     }
   },
   "triageConfig": {
