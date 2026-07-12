@@ -469,31 +469,49 @@
   .evidence-test-card{padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:10px}
   .evidence-test-card strong{display:block;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-bottom:7px;color:var(--text)}
   .evidence-test-card span{font-size:13px;color:var(--text-muted);line-height:1.55;display:block}
-  .evidence-hierarchy-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0 22px;align-items:start}
+  .evidence-hierarchy-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0 22px;align-items:start}
   .evidence-tier-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-height:100%}
   .evidence-tier-head{padding:16px 18px;border-bottom:1px solid var(--border)}
   .evidence-tier-titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
   .evidence-tier-title{font-size:18px;font-weight:900;letter-spacing:-0.35px;line-height:1.15}
   .evidence-tier-range{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:800;padding:5px 9px;border-radius:999px;white-space:nowrap;flex-shrink:0}
   .evidence-tier-rule{font-size:12.5px;color:var(--text);opacity:.88;line-height:1.55;margin-top:0}
-  .evidence-tier-card.high{border-color:rgba(34,197,94,0.36)}
-  .evidence-tier-card.high .evidence-tier-head{background:rgba(34,197,94,0.07)}
-  .evidence-tier-card.high .evidence-tier-title{color:var(--green)}
-  .evidence-tier-card.high .evidence-tier-range{background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.28)}
-  .evidence-tier-card.medium{border-color:rgba(234,179,8,0.38)}
-  .evidence-tier-card.medium .evidence-tier-head{background:rgba(234,179,8,0.07)}
-  .evidence-tier-card.medium .evidence-tier-title{color:var(--yellow)}
-  .evidence-tier-card.medium .evidence-tier-range{background:rgba(234,179,8,0.12);color:var(--yellow);border:1px solid rgba(234,179,8,0.28)}
-  .evidence-tier-card.low{border-color:rgba(248,113,113,0.38)}
-  .evidence-tier-card.low .evidence-tier-head{background:rgba(239,68,68,0.07)}
-  .evidence-tier-card.low .evidence-tier-title{color:#f87171}
-  .evidence-tier-card.low .evidence-tier-range{background:rgba(239,68,68,0.12);color:#f87171;border:1px solid rgba(248,113,113,0.28)}
+  .evidence-tier-card.established{border-color:rgba(34,197,94,0.36)}
+  .evidence-tier-card.established .evidence-tier-head{background:rgba(34,197,94,0.07)}
+  .evidence-tier-card.established .evidence-tier-title{color:var(--green)}
+  .evidence-tier-card.established .evidence-tier-range{background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.28)}
+  .evidence-tier-card.directional{border-color:rgba(56,189,248,0.38)}
+  .evidence-tier-card.directional .evidence-tier-head{background:rgba(56,189,248,0.07)}
+  .evidence-tier-card.directional .evidence-tier-title{color:#38bdf8}
+  .evidence-tier-card.directional .evidence-tier-range{background:rgba(56,189,248,0.12);color:#38bdf8;border:1px solid rgba(56,189,248,0.28)}
+  .evidence-tier-card.indicative{border-color:rgba(234,179,8,0.38)}
+  .evidence-tier-card.indicative .evidence-tier-head{background:rgba(234,179,8,0.07)}
+  .evidence-tier-card.indicative .evidence-tier-title{color:var(--yellow)}
+  .evidence-tier-card.indicative .evidence-tier-range{background:rgba(234,179,8,0.12);color:var(--yellow);border:1px solid rgba(234,179,8,0.28)}
+  .evidence-tier-card.reasoned{border-color:rgba(251,146,60,0.38)}
+  .evidence-tier-card.reasoned .evidence-tier-head{background:rgba(249,115,22,0.07)}
+  .evidence-tier-card.reasoned .evidence-tier-title{color:#fb923c}
+  .evidence-tier-card.reasoned .evidence-tier-range{background:rgba(249,115,22,0.12);color:#fb923c;border:1px solid rgba(251,146,60,0.28)}
   .evidence-type-list{display:flex;flex-direction:column;gap:7px;padding:14px 16px;flex:1}
   .evidence-type{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;padding:10px 11px;background:var(--surface-light);border:1px solid var(--border);border-radius:8px}
   .evidence-type-num{font-family:'JetBrains Mono',monospace;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;background:rgba(59,130,246,0.14);color:var(--accent)}
-  .evidence-tier-card.high .evidence-type-num{background:rgba(34,197,94,0.14);color:var(--green)}
-  .evidence-tier-card.medium .evidence-type-num{background:rgba(234,179,8,0.15);color:var(--yellow)}
-  .evidence-tier-card.low .evidence-type-num{background:rgba(239,68,68,0.15);color:#f87171}
+  .evidence-tier-card.established .evidence-type-num{background:rgba(34,197,94,0.14);color:var(--green)}
+  .evidence-tier-card.directional .evidence-type-num{background:rgba(56,189,248,0.15);color:#38bdf8}
+  .evidence-tier-card.indicative .evidence-type-num{background:rgba(234,179,8,0.15);color:var(--yellow)}
+  .evidence-tier-card.reasoned .evidence-type-num{background:rgba(249,115,22,0.15);color:#fb923c}
+  .evidence-grade-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0 8px;align-items:start}
+  .evidence-grade-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface-light)}
+  .evidence-grade-head{padding:11px 14px;border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+  .evidence-grade-letter{font-family:'JetBrains Mono',monospace;font-size:17px;font-weight:900;color:var(--accent)}
+  .evidence-grade-card.gb .evidence-grade-letter{color:#38bdf8}
+  .evidence-grade-card.gc .evidence-grade-letter{color:var(--text-muted)}
+  .evidence-grade-what{font-size:12px;font-weight:700;color:var(--text);line-height:1.35}
+  .evidence-grade-list{margin:0;padding:11px 14px 13px 30px;font-size:12.5px;line-height:1.65;color:var(--text);opacity:.82}
+  .evidence-prox-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0 4px}
+  .evidence-prox-card{border:1px solid var(--border);border-radius:10px;padding:12px 14px;background:var(--surface-light)}
+  .evidence-prox-name{font-size:13px;font-weight:800;color:var(--text);margin-bottom:5px}
+  .evidence-prox-text{font-size:12.5px;line-height:1.6;color:var(--text);opacity:.8}
+  @media(max-width:900px){.evidence-grade-grid{grid-template-columns:1fr}.evidence-prox-grid{grid-template-columns:1fr}}
   .evidence-type-name{font-size:13px;font-weight:700;line-height:1.35;color:var(--text)}
   .evidence-type-note{font-size:11.5px;color:var(--text-muted);line-height:1.45;margin-top:3px}
   .evidence-shared-note{margin:0 16px 16px;padding:10px 12px;border-radius:8px;background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.22);font-size:12px;color:var(--text);line-height:1.5;opacity:.88}
@@ -2651,7 +2669,7 @@ function renderHomeView(){
   const cards=dimensions.map(d=>`<div class="dim-card" onclick="goDimension('${d.id}')"><div class="dim-icon">${d.icon}</div><div class="dim-name">${d.name}</div><div class="dim-desc">${d.description}</div><div class="dim-count">${d.items.length} items →</div></div>`).join('');
   const guideBand=guide?`<div class="guide-band" onclick="goGuide()"><div class="guide-band-icon">${guide.icon}</div><div class="guide-band-text"><div class="guide-band-head"><span class="guide-band-pill">Start here</span><span class="guide-band-title">${guide.title}</span></div><div class="guide-band-sub">${guide.tagline}</div></div><div class="guide-band-btn">Open guide →</div></div>`:'';
   const evCounts=evidenceSupportCounts();
-  const evidenceBanner=`<div class="suggest-banner evidence-index-banner" onclick="goEvidenceSupport('all')"><div class="suggest-banner-text"><div class="suggest-banner-title">Evidence support index</div><div class="suggest-banner-sub">View all ${evCounts.all} live entries by evidence support level — High, Medium or Low.</div></div><div class="suggest-banner-btn">View index →</div></div>`;
+  const evidenceBanner=`<div class="suggest-banner evidence-index-banner" onclick="goEvidenceSupport('all')"><div class="suggest-banner-text"><div class="suggest-banner-title">Evidence support index</div><div class="suggest-banner-sub">View all ${evCounts.all} live entries by evidence support level — Established, Directional, Indicative or Reasoned.</div></div><div class="suggest-banner-btn">View index →</div></div>`;
   const browseBanner=`<div class="suggest-banner browse-banner" onclick="goBrowse()"><div class="suggest-banner-text"><div class="suggest-banner-title">Browse all entries — by region, element or stage</div><div class="suggest-banner-sub">See every live entry across all five dimensions, narrowed by the region its evidence was gathered in, the structural element it concerns, or the construction stage it affects.</div></div><div class="suggest-banner-btn">Browse →</div></div>`;
   const has=searchQuery.trim().length>0;
   const searchIcon='<svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z"/></svg>';
@@ -2816,48 +2834,55 @@ function evidenceTypeMarkup(num,name,note){
   return `<div class="evidence-type"><div class="evidence-type-num">${num}</div><div><div class="evidence-type-name">${name}</div>${note?`<div class="evidence-type-note">${note}</div>`:''}</div></div>`;
 }
 function renderEvidenceRubric(){
-  const highTypes=[
-    [1,'Direct measurement / field data','Same element or parameter.'],
-    [2,'First-principles physical derivation','Established dimensions or mechanics.'],
-    [3,'Regulatory duty or mandatory code provision','Especially safety and communication duties.'],
-    [4,'Peer-reviewed research directly on point',''],
-    [5,'Authoritative industry guidance','Directly on point — e.g. SRIA, CCAA, RTA technical notes.'],
-    [6,'Primary research conducted for the framework','Example: structured supplier review.'],
-    [7,'Documented real project case','A concern / recommended example that occurred.']
-  ];
-  const mediumTypes=[
-    [8,'Industry or contractor consultation','Useful, but not a measured threshold.'],
-    [9,'General or analogous literature','Right phenomenon, different domain; applied by inference.']
-  ];
-  const lowTypes=[
-    [9,'General or analogous literature only','No corroborating measurement, derivation, guidance, duty, research, or case.'],
-    [10,'Unaided practitioner judgement','A strengthening flag before publication.']
-  ];
+  const gradeA=['Direct measurement or field data on the same element','A calculation from real, established component sizes or mechanics','Peer-reviewed research','A mandatory code provision or statutory duty (AS 3600, the NCC, WHS Regulation)'];
+  const gradeB=['A regulator code of practice or published guidance','An authoritative industry standard or technical note (SRIA, CCAA, ACI, Engineering NZ)','A government or agency research synthesis','A doctoral thesis, or an established reference textbook','Primary research done for this framework — for example, a structured supplier review'];
+  const gradeC=['A documented real project case — a concern or recommended example that actually happened','Manufacturer or supplier product data','Trade or contractor guidance, and industry consultation','Practitioner judgement'];
+  const li=a=>a.map(x=>`<li>${x}</li>`).join('');
   return `<div class="label">How the rating is decided</div>
-  <p class="section-desc" style="max-width:760px;margin-bottom:6px">Most entries give you <span class="evidence-key">cut-off numbers</span> to act on — for example, <em>fold depth over 600&nbsp;mm</em>. Some instead just recommend a <span class="evidence-key">choice</span> — <em>chamfer the corner or don't</em>. The rating measures how much you can trust those numbers or that choice. Three questions decide it:</p>
+  <p class="section-desc" style="max-width:820px;margin-bottom:6px">Most entries give you a <span class="evidence-key">cut-off number</span> to act on — for example, <em>fold depth over 600&nbsp;mm</em>. Some instead recommend a <span class="evidence-key">choice</span> — <em>chamfer the corner, or don&rsquo;t</em>. Others ask you to <span class="evidence-key">count how many conditions apply</span>. The rating measures how far you can trust that number, that choice, or that count. It is <strong>not</strong> a measure of how important the issue is.</p>
+
+  <div class="label" style="margin-top:22px">Step 1 &middot; Every source is graded on two things</div>
+  <p class="section-desc" style="max-width:820px;margin-bottom:2px">A source has to pass <strong>both</strong> tests to count. A brilliant study about the wrong thing is still about the wrong thing.</p>
+  <p class="section-desc" style="max-width:820px;margin:10px 0 0;font-weight:700;color:var(--text)">How much weight the <em>kind</em> of source can carry</p>
+  <section class="evidence-grade-grid">
+    <article class="evidence-grade-card ga"><div class="evidence-grade-head"><span class="evidence-grade-letter">A</span><span class="evidence-grade-what">Can fix a number</span></div><ul class="evidence-grade-list">${li(gradeA)}</ul></article>
+    <article class="evidence-grade-card gb"><div class="evidence-grade-head"><span class="evidence-grade-letter">B</span><span class="evidence-grade-what">Can back a recommendation &mdash; and fix a number where the number is a physical or regulatory fact</span></div><ul class="evidence-grade-list">${li(gradeB)}</ul></article>
+    <article class="evidence-grade-card gc"><div class="evidence-grade-head"><span class="evidence-grade-letter">C</span><span class="evidence-grade-what">Can confirm a claim, but never establish one on its own</span></div><ul class="evidence-grade-list">${li(gradeC)}</ul></article>
+  </section>
+  <p class="section-desc" style="max-width:820px;margin:16px 0 0;font-weight:700;color:var(--text)">What the source is actually <em>about</em></p>
+  <section class="evidence-prox-grid">
+    <article class="evidence-prox-card"><div class="evidence-prox-name">On point</div><div class="evidence-prox-text">It addresses the very thing you are being asked to act on.</div></article>
+    <article class="evidence-prox-card"><div class="evidence-prox-name">Adjacent</div><div class="evidence-prox-text">It addresses a neighbouring question. Guidance on a chamfer for a <em>precast cladding joint</em> is adjacent to a claim about a <em>formed in-situ corner</em>.</div></article>
+    <article class="evidence-prox-card"><div class="evidence-prox-name">Analogous</div><div class="evidence-prox-text">The right effect, studied in a different field. Research on visual clutter in <em>general displays</em>, applied to reinforcement callouts.</div></article>
+  </section>
+  <div class="evidence-shared-note" style="margin:16px 0 0"><strong>The rule that does the work:</strong> a claim is only <em>evidenced</em> by a Grade&nbsp;A or Grade&nbsp;B source that is <strong>on point</strong>. Adjacent or analogous caps the entry, however strong the source. Grade&nbsp;C never evidences a claim &mdash; it confirms one that A or B has already made.</div>
+
+  <div class="label" style="margin-top:26px">Step 2 &middot; Then three questions</div>
   <section class="evidence-steps">
-    <div class="evidence-step"><div class="evidence-step-num">1</div><div class="evidence-step-text"><strong>What kind of evidence sits behind it?</strong> Measured on site, calculated from real component sizes, required by a duty or code, taken from a study or industry guidance, or based on experience. The list further down ranks these, strongest first.</div></div>
-    <div class="evidence-step"><div class="evidence-step-num">2</div><div class="evidence-step-text"><strong>Does that evidence actually cover the numbers?</strong> For an entry with cut-offs, is there real evidence behind <em>each</em> cut-off, or are some of them a sensible estimate? For an entry that recommends a choice, is that choice itself backed up?</div></div>
-    <div class="evidence-step"><div class="evidence-step-num">3</div><div class="evidence-step-text"><strong>Does more than one independent source point the same way?</strong> A single source on its own is never enough for a High rating.</div></div>
+    <div class="evidence-step"><div class="evidence-step-num">1</div><div class="evidence-step-text"><strong>Is the mechanism evidenced, on point?</strong> Is there a Grade&nbsp;A or B source that speaks directly to this issue &mdash; not to a neighbouring one?</div></div>
+    <div class="evidence-step"><div class="evidence-step-num">2</div><div class="evidence-step-text"><strong>Does that evidence cover the actual numbers?</strong> For an entry with cut-offs, is <em>each</em> cut-off evidenced, or is one a sensible estimate? For a recommended choice, is the choice itself backed? For a count, is the point at which the count starts to matter backed?</div></div>
+    <div class="evidence-step"><div class="evidence-step-num">3</div><div class="evidence-step-text"><strong>Does a second, independent source confirm the same claim?</strong> Independent means it <em>could have disagreed</em> &mdash; a different author, a different body, a different evidence base. Two papers from one organisation, or two states adopting one national law, are one source, not two. And it must confirm <em>the same claim</em>, not a nearby one.</div></div>
   </section>
-  <div class="label">The three levels</div>
+
+  <div class="label" style="margin-top:26px">The four levels</div>
   <section class="evidence-hierarchy-grid">
-    <article class="evidence-tier-card high"><div class="evidence-tier-head"><div class="evidence-tier-titlerow"><div class="evidence-tier-title">High</div><div class="evidence-tier-range">strong + confirmed</div></div><div class="evidence-tier-rule">The numbers (or the recommended choice) come from strong evidence — measured, calculated from real dimensions, or set by a duty, code or industry guidance — <strong>and</strong> at least one other independent source or real project confirms it. Use them broadly as written; any doubt is about exact precision, not whether they sit in the right place. One source alone is never High.</div></div><div class="evidence-type-list">${highTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div></article>
-    <article class="evidence-tier-card medium"><div class="evidence-tier-head"><div class="evidence-tier-titlerow"><div class="evidence-tier-title">Medium</div><div class="evidence-tier-range">supported, some judgement</div></div><div class="evidence-tier-rule">The issue is well established and genuinely supported, but at least one cut-off number (or the exact recommended choice) is a reasoned judgement rather than something measured, derived, or set by a duty, code or guidance. Use the numbers as a well-founded starting point and apply your own judgement to your project.</div></div><div class="evidence-type-list">${mediumTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div><div class="evidence-shared-note"><strong>Note:</strong> general or analogous literature (item 9) can support a Medium when it is paired with a real example, a relevant source, or a well-supported mechanism — not on its own.</div></article>
-    <article class="evidence-tier-card low"><div class="evidence-tier-head"><div class="evidence-tier-titlerow"><div class="evidence-tier-title">Low</div><div class="evidence-tier-range">mostly judgement</div></div><div class="evidence-tier-rule">Rests mainly on experience, or a loose comparison borrowed from another field, with nothing measured, calculated or backed by a duty, code or guidance to confirm it. The numbers are rough. Treat it as a prompt to investigate, not a figure to rely on — these are generally not published live.</div></div><div class="evidence-type-list">${lowTypes.map(t=>evidenceTypeMarkup(...t)).join('')}</div></article>
+    <article class="evidence-tier-card established"><div class="evidence-tier-head"><div class="evidence-tier-titlerow"><div class="evidence-tier-title">Established</div><div class="evidence-tier-range">evidenced on point, independently confirmed</div></div><div class="evidence-tier-rule">Everything the entry asks you to act on &mdash; every cut-off, or the recommended choice and its ordering, or every condition and the breakpoint &mdash; rests on <strong>on-point Grade&nbsp;A or B evidence</strong>, and an independent source or a documented real project confirms the same claim. This is the strongest evidence the framework carries.<br><br>It says nothing about what you should do. The remaining uncertainty is about the precision of a single value, or how often the situation arises &mdash; <strong>the design decision, and the judgement it needs, are still entirely yours.</strong></div></div></article>
+    <article class="evidence-tier-card directional"><div class="evidence-tier-head"><div class="evidence-tier-titlerow"><div class="evidence-tier-title">Directional</div><div class="evidence-tier-range">the direction is proven; the number is ours</div></div><div class="evidence-tier-rule">The mechanism is evidenced on point by Grade&nbsp;A or B &mdash; but a link is missing. Either the specific value you act on is a <strong>reasoned call</strong> (research shows deeper folds get harder to form; nobody measured that 600&nbsp;mm is where it turns), or the recommendation is fully backed but <strong>nothing independent confirms it</strong>.<br><br><strong>What is evidenced is the direction. The number is our reasoned call</strong> &mdash; which makes it exactly the part worth weighing against your own job, because it is the part we cannot show you a source for.</div></div></article>
+    <article class="evidence-tier-card indicative"><div class="evidence-tier-head"><div class="evidence-tier-titlerow"><div class="evidence-tier-title">Indicative</div><div class="evidence-tier-range">plausible, but the evidence is about something else</div></div><div class="evidence-tier-rule">The supporting sources are <strong>adjacent or analogous</strong> &mdash; however strong their grade &mdash; or the only on-point support is Grade&nbsp;C. The direction here is <em>plausible</em> rather than proven, and that is the line between this level and Directional. The reasoning is sound, but nothing directly evidences the thing the entry asks you to act on &mdash; so the whole entry is carried by inference.</div></div></article>
+    <article class="evidence-tier-card reasoned"><div class="evidence-tier-head"><div class="evidence-tier-titlerow"><div class="evidence-tier-title">Reasoned</div><div class="evidence-tier-range">practitioner judgement, published so the gap is visible</div></div><div class="evidence-tier-rule">Rests mainly on Grade&nbsp;C &mdash; judgement, trade guidance, or a loose comparison &mdash; with nothing on point to confirm it. <strong>This is not a failing grade, and these entries are published deliberately.</strong> Publishing the gap is what invites the measurement, source or field experience that would close it. The summary will say whether the research <em>exists and we have not cited it</em>, or whether the study simply <em>does not exist</em> &mdash; those call for different things.</div></div></article>
   </section>
-  <div class="label">What counts as evidence — strongest at the top</div>
-  <p class="section-desc" style="max-width:760px;margin:6px 0 -6px">These are the kinds of evidence behind the levels above. Higher items can set where a cut-off sits; lower items mainly confirm or suggest.</p>`;
+  <div class="evidence-shared-note" style="margin:0 0 10px;background:rgba(59,130,246,0.08);border-color:rgba(59,130,246,0.24)"><strong>None of these levels tells you what to do.</strong> The rating grades <em>our evidence</em>, not <em>your decision</em>. It tells you how much of an entry rests on sources and how much rests on our judgement &mdash; and therefore where your own scrutiny is most needed. You are the engineer; the design, and the responsibility for it, remain yours at every level, including the top one.</div><div class="evidence-shared-note" style="margin:0 0 6px"><strong>Directional is where most good entries live, and that is the point.</strong> A proven mechanism with a reasoned cut-off is an honest, useful entry &mdash; and it is a genuinely different thing from an entry that is mostly reasoning. The scale separates them so you know exactly how far to lean on each.</div>`;
 }
 function renderEvidenceSupportView(){
   const counts=evidenceSupportCounts();
   const active=state.evidenceFilter||'all';
-  const labels={all:'All',high:'High',medium:'Medium',low:'Low'};
+  const labels={all:'All',established:'Established',directional:'Directional',indicative:'Indicative',reasoned:'Reasoned'};
   const notes={
     all:'Every live entry',
-    high:'Strong evidence on the numbers, confirmed by a second source',
-    medium:'Well supported, but some numbers are a reasoned call',
-    low:'Mostly judgement — treat as a prompt, not a figure'
+    established:'Evidenced on point, and independently confirmed',
+    directional:'The direction is proven; the number is a reasoned call',
+    indicative:'Plausible, but the evidence is about a neighbouring thing',
+    reasoned:'Practitioner judgement — published so the gap is visible'
   };
   const order=['all','established','directional','indicative','reasoned'];
   const summary=order.map(level=>`<div class="evidence-summary-card ${active===level?'active':''}" onclick="setEvidenceFilter('${level}')"><div class="evidence-summary-label">${labels[level]}</div><div class="evidence-summary-count">${counts[level]}</div><div class="evidence-summary-note">${notes[level]}</div></div>`).join('');
@@ -2876,7 +2901,7 @@ function renderEvidenceSupportView(){
   }).join('');
   const shown=filtered.length;
   const suffix=active==='all'?'all evidence support levels':`${labels[active]} evidence support`;
-  return `<div class="content evidence-content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">📊</span><h1 class="dim-header-title">Evidence support index</h1></div><div class="section-desc">Evidence support is assigned from the hierarchy below. It tests <span class="evidence-key">how much you can trust the numbers or the recommendation in an entry</span> — not whether the constructability issue is important, useful, or worth considering.</div><div class="evidence-callout"><strong>A lower rating does not mean an entry is weak or should be ignored.</strong> Every published entry captures a real constructability question that may affect design decisions. A High rating often just means the issue is already well known, well documented, or easy to measure. <span class="evidence-key">Medium or Low entries can be just as valuable</span> — they are often newer, more practical, more site-specific, or less formally studied. Read them as prompts, apply more of your own judgement, and recognise the numbers carry a wider margin. <span class="evidence-key">Medium is the level most live entries are expected to reach</span>, and that is intentional: High generally requires an entry\u2019s specific thresholds to be measured or derived, so it stays the exception rather than the norm. A Medium rating marks a well-reasoned, actionable idea put into the open for discussion \u2014 and an open invitation for the evidence that could strengthen it.</div><div class="evidence-lead"><p>The rating also shows <strong>where contribution is needed</strong>. A Medium or Low rating may mean the issue is backed by practical experience but needs stronger formal evidence, or that literature exists but the cut-offs, project relevance or regional application would benefit from more field examples. You can strengthen the framework by contributing academic sources, field measurements, contractor feedback, design examples, project case studies or regional experience that confirm, refine or challenge the guidance.</p></div>${renderEvidenceRubric()}<div class="evidence-index-section-label"><div class="label" style="margin-bottom:0">Live entry index</div></div><div class="evidence-summary-grid">${summary}</div><div class="evidence-filter">${buttons}</div><div class="list-head"><div class="label" style="margin-bottom:0">${shown} ${shown===1?'entry':'entries'} — ${suffix}</div>${renderSortControl()}</div><div class="item-list">${rows}</div></div>`;
+  return `<div class="content evidence-content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">📊</span><h1 class="dim-header-title">Evidence support index</h1></div><div class="section-desc">Every source behind an entry is graded twice — on <span class="evidence-key">how much weight its kind can carry</span>, and on <span class="evidence-key">whether it is actually about the thing you are being asked to act on</span>. Those two grades decide the level. It tests how far you can trust the numbers or the recommendation — not whether the constructability issue is important, useful, or worth considering.</div><div class="evidence-callout"><strong>A lower rating does not mean an entry is weak or should be ignored.</strong> Every published entry captures a real constructability question that may affect design decisions. The rating tells you <span class="evidence-key">how much of an entry rests on evidence and how much rests on our judgement</span> — and therefore where your own scrutiny is most needed. It is a statement about our sources, not about your design. An <span class="evidence-key">Established</span> rating often just means the issue is already well studied or easy to measure. A <span class="evidence-key">Directional</span> entry can be every bit as valuable: the mechanism is proven, and the cut-off is our reasoned call on where it starts to matter. <span class="evidence-key">Directional is the level most live entries are expected to reach</span>, and that is intentional — Established generally requires an entry’s specific thresholds to be measured or derived, so it stays the exception rather than the norm.</div><div class="evidence-lead"><p>The rating also shows <strong>where contribution is needed</strong>. A Directional entry usually needs a measurement or a second independent source to confirm the cut-off. An Indicative entry needs a source that is actually <em>on point</em> rather than adjacent. A Reasoned entry needs the study that does not yet exist — or the citation nobody has added. You can strengthen the framework by contributing academic sources, field measurements, contractor feedback, design examples, project case studies or regional experience that confirm, refine or challenge the guidance.</p></div></div>${renderEvidenceRubric()}<div class="evidence-index-section-label"><div class="label" style="margin-bottom:0">Live entry index</div></div><div class="evidence-summary-grid">${summary}</div><div class="evidence-filter">${buttons}</div><div class="list-head"><div class="label" style="margin-bottom:0">${shown} ${shown===1?'entry':'entries'} — ${suffix}</div>${renderSortControl()}</div><div class="item-list">${rows}</div></div>`;
 }
 
 // ===== GUIDE (how-to-use) =====
