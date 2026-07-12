@@ -449,7 +449,8 @@
   .evidence-filter-btn{padding:8px 12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text-muted);font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;transition:all .2s}
   .evidence-filter-btn:hover{border-color:var(--accent);color:var(--text);background:var(--surface-light)}
   .evidence-filter-btn.active{border-color:var(--accent);background:var(--accent-glow);color:var(--text)}
-  .evidence-summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0 8px}
+  .evidence-summary-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:18px 0 8px}
+  @media(max-width:1150px){.evidence-summary-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
   .evidence-summary-card{padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s}
   .evidence-summary-card:hover{border-color:var(--accent);background:var(--surface-light)}
   .evidence-summary-card.active{border-color:var(--accent);background:var(--accent-glow)}
@@ -499,15 +500,16 @@
   .evidence-tier-card.directional .evidence-type-num{background:rgba(56,189,248,0.15);color:#38bdf8}
   .evidence-tier-card.indicative .evidence-type-num{background:rgba(234,179,8,0.15);color:var(--yellow)}
   .evidence-tier-card.reasoned .evidence-type-num{background:rgba(249,115,22,0.15);color:#fb923c}
-  .evidence-grade-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0 8px;align-items:start}
+  .evidence-grade-grid{display:grid;grid-template-columns:1fr;gap:10px;margin:14px 0 8px}
   .evidence-grade-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface-light)}
-  .evidence-grade-head{padding:11px 14px;border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+  .evidence-grade-head{padding:11px 14px;border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;min-width:0}
   .evidence-grade-letter{font-family:'JetBrains Mono',monospace;font-size:17px;font-weight:900;color:var(--accent)}
   .evidence-grade-card.gb .evidence-grade-letter{color:#38bdf8}
   .evidence-grade-card.gc .evidence-grade-letter{color:var(--text-muted)}
-  .evidence-grade-what{font-size:12px;font-weight:700;color:var(--text);line-height:1.35}
-  .evidence-grade-list{margin:0;padding:11px 14px 13px 30px;font-size:12.5px;line-height:1.65;color:var(--text);opacity:.82}
-  .evidence-prox-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0 4px}
+  .evidence-grade-what{font-size:12.5px;font-weight:700;color:var(--text);line-height:1.4;min-width:0;flex:1;overflow-wrap:anywhere}
+  .evidence-grade-list{margin:0;padding:11px 14px 13px 32px;font-size:12.5px;line-height:1.7;color:var(--text);opacity:.85;column-gap:26px}
+  @media(min-width:1000px){.evidence-grade-list{columns:2}.evidence-grade-list li{break-inside:avoid}}
+  .evidence-prox-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0 4px;min-width:0}
   .evidence-prox-card{border:1px solid var(--border);border-radius:10px;padding:12px 14px;background:var(--surface-light)}
   .evidence-prox-name{font-size:13px;font-weight:800;color:var(--text);margin-bottom:5px}
   .evidence-prox-text{font-size:12.5px;line-height:1.6;color:var(--text);opacity:.8}
@@ -2821,7 +2823,7 @@ function allAvailableEntries(){
   return out;
 }
 function evidenceSupportCounts(){
-  const counts={all:0,high:0,medium:0,low:0};
+  const counts={all:0,established:0,directional:0,indicative:0,reasoned:0};
   allAvailableEntries().forEach(e=>{
     const level=evidenceSupportLevel(e.data);
     counts.all++;
@@ -2834,8 +2836,8 @@ function evidenceTypeMarkup(num,name,note){
   return `<div class="evidence-type"><div class="evidence-type-num">${num}</div><div><div class="evidence-type-name">${name}</div>${note?`<div class="evidence-type-note">${note}</div>`:''}</div></div>`;
 }
 function renderEvidenceRubric(){
-  const gradeA=['Direct measurement or field data on the same element','A calculation from real, established component sizes or mechanics','Peer-reviewed research','A mandatory code provision or statutory duty (AS 3600, the NCC, WHS Regulation)'];
-  const gradeB=['A regulator code of practice or published guidance','An authoritative industry standard or technical note (SRIA, CCAA, ACI, Engineering NZ)','A government or agency research synthesis','A doctoral thesis, or an established reference textbook','Primary research done for this framework — for example, a structured supplier review'];
+  const gradeA=['Direct measurement or field data on the same element','A calculation from real, established component sizes or mechanics','Peer-reviewed research','A statutory duty about <em>how the thing gets built</em> &mdash; the WHS Regulations, a Work Health and Safety Code of Practice, the Design and Building Practitioners Act'];
+  const gradeB=['A regulator&rsquo;s published guidance or research','An authoritative industry <em>technical note</em> (SRIA, CCAA, ACI, Engineering NZ) &mdash; which is a different thing from a design code','A government or agency research synthesis','A doctoral thesis, or an established reference textbook','Primary research done for this framework &mdash; for example, a structured supplier review'];
   const gradeC=['A documented real project case — a concern or recommended example that actually happened','Manufacturer or supplier product data','Trade or contractor guidance, and industry consultation','Practitioner judgement'];
   const li=a=>a.map(x=>`<li>${x}</li>`).join('');
   return `<div class="label">How the rating is decided</div>
@@ -2855,7 +2857,7 @@ function renderEvidenceRubric(){
     <article class="evidence-prox-card"><div class="evidence-prox-name">Adjacent</div><div class="evidence-prox-text">It addresses a neighbouring question. Guidance on a chamfer for a <em>precast cladding joint</em> is adjacent to a claim about a <em>formed in-situ corner</em>.</div></article>
     <article class="evidence-prox-card"><div class="evidence-prox-name">Analogous</div><div class="evidence-prox-text">The right effect, studied in a different field. Research on visual clutter in <em>general displays</em>, applied to reinforcement callouts.</div></article>
   </section>
-  <div class="evidence-shared-note" style="margin:16px 0 0"><strong>The rule that does the work:</strong> a claim is only <em>evidenced</em> by a Grade&nbsp;A or Grade&nbsp;B source that is <strong>on point</strong>. Adjacent or analogous caps the entry, however strong the source. Grade&nbsp;C never evidences a claim &mdash; it confirms one that A or B has already made.</div>
+  <div class="evidence-shared-note" style="margin:16px 0 0;background:rgba(249,115,22,0.07);border-color:rgba(249,115,22,0.26)"><strong>Design standards are deliberately not part of the evidence base.</strong> AS&nbsp;3600, AS&nbsp;4100 and their companions are <em>your</em> ground &mdash; you already apply them, and restating them here would tell you nothing you do not know. This framework exists for the question the standard does <em>not</em> answer: a design code tells you the section works; it does not tell you whether anyone can form it, reach it, bend it on site, or stand safely next to it. Where a statutory duty is cited above, it is a <strong>work health and safety obligation about the act of construction</strong> &mdash; not a design code. <span style="opacity:.75">(A standard may still be named for its vocabulary, or to mark the boundary of what an entry is not trespassing on. That is context, and it carries no weight in the rating.)</span></div><div class="evidence-shared-note" style="margin:12px 0 0"><strong>The rule that does the work:</strong> a claim is only <em>evidenced</em> by a Grade&nbsp;A or Grade&nbsp;B source that is <strong>on point</strong>. Adjacent or analogous caps the entry, however strong the source. Grade&nbsp;C never evidences a claim &mdash; it confirms one that A or B has already made.</div>
 
   <div class="label" style="margin-top:26px">Step 2 &middot; Then three questions</div>
   <section class="evidence-steps">
