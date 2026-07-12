@@ -35,7 +35,7 @@ Every entry in the framework follows the same general display format:
 - **Applicability and Limitations** — defines where the entry applies, lists factors the designer should check before applying the guidance, and provides a closing note framing the rating as a review prompt rather than a prohibition *(optional)*
 - **Recommended Actions** — what to do if you're in the concern or action required zone, given as a numbered list of practical options. Each action can be a short instruction or a structured option with a title and longer description *(optional)*
 - **Evidence Basis** — how the guidance was established *(optional)*
-- **Evidence Support** — a Low, Medium, or High indicator showing how much supporting information sits behind the entry. This does not rate whether the constructability issue is important or whether the guidance is mandatory; it indicates how mature and well-supported the entry currently is *(optional)*
+- **Evidence Support** — an Established, Directional, Indicative, or Reasoned indicator showing how far the entry's cut-offs (or its recommended call) rest on evidence rather than on our judgement. This does not rate whether the constructability issue is important or whether the guidance is mandatory *(optional)*
 - **Examples** — real design drawings tagged as Concern, Acceptable, or Recommended *(optional)*
 - **Supporting Images** — images, excerpts, diagrams, or site photographs that support the evidence or show what the issue looks like in practice *(optional)*
 - **Related Entries** — links to other entries worth considering alongside this one (e.g. a chamfer detail and a drip groove on the same formed edge). Each link can carry a short note explaining why the other entry is relevant *(optional)*
@@ -46,19 +46,30 @@ Entries are date-stamped and designed to be updated as construction technology a
 
 ### Evidence support
 
-Entries may include an **Evidence Support** rating: Low, Medium, or High. This rating describes how much you can trust the specific numbers (the threshold cut-offs) or the recommended choice that the entry asks you to act on. It does not judge whether the constructability issue is important, and it does not make the design guidance mandatory.
+Entries carry an **Evidence Support** rating on four levels: **Established**, **Directional**, **Indicative**, **Reasoned**.
 
-The level is decided by three things together — what kind of evidence sits behind the entry, whether that evidence covers every cut-off (or the whole recommended choice), and whether more than one independent source points the same way:
+The rating measures one thing: **how far you can trust the specific numbers (the threshold cut-offs), or the specific recommendation, that the entry asks you to act on.** It does not judge whether the constructability issue is real or important, and it does not make the guidance mandatory. A well-evidenced *mechanism* does not by itself earn a strong rating — the question is always whether the evidence backs the thing the reader actually acts on.
 
-- **High** — the cut-offs (or the recommended choice) come from strong evidence — measured, derived from real dimensions, or set by a duty, code or authoritative industry guidance — **and** at least one other independent source or a real project confirms it. One source on its own is never enough for High.
-- **Medium** — the issue is well established and genuinely supported, but at least one cut-off (or the exact choice) is a reasoned judgement rather than measured or derived, or the evidence is analogous rather than directly on point, or there is only a single supporting leg.
-- **Low** — rests mainly on practitioner judgement or a loose analogy, with nothing measured, derived or backed by a duty, code or guidance to confirm it. The cut-offs are rough. Low-support entries are generally not published live; treat one as a prompt to investigate, not a figure to rely on.
+The level follows from three questions, asked in order:
 
-The full rule maintainers follow — including how to test numeric versus categorical parameters, the evidence hierarchy, and worked examples — is in [`tools/evidence-rating-rubric.md`](tools/evidence-rating-rubric.md). The same explanation is shown to readers on the site's **Evidence support index**.
+1. **Is the mechanism evidenced, on point?** Is there a source strong enough to fix a number — direct measurement, a first-principles derivation from real component dimensions, peer-reviewed research, a statutory duty, or a materials/product standard — speaking to *this* issue rather than a neighbouring one? (Design codes such as AS 3600 are deliberately **not** part of the evidence base: they are the engineer's own ground, and the framework exists for the constructability question the code does not answer.)
+2. **Does that evidence cover the numbers?** Every cut-off, or the recommended choice and the ordering of the options — not just the direction of the effect.
+3. **Does a second, independent source confirm the same claim?** Independent means it *could have disagreed*. Two papers from one body, or two states adopting one national law, are one source, not two.
 
-On dimension pages, Evidence Support is shown only as a compact rating beneath the design parameter so users can quickly see which entries are more developed and which may benefit from strengthening. Inside an entry, the same rating is shown near the bottom of the page with a short explanation of why that level was assigned.
+| Level | What it means |
+|---|---|
+| **Established** | Evidenced on point, and independently confirmed. Everything the entry asks you to act on rests on strong, on-point evidence, and an independent source or a documented real project confirms the same claim. |
+| **Directional** | The direction is proven; the number is ours. The mechanism is evidenced on point, but the specific value you act on is a reasoned call — or the recommendation is backed and nothing independent confirms it. |
+| **Indicative** | Plausible, but the evidence is about something else. The supporting sources are adjacent or analogous, however strong they are, so the entry is carried by inference. |
+| **Reasoned** | Practitioner judgement, published so the gap is visible. Nothing on point confirms it. This is not a failing grade: publishing the gap is what invites the measurement, source or field experience that would close it. |
 
-Evidence Support is intended to make the framework more transparent. A low-support entry is not automatically wrong, and a high-support entry is not a substitute for engineering judgement.
+**Directional is where most live entries sit, and that is by design.** A proven mechanism with a reasoned cut-off is an honest, useful entry — and it is materially different from an entry that is mostly reasoning. The scale separates the two so a reader knows how far to lean on each.
+
+**No level tells you what to do.** The rating grades *the framework's evidence*, not *your decision*. It tells you how much of an entry rests on sources and how much rests on our judgement — and therefore where your own scrutiny is most needed. The design, and the responsibility for it, remain yours at every level, including the top one.
+
+The full rule maintainers follow — the four entry kinds (measured / chosen / judged / counted), the source grades, the proximity test and worked examples — is in [`tools/evidence-rating-rubric.md`](tools/evidence-rating-rubric.md). The same logic is shown to readers on the site's **Evidence support index**, which also lets them filter every live entry by level.
+
+On dimension pages, Evidence Support is shown only as a compact rating beneath the design parameter so users can quickly see which entries are more developed and which may benefit from strengthening. Inside an entry, the same rating is shown near the bottom of the page with a short summary naming what backs the entry and where its main limitation lies.
 
 ### Regional applicability
 
@@ -76,6 +87,18 @@ As the framework grows and receives contributions from different regions, users 
 The framework is hosted at: <a href="https://david-reset.github.io/Concrete-Structures-Constructability-Framework/" target="_blank"><strong>https://david-reset.github.io/Concrete-Structures-Constructability-Framework/</strong></a>
 
 Browse by dimension, read the general guidance, then explore specific entries relevant to your design decisions. Use the region filter within each dimension to focus on entries relevant to your location.
+
+### Guided triage
+Search and browse assume you already know the design decision you want guidance on. **Guided triage** works the other way round — for when you know the *project* but not yet which entries apply.
+
+It asks what the design includes (suspended slabs, ground slabs, footings, walls, columns, piles, and cross-cutting conditions such as exposed concrete or a water-retaining structure), then a short set of follow-up questions revealed by those answers. Most read straight off the drawings; a few come from the geotechnical report, the site, or a decision you are still making. **"Not sure" counts as yes** — the entry surfaces, flagged as unconfirmed. That asymmetry is deliberate: a suggestion you don't need costs one line to skim, while an entry that never surfaces is missed silently.
+
+Results come back in two groups:
+
+- **Every job** — a small number of *standing* entries that apply to any reinforced-concrete design (every job has formwork to build and strip, and a drawing set with callouts, details and schedules). The group is collapsible and the preference is remembered, but nothing can hide these entries from a reader who has never seen them.
+- **This job** — the entries your answers turned up, each showing which of your answers surfaced it.
+
+Triage produces a **candidate list you curate**, not a verdict: you tick the entries worth keeping, and they go straight into a project review list. How maintainers decide when an entry surfaces is set out in [`tools/triage-rating-rubric.md`](tools/triage-rating-rubric.md).
 
 ### Searching
 The home page has a search box that looks across **all five dimensions at once**. Describe your design problem in plain language — for example "wall close to a boundary", "stirrup size", or "curing" — and the framework returns the entries that best match, ranked with the strongest match first. You can also narrow results to a region.
@@ -114,7 +137,7 @@ As you read, you can collect the entries that apply to a particular job into a *
 │   ├── framework-data-manager.html      # Turn form responses into data.json; manage the inbox, drafts and comments
 │   ├── framework-doctor.html            # Health-check data.json against the images folder
 │   ├── framework-image-formatter.html   # Re-encode and rename images for the images/ folder
-│   ├── evidence-rating-rubric.md        # How maintainers assign High / Medium / Low evidence support
+│   ├── evidence-rating-rubric.md        # How maintainers assign the four evidence-support levels
 │   ├── triage-rating-rubric.md          # How maintainers decide when an entry surfaces on a job
 │   └── entry-quality-rubric.md          # How maintainers judge whether an entry is well framed
 ├── examples/           # Example form submission (PDF)
@@ -182,8 +205,8 @@ The tools, in short: three browser-based tools live in the `tools/` folder. Each
 
 The three rubrics beside them are written references, not programs. The Data Manager can load them and use them to drive an AI review; you can equally read them yourself:
 
-- **Evidence rating rubric** (`tools/evidence-rating-rubric.md`) — how to assign an entry's evidence support (High / Medium / Low). See [Evidence support](#evidence-support).
-- **Triage rating rubric** (`tools/triage-rating-rubric.md`) — how to decide which jobs an entry should surface on.
+- **Evidence rating rubric** (`tools/evidence-rating-rubric.md`) — how to assign an entry's evidence support (Established / Directional / Indicative / Reasoned). See [Evidence support](#evidence-support).
+- **Triage rating rubric** (`tools/triage-rating-rubric.md`) — how to decide which jobs an entry should surface on, and when an entry is *standing* (shown on every job). See [Guided triage](#guided-triage).
 - **Entry quality rubric** (`tools/entry-quality-rubric.md`) — how to judge whether an entry is *well framed*: one clear question, one parameter you can act on, bands that follow from it.
 
 Almost everything is done inside the tools. The one thing edited by hand in `data.json` is the branching *decision path* that links the reactive-ground entries together; the manual shows exactly what that looks like.
