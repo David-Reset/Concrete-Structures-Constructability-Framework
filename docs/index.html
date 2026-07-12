@@ -218,7 +218,9 @@
   .modal-fineprint{font-size:11.5px;color:var(--text-muted);border-top:1px solid var(--border);padding-top:12px;margin-bottom:0}
   .modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
   /* related-entries add checklist */
-  .ra-intro{font-size:13.5px;color:var(--text);line-height:1.6;margin-bottom:14px}
+  .ra-group-h{font-size:13px;color:var(--muted,#667);margin:0 0 6px;padding-bottom:4px;border-bottom:1px solid var(--line,#e5e7eb)}
+.ra-group-h strong{color:var(--ink,#111827)}
+.ra-intro{font-size:13.5px;color:var(--text);line-height:1.6;margin-bottom:14px}
   .ra-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
   .ra-selectall{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted);cursor:pointer;user-select:none}
   .ra-selectall input{width:15px;height:15px;cursor:pointer;accent-color:var(--accent)}
@@ -2133,12 +2135,8 @@ const DEFAULT_TRIAGE={
     {fact:'considering-screw-piles',when:['pile'],source:'intent',
      prompt:'Are screw piles being considered?'},
   ],
-  // STEP 3 — universal opt-ins. Apply to almost any RC job; default on.
-  universal:[
-    {fact:'universal-drawing-clarity',label:'Drawing-clarity reviews',hint:'Reinforcement callouts, schedule references, large-bar callouts, overview views',default:false},
-    {fact:'universal-buildability',label:'General buildability good-practice',hint:'Formwork & falsework simplicity, repetition / learning curve',default:false},
-    {fact:'universal-site-safety',label:'Site & temporary-stability review',hint:'Retained, existing or part-built structure during construction',default:false},
-  ],
+  // There is no opt-in step. Advice is either universal in scope (an entry flagged
+  // `standing`, always shown) or conditional (a gate or a question). See the triage rubric.
   sourceText:{drawings:"You can read this from the drawings.",geotech:"From your geotechnical report or site info.",site:"From the site or project brief.",intent:"About a decision you may still be making."}
 };
 
@@ -2148,11 +2146,9 @@ const DEFAULT_FACT_META=(()=>{
   const P={'slab-suspended':'Suspended slabs','beam-suspended':'Suspended beams','slab-on-ground':'Ground-bearing slab','footing':'Footings / ground beams','wall':'Concrete walls','column':'Concrete columns','pile':'Piles / piers'};
   const C={'exposed-concrete':'Exposed concrete','watertight':'Watertight structure','repeated-floors':'Repeated floors','slab-level-change':'Slab level changes','upstand-near-obstruction':'Upstand near an obstruction','deep-vertical-at-slab':'Deep vertical element at a slab','founded-on-rock':'Founded on rock','reactive-ground':'Reactive ground','bushfire-area':'Bushfire area','access-constrained':'Constrained site access','construction-stage-loading':'Construction-stage loading'};
   const I={'choosing-vertical-system':'Choosing the vertical system','choosing-floor-framing':'Choosing the floor framing','considering-screw-piles':'Considering screw piles'};
-  const U={'universal-drawing-clarity':'Drawing clarity','universal-buildability':'Buildability good-practice','universal-site-safety':'Site & temporary stability'};
   for(const k in P)m[k]={label:P[k],kind:'presence',pri:1};
   for(const k in C)m[k]={label:C[k],kind:'condition',pri:3};
   for(const k in I)m[k]={label:I[k],kind:'intent',pri:3};
-  for(const k in U)m[k]={label:U[k],kind:'universal',pri:2};
   return m;
 })();
 
@@ -2162,7 +2158,6 @@ function buildFactMeta(T){
   const m={};
   (T.gates||[]).forEach(g=>{const cond=g.kind==='condition';m[g.fact]={label:g.reason||g.label||g.fact,kind:cond?'condition':'presence',pri:cond?3:1};});
   (T.questions||[]).forEach(q=>{m[q.fact]={label:q.reason||(q.prompt||'').replace(/<[^>]+>/g,'').replace(/&[a-z]+;/g,' ').trim()||q.fact,kind:q.source==='intent'?'intent':'condition',pri:3};});
-  (T.universal||[]).forEach(u=>{m[u.fact]={label:u.reason||u.label||u.fact,kind:'universal',pri:2};});
   return m;
 }
 
@@ -2174,8 +2169,7 @@ let FACT_META=DEFAULT_FACT_META;
 let triage=null;
 
 function openTriage(){
-  const uni=new Set(TRIAGE.universal.filter(u=>u.default===true).map(u=>u.fact));
-  triage={phase:'gates',gateSel:new Set(),answers:new Map(),qList:[],qIdx:0,uniSel:uni};
+  triage={phase:'gates',gateSel:new Set(),answers:new Map(),qList:[],qIdx:0};
   paintTriage();
 }
 function closeTriage(){const o=document.getElementById('triageOverlay');if(o)o.remove();triage=null;}
@@ -2192,7 +2186,6 @@ function paintTriage(){
 function triageInner(){
   if(triage.phase==='gates')return triageGatesHtml();
   if(triage.phase==='questions')return triageQuestionHtml();
-  if(triage.phase==='universal')return triageUniversalHtml();
   return '';
 }
 function triageGatesHtml(){
@@ -2219,7 +2212,8 @@ function triageGatesNext(){
   const live=new Set(triage.qList.map(q=>q.fact));
   Array.from(triage.answers.keys()).forEach(f=>{if(!live.has(f))triage.answers.delete(f);});
   triage.qIdx=0;
-  triage.phase=triage.qList.length?'questions':'universal';
+  if(!triage.qList.length){triageFinish();return;}
+  triage.phase='questions';
   paintTriage();
 }
 function triageQuestionHtml(){
@@ -2229,7 +2223,7 @@ function triageQuestionHtml(){
   const src=TRIAGE.sourceText[q.source]||'';
   const sel=v=>cur===v?' primary':'';
   return `<div class="modal-title">Guided triage</div>
-    <div class="triage-progress">Question ${triage.qIdx+1} of ${total}</div>
+    <div class="triage-progress">Question ${triage.qIdx+1} of ${total}${triage.qIdx===total-1?' &mdash; last one':''}</div>
     <div class="triage-q">${safeText(q.prompt)}</div>
     ${src?`<div class="triage-q-source">${safeText(src)}</div>`:''}
     <div class="triage-yesno">
@@ -2244,52 +2238,15 @@ function triageQuestionHtml(){
 function triageAnswer(val){
   const q=triage.qList[triage.qIdx];
   triage.answers.set(q.fact,val);
-  if(triage.qIdx<triage.qList.length-1){triage.qIdx++;}
-  else{triage.phase='universal';}
-  paintTriage();
+  if(triage.qIdx<triage.qList.length-1){triage.qIdx++;paintTriage();}
+  else{triageFinish();}
 }
 function triageBack(){
-  if(triage.phase==='universal'){
-    if(triage.qList.length){triage.phase='questions';triage.qIdx=triage.qList.length-1;}
-    else{triage.phase='gates';}
-    paintTriage();return;
-  }
   if(triage.phase==='questions'){
     if(triage.qIdx>0){triage.qIdx--;}
     else{triage.phase='gates';}
     paintTriage();return;
   }
-}
-function triageUniversalHtml(){
-  const allOn=TRIAGE.universal.length>0&&TRIAGE.universal.every(u=>triage.uniSel.has(u.fact));
-  const rows=TRIAGE.universal.map(u=>`<label class="triage-gate-row">
-    <input type="checkbox" class="triage-uni-check" value="${u.fact}" ${triage.uniSel.has(u.fact)?'checked':''} onchange="triageUniSync()">
-    <span><span class="triage-gate-label">${safeText(u.label)}</span>${u.hint?`<span class="triage-gate-hint">${safeText(u.hint)}</span>`:''}</span>
-  </label>`).join('');
-  return `<div class="modal-title">Guided triage</div>
-    <div class="triage-progress">Last step &mdash; general reviews</div>
-    <div class="triage-q">Include any of these good-practice reviews?</div>
-    <div class="triage-q-sub">These apply to almost any reinforced-concrete job &mdash; tick the ones you want, or leave them all off.</div>
-    <div class="ra-toolbar">
-      <label class="ra-selectall"><input type="checkbox" id="uniSelectAll" ${allOn?'checked':''} onchange="triageUniToggleAll(this)"> Select all</label>
-    </div>
-    <ul class="triage-gate-list">${rows}</ul>
-    <div class="modal-actions">
-      <button class="entry-btn" onclick="triageBack()">&larr; Back</button>
-      <button class="entry-btn primary" onclick="triageUniNext()">See results &rarr;</button>
-    </div>`;
-}
-function triageUniToggleAll(src){
-  document.querySelectorAll('#triageOverlay .triage-uni-check').forEach(c=>{c.checked=src.checked;});
-}
-function triageUniSync(){
-  const checks=Array.from(document.querySelectorAll('#triageOverlay .triage-uni-check'));
-  const all=document.getElementById('uniSelectAll');
-  if(all)all.checked=checks.length>0&&checks.every(c=>c.checked);
-}
-function triageUniNext(){
-  triage.uniSel=new Set(Array.from(document.querySelectorAll('#triageOverlay .triage-uni-check')).filter(c=>c.checked).map(c=>c.value));
-  triageFinish();
 }
 // Build the set of established facts, then surface every available entry whose trigger is met.
 function triageCollect(){
@@ -2300,7 +2257,6 @@ function triageCollect(){
     if(val==='yes'){satisfied.add(f);}
     else if(val==='maybe'){satisfied.add(f);maybeFacts.add(f);}
   });
-  triage.uniSel.forEach(f=>satisfied.add(f));
 
   // trigger = array of slots; each slot is an array of facts (OR within, AND across slots)
   const triggerMet=trig=>Array.isArray(trig)&&trig.length>0&&trig.every(slot=>Array.isArray(slot)&&slot.some(f=>satisfied.has(f)));
@@ -2316,53 +2272,90 @@ function triageCollect(){
   };
 
   const inList=new Set(getProjectList().ids);
-  const entries=[],skipped=[];
+  const entries=[],standing=[],skipped=[];
   for(const dim of dimensions){
     for(const item of dim.items){
       if(!item.available||!item.data)continue;
+      const mk=reason=>({id:item.id,name:item.name,dimName:dim.name,dimIcon:dim.icon,reason});
+      // STANDING — universal in scope, so it carries no trigger and surfaces on every job.
+      // It is never gated on anything the reader has to switch on: the reader who would
+      // switch it off is the one who has already considered it, and the reader who never
+      // switches it on is the one who hasn't.
+      if(item.data.standing===true){
+        if(!inList.has(item.id))standing.push(mk('Applies to every job'));
+        else skipped.push(mk(''));
+        continue;
+      }
       const trig=item.data.triage;
       if(!triggerMet(trig))continue;
       // an entry can name facts that SUPPRESS it (e.g. a downstream entry hidden
       // while an upstream decision is still open). If any excluded fact is established, skip.
       const excl=item.data.triageExclude;
       if(Array.isArray(excl)&&excl.some(f=>satisfied.has(f)))continue;
-      const row={id:item.id,name:item.name,dimName:dim.name,dimIcon:dim.icon,reason:reasonFor(trig)};
+      const row=mk(reasonFor(trig));
       if(inList.has(item.id))skipped.push(row);else entries.push(row);
     }
   }
-  return {entries,skipped};
+  return {entries,standing,skipped};
 }
 
 function triageFinish(){
-  const {entries,skipped}=triageCollect();
+  const {entries,standing,skipped}=triageCollect();
   closeTriage();
-  showTriageResults(entries,skipped);
+  showTriageResults(entries,standing,skipped);
 }
-function showTriageResults(entries,skipped){
-  const n=entries.length;
-  let body;
-  if(!n){
-    const msg=skipped.length
-      ?`Everything this triage suggested is already on your project review list &mdash; nothing more to add.`
-      :`No entries matched these answers. Try the search above, or browse the dimensions &mdash; and if the framework doesn't cover your issue, you can <span class="search-empty-link" onclick="closeTriageResults();goSuggest()">suggest a new entry</span>.`;
-    body=`<div class="triage-empty">${msg}</div>
-      <div class="modal-actions"><button class="entry-btn primary" onclick="closeTriageResults()">Done</button></div>`;
-  }else{
-    const rows=entries.map(e=>`<label class="ra-row">
+// Reader preference, not a triage fact: someone who has internalised the standing
+// entries can collapse the group. It defaults to SHOWN and is remembered across jobs —
+// it never becomes a question in the flow, because its answer never changes with the job.
+function standingHidden(){try{return localStorage.getItem('triageHideStanding')==='1';}catch(e){return false;}}
+function toggleStandingGroup(){
+  const hide=!standingHidden();
+  try{localStorage.setItem('triageHideStanding',hide?'1':'0');}catch(e){}
+  const box=document.getElementById('trStandingBox');
+  const lnk=document.getElementById('trStandingToggle');
+  if(box)box.style.display=hide?'none':'';
+  if(lnk)lnk.textContent=hide?'Show':'Hide';
+}
+function showTriageResults(entries,standing,skipped){
+  const n=entries.length, s=standing.length;
+  const row=e=>`<label class="ra-row">
       <input type="checkbox" class="tr-check" value="${e.id}" checked onchange="updateTriageCount()">
       <span class="ra-text">
         <span class="ra-name">${safeText(e.name)}</span>
         <span class="ra-dim"><span class="ico">${e.dimIcon||''}</span>${safeText(e.dimName)}</span>
         ${e.reason?`<span class="ra-note">Suggested by: ${safeText(e.reason)}</span>`:''}
       </span>
-    </label>`).join('');
+    </label>`;
+
+  // STANDING GROUP — the entries that apply to every RC job. They always appear, in the
+  // same place, so a reader who has already considered them can pass over them at a glance.
+  // The collapse is a remembered display preference; it never affects what triage surfaces.
+  const hid=standingHidden();
+  const standingBlock=s?`<div class="ra-group-h" style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+        <span><strong>Every job</strong> &mdash; ${s===1?'this applies':'these apply'} to any reinforced-concrete design</span>
+        <span class="search-empty-link" id="trStandingToggle" onclick="toggleStandingGroup()" style="cursor:pointer;font-weight:400">${hid?'Show':'Hide'}</span>
+      </div>
+      <div class="ra-list" id="trStandingBox"${hid?' style="display:none"':''}>${standing.map(row).join('')}</div>`:'';
+
+  let body;
+  if(!n&&!s){
+    const msg=skipped.length
+      ?`Everything this triage suggested is already on your project review list &mdash; nothing more to add.`
+      :`No entries matched these answers. Try the search above, or browse the dimensions &mdash; and if the framework doesn't cover your issue, you can <span class="search-empty-link" onclick="closeTriageResults();goSuggest()">suggest a new entry</span>.`;
+    body=`<div class="triage-empty">${msg}</div>
+      <div class="modal-actions"><button class="entry-btn primary" onclick="closeTriageResults()">Done</button></div>`;
+  }else{
+    const jobBlock=n?`<div class="ra-group-h" style="margin-top:${s?'14px':'0'}"><strong>This job</strong> &mdash; ${n===1?'1 entry':n+' entries'} your answers turned up</div>
+      <div class="ra-list">${entries.map(row).join('')}</div>`
+      :`<div class="triage-q-sub" style="margin-top:14px">Your answers didn't turn up anything specific to this job beyond the standing entries above.</div>`;
     const skipNote=skipped.length?`<div class="triage-q-sub" style="margin-top:10px">${skipped.length} suggested ${skipped.length===1?'entry is':'entries are'} already on your list and ${skipped.length===1?'was':'were'} left out.</div>`:'';
-    body=`<div class="ra-intro">Based on your answers, these ${n} ${n===1?'entry is':'entries are'} worth reviewing. Untick anything that doesn't apply, then add the rest to your project review list.</div>
+    body=`<div class="ra-intro">Untick anything that doesn't apply, then add the rest to your project review list.</div>
       <div class="ra-toolbar">
         <label class="ra-selectall"><input type="checkbox" id="trSelectAll" checked onchange="toggleAllTriage(this)"> Select all</label>
         <span class="ra-count" id="trCount"></span>
       </div>
-      <div class="ra-list">${rows}</div>
+      ${standingBlock}
+      ${jobBlock}
       ${skipNote}
       <div class="modal-actions">
         <button class="entry-btn" onclick="closeTriageResults()">Cancel</button>
@@ -2373,7 +2366,7 @@ function showTriageResults(entries,skipped){
   o.className='modal-overlay';o.id='triageResultOverlay';o.onclick=closeTriageResults;
   o.innerHTML=`<div class="modal" onclick="event.stopPropagation()"><div class="modal-title">Suggested entries to review</div>${body}</div>`;
   document.body.appendChild(o);
-  if(n)updateTriageCount();
+  if(n||s)updateTriageCount();
 }
 function closeTriageResults(){const o=document.getElementById('triageResultOverlay');if(o)o.remove();}
 function trChecks(){return Array.from(document.querySelectorAll('#triageResultOverlay .tr-check'));}
@@ -2836,8 +2829,8 @@ function evidenceTypeMarkup(num,name,note){
   return `<div class="evidence-type"><div class="evidence-type-num">${num}</div><div><div class="evidence-type-name">${name}</div>${note?`<div class="evidence-type-note">${note}</div>`:''}</div></div>`;
 }
 function renderEvidenceRubric(){
-  const gradeA=['Direct measurement or field data on the same element','A calculation from real, established component sizes or mechanics','Peer-reviewed research','A <strong>statutory duty</strong> about <em>how the thing gets built</em> &mdash; a WHS Regulation, the <em>duty provisions</em> of a Work Health and Safety Code of Practice, the Design and Building Practitioners Act'];
-  const gradeB=['The <em>advisory content</em> of a regulator&rsquo;s Code of Practice &mdash; the practical how-to, as distinct from the duty it implements','A regulator&rsquo;s published research or findings','An authoritative industry <em>technical note</em> (SRIA, CCAA, ACI, Engineering NZ) &mdash; which is a different thing from a design code','A <strong>materials or product standard</strong> recording a physical or manufacturing fact &mdash; AS/NZS&nbsp;4671, on which bar sizes the rebend test covers','A government or agency research synthesis','A doctoral thesis, or an established reference textbook','Primary research done for this framework &mdash; for example, a structured supplier review'];
+  const gradeA=['Direct measurement or field data on the same element','A calculation from real, established component sizes or mechanics','Peer-reviewed research','A statutory duty about <em>how the thing gets built</em> &mdash; the WHS Regulations, a Work Health and Safety Code of Practice, the Design and Building Practitioners Act'];
+  const gradeB=['A regulator&rsquo;s published guidance or research','An authoritative industry <em>technical note</em> (SRIA, CCAA, ACI, Engineering NZ) &mdash; which is a different thing from a design code','A government or agency research synthesis','A doctoral thesis, or an established reference textbook','Primary research done for this framework &mdash; for example, a structured supplier review'];
   const gradeC=['A documented real project case — a concern or recommended example that actually happened','Manufacturer or supplier product data','Trade or contractor guidance, and industry consultation','Practitioner judgement'];
   const li=a=>a.map(x=>`<li>${x}</li>`).join('');
   return `<div class="label">How the rating is decided</div>
@@ -2851,13 +2844,13 @@ function renderEvidenceRubric(){
     <article class="evidence-grade-card gb"><div class="evidence-grade-head"><span class="evidence-grade-letter">B</span><span class="evidence-grade-what">Can back a recommendation &mdash; and fix a number where the number is a physical or regulatory fact</span></div><ul class="evidence-grade-list">${li(gradeB)}</ul></article>
     <article class="evidence-grade-card gc"><div class="evidence-grade-head"><span class="evidence-grade-letter">C</span><span class="evidence-grade-what">Can confirm a claim, but never establish one on its own</span></div><ul class="evidence-grade-list">${li(gradeC)}</ul></article>
   </section>
-  <div class="evidence-shared-note" style="margin:14px 0 0"><strong>Grade the provision, not the document.</strong> A Code of Practice carries both kinds of content at once. The <strong>duty</strong> it imposes &mdash; <em>designers must eliminate the need to enter a confined space so far as is reasonably practicable</em> &mdash; is Grade&nbsp;A: it is an obligation, and it binds. The <strong>practical advice</strong> around that duty is Grade&nbsp;B. The same discipline applies to a textbook, a technical note or a journal paper: what gets graded is the claim being used, not the cover it came in.</div><p class="section-desc" style="max-width:820px;margin:16px 0 0;font-weight:700;color:var(--text)">What the source is actually <em>about</em></p>
+  <p class="section-desc" style="max-width:820px;margin:16px 0 0;font-weight:700;color:var(--text)">What the source is actually <em>about</em></p>
   <section class="evidence-prox-grid">
     <article class="evidence-prox-card"><div class="evidence-prox-name">On point</div><div class="evidence-prox-text">It addresses the very thing you are being asked to act on.</div></article>
     <article class="evidence-prox-card"><div class="evidence-prox-name">Adjacent</div><div class="evidence-prox-text">It addresses a neighbouring question. Guidance on a chamfer for a <em>precast cladding joint</em> is adjacent to a claim about a <em>formed in-situ corner</em>.</div></article>
     <article class="evidence-prox-card"><div class="evidence-prox-name">Analogous</div><div class="evidence-prox-text">The right effect, studied in a different field. Research on visual clutter in <em>general displays</em>, applied to reinforcement callouts.</div></article>
   </section>
-  <div class="evidence-shared-note" style="margin:16px 0 0;background:rgba(249,115,22,0.07);border-color:rgba(249,115,22,0.26)"><strong>Design codes are deliberately not part of the evidence base.</strong> AS&nbsp;3600, AS&nbsp;4100 and their companions are <em>your</em> ground &mdash; you already apply them, and restating them here would tell you nothing you do not know. This framework exists for the question the code does <em>not</em> answer: a design code tells you the section works; it does not tell you whether anyone can form it, reach it, bend it on site, or stand safely next to it.<br><br><strong>This excludes design codes &mdash; not materials and product standards.</strong> AS/NZS&nbsp;4671 records that the rebend test covers deformed bars of 16&nbsp;mm and smaller, with no equivalent above. That is a physical fact about the steel, not an instruction to a designer, and it counts. The test: <em>does the document tell the engineer how to design, or does it record how the material or product actually behaves?</em> The first is yours. The second is evidence.<br><br><span style="opacity:.8">A design code may still be named for its <em>vocabulary</em> (AS&nbsp;2870, for the site-classification terms suppliers label their pods by), or to mark the boundary of what an entry is <em>not</em> trespassing on. Both are context, and neither carries weight in the rating.</span></div><div class="evidence-shared-note" style="margin:12px 0 0"><strong>The rule that does the work:</strong> a claim is only <em>evidenced</em> by a Grade&nbsp;A or Grade&nbsp;B source that is <strong>on point</strong>. Adjacent or analogous caps the entry, however strong the source. Grade&nbsp;C never evidences a claim &mdash; it confirms one that A or B has already made.</div>
+  <div class="evidence-shared-note" style="margin:16px 0 0;background:rgba(249,115,22,0.07);border-color:rgba(249,115,22,0.26)"><strong>Design standards are deliberately not part of the evidence base.</strong> AS&nbsp;3600, AS&nbsp;4100 and their companions are <em>your</em> ground &mdash; you already apply them, and restating them here would tell you nothing you do not know. This framework exists for the question the standard does <em>not</em> answer: a design code tells you the section works; it does not tell you whether anyone can form it, reach it, bend it on site, or stand safely next to it. Where a statutory duty is cited above, it is a <strong>work health and safety obligation about the act of construction</strong> &mdash; not a design code. <span style="opacity:.75">(A standard may still be named for its vocabulary, or to mark the boundary of what an entry is not trespassing on. That is context, and it carries no weight in the rating.)</span></div><div class="evidence-shared-note" style="margin:12px 0 0"><strong>The rule that does the work:</strong> a claim is only <em>evidenced</em> by a Grade&nbsp;A or Grade&nbsp;B source that is <strong>on point</strong>. Adjacent or analogous caps the entry, however strong the source. Grade&nbsp;C never evidences a claim &mdash; it confirms one that A or B has already made.</div>
 
   <div class="label" style="margin-top:26px">Step 2 &middot; Then three questions</div>
   <section class="evidence-steps">
