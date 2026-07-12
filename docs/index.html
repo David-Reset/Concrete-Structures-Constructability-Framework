@@ -312,9 +312,10 @@
 
   .evidence-support-pill{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;border-radius:4px;padding:2px 8px;background:var(--surface-light);border:1px solid var(--border)}
   .evidence-support-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;opacity:0.9}
-  .evidence-support-pill.high{color:var(--green);border-color:rgba(34,197,94,0.32);background:rgba(34,197,94,0.08)}
-  .evidence-support-pill.medium{color:var(--yellow);border-color:rgba(234,179,8,0.32);background:rgba(234,179,8,0.08)}
-  .evidence-support-pill.low{color:#f87171;border-color:rgba(248,113,113,0.32);background:rgba(248,113,113,0.08)}
+  .evidence-support-pill.established{color:var(--green);border-color:rgba(34,197,94,0.32);background:rgba(34,197,94,0.08)}
+  .evidence-support-pill.directional{color:#38bdf8;border-color:rgba(56,189,248,0.32);background:rgba(56,189,248,0.08)}
+  .evidence-support-pill.indicative{color:var(--yellow);border-color:rgba(234,179,8,0.32);background:rgba(234,179,8,0.08)}
+  .evidence-support-pill.reasoned{color:#fb923c;border-color:rgba(251,146,60,0.32);background:rgba(251,146,60,0.08)}
   .evidence-support-box{margin-top:28px;margin-bottom:28px;padding:14px 18px;background:var(--surface-light);border:1px solid var(--border);border-radius:8px}
   .evidence-support-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
   .evidence-support-text{font-size:13px;color:var(--text);line-height:1.6;opacity:0.82}
@@ -781,7 +782,7 @@ function colorVar(c){const m={green:'--green',orange:'--orange',red:'--red',yell
 function bgVar(c){const m={green:'--green-bg',orange:'--orange-bg',red:'--red-bg',yellow:'--yellow-bg'};return `var(${m[c]||'--green-bg'})`}
 
 function evidenceSupportLevel(d){return d&&d.evidenceSupport&&d.evidenceSupport.level?String(d.evidenceSupport.level).toLowerCase():''}
-function evidenceSupportLabel(level){const m={high:'High',medium:'Medium',low:'Low'};return m[level]||''}
+function evidenceSupportLabel(level){const m={established:'Established',directional:'Directional',indicative:'Indicative',reasoned:'Reasoned'};return m[level]||''}
 function evidenceSupportPill(d){const level=evidenceSupportLevel(d);if(!level)return'';return `<span class="evidence-support-pill ${level}">Evidence support: ${evidenceSupportLabel(level)}</span>`}
 // The rating pill rides in the summary row, so the support level stays visible
 // even when the section is collapsed on a phone.
@@ -2858,7 +2859,7 @@ function renderEvidenceSupportView(){
     medium:'Well supported, but some numbers are a reasoned call',
     low:'Mostly judgement — treat as a prompt, not a figure'
   };
-  const order=['all','high','medium','low'];
+  const order=['all','established','directional','indicative','reasoned'];
   const summary=order.map(level=>`<div class="evidence-summary-card ${active===level?'active':''}" onclick="setEvidenceFilter('${level}')"><div class="evidence-summary-label">${labels[level]}</div><div class="evidence-summary-count">${counts[level]}</div><div class="evidence-summary-note">${notes[level]}</div></div>`).join('');
   const buttons=order.map(level=>`<button class="evidence-filter-btn ${active===level?'active':''}" onclick="setEvidenceFilter('${level}')">${labels[level]} (${counts[level]})</button>`).join('');
   const filtered=allAvailableEntries().filter(e=>active==='all'||evidenceSupportLevel(e.data)===active);
@@ -3325,7 +3326,7 @@ function manualReadEntry(){
   const a0=(d.alternatives||[]).filter(Boolean)[0];
   const actionContent=a0?(typeof a0==='string'?a0:`<strong>${a0.title}</strong> &mdash; ${a0.description}`):'';
   const ev=d.evidenceSupport;
-  const evColor=ev?(ev.level==='high'?'green':ev.level==='medium'?'yellow':'orange'):'yellow';
+  const evColor=ev?({established:'green',directional:'blue',indicative:'yellow',reasoned:'orange'}[ev.level]||'yellow'):'yellow';
   const evContent=ev?`<div class="anat-ev"><span class="anat-ev-pill" style="background:${bgVar(evColor)};color:${colorVar(evColor)};border:1px solid ${colorVar(evColor)}55">${(ev.level||'').toUpperCase()} support</span><span class="anat-ev-sum">${ev.summary||''}</span></div>`:'';
 
   let steps='';
