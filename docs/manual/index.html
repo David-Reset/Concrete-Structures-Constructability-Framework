@@ -402,6 +402,7 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
         <a href="#dm-ai-review"><span class="st">5</span> Reviewing with an AI</a>
         <a href="#dm-publishing"><span class="st">6</span> Drafts &amp; publishing</a>
         <a href="#dm-edits"><span class="st">7</span> Edits &amp; comments</a>
+        <a href="#dm-triage"><span class="st">8</span> Triage — when entries surface</a>
         <div class="side-group">Advanced</div>
         <a href="#dm-decision-path">Decision path (by hand)</a>
       </aside>
@@ -420,12 +421,12 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
       <li><strong>Submission inbox</strong> — new form responses waiting to be reviewed. A badge shows how many.</li>
       <li><strong>Drafts</strong> — entries you've accepted but not yet published. They're invisible to the public until you publish.</li>
       <li><strong>Browse entries</strong> — everything already live, for editing or reordering.</li>
-      <li><strong>Triage map</strong> — how entries are surfaced to designers by the site's triage questions.</li>
+      <li><strong>Triage map</strong> — the trigger that decides which jobs each entry is suggested on, and a dry run to test it. <a href="#dm-triage">Chapter 8</a>.</li>
       <li><strong>Rejected submissions</strong> — things you turned down, kept in case you change your mind.</li>
     </ul>
 
     <h2>Work through it in order</h2>
-    <p>These chapters follow one real submission — <strong>“Off-form concrete upturns near obstructions”</strong> — the whole way from the inbox to published. Do it once with this example and you'll know the pattern for every entry after. Start at chapter&nbsp;1.</p>
+    <p>These chapters follow one real submission — <strong>“Off-form concrete upturns near obstructions”</strong> — the whole way from the inbox to published. Do it once with this example and you'll know the pattern for every entry after. Start at chapter&nbsp;1. Chapter&nbsp;8 then covers the one thing that isn't about an entry's <em>content</em> at all: whether a designer is ever shown it.</p>
 
     <div class="chapters">
       <a class="chapter" href="#dm-load"><span class="cn">1</span><div class="cbody"><h3>Load your files</h3><p>Open the tool and load the current <code>data.json</code> (and optional <code>CHANGELOG.md</code>).</p></div></a>
@@ -435,6 +436,7 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
       <a class="chapter" href="#dm-ai-review"><span class="cn">5</span><div class="cbody"><h3>Reviewing with an AI</h3><p>Optional. Hand entries to an AI with the quality rubric; it hands back the improved entry for you to check.</p></div></a>
       <a class="chapter" href="#dm-publishing"><span class="cn">6</span><div class="cbody"><h3>Drafts &amp; publishing</h3><p>Review your drafts together, publish, download the updated <code>data.json</code>, and the changelog.</p></div></a>
       <a class="chapter" href="#dm-edits"><span class="cn">7</span><div class="cbody"><h3>Edits &amp; comments</h3><p>The other two kinds of submission and how they differ from a new entry.</p></div></a>
+      <a class="chapter" href="#dm-triage"><span class="cn">8</span><div class="cbody"><h3>Triage — when an entry surfaces</h3><p>The Triage map tab: the trigger that decides which jobs an entry is suggested on — and the dry run that proves it.</p></div></a>
     </div>
 
     <div class="pager">
@@ -717,19 +719,81 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
     <div class="callout info"><h3>A shortcut for a single entry</h3><p>You don't have to open the review window at all. Expand any new-entry card in the inbox and click <strong>🤖 Send to AI review</strong> — it downloads a request for just that one entry. The reply comes back into the same card. Handy when one submission is clearly a mess and the rest are fine.</p></div>
 
     <h2>The evidence &amp; triage review</h2>
-    <p>The second button, <strong>🤖 Evidence &amp; triage review</strong>, works on the same principle — load the rubrics once, pick entries, download a request, drop the reply back — but it answers different questions and behaves differently at the end.</p>
+    <p>The second button, <strong>🤖 Evidence &amp; triage review</strong>, works on the same principle — load the rubrics once, pick entries, download a request, drop the reply back — but it answers different questions, and it lands somewhere different at the end. Use it on entries that are <strong>already in <code>data.json</code></strong>, once the wording has settled.</p>
     <div class="walk">
       <div class="wstep">
-        <h3>What it gives you</h3>
-        <p class="goal">A rating and a trigger, not a rewrite.</p>
-        <p class="do">For each entry it returns an <strong>evidence-support level</strong> (Low / Medium / High, with a one-line summary) and a <strong>triage trigger</strong> — the combination of facts about a job that should make this entry surface. It may also propose <strong>new facts</strong> for the triage vocabulary if no existing one fits. It deliberately <strong>doesn't touch the question, bands or wording</strong> — that's the quality review's job.</p>
+        <h3>Load the two rubrics — once</h3>
+        <p class="goal">Teach the tool how to rate evidence, and when an entry should surface.</p>
+        <p class="do">This review applies <strong>two</strong> rubrics, so there are two boxes: drop <code>evidence-rating-rubric.md</code> into one and <code>triage-rating-rubric.md</code> into the other. Like the quality rubric, both are <strong>saved inside <code>data.json</code></strong> and travel with the file — so you do this once, not once per session, and a colleague who opens your <code>data.json</code> already has them. The tool warns you in orange if either is missing: without them the AI is guessing at a standard it has never been shown.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Evidence &amp; triage review</span></div><div class="mk-body">
+          <p class="mk-sub" style="margin-bottom:12px"><strong>1 · Rubrics</strong> <span style="opacity:.6">(saved in data.json)</span></p>
+          <div class="mk-drops">
+            <div class="mk-drop filled"><div class="lab">Evidence rating rubric ✓</div><div class="hint">evidence-rating-rubric.md · loaded</div></div>
+            <div class="mk-drop filled"><div class="lab">Triage rating rubric ✓</div><div class="hint">triage-rating-rubric.md · loaded</div></div>
+          </div>
+        </div></div>
+        <p class="click">👉 <span><b>Drop</b> both .md files — once, ever</span></p>
       </div>
+
       <div class="wstep">
-        <h3>How you apply it</h3>
-        <p class="goal">Suggestion by suggestion.</p>
-        <p class="do">The reply opens a review screen rather than dropping into the inbox, because these map onto specific fields. You see each suggestion beside the entry's current value, edit it if you want, and apply the ones you agree with. The AI's <em>rationale</em> is shown for you to read — it's never applied. Same rule as always: nothing is saved until you export <code>data.json</code>.</p>
+        <h3>Pick the entries — one, or all of them</h3>
+        <p class="goal">Choose what gets rated.</p>
+        <p class="do">Tick entries individually, or use <strong>all</strong> / <strong>live only</strong> / <strong>none</strong>. Each selected entry is sent with everything the rubrics need to judge it: its question, parameter, <strong>bands</strong>, evidence basis, the captions on its example drawings, its “applies where” sentence, its location, and its <em>current</em> rating and trigger. The whole <strong>fact vocabulary</strong> and both rubrics ride along in the same file. Then <strong>Download review request</strong>.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Evidence &amp; triage review</span></div><div class="mk-body">
+          <p class="mk-sub" style="margin-bottom:10px"><strong>2 · Entries to review</strong> — 3 selected · <span style="opacity:.6">all · live only · none</span></p>
+          <div class="mk-loaded" style="font-size:0.86rem">
+            <div class="row" style="opacity:.55;font-size:.7rem;text-transform:uppercase;letter-spacing:1px">Construction Methods</div>
+            <div class="row">☑ <strong>Off-form concrete upturns near obstructions</strong></div>
+            <div class="row">☑ <span style="opacity:.85">Raft slab vs waffle pod</span></div>
+            <div class="row" style="opacity:.55;font-size:.7rem;text-transform:uppercase;letter-spacing:1px;margin-top:8px">Detailing</div>
+            <div class="row">☑ <span style="opacity:.85">Hand-bendable bar sizes</span> <span class="mk-badge">draft</span></div>
+          </div>
+          <div class="mk-actions" style="margin-top:10px"><span class="mk-btn" style="background:var(--accent);border-color:var(--accent);color:#fff">⬇ Download review request (.json)</span></div>
+        </div></div>
+        <p class="click">👉 <span><b>Tick</b> the entries · <b>Download</b> the request</span></p>
+      </div>
+
+      <div class="wstep">
+        <h3>Hand the file to an AI</h3>
+        <p class="goal">Same as before — no prompt to write.</p>
+        <p class="do">Upload or paste the <code>.json</code> into any capable AI and ask it to follow the instructions in the file. Both rubrics are in there <em>in full</em>, along with the fact vocabulary and the exact output shape required. It replies with JSON — save it, or copy it.</p>
+        <p class="click">👉 <span><b>Upload</b> the request · <b>Save</b> the JSON reply</span></p>
+      </div>
+
+      <div class="wstep">
+        <h3>Drop the reply back — it opens a review screen, not the inbox</h3>
+        <p class="goal">Suggestions land beside the current values, not on top of them.</p>
+        <p class="do">This is where the two reviews part company. A quality review comes back as a rewritten <em>entry</em>, so it re-enters through the inbox. An evidence &amp; triage reply is a set of <strong>suggestions against specific fields</strong>, so it opens <strong>Review AI suggestions</strong> instead. Nothing is applied on arrival.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Review AI suggestions</span></div><div class="mk-body">
+          <div class="mk-card"><div class="mk-card-head"><span class="mk-card-name">Raft slab vs waffle pod</span></div><div class="mk-card-body">
+            <p class="mk-sub" style="margin-bottom:4px"><b>Evidence support</b></p>
+            <div class="mk-loaded" style="font-size:.84rem">
+              <div class="row" style="opacity:.6">now — <span class="mk-badge">directional</span> Supplier review fixes the stocked depths; the ordering of the two systems is a reasoned call.</div>
+              <div class="row">☑ suggested — <span class="mk-badge">established</span> <span style="opacity:.85">Supplier availability review is on point and corroborated by project drawings using the same depths…</span></div>
+            </div>
+            <div class="mk-sub" style="margin-top:6px"><b>AI's reasoning</b> <span style="opacity:.65">(shown to you — never applied)</span></div>
+            <p class="mk-sub" style="margin-bottom:4px;margin-top:10px"><b>Triage trigger</b></p>
+            <div class="mk-loaded" style="font-size:.84rem">
+              <div class="row" style="opacity:.6">now — ground-bearing slab · hidden if reactive ground</div>
+              <div class="row">☑ suggested — ground-bearing slab · hidden if reactive ground <span style="opacity:.7">(receiving entry named in the rationale)</span></div>
+            </div>
+          </div></div>
+          <div class="mk-actions" style="margin-top:10px"><span class="mk-btn" style="background:var(--accent);border-color:var(--accent);color:#fff">Apply ticked changes</span></div>
+        </div></div>
+        <p class="click">👉 <span><b>Drop</b> the reply · the review screen opens</span></p>
+      </div>
+
+      <div class="wstep">
+        <h3>Apply it suggestion by suggestion</h3>
+        <p class="goal">You accept each change on its merits — not the reply as a package.</p>
+        <p class="do">Every suggestion sits beside the entry's current value with a tick-box. Read, edit the wording if you want, untick anything you disagree with, then <strong>Apply ticked changes</strong>. The <strong>evidence summary</strong> is the sentence a reader will see on the entry, so edit it here rather than accepting AI phrasing you wouldn't have written. If the AI proposed <strong>new facts</strong> for the questionnaire, they're reviewed in their own section first — with a warning if a proposed question hangs off a gate that doesn't exist — because a trigger can't be applied until the fact it names exists. Anything it couldn't match to a real entry id is listed separately and ignored. And as always: <strong>nothing reaches <code>data.json</code> until you export</strong>.</p>
+        <p class="click">👉 <span><b>Untick</b> what you don't buy · <b>Apply ticked changes</b> · export</span></p>
       </div>
     </div>
+
+    <div class="callout"><h3>Re-drop a rubric whenever it changes</h3><p>The rubrics live <em>inside</em> <code>data.json</code> — that's what makes a review repeatable and portable, and it's also the one way to get a quietly wrong answer. If you edit <code>evidence-rating-rubric.md</code> or <code>triage-rating-rubric.md</code> on disk, <strong>the copy baked into <code>data.json</code> does not change with it</strong>, and every request keeps shipping the old rules. Re-drop the file into its box after any edit. The box shows the filename and the date it was loaded — check it matches.</p></div>
+
+    <div class="callout info"><h3>What this review will not do</h3><p>It never touches the <strong>question, the bands, the guidance or the wording</strong> — that's the quality review's job, and the split is deliberate. Rating an entry and re-authoring it are different acts, and mixing them lets an AI quietly move a threshold to suit the rating it wants to give. If a reply comes back with a changed band, something has gone wrong: reject it.</p></div>
 
     <div class="callout"><h3>You can do this without the tool at all</h3><p>Nothing stops you copying an entry and the contents of <code>entry-quality-rubric.md</code> straight into an AI chat and asking it to check the framing. The buttons just make it repeatable: the right rubric every time, the id preserved, and the reply flowing back into the inbox instead of being retyped by hand.</p></div>
 
@@ -800,6 +864,107 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
     <div class="callout info"><h3>Same discipline every time</h3><p>Whether it's a new entry, an edit or a comment: read every word, strip anything identifying, and only then accept. That habit is the whole job.</p></div>
     <div class="pager">
       <a href="#dm-publishing"><div class="dir">← Back</div><div class="ttl">6 · Drafts &amp; publishing</div></a>
+      <a class="next" href="#dm-triage"><div class="dir">Next →</div><div class="ttl">8 · Triage — when an entry surfaces</div></a>
+    </div>
+        </div>
+        <div class="subpage" id="page-dm-triage">
+<div class="crumbs"><a href="#home">Overview</a> › <a href="#dm-home">Data Manager</a> › <span>Triage</span></div>
+    <p class="page-eyebrow">Chapter 8</p>
+    <h1>Triage — when an entry surfaces</h1>
+    <p class="lede">Every other chapter is about what an entry <em>says</em>. This one is about whether a designer ever <em>sees</em> it.</p>
+    <p>On the live site a designer can run <strong>guided triage</strong>: they tick what's in the job, answer a few follow-up questions, and the framework hands back the entries worth reviewing. Those suggestions don't come from search or from a category — they come from a <strong>trigger</strong> you set on each entry, in the <strong>Triage map</strong> tab. An entry with no trigger is invisible to every designer who arrives that way, however good it is.</p>
+
+    <div class="callout"><h3>The asymmetry that drives everything here</h3><p>Triage produces a <strong>candidate list the reader curates</strong>, not a verdict — they tick the ones to keep. So a suggestion they don't need costs them one line to skim. An entry that <em>fails</em> to surface costs them the entry, and they never find out it happened. <strong>Bias every call towards surfacing.</strong> A slightly loose trigger is cheap; a slightly tight one is silent.</p></div>
+
+    <h2>The vocabulary: three kinds of fact</h2>
+    <p>Triggers are built from <strong>facts about the job</strong> — nothing else. There are three kinds, and there is no fourth:</p>
+    <ul>
+      <li><strong>Presence gate</strong> — an element is on the job. Ticked at step 1, straight off the architect's drawings. <code>slab-suspended</code>, <code>slab-on-ground</code>, <code>footing</code>, <code>wall</code>, <code>column</code>, <code>pile</code>, <code>beam-suspended</code>.</li>
+      <li><strong>Condition gate</strong> — a cross-cutting state, also ticked at step 1. <code>exposed-concrete</code>, <code>water-retaining</code>, <code>wet-or-drained-slab</code>, <code>retained-or-staged</code>.</li>
+      <li><strong>Question</strong> — yes / not sure / no, asked at step 2 and <em>only</em> when one of its <code>when</code> gates is ticked. Each is tagged with where the answer comes from, so the reader isn't hunting for it: drawings, geotech, site, or intent (a decision they're still making). <code>reactive-ground</code>, <code>large-bars</code>, <code>considering-screw-piles</code>…</li>
+    </ul>
+    <p><strong>“Not sure” counts as yes.</strong> The entry surfaces, flagged <em>“you weren't sure.”</em> That is the asymmetry again: a prompt to check is exactly what a not-sure answer deserves.</p>
+
+    <h2>How a trigger reads</h2>
+    <p>A trigger is a list of <strong>AND groups</strong>; inside a group, the facts are OR'd. The builder shows it the same way — chips in a group, the word <strong>AND</strong> between groups:</p>
+    <pre class="cb">"triage": [ ["wall","column","beam-suspended"], ["exposed-concrete"] ]
+
+   =  (wall OR column OR suspended beam)  AND  exposed concrete</pre>
+    <p>Two more fields sit alongside it:</p>
+    <ul>
+      <li><strong>Standing entry</strong> — a tick-box that removes the trigger entirely. The entry then surfaces on <em>every</em> run, in its own <strong>Every job</strong> group above the job-specific results. The bar is <strong>scope, not importance</strong>: the honest scope sentence has to be “on every reinforced-concrete job.” Formwork and falsework complexity qualifies — every RC job has formwork to build and strip. An entry that merely feels important does not.</li>
+      <li><strong>Hide if</strong> (<code>triageExclude</code>) — facts that <em>suppress</em> the entry even when its trigger matches. It exists for one job only: routing between two entries that genuinely compete, so the reader gets the right one rather than both.</li>
+    </ul>
+
+    <h2>Working in the Triage map tab</h2>
+    <div class="walk">
+      <div class="wstep">
+        <h3>Open Triage map</h3>
+        <p class="goal">See every entry and the job that summons it.</p>
+        <p class="do">The tab opens on <strong>Triggers — when entries appear</strong>: every entry, grouped by dimension, each with its trigger in plain English. The status line at the top is the thing to read first — it either says all triggers are valid, or it counts the problems and offers to filter down to them. Search, filter by dimension, or filter by <em>fact</em> (“show me everything that surfaces from <em>reactive ground</em>”).</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Triage map</span></div><div class="mk-body">
+          <div class="mk-tabs"><span class="mk-tab">Browse entries</span><span class="mk-tab on">Triage map</span><span class="mk-tab">Submission inbox</span><span class="mk-tab">Drafts</span><span class="mk-tab">Rejected submissions</span></div>
+          <div class="mk-chips"><span class="mk-chip on">Triggers — when entries appear</span><span class="mk-chip">Questionnaire</span></div>
+          <div class="mk-sub" style="color:var(--green);font-weight:600">✓ all 41 triggers valid</div>
+          <div class="mk-card"><div class="mk-card-head"><span class="mk-card-name">Waffle pod depth availability</span><span class="mk-time">Surfaces when: ground-bearing slab</span></div></div>
+          <div class="mk-card"><div class="mk-card-head"><span class="mk-card-name">Formwork and falsework complexity</span><span class="mk-time">Standing — surfaces on every job</span></div></div>
+          <div class="mk-card"><div class="mk-card-head"><span class="mk-card-name">Raft slab vs waffle pod</span><span class="mk-time">Surfaces when: ground-bearing slab · hidden if reactive ground</span></div></div>
+        </div></div>
+        <p class="click">👉 <span><b>Read the status line</b> · click any entry to open its trigger</span></p>
+      </div>
+      <div class="wstep">
+        <h3>Set when an entry surfaces</h3>
+        <p class="goal">Build the trigger from facts about the job.</p>
+        <p class="do">Click an entry to open the builder. Add an <strong>AND group</strong>, then pick facts into it — several facts in one group means <em>any of</em> these. Add a second group when two things must <em>both</em> be true. <strong>Hide if</strong> adds a suppressing fact. Or tick <strong>Standing entry</strong>, and the trigger disappears — you can't have both, and the validator will tell you if you try.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — trigger builder</span></div><div class="mk-body">
+          <div class="mk-card-name" style="margin-bottom:8px">Chamfered exposed external corners</div>
+          <div class="mk-label">☐ <strong>Standing entry</strong> — applies to every RC job, surfaces every run</div>
+          <div class="mk-chips"><span class="mk-sub">any of</span> <span class="mk-chip on">Concrete walls ×</span><span class="mk-chip on">Concrete columns ×</span><span class="mk-chip on">Suspended beams ×</span></div>
+          <div class="mk-sub" style="text-align:center">AND</div>
+          <div class="mk-chips"><span class="mk-chip on">Exposed concrete ×</span></div>
+          <div class="mk-sub">Hide if: <em>(nothing)</em> — suppresses this entry even when the trigger matches</div>
+        </div></div>
+        <p class="click">👉 <span><b>+ AND group</b> · pick the facts · nothing saves until you export</span></p>
+      </div>
+      <div class="wstep">
+        <h3>Dry run it on a real job</h3>
+        <p class="goal">Prove the entry actually appears where you meant it to.</p>
+        <p class="do">Open <strong>Dry run</strong> and play the designer: tick the elements, answer the questions that appear, and watch the right-hand column list exactly what a reader would get — the standing entries, then the job-specific ones, each with the fact that summoned it. <strong>This is the only check that matters.</strong> Reading a trigger tells you it's well formed; the dry run tells you it fires. Test the entry you just changed on a job it definitely bites on — and on one it shouldn't.</p>
+        <div class="mk"><div class="mk-chrome"><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-file">framework-data-manager.html — Dry run</span></div><div class="mk-body">
+          <div class="mk-sub"><b>Step 1 — elements on the job</b></div>
+          <div class="mk-chips"><span class="mk-chip on">✓ Ground floor cast on the ground</span><span class="mk-chip on">✓ Footings or ground beams</span><span class="mk-chip">Suspended slabs</span><span class="mk-chip">Concrete walls</span></div>
+          <div class="mk-sub"><b>Step 2 — questions</b> <span style="opacity:.7">(appear when their element is ticked)</span></div>
+          <div class="mk-chips"><span class="mk-sub" style="flex:1">Is the site on reactive (expansive) ground?</span><span class="mk-chip on">Yes</span><span class="mk-chip">Not sure</span><span class="mk-chip">No</span></div>
+          <div class="mk-chips"><span class="mk-sub" style="flex:1">Are any slab bars 20 mm or larger?</span><span class="mk-chip on">Yes</span><span class="mk-chip">Not sure</span><span class="mk-chip">No</span></div>
+          <div class="mk-sub" style="margin-top:10px"><b>Surfaces 11 entries</b> (3 standing + 8 from this job)</div>
+        </div></div>
+        <p class="click">👉 <span><b>Dry run</b> · tick a real job · read the right-hand list</span></p>
+      </div>
+      <div class="wstep">
+        <h3>Change the questions themselves — when no fact fits</h3>
+        <p class="goal">Fix the vocabulary rather than approximating with the wrong fact.</p>
+        <p class="do">Switch to the <strong>Questionnaire</strong> view to edit the gates and questions the designer actually sees: the label and hint on a gate, the prompt on a question, which gates reveal it (<code>when</code>), and where its answer comes from. Add a gate or a question with the buttons; renaming or deleting a fact safely repoints — or warns about — every trigger using it. Prefer an existing fact every time: <strong>a fact that serves several entries beats a one-off.</strong> But if no combination of existing facts reproduces the jobs your entry bites on, the <em>vocabulary</em> is wrong, not the trigger. Fix it here; don't approximate.</p>
+        <p class="click">👉 <span><b>Questionnaire</b> · edit a prompt · <code>+ question</code> only when nothing fits</span></p>
+      </div>
+    </div>
+
+    <h2>The one rule</h2>
+    <p>Everything above collapses into a single test, and the rubric is built on it:</p>
+    <pre class="cb">Name the jobs the entry bites on.
+Then find the smallest set of facts that reproduces exactly that set of jobs.</pre>
+    <p>Then check it three ways. Does it fire on jobs the entry <em>doesn't</em> help? Does it <em>miss</em> jobs it does help — the silent failure, the one worth hunting? And if no fact set reproduces your list, go and fix the vocabulary.</p>
+    <p>One warning: the entry's own <strong>“Applies where”</strong> sentence is the obvious place to get that list of jobs, and it is not trustworthy on its own — it was written by the same person who wrote the trigger, so it agrees with the trigger by construction. Read the <strong>bands</strong> instead, find where the guidance actually changes what a reader does, and name a job the entry would help on that the sentence leaves out.</p>
+
+    <div class="callout"><h3>The trap that hides real defects: the hidden <code>when</code></h3><p>A trigger built on a <em>question</em> silently inherits that question's <code>when</code> gates as an extra AND group. If <code>large-bars</code> is only asked when <strong>suspended slabs</strong> is ticked, then every entry triggered by <code>large-bars</code> is <strong>dark on every ground-slab job</strong> — including the house with a waffle raft and N20s in the ribs, which is exactly the job those entries were written for. The trigger reads perfectly. The fact exists. The validator is happy. The entry never appears. <strong>Always ask: on the jobs this entry names, is its question even asked?</strong> The dry run is how you catch it.</p></div>
+
+    <div class="callout"><h3>Two rules the validator enforces for you</h3><p><strong>Every “Hide if” owes a receiving entry.</strong> If you suppress an entry on a fact, name the entry that picks the reader up instead — and check that its trigger really does fire there. An exclude with nothing behind it is a recall hole that looks like tidiness. <strong>And no entry may be both standing and triggered.</strong> Standing means universal in scope; a trigger means conditional. Pick one.</p></div>
+
+    <div class="callout info"><h3>Reader appetite is not a job fact</h3><p>There is deliberately <strong>no opt-in</strong> in this system — no “tick here to also see the general safety advice.” “I've read this before and considered it” is a fact about the <em>reader</em>, not about the <em>job</em>, and it must never enter a trigger. Default-off toggles fail in the worst direction: the reader who has never considered the advice is precisely the one who never switches it on. Advice is either <strong>universal in scope</strong> (make it standing) or <strong>conditional</strong> (give it a gate or a question). Muting is a display choice, and it lives on the site — the standing entries are grouped and collapsible there — never in the data.</p></div>
+
+    <p>The full reasoning behind all of this — worked examples, the precision-vs-recall argument, and how to record the call you made — is in <code>tools/triage-rating-rubric.md</code>. It's also the rubric an <a href="#dm-ai-review">AI evidence &amp; triage review</a> (chapter 5) applies when it proposes triggers for you: the suggestions come back to a review screen where you accept them field by field, so the judgement stays yours.</p>
+
+    <div class="pager">
+      <a href="#dm-edits"><div class="dir">← Back</div><div class="ttl">7 · Edits &amp; comments</div></a>
       <a class="next" href="#dm-decision-path"><div class="dir">Next →</div><div class="ttl">Decision path (by hand)</div></a>
     </div>
         </div>
@@ -844,7 +1009,7 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
     </ol>
     <div class="callout"><h3>This is the only hand-edit</h3><p>Related-entry “see also” links are <em>not</em> edited here — those are managed in the Data Manager with the <strong>Links</strong> button. The <code>decisionPath</code> wiring on the reactive-ground entries is the single exception, and this page is all of it.</p></div>
     <div class="pager">
-      <a href="#dm-edits"><div class="dir">← Back</div><div class="ttl">7 · Edits &amp; comments</div></a>
+      <a href="#dm-triage"><div class="dir">← Back</div><div class="ttl">8 · Triage — when an entry surfaces</div></a>
       <a class="disabled">&nbsp;</a>
     </div>
         </div>
