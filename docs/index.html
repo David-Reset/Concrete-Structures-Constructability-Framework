@@ -696,27 +696,24 @@
   .faq-a a:hover,.evidence-text a:hover,.consideration-text a:hover,.applicability-text a:hover,.alt-desc a:hover,.alt-text a:hover,.threshold-guidance a:hover,.worked-example-headline a:hover,.evidence-support-text a:hover,.example-desc a:hover,.ra-note a:hover{color:var(--link-hover)}
 
   /* ===== COLLAPSIBLE ENTRY SECTIONS =====
-     Every optional section of an entry is a <details>. On a desktop it is always
-     rendered with `open` and the summary is inert, so the entry looks and behaves
-     exactly as it did before collapsing existed. On a phone (see isPhone()) the
-     same markup renders collapsed — except Applicability, which starts open but
-     can still be folded away. Nothing is stored: every entry opens the same way. */
-  .esec>summary{display:flex;align-items:center;gap:10px;cursor:pointer;list-style:none;outline:none}
+     Every optional section of an entry is a native <details>. Desktop sections
+     start open but can be collapsed individually. Phone sections keep their
+     compact defaults — most start collapsed, while Applicability and Recommended
+     Actions start open. Nothing is stored: every entry opens with the same defaults. */
+  .esec>summary{display:flex;align-items:center;gap:10px;cursor:pointer;list-style:none;outline:none;border-radius:6px}
   .esec>summary::-webkit-details-marker{display:none}
   .esec>summary>.label{margin-bottom:0}
   .esec-fill{flex:1}
   /* Spacing for the unboxed sections (Background, Examples, Images, Related);
      the boxed ones already carry their own margins. */
   .esec-gap{margin-top:28px}
-  .esec-chev{display:none;flex-shrink:0;color:var(--text-muted);font-size:10px;line-height:1;transition:transform .18s ease}
+  .esec-chev{display:inline-block;flex-shrink:0;color:var(--text-muted);font-size:10px;line-height:1;transition:transform .18s ease}
   .esec-body{margin-top:10px}
-  /* Desktop: never collapsible. The summary is inert and the chevron is hidden. */
-  html:not(.phone) .esec>summary{cursor:default;pointer-events:none}
-  /* Phone: show the chevron, flip it when open, and give the summary a 44px tap target. */
+  .esec[open]>summary .esec-chev{transform:rotate(180deg)}
+  .esec>summary:hover .esec-chev{color:var(--accent)}
+  .esec>summary:focus-visible{box-shadow:0 0 0 3px var(--accent-glow)}
+  /* Phone summaries retain a comfortable tap target. */
   html.phone .esec>summary{min-height:44px}
-  html.phone .esec-chev{display:inline-block}
-  html.phone .esec[open]>.esec-chev,html.phone .esec[open]>summary .esec-chev{transform:rotate(180deg)}
-  html.phone .esec>summary:focus-visible{box-shadow:0 0 0 3px var(--accent-glow);border-radius:6px}
 
   /* Wide worked-example tables scroll sideways inside their box rather than
      bursting the layout. Only the table scrolls, not the page. */
