@@ -4835,7 +4835,7 @@
                 "range": "250 mm",
                 "rating": "Concern",
                 "color": "orange",
-                "guidance": "Fall-through risk on larger pours and should be addressed. The exception is small, single-truck pours under approximately 7 m3, where the pour is self-paced and conditions are controlled enough that 250 mm spacing is acceptable. For example, if the slab thickness is 180 mm, this equates to slabs less than approximately 38 m2. For pours exceeding 7 m3 (i.e. requiring more than one truck), this spacing should be addressed."
+                "guidance": "Fall-through risk where workers walk, kneel or stand on the top mat, and should be addressed. The clear opening can admit an angled foot placement. Reduce the primary spacing or provide a suitable supplementary walking-surface control where the mat will be used as a working surface."
               },
               {
                 "range": "≥ 300 mm",
@@ -4850,25 +4850,25 @@
                 "description": "Use 200 x 200 mm spacing, or closer, as the preferred solution where the top mat will be used as a working surface during concrete placement. This provides a more supportive surface for workers and avoids relying on supplementary controls."
               },
               {
-                "title": "Assess 250 x 250 mm spacing against pour size and site conditions",
-                "description": "Where 250 x 250 mm spacing is proposed, consider the concrete pour volume and construction context. Small pours under approximately 7 m3 are generally more controlled and may be acceptable, while larger pours are more likely to involve faster movement, more workers and higher exposure time."
+                "title": "Address 250 x 250 mm spacing where the mat will be walked on",
+                "description": "Where 250 x 250 mm spacing is proposed and the top mat will function as a working surface, consider reducing the primary spacing to 200 x 200 mm or providing a suitable supplementary walking-surface control. Pour scale and work pace affect how often workers are exposed, but they do not change the spacing rating."
               },
               {
                 "title": "Use supplementary top mesh or reduce the primary spacing",
-                "description": "Where 250 x 250 mm spacing is used on pours exceeding approximately 7 m3, or where 300 x 300 mm spacing is specified, provide an additional layer of top mesh such as SL82 or above to improve the working surface, or revise the primary top reinforcement spacing to 200 x 200 mm. Consider cover, reinforcement congestion and concrete placement before adding supplementary mesh."
+                "description": "Where 250 x 250 mm or 300 x 300 mm top spacing is specified for a mat that workers will walk on, provide an additional layer of top mesh such as SL82 or above to improve the working surface, or revise the primary top reinforcement spacing to 200 x 200 mm. Consider cover, reinforcement congestion and concrete placement before adding supplementary mesh."
               }
             ],
-            "evidence": "Site incident report: worker sustained a severe knee injury after stepping through 250 x 250 top reinforcement during slab pour. Supported by Safe Work Australia guidance on falls through openings and gaps in working platforms. Boot sole dimensions derived from ADF anthropometric surveys (Blanchonette, 2017). Slip and trip injury data from construction site research demonstrates that even non-fall slip events predominantly injure lower extremities (Lipscomb et al., 2006). Prevention through Design guidance for concrete construction recommends mat mesh over widely spaced rebar as a walking surface control (National Institute for Occupational Safety and Health, 2024).<br><br><strong>Pour size threshold (7 m3)</strong><br>The 7 m3 threshold corresponds to the typical capacity of a single concrete truck. Pours within a single truck are generally self-paced and controlled, because the rate of placement is set by the workers screeding and finishing rather than by trucks queueing on site. Pours requiring multiple trucks introduce time pressure to keep up with placement and faster worker movement across the reinforcement mat, increasing exposure time and the likelihood of a misplaced step.<br><br><strong>References</strong><br>Blanchonette, P. (2017). Australian Defence Force Anthropometry: A Summary of Historic Surveys (DST-Group-GD-0968). Defence Science and Technology Group.<br>Lipscomb, H. J., Glazner, J. E., Bondy, J., Guarini, K., &amp; Lezotte, D. (2006). Injuries from slips and trips in construction. Applied Ergonomics, 37(3), 267–274. https://doi.org/10.1016/j.apergo.2005.07.008<br>National Institute for Occupational Safety and Health. (2024). Prevention through Design Toolkit for the Construction Industry (DHHS (NIOSH) Publication No. 2024-124). U.S. Centers for Disease Control and Prevention. https://doi.org/10.26616/NIOSHPUB2024124",
+            "evidence": "Site incident report: worker sustained a severe knee injury after stepping through 250 x 250 top reinforcement during slab pour. Supported by Safe Work Australia guidance on falls through openings and gaps in working platforms. Boot sole dimensions derived from ADF anthropometric surveys (Blanchonette, 2017). Slip and trip injury data from construction site research demonstrates that even non-fall slip events predominantly injure lower extremities (Lipscomb et al., 2006). Prevention through Design guidance for concrete construction recommends mat mesh over widely spaced rebar as a walking surface control (National Institute for Occupational Safety and Health, 2024).<br><br><strong>References</strong><br>Blanchonette, P. (2017). Australian Defence Force Anthropometry: A Summary of Historic Surveys (DST-Group-GD-0968). Defence Science and Technology Group.<br>Lipscomb, H. J., Glazner, J. E., Bondy, J., Guarini, K., &amp; Lezotte, D. (2006). Injuries from slips and trips in construction. Applied Ergonomics, 37(3), 267–274. https://doi.org/10.1016/j.apergo.2005.07.008<br>National Institute for Occupational Safety and Health. (2024). Prevention through Design Toolkit for the Construction Industry (DHHS (NIOSH) Publication No. 2024-124). U.S. Centers for Disease Control and Prevention. https://doi.org/10.26616/NIOSHPUB2024124",
             "examples": [
               {
                 "image": "images/reo-250-spacing.png",
                 "tag": "concern",
-                "caption": "Top reinforcement at N12-250 spacing on a 14.26 m3 pour. While the matching top and bottom spacing simplifies detailing, the 250 mm top mat spacing creates unacceptable fall-through risk on a pour of this size."
+                "caption": "Top reinforcement at N12-250 spacing on a 14.26 m3 pour. The clear opening creates a fall-through risk where workers cross the mat. The larger pour increases exposure, but the spacing itself determines the rating."
               },
               {
                 "image": "images/reo-250-small-pour.jpg",
-                "tag": "acceptable",
-                "caption": "Top reinforcement at N12-250 spacing on a small balcony pour of approximately 3.8 m3. The small pour volume means conditions are controlled and the 250 mm spacing is acceptable."
+                "tag": "concern",
+                "caption": "Top reinforcement at N12-250 spacing on a small balcony pour of approximately 3.8 m3. The smaller pour may reduce the number and pace of crossings, but it does not remove the geometric fall-through risk; the spacing remains a Concern where the mat is used as a working surface."
               },
               {
                 "image": "images/reo-200-spacing.png",
@@ -4899,7 +4899,7 @@
               }
             ],
             "dateAdded": "2026-03-15",
-            "dateReviewed": "2026-07-12",
+            "dateReviewed": "2026-07-15",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -4912,19 +4912,19 @@
                   "description": "This guidance is primarily concerned with the top reinforcement mat because this is the layer workers walk, kneel or stand on during concrete placement. Bottom reinforcement, wall reinforcement, starter bars and other non-trafficable reinforcement do not create the same working-surface risk. However, designers may still choose to match top and bottom reinforcement spacing where this improves detailing simplicity, ordering, placement consistency or reduces the likelihood of site errors."
                 },
                 {
-                  "title": "Pour volume is a practical indicator, not a fixed safety boundary",
-                  "description": "The 7 m3 threshold is used as a practical indicator of pour intensity and exposure, not as a statutory or absolute safety limit. A smaller pour may still require closer spacing if access is awkward, the reinforcement is difficult to move across, or workers need to spend extended time on the mat."
+                  "title": "Pour scale and work pace affect exposure, not the spacing rating",
+                  "description": "A small, single-truck pour may involve fewer workers, fewer crossings and a slower placement pace than a continuous multi-truck pour. Approximately 7 m3 is only an indicative single-truck reference for considering exposure. It is not a safety threshold, does not make 250 mm spacing acceptable, and does not change the rating. Access, worker movement and time spent on the mat should be considered separately from the underlying geometric fall-through risk."
                 },
                 {
                   "title": "Structural and placement requirements remain controlling",
                   "description": "Any change to reinforcement spacing or addition of supplementary mesh must still satisfy structural design requirements, cover, bar layering, congestion, concrete placement and vibration requirements."
                 }
               ],
-              "note": "Use the rating as a safety-in-design review prompt, not as a blanket rule. The appropriate response is to consider whether the top mat will function as a working surface and whether the specified spacing creates an avoidable risk during construction."
+              "note": "Use the rating as a safety-in-design review prompt, not as a blanket rule. The rating addresses the geometric fall-through risk created by the top-mat spacing. Pour scale, access and work pace may change the frequency of exposure, but they do not change the spacing rating."
             },
             "evidenceSupport": {
               "level": "established",
-              "summary": "The call is backed by an authoritative on-point source — the NIOSH Prevention through Design toolkit recommends mat mesh over widely spaced rebar as a walking-surface control — with the boot-versus-gap geometry derived from anthropometric survey data and Safe Work Australia guidance on gaps in working platforms, and independently confirmed by a site incident in which a worker stepped through a 250 x 250 mat and was seriously injured. The supporting injury data (Lipscomb et al.) is general slip-and-trip research rather than fall-through-specific, and the 7 cubic metre pour-size cue is a truck-capacity heuristic."
+              "summary": "The call is backed by an authoritative on-point source — the NIOSH Prevention through Design toolkit recommends mat mesh over widely spaced rebar as a walking-surface control — with the boot-versus-gap geometry derived from anthropometric survey data and Safe Work Australia guidance on gaps in working platforms, and independently confirmed by a site incident in which a worker stepped through a 250 x 250 mat and was seriously injured. The supporting injury data (Lipscomb et al.) is general slip-and-trip research rather than fall-through-specific."
             },
             "relatedEntries": []
           }
@@ -7137,7 +7137,8 @@
     "fragment|entry|non-combustible-substructure-in-bushfire-areas|17by3u5",
     "fragment|entry|fire-protection-cost-of-steel-beams-in-concrete-floors|rnpo27",
     "fragment|entry|construction-joint-necessity-and-placement|u5fbii",
-    "fragment|entry|temporary-construction-loading-of-permanent-works|1scpwd6"
+    "fragment|entry|temporary-construction-loading-of-permanent-works|1scpwd6",
+    "fragment|update|reinforcement-mat-fall-through-risk|12p97zy"
   ],
   "_rejected": [],
   "_reconsider": [
