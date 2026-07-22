@@ -79,12 +79,25 @@
   .btn{font-family:inherit;font-size:12px;font-weight:600;border-radius:6px;padding:8px 12px;cursor:pointer;border:1px solid var(--border);background:var(--surface-light);color:var(--text);transition:all .15s}
   .btn:hover{border-color:var(--accent)}.btn:disabled{opacity:.4;cursor:not-allowed}
   @media(max-width:760px){.wrap{padding:18px 16px}.footer{padding:14px 16px;flex-direction:column;align-items:flex-start}.check-body{padding-left:18px}}
+  :root{ color-scheme:dark; }
+  :root[data-theme="light"]{
+    --bg:#f4f6fb;--surface:#ffffff;--surface-light:#eef2f8;--border:#d3dbe8;
+    --text:#1c2430;--text-muted:#5a6678;--accent:#2563eb;--accent-glow:rgba(37,99,235,0.10);
+    --red:#dc2626;--orange:#ea580c;--yellow:#b45309;--green:#16a34a;
+    --green-bg:rgba(22,163,74,0.10);--red-bg:rgba(220,38,38,0.10);--yellow-bg:rgba(180,83,9,0.10);--orange-bg:rgba(234,88,12,0.10);
+    --accent-bg:rgba(37,99,235,0.10);--link:#2563eb;--link-hover:#1d4ed8;--img-bg:#e2e8f0;
+    color-scheme:light;
+  }
+  .theme-toggle-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:var(--surface-light);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:16px;line-height:1;cursor:pointer;transition:all .2s;flex-shrink:0;font-family:inherit}
+  .theme-toggle-btn:hover{border-color:var(--accent);background:var(--accent-glow)}
 </style>
+<script>(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t='dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 </head>
 <body>
   <div class="header">
     <div class="logo">FD</div>
     <div><div class="header-title">Framework Doctor</div><div class="header-sub">Read-only health check for data.json and the images folder — runs entirely in your browser</div></div>
+    <button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch between light and dark theme" aria-label="Toggle colour theme" style="margin-left:auto"><span id="theme-toggle-icon">🌙</span></button>
   </div>
 
   <div class="wrap">
@@ -534,6 +547,11 @@ function readEntriesDeep(entries){
 document.getElementById('dataFile').addEventListener('change',e=>{loadDataFile(e.target.files[0]);});
 document.getElementById('imgFolder').addEventListener('change',e=>{loadFolder(e.target.files);});
 updateFooter();
+</script>
+<script>
+function applyTheme(t){var theme=t==='light'?'light':'dark';document.documentElement.setAttribute('data-theme',theme);try{localStorage.setItem('theme',theme);}catch(e){}var ic=document.getElementById('theme-toggle-icon');if(ic)ic.textContent=theme==='light'?'☀️':'🌙';}
+function toggleTheme(){var cur=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';applyTheme(cur==='light'?'dark':'light');}
+applyTheme(document.documentElement.getAttribute('data-theme'));
 </script>
 </body>
 </html>
