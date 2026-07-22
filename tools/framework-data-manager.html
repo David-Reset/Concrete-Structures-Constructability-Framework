@@ -10,7 +10,7 @@
   :root{
     --bg:#0a0f1a;--surface:#111827;--surface-light:#1a2234;--border:#2a3548;
     --text:#e2e8f0;--text-muted:#8899aa;--accent:#3b82f6;--accent-glow:rgba(59,130,246,0.12);
-    --red:#ef4444;--orange:#f97316;--yellow:#eab308;--green:#22c55e;
+    --red:#ef4444;--orange:#f97316;--yellow:#eab308;--green:#22c55e;--blue:#38bdf8;
     --green-bg:rgba(34,197,94,0.1);--red-bg:rgba(239,68,68,0.1);--yellow-bg:rgba(234,179,8,0.1);--orange-bg:rgba(249,115,22,0.12);
   }
   body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;min-height:100vh;padding-bottom:90px}
@@ -139,9 +139,10 @@
   /* evidence-support preview (mirrors the live site) */
   .evidence-support-pill{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;border-radius:4px;padding:2px 8px;background:var(--surface-light);border:1px solid var(--border)}
   .evidence-support-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;opacity:0.9}
-  .evidence-support-pill.high{color:var(--green);border-color:rgba(34,197,94,0.32);background:rgba(34,197,94,0.08)}
-  .evidence-support-pill.medium{color:var(--yellow);border-color:rgba(234,179,8,0.32);background:rgba(234,179,8,0.08)}
-  .evidence-support-pill.low{color:#f87171;border-color:rgba(248,113,113,0.32);background:rgba(248,113,113,0.08)}
+  .evidence-support-pill.established{color:var(--green);border-color:rgba(34,197,94,0.32);background:rgba(34,197,94,0.08)}
+  .evidence-support-pill.directional{color:#38bdf8;border-color:rgba(56,189,248,0.32);background:rgba(56,189,248,0.08)}
+  .evidence-support-pill.indicative{color:var(--yellow);border-color:rgba(234,179,8,0.32);background:rgba(234,179,8,0.08)}
+  .evidence-support-pill.reasoned{color:#fb923c;border-color:rgba(251,146,60,0.32);background:rgba(251,146,60,0.08)}
   .evidence-support-box{margin:0;padding:12px 14px;background:var(--surface-light);border:1px solid var(--border);border-radius:8px}
   .evidence-support-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
   .evidence-support-text{font-size:13px;color:var(--text);line-height:1.6;opacity:0.85}
@@ -476,9 +477,10 @@
   .pv .evidence-support-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
   .pv .evidence-support-text{font-size:13px;color:var(--text);line-height:1.6;opacity:0.82}
   .pv .evidence-support-pill{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;border-radius:4px;padding:2px 8px;background:var(--surface-light);border:1px solid var(--border)}
-  .pv .evidence-support-pill.high{color:var(--green);border-color:rgba(34,197,94,0.32);background:rgba(34,197,94,0.08)}
-  .pv .evidence-support-pill.medium{color:var(--yellow);border-color:rgba(234,179,8,0.32);background:rgba(234,179,8,0.08)}
-  .pv .evidence-support-pill.low{color:#f87171;border-color:rgba(248,113,113,0.32);background:rgba(248,113,113,0.08)}
+  .pv .evidence-support-pill.established{color:var(--green);border-color:rgba(34,197,94,0.32);background:rgba(34,197,94,0.08)}
+  .pv .evidence-support-pill.directional{color:#38bdf8;border-color:rgba(56,189,248,0.32);background:rgba(56,189,248,0.08)}
+  .pv .evidence-support-pill.indicative{color:var(--yellow);border-color:rgba(234,179,8,0.32);background:rgba(234,179,8,0.08)}
+  .pv .evidence-support-pill.reasoned{color:#fb923c;border-color:rgba(251,146,60,0.32);background:rgba(251,146,60,0.08)}
   .pv .comments-section{margin-top:28px}
   .pv .comment-card{padding:14px 18px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:10px}
   .pv .comment-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap}
@@ -1575,7 +1577,8 @@ function statusToggle(i,prefix,available){
 }
 
 /* ---- evidence support (one field, two render spots: list badge + entry-page box) ---- */
-const ES_LABELS={high:'High',medium:'Medium',low:'Low'};
+const ES_LABELS={established:'Established',directional:'Directional',indicative:'Indicative',reasoned:'Reasoned'};
+const ES_LEVELS=['established','directional','indicative','reasoned'];
 function esId(i,prefix){return 'es-'+i+'-'+(prefix==='_entry.'?'e':'n');}
 function esLevelOf(es){return (es&&es.level?String(es.level):'').toLowerCase();}
 function esEnsure(i,prefix){const d=getSub(i,prefix).data;if(!d.evidenceSupport)d.evidenceSupport={level:'',summary:''};return d.evidenceSupport;}
@@ -1595,7 +1598,7 @@ function evidenceSupportEditor(i,d,prefix){
   const es=d.evidenceSupport||{level:'',summary:''};
   const level=esLevelOf(es);
   const sid='essum-'+i+'-'+(prefix==='_entry.'?'e':'n');
-  const opts=[['','— none (no badge shown) —'],['high','High'],['medium','Medium'],['low','Low']];
+  const opts=[['','— none (no badge shown) —'],['established','Established — use it as written'],['directional','Directional — direction proven, number ours'],['indicative','Indicative — evidence is about a neighbouring thing'],['reasoned','Reasoned — practitioner judgement']];
   return `<div class="row2">
       <div class="field" style="margin-bottom:8px"><label>Support level</label><select oninput="esSetLevel(${i},'${prefix}',this.value)">${opts.map(([v,l])=>`<option value="${v}" ${v===level?'selected':''}>${l}</option>`).join('')}</select></div>
       <div></div>
@@ -1627,7 +1630,7 @@ function entryEditor(i,draft){
     <div class="field"><label>Applicability — checks before applying</label>${checksEditor(i,d)}</div>
     <div class="field"><label>Applicability — note</label>${ta(i,'data.applicability.note',d.applicability.note,'appl')}</div>
     <div class="field"><label>Evidence basis</label>${ta(i,'data.evidence',d.evidence)}</div>
-    <div class="field"><label>Evidence support rating <span class="hint" style="display:inline">(the High / Medium / Low badge shown in lists and on the entry page)</span></label>${evidenceSupportEditor(i,d,'')}</div>
+    <div class="field"><label>Evidence support rating <span class="hint" style="display:inline">(the Established / Directional / Indicative / Reasoned badge shown in lists and on the entry page)</span></label>${evidenceSupportEditor(i,d,'')}</div>
     <div class="field"><label>Example images <span class="hint" style="display:inline">(concern / acceptable / recommended, with captions)</span></label>${examplesEditor(i,d,'')}</div>
     <div class="field"><label>Supporting images <span class="hint" style="display:inline">(figures, references, diagrams)</span></label>${supportingEditor(i,d,'')}</div>
     <div class="field"><label>Lead image <span class="hint" style="display:inline">(optional — small clickable thumbnail at the front of the entry in lists)</span></label>${leadImageEditor(i,d,'')}</div>
@@ -2121,13 +2124,32 @@ function showList(){
 
 /* ===================== TRIAGE MAP TAB ===================== */
 function triageCfg(){return (state.db&&state.db.triageConfig)||null;}
-function tStripTags(s){return String(s||'').replace(/<[^>]+>/g,'').replace(/&mdash;/g,'\u2014').replace(/&rsquo;/g,'\u2019').replace(/&[a-z]+;/g,' ').replace(/\s+/g,' ').trim();}
+/* Plain-text projection of an HTML-bearing field, for AI payloads and the Triage tab.
+   Two things the old version got wrong, both of which corrupted the text sent to a rater:
+     1. tags were deleted, not spaced  -> "spoil<br>Access" became "spoilAccess"
+     2. only &mdash; and &rsquo; were decoded; EVERY other entity became a space, so
+        "L&ouml;fgren" -> "L fgren" and "Concrete &amp; Aggregates" -> "Concrete  Aggregates".
+        That silently mangled the author names and source titles an evidence rating rests on.
+   Decoding is done by the parser itself (textarea content is RCDATA, so any residual markup
+   stays inert), which handles named, decimal and hex entities without a lookup table. */
+function tDecodeEntities(s){
+  s=String(s||'');
+  if(s.indexOf('&')<0)return s;
+  const ta=document.createElement('textarea');
+  ta.innerHTML=s;
+  return ta.value;
+}
+function tStripTags(s){
+  const withBreaks=String(s||'')
+    .replace(/<(br|\/p|\/li|\/ul|\/ol|\/div|\/tr|\/h[1-6])\b[^>]*>/gi,' ') /* block ends -> space */
+    .replace(/<[^>]+>/g,'');                                                /* inline tags -> gone */
+  return tDecodeEntities(withBreaks).replace(/\s+/g,' ').trim();
+}
 function triageFacts(){
   const T=triageCfg();if(!T)return [];
   const out=[];
   (T.gates||[]).forEach(g=>out.push({fact:g.fact,label:g.reason||g.label||g.fact,detail:g.label||'',group:'Step 1 \u2014 elements'}));
   (T.questions||[]).forEach(q=>out.push({fact:q.fact,label:q.reason||q.fact,detail:tStripTags(q.prompt||''),group:'Step 2 \u2014 questions'}));
-  (T.universal||[]).forEach(u=>out.push({fact:u.fact,label:u.reason||u.label||u.fact,detail:u.label||'',group:'Step 3 \u2014 universal opt-ins'}));
   return out;
 }
 function triageFactMap(){const m={};triageFacts().forEach(f=>m[f.fact]=f);return m;}
@@ -2141,16 +2163,36 @@ function triageEntriesForFact(fact){
   return triageAllEntries().filter(o=>{const t=o.it.data&&o.it.data.triage;return Array.isArray(t)&&t.some(s=>Array.isArray(s)&&s.indexOf(fact)>=0);});
 }
 function triageValidate(){
+  const T=triageCfg()||{};
   const vocab=new Set(triageFacts().map(f=>f.fact));
-  const dark=[],unknown=[];
-  triageAllEntries().forEach(o=>{
+  const qWhen={};(T.questions||[]).forEach(q=>{qWhen[q.fact]=q.when||[];});
+  const dark=[],unknown=[],orphanExcl=[];
+  const all=triageAllEntries();
+  // every fact an entry could ever fire on (a trigger built on a question inherits
+  // that question's `when` gates as a hidden AND-slot — see the triage rubric, Step 3E)
+  const firesOn=o=>{
+    const t=(o.it.data||{}).triage;const s=new Set();
+    (Array.isArray(t)?t:[]).forEach(sl=>(sl||[]).forEach(f=>s.add(f)));
+    return s;
+  };
+  all.forEach(o=>{
     const d=o.it.data||{};const trig=d.triage;
-    const ok=Array.isArray(trig)&&trig.length&&trig.every(s=>Array.isArray(s)&&s.length);
+    // STANDING entries are universal in scope: no trigger, surfaces on every job. Not dark.
+    const standing=d.standing===true;
+    const ok=standing||(Array.isArray(trig)&&trig.length&&trig.every(s=>Array.isArray(s)&&s.length));
     if(o.it.available!==false&&!ok)dark.push(o);
+    if(standing&&Array.isArray(trig)&&trig.length)unknown.push({o,fact:'(standing entry also carries a trigger \u2014 remove one)'});
     const refs=[];(Array.isArray(trig)?trig:[]).forEach(s=>(s||[]).forEach(f=>refs.push(f)));(d.triageExclude||[]).forEach(f=>refs.push(f));
     refs.forEach(f=>{if(!vocab.has(f))unknown.push({o,fact:f});});
+    // an exclude OWES a receiving entry: some other entry must actually fire on the
+    // excluded fact, or the reader is handed to nobody and the entry is silently lost.
+    (d.triageExclude||[]).forEach(f=>{
+      if(!vocab.has(f))return;
+      const recv=all.some(o2=>o2.it.id!==o.it.id&&o2.it.available!==false&&firesOn(o2).has(f));
+      if(!recv)orphanExcl.push({o,fact:f});
+    });
   });
-  return {dark,unknown};
+  return {dark,unknown,orphanExcl};
 }
 function triageFindData(id){const f=findEntry(state.db,{id});if(!f)return null;f.item.data=f.item.data||{};return f.item.data;}
 function tEnsure(d){if(!Array.isArray(d.triage))d.triage=[];}
@@ -2172,10 +2214,22 @@ function triageFactOptions(excludeSet){
   Object.keys(groups).forEach(g=>{h+='<optgroup label="'+esc(g)+'">';groups[g].forEach(f=>{if(!excludeSet.has(f.fact))h+='<option value="'+escAttr(f.fact)+'">'+esc(f.label)+'</option>';});h+='</optgroup>';});
   return h;
 }
+function triageStandingToggle(id,on){
+  const d=triageFindData(id);if(!d)return;
+  if(on){d.standing=true;delete d.triage;delete d.triageExclude;}
+  else{delete d.standing;}
+  afterTriageEdit();
+}
 function triageBuilder(it){
   const id=it.id,d=it.data||{},idJ=jsq(id);
   const trig=Array.isArray(d.triage)?d.triage:[];
   const excl=Array.isArray(d.triageExclude)?d.triageExclude:[];
+  // Standing = universal in SCOPE ("on every reinforced-concrete job"), not merely important.
+  // A standing entry carries no trigger and is never gated on anything the reader switches on.
+  const stand='<div class="tstand"><label class="qcheck"><input type="checkbox"'+(d.standing===true?' checked':'')+
+    ' onchange="triageStandingToggle(\''+idJ+'\',this.checked)"> <strong>Standing entry</strong> \u2014 applies to every RC job, surfaces every run</label>'+
+    '<div class="qhint">Only if the honest scope sentence is \u201con every reinforced-concrete job\u201d. Not for entries that merely feel important.</div></div>';
+  if(d.standing===true)return stand;
   let slots;
   if(trig.length){
     slots=trig.map((slot,si)=>{
@@ -2188,14 +2242,15 @@ function triageBuilder(it){
   }else{slots='<div class="tdark">No trigger \u2014 add a group below to make this entry surface.</div>';}
   const exChips=excl.map(f=>'<span class="tchip excl">'+esc(triageLabel(f))+'<button title="remove" onclick="triageExclRemove(\''+idJ+'\',\''+jsq(f)+'\')">\u00d7</button></span>').join('');
   const exAdd='<select class="tsel" onchange="triageExclAdd(\''+idJ+'\',this)">'+triageFactOptions(new Set(excl))+'</select>';
-  return '<div class="tbuild">'+slots+'<button class="tlink add" onclick="triageAddSlot(\''+idJ+'\')">+ AND group</button></div>'+
-         '<div class="texcl"><span class="texcl-l">Hide if:</span>'+exChips+exAdd+'<span class="texcl-h">suppresses this entry even when the trigger matches</span></div>';
+  return stand+'<div class="tbuild">'+slots+'<button class="tlink add" onclick="triageAddSlot(\''+idJ+'\')">+ AND group</button></div>'+
+         '<div class="texcl"><span class="texcl-l">Hide if:</span>'+exChips+exAdd+'<span class="texcl-h">suppresses this entry even when the trigger matches \u2014 name the entry that picks the reader up instead</span></div>';
 }
 function triageRow(dim,it,hasProblem){
   const open=state._trOpen&&state._trOpen[it.id];
   const d=it.data||{};const trig=Array.isArray(d.triage)?d.triage:[];const excl=d.triageExclude||[];
   let summary;
-  if(trig.length){summary='<span class="trow-when">Surfaces when: '+esc(triagePhrase(trig))+'</span>'+(excl.length?'<span class="trow-excl"> \u00b7 hidden if '+esc(excl.map(triageLabel).join(' or '))+'</span>':'');}
+  if(d.standing===true){summary='<span class="trow-when">Standing \u2014 surfaces on every job</span>';}
+  else if(trig.length){summary='<span class="trow-when">Surfaces when: '+esc(triagePhrase(trig))+'</span>'+(excl.length?'<span class="trow-excl"> \u00b7 hidden if '+esc(excl.map(triageLabel).join(' or '))+'</span>':'');}
   else{summary='<span class="trow-none">\u26a0 no trigger \u2014 never surfaces</span>';}
   let h='<div class="tentry'+(open?' open':'')+(hasProblem?' prob':'')+'" id="trig-'+escAttr(it.id)+'">';
   h+='<div class="trow" onclick="triageToggleEntry(\''+jsq(it.id)+'\')">'+
@@ -2213,6 +2268,7 @@ function triageFilter(){
   const dimF=state._trDim||'all', factF=state._trFact||'all', probOnly=!!state._trProblems;
   const v=triageValidate();
   const darkIds=new Set(v.dark.map(o=>o.it.id));
+  const orphIds=new Set((v.orphanExcl||[]).map(x=>x.o.it.id));
   const unkIds=new Set(v.unknown.map(u=>u.o.it.id));
   const groups=[];
   state.db.dimensions.forEach(dim=>{
@@ -2220,22 +2276,23 @@ function triageFilter(){
     const items=dim.items.filter(it=>{
       const trig=Array.isArray((it.data||{}).triage)?it.data.triage:[];
       if(factF!=='all'&&!trig.some(s=>Array.isArray(s)&&s.indexOf(factF)>=0))return false;
-      if(probOnly&&!(darkIds.has(it.id)||unkIds.has(it.id)))return false;
+      if(probOnly&&!(darkIds.has(it.id)||unkIds.has(it.id)||orphIds.has(it.id)))return false;
       if(q&&((it.name+' '+it.id+' '+triagePhrase(trig)).toLowerCase().indexOf(q)<0))return false;
       return true;
     });
     if(items.length)groups.push({dim,items});
   });
-  return {groups,v,darkIds,unkIds};
+  return {groups,v,darkIds,unkIds,orphIds};
 }
 function renderTriageList(){
   const host=document.getElementById('triageList');if(!host)return;
-  const {groups,v,darkIds,unkIds}=triageFilter();
+  const {groups,v,darkIds,unkIds,orphIds}=triageFilter();
   const total=triageAllEntries().length;
   let stat;
-  if(v.dark.length||v.unknown.length){
+  if(v.dark.length||v.unknown.length||(v.orphanExcl||[]).length){
     const bits=[];
     if(v.dark.length)bits.push(v.dark.length+' with no trigger');
+    if((v.orphanExcl||[]).length)bits.push((v.orphanExcl||[]).length+' exclude(s) with no receiving entry');
     if(v.unknown.length)bits.push(v.unknown.length+' unknown-fact');
     stat='<a class="tstat-warn" onclick="triageShowProblems()">\u26a0 '+bits.join(' \u00b7 ')+' \u2014 show</a>';
   }else{stat='<span class="tstat-ok">\u2713 all '+total+' triggers valid</span>';}
@@ -2246,7 +2303,7 @@ function renderTriageList(){
     const collapsed=state._trDimCollapsed&&state._trDimCollapsed[dim.id];
     html+='<div class="tdimhead" onclick="triageToggleDim(\''+jsq(dim.id)+'\')"><span class="tdim-chev">'+(collapsed?'\u25b8':'\u25be')+'</span><span class="tdim-dot" style="background:'+triageDimColor(dim.id)+'"></span>'+esc(dim.name)+' <span class="tdim-n">'+items.length+'</span></div>';
     if(collapsed)return;
-    items.forEach(it=>{html+=triageRow(dim,it,darkIds.has(it.id)||unkIds.has(it.id));});
+    items.forEach(it=>{html+=triageRow(dim,it,darkIds.has(it.id)||unkIds.has(it.id)||orphIds.has(it.id));});
   });
   host.innerHTML=html;
 }
@@ -2262,20 +2319,22 @@ function triagePri(){
   const T=triageCfg(),m={};
   (T.gates||[]).forEach(g=>m[g.fact]=g.kind==='condition'?3:1);
   (T.questions||[]).forEach(q=>m[q.fact]=3);
-  (T.universal||[]).forEach(u=>m[u.fact]=2);
   return m;
 }
 function simSatisfied(){
   const T=triageCfg();const sat=new Set();const gates=state._simGates||{};
   Object.keys(gates).forEach(f=>{if(gates[f])sat.add(f);});
   (T.questions||[]).forEach(q=>{const vis=(q.when||[]).some(g=>gates[g]);const ans=(state._simQ||{})[q.fact];if(vis&&(ans==='yes'||ans==='notsure'))sat.add(q.fact);});
-  const uni=state._simUni||{};Object.keys(uni).forEach(f=>{if(uni[f])sat.add(f);});
   return sat;
+}
+function simStanding(){
+  return triageAllEntries().filter(o=>o.it.available!==false&&(o.it.data||{}).standing===true);
 }
 function simSurface(sat){
   const pri=triagePri();const out=[];
   triageAllEntries().forEach(o=>{
     if(o.it.available===false)return;
+    if((o.it.data||{}).standing===true)return;   // shown in its own group, not here
     const t=o.it.data&&o.it.data.triage;
     if(!Array.isArray(t)||!t.length)return;
     if(!t.every(s=>Array.isArray(s)&&s.some(f=>sat.has(f))))return;
@@ -2289,8 +2348,7 @@ function simSurface(sat){
 function triageSimToggle(){state._simOpen=!state._simOpen;renderSim();const b=document.getElementById('simToggleBtn');if(b)b.innerHTML=(state._simOpen?'\u25be':'\u25b8')+' Dry run';}
 function simGateToggle(f){state._simGates=state._simGates||{};state._simGates[f]=!state._simGates[f];renderSim();}
 function simQSet(f,val){state._simQ=state._simQ||{};state._simQ[f]=(state._simQ[f]===val?'':val);renderSim();}
-function simUniToggle(f){state._simUni=state._simUni||{};state._simUni[f]=!state._simUni[f];renderSim();}
-function simReset(){state._simGates={};state._simQ={};state._simUni={};renderSim();}
+function simReset(){state._simGates={};state._simQ={};renderSim();}
 function simPromptFocus(el){el.dataset.orig=el.textContent||'';}
 function simPromptKey(ev,el){if(ev.key==='Enter'){ev.preventDefault();el.blur();}else if(ev.key==='Escape'){ev.preventDefault();el.textContent=el.dataset.orig||'';el.blur();}}
 function simPromptBlur(el){
@@ -2316,37 +2374,34 @@ function renderSim(){
     const btn=(val,lbl)=>'<button class="simq-b'+(ans===val?' on':'')+'" onclick="simQSet(\''+jsq(q.fact)+'\',\''+val+'\')">'+lbl+'</button>';
     return '<div class="simq"><div class="simq-p" contenteditable="true" spellcheck="false" data-fact="'+escAttr(q.fact)+'" onfocus="simPromptFocus(this)" onblur="simPromptBlur(this)" onkeydown="simPromptKey(event,this)" title="Click to edit the wording \u2014 saves straight to the questionnaire">'+esc(tStripTags(q.prompt||q.fact))+'</div><span class="simq-saved">saved \u2713</span><div class="simq-bs">'+btn('yes','Yes')+btn('notsure','Not sure')+btn('no','No')+'</div></div>';
   }).join(''):'<div class="simnote">Tick an element above to reveal its questions.</div>';
-  const uni=state._simUni||{};
-  const uniChips=(T.universal||[]).map(u=>'<label class="simchk'+(uni[u.fact]?' on':'')+'"><input type="checkbox"'+(uni[u.fact]?' checked':'')+' onchange="simUniToggle(\''+jsq(u.fact)+'\')"> '+esc(u.label)+'</label>').join('');
   const res=simSurface(simSatisfied());
+  const stand=simStanding();
   const byDim={};res.forEach(r=>{(byDim[r.o.dim.id]=byDim[r.o.dim.id]||{name:r.o.dim.name,items:[]}).items.push(r);});
-  const resHtml=res.length?Object.keys(byDim).map(did=>'<div class="simres-d"><span class="tdim-dot" style="background:'+triageDimColor(did)+'"></span>'+esc(byDim[did].name)+'</div>'+byDim[did].items.map(r=>'<div class="simres-e">'+esc(r.o.it.name)+(r.reason?'<span class="simres-r">'+esc(r.reason)+'</span>':'')+'</div>').join('')).join(''):'<div class="simnote">No entries surface yet \u2014 tick elements and answer questions.</div>';
+  const resHtml=res.length?Object.keys(byDim).map(did=>'<div class="simres-d"><span class="tdim-dot" style="background:'+triageDimColor(did)+'"></span>'+esc(byDim[did].name)+'</div>'+byDim[did].items.map(r=>'<div class="simres-e">'+esc(r.o.it.name)+(r.reason?'<span class="simres-r">'+esc(r.reason)+'</span>':'')+'</div>').join('')).join(''):'<div class="simnote">Nothing job-specific yet \u2014 tick elements and answer questions.</div>';
+  const standHtml=stand.length?'<div class="simres-d">Every job \u2014 standing entries</div>'+stand.map(o=>'<div class="simres-e">'+esc(o.it.name)+'<span class="simres-r">Applies to every job</span></div>').join(''):'';
   host.innerHTML='<div class="simbox"><div class="simcols">'+
     '<div class="simcol">'+
       '<div class="simh">Step 1 \u2014 elements on the job</div><div class="simchk-wrap">'+gateChips+'</div>'+
       '<div class="simh">Step 2 \u2014 questions <span class="simh-x">(appear when their element is ticked)</span></div>'+qHtml+
-      '<div class="simh">Step 3 \u2014 universal opt-ins</div><div class="simchk-wrap">'+uniChips+'</div>'+
       '<div class="simreset"><button class="tlink" onclick="simReset()">reset</button></div>'+
     '</div>'+
-    '<div class="simcol simrescol"><div class="simh">Surfaces '+res.length+' entr'+(res.length===1?'y':'ies')+'</div>'+resHtml+'</div>'+
+    '<div class="simcol simrescol"><div class="simh">Surfaces '+(res.length+stand.length)+' entr'+((res.length+stand.length)===1?'y':'ies')+' <span class="simh-x">('+stand.length+' standing + '+res.length+' this job)</span></div>'+standHtml+resHtml+'</div>'+
   '</div></div>';
 }
 /* ----- questionnaire (triageConfig) editor ----- */
-function qFind(fact){const T=triageCfg();let r=null;['gates','questions','universal'].forEach(k=>{(T[k]||[]).forEach(x=>{if(x.fact===fact)r=x;});});return r;}
+function qFind(fact){const T=triageCfg();let r=null;['gates','questions'].forEach(k=>{(T[k]||[]).forEach(x=>{if(x.fact===fact)r=x;});});return r;}
 function qDecode(s){return String(s||'').replace(/&mdash;/g,'\u2014').replace(/&rsquo;/g,'\u2019').replace(/&lsquo;/g,'\u2018').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');}
 function uniqueFact(base){let f=base,i=2;while(triageFactMap()[f]){f=base+'-'+i;i++;}return f;}
 function afterQEdit(){updateDirty();renderQList();}
 function qToggle(f){state._qOpen=state._qOpen||{};state._qOpen[f]=!state._qOpen[f];renderQList();}
 function qSet(fact,key,val){const x=qFind(fact);if(!x)return;x[key]=val;afterQEdit();}
-function qSetDefault(fact,checked){const x=qFind(fact);if(!x)return;x.default=!!checked;afterQEdit();}
 function qSetKind(fact,val){const x=qFind(fact);if(!x)return;if(val==='condition')x.kind='condition';else delete x.kind;afterQEdit();}
 function qWhenAdd(fact,sel){const g=sel.value;if(!g)return;const x=qFind(fact);if(!x)return;x.when=x.when||[];if(x.when.indexOf(g)<0)x.when.push(g);afterQEdit();}
 function qWhenRemove(fact,g){const x=qFind(fact);if(!x||!x.when)return;x.when=x.when.filter(w=>w!==g);afterQEdit();}
 function qGateOptions(exclude){const T=triageCfg();let h='<option value="">+ add element\u2026</option>';(T.gates||[]).forEach(g=>{if(!exclude.has(g.fact))h+='<option value="'+escAttr(g.fact)+'">'+esc(g.label||g.fact)+'</option>';});return h;}
-function qMove(fact,dir){const T=triageCfg();['gates','questions','universal'].forEach(k=>{const a=T[k];if(!a)return;const i=a.findIndex(x=>x.fact===fact);if(i<0)return;const j=i+dir;if(j<0||j>=a.length)return;const t=a[i];a[i]=a[j];a[j]=t;});afterQEdit();}
+function qMove(fact,dir){const T=triageCfg();['gates','questions'].forEach(k=>{const a=T[k];if(!a)return;const i=a.findIndex(x=>x.fact===fact);if(i<0)return;const j=i+dir;if(j<0||j>=a.length)return;const t=a[i];a[i]=a[j];a[j]=t;});afterQEdit();}
 function triageAddGate(){const T=triageCfg();T.gates=T.gates||[];const f=uniqueFact('new-element');T.gates.push({fact:f,label:'New element',hint:'',reason:'New element'});state._qOpen=state._qOpen||{};state._qOpen[f]=true;afterQEdit();}
 function triageAddQuestion(){const T=triageCfg();T.questions=T.questions||[];const f=uniqueFact('new-question');T.questions.push({fact:f,when:[],source:'drawings',prompt:'New question?',reason:'New question'});state._qOpen=state._qOpen||{};state._qOpen[f]=true;afterQEdit();}
-function triageAddUniversal(){const T=triageCfg();T.universal=T.universal||[];const f=uniqueFact('universal-new');T.universal.push({fact:f,label:'New review',hint:'',default:false,reason:'New review'});state._qOpen=state._qOpen||{};state._qOpen[f]=true;afterQEdit();}
 function triageFactRefs(fact){
   let trig=0,when=0;
   triageAllEntries().forEach(o=>{const d=o.it.data||{};
@@ -2390,7 +2445,7 @@ function triageDeleteFact(fact){
     });
     (triageCfg().questions||[]).forEach(q=>{if(Array.isArray(q.when))q.when=q.when.filter(g=>g!==fact);});
   }
-  const T=triageCfg();['gates','questions','universal'].forEach(k=>{if(T[k])T[k]=T[k].filter(x=>x.fact!==fact);});
+  const T=triageCfg();['gates','questions'].forEach(k=>{if(T[k])T[k]=T[k].filter(x=>x.fact!==fact);});
   if(state._qOpen)delete state._qOpen[fact];
   afterQEdit();
 }
@@ -2407,12 +2462,6 @@ function qEditor(kind,x){
     return qField('Question (prompt the engineer sees)','<textarea class="qin qta" onchange="qSet(\''+fJ+'\',\'prompt\',this.value)">'+esc(qDecode(x.prompt||''))+'</textarea>')+
       '<div class="qrow2">'+qField('Short label (shown in \u201cSurfaces when\u201d)',inp('reason',x.reason))+qField('Answer comes from',srcSel)+'</div>'+
       qField('Shows only when these elements are ticked','<div class="qwhen">'+whenChips+whenAdd+'</div>')+
-      idField+moveDel;
-  }
-  if(kind==='universal'){
-    return '<div class="qrow2">'+qField('Toggle label',inp('label',x.label))+qField('Short label',inp('reason',x.reason))+'</div>'+
-      qField('Hint',inp('hint',x.hint))+
-      qField('Default','<label class="qcheck"><input type="checkbox"'+(x.default?' checked':'')+' onchange="qSetDefault(\''+fJ+'\',this.checked)"> ticked by default</label>')+
       idField+moveDel;
   }
   const kindSel='<select class="qin" onchange="qSetKind(\''+fJ+'\',this.value)"><option value="presence"'+(x.kind==='condition'?'':' selected')+'>presence (an element on the job)</option><option value="condition"'+(x.kind==='condition'?' selected':'')+'>condition (an attribute, e.g. exposed concrete)</option></select>';
@@ -2442,8 +2491,7 @@ function renderQList(){
   const host=document.getElementById('qList');if(!host)return;
   const T=triageCfg();
   host.innerHTML=qSection('Step 1 \u2014 element gates',T.gates||[],'gate')+
-    qSection('Step 2 \u2014 questions',T.questions||[],'question')+
-    qSection('Step 3 \u2014 universal opt-ins',T.universal||[],'universal');
+    qSection('Step 2 \u2014 questions',T.questions||[],'question');
 }
 
 function triageSetView(v){state._trView=v;showTriage();}
@@ -2457,8 +2505,8 @@ function showTriage(){
   const seg='<div class="tseg"><button class="tseg-b'+(view==='triggers'?' on':'')+'" onclick="triageSetView(\'triggers\')">Triggers \u2014 when entries appear</button><button class="tseg-b'+(view==='questionnaire'?' on':'')+'" onclick="triageSetView(\'questionnaire\')">Questionnaire \u2014 the questions themselves</button></div>';
   let body;
   if(view==='questionnaire'){
-    body='<div class="thead-sub">Edit the gates, questions and universal opt-ins. Renaming or deleting a fact safely repoints or warns about the triggers that use it. Changes export with <code>data.json</code> and drive the live questionnaire.</div>'+
-      '<div class="tctrls"><button class="tlink" onclick="triageAddGate()">+ element gate</button> <button class="tlink" onclick="triageAddQuestion()">+ question</button> <button class="tlink" onclick="triageAddUniversal()">+ universal opt-in</button></div>'+
+    body='<div class="thead-sub">Edit the gates and questions. Renaming or deleting a fact safely repoints or warns about the triggers that use it. There is no opt-in step: advice is either universal in scope (a <strong>standing</strong> entry, always shown) or conditional (a gate or a question). Changes export with <code>data.json</code> and drive the live questionnaire.</div>'+
+      '<div class="tctrls"><button class="tlink" onclick="triageAddGate()">+ element gate</button> <button class="tlink" onclick="triageAddQuestion()">+ question</button></div>'+
       '<div id="qList"></div>';
   }else{
     const dimOpts='<option value="all">All dimensions</option>'+state.db.dimensions.map(d=>'<option value="'+escAttr(d.id)+'"'+(state._trDim===d.id?' selected':'')+'>'+esc(d.name)+'</option>').join('');
@@ -2528,6 +2576,7 @@ function triageCss(){return '<style>'+
 '.tlink:hover{color:var(--text)}'+
 '.tlink.add{color:var(--accent)}'+
 '.tdark{color:var(--orange);font-size:12px}'+
+'.tstand{margin:0 0 10px;padding:8px 10px;border:1px solid var(--line);border-radius:6px}'+
 '.texcl{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:9px}'+
 '.texcl-l{font-size:11px;color:var(--text-muted)}'+
 '.texcl-h{font-size:10.5px;color:var(--text-muted);font-style:italic}'+
@@ -3032,8 +3081,8 @@ function pvImgPh(path){
 function pvLocLabel(loc){if(!loc)return'';return loc.state?`${esc(loc.state)}, ${esc(loc.country)}`:esc(loc.country||'');}
 function pvEvidenceBox(d){
   const lvl=d&&d.evidenceSupport&&d.evidenceSupport.level?String(d.evidenceSupport.level).toLowerCase():'';
-  if(!['high','medium','low'].includes(lvl))return'';
-  const lbl={high:'High',medium:'Medium',low:'Low'}[lvl],summary=d.evidenceSupport.summary||'';
+  if(!ES_LEVELS.includes(lvl))return'';
+  const lbl=ES_LABELS[lvl],summary=d.evidenceSupport.summary||'';
   return `<div class="evidence-support-box"><div class="evidence-support-head"><div class="label" style="margin-bottom:0">Evidence Support</div><span class="evidence-support-pill ${lvl}">Evidence support: ${lbl}</span></div>${summary?`<div class="evidence-support-text">${summary}</div>`:''}</div>`;
 }
 function pvComments(d){
@@ -3830,7 +3879,7 @@ function cleanEntryData(d){
   if(d.confirmations){d.confirmations=d.confirmations.filter(c=>c&&c.country).map(c=>{const o={country:c.country};if(c.state)o.state=c.state;if(c.date)o.date=c.date;if(c.note)o.note=c.note;return o;});if(!d.confirmations.length)delete d.confirmations;}
   if(d.evidenceSupport){
     const lv=(d.evidenceSupport.level||'').toLowerCase();
-    if(!['high','medium','low'].includes(lv)){delete d.evidenceSupport;}
+    if(!ES_LEVELS.includes(lv)){delete d.evidenceSupport;}
     else{d.evidenceSupport.level=lv;d.evidenceSupport.summary=d.evidenceSupport.summary||'';}
   }
 }
@@ -4018,9 +4067,10 @@ function aiCss(){return '<style>'+
   '.ai-summary{font-size:11.5px;color:var(--text-muted);margin-top:4px;line-height:1.45}'+
   '.ai-rat{font-size:11px;color:var(--text-muted);font-style:italic;margin-top:4px;line-height:1.45}'+
   '.ai-pill{font-size:9.5px;text-transform:uppercase;letter-spacing:.5px;border-radius:4px;padding:1px 6px;font-weight:700}'+
-  '.ai-pill.high{color:var(--green);border:1px solid var(--green)}'+
-  '.ai-pill.medium{color:var(--yellow);border:1px solid var(--yellow)}'+
-  '.ai-pill.low{color:var(--orange);border:1px solid var(--orange)}'+
+  '.ai-pill.established{color:var(--green);border:1px solid var(--green)}'+
+  '.ai-pill.directional{color:var(--blue);border:1px solid var(--blue)}'+
+  '.ai-pill.indicative{color:var(--yellow);border:1px solid var(--yellow)}'+
+  '.ai-pill.reasoned{color:var(--orange);border:1px solid var(--orange)}'+
   '.ai-pill.none{color:var(--text-muted);border:1px solid var(--border)}'+
   '.ai-err{font-size:11px;color:var(--red);font-weight:600;margin-top:3px}'+
   '.ai-dep{font-size:11px;color:var(--yellow);font-weight:600;margin-top:3px}'+
@@ -4168,8 +4218,7 @@ function aiVocab(){
   const T=triageCfg()||{};
   return {
     gates:(T.gates||[]).map(g=>({fact:g.fact,label:g.label||g.fact,hint:g.hint||'',kind:g.kind==='condition'?'condition':'presence'})),
-    questions:(T.questions||[]).map(q=>({fact:q.fact,prompt:tStripTags(q.prompt||''),when:q.when||[],source:q.source||''})),
-    universal:(T.universal||[]).map(u=>({fact:u.fact,label:u.label||u.fact,default:!!u.default}))
+    questions:(T.questions||[]).map(q=>({fact:q.fact,prompt:tStripTags(q.prompt||''),when:q.when||[],source:q.source||''}))
   };
 }
 function aiEntryPayload(it,dimName){
@@ -4183,6 +4232,17 @@ function aiEntryPayload(it,dimName){
     constructionPhase:d.constructionPhase||[],
     thresholds:(d.thresholds||[]).map(t=>({range:t.range||'',rating:t.rating||'',guidance:tStripTags(t.guidance||'')})),
     evidenceBasis:tStripTags(d.evidence||''),
+    /* documented real project cases — item 7 in the evidence hierarchy, and usually
+       the corroboration leg of a `high`. The rater cannot see the images, so send
+       the tag and the caption, which is what carries the finding. */
+    examples:(d.examples||[]).map(e=>({tag:e.tag||'',caption:tStripTags(e.caption||'')})),
+    /* the entry's own statement of where it applies — this IS the triage scope sentence */
+    applicability:d.applicability?{
+      appliesWhere:tStripTags(d.applicability.appliesWhere||''),
+      checks:(d.applicability.checks||[]).map(c=>({title:tStripTags(c.title||''),description:tStripTags(c.description||'')}))
+    }:null,
+    /* region the evidence came from — bears on whether a cited standard is on point */
+    location:d.location||null,
     currentEvidenceSupport:d.evidenceSupport?{level:d.evidenceSupport.level||'',summary:tStripTags(d.evidenceSupport.summary||'')}:null,
     currentTriage:d.triage||[],
     currentTriageExclude:d.triageExclude||[]
@@ -4193,12 +4253,13 @@ function aiBuildRequest(){
   return {
     _format:AI_REQUEST_FORMAT,
     generated:isoToday(),
-    instructions:'For EACH entry in `entries`, act as a framework maintainer applying the two rubrics provided in full in `rubrics`. Produce BOTH (1) an evidence-support rating following `rubrics.evidence`, and (2) a triage trigger following `rubrics.triage`. Return ONLY valid JSON matching `outputSchema` exactly \u2014 an object with `newFacts` and `suggestions` \u2014 and no prose outside the JSON. Rules: (a) each suggestion\u2019s `id` must exactly equal the entry\u2019s id. (b) `evidenceSupport.level` must be exactly "high", "medium" or "low". (c) `triage` is an array of AND-slots; each slot is an array of fact ids OR\u2019d together \u2014 e.g. [["wall","column"],["exposed-concrete"]] means (wall OR column) AND exposed-concrete. (d) Prefer fact ids already in `triageVocabulary` \u2014 reuse before inventing. If the correct trigger genuinely needs a fact that does not exist yet, you MAY introduce it: add its full definition to the top-level `newFacts` array and reference its `fact` id in the relevant `triage`. A fact that serves several entries is far better than one-offs; only invent when no existing fact fits. (e) A `newFacts` entry needs: `fact` (lowercase-hyphen id, not already in the vocabulary), `type` ("gate" | "question" | "universal"), `reason` (2\u20133 word label shown in "Surfaces when"). Gates also take `label` and optional `hint` and `kind` ("presence" or "condition"). Questions also take `prompt`, `when` (array of gate fact ids that reveal the question), and `source` ("drawings" | "geotech" | "site" | "intent"). Universals take `label`, `hint`, `default` (boolean). (f) `triageExclude` is optional \u2014 include only to route between genuinely competing entries. (g) Keep `evidenceSupport.summary` to one or two plain sentences. (h) `rationale` is read by a human and is not applied \u2014 briefly justify the evidence call and the trigger call. If `newFacts` is empty, return it as [].',
+    instructions:'For EACH entry in `entries`, act as a framework maintainer applying the two rubrics provided in full in `rubrics`. Produce BOTH (1) an evidence-support rating following `rubrics.evidence`, and (2) a triage trigger following `rubrics.triage`. Return ONLY valid JSON matching `outputSchema` exactly \u2014 an object with `newFacts` and `suggestions` \u2014 and no prose outside the JSON. Rules: (a) each suggestion\u2019s `id` must exactly equal the entry\u2019s id. (b) `evidenceSupport.level` must be exactly "established", "directional", "indicative" or "reasoned" \u2014 the four levels defined in `rubrics.evidence`. There is no high/medium/low. (c) `triage` is an array of AND-slots; each slot is an array of fact ids OR\u2019d together \u2014 e.g. [["wall","column"],["exposed-concrete"]] means (wall OR column) AND exposed-concrete. (d) Prefer fact ids already in `triageVocabulary` \u2014 reuse before inventing. If the correct trigger genuinely needs a fact that does not exist yet, you MAY introduce it: add its full definition to the top-level `newFacts` array and reference its `fact` id in the relevant `triage`. A fact that serves several entries is far better than one-offs; only invent when no existing fact fits. (e) A `newFacts` entry needs: `fact` (lowercase-hyphen id, not already in the vocabulary), `type` ("gate" | "question" \u2014 those are the only two), `reason` (2\u20133 word label shown in "Surfaces when"). Gates also take `label` and optional `hint` and `kind` ("presence" or "condition"). Questions also take `prompt`, `when` (array of gate fact ids that reveal the question), and `source` ("drawings" | "geotech" | "site" | "intent"). If one fact id would carry two different meanings a reader could tick it for either of, propose it as two facts. (f) `triageExclude` is optional \u2014 include only to route between genuinely competing entries. (g) Keep `evidenceSupport.summary` to one or two plain sentences. (h) `rationale` is read by a human and is not applied \u2014 briefly justify the evidence call and the trigger call. If `newFacts` is empty, return it as []. (i) EVIDENCE \u2014 grade EVERY source on BOTH axes in `rubrics.evidence`: its GRADE (A/B/C) and its PROXIMITY (on point / adjacent / analogous). A claim is evidenced only by a Grade A or B source that is ON POINT. Adjacent or analogous caps the entry no matter how strong the source. Grade C never evidences a claim \u2014 it only corroborates one. (j) EVIDENCE \u2014 `examples` are the entry\u2019s documented real project cases, tagged `concern` / `recommended`. They are Grade C and are usually the CORROBORATION leg. Read them before you rate. Corroboration must be INDEPENDENT (a source that could have disagreed \u2014 NOT two publications from one body, not Parts I and II of one review, not two jurisdictions under one model law) and must be ON THE SAME CLAIM as the thing the reader acts on. (k) EVIDENCE \u2014 establish the entry\u2019s KIND first (measured / chosen / judged / counted) and apply the matching test. A number off a standard menu (bar spacing, bar diameter, pod depth, FRL) is CHOSEN, not measured \u2014 do not demand cut-off evidence it never needed. Never set a level \u2018for consistency with\u2019 a neighbouring entry. (l) TRIAGE \u2014 apply the RECONSTRUCTION TEST in `rubrics.triage`: name the jobs the entry actually bites on, then find the SMALLEST fact set that reproduces exactly those jobs. `applicability.appliesWhere` is the entry\u2019s own statement of scope \u2014 use it as the STARTING DRAFT of that sentence, not as the answer: it was written by the same person who wrote the trigger, so it agrees with the trigger by construction. Attack it first \u2014 read the BANDS to find where the guidance actually changes what the reader does, then name a job the entry would help on that the sentence excludes. (m) TRIAGE \u2014 there is NO opt-in fact type. Advice is either UNIVERSAL in scope (\u201con every reinforced-concrete job\u201d) \u2014 set `standing:true` and omit `triage` entirely \u2014 or CONDITIONAL, in which case it takes a gate or a question. `standing` means universal in SCOPE, never merely important; if you can name one real RC job where the entry does not apply, it is not standing. Never OR together every element gate to fake a universal trigger. (n) TRIAGE \u2014 a trigger built on a QUESTION inherits that question\u2019s `when` gates as a hidden AND-slot. Check it: on the jobs your scope sentence names, is the question actually asked? A slab entry whose question is `when`-gated on `slab-suspended` alone is silently dark on every ground-slab job, and no validator can see it. If the `when` is too narrow, say so in `rationale`. (o) TRIAGE \u2014 recall and precision are NOT symmetric. A false positive costs one line the reader skims; a false negative loses the entry and the reader never learns it happened. Precision is a property of the RESULT SET, not of one entry \u2014 do not tighten a trigger for its own precision. Audit every AND-slot, question `when` and `triageExclude` against recall specifically. (p) TRIAGE \u2014 `triageExclude` routes between genuinely competing entries only, and every exclude OWES a receiving entry: name, in `rationale`, the entry that picks the reader up on the excluded fact. An exclude with nothing behind it is a silent recall hole. (q) Never announce the level inside `evidenceSupport.summary` \u2014 name what backs the entry, then its main limitation.',
     outputSchema:{
-      newFacts:[{fact:'new-fact-id',type:'gate | question | universal',reason:'short label',label:'(gate/universal) full label',hint:'(optional) hint',kind:'(gate only) presence | condition',prompt:'(question only) the question text',when:['(question only) gate-fact-id'],source:'(question only) drawings | geotech | site | intent',default:'(universal only) true | false'}],
+      newFacts:[{fact:'new-fact-id',type:'gate | question',reason:'short label',label:'(gate only) full label',hint:'(optional) hint',kind:'(gate only) presence | condition',prompt:'(question only) the question text',when:['(question only) gate-fact-id'],source:'(question only) drawings | geotech | site | intent'}],
       suggestions:[{
         id:'<entry id, unchanged>',
-        evidenceSupport:{level:'high | medium | low',summary:'one or two sentences'},
+        evidenceSupport:{level:'established | directional | indicative | reasoned',summary:'one or two sentences'},
+        standing:'(optional) true \u2014 ONLY if the entry applies to every RC job; then omit `triage`',
         triage:[['fact-id','...'],['fact-id']],
         triageExclude:['fact-id (optional)'],
         rationale:{evidence:'why this level',triage:'why this trigger'}
@@ -4266,12 +4327,13 @@ function qrInstructions(){
   'HARD RULES:\n'+
   '(a) NEVER change an entry\u2019s `id`. It is how your reply is matched back to the right entry. Copy it through exactly.\n'+
   '(b) DO NOT RE-AUTHOR THE GUIDANCE. You may reframe; you may not change what the entry claims. Do not move a threshold from 200 mm to 250 mm, do not change what a band means, do not invent evidence, do not add bands that assert new facts. If fixing the framing would require changing the claim, leave it alone and say so in `_review`.\n'+
-  '(c) Apply the rubric: one concrete question (~one sentence, no stacked decisions); one short actionable parameter (noun phrase, units if numeric, never a description of the bands); the condition kind (measured / chosen / judged) framed honestly with no fake numbers; bands that are values/ranges/states OF that parameter; band headings 2\u20135 words or clean numeric ranges; only as many bands as there are real breakpoints (do not pad to four); depth pushed down into background and evidence; de-identified (strip any project, company, person or site name).\n'+
+  '(c) Apply the rubric: one concrete question (~one sentence, no stacked decisions, and it must not state its own answer); one short actionable parameter (noun phrase, units if numeric, ONE variable not two, never a description of the bands); the parameter must actually answer the question \u2014 where the two diverge, the parameter is usually the honest one and the question gets rewritten to match it; the condition kind framed honestly, and there are FOUR kinds \u2014 measured / chosen / judged / COUNTED (rubric \u00a76). A number off a standard menu (bar spacing 150/200/250/300, bar diameter N12/N16/N20, pod depth) is CHOSEN, not measured \u2014 do not invent ranges to close a "gap" no drawing lands in. A COUNTED parameter ("how many of the three preconditions fail") is legitimate, NOT a composite parameter \u2014 but Background must name every condition it asks the reader to count. Bands are values/ranges/states/counts OF that parameter; band headings 2\u20135 words or clean numeric ranges; as many bands as the reality has \u2014 run BOTH tests in rubric \u00a79, in order: the padding test (are the two worst bands the same VALUE of the parameter, split by a consequence the parameter never names?) and then the missing-band test (can the parameter take a value no band names?). NEVER merge a gradient: a different value of the parameter earns its own band even when the action is the same. Before merging anything, check the parameter is named right \u2014 a padded-looking pair is often a mis-named parameter. Coverage (no gaps/overlaps, closed open ends, endpoints in exactly one band \u2014 `\u2264 600` then `> 600 \u2013 1000`) applies to MEASURED bands only. Depth pushed down into background and evidence; de-identified (strip any project, company, person or site name).\n'+
   '(d) DIMENSION: `dimensionVocabulary` lists the five dimensions and what each covers. Put the entry under the one whose description actually covers the decision the question makes \u2014 judged by the question, not by the element. If you move it, set the entry\u2019s `dimId` to the new dimension id AND list it under that dimension\u2019s group, and say why in `_review.dimension`. If an entry arrives with an empty dimId, choose the right one.\n'+
   '(e) KEYWORDS: fill `data.keywords` without being asked. Add trade slang, abbreviations and alternative names a searcher might actually type \u2014 terms NOT already in the entry text. These need no justification.\n'+
   '(f) `_review` is a sibling of `data` (NOT inside it) and is read by a human, then discarded \u2014 it is never saved. Use it to explain the EDITORIAL changes: a reworded question, a tightened parameter, a renamed or dropped band, a dimension move, anything you deliberately left alone. Keep each note to a sentence. Silent, obvious fixes (keywords, typos, de-identification) need no note.\n'+
   '(g) Leave a field exactly as you found it if it is already right. A returned entry identical to the one sent is a valid, useful answer.\n'+
-  '(h) Preserve every field you were given, including ones the rubric says nothing about (evidence, evidenceSupport, triage, images, location, related entries). Do not drop them just because you did not touch them.';
+  '(h) Preserve every field you were given, including ones the rubric says nothing about (evidence, evidenceSupport, triage, images, location, related entries). Do not drop them just because you did not touch them.\n'+
+  '(i) RATINGS: every band\u2019s `rating` must be EXACTLY one of "Best practice", "Consider", "Concern", "Action required" \u2014 those four strings, spelled and cased exactly as written. A variant like "Action Required" does not key to its colour or to any rating filter. Bands run best \u2192 worst. A band set may legitimately skip a rating. Remember what the ratings grade: how much action the DESIGNER OWES, not how good the project is \u2014 a band that describes a project fact (`0 fail`, `1 floor`) is not a defect, so do not re-author an entry because a large building lands on "Action required".';
 }
 function qrOutputSchema(){
   return {
@@ -4462,7 +4524,7 @@ function aiValidateTrigger(trig,excl){
   (Array.isArray(excl)?excl:[]).forEach(f=>{if(typeof f==='string'&&!vocab.has(f))unknown.push(f);});
   return {okShape,unknown:[...new Set(unknown)]};
 }
-function aiEvPill(level){const l=String(level||'').toLowerCase();const lbl={high:'High',medium:'Medium',low:'Low'}[l]||'none';return '<span class="ai-pill '+(['high','medium','low'].includes(l)?l:'none')+'">'+lbl+'</span>';}
+function aiEvPill(level){const l=String(level||'').toLowerCase();const lbl=ES_LABELS[l]||'none';return '<span class="ai-pill '+(ES_LEVELS.includes(l)?l:'none')+'">'+lbl+'</span>';}
 function aiTriggerRefs(trig,excl){const r=[];(Array.isArray(trig)?trig:[]).forEach(s=>(Array.isArray(s)?s:[]).forEach(f=>{if(typeof f==='string')r.push(f);}));(Array.isArray(excl)?excl:[]).forEach(f=>{if(typeof f==='string')r.push(f);});return r;}
 function aiNormalizeNewFact(f){
   const o={fact:String(f.fact||'').trim(),reason:f.reason||f.label||'',label:f.label||'',hint:f.hint||'',prompt:f.prompt||'',source:f.source||'',when:Array.isArray(f.when)?f.when.filter(x=>typeof x==='string'):[],default:!!f.default,kind:''};
@@ -4470,7 +4532,7 @@ function aiNormalizeNewFact(f){
   if(t==='presence')t='gate';
   else if(t==='condition'){t='gate';o.kind='condition';}
   if(f.kind==='condition')o.kind='condition';
-  o.type=['gate','question','universal'].includes(t)?t:'';
+  o.type=['gate','question'].includes(t)?t:'';
   return o;
 }
 function aiValidateNewFact(o,existingSet){
@@ -4478,7 +4540,7 @@ function aiValidateNewFact(o,existingSet){
   if(!o.fact)errs.push('missing fact id');
   else if(!/^[a-z0-9-]+$/.test(o.fact))errs.push('id must be lowercase letters, numbers and hyphens');
   const conflict=!!o.fact&&existingSet.has(o.fact);
-  if(!o.type)errs.push('type must be gate, question or universal');
+  if(!o.type)errs.push('type must be gate or question \u2014 there is no opt-in type');
   if(o.type==='question'&&!String(o.prompt||'').trim())errs.push('a question needs a prompt');
   return {errors:errs,conflict,valid:errs.length===0&&!conflict};
 }
@@ -4506,7 +4568,7 @@ function aiRenameNewFact(oldId,newId){
 }
 function aiTrNewFactInSlot(i,si,type){
   const r=(state._aiRows||[])[i];if(!r)return;
-  const t=['question','gate','universal'].includes(type)?type:'question';
+  const t=['question','gate'].includes(type)?type:'question';
   const id=aiUniqueFactId('new-'+t);
   const f=aiNormalizeNewFact({fact:id,type:t,reason:'',prompt:''});
   f._userNew=true;
@@ -4530,7 +4592,7 @@ function aiNewFactDiscard(i){
 }
 function aiNewFactType(i,val){
   const f=(state._aiNewFacts||[])[i];if(!f)return;
-  f.type=['question','gate','universal'].includes(val)?val:'question';
+  f.type=['question','gate'].includes(val)?val:'question';
   if(f._userNew){const nid=aiUniqueFactId('new-'+f.type,f.fact);/* keep label-derived id if set */if(!aiSlug(f.reason||f.label))if(nid!==f.fact){aiRenameNewFact(f.fact,nid);f.fact=nid;}}
   const existing=new Set(triageFacts().map(x=>x.fact));const v=aiValidateNewFact(f,existing);
   f._valid=v.valid;f._conflict=v.conflict;f._errors=v.errors;f.accept=!(!f._valid||f._conflict);
@@ -4539,7 +4601,6 @@ function aiNewFactType(i,val){
 function aiAddNewFactToConfig(f){
   const T=triageCfg();if(!T)return;
   if(f.type==='gate'){T.gates=T.gates||[];const o={fact:f.fact,label:f.label||f.reason||f.fact,hint:f.hint||'',reason:f.reason||f.label||f.fact};if(f.kind==='condition')o.kind='condition';T.gates.push(o);}
-  else if(f.type==='universal'){T.universal=T.universal||[];T.universal.push({fact:f.fact,label:f.label||f.reason||f.fact,hint:f.hint||'',default:!!f.default,reason:f.reason||f.label||f.fact});}
   else{T.questions=T.questions||[];T.questions.push({fact:f.fact,when:Array.isArray(f.when)?f.when.slice():[],source:['drawings','geotech','site','intent'].includes(f.source)?f.source:'drawings',prompt:f.prompt||f.reason||'New question?',reason:f.reason||f.fact});}
 }
 function aiAcceptedNewIds(){return new Set((state._aiNewFacts||[]).filter(f=>f._valid&&!f._conflict&&f.accept).map(f=>f.fact));}
@@ -4605,7 +4666,7 @@ function openAiApply(sugs,newFacts){
       const es=sug.evidenceSupport;
       if(es&&typeof es==='object'){
         const lvl=String(es.level||'').toLowerCase();
-        row.evValid=['high','medium','low'].includes(lvl);
+        row.evValid=ES_LEVELS.includes(lvl);
         row.evNew={level:lvl,summary:es.summary||''};
         row.evChanged=!row.evOld||row.evOld.level!==lvl||(row.evOld.summary||'')!==(es.summary||'');
         row.evAccept=row.evValid&&row.evChanged;
@@ -4647,7 +4708,7 @@ function aiApplyToggleAll(on){
   });
   renderAiApplyBody();
 }
-function aiRowEvLevel(i,val){const r=(state._aiRows||[])[i];if(!r||!r.evNew)return;r.evNew.level=String(val||'').toLowerCase();r.evValid=['high','medium','low'].includes(r.evNew.level);r.evChanged=!r.evOld||r.evOld.level!==r.evNew.level||(r.evOld.summary||'')!==(r.evNew.summary||'');if(r.evValid)r.evAccept=true;renderAiApplyBody();}
+function aiRowEvLevel(i,val){const r=(state._aiRows||[])[i];if(!r||!r.evNew)return;r.evNew.level=String(val||'').toLowerCase();r.evValid=ES_LEVELS.includes(r.evNew.level);r.evChanged=!r.evOld||r.evOld.level!==r.evNew.level||(r.evOld.summary||'')!==(r.evNew.summary||'');if(r.evValid)r.evAccept=true;renderAiApplyBody();}
 function aiRowEvSummary(i,val){const r=(state._aiRows||[])[i];if(!r||!r.evNew)return;r.evNew.summary=String(val==null?'':val);r.evChanged=!r.evOld||r.evOld.level!==r.evNew.level||(r.evOld.summary||'')!==(r.evNew.summary||'');if(r.evValid)r.evAccept=true;renderAiApplyBody();}
 function aiNewFactEdit(i,key,val){
   const f=(state._aiNewFacts||[])[i];if(!f)return;
@@ -4667,7 +4728,7 @@ function aiNewFactCard(f,i,gateSet){
   const addable=f._valid&&!f._conflict;
   const cb=addable?'<input type="checkbox" '+(f.accept?'checked ':'')+'onchange="aiNewFactToggle('+i+')">':'<input type="checkbox" disabled>';
   const typeCtl=f._userNew
-    ? '<select class="ai-tsel" onchange="aiNewFactType('+i+',this.value)">'+['question','gate','universal'].map(t=>'<option value="'+t+'"'+(f.type===t?' selected':'')+'>'+({question:'Question',gate:'Element gate',universal:'Opt-in'}[t])+'</option>').join('')+'</select>'
+    ? '<select class="ai-tsel" onchange="aiNewFactType('+i+',this.value)">'+['question','gate'].map(t=>'<option value="'+t+'"'+(f.type===t?' selected':'')+'>'+({question:'Question',gate:'Element gate'}[t])+'</option>').join('')+'</select>'
     : '<span class="ai-nf-type">'+esc(f.type||'?')+(f.type==='gate'&&f.kind==='condition'?' \u00b7 condition':'')+'</span>';
   const shortLabel='<div style="flex:1;min-width:140px"><label class="ai-nf-l">Short label (in \u201cSurfaces when\u201d)</label><input class="ai-edit" value="'+escAttr(f.reason||'')+'" onchange="aiNewFactEdit('+i+',\'reason\',this.value)"></div>';
   let fields='';
@@ -4675,9 +4736,6 @@ function aiNewFactCard(f,i,gateSet){
     fields='<label class="ai-nf-l">Question wording (edit before adding)</label>'+
       '<textarea class="ai-edit" onchange="aiNewFactEdit('+i+',\'prompt\',this.value)">'+esc(tStripTags(f.prompt||''))+'</textarea>'+
       '<div class="ai-nf-row">'+shortLabel+'<div class="ai-nf-meta">shown when: '+((f.when||[]).length?esc((f.when||[]).map(triageLabel).join(', ')):'\u2014')+' \u00b7 from '+esc(f.source||'drawings')+'</div></div>';
-  }else if(f.type==='universal'){
-    fields='<label class="ai-nf-l">Toggle label</label><input class="ai-edit" value="'+escAttr(f.label||'')+'" onchange="aiNewFactEdit('+i+',\'label\',this.value)">'+
-      '<div class="ai-nf-row">'+shortLabel+'<div class="ai-nf-meta">default '+(f.default?'on':'off')+'</div></div>';
   }else{
     fields='<label class="ai-nf-l">Element label</label><input class="ai-edit" value="'+escAttr(f.label||'')+'" onchange="aiNewFactEdit('+i+',\'label\',this.value)">'+
       '<div class="ai-nf-row">'+shortLabel+'<div class="ai-nf-meta">'+(f.kind==='condition'?'condition':'presence')+' gate</div></div>';
@@ -4726,7 +4784,7 @@ function aiRowCard(r,i,ctx){
     const cb='<input type="checkbox" '+(r.evAccept?'checked ':'')+'onchange="aiRowToggle('+i+',\'ev\')">';
     const cur=r.evNew.level;
     const sel='<select class="ai-edit ai-lvl" onchange="aiRowEvLevel('+i+',this.value)">'+
-      ['high','medium','low'].map(l=>'<option value="'+l+'"'+(cur===l?' selected':'')+'>'+({high:'High',medium:'Medium',low:'Low'}[l])+'</option>').join('')+'</select>';
+      ES_LEVELS.map(l=>'<option value="'+l+'"'+(cur===l?' selected':'')+'>'+ES_LABELS[l]+'</option>').join('')+'</select>';
     const head='<div class="ai-ev-row"><span class="ai-old-lbl">was</span> '+oldPill+' <span class="ai-arr">\u2192</span> '+sel+(r.evChanged?'':' <span class="ai-nochange">(unchanged)</span>')+'</div>';
     const summ='<label class="ai-nf-l">Explanation shown on the entry \u2014 edit the wording before applying</label>'+
       '<textarea class="ai-edit" onchange="aiRowEvSummary('+i+',this.value)">'+esc(r.evNew.summary||'')+'</textarea>';
