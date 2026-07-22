@@ -46,7 +46,7 @@
   .metanote{font-size:11.5px;color:var(--text-muted);background:var(--green-bg);border:1px solid rgba(34,197,94,0.4);border-radius:8px;padding:9px 12px;margin-top:12px;line-height:1.5}
   /* image cards */
   .imgcard{display:flex;gap:16px;border:1px solid var(--border);border-radius:10px;background:var(--bg);padding:14px;margin-bottom:12px}
-  .thumb-wrap{flex-shrink:0;width:150px;height:130px;border:1px solid var(--border);border-radius:8px;background:#0f172a;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .thumb-wrap{flex-shrink:0;width:150px;height:130px;border:1px solid var(--border);border-radius:8px;background:var(--img-bg,#0f172a);display:flex;align-items:center;justify-content:center;overflow:hidden}
   .thumb-wrap img{max-width:100%;max-height:100%;object-fit:contain}
   .thumb-wrap .ph{font-size:11px;color:var(--text-muted)}
   .imgcard-main{flex:1;min-width:0}
@@ -65,18 +65,31 @@
   .empty{font-size:13px;color:var(--text-muted);text-align:center;padding:26px;line-height:1.6}
   .footer{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:50}.footer .info{font-size:12px;color:var(--text-muted);line-height:1.45}.footer-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
   @media(max-width:760px){.wrap{padding:18px 16px}.footer{padding:14px 16px;flex-direction:column;align-items:flex-start}.imgcard{flex-direction:column}.thumb-wrap{width:100%;height:160px}}
+  :root{ color-scheme:dark; }
+  :root[data-theme="light"]{
+    --bg:#f4f6fb;--surface:#ffffff;--surface-light:#eef2f8;--border:#d3dbe8;
+    --text:#1c2430;--text-muted:#5a6678;--accent:#2563eb;--accent-glow:rgba(37,99,235,0.10);
+    --red:#dc2626;--orange:#ea580c;--yellow:#b45309;--green:#16a34a;
+    --green-bg:rgba(22,163,74,0.10);--red-bg:rgba(220,38,38,0.10);--yellow-bg:rgba(180,83,9,0.10);--orange-bg:rgba(234,88,12,0.10);
+    --accent-bg:rgba(37,99,235,0.10);--link:#2563eb;--link-hover:#1d4ed8;--img-bg:#e2e8f0;
+    color-scheme:light;
+  }
+  .theme-toggle-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:var(--surface-light);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:16px;line-height:1;cursor:pointer;transition:all .2s;flex-shrink:0;font-family:inherit}
+  .theme-toggle-btn:hover{border-color:var(--accent);background:var(--accent-glow)}
 </style>
+<script>(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t='dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 </head>
 <body>
   <div class="header">
     <div class="logo">IF</div>
     <div><div class="header-title">Framework Image Formatter</div><div class="header-sub">Rename, resize and re-encode framework images — one or many at once, entirely in your browser</div></div>
+    <button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch between light and dark theme" aria-label="Toggle colour theme" style="margin-left:auto"><span id="theme-toggle-icon">🌙</span></button>
   </div>
 
   <div class="wrap">
     <div class="helpbox">
       <div class="help-title">What this does</div>
-      <div class="help-body">Load the current <span class="code">data.json</span>, drop in one or several images, give each a plain name like <strong>pier hole depth</strong>, and download clean, resized files like <span class="code">pier-hole-depth.png</span> for the GitHub <span class="code">images</span> folder. Each name is checked for uniqueness against images already in the framework <em>and</em> the others in this batch. Re-encoding through the browser also strips original photo metadata (GPS, camera, device) — a built-in de-identification step.</div>
+      <div class="help-body">Load the current <span class="code">data.json</span>, drop in one or several images, give each a plain name like <strong>pier hole depth</strong>, and download clean, resized files like <span class="code">pier-hole-depth.webp</span> for the GitHub <span class="code">images</span> folder. Each name is checked for uniqueness against images already in the framework <em>and</em> the others in this batch. Re-encoding through the browser also strips original photo metadata (GPS, camera, device) — a built-in de-identification step.</div>
     </div>
 
     <div class="panel" id="loadPanel">
@@ -124,21 +137,21 @@
             <option value="keep">Keep each original format</option>
             <option value="png">PNG (all)</option>
             <option value="jpeg">JPEG (all)</option>
-            <option value="webp">WebP (all)</option>
+            <option value="webp" selected>WebP (all)</option>
           </select>
           <div class="hint"><strong>For the web, WebP is usually best</strong> — smallest files at the same quality, supported by every current browser. Use <strong>PNG</strong> for screenshots, diagrams or anything needing transparency; <strong>JPEG</strong> for maximum compatibility with old software; <strong>Keep</strong> for a mixed batch. Any row can override this below.</div>
         </div>
         <div class="field" style="margin-bottom:0">
           <label>Resize — max long side</label>
           <select id="resizeMode" onchange="onSettingsChange()">
+            <option value="1200" selected>1200 px</option>
             <option value="1600">1600 px</option>
-            <option value="1200">1200 px</option>
-            <option value="2000">2000 px</option>
+            <option value="2400">2400 px</option>
             <option value="original">Keep original size</option>
             <option value="custom">Custom…</option>
           </select>
           <div class="hint">Shrinks only if longer; never enlarges.</div>
-          <div id="customWrap" class="hidden" style="margin-top:8px"><input id="customMax" type="number" min="100" max="10000" step="50" value="1600" oninput="onSettingsChange()"></div>
+          <div id="customWrap" class="hidden" style="margin-top:8px"><input id="customMax" type="number" min="100" max="10000" step="50" value="1200" oninput="onSettingsChange()"></div>
         </div>
         <div class="field" style="margin-bottom:0">
           <label>Quality <span class="hint" style="display:inline">(JPEG / WebP only)</span> · <span id="qVal" class="mono">0.88</span></label>
@@ -296,7 +309,7 @@ function maxLongSide(){
   const mode=byId('resizeMode').value;
   byId('customWrap').classList.toggle('hidden',mode!=='custom');
   if(mode==='original')return Infinity;
-  if(mode==='custom')return Math.max(100,parseInt(byId('customMax').value||'1600',10)||1600);
+  if(mode==='custom')return Math.max(100,parseInt(byId('customMax').value||'1200',10)||1200);
   return parseInt(mode,10);
 }
 function qualityVal(){return parseFloat(byId('quality').value||'0.88');}
@@ -515,6 +528,11 @@ function routeDrop(z,files){
 byId('dataFile').addEventListener('change',e=>{loadDataFile(e.target.files[0]);e.target.value='';});
 byId('imageFile').addEventListener('change',e=>{addImageFiles(e.target.files);e.target.value='';});
 refreshChrome();
+</script>
+<script>
+function applyTheme(t){var theme=t==='light'?'light':'dark';document.documentElement.setAttribute('data-theme',theme);try{localStorage.setItem('theme',theme);}catch(e){}var ic=document.getElementById('theme-toggle-icon');if(ic)ic.textContent=theme==='light'?'☀️':'🌙';}
+function toggleTheme(){var cur=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';applyTheme(cur==='light'?'dark':'light');}
+applyTheme(document.documentElement.getAttribute('data-theme'));
 </script>
 </body>
 </html>
