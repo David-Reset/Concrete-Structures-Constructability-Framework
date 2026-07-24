@@ -589,7 +589,7 @@
             "supportingImages": [
               {
                 "image": "images/curing-sensitivity-shallow-elements.webp",
-                "title": "<strong>Why shallow suspended elements are curing-sensitive</strong><br><br>Suspended slabs and beams have a large exposed top surface relative to their volume, so moisture loss during curing has a larger effect on their in-place strength than it does in walls and columns. The diagram summarises the entry’s design implication: where curing is not verified, poorly cured shallow elements should be treated as achieving about 77% of the properly cured strength, which generally aligns with designing one standard grade below the grade specified for supply."
+                "title": "<strong>Why shallow suspended elements are curing-sensitive</strong><br><br>Suspended slabs and beams have a large exposed top surface relative to their volume, so moisture loss during curing has a larger effect on their in-place strength than it does in walls and columns. The diagram summarises the entry’s design implication: where curing is not verified, poorly cured shallow elements should be treated as achieving about 77% of the properly cured strength, which generally aligns with designing one standard grade below the grade specified for supply.<br><em>(GPT 5.5 Generated)</em>"
               }
             ],
             "dateAdded": "2026-06-05",
@@ -1081,7 +1081,7 @@
             "supportingImages": [
               {
                 "image": "images/concrete-vs-blockwork-steel-support-choice.webp",
-                "title": "<strong>Use concrete where it earns its place</strong><br><br>Concrete walls, columns or cores are usually efficient where they repeat through many floors or perform a concrete-specific role such as lateral resistance, lift/stair core action, fire resistance, waterproofing, retaining or architectural off-form finish. Where supports are isolated, low-repetition or mainly gravity-only, blockwork walls and steel posts or beams may avoid a separate form–fix–pour–cure–strip cycle and build more simply."
+                "title": "<strong>Use concrete where it earns its place</strong><br><br>Concrete walls, columns or cores are usually efficient where they repeat through many floors or perform a concrete-specific role such as lateral resistance, lift/stair core action, fire resistance, waterproofing, retaining or architectural off-form finish. Where supports are isolated, low-repetition or mainly gravity-only, blockwork walls and steel posts or beams may avoid a separate form–fix–pour–cure–strip cycle and build more simply.<br><em>(GPT 5.5 Generated)</em>"
               }
             ],
             "dateAdded": "2026-06-09",
@@ -1343,7 +1343,7 @@
             "supportingImages": [
               {
                 "image": "images/bored-pile-constraint-check.webp",
-                "title": "<strong>Bored-pile constraint check</strong><br><br>Bored concrete piles are usually the buildability default where the site can support the normal drilling, spoil removal, cage placement and concrete placement process. Alternatives such as screw piles or CFA piles should only be weighed where real site constraints affect that process: restricted access or headroom, spoil removal burden, contaminated or regulated spoil, or unstable open holes requiring casing or special management.<br>"
+                "title": "<strong>Bored-pile constraint check</strong><br><br>Bored concrete piles are usually the buildability default where the site can support the normal drilling, spoil removal, cage placement and concrete placement process. Alternatives such as screw piles or CFA piles should only be weighed where real site constraints affect that process: restricted access or headroom, spoil removal burden, contaminated or regulated spoil, or unstable open holes requiring casing or special management.<br><br><em>(GPT 5.5 Generated)</em>"
               }
             ],
             "dateAdded": "2026-06-19",
@@ -1558,7 +1558,7 @@
             "supportingImages": [
               {
                 "image": "images/stiffened-raft-vs-waffle-pod-prep.webp",
-                "title": "<strong>Stiffened raft vs waffle pod slab preparation</strong><br><br>A stiffened raft slab is built by excavating trenches and edge beams, creating more spoil and trench work before the pour. A waffle pod slab uses polystyrene pods to form voids, with ribs created between the pods, reducing excavation where the site levels, geometry and ground conditions suit that system."
+                "title": "<strong>Stiffened raft vs waffle pod slab preparation</strong><br><br>A stiffened raft slab is built by excavating trenches and edge beams, creating more spoil and trench work before the pour. A waffle pod slab uses polystyrene pods to form voids, with ribs created between the pods, reducing excavation where the site levels, geometry and ground conditions suit that system.<br><em>(GPT 5.5 Generated)</em>"
               }
             ],
             "dateAdded": "2026-06-23",
@@ -1815,7 +1815,7 @@
             "supportingImages": [
               {
                 "image": "images/pile-supported-floor-system-beam-and-slab-vs-flat-plate.webp",
-                "title": "<strong>Pile-supported floor system — beam-and-slab vs flat plate</strong><br><br>Both options are pile-supported. The beam-and-slab option collects load through ground beams between pile heads, which introduces ground-beam trenches and beam cages. The flat-plate option keeps the working platform flatter by removing ground-beam trenches, but pile-head punching shear becomes a key design check and void formers may be needed below the slab."
+                "title": "<strong>Pile-supported floor system — beam-and-slab vs flat plate</strong><br><br>Both options are pile-supported. The beam-and-slab option collects load through ground beams between pile heads, which introduces ground-beam trenches and beam cages. The flat-plate option keeps the working platform flatter by removing ground-beam trenches, but pile-head punching shear becomes a key design check and void formers may be needed below the slab.<br><em>(GPT 5.5 Generated)</em>"
               }
             ],
             "dateAdded": "2026-06-24",
@@ -2023,7 +2023,7 @@
             "supportingImages": [
               {
                 "image": "images/reactive-ground-strategy-found-below-vs-stiffen-on-top.webp",
-                "title": "<strong>Reactive ground strategy — found below vs stiffen on top</strong><br><br>The first decision on reactive ground is whether the primary support is taken below the movement zone, or whether the slab is stiffened to work within the active zone. This decision sets up the next constructability review: pile-supported floor system selection, or ground-bearing slab selection between stiffened raft and waffle pod options."
+                "title": "<strong>Reactive ground strategy — found below vs stiffen on top</strong><br><br>The first decision on reactive ground is whether the primary support is taken below the movement zone, or whether the slab is stiffened to work within the active zone. This decision sets up the next constructability review: pile-supported floor system selection, or ground-bearing slab selection between stiffened raft and waffle pod options.<br><em>(GPT 5.5 Generated)</em>"
               }
             ],
             "dateAdded": "2026-06-23",
@@ -2179,7 +2179,7 @@
             "supportingImages": [
               {
                 "image": "images/bushfire-combustible-link-substructure.webp",
-                "title": "<strong>Bushfire weak-link substructure</strong><br><br>A non-combustible footing or pile system can still be undermined if the load path continues through exposed timber posts, bearers, joists or a suspended timber floor. In bushfire-prone areas, the substructure and floor should be considered as one coherent assembly, with the bushfire risk governed by the weakest exposed combustible structural element."
+                "title": "<strong>Bushfire weak-link substructure</strong><br><br>A non-combustible footing or pile system can still be undermined if the load path continues through exposed timber posts, bearers, joists or a suspended timber floor. In bushfire-prone areas, the substructure and floor should be considered as one coherent assembly, with the bushfire risk governed by the weakest exposed combustible structural element.<br><em>(GPT 5.5 Generated)</em>"
               }
             ],
             "dateAdded": "2026-06-27",
@@ -3591,23 +3591,23 @@
             "supportingImages": [
               {
                 "image": "images/non-moving-construction-joint-leak-path.webp",
-                "title": "<strong>Non-moving construction joint as the leak path</strong><br>Even with a sound wall body, water pressure outside can track along the cold joint between the slab/footing pour and the wall pour &mdash; so the joint, not the wall, is the thing to seal."
+                "title": "<strong>Non-moving construction joint as the leak path</strong><br>Even with a sound wall body, water pressure outside can track along the cold joint between the slab/footing pour and the wall pour &mdash; so the joint, not the wall, is the thing to seal.<br><em>(GPT 5.5 Generated)</em>"
               },
               {
                 "image": "images/coordinated-waterproofing-at-construction-joint.webp",
-                "title": "<strong>Coordinated waterproofing at the construction joint</strong><br>Treat the joint as several lines of defence working together: waterproof concrete in the body, a sealed joint, external drainage to relieve pressure, and any membrane as an optional extra &mdash; not reliance on one product."
+                "title": "<strong>Coordinated waterproofing at the construction joint</strong><br>Treat the joint as several lines of defence working together: waterproof concrete in the body, a sealed joint, external drainage to relieve pressure, and any membrane as an optional extra &mdash; not reliance on one product.<br><em>(GPT 5.5 Generated)</em>"
               },
               {
                 "image": "images/waterstop-choice-at-non-moving-construction-joint.webp",
-                "title": "<strong>Waterstop choice at the joint</strong><br>A delayed-swell / hydrophilic strip fixes to the first pour and sits within the joint, suiting a non-moving joint. A centre-bulb rubber/PVC waterbar can work but must match wall width and profile, is really intended for designed movement joints, and forces the concrete to be placed cleanly around a central obstruction."
+                "title": "<strong>Waterstop choice at the joint</strong><br>A delayed-swell / hydrophilic strip fixes to the first pour and sits within the joint, suiting a non-moving joint. A centre-bulb rubber/PVC waterbar can work but must match wall width and profile, is really intended for designed movement joints, and forces the concrete to be placed cleanly around a central obstruction.<br><em>(GPT 5.5 Generated)</em>"
               },
               {
                 "image": "images/external-membrane-as-backup-not-main-barrier.webp",
-                "title": "<strong>External membrane as backup, not the main barrier</strong><br>Keep the concrete body and sealed joint as the primary line; a membrane adds protection but, once backfilled, is hidden and hard to inspect or repair &mdash; so relying on it alone leaves performance hanging on a buried layer. Drop it only when the concrete fill can be verified."
+                "title": "<strong>External membrane as backup, not the main barrier</strong><br>Keep the concrete body and sealed joint as the primary line; a membrane adds protection but, once backfilled, is hidden and hard to inspect or repair &mdash; so relying on it alone leaves performance hanging on a buried layer. Drop it only when the concrete fill can be verified.<br><em>(GPT 5.5 Generated)</em>"
               },
               {
                 "image": "images/unsealed-construction-joint-durability-risk.webp",
-                "title": "<strong>Unsealed construction joint as a durability risk</strong><br>External water pressure can drive moisture along an unsealed wall-slab construction joint, even where the internal floor level remains apparently dry. If the joint stays wet, moisture can reach wall reinforcement near the joint and increase the risk of corrosion, cracking and spalling over time."
+                "title": "<strong>Unsealed construction joint as a durability risk</strong><br>External water pressure can drive moisture along an unsealed wall-slab construction joint, even where the internal floor level remains apparently dry. If the joint stays wet, moisture can reach wall reinforcement near the joint and increase the risk of corrosion, cracking and spalling over time.<br><em>(GPT 5.5 Generated)</em>"
               },
               {
                 "image": "images/membrane-protection-board-before-backfill.webp",
@@ -3931,7 +3931,7 @@
             "supportingImages": [
               {
                 "image": "images/wet-area-set-down-waterproofing-buildability.webp",
-                "title": "<strong>Wet area set-down for waterproofing buildability</strong><br><br>Wet areas usually need waterproofing, screed falls and tiling. A slab set-down leaves room for that build-up so the finished floor can fall to the waste without creating a step up. If no set-down is anticipated, the wet area build-up may create a step up or force slab cutting and rework."
+                "title": "<strong>Wet area set-down for waterproofing buildability</strong><br><br>Wet areas usually need waterproofing, screed falls and tiling. A slab set-down leaves room for that build-up so the finished floor can fall to the waste without creating a step up. If no set-down is anticipated, the wet area build-up may create a step up or force slab cutting and rework.<br><em>(GPT 5.5 Generated)</em>"
               }
             ],
             "dateAdded": "2026-06-25",
@@ -4288,7 +4288,7 @@
               },
               {
                 "image": "images/rock-socket-drilling-plant-guide.webp",
-                "title": "<strong>Rock socket depth vs likely drilling plant</strong><br><br>As socket depth and rock competence increase, the likely plant requirement escalates from a standard excavator-mounted auger for a shallow rock key, to rock tooling for deeper holes or sockets, and then to specialist drilling or piling plant for deep competent-rock sockets. Use this as a logistics check before showing a drilled socket that may not match the plant likely to be available on site."
+                "title": "<strong>Rock socket depth vs likely drilling plant</strong><br><br>As socket depth and rock competence increase, the likely plant requirement escalates from a standard excavator-mounted auger for a shallow rock key, to rock tooling for deeper holes or sockets, and then to specialist drilling or piling plant for deep competent-rock sockets. Use this as a logistics check before showing a drilled socket that may not match the plant likely to be available on site.<br><em>(GPT 5.5 Generated)</em>"
               }
             ],
             "dateAdded": "2026-06-15",
@@ -4604,7 +4604,7 @@
             "supportingImages": [
               {
                 "image": "images/piling-plant-headroom-operating-envelope.webp",
-                "title": "<strong>Piling plant headroom is part of the operating envelope</strong><br><br>A small excavator-mounted auger may fit through the site access but still be unable to work if there is not enough headroom to raise and extract the auger. Check the full operating envelope before assuming the pile detail can be installed with typical small-site plant."
+                "title": "<strong>Piling plant headroom is part of the operating envelope</strong><br><br>A small excavator-mounted auger may fit through the site access but still be unable to work if there is not enough headroom to raise and extract the auger. Check the full operating envelope before assuming the pile detail can be installed with typical small-site plant.<br><em>(GPT 5.5 Generated)</em>"
               }
             ],
             "dateAdded": "2026-06-19",
@@ -5310,19 +5310,19 @@
             "supportingImages": [
               {
                 "image": "images/founding-material-visible-vs-hidden.webp",
-                "title": "<strong>Founding material visible versus hidden</strong><br>Bored concrete piles bring excavated material to the surface and leave an open borehole before the cage and concrete are placed, allowing the founding material to be inspected. Screw piles do not create an open bore or equivalent spoil return, so the material supporting the helix remains hidden below ground."
+                "title": "<strong>Founding material visible versus hidden</strong><br>Bored concrete piles bring excavated material to the surface and leave an open borehole before the cage and concrete are placed, allowing the founding material to be inspected. Screw piles do not create an open bore or equivalent spoil return, so the material supporting the helix remains hidden below ground.<br><em>(GPT 5.5 Generated)</em>"
               },
               {
                 "image": "images/screw-piles-different-founding-material.webp",
-                "title": "<strong>Same site, different founding material</strong><br>Nearby screw piles can look identical at ground level while their helices found in different subsurface materials. One pile may reach the intended competent rock, while another may terminate in weaker material where the rock level changes. The issue is not whether screw piles can work, but whether the founding condition of each pile can be verified."
+                "title": "<strong>Same site, different founding material</strong><br>Nearby screw piles can look identical at ground level while their helices found in different subsurface materials. One pile may reach the intended competent rock, while another may terminate in weaker material where the rock level changes. The issue is not whether screw piles can work, but whether the founding condition of each pile can be verified.<br><em>(GPT 5.5 Generated)</em>"
               },
               {
                 "image": "images/bored-pile-vs-screw-pile-verification.webp",
-                "title": "<strong>Bored pile versus screw pile verification</strong><br>Bored concrete piles provide directly observable construction evidence: bore depth, bore diameter, spoil or founding material, and reinforcement cage placement can be checked before concrete is placed. Screw piles provide less visible evidence below ground, so the designer must rely more heavily on surface set-out, installation records, torque information, testing and certification."
+                "title": "<strong>Bored pile versus screw pile verification</strong><br>Bored concrete piles provide directly observable construction evidence: bore depth, bore diameter, spoil or founding material, and reinforcement cage placement can be checked before concrete is placed. Screw piles provide less visible evidence below ground, so the designer must rely more heavily on surface set-out, installation records, torque information, testing and certification.<br><em>(GPT 5.5 Generated)</em>"
               },
               {
                 "image": "images/screw-pile-verification-pathway.webp",
-                "title": "<strong>Why screw piles can be harder to independently verify</strong><br>Screw piles can offer fast installation, low disruption, no spoil and no curing delay, but those same advantages reduce the amount of directly visible construction evidence. Without an open bore or spoil return, the founding material and helix position are not directly visible, so verification relies more heavily on installation records, torque data, testing and certification."
+                "title": "<strong>Why screw piles can be harder to independently verify</strong><br>Screw piles can offer fast installation, low disruption, no spoil and no curing delay, but those same advantages reduce the amount of directly visible construction evidence. Without an open bore or spoil return, the founding material and helix position are not directly visible, so verification relies more heavily on installation records, torque data, testing and certification.<br><em>(GPT 5.5 Generated)</em>"
               },
               {
                 "image": "images/screw-pile-through-bar-link-ground-beam.webp",
@@ -5487,15 +5487,15 @@
             "supportingImages": [
               {
                 "image": "images/temporary-stability-loss-of-restraint-sequence.webp",
-                "title": "<strong>Temporary stability can be lost when permanent restraints are removed</strong><br><br>A wall, retained façade or part-built structure may be stable in its completed condition because floors, roof framing, return walls or diaphragms provide restraint. During construction, those restraints may be removed or not yet installed, leaving the same element temporarily unbraced and vulnerable to wind or out-of-plane loading. The diagram shows why temporary stability needs to be identified at design stage and resolved with an appropriate temporary works/stability strategy.<br>"
+                "title": "<strong>Temporary stability can be lost when permanent restraints are removed</strong><br><br>A wall, retained façade or part-built structure may be stable in its completed condition because floors, roof framing, return walls or diaphragms provide restraint. During construction, those restraints may be removed or not yet installed, leaving the same element temporarily unbraced and vulnerable to wind or out-of-plane loading. The diagram shows why temporary stability needs to be identified at design stage and resolved with an appropriate temporary works/stability strategy.<br><br><em>(GPT 5.5 Generated)</em>"
               },
               {
                 "image": "images/wall-collapse-shallow-footing-works.webp",
-                "title": "<strong>Illustrative wall-collapse incident during shallow foundation works</strong><br><br>Simplified site diagram based on a reported West End retaining-wall collapse on 2 December 2025, where two workers were trapped while working in a shallow trench beside a retaining wall. Workplace Health and Safety Queensland later described the trench as being prepared for a slab edge beam and stated that early investigations indicated approximately 10–12 m of retaining wall and supported earth collapsed. As of 23 June 2026, Workplace Health and Safety Queensland states that the incident remains under investigation. Source: <a href=\"https://7news.com.au/news/tradie-killed-in-shocking-west-end-wall-collapse-identified-as-devoted-father-kimura-dixon-c-20874843\" target=\"_blank\">7NEWS report</a>; <a href=\"https://www.worksafe.qld.gov.au/news-and-events/alerts/workplace-health-and-safety-alerts/2026/safety-alert-retaining-wall-collapse-on-construction-site\" target=\"_blank\">WHSQ safety alert</a>."
+                "title": "<strong>Illustrative wall-collapse incident during shallow foundation works</strong><br><br>Simplified site diagram based on a reported West End retaining-wall collapse on 2 December 2025, where two workers were trapped while working in a shallow trench beside a retaining wall. Workplace Health and Safety Queensland later described the trench as being prepared for a slab edge beam and stated that early investigations indicated approximately 10–12 m of retaining wall and supported earth collapsed. As of 23 June 2026, Workplace Health and Safety Queensland states that the incident remains under investigation. Source: <a href=\"https://7news.com.au/news/tradie-killed-in-shocking-west-end-wall-collapse-identified-as-devoted-father-kimura-dixon-c-20874843\" target=\"_blank\">7NEWS report</a>; <a href=\"https://www.worksafe.qld.gov.au/news-and-events/alerts/workplace-health-and-safety-alerts/2026/safety-alert-retaining-wall-collapse-on-construction-site\" target=\"_blank\">WHSQ safety alert</a>.<br><em>(GPT 5.5 Generated)</em>"
               },
               {
                 "image": "images/freestanding-masonry-wall-collapse-incident.webp",
-                "title": "<strong>Illustrative freestanding masonry wall collapse incident</strong><br><br>Simplified site diagram based on a WorkSafe Victoria safety alert published on 8 July 2014, following a fatal brick wall collapse on a construction site in Victoria. The alert explains that freestanding masonry walls can become unstable when the permanent lateral support from wall returns, floor framing or roof structure has not yet been installed, and stresses the need for temporary bracing and exclusion zones during construction. Source: <a href=\"https://www.worksafe.vic.gov.au/safety-alerts/danger-freestanding-masonry-walls\" target=\"_blank\">WorkSafe Victoria — Danger of freestanding masonry walls</a>."
+                "title": "<strong>Illustrative freestanding masonry wall collapse incident</strong><br><br>Simplified site diagram based on a WorkSafe Victoria safety alert published on 8 July 2014, following a fatal brick wall collapse on a construction site in Victoria. The alert explains that freestanding masonry walls can become unstable when the permanent lateral support from wall returns, floor framing or roof structure has not yet been installed, and stresses the need for temporary bracing and exclusion zones during construction. Source: <a href=\"https://www.worksafe.vic.gov.au/safety-alerts/danger-freestanding-masonry-walls\" target=\"_blank\">WorkSafe Victoria — Danger of freestanding masonry walls</a>.<br><em>(GPT 5.5 Generated)</em>"
               }
             ],
             "evidenceSupport": {
@@ -5641,7 +5641,7 @@
             "supportingImages": [
               {
                 "image": "images/formwork-complexity-simple-vs-complex.webp",
-                "title": "<strong>Permanent geometry creates temporary-works risk</strong><br><br>A flat, repeated soffit gives the formwork crew a regular system to set, brace, inspect and strip. Deep beams, set-downs and changing soffit levels break that repetition. The result is more custom formwork, more propping changes, harder access, and more chances for errors during assembly, checking and removal."
+                "title": "<strong>Permanent geometry creates temporary-works risk</strong><br><br>A flat, repeated soffit gives the formwork crew a regular system to set, brace, inspect and strip. Deep beams, set-downs and changing soffit levels break that repetition. The result is more custom formwork, more propping changes, harder access, and more chances for errors during assembly, checking and removal.<br><em>(GPT 5.5 Generated)</em>"
               }
             ],
             "evidenceSupport": {
@@ -5837,7 +5837,7 @@
             "supportingImages": [
               {
                 "image": "images/slab-edge-fall-protection-attachment-path.webp",
-                "title": "<strong>Slab edge attachment path for fall protection</strong><br><br>A robust slab edge gives the contractor straightforward options for temporary fall protection, such as clamping or cast-in fixing. Thin PT edges, congested anchorage zones or constrained façades may still be workable, but they need early review because simple post-fixing may not be practical.<br>"
+                "title": "<strong>Slab edge attachment path for fall protection</strong><br><br>A robust slab edge gives the contractor straightforward options for temporary fall protection, such as clamping or cast-in fixing. Thin PT edges, congested anchorage zones or constrained façades may still be workable, but they need early review because simple post-fixing may not be practical.<br><br><em>(GPT 5.5 Generated)</em>"
               }
             ],
             "listImageCaption": "GPT 5.5 Generated",
@@ -5970,7 +5970,7 @@
             "supportingImages": [
               {
                 "image": "images/finished-use-load-vs-construction-stage-reality.webp",
-                "title": "<strong>Finished-use loads vs construction-stage reality</strong><br><br>Suspended slabs are often considered in their completed-building condition, where loads are generally light and distributed. During construction, however, the same slab may be subjected to earlier, heavier and more concentrated loading from stored materials or construction equipment."
+                "title": "<strong>Finished-use loads vs construction-stage reality</strong><br><br>Suspended slabs are often considered in their completed-building condition, where loads are generally light and distributed. During construction, however, the same slab may be subjected to earlier, heavier and more concentrated loading from stored materials or construction equipment.<br><em>(GPT 5.5 Generated)</em>"
               }
             ],
             "evidenceSupport": {
