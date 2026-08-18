@@ -738,7 +738,30 @@
   .seq-src:hover{text-decoration:underline}
 
   @media(max-width:640px){
-    .content{padding:20px 16px} .header{padding:16px;gap:12px;align-items:flex-start} .header-actions{width:100%;justify-content:flex-start} .breadcrumb{padding:10px 16px}
+    .content{padding:20px 16px}
+    /* Stack the site header in portrait so its two action buttons never compete
+       with the framework title for horizontal space. */
+    .header{padding:16px;gap:12px;align-items:flex-start;flex-direction:column}
+    .header-actions{width:100%;justify-content:flex-start;flex-wrap:wrap}
+    .breadcrumb{padding:10px 16px}
+
+    /* Portrait-width safety: controls and explanatory text may wrap/reflow, but
+       must never be clipped by a fixed-width flex child. */
+    .loc-filter,.search-region-wrap,.sort-control{flex-wrap:wrap;max-width:100%}
+    .loc-filter select,.search-region,.sort-select,.facet-select{max-width:100%;min-width:0}
+    .loc-filter-count{margin-left:0;width:100%}
+    .project-name-input{min-width:0;width:100%}
+    .project-card{flex-direction:column}
+    .project-card-actions{width:100%;justify-content:flex-start;flex-shrink:1}
+    .suggest-banner,.manual-cta{flex-wrap:wrap}
+    .suggest-banner-text,.manual-cta-text{min-width:0;width:100%}
+    .suggest-banner-btn,.manual-cta-btn{width:100%;white-space:normal}
+
+    /* Evidence Support index: the level descriptor was previously forced onto
+       one line inside an overflow-hidden card, which clipped text in portrait. */
+    .evidence-tier-titlerow{flex-direction:column;align-items:flex-start}
+    .evidence-tier-range{white-space:normal;max-width:100%;overflow-wrap:anywhere;line-height:1.35}
+    .evidence-tier-rule,.evidence-index-summary,.evidence-index-meta,.evidence-support-text{overflow-wrap:anywhere}
     /* Inputs must be >=16px or iOS Safari zooms the whole page when they're focused. */
     .search-input,.project-name-input,.np-input{font-size:16px}
     /* The 125px range column leaves too little room for the guidance beside it. */
@@ -774,14 +797,15 @@
   html.phone .entry-topbar .back-link{font-size:13px;font-weight:600;min-height:36px;display:inline-flex;align-items:center}
 </style>
 <script>
-  /* Apply saved/system theme before paint to avoid a flash of the wrong theme. */
+  /* Apply a saved manual theme first; otherwise follow the browser/OS preference. */
   (function(){
+    var systemTheme=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
     try{
       var t=localStorage.getItem('theme');
-      if(t!=='light'&&t!=='dark'){ t='dark'; }
+      if(t!=='light'&&t!=='dark'){ t=systemTheme; }
       document.documentElement.setAttribute('data-theme',t);
     }catch(e){
-      document.documentElement.setAttribute('data-theme','dark');
+      document.documentElement.setAttribute('data-theme',systemTheme);
     }
   })();
 </script>
