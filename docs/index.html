@@ -3401,7 +3401,7 @@ function manualCta(id,title,sub){
   return `<div class="manual-cta" onclick="goGuideManual('${id}')">
     <div class="manual-cta-mark">?</div>
     <div class="manual-cta-text"><div class="manual-cta-title">Learn more &mdash; ${title}</div><div class="manual-cta-sub">${sub}</div></div>
-    <div class="manual-cta-btn">Open manual &rarr;</div>
+    <div class="manual-cta-btn">Open &rarr;</div>
   </div>`;
 }
 
@@ -3412,7 +3412,7 @@ function renderGuideManualView(){
   else if(id==='review-lists')body=manualReviewLists();
   else if(id==='contributing')body=manualContributing();
   else if(id==='maintenance')body=manualMaintenance();
-  else body=`<p class="section-desc">That manual doesn't exist yet. <span class="breadcrumb-link" onclick="goGuide()">Back to the guide &rarr;</span></p>`;
+  else body=`<p class="section-desc">That guide page doesn't exist yet. <span class="breadcrumb-link" onclick="goGuide()">Back to the guide &rarr;</span></p>`;
   const back=`<div class="back-link" onclick="goGuide()">&larr; Back to the guide</div>`;
   return `<div class="content animate-in">${back}${body}</div>`;
 }
