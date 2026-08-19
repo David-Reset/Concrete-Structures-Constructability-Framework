@@ -673,12 +673,6 @@
   .mock-export-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:12px}
   .mock-export{padding:14px 12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;text-align:center;font-size:12.5px;font-weight:600;color:var(--text)}
   .mock-export-ico{font-size:22px;margin-bottom:6px}
-  .pdf-frame{margin-top:16px;background:#fff;border:1px solid var(--border);border-radius:8px;padding:18px 20px;box-shadow:0 2px 14px rgba(0,0,0,0.25)}
-  .pdf-frame-head{font-size:13px;font-weight:700;color:#1c2430;border-bottom:1px solid #d3dbe8;padding-bottom:10px;margin-bottom:10px}
-  .pdf-line{font-size:12.5px;color:#1c2430;padding:6px 0;display:flex;align-items:center;gap:9px}
-  .pdf-line em{color:#5a6678;font-style:italic}
-  .pdf-box{width:13px;height:13px;flex-shrink:0;border:1.5px solid #5a6678;border-radius:3px}
-  .pdf-frame-foot{margin-top:12px;font-size:11px;color:#8894a6;font-style:italic;border-top:1px dashed #d3dbe8;padding-top:10px}
   .tool-grid{display:flex;flex-direction:column;gap:14px;margin-top:24px}
   .tool-card{padding:20px 22px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
   .tool-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
@@ -3536,21 +3530,22 @@ function manualReviewLists(){
       <div class="mock-privacy"><span class="mock-lock">&#128274;</span> Your lists are stored in this browser only. They are never published to the framework, and no one else can see them.</div>
     </div></div>`;
 
+  const liveExportRows=projectExportRows();
+  const liveExportName=projectExportTitle();
+  const liveExport=`<div class="project-export-card" style="margin-top:16px"><div class="project-export-title">Live export</div>
+    ${liveExportRows.length
+      ?`<div class="project-export-item"><strong>${escHtml(liveExportName)} &middot; ${liveExportRows.length} ${liveExportRows.length===1?'entry':'entries'}</strong><span>The PDF is generated from your active review list when you download it. It uses the current list name, purpose, selected entries, design questions, design parameters and framework links &mdash; there is no separate static PDF or screenshot to keep updated.</span></div><div class="project-actions-bar" style="margin-top:14px"><button class="entry-btn primary" onclick="downloadProjectPdf()">Download current PDF</button><button class="entry-btn" onclick="goProjectList()">Open current review list</button></div>`
+      :`<div class="project-export-item"><strong>Generated from the live review list</strong><span>The PDF is created at download time from the current project review list, so its contents stay aligned with the live exporter rather than a separate preview image. Add entries to a review list to generate one.</span></div><div class="project-actions-bar" style="margin-top:14px"><button class="entry-btn primary" onclick="goProjectLists()">Open project review lists</button></div>`}
+    </div>`;
+
   const s4=`<div class="mock-block"><div class="mock-cap">4 &middot; Export or share</div>
-    <p class="guide-sub">Any list exports to PDF, Markdown or the clipboard as a checklist with links back to the full entries \u2014 ready for an email, a design review or a QA record. A share link reopens the live framework with the same entries pre-selected.</p>
+    <p class="guide-sub">Any list exports to PDF, Markdown or the clipboard as a checklist with links back to the full entries &mdash; ready for an email, a design review or a QA record. A share link reopens the live framework with the same entries pre-selected.</p>
     <div class="mock-export-grid">
       <div class="mock-export"><div class="mock-export-ico">&#128196;</div>PDF checklist</div>
       <div class="mock-export"><div class="mock-export-ico">&#128221;</div>Markdown</div>
       <div class="mock-export"><div class="mock-export-ico">&#128279;</div>Share link</div>
       <div class="mock-export"><div class="mock-export-ico">&#128190;</div>Backup file</div>
-    </div>
-    <div class="pdf-frame">
-      <div class="pdf-frame-head">Constructability review checklist &mdash; 42 Harbour St</div>
-      <div class="pdf-line"><span class="pdf-box"></span> Reinforcement mat fall-through risk &middot; <em>Safety in design</em></div>
-      <div class="pdf-line"><span class="pdf-box"></span> Stirrup bar size availability &middot; <em>Logistics</em></div>
-      <div class="pdf-line"><span class="pdf-box"></span> Reinforcement callout clarity &middot; <em>Design communication</em></div>
-      <div class="pdf-frame-foot">Placeholder preview &mdash; drop a real screenshot of an exported PDF here.</div>
-    </div></div>`;
+    </div>${liveExport}</div>`;
 
   return hero+s1+s2+s3+s4;
 }
