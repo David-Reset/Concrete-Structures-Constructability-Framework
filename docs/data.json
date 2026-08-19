@@ -6765,20 +6765,12 @@
           "a": "Each list has a purpose statement that appears in the copied checklist and in the PDF and Markdown exports. It explains why the entries are being reviewed and frames the export as a constructability review aid rather than a compliance certificate or formal sign-off. Edit it to suit the project or audience."
         },
         {
-          "q": "What is the difference between a comment and a suggested change?",
-          "a": "A <strong>comment</strong> is a practical observation, question or regional note that may be shown beneath an entry. A <strong>suggested change</strong> is a request to alter the entry itself &mdash; for example by correcting wording, changing a threshold, adding evidence, or improving a recommended action."
+          "q": "How can I contribute — comment, suggest a change, or suggest a new entry?",
+          "a": "A <strong>comment</strong> is a practical observation, question or regional note that may be shown beneath an entry. A <strong>suggested change</strong> asks to alter an existing entry — for example by correcting wording, changing a threshold, adding evidence, or improving a recommended action. A <strong>new entry</strong> is for a constructability issue the framework does not yet cover. Suggestions should be de-identified and include enough context to explain the design issue, the condition being checked, the recommended response, and any supporting evidence or example."
         },
         {
-          "q": "Do comments appear automatically?",
-          "a": "No. Comments are reviewed and de-identified before they appear. This keeps the framework useful and protects contributors, projects, clients and designers from being identified through submitted examples or observations."
-        },
-        {
-          "q": "Can I suggest a new entry or a change to an existing one?",
-          "a": "Yes. You can suggest a new entry where the framework does not yet cover an issue, suggest a change where an existing entry needs correction or improvement, or add a comment where you want to share a practical observation or regional note without changing the entry itself. Suggestions should be de-identified and should include enough context to explain the design issue, the condition being checked, the recommended response, and any supporting evidence or example."
-        },
-        {
-          "q": "Are suggested entries, edits or comments added automatically?",
-          "a": "No. Suggested entries, suggested changes and comments are reviewed before they are added to the framework. Submissions need to be relevant to constructability, de-identified, and clear enough to understand the design issue or feedback. Nothing submitted through a form appears on the site automatically."
+          "q": "Do comments, suggested changes or new entries appear automatically?",
+          "a": "No. Comments, suggested changes and suggested entries are reviewed before anything is added to the framework. Submissions need to be relevant to constructability, clear enough to understand, and de-identified before publication. Reviewing them first keeps the framework useful and protects contributors, projects, clients and designers from being identified through submitted examples or observations."
         },
         {
           "q": "Why show real drawings or site photographs? Isn't that sensitive?",
