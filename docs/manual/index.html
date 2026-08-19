@@ -60,6 +60,7 @@ a:hover{color:var(--link-hover)}
 .theme-toggle-btn{display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; background:var(--surface-light); border:1px solid var(--border); border-radius:8px; color:var(--text); font-size:16px; line-height:1; cursor:pointer; transition:all .2s}
 .theme-toggle-btn:hover{border-color:var(--accent); background:var(--accent-glow)}
 .topbar-site{font-size:0.85rem; color:var(--link); white-space:nowrap}
+.mobile-live-site-btn,.manual-pin-btn{display:none}
 @media(max-width:720px){
   html{scroll-padding-top:116px}
   .topbar{
@@ -73,9 +74,24 @@ a:hover{color:var(--link-hover)}
   .topbar-logo{width:30px;height:30px;border-radius:7px;font-size:15px}
   .topbar-brand small{display:none}
   .topbar-brand>span:last-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .topbar-actions{grid-column:2;grid-row:1;gap:6px}
+  .topbar-actions{grid-column:2;grid-row:1;gap:5px}
   .topbar-site{display:none}
-  .theme-toggle-btn{width:34px;height:34px;border-radius:7px}
+  .theme-toggle-btn,.manual-pin-btn{width:34px;height:34px;border-radius:7px}
+  .manual-pin-btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    background:var(--surface-light);border:1px solid var(--border);
+    color:var(--text);font-size:15px;line-height:1;cursor:pointer;transition:all .2s
+  }
+  .manual-pin-btn:hover{border-color:var(--accent);background:var(--accent-glow)}
+  .manual-pin-btn.off{opacity:.55}
+  .mobile-live-site-btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-height:34px;padding:0 9px;border:1px solid var(--border);border-radius:7px;
+    background:var(--surface-light);color:var(--text);font-size:.78rem;font-weight:600;
+    white-space:nowrap
+  }
+  .mobile-live-site-btn:hover{border-color:var(--accent);background:var(--accent-glow);color:var(--text)}
+  body.manual-nav-unpinned .topbar{position:static}
   .topnav{
     grid-column:1/-1;
     grid-row:2;
@@ -130,6 +146,9 @@ a:hover{color:var(--link-hover)}
   .sidebar a{flex:0 0 auto;white-space:nowrap;padding:7px 10px;background:var(--surface)}
   .sidebar a.on{background:var(--accent-glow)}
   .content{padding:26px 20px 70px}
+}
+@media(max-width:720px){
+  body.manual-nav-unpinned #section-dm .sidebar{position:static;top:auto}
 }
 
 /* ---- centered (home) wrapper ---- */
@@ -394,7 +413,9 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
     <a href="#framework-doctor">Framework Doctor</a>
   </nav>
   <div class="topbar-actions">
+    <a class="mobile-live-site-btn" href="https://david-reset.github.io/Concrete-Structures-Constructability-Framework/" aria-label="Return to the live Constructability Framework">← Site</a>
     <button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch between light and dark theme" aria-label="Toggle colour theme"><span id="theme-toggle-icon">🌙</span></button>
+    <button class="manual-pin-btn" id="manual-pin-btn" type="button" aria-pressed="true" aria-label="Sticky navigation is on — tap to turn it off" title="Sticky navigation is on — tap to turn it off"><span aria-hidden="true">📌</span></button>
     <a class="topbar-site" href="https://david-reset.github.io/Concrete-Structures-Constructability-Framework/" target="_blank" rel="noopener">Live site ↗</a>
   </div>
 </div>
@@ -1365,6 +1386,32 @@ Then find the smallest set of facts that reproduces exactly that set of jobs.</p
     var target=active.offsetLeft-(scroller.clientWidth-active.offsetWidth)/2;
     scroller.scrollTo({left:Math.max(0,target),behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
   }
+  function setupMobilePin(){
+    var btn=document.getElementById('manual-pin-btn');
+    if(!btn)return;
+    var pinned=true;
+    try{
+      var saved=localStorage.getItem('maintainer-mobile-nav-pinned');
+      if(saved==='0')pinned=false;
+      if(saved==='1')pinned=true;
+    }catch(e){}
+    function apply(){
+      document.body.classList.toggle('manual-nav-unpinned',!pinned);
+      btn.classList.toggle('off',!pinned);
+      btn.setAttribute('aria-pressed',pinned?'true':'false');
+      var msg=pinned?'Sticky navigation is on — tap to turn it off':'Sticky navigation is off — tap to turn it on';
+      btn.setAttribute('aria-label',msg);
+      btn.setAttribute('title',msg);
+      syncTopbarHeight();
+    }
+    btn.addEventListener('click',function(){
+      pinned=!pinned;
+      try{localStorage.setItem('maintainer-mobile-nav-pinned',pinned?'1':'0');}catch(e){}
+      apply();
+    });
+    apply();
+  }
+
   function setupMobileNote(){
     var note=document.getElementById('mobile-maintainer-note');
     var close=document.getElementById('mobile-maintainer-note-close');
@@ -1406,6 +1453,7 @@ Then find the smallest set of facts that reproduces exactly that set of jobs.</p
   window.addEventListener('hashchange',function(){render(location.hash.slice(1));});
   window.addEventListener('resize',syncTopbarHeight);
   syncTopbarHeight();
+  setupMobilePin();
   setupMobileNote();
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(syncTopbarHeight);
   render(location.hash.slice(1)||'home');
