@@ -4896,6 +4896,14 @@
               {
                 "image": "images/boot-vs-grid-angle.png",
                 "title": "<strong>Boot sole fit - angled foot placement</strong><br>At an angled approach, 250 mm spacing presents a step-through risk for both 5th percentile and mean boot sizes."
+              },
+              {
+                "image": "images/reinforcement-mat-average-foot-site.webp",
+                "title": "<strong>Average-size footwear on reinforcement mat</strong><br>Site photograph showing an average-size shoe against the reinforcement grid. The foot can readily align diagonally with the clear opening, illustrating the angled-foot placement that creates the step-through risk at wider top-mat spacings."
+              },
+              {
+                "image": "images/reinforcement-mat-large-boot-site.webp",
+                "title": "<strong>Large work boot on reinforcement mat</strong><br>Site photograph showing a comparatively large work boot against the reinforcement grid. Even with larger footwear, an angled or misplaced step can enter the opening between bars, demonstrating that boot size alone does not remove the fall-through risk."
               }
             ],
             "dateAdded": "2026-03-15",
