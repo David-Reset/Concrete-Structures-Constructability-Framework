@@ -173,11 +173,11 @@
         },
         {
           "id": "conventional-rc-vs-post-tensioned-formwork-cycling-on-repeated-floors",
-          "name": "Conventional RC vs post-tensioned: formwork cycling on repeated floors",
+          "name": "Conventional RC vs post-tensioned slabs: formwork cycling across multiple floors",
           "available": true,
           "data": {
-            "question": "Does the number of repeated floors make formwork cycling decisive in the RC vs post-tensioned choice?",
-            "parameter": "Number of repeated suspended floors the slab system will be cycled over",
+            "question": "If conventional RC is proposed, how many suspended floors will use the slab system?",
+            "parameter": "Number of suspended floors using conventional RC",
             "keywords": [
               "prestressed",
               "PT slab",
@@ -211,33 +211,33 @@
                 "range": "1 floor",
                 "rating": "Best practice",
                 "color": "green",
-                "guidance": "A single suspended floor. The cycle saving (~2 days) does not repeat, so it rarely drives the slab system choice on its own. Decide on structural, cost and other project grounds; the construction-cycle advantage of PT is not a significant factor at this scale."
+                "guidance": "A single suspended floor gives no repeated formwork-cycle benefit. On cycling grounds alone, there is little reason to move away from conventional RC. PT may still be preferred for structural, slab-depth, cost or other project reasons."
               },
               {
                 "range": "2 - 3 floors",
                 "rating": "Consider",
                 "color": "yellow",
-                "guidance": "The saving begins to repeat (~4-6 days over the project). Usually still not decisive on its own, but worth weighing where the programme is tight or formwork availability is constrained. Consider the cycle-time and formwork-quantity effect as one input to the system choice."
+                "guidance": "The PT cycle advantage begins to accumulate across the floors. Conventional RC may still be appropriate, but cycle time and the quantity of formwork required are now worth considering as part of the slab system choice."
               },
               {
                 "range": "4 - 5 floors",
                 "rating": "Concern",
                 "color": "orange",
-                "guidance": "The cumulative saving (~8-10 days) is now a real construction-method question, not a side issue. The formwork-cycle efficiency and the reduced number of formwork sets required should be actively reviewed as part of the slab system selection, alongside the structural drivers."
+                "guidance": "The cumulative cycle saving is becoming a material construction benefit. If conventional RC is proposed, actively compare its formwork cycle and formwork quantity against a PT solution alongside the structural and cost drivers."
               },
               {
                 "range": "6+ floors",
                 "rating": "Action required",
                 "color": "red",
-                "guidance": "Across this many floors the saving compounds to ~12+ days and the reduction in formwork material becomes substantial. There is a strong constructability case to weigh post-tensioning for cycle-time and formwork-quantity reasons. This does not mean PT must be used &mdash; structural, cost, fire and durability factors may still govern &mdash; but the construction-method consequence should be a deliberate, documented part of the decision."
+                "guidance": "The cycle advantage of PT now compounds across many floors, together with the potential reduction in formwork required to maintain the cycle. If conventional RC is retained, the PT alternative should be explicitly assessed for its construction-cycle benefit. PT is not automatically required; structural, cost, fire, durability and feasibility considerations may still govern."
               }
             ],
             "workedExample": {
               "title": "Worked example — how the saving compounds",
               "caveat": "Based on Kajewski's (1998) modelled saving of approximately 2 days per slab (conservative; the factor-of-safety-only case gives up to 3 days per slab). These figures are from one modelled scenario (a 7-day baseline cycle with 3 levels of undisturbed shoring). The actual saving on any project depends on the baseline cycle, shoring arrangement, concrete strengths and stressing schedule. Use the table to see how a per-floor saving scales, not as a fixed prediction.",
-              "headline": "A modest per-floor saving becomes a significant programme effect once the floor plate repeats up the building.",
+              "headline": "A modest per-floor saving becomes a significant programme effect as the slab system is used across more suspended floors.",
               "tableHeaders": [
-                "Repeated suspended floors",
+                "Suspended floors using conventional RC",
                 "Approx. saving at ~2 days/floor",
                 "What it means for the system choice"
               ],
@@ -273,22 +273,26 @@
                   "Strong case to weigh PT for cycle and formwork-quantity reasons"
                 ]
               ],
-              "howToUse": "Count the suspended floors over which the slab system will repeat, read across to the approximate cumulative saving, and use it to judge how heavily the construction-cycle advantage should weigh against the structural and cost factors that also govern the choice. The saving is a programme effect; the reduced number of formwork sets needed to sustain the cycle is a parallel cost and logistics benefit.",
+              "howToUse": "Count the suspended floors for which conventional RC is proposed, read across to the approximate cumulative saving, and use it to judge how heavily the construction-cycle advantage of PT should weigh against the structural and cost factors that also govern the choice. The saving is a programme effect; the reduced number of formwork sets needed to sustain the cycle is a parallel cost and logistics benefit. Where successive floors have similar geometry and formwork layouts, the reuse case is stronger.",
               "assumptionsTitle": "How these numbers were derived",
               "assumptions": [
                 "Per-floor saving of ~2 days is Kajewski's (1998) preferred-practice figure, which allows each PT slab to be stressed before it is loaded by the slab above (limiting the cycle to 5 days against a 7-day conventional baseline).",
                 "The factor-of-safety-only case gives a 4-day cycle (~3 days/slab saving), but risks damaging the lightly reinforced PT slab if it is loaded before stressing; the 2-day figure is therefore the conservative, recommended basis.",
-                "The cumulative column simply multiplies ~2 days by the number of repeated floors; it assumes the saving is realised on each floor, which depends on the cycle being formwork-limited rather than constrained by other trades or program logic.",
+                "The cumulative column simply multiplies ~2 days by the number of suspended floors using the system; it assumes the saving is realised on each floor, which depends on the cycle being formwork-limited rather than constrained by other trades or program logic. Where floor geometry and formwork layouts repeat closely, the forms can also be reused with less alteration, strengthening the practical benefit.",
                 "Figures are from Kajewski's modelled scenario (7-day baseline, 3 levels undisturbed shoring) and will differ with a different baseline cycle, shoring depth, concrete strength or stressing schedule."
               ],
-              "assumptionsNote": "The direction of the effect — saving grows with repeated floors — is well supported. The exact per-floor figure is scenario-specific and should be confirmed against the project's own cycle and shoring arrangement."
+              "assumptionsNote": "The direction of the effect — the saving accumulates as the system is used across more floors — is well supported. The exact per-floor figure is scenario-specific and should be confirmed against the project's own cycle and shoring arrangement."
             },
             "applicability": {
-              "appliesWhere": "This entry applies to multi-storey reinforced concrete buildings with repeated suspended floors, where a limited number of formwork and shoring sets are cycled up the structure and the designer is choosing between a conventionally reinforced and a post-tensioned slab system.",
+              "appliesWhere": "This entry applies where conventional RC is proposed for one or more suspended floors and post-tensioning is a feasible alternative. Its constructability significance increases as the slab system is used across more floors, particularly where similar floor geometry allows the formwork arrangement to be reused with little alteration.",
               "checks": [
                 {
                   "title": "This entry covers only the construction-cycle dimension of the choice",
-                  "description": "The advantage described here is fundamentally about formwork cycling, and it only becomes significant when the floor plate repeats up a building. On a small or low-rise job, or where the saving does not repeat enough times to matter, conventional reinforcement may well remain the right choice. The broader RC-versus-PT decision is also governed by span, slab depth, deflection, load, cost, fire resistance, durability and future penetrations &mdash; all outside this entry's scope, and any of which may override the cycle argument. This entry addresses only the formwork-cycle and formwork-quantity consequence; it is one input to weigh, not the whole decision."
+                  "description": "The advantage described here is fundamentally about formwork cycling. On a single suspended floor, the cycle advantage of PT occurs only once and will rarely drive the system choice on its own. As more suspended floors use the system, the cumulative programme and formwork-quantity effect becomes more important. The broader RC-versus-PT decision is also governed by span, slab depth, deflection, load, cost, fire resistance, durability and future penetrations — all outside this entry's scope, and any of which may override the cycle argument. This entry addresses only the formwork-cycle and formwork-quantity consequence; it is one input to weigh, not the whole decision."
+                },
+                {
+                  "title": "Similarity between floors",
+                  "description": "Where successive floors have similar geometry and formwork layouts, the same forms can be reused with minimal alteration, strengthening the cycling and formwork-quantity benefit. Where layouts change substantially between levels, some of that practical benefit may be reduced."
                 },
                 {
                   "title": "Post-tensioning must itself be feasible and available",
@@ -315,17 +319,17 @@
                   "description": "PT availability, contractor experience, formwork systems and typical cycle times vary by region and contractor. The cited figures are from an Australian study; confirm the baseline cycle and achievable saving with the contractor for the specific project."
                 }
               ],
-              "note": "Use the rating as a prompt to weigh the construction-cycle and formwork-quantity effect in the slab system decision at design stage, not as a rule that PT must be used above a particular number of floors. The advantage comes down to formwork cycling and only counts when floors repeat; it must also be set against the structural and cost drivers and against whether PT is itself feasible and available. The intent is that on a repetitive multi-storey building this construction-method consequence is a deliberate part of the decision, rather than the system being chosen on span and depth alone and the programme implications discovered later."
+              "note": "Use the rating as a prompt to weigh the construction-cycle and formwork-quantity effect in the slab system decision at design stage, not as a rule that PT must be used above a particular number of floors. The advantage accumulates as more suspended floors use the system and is strengthened where floor geometry and formwork layouts repeat; it must also be set against the structural and cost drivers and against whether PT is itself feasible and available. The intent is that on a multi-floor building this construction-method consequence is a deliberate part of the decision, rather than the system being chosen on span and depth alone and the programme implications discovered later."
             },
             "alternatives": [
               {
-                "title": "Decide the slab system with the floor-count saving counted in, before the design is committed",
-                "description": "On a repetitive multi-storey building the system choice is the designer's to make at design stage, and it is usually locked in well before a contractor is appointed. So the formwork-cycle effect has to be weighed as part of that decision, not deferred. Estimate the saving per floor against a realistic baseline cycle, multiply it across the number of floors, and add the parallel benefit of needing fewer formwork and shoring sets to sustain the cycle. The more the floor plate repeats, the more strongly this should pull the decision toward post-tensioning &mdash; so that on a tall, repetitive building the construction-cycle advantage is a deliberate reason to design it PT, weighed against the structural, cost and feasibility factors, rather than a benefit noticed only after the system was already chosen on span and depth."
+                "title": "Compare the PT cycle benefit before committing conventional RC across multiple floors",
+                "description": "Where conventional RC is proposed across several suspended floors, estimate the achievable cycle saving against a realistic baseline and consider the parallel formwork-quantity benefit before the slab system is committed. PT may still be rejected because of structural, cost, fire, durability, stressing-access, supply-chain or other project constraints. The point is to make the construction-cycle consequence an explicit part of the system choice, not to assume that PT is required."
               }
             ],
-            "evidence": "This entry is supported by Australian academic research with on-site measurement, a peer-reviewed journal paper, and industry sources, together with the established mechanics of multi-level formwork cycling. The direction of the effect &mdash; that post-tensioning shortens the formwork cycle and that the saving compounds across repeated floors &mdash; is well supported. The specific per-floor figure is taken from one modelled scenario and is treated as indicative rather than universal.<br><br><strong>Primary source &mdash; shore-load measurement.</strong> Kajewski (1998) measured actual shore loads during the construction of a multi-level post-tensioned building and modelled the multi-level formwork load distribution. The research found that the improved factors of safety with PT slabs allow a shortening of the slab construction cycle time, that the low level of load redistribution during stripping makes PT slabs well suited to reshoring, and that PT construction allows a reduction in the quantity of formwork materials required. In the scenario presented (7-day baseline cycle, three levels of undisturbed shoring), the cycle could be reduced to 4 days on the factor-of-safety criterion alone &mdash; a saving of 3 days per slab &mdash; but because lightly reinforced PT slabs can be damaged if loaded before stressing, a 5-day cycle that allows each slab to be stressed before it is loaded is preferable, still saving about 2 days per slab. This is the basis for the conservative ~2 day/slab figure used in this entry.<br><br><strong>Peer-reviewed corroboration.</strong> The same body of work was published as Kajewski's analysis of multilevel formwork load distribution with post-tensioned slabs in the Journal of Construction Engineering and Management, presenting design methods for the multi-level formwork process validated against the measured shore loads.<br><br><strong>Mechanism.</strong> With draped tendons, post-tensioning balances part of the slab self-weight, unloading the forms and shores supporting the slab by the balanced amount and producing a load distribution through the temporary works different from a conventionally reinforced slab. This is what allows the soffit forms to be released earlier while the reshores remain.<br><br><strong>Industry sources.</strong> Post-tensioning system suppliers and formwork literature consistently list earlier striking of formwork, reduced back-propping requirements and faster formwork reuse among the construction benefits of post-tensioned slabs, consistent with the measured findings above. These are industry/commercial sources and are used as corroboration of the direction of the effect rather than for specific figures.<br><br><strong>Limitations of the figure.</strong> The ~2-3 day per-slab saving is from a single modelled scenario with a specific baseline cycle and shoring arrangement. Actual savings depend on the project's baseline cycle, shoring depth, concrete strengths, stressing schedule and whether the formwork cycle is the binding constraint on the programme. The cumulative figures in the worked example assume the saving is realised on every floor. The thresholds should be read as a guide to how the effect scales, not as a precise prediction.<br><br><strong>References</strong><br>Kajewski, S. L. (1998). <em>Post-tensioning and its effect on multi-level formwork load distribution</em> (PhD thesis). Queensland University of Technology.<br>Kajewski, S. L. (2005). Multilevel formwork load distribution with post-tensioned slabs. <em>Journal of Construction Engineering and Management, 131</em>(2).",
+            "evidence": "This entry is supported by Australian academic research with on-site measurement, a peer-reviewed journal paper, and industry sources, together with the established mechanics of multi-level formwork cycling. The direction of the effect &mdash; that post-tensioning can shorten the formwork cycle and that the saving accumulates across successive floors &mdash; is well supported. The specific per-floor figure is taken from one modelled scenario and is treated as indicative rather than universal.<br><br><strong>Primary source &mdash; shore-load measurement.</strong> Kajewski (1998) measured actual shore loads during the construction of a multi-level post-tensioned building and modelled the multi-level formwork load distribution. The research found that the improved factors of safety with PT slabs allow a shortening of the slab construction cycle time, that the low level of load redistribution during stripping makes PT slabs well suited to reshoring, and that PT construction allows a reduction in the quantity of formwork materials required. In the scenario presented (7-day baseline cycle, three levels of undisturbed shoring), the cycle could be reduced to 4 days on the factor-of-safety criterion alone &mdash; a saving of 3 days per slab &mdash; but because lightly reinforced PT slabs can be damaged if loaded before stressing, a 5-day cycle that allows each slab to be stressed before it is loaded is preferable, still saving about 2 days per slab. This is the basis for the conservative ~2 day/slab figure used in this entry.<br><br><strong>Peer-reviewed corroboration.</strong> The same body of work was published as Kajewski's analysis of multilevel formwork load distribution with post-tensioned slabs in the Journal of Construction Engineering and Management, presenting design methods for the multi-level formwork process validated against the measured shore loads.<br><br><strong>Mechanism.</strong> With draped tendons, post-tensioning balances part of the slab self-weight, unloading the forms and shores supporting the slab by the balanced amount and producing a load distribution through the temporary works different from a conventionally reinforced slab. This is what allows the soffit forms to be released earlier while the reshores remain.<br><br><strong>Industry sources.</strong> Post-tensioning system suppliers and formwork literature consistently list earlier striking of formwork, reduced back-propping requirements and faster formwork reuse among the construction benefits of post-tensioned slabs, consistent with the measured findings above. These are industry/commercial sources and are used as corroboration of the direction of the effect rather than for specific figures.<br><br><strong>Limitations of the figure.</strong> The ~2-3 day per-slab saving is from a single modelled scenario with a specific baseline cycle and shoring arrangement. Actual savings depend on the project's baseline cycle, shoring depth, concrete strengths, stressing schedule and whether the formwork cycle is the binding constraint on the programme. The cumulative figures in the worked example assume the saving is realised on every floor. The thresholds should be read as a guide to how the effect scales, not as a precise prediction.<br><br><strong>References</strong><br>Kajewski, S. L. (1998). <em>Post-tensioning and its effect on multi-level formwork load distribution</em> (PhD thesis). Queensland University of Technology.<br>Kajewski, S. L. (2005). Multilevel formwork load distribution with post-tensioned slabs. <em>Journal of Construction Engineering and Management, 131</em>(2).",
             "dateAdded": "2026-06-02",
-            "dateReviewed": "2026-07-12",
+            "dateReviewed": "2026-08-20",
             "location": {
               "country": "Australia",
               "state": "NSW"
@@ -338,7 +342,7 @@
             ],
             "evidenceSupport": {
               "level": "directional",
-              "summary": "The mechanism is measured on point: Kajewski recorded actual shore loads on a post-tensioned building and showed the slab cycle can shorten. But the per-floor saving comes from a single modelled scenario, the 2 / 4 / 6-floor boundaries mark where a compounding saving is judged to become material rather than anything measured, and the thesis and its journal paper are one source, not two — so nothing independent confirms it."
+              "summary": "The mechanism is measured on point: Kajewski recorded actual shore loads on a post-tensioned building and showed the slab cycle can shorten. But the per-floor saving comes from a single modelled scenario, the 2-, 4- and 6-floor breakpoints mark where a compounding saving is judged to become material rather than anything measured, and the thesis and its journal paper are one source, not two — so nothing independent confirms it."
             },
             "relatedEntries": [
               {
