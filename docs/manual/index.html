@@ -91,7 +91,9 @@ a:hover{color:var(--link-hover)}
     white-space:nowrap
   }
   .mobile-live-site-btn:hover{border-color:var(--accent);background:var(--accent-glow);color:var(--text)}
-  body.manual-nav-unpinned .topbar{position:static}
+  .topbar{transition:transform .18s ease}
+  body.manual-nav-hidden:not(.manual-nav-unpinned) .topbar{transform:translateY(-100%)}
+  body.manual-nav-unpinned .topbar{position:static;transform:none}
   .topnav{
     grid-column:1/-1;
     grid-row:2;
@@ -148,7 +150,9 @@ a:hover{color:var(--link-hover)}
   .content{padding:26px 20px 70px}
 }
 @media(max-width:720px){
-  body.manual-nav-unpinned #section-dm .sidebar{position:static;top:auto}
+  #section-dm .sidebar{transition:transform .18s ease}
+  body.manual-nav-hidden:not(.manual-nav-unpinned) #section-dm .sidebar{transform:translateY(calc(-100% - var(--manual-topbar-h)))}
+  body.manual-nav-unpinned #section-dm .sidebar{position:static;top:auto;transform:none}
 }
 
 /* ---- centered (home) wrapper ---- */
@@ -1397,6 +1401,7 @@ Then find the smallest set of facts that reproduces exactly that set of jobs.</p
     }catch(e){}
     function apply(){
       document.body.classList.toggle('manual-nav-unpinned',!pinned);
+      if(!pinned)document.body.classList.remove('manual-nav-hidden');
       btn.classList.toggle('off',!pinned);
       btn.setAttribute('aria-pressed',pinned?'true':'false');
       var msg=pinned?'Sticky navigation is on — tap to turn it off':'Sticky navigation is off — tap to turn it on';
@@ -1410,6 +1415,37 @@ Then find the smallest set of facts that reproduces exactly that set of jobs.</p
       apply();
     });
     apply();
+  }
+
+  function setupMobileScrollReveal(){
+    var lastY=window.scrollY||0;
+    var ticking=false;
+    function update(){
+      ticking=false;
+      var y=window.scrollY||0;
+      var mobile=window.innerWidth<=720;
+      var unpinned=document.body.classList.contains('manual-nav-unpinned');
+      if(!mobile||unpinned||y<=8){
+        document.body.classList.remove('manual-nav-hidden');
+        lastY=y;
+        return;
+      }
+      var delta=y-lastY;
+      if(delta>6){
+        document.body.classList.add('manual-nav-hidden');
+        lastY=y;
+      }else if(delta<-4){
+        document.body.classList.remove('manual-nav-hidden');
+        lastY=y;
+      }
+    }
+    window.addEventListener('scroll',function(){
+      if(!ticking){ticking=true;window.requestAnimationFrame(update);}
+    },{passive:true});
+    window.addEventListener('resize',function(){
+      if(window.innerWidth>720)document.body.classList.remove('manual-nav-hidden');
+      lastY=window.scrollY||0;
+    });
   }
 
   function setupMobileNote(){
@@ -1454,6 +1490,7 @@ Then find the smallest set of facts that reproduces exactly that set of jobs.</p
   window.addEventListener('resize',syncTopbarHeight);
   syncTopbarHeight();
   setupMobilePin();
+  setupMobileScrollReveal();
   setupMobileNote();
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(syncTopbarHeight);
   render(location.hash.slice(1)||'home');
