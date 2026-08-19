@@ -635,6 +635,8 @@
   .manual-cta-title{font-size:14px;font-weight:700;color:var(--text)}
   .manual-cta-sub{font-size:12.5px;color:var(--text-muted);line-height:1.5;margin-top:3px}
   .manual-cta-btn{flex-shrink:0;font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap}
+  .manual-cta-kicker{display:inline-block;margin-bottom:5px;padding:3px 8px;border-radius:999px;background:var(--surface-light);border:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted)}
+  [role="button"]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
   .anat-wrap{margin-top:24px;display:flex;flex-direction:column;gap:18px}
   .anat-step{padding:18px 20px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
   .anat-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
@@ -2620,7 +2622,7 @@ function toggleMobileStickyNav(){
 function renderMobileStickyToggle(){
   if(!PHONE)return'';
   const on=mobileStickyNavEnabled();
-  const title=on?'Sticky navigation is on — tap to turn it off':'Sticky navigation is off — tap to keep quick navigation visible';
+  const title=on?'Sticky navigation is on — tap to turn it off':'Sticky navigation is off — tap to turn it on';
   return `<button class="mobile-stick-toggle${on?' on':''}" onclick="toggleMobileStickyNav()" title="${title}" aria-label="${title}" aria-pressed="${on?'true':'false'}">📌</button>`;
 }
 
@@ -2650,6 +2652,24 @@ window.addEventListener('scroll',function(){
 },{passive:true});
 
 // ===== RENDER =====
+// Make legacy clickable div/span controls keyboard reachable without changing their visual design.
+function enhanceKeyboardControls(root){
+  if(!root)return;
+  root.querySelectorAll('div[onclick],span[onclick]').forEach(el=>{
+    if(el.matches('.modal,.modal-overlay'))return;
+    if(!el.hasAttribute('role'))el.setAttribute('role','button');
+    if(!el.hasAttribute('tabindex'))el.setAttribute('tabindex','0');
+    // Some controls already provide their own keyboard handler (for example Recent activity).
+    if(el.hasAttribute('onkeydown')||el.dataset.keyboardReady==='1')return;
+    el.dataset.keyboardReady='1';
+    el.addEventListener('keydown',function(event){
+      if(event.key==='Enter'||event.key===' '){
+        event.preventDefault();
+        this.click();
+      }
+    });
+  });
+}
 function renderFooter(){
   return `<div class="app-footer"><span class="app-footer-text">An open, GitHub-hosted framework \u2014 code under AGPL-3.0, content under CC BY-SA 4.0.</span><a class="app-footer-link" href="${LINKS.repo}" target="_blank" rel="noopener">View source on GitHub \u2197</a></div>`;
 }
@@ -2658,8 +2678,13 @@ function render(){
   PHONE=isPhone();
   document.documentElement.classList.toggle('phone',PHONE);
   syncMobileStickyNav();
-  if(state.sharedPreview){app.innerHTML=renderHeader()+renderSharedPreview();return;}
+  if(state.sharedPreview){
+    app.innerHTML=renderHeader()+renderSharedPreview();
+    enhanceKeyboardControls(app);
+    return;
+  }
   app.innerHTML=renderHeader()+(state.view==='guide'?renderBreadcrumb()+renderGuideView():state.view==='guideManual'?renderBreadcrumb()+renderGuideManualView():state.view==='evidence'?renderBreadcrumb()+renderEvidenceSupportView():state.view==='projectIndex'?renderBreadcrumb()+renderProjectIndexView():state.view==='projectList'?renderBreadcrumb()+renderProjectListView():state.view==='entry'?renderBreadcrumb()+renderEntryDetail():state.view==='dimension'?renderBreadcrumb()+renderDimensionView():state.view==='byDate'?renderBreadcrumb()+renderByDateView():state.view==='browse'?renderBreadcrumb()+renderBrowseView():renderHomeView())+renderFooter();
+  enhanceKeyboardControls(app);
 }
 
 function renderHeader(){
@@ -2720,7 +2745,7 @@ function renderBrowseView(){
   const countText=active?`${filtered.length} of ${all.length} entries`:`All ${all.length} entries`;
   const empty=filtered.length?'':`<div class="project-empty"><div class="project-empty-title">No entries match those filters.</div><div class="project-empty-sub">Region, element and stage are combined — an entry must match all of the active ones. Try removing one.</div></div>`;
   const regionRow=globalLocations().size?`<div class="facet-row"><span class="facet-label">Region</span><select class="facet-select" onchange="setLocationFilter(this.value)">${browseRegionOptions()}</select></div>`:'';
-  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">🧭</span><h1 class="dim-header-title">Browse all entries</h1></div><p class="section-desc">Every live entry across all five dimensions, narrowed by the region its evidence was gathered in, the structural element it concerns, or the construction stage it affects — for example, everything for <em>NSW</em>, all <em>wall</em> entries, or everything at <em>reinforcement fixing</em>. The number on each chip is how many of the entries currently shown carry that tag, so it drops as you narrow; a chip showing 0 leads nowhere and is greyed out.</p>
+  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to framework home</div><div class="dim-header"><span class="dim-header-icon">🧭</span><h1 class="dim-header-title">Browse all entries</h1></div><p class="section-desc">Every live entry across all five dimensions, narrowed by the region its evidence was gathered in, the structural element it concerns, or the construction stage it affects — for example, everything for <em>NSW</em>, all <em>wall</em> entries, or everything at <em>reinforcement fixing</em>. The number on each chip is how many of the entries currently shown carry that tag, so it drops as you narrow; a chip showing 0 leads nowhere and is greyed out.</p>
   <div class="facet-filter">
     ${regionRow}
     <div class="facet-row"><span class="facet-label">Element</span><div class="facet-chips">${elChips}</div></div>
@@ -2893,7 +2918,7 @@ function renderByDateView(){
   setNavCtx('byDate','all entries by date','by-date',list.map(e=>e.item.id));
   const rows=list.map(renderRecentRow).join('');
   const n=list.length;
-  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">🕑</span><h1 class="dim-header-title">All entries by date</h1></div><p class="section-desc">Every live entry, most recent activity first — a brand-new entry and a revision to an existing one both count as activity. Each row shows when it was added and, where it has been revised since, when it was last updated.</p><div class="label">${n} ${n===1?'entry':'entries'}</div><div class="item-list">${rows}</div></div>`;
+  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to framework home</div><div class="dim-header"><span class="dim-header-icon">🕑</span><h1 class="dim-header-title">All entries by date</h1></div><p class="section-desc">Every live entry, most recent activity first — a brand-new entry and a revision to an existing one both count as activity. Each row shows when it was added and, where it has been revised since, when it was last updated.</p><div class="label">${n} ${n===1?'entry':'entries'}</div><div class="item-list">${rows}</div></div>`;
 }
 
 // ===== EVIDENCE SUPPORT INDEX =====
@@ -2985,7 +3010,7 @@ function renderEvidenceSupportView(){
   }).join('');
   const shown=filtered.length;
   const suffix=active==='all'?'all evidence support levels':`${labels[active]} evidence support`;
-  return `<div class="content evidence-content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">📊</span><h1 class="dim-header-title">Evidence support index</h1></div><div class="section-desc">Every source behind an entry is graded twice — on <span class="evidence-key">how much weight its kind can carry</span>, and on <span class="evidence-key">whether it is actually about the thing you are being asked to act on</span>. Those two grades decide the level. It tests how far you can trust the numbers or the recommendation — not whether the constructability issue is important, useful, or worth considering.</div><div class="evidence-callout"><strong>A lower rating does not mean an entry is weak or should be ignored.</strong> Every published entry captures a real constructability question that may affect design decisions. The rating tells you <span class="evidence-key">how much of an entry rests on evidence and how much rests on our judgement</span> — and therefore where your own scrutiny is most needed. It is a statement about our sources, not about your design. An <span class="evidence-key">Established</span> rating often just means the issue is already well studied or easy to measure. A <span class="evidence-key">Directional</span> entry can be every bit as valuable: the mechanism is proven, and the cut-off is our reasoned call on where it starts to matter. <span class="evidence-key">Directional is the level most live entries are expected to reach</span>, and that is intentional — Established generally requires an entry’s specific thresholds to be measured or derived, so it stays the exception rather than the norm.</div><div class="evidence-lead"><p>The rating also shows <strong>where contribution is needed</strong>. A Directional entry usually needs a measurement or a second independent source to confirm the cut-off. An Indicative entry needs a source that is actually <em>on point</em> rather than adjacent. A Reasoned entry needs the study that does not yet exist — or the citation nobody has added. You can strengthen the framework by contributing academic sources, field measurements, contractor feedback, design examples, project case studies or regional experience that confirm, refine or challenge the guidance.</p></div>${renderEvidenceRubric()}<div class="evidence-index-section-label"><div class="label" style="margin-bottom:0">Live entry index</div></div><div class="evidence-summary-grid">${summary}</div><div class="evidence-filter">${buttons}</div><div class="list-head"><div class="label" style="margin-bottom:0">${shown} ${shown===1?'entry':'entries'} — ${suffix}</div>${renderSortControl()}</div><div class="item-list">${rows}</div></div>`;
+  return `<div class="content evidence-content animate-in"><div class="back-link" onclick="goHome()">← Back to framework home</div><div class="dim-header"><span class="dim-header-icon">📊</span><h1 class="dim-header-title">Evidence support index</h1></div><div class="section-desc">Every source behind an entry is graded twice — on <span class="evidence-key">how much weight its kind can carry</span>, and on <span class="evidence-key">whether it is actually about the thing you are being asked to act on</span>. Those two grades decide the level. It tests how far you can trust the numbers or the recommendation — not whether the constructability issue is important, useful, or worth considering.</div><div class="evidence-callout"><strong>A lower rating does not mean an entry is weak or should be ignored.</strong> Every published entry captures a real constructability question that may affect design decisions. The rating tells you <span class="evidence-key">how much of an entry rests on evidence and how much rests on our judgement</span> — and therefore where your own scrutiny is most needed. It is a statement about our sources, not about your design. An <span class="evidence-key">Established</span> rating often just means the issue is already well studied or easy to measure. A <span class="evidence-key">Directional</span> entry can be every bit as valuable: the mechanism is proven, and the cut-off is our reasoned call on where it starts to matter. <span class="evidence-key">Directional is the level most live entries are expected to reach</span>, and that is intentional — Established generally requires an entry’s specific thresholds to be measured or derived, so it stays the exception rather than the norm.</div><div class="evidence-lead"><p>The rating also shows <strong>where contribution is needed</strong>. A Directional entry usually needs a measurement or a second independent source to confirm the cut-off. An Indicative entry needs a source that is actually <em>on point</em> rather than adjacent. A Reasoned entry needs the study that does not yet exist — or the citation nobody has added. You can strengthen the framework by contributing academic sources, field measurements, contractor feedback, design examples, project case studies or regional experience that confirm, refine or challenge the guidance.</p></div>${renderEvidenceRubric()}<div class="evidence-index-section-label"><div class="label" style="margin-bottom:0">Live entry index</div></div><div class="evidence-summary-grid">${summary}</div><div class="evidence-filter">${buttons}</div><div class="list-head"><div class="label" style="margin-bottom:0">${shown} ${shown===1?'entry':'entries'} — ${suffix}</div>${renderSortControl()}</div><div class="item-list">${rows}</div></div>`;
 }
 
 // ===== GUIDE (how-to-use) =====
@@ -3030,16 +3055,17 @@ function gAnatomyBlock(n,field,inner){
   return `<div class="anatomy-block"><div class="anatomy-side"><div class="anatomy-num">${n}</div><div><div class="anatomy-field">${field.label}</div><div class="anatomy-caption">${field.caption}</div></div></div><div class="anatomy-component">${inner}</div></div>`;
 }
 function toggleFaq(i){
-  const a=document.getElementById('faq-a-'+i),c=document.getElementById('faq-chev-'+i);
+  const a=document.getElementById('faq-a-'+i),c=document.getElementById('faq-chev-'+i),q=document.querySelector('.faq-q[aria-controls="faq-a-'+i+'"]');
   if(!a)return;
   const open=a.classList.toggle('open');
   if(c)c.textContent=open?'–':'+';
+  if(q)q.setAttribute('aria-expanded',open?'true':'false');
 }
 
 function renderGuideView(){
-  if(!guide)return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><p class="section-desc">Guide content not found. Make sure data.json includes a "guide" object.</p></div>`;
+  if(!guide)return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to framework home</div><p class="section-desc">Guide content not found. Make sure data.json includes a "guide" object.</p></div>`;
   const g=guide;
-  let html=`<div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">${g.icon}</span><h1 class="dim-header-title">${g.title}</h1></div>${g.intro?`<p class="section-desc">${g.intro}</p>`:''}`;
+  let html=`<div class="back-link" onclick="goHome()">← Back to framework home</div><div class="dim-header"><span class="dim-header-icon">${g.icon}</span><h1 class="dim-header-title">${g.title}</h1></div>${g.intro?`<p class="section-desc">${g.intro}</p>`:''}`;
 
   // What is the framework — two obligations, each side ending in its own tool card
   if(g.whatIs){
@@ -3119,7 +3145,7 @@ function renderGuideView(){
 
   // FAQ accordion
   if(g.faq){
-    html+=`<div class="guide-h">${g.faq.title}</div><div class="faq-list">${g.faq.items.map((f,i)=>`<div class="faq-item"><div class="faq-q" onclick="toggleFaq(${i})"><span>${f.q}</span><span class="faq-chevron" id="faq-chev-${i}">+</span></div><div class="faq-a" id="faq-a-${i}">${f.a}</div></div>`).join('')}</div>`;
+    html+=`<div class="guide-h">${g.faq.title}</div><div class="faq-list">${g.faq.items.map((f,i)=>`<div class="faq-item"><div class="faq-q" onclick="toggleFaq(${i})" aria-expanded="false" aria-controls="faq-a-${i}"><span>${f.q}</span><span class="faq-chevron" id="faq-chev-${i}" aria-hidden="true">+</span></div><div class="faq-a" id="faq-a-${i}">${f.a}</div></div>`).join('')}</div>`;
   }
 
   return `<div class="content animate-in">${html}</div>`;
@@ -3153,7 +3179,7 @@ function renderDimensionView(){
     guidanceHtml=`<div style="margin-top:20px;margin-bottom:24px;padding:18px 22px;background:var(--surface);border:1px solid var(--border);border-radius:10px;"><div class="label" style="margin-bottom:10px">General Guidance</div>${dim.generalGuidance.map(g=>`<div style="display:flex;gap:10px;margin-bottom:8px;align-items:flex-start;"><div style="color:var(--accent);font-size:14px;margin-top:1px;flex-shrink:0;">•</div><div style="font-size:13px;color:var(--text);line-height:1.6;opacity:0.9;">${g}</div></div>`).join('')}</div>`;
   }
 
-  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><div class="dim-header"><span class="dim-header-icon">${dim.icon}</span><h1 class="dim-header-title">${dim.name}</h1></div><p class="section-desc">${dim.description}</p>${guidanceHtml}${filterHtml}<div class="list-head"><div class="label" style="margin-bottom:0">Entries</div>${renderSortControl()}</div><div class="item-list">${items}</div><div class="suggest-banner" onclick="goSuggest('${dim.id}')"><div class="suggest-banner-text"><div class="suggest-banner-title">Missing something in ${dim.name}?</div><div class="suggest-banner-sub">Suggest a new entry for this dimension — the form opens filed under ${dim.name}.</div></div><div class="suggest-banner-btn">Suggest an entry →</div></div></div>`;
+  return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to framework home</div><div class="dim-header"><span class="dim-header-icon">${dim.icon}</span><h1 class="dim-header-title">${dim.name}</h1></div><p class="section-desc">${dim.description}</p>${guidanceHtml}${filterHtml}<div class="list-head"><div class="label" style="margin-bottom:0">Entries</div>${renderSortControl()}</div><div class="item-list">${items}</div><div class="suggest-banner" onclick="goSuggest('${dim.id}')"><div class="suggest-banner-text"><div class="suggest-banner-title">Missing something in ${dim.name}?</div><div class="suggest-banner-sub">Suggest a new entry for this dimension — the form opens filed under ${dim.name}.</div></div><div class="suggest-banner-btn">Suggest an entry →</div></div></div>`;
 }
 
 // Renders approved comments stored on the entry (d.comments). Tolerant of missing
@@ -3265,7 +3291,7 @@ function entrySection(title,body,opts){
 function renderEntryDetail(){
   const dim=getDim(),item=getItem();
   if(!dim||!item||!item.available||!item.data){
-    return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to dimensions</div><p class="section-desc">Entry not found — it may have been renamed or removed. <span class="breadcrumb-link" onclick="goHome()">Return to the framework home →</span></p></div>`;
+    return `<div class="content animate-in"><div class="back-link" onclick="goHome()">← Back to framework home</div><p class="section-desc">Entry not found — it may have been renamed or removed. <span class="breadcrumb-link" onclick="goHome()">Return to the framework home →</span></p></div>`;
   }
   const d=item.data;
 
@@ -3384,8 +3410,22 @@ function toggleTheme(){
   const cur=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';
   applyTheme(cur==='light'?'dark':'light');
 }
+const GUIDE_SCROLL_KEY='guideHubScrollY';
+function rememberGuideScroll(){
+  if(state.view!=='guide')return;
+  try{sessionStorage.setItem(GUIDE_SCROLL_KEY,String(Math.max(0,window.scrollY||0)));}catch(e){}
+}
+function restoreGuideScroll(){
+  let y=0;
+  try{y=Math.max(0,parseInt(sessionStorage.getItem(GUIDE_SCROLL_KEY)||'0',10)||0);}catch(e){}
+  requestAnimationFrame(()=>{
+    document.documentElement.classList.remove('mobile-nav-hidden');
+    window.scrollTo({top:y,left:0,behavior:'auto'});
+    mobileNavLastY=y;
+  });
+}
 function goGuide(){window.location.hash='guide'}
-function goGuideManual(id){window.location.hash='guide/'+id;}
+function goGuideManual(id){rememberGuideScroll();window.location.hash='guide/'+id;}
 
 // ===== GUIDE SUB-PAGES (visual manuals) =====
 const GUIDE_MANUALS={
@@ -3394,13 +3434,15 @@ const GUIDE_MANUALS={
   'contributing':'Contributing',
   'maintenance':'Maintainer tools'
 };
-function manualTitle(id){return GUIDE_MANUALS[id]||'Manual';}
+function manualTitle(id){return GUIDE_MANUALS[id]||'Guide page';}
 
 // A "Learn more" card shown inline in the guide hub, next to the topic it explains.
 function manualCta(id,title,sub){
+  const maintainer=id==='maintenance';
+  const heading=maintainer?`<div class="manual-cta-kicker">For maintainers</div><div class="manual-cta-title">${title}</div>`:`<div class="manual-cta-title">Learn more &mdash; ${title}</div>`;
   return `<div class="manual-cta" onclick="goGuideManual('${id}')">
-    <div class="manual-cta-mark">?</div>
-    <div class="manual-cta-text"><div class="manual-cta-title">Learn more &mdash; ${title}</div><div class="manual-cta-sub">${sub}</div></div>
+    <div class="manual-cta-mark">${maintainer?'M':'?'}</div>
+    <div class="manual-cta-text">${heading}<div class="manual-cta-sub">${sub}</div></div>
     <div class="manual-cta-btn">Open &rarr;</div>
   </div>`;
 }
@@ -3729,7 +3771,14 @@ function parseHash(){
   }
 }
 
-window.addEventListener('hashchange',()=>{state.sharedPreview=null;parseHash();render();window.scrollTo({top:0,left:0,behavior:'auto'});});
+window.addEventListener('hashchange',()=>{
+  const previousView=state.view;
+  state.sharedPreview=null;
+  parseHash();
+  render();
+  if(state.view==='guide'&&previousView==='guideManual')restoreGuideScroll();
+  else window.scrollTo({top:0,left:0,behavior:'auto'});
+});
 
 // ===== INIT =====
 async function init(){
