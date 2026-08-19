@@ -795,6 +795,56 @@
   html.phone .breadcrumb{display:none}
   html.phone .entry-topbar{position:sticky;top:0;z-index:50;margin:0 -16px 16px;padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--border)}
   html.phone .entry-topbar .back-link{font-size:13px;font-weight:600;min-height:36px;display:inline-flex;align-items:center}
+
+
+  /* ===== MOBILE QUICK NAV TEST =====
+     Mobile only. When pinned, the normal header becomes a compact one-row bar.
+     The pin button lets the reader return to the original non-sticky header,
+     and that preference is remembered in this browser. */
+  .mobile-stick-toggle{display:none}
+  html.phone .mobile-stick-toggle{
+    display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;
+    background:var(--surface-light);border:1px solid var(--border);border-radius:8px;
+    color:var(--text-muted);font-size:16px;line-height:1;cursor:pointer;transition:all .2s;flex-shrink:0
+  }
+  html.phone .mobile-stick-toggle:hover{border-color:var(--accent);background:var(--accent-glow);color:var(--text)}
+  html.phone .mobile-stick-toggle.on{border-color:var(--accent);background:var(--accent-glow);color:var(--accent)}
+
+  html.phone.mobile-nav-sticky{--mobile-sticky-nav-height:52px}
+  html.phone.mobile-nav-sticky .header{
+    position:sticky;top:0;z-index:80;height:var(--mobile-sticky-nav-height);min-height:var(--mobile-sticky-nav-height);
+    padding:7px 10px;gap:8px;align-items:center;flex-direction:row;flex-wrap:nowrap;
+    box-shadow:0 3px 12px rgba(0,0,0,.16)
+  }
+  html.phone.mobile-nav-sticky .header-left{flex:1;min-width:0;gap:8px}
+  html.phone.mobile-nav-sticky .header-left>div:last-child{min-width:0}
+  html.phone.mobile-nav-sticky .logo{width:32px;height:32px;font-size:16px;flex-shrink:0}
+  html.phone.mobile-nav-sticky .header-title{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  html.phone.mobile-nav-sticky .header-sub{display:none}
+  html.phone.mobile-nav-sticky .header-actions{width:auto;margin-left:auto;justify-content:flex-end;flex-wrap:nowrap;gap:6px}
+  html.phone.mobile-nav-sticky .theme-toggle-btn,
+  html.phone.mobile-nav-sticky .mobile-stick-toggle{width:36px;height:36px}
+  html.phone.mobile-nav-sticky .project-header-btn{
+    width:48px;height:36px;padding:0 6px;justify-content:center;gap:3px;font-size:0;white-space:nowrap
+  }
+  html.phone.mobile-nav-sticky .project-header-btn::before{content:'📋';font-size:16px;line-height:1}
+  html.phone.mobile-nav-sticky .project-header-btn .project-count-pill{font-size:9px;padding:1px 5px;min-width:17px}
+
+  /* Entry pages already have a sticky Back / Add-to-list strip. Keep it directly
+     under the compact site bar rather than allowing the two sticky controls to overlap. */
+  html.phone.mobile-nav-sticky .entry-topbar{top:var(--mobile-sticky-nav-height)}
+
+  @media(max-width:360px){
+    html.phone.mobile-nav-sticky .header-title{font-size:12px}
+  }
+
+  /* Auto-hide test: scrolling down tucks the compact bar away; any deliberate
+     upward scroll brings it back. The entry strip moves into the vacated space. */
+  html.phone.mobile-nav-sticky .header{transition:transform .18s ease,box-shadow .18s ease}
+  html.phone.mobile-nav-sticky.mobile-nav-hidden .header{transform:translateY(calc(-1 * var(--mobile-sticky-nav-height)))}
+  html.phone.mobile-nav-sticky .entry-topbar{transition:top .18s ease}
+  html.phone.mobile-nav-sticky.mobile-nav-hidden .entry-topbar{top:0}
+
 </style>
 <script>
   /* Apply a saved manual theme first; otherwise follow the browser/OS preference. */
@@ -2545,6 +2595,60 @@ function renderSharedPreview(){
     +'<div class="item-list project-list-panel">'+cards+'</div></div>';
 }
 
+
+
+// ===== MOBILE QUICK NAV TEST =====
+// Absence of a preference means ON. Turning the pin off stores "off"; turning it
+// back on stores "on". This is intentionally separate from the theme preference.
+const MOBILE_STICKY_NAV_KEY='mobileStickyNavScrollReveal';
+function mobileStickyNavEnabled(){
+  try{return localStorage.getItem(MOBILE_STICKY_NAV_KEY)!=='off';}
+  catch(e){return true;}
+}
+function syncMobileStickyNav(){
+  const on=PHONE&&mobileStickyNavEnabled();
+  document.documentElement.classList.toggle('mobile-nav-sticky',on);
+  if(!on)document.documentElement.classList.remove('mobile-nav-hidden');
+}
+function toggleMobileStickyNav(){
+  const next=!mobileStickyNavEnabled();
+  try{localStorage.setItem(MOBILE_STICKY_NAV_KEY,next?'on':'off');}catch(e){}
+  document.documentElement.classList.remove('mobile-nav-hidden');
+  syncMobileStickyNav();
+  render();
+}
+function renderMobileStickyToggle(){
+  if(!PHONE)return'';
+  const on=mobileStickyNavEnabled();
+  const title=on?'Sticky navigation is on — tap to turn it off':'Sticky navigation is off — tap to keep quick navigation visible';
+  return `<button class="mobile-stick-toggle${on?' on':''}" onclick="toggleMobileStickyNav()" title="${title}" aria-label="${title}" aria-pressed="${on?'true':'false'}">📌</button>`;
+}
+
+
+let mobileNavLastY=window.scrollY||0;
+let mobileNavScrollTick=false;
+function updateAutoHideMobileNav(){
+  mobileNavScrollTick=false;
+  if(!PHONE||!mobileStickyNavEnabled()){
+    document.documentElement.classList.remove('mobile-nav-hidden');
+    mobileNavLastY=window.scrollY||0;
+    return;
+  }
+  const y=window.scrollY||0;
+  const delta=y-mobileNavLastY;
+  if(y<72){
+    document.documentElement.classList.remove('mobile-nav-hidden');
+  }else if(delta>7){
+    document.documentElement.classList.add('mobile-nav-hidden');
+  }else if(delta<-7){
+    document.documentElement.classList.remove('mobile-nav-hidden');
+  }
+  mobileNavLastY=y;
+}
+window.addEventListener('scroll',function(){
+  if(!mobileNavScrollTick){mobileNavScrollTick=true;requestAnimationFrame(updateAutoHideMobileNav);}
+},{passive:true});
+
 // ===== RENDER =====
 function renderFooter(){
   return `<div class="app-footer"><span class="app-footer-text">An open, GitHub-hosted framework \u2014 code under AGPL-3.0, content under CC BY-SA 4.0.</span><a class="app-footer-link" href="${LINKS.repo}" target="_blank" rel="noopener">View source on GitHub \u2197</a></div>`;
@@ -2553,6 +2657,7 @@ function render(){
   const app=document.getElementById('app');
   PHONE=isPhone();
   document.documentElement.classList.toggle('phone',PHONE);
+  syncMobileStickyNav();
   if(state.sharedPreview){app.innerHTML=renderHeader()+renderSharedPreview();return;}
   app.innerHTML=renderHeader()+(state.view==='guide'?renderBreadcrumb()+renderGuideView():state.view==='guideManual'?renderBreadcrumb()+renderGuideManualView():state.view==='evidence'?renderBreadcrumb()+renderEvidenceSupportView():state.view==='projectIndex'?renderBreadcrumb()+renderProjectIndexView():state.view==='projectList'?renderBreadcrumb()+renderProjectListView():state.view==='entry'?renderBreadcrumb()+renderEntryDetail():state.view==='dimension'?renderBreadcrumb()+renderDimensionView():state.view==='byDate'?renderBreadcrumb()+renderByDateView():state.view==='browse'?renderBreadcrumb()+renderBrowseView():renderHomeView())+renderFooter();
 }
@@ -2561,7 +2666,7 @@ function renderHeader(){
   const count=getWorkspace().lists.filter(l=>l.ids.length>0).length;
   const theme=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';
   const themeIcon=theme==='light'?'☀️':'🌙';
-  return `<div class="header"><div class="header-left" onclick="goHome()" style="cursor:pointer"><div class="logo">C</div><div><div class="header-title">Constructability Framework</div><div class="header-sub">Design Guidance</div></div></div><div class="header-actions"><button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch between light and dark theme" aria-label="Toggle colour theme"><span id="theme-toggle-icon">${themeIcon}</span></button><button class="project-header-btn" onclick="goProjectLists()">📋 Project review lists <span class="project-count-pill">${count}</span></button></div></div>`;
+  return `<div class="header"><div class="header-left" onclick="goHome()" style="cursor:pointer" title="Go to framework home"><div class="logo">C</div><div><div class="header-title">Constructability Framework</div><div class="header-sub">Design Guidance</div></div></div><div class="header-actions"><button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch between light and dark theme" aria-label="Toggle colour theme"><span id="theme-toggle-icon">${themeIcon}</span></button><button class="project-header-btn" onclick="goProjectLists()" title="Open project review lists" aria-label="Open project review lists">📋 Project review lists <span class="project-count-pill">${count}</span></button>${renderMobileStickyToggle()}</div></div>`;
 }
 
 function globalFacetValues(field){const s=new Set();allAvailableEntries().forEach(e=>{if(Array.isArray(e.data[field]))e.data[field].forEach(v=>s.add(v));});return s;}
