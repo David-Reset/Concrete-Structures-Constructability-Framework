@@ -189,8 +189,55 @@
   .btn.preview{border-color:var(--accent);color:var(--accent)}
   .btn.preview:hover{background:var(--accent-glow)}
 
-  .footer{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:50}
-  .footer .info{font-size:12px;color:var(--text-muted)}
+  .footer{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:50;min-width:0}
+  .footer-left{display:flex;align-items:center;gap:10px;min-width:0;flex:1;flex-wrap:wrap}
+  .footer-actions{display:flex;align-items:center;gap:8px;min-width:0;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;padding-bottom:1px}
+  .footer .info{font-size:12px;color:var(--text-muted);white-space:nowrap}
+  .history-actions{display:inline-flex;align-items:center;gap:6px;padding-left:2px}
+  .btn.history-btn{white-space:nowrap}
+  .btn.history-btn:not(:disabled){border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+  .btn.history-btn:not(:disabled):hover{background:var(--accent);color:#fff}
+  .btn.history-btn:disabled{opacity:.32}
+  .btn.history-open{white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+  .history-badge{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--accent);color:#fff;font-size:10px;font-weight:800;font-family:'JetBrains Mono',monospace}
+  .history-panel-list{display:flex;flex-direction:column;gap:7px;max-height:44vh;overflow:auto;margin-top:10px}
+  .history-row{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:var(--bg)}
+  .history-row.undone{opacity:.62}
+  .history-icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:800;background:var(--accent-glow);color:var(--accent);border:1px solid var(--accent)}
+  .history-row.undone .history-icon{background:var(--surface-light);color:var(--text-muted);border-color:var(--border)}
+  .history-main{flex:1;min-width:0}
+  .history-title{font-size:13px;font-weight:700;color:var(--text);line-height:1.35}
+  .history-meta{font-size:10.5px;color:var(--text-muted);margin-top:2px;font-family:'JetBrains Mono',monospace}
+  .history-state{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;padding:2px 7px;border-radius:12px;border:1px solid var(--border);white-space:nowrap}
+  .history-state.done{color:var(--green);border-color:rgba(34,197,94,.45);background:var(--green-bg)}
+  .history-state.undone{color:var(--text-muted)}
+  .history-summary{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 4px}
+  .history-chip{font-size:11px;padding:3px 9px;border-radius:20px;border:1px solid var(--border);color:var(--text-muted);background:var(--surface-light)}
+  .history-chip.good{color:var(--green);border-color:rgba(34,197,94,.45)}
+  .history-chip.warn{color:var(--orange);border-color:rgba(249,115,22,.45)}
+  .issue-list{display:flex;flex-direction:column;gap:7px;margin-top:10px;max-height:26vh;overflow:auto}
+  .issue-row{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg)}
+  .issue-row.err{border-color:rgba(239,68,68,.5);background:var(--red-bg)}
+  .issue-row.warn{border-color:rgba(249,115,22,.5);background:var(--orange-bg)}
+  .issue-dot{width:9px;height:9px;border-radius:50%;margin-top:5px;flex-shrink:0;background:var(--text-muted)}
+  .issue-row.err .issue-dot{background:var(--red)} .issue-row.warn .issue-dot{background:var(--orange)}
+  .issue-title{font-size:12.5px;font-weight:700;color:var(--text)}
+  .issue-detail{font-size:11.5px;color:var(--text-muted);line-height:1.45;margin-top:2px;white-space:pre-wrap}
+  .issue-toast{position:fixed;right:18px;bottom:82px;z-index:1200;max-width:min(470px,calc(100vw - 36px));padding:13px 14px;border:1px solid var(--red);border-radius:10px;background:var(--surface);box-shadow:0 12px 34px rgba(0,0,0,.35);display:none}
+  .issue-toast.show{display:block}
+  .issue-toast.warn{border-color:var(--orange)}
+  .issue-toast-h{display:flex;align-items:flex-start;gap:9px;font-size:13px;font-weight:800;color:var(--red)}
+  .issue-toast.warn .issue-toast-h{color:var(--orange)}
+  .issue-toast-d{font-size:11.5px;color:var(--text-muted);line-height:1.45;margin-top:5px}
+  .issue-toast-a{display:flex;gap:8px;justify-content:flex-end;margin-top:9px}
+  .action-error{margin:0 0 14px;padding:11px 13px;border:1px solid var(--red);border-left:4px solid var(--red);border-radius:8px;background:var(--red-bg);color:var(--text);font-size:12.5px;line-height:1.5}
+  .action-error strong{display:block;color:var(--red);margin-bottom:3px}
+  @media(max-width:900px){
+    body{padding-bottom:118px}
+    .footer{align-items:flex-start;flex-direction:column;padding:10px 12px;gap:8px}
+    .footer-left{width:100%}
+    .footer-actions{width:100%;padding-bottom:3px}
+  }
   .empty{font-size:13px;color:var(--text-muted);text-align:center;padding:40px 0;line-height:1.6}
   /* ---- data manager ---- */
   .list-top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
@@ -549,6 +596,47 @@
   .airv-nh{font-size:9.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--text-muted);margin-bottom:5px}
   .airv-note{font-size:12px;color:var(--text-muted);line-height:1.5;margin-bottom:4px}
   .airv-k{font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--accent);border:1px solid var(--accent);border-radius:4px;padding:0 4px;margin-right:6px;font-weight:700}
+
+  /* ---- AI quality review: scope gate + per-change track changes ---- */
+  .ai-track{border:1px solid var(--border);border-radius:10px;background:var(--surface);margin:0 0 14px;overflow:hidden}
+  .ai-track-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:12px 14px;background:var(--surface-light);border-bottom:1px solid var(--border)}
+  .ai-track-title{font-size:12px;font-weight:800;color:var(--text)}
+  .ai-track-sub{font-size:10.5px;color:var(--text-muted);line-height:1.45;margin-top:3px}
+  .ai-track-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+  .ai-change{padding:12px 14px;border-bottom:1px solid var(--border)}
+  .ai-change:last-child{border-bottom:0}
+  .ai-change-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+  .ai-change-label{font-size:11.5px;font-weight:800;color:var(--text)}
+  .ai-change-state{font-size:9px;text-transform:uppercase;letter-spacing:.7px;font-weight:800;border:1px solid var(--border);border-radius:12px;padding:2px 7px;color:var(--text-muted);white-space:nowrap}
+  .ai-change-state.accept{color:var(--green);border-color:rgba(34,197,94,.45);background:var(--green-bg)}
+  .ai-change-state.reject{color:var(--red);border-color:rgba(239,68,68,.38);background:var(--red-bg)}
+  .ai-change-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+  @media(max-width:760px){.ai-change-grid{grid-template-columns:1fr}}
+  .ai-before,.ai-after{border:1px solid var(--border);border-radius:8px;padding:9px 10px;min-width:0}
+  .ai-before{background:var(--red-bg);border-color:rgba(239,68,68,.25)}
+  .ai-after{background:var(--green-bg);border-color:rgba(34,197,94,.28)}
+  .ai-change-cap{font-size:8.5px;text-transform:uppercase;letter-spacing:.8px;font-weight:800;margin-bottom:5px}
+  .ai-before .ai-change-cap{color:var(--red)}
+  .ai-after .ai-change-cap{color:var(--green)}
+  .ai-before .ai-change-value{text-decoration:line-through;text-decoration-thickness:1px;text-decoration-color:var(--red)}
+  .ai-change-value{font-size:11.5px;color:var(--text);line-height:1.5;white-space:pre-wrap;word-break:break-word}
+  .ai-change-buttons{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+  .ai-accept-change{border-color:rgba(34,197,94,.55)!important;color:var(--green)!important;background:var(--green-bg)!important}
+  .ai-reject-change{border-color:rgba(239,68,68,.5)!important;color:var(--red)!important;background:var(--red-bg)!important}
+  .ai-scope{border:2px solid var(--border);border-radius:10px;padding:12px 14px;margin:0 0 14px}
+  .ai-scope.pass{border-color:rgba(34,197,94,.55);background:var(--green-bg)}
+  .ai-scope.hold{border-color:rgba(249,115,22,.55);background:var(--orange-bg)}
+  .ai-scope.reject{border-color:rgba(239,68,68,.6);background:var(--red-bg)}
+  .ai-scope.legacy{border-color:rgba(249,115,22,.45);background:var(--orange-bg)}
+  .ai-scope-h{font-size:12px;font-weight:900;display:flex;align-items:center;gap:7px}
+  .ai-scope.pass .ai-scope-h{color:var(--green)}
+  .ai-scope.hold .ai-scope-h,.ai-scope.legacy .ai-scope-h{color:var(--orange)}
+  .ai-scope.reject .ai-scope-h{color:var(--red)}
+  .ai-scope-p{font-size:11.5px;color:var(--text);line-height:1.5;margin-top:6px}
+  .ai-scope-meta{font-size:10px;color:var(--text-muted);line-height:1.45;margin-top:6px}
+  .ai-scope-override{display:flex;gap:7px;align-items:flex-start;margin-top:9px;font-size:10.5px;color:var(--text)}
+  .ai-scope-override input{width:auto;margin-top:2px}
+
 </style>
 <script>(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t='dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 </head>
@@ -561,7 +649,7 @@
   <div class="wrap">
     <div class="panel" id="loadPanel">
       <h2>1 · Load data.json</h2>
-      <p class="desc">Load the current <code>data.json</code> to browse and edit every entry. Everything is held in the browser; nothing is uploaded. When you're done you export an updated <code>data.json</code> with a summary of exactly what changed.</p>
+      <p class="desc">Load the current <code>data.json</code> to browse and edit every entry. Everything is held in the browser; nothing is uploaded. When you're done you export an updated <code>data.json</code> with a summary of exactly what changed. <strong>Every in-session data change can be undone</strong> with the Undo button below or <kbd>Ctrl/Cmd+Z</kbd>; Redo is <kbd>Ctrl/Cmd+Shift+Z</kbd> or <kbd>Ctrl+Y</kbd>. <strong>History</strong> shows what changed, what has been undone, and any unsafe or invalid action the tool blocked.</p>
       <div class="filerow">
         <div class="fileblock drop" data-drop="any"><div class="label">Current data.json</div><input id="dataFile" type="file" accept=".json,application/json"><div class="drop-hint">or drop a file here</div></div>
         <div class="fileblock drop" data-drop="clog"><div class="label">Current CHANGELOG.md <span class="hint" style="display:inline">(optional — new changes are added on top)</span></div><input id="clogFile" type="file" accept=".md,text/markdown"><div class="drop-hint">or drop a file here</div><div id="clogStatus" class="clog-status"></div><div id="clogErr" class="clog-status"></div></div>
@@ -573,13 +661,13 @@
     <div id="editView"></div>
   </div>
   <div class="footer">
-    <div style="display:flex;align-items:center;gap:12px;min-width:0"><div class="info" id="footerInfo">Load data.json to begin.</div><span id="dirtyBadge" class="dirty-badge" style="display:none"></span><span id="autosaveStatus" class="autosave-status" style="display:none"></span></div>
-    <div style="display:flex;gap:10px">
+    <div class="footer-left"><div class="info" id="footerInfo">Load data.json to begin.</div><span id="dirtyBadge" class="dirty-badge" style="display:none"></span><span id="autosaveStatus" class="autosave-status" style="display:none"></span><span class="history-actions"><button class="btn history-btn" id="undoBtn" type="button" disabled onclick="historyUndo()" title="Nothing to undo">↶ Undo</button><button class="btn history-btn" id="redoBtn" type="button" disabled onclick="historyRedo()" title="Nothing to redo">↷ Redo</button><button class="btn history-open" id="historyBtn" type="button" disabled onclick="openHistoryPanel()" title="View this session's change history and blocked actions">☰ History</button></span></div>
+    <div class="footer-actions">
       <button class="btn" id="addBtn" disabled onclick="openAdd()">+ Add entry</button>
       <button class="btn" id="healthBtn" disabled onclick="openHealthCheck()" title="Run a health check across every entry">🔍 Check</button>
       <button class="btn" id="tagsBtn" disabled onclick="openTagManager()" title="Add, rename or remove element &amp; lifecycle tags">🏷 Tags</button>
       <button class="btn" id="clogBtn" disabled onclick="openChangelogEditor()" title="View and edit the whole changelog by hand">✎ Changelog</button>
-      <button class="btn" id="aiBtn" disabled onclick="openAiReview()" title="Send entries to an AI to rate evidence and propose triage, then review and apply its suggestions">🤖 Evidence &amp; triage review</button>
+      <button class="btn" id="aiBtn" disabled onclick="openAiReview()" title="Send entries to an AI to review evidence support, triage and related-entry routing, then review and apply its suggestions">🤖 Framework review</button>
       <button class="btn" id="qrBtn" disabled onclick="openQualityReview()" title="Send entries to an AI to check how they're framed against the entry-quality rubric — it returns the improved entry for you to review">🤖 Entry quality review</button>
       <button class="btn primary" id="exportBtn" disabled onclick="openExport()">Export data.json</button>
     </div>
@@ -607,6 +695,7 @@ function parseCSV(text){
     if(c==='\n'){row.push(field);rows.push(row);row=[];field='';i++;continue;}
     field+=c;i++;
   }
+  if(inQ)throw new Error('Malformed CSV: an opening quote was never closed. Re-download the response CSV from Google Forms instead of repairing it by hand.');
   if(field.length||row.length){row.push(field);rows.push(row);}
   const nonEmpty=rows.filter(r=>r.length>1||(r.length===1&&r[0].trim()!==''));
   const headers=(nonEmpty.shift()||[]).map(h=>h.trim());
@@ -614,30 +703,147 @@ function parseCSV(text){
   return {headers,rows:data};
 }
 
-// Per-row accessor by header name; tolerant of duplicate headers (returns the
-// first non-empty match, else the first match).
+// Google Forms column titles are user-facing wording, so the importer must not
+// break just because punctuation, dash style, capitalisation or spacing changes.
+// Keep exact matching first, then fall back to a normalised header match.
+function normHeader(s){
+  return String(s||'')
+    .trim()
+    .toLowerCase()
+    .replace(/[–—−]/g,'-')
+    .replace(/\s*-\s*/g,'-')
+    .replace(/\s*\/\s*/g,'/')
+    .replace(/\s+/g,' ');
+}
+// Per-row accessor by header name; tolerant of duplicate headers and harmless
+// wording-format changes (e.g. em dash vs hyphen, stray spaces, case).
 function rowGetter(headers){
-  const idx={};
-  headers.forEach((h,i)=>{(idx[h]=idx[h]||[]).push(i);});
+  const exact={},norm={};
+  headers.forEach((h,i)=>{
+    (exact[h]=exact[h]||[]).push(i);
+    const nh=normHeader(h);
+    (norm[nh]=norm[nh]||[]).push(i);
+  });
   return (row,name)=>{
-    const list=idx[name];if(!list)return '';
+    const list=exact[name]||norm[normHeader(name)];
+    if(!list)return '';
     for(const i of list){if((row[i]||'').trim()!=='')return (row[i]||'').trim();}
     return (row[list[0]]||'').trim();
   };
 }
-
+function hasAnyHeader(headers,names){
+  const set=new Set((headers instanceof Set?[...headers]:(headers||[])).map(normHeader));
+  return names.some(n=>set.has(normHeader(n)));
+}
 function detectType(headers){
-  const h=new Set(headers);
-  if(h.has('Entry title')&&h.has('Best practice condition'))return 'submission';
-  if(h.has('Comment')&&h.has('How should your name appear with this comment if it is used?'))return 'comment';
-  if(h.has('What type of change?')&&h.has('What change do you suggest?'))return 'edit';
+  // Detect the form from its stable core questions, not from the exact wording
+  // of a threshold-band question. This makes the import resilient when the
+  // contributor form is improved later.
+  if(hasAnyHeader(headers,['Entry title'])&&
+     hasAnyHeader(headers,['Design question'])&&
+     hasAnyHeader(headers,['Design parameter'])&&
+     hasAnyHeader(headers,['Recommended actions']))return 'submission';
+  if(hasAnyHeader(headers,['Comment'])&&
+     hasAnyHeader(headers,['How should your name appear with this comment if it is used?']))return 'comment';
+  if(hasAnyHeader(headers,['What type of change?'])&&
+     hasAnyHeader(headers,['What change do you suggest?']))return 'edit';
   return null;
+}
+
+// New-entry form v2 deliberately separates the visible band heading (range/label)
+// from the explanatory guidance. Old "... condition" columns are still accepted so
+// historical form exports remain importable; they arrive with blank band labels and
+// are flagged as legacy rather than being rejected.
+const FORM_BAND_FIELDS={
+  'Best practice':{
+    // "range/guidance" is the wording used on the live Google Form. Internally
+    // this is the short band heading / range / state shown on the LEFT of the band.
+    label:[
+      'Best practice — range/guidance','Best practice - range/guidance','Best practice range/guidance',
+      'Best practice — range or label','Best practice - range or label','Best practice range or label',
+      'Best practice — label or range','Best practice label or range'
+    ],
+    // "description" is the longer explanatory text shown on the RIGHT of the band.
+    guidance:[
+      'Best practice - description','Best practice — description','Best practice description',
+      'Best practice — guidance','Best practice - guidance','Best practice guidance',
+      'Best practice condition'
+    ]
+  },
+  'Consider':{
+    label:[
+      'Consider — range/guidance','Consider - range/guidance','Consider range/guidance',
+      'Consider — range or label','Consider - range or label','Consider range or label',
+      'Consider — label or range','Consider label or range'
+    ],
+    guidance:[
+      'Consider - description','Consider — description','Consider description',
+      'Consider — guidance','Consider - guidance','Consider guidance',
+      'Consider condition'
+    ]
+  },
+  'Concern':{
+    label:[
+      'Concern — range/guidance','Concern - range/guidance','Concern range/guidance',
+      'Concern — range or label','Concern - range or label','Concern range or label',
+      'Concern — label or range','Concern label or range'
+    ],
+    guidance:[
+      'Concern - description','Concern — description','Concern description',
+      'Concern — guidance','Concern - guidance','Concern guidance',
+      'Concern condition'
+    ]
+  },
+  'Action required':{
+    label:[
+      'Action required — range/guidance','Action required - range/guidance','Action required range/guidance',
+      'Action required — range or label','Action required - range or label','Action required range or label',
+      'Action required — label or range','Action required label or range'
+    ],
+    guidance:[
+      'Action required - description','Action required — description','Action required description',
+      'Action required — guidance','Action required - guidance','Action required guidance',
+      'Action required condition'
+    ]
+  }
+};
+function getAny(get,row,names){for(const n of names){const v=get(row,n);if(v)return v;}return '';}
+function bandFormHeadersPresent(headers,kind){const f=FORM_BAND_FIELDS[kind];return {label:hasAnyHeader(headers,f.label),guidance:hasAnyHeader(headers,f.guidance)};}
+function submissionFormVersion(headers){
+  const allLabels=RATING_ORDER.every(r=>bandFormHeadersPresent(headers,r).label);
+  const allGuidance=RATING_ORDER.every(r=>bandFormHeadersPresent(headers,r).guidance);
+  return allLabels&&allGuidance?'v2':'legacy';
+}
+
+const CSV_REQUIRED_HEADERS={
+  submission:['Timestamp','Which framework dimension does this entry belong in?','Entry title','Design question','Design parameter','Recommended actions','Search terms','Background','Where does this entry apply?','Limits, exceptions or checks','Evidence notes or references','Location where the entry evidence comes from','What is this entry based on?'],
+  comment:['Timestamp','Entry link','Entry name','Comment','How should your name appear with this comment if it is used?','Display name','Your role','What is your comment about?','Region your comment relates to','Is this comment based on project experience?','Your email address'],
+  edit:['Timestamp','Entry link','Entry name','What type of change?','What is the issue with the current entry?','What change do you suggest?','Why is this change needed?','Does this change relate to a specific region?','What is the change based on?','Evidence notes or references','Your role','Your email address']
+};
+function csvSchemaProblems(headers,type){
+  const need=CSV_REQUIRED_HEADERS[type]||[],missing=need.filter(h=>!hasAnyHeader(headers,[h]));
+  if(type==='submission'){
+    const bp=bandFormHeadersPresent(headers,'Best practice');
+    if(!bp.label&&!bp.guidance)missing.push('Best practice band fields (range/guidance + description)');
+    else if(!bp.guidance)missing.push('Best practice description / guidance');
+  }
+  return missing;
+}
+function duplicateCsvTimestamps(headers,rows){const get=rowGetter(headers),seen=new Set(),dups=new Set();rows.forEach(row=>{const ts=(get(row,'Timestamp')||'').trim();if(!ts)return;if(seen.has(ts))dups.add(ts);else seen.add(ts);});return [...dups];}
+function csvRowIntegrityProblems(headers,rows){
+  const out=[],get=rowGetter(headers),expected=headers.length;
+  rows.forEach((row,i)=>{
+    if(row.length!==expected)out.push('response row '+(i+2)+' has '+row.length+' columns but the header has '+expected+' — this usually means the CSV was edited or damaged');
+    if(!(get(row,'Timestamp')||'').trim())out.push('response row '+(i+2)+' has no Timestamp — the response cannot be tracked safely');
+  });
+  return out;
 }
 
 function dimNameToId(name){
   if(state.db&&state.db.dimensions){const d=state.db.dimensions.find(x=>x.name===name);if(d)return d.id;}
   return ({'Construction Methods':'methods','Detailing':'detailing','Logistics':'logistics','Safety in Design':'safety','Design Communication':'communication'})[name]||'';
 }
+const RATING_ORDER=['Best practice','Consider','Concern','Action required'];
 const RATING_COLOR={'Best practice':'green','Consider':'yellow','Concern':'orange','Action required':'red'};
 
 function slugify(s){return (s||'').toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');}
@@ -675,11 +881,12 @@ function htmlToEdit(s){return (s||'').replace(/<br\s*\/?>/gi,'\n');}
 
 function mapSubmission(get,row){
   const dimName=get(row,'Which framework dimension does this entry belong in?');
-  const bands=[
-    ['Best practice condition','Best practice'],['Consider condition','Consider'],
-    ['Concern condition','Concern'],['Action required condition','Action required']
-  ].map(([col,rating])=>({rating,color:RATING_COLOR[rating],range:'',guidance:editToHtml(get(row,col))}))
-   .filter(b=>b.guidance);
+  const bands=RATING_ORDER.map(rating=>{
+    const f=FORM_BAND_FIELDS[rating];
+    const range=getAny(get,row,f.label);
+    const guidance=getAny(get,row,f.guidance);
+    return {rating,color:RATING_COLOR[rating],range:prettySym(range),guidance:editToHtml(guidance)};
+  }).filter(b=>b.range||b.guidance);
   const alts=splitParas(get(row,'Recommended actions')).map(d=>({title:'',description:editToHtml(d)}));
   return {
     name:get(row,'Entry title'),
@@ -780,14 +987,38 @@ function rebuildIndexes(){
 // every image path referenced anywhere in a db (trimmed, original case)
 function imagesInDb(db){const s=new Set();db.dimensions.forEach(d=>d.items.forEach(it=>{const dd=it.data||{};(dd.examples||[]).forEach(x=>x.image&&x.image.trim()&&s.add(x.image.trim()));(dd.supportingImages||[]).forEach(x=>x.image&&x.image.trim()&&s.add(x.image.trim()));if(dd.listImage&&dd.listImage.trim())s.add(dd.listImage.trim());}));return s;}
 
+function validateFrameworkDbShape(db){
+  const fatal=[],warnings=[];
+  if(!db||typeof db!=='object'||Array.isArray(db))return {fatal:['The JSON root must be an object.'],warnings};
+  if(!Array.isArray(db.dimensions)||!db.dimensions.length)return {fatal:['No valid dimensions array was found. This does not look like a framework data.json file.'],warnings};
+  const dimIds=new Set(),entryIds=new Set();
+  db.dimensions.forEach((dim,di)=>{
+    if(!dim||typeof dim!=='object'){fatal.push('Dimension '+(di+1)+' is not an object.');return;}
+    if(!dim.id||typeof dim.id!=='string')fatal.push('Dimension '+(di+1)+' has no id.');
+    else if(dimIds.has(dim.id))fatal.push('Duplicate dimension id: '+dim.id);else dimIds.add(dim.id);
+    if(!Array.isArray(dim.items)){fatal.push('Dimension '+(dim.name||dim.id||di+1)+' has no items array.');return;}
+    dim.items.forEach((it,ii)=>{
+      if(!it||typeof it!=='object'){fatal.push('Entry '+(ii+1)+' in '+(dim.name||dim.id||'dimension')+' is not an object.');return;}
+      if(!it.id||typeof it.id!=='string')fatal.push('An entry in '+(dim.name||dim.id||'dimension')+' has no stable id.');
+      else if(entryIds.has(it.id))fatal.push('Duplicate entry id: '+it.id);else entryIds.add(it.id);
+      if(!it.data||typeof it.data!=='object'||Array.isArray(it.data))fatal.push('Entry '+(it.id||it.name||ii+1)+' has no valid data object.');
+    });
+  });
+  if(!db.triageConfig)warnings.push('No triageConfig was found. Guided triage cannot be maintained until that is restored.');
+  if(!db.reviewRubrics)warnings.push('No embedded reviewRubrics were found. AI review requests will not carry the framework rubrics.');
+  return {fatal,warnings};
+}
+
 function loadDataFromText(text,name){
   try{
     if(state.db){
-      alert('A data.json is already loaded.\n\nTo load a different one, first unload the current data.json with the × next to its name above. Loading is kept deliberate so you never swap the file out from under the inbox and unsaved edits by accident.');
+      const msg='A data.json is already loaded. Unload the current file first so the dataset cannot be swapped underneath unsaved edits or the submission inbox.';
+      alert(msg);reportIssue('err','Second data.json blocked',msg,name);
       return false;
     }
     const db=JSON.parse(text);
-    if(!db.dimensions)throw new Error('No "dimensions" key found');
+    const shape=validateFrameworkDbShape(db);
+    if(shape.fatal.length)throw new Error(shape.fatal.join('\n'));
     if(!Array.isArray(db._processed))db._processed=[];
     if(!Array.isArray(db._rejected))db._rejected=[];
     db._rejected=db._rejected.map(x=>typeof x==='string'?{key:x,reason:'',at:''}:{key:(x&&x.key)||'',reason:(x&&x.reason)||'',at:(x&&x.at)||''}).filter(x=>x.key);
@@ -798,6 +1029,8 @@ function loadDataFromText(text,name){
     rebuildIndexes();
     state.editing=null;state.items=[];state.search='';
     state.inbox=[];state.rejectedView=[];state.csvLoaded=[];
+    historyReset();
+    shape.warnings.forEach(w=>reportIssue('warn','Loaded data.json with a warning',w,name));
     renderStatus([{cls:'ok',txt:name+' loaded',extra:db.dimensions.reduce((a,d)=>a+d.items.length,0)+' entries across '+db.dimensions.length+' dimensions',unload:'data'}]);
     document.getElementById('addBtn').disabled=false;
     document.getElementById('exportBtn').disabled=false;
@@ -807,17 +1040,19 @@ function loadDataFromText(text,name){
     {const ab=document.getElementById('aiBtn');if(ab)ab.disabled=false;const qb=document.getElementById('qrBtn');if(qb)qb.disabled=false;}
     showList();
     return true;
-  }catch(err){renderStatus([{cls:'err',txt:'Could not read '+name,extra:err.message}]);return false;}
+  }catch(err){renderStatus([{cls:'err',txt:'Could not read '+name,extra:err.message}]);reportIssue('err','data.json was not loaded',err.message,name);return false;}
 }
 function loadChangelogText(text,name){
+  historySetManualIntent('Load CHANGELOG.md','file:changelog');
   state.priorChangelog=text||'';state.priorChangelogName=name||'CHANGELOG.md';
   const cb=document.getElementById('clogBtn');if(cb)cb.disabled=false;
   const el=document.getElementById('clogStatus');
   if(el)el.innerHTML=`<span class="pill ok">ok</span> <strong>${esc(name)}</strong> — new changes will be added on top at export <button class="link-x" title="Unload changelog" onclick="unloadChangelog()">×</button>`;
+  if(state.db){historyObserve();updateDirty(true);scheduleAutosave();}
 }
-function unloadChangelog(){state.priorChangelog='';state.priorChangelogName='';const el=document.getElementById('clogStatus');if(el)el.innerHTML='';const inp=document.getElementById('clogFile');if(inp)inp.value='';}
+function unloadChangelog(){historySetManualIntent('Unload CHANGELOG.md','file:changelog');state.priorChangelog='';state.priorChangelogName='';const el=document.getElementById('clogStatus');if(el)el.innerHTML='';const inp=document.getElementById('clogFile');if(inp)inp.value='';if(state.db){historyObserve();updateDirty(true);scheduleAutosave();}}
 function resetAll(){
-  if(state.db && (state.inbox.length || !deepEqual(state.db,state.snapshot))){
+  if(state.db && (state.inbox.length || !deepEqual(state.db,state.snapshot) || (state.editing&&state.editTouched))){
     if(!confirm('Unload everything and start over?\n\nThis clears the loaded data.json, the submission inbox, and any edits you haven\'t exported.'))return;
   }
   clearAutosave();
@@ -834,6 +1069,7 @@ function resetAll(){
   document.getElementById('editView').innerHTML='';
   document.getElementById('status').innerHTML='';
   const inp=document.getElementById('dataFile');if(inp)inp.value='';
+  historyClear();issueState.items=[];
   updateFooter();
 }
 function handleFiles(fileList){
@@ -845,7 +1081,7 @@ function handleFiles(fileList){
   if(json){const r=new FileReader();r.onload=()=>{if(loadDataFromText(r.result,json.name)&&csvs.length)handleCSVFiles(csvs);};r.readAsText(json);return;}
   if(csvs.length){handleCSVFiles(csvs);return;}
   if(md)return;
-  renderStatus([{cls:'err',txt:'Need a .json file',extra:'drop the data.json (CSVs and CHANGELOG.md can be added afterwards)'}]);
+  renderStatus([{cls:'err',txt:'Need a .json file',extra:'drop the data.json (CSVs and CHANGELOG.md can be added afterwards)'}]);reportIssue('err','No framework data file found','Load the current data.json first. Form-response CSVs belong in the Submission inbox and CHANGELOG.md has its own box.','Load files');
 }
 
 /* =======================================================================
@@ -855,7 +1091,7 @@ function handleFiles(fileList){
    (or already in the inbox) are skipped.
    ======================================================================= */
 function handleCSVFiles(fileList){
-  if(!state.db){renderStatus([{cls:'err',txt:'Load data.json first',extra:'the inbox needs the current data to match comments/edits and skip already-handled rows'}]);return;}
+  if(!state.db){const msg='Load data.json first — the inbox needs the current framework data to match comments/edits and skip already-handled rows.';renderStatus([{cls:'err',txt:'Load data.json first',extra:'the inbox needs the current data to match comments/edits and skip already-handled rows'}]);reportIssue('err','CSV import blocked',msg,'Submission inbox');return;}
   const all=[...fileList].filter(f=>/\.csv$/i.test(f.name)||/csv/i.test(f.type||''));
   if(!all.length){setInboxStatus([{cls:'err',txt:'No CSV files found'}]);return;}
   const loadedNames=new Set(state.csvLoaded.map(f=>(f.name||'').toLowerCase()));
@@ -864,7 +1100,7 @@ function handleCSVFiles(fileList){
   const dupeLines=dupes.map(f=>({cls:'warn',txt:f.name.length>40?f.name.slice(0,40)+'…':f.name,extra:'already loaded — unload it first (× in Loaded CSVs) to re-import'}));
   if(!csvs.length){setInboxStatus(dupeLines.length?dupeLines:[{cls:'err',txt:'No new CSV files'}]);return;}
   let pending=csvs.length;const results=[];
-  csvs.forEach(f=>{const r=new FileReader();r.onload=()=>{try{results.push(ingestCSV(r.result,f.name));}catch(e){results.push({fname:f.name,type:null,added:0,skipped:0,rejected:0});}if(--pending===0)afterIngest(results,dupeLines);};r.readAsText(f);});
+  csvs.forEach(f=>{const r=new FileReader();r.onload=()=>{try{results.push(ingestCSV(r.result,f.name));}catch(e){results.push({fname:f.name,type:null,added:0,skipped:0,rejected:0,error:e.message||String(e)});}if(--pending===0)afterIngest(results,dupeLines);};r.onerror=()=>{results.push({fname:f.name,type:null,added:0,skipped:0,rejected:0,error:'The browser could not read this file.'});if(--pending===0)afterIngest(results,dupeLines);};r.readAsText(f);});
 }
 // dedup/identity key, scoped by form type so the same-second timestamp of a
 // comment and an edit can never collide in the shared _processed/_rejected lists
@@ -886,7 +1122,31 @@ const REASON_TA_STYLE='width:100%;background:var(--bg);color:var(--text);border:
 /* ---- drafts (entries not yet published) ---- */
 function draftList(){const out=[];(state.db?state.db.dimensions:[]).forEach(dim=>dim.items.forEach((it,idx)=>{if(it.available!==true)out.push({dim,it,idx});}));return out;}
 function draftCount(){return draftList().length;}
-function draftMissing(it){const d=it.data||{};const has=k=>{const v=d[k];return Array.isArray(v)?v.length>0:(v!=null&&String(v).trim()!=='');};return ['question','parameter','thresholds','applicability'].filter(k=>!has(k));}
+function draftMissing(it){
+  const d=(it&&it.data)||{},miss=[];
+  if(!it||!it.name||!String(it.name).trim())miss.push('name');
+  if(!it||!it.id||!String(it.id).trim())miss.push('stable id');
+  if(!d.question||!String(d.question).trim())miss.push('question');
+  if(!d.background||!String(d.background).trim())miss.push('background');
+  if(!d.parameter||!String(d.parameter).trim())miss.push('parameter');
+  if(!Array.isArray(d.thresholds)||!d.thresholds.length)miss.push('threshold bands');
+  else{
+    const ratings=d.thresholds.map(b=>String((b&&b.rating)||''));
+    if(d.thresholds.some(b=>!b||!String(b.range||'').trim()))miss.push('a range / label on every threshold band');
+    if(d.thresholds.some(b=>!b||!String(b.guidance||'').trim()))miss.push('guidance on every threshold band');
+    if(ratings.some(r=>!RATING_ORDER.includes(r)))miss.push('a valid rating on every threshold band');
+    if(new Set(ratings).size!==ratings.length)miss.push('unique threshold ratings (each rating can appear only once)');
+  }
+  const hasAction=Array.isArray(d.alternatives)&&d.alternatives.some(a=>typeof a==='string'?!!a.trim():!!(a&&(String(a.title||'').trim()||String(a.description||'').trim())));
+  if(!hasAction)miss.push('recommended actions');
+  if(!d.applicability||!d.applicability.appliesWhere||!String(d.applicability.appliesWhere).trim())miss.push('applies where');
+  if(!d.evidence||!String(d.evidence).trim())miss.push('evidence basis');
+  if(!d.evidenceSupport||!ES_LEVELS.includes(String(d.evidenceSupport.level||'').toLowerCase()))miss.push('evidence support rating');
+  else if(!String(d.evidenceSupport.summary||'').trim())miss.push('evidence support explanation');
+  const hasTriage=d.standing===true||(Array.isArray(d.triage)&&d.triage.length&&d.triage.every(s=>Array.isArray(s)&&s.length));
+  if(!hasTriage)miss.push('triage trigger / standing status');
+  return miss;
+}
 function buildDraft(type,get,row){
   let draft;
   if(type==='submission')draft=mapSubmission(get,row);
@@ -898,7 +1158,13 @@ function buildDraft(type,get,row){
 function ingestCSV(text,fname){
   const {headers,rows}=parseCSV(text);
   const type=detectType(headers);
-  if(!type)return {fname,type:null,added:0,skipped:0,rejected:0};
+  if(!type)return {fname,type:null,added:0,skipped:0,rejected:0,error:'This CSV does not match the New Entry, Comment, or Suggested Change Google Form. Import stopped.'};
+  const missing=csvSchemaProblems(headers,type);
+  if(missing.length)return {fname,type,added:0,skipped:0,rejected:0,error:'CSV schema does not match the current '+type+' form. Missing column'+(missing.length===1?'':'s')+': '+missing.join(' | ')};
+  const rowProblems=csvRowIntegrityProblems(headers,rows);
+  if(rowProblems.length)return {fname,type,added:0,skipped:0,rejected:0,error:'Import stopped because the CSV structure is unsafe. '+rowProblems.slice(0,4).join(' | ')+(rowProblems.length>4?' | …plus '+(rowProblems.length-4)+' more problem(s).':'')+' Re-download the CSV from Google Forms rather than repairing it by hand.'};
+  const duplicateTs=duplicateCsvTimestamps(headers,rows);
+  if(duplicateTs.length)return {fname,type,added:0,skipped:0,rejected:0,error:'Import stopped because '+duplicateTs.length+' duplicate Timestamp value'+(duplicateTs.length===1?' was':'s were')+' found. The Data Manager uses form type + timestamp to identify a response, so importing this file could lose or merge a submission. Re-download the CSV from Google Forms and check the source responses.'};
   const get=rowGetter(headers);
   const processed=new Set(state.db._processed||[]);   // accepted/merged before — never show again
   const rejected=new Set((state.db._rejected||[]).map(rkey));     // explicitly rejected before — goes to Rejected tab
@@ -925,8 +1191,11 @@ function ingestCSV(text,fname){
     seen.add(key);added++;
   });
   reindexInbox();
-  state.csvLoaded.push({name:fname,type,added,skipped,rejected:rej});
-  return {fname,type,added,skipped,rejected:rej};
+  const legacyBandWarning=(type==='submission'&&submissionFormVersion(headers)==='legacy')
+    ?'Legacy new-entry form: no band range/label columns were found. Guidance was imported, but each band label must be added before the entry can go live.'
+    :'';
+  state.csvLoaded.push({name:fname,type,added,skipped,rejected:rej,warning:legacyBandWarning});
+  return {fname,type,added,skipped,rejected:rej,warning:legacyBandWarning};
 }
 function unloadCSV(idx){
   const f=state.csvLoaded[idx];if(!f)return;
@@ -962,10 +1231,15 @@ function inboxCounts(){
   return c;
 }
 function afterIngest(results,dupeLines){
-  const lines=results.map(r=>r.type
-    ?{cls:r.added?'ok':'warn',txt:r.fname.length>40?r.fname.slice(0,40)+'…':r.fname,extra:`${r.type}: +${r.added} new`+(r.skipped?`, ${r.skipped} already handled`:'')+(r.rejected?`, ${r.rejected} previously rejected → Rejected tab`:'')}
-    :{cls:'err',txt:r.fname.length>40?r.fname.slice(0,40)+'…':r.fname,extra:'unrecognised columns — not one of the three forms'});
-  showInbox();setInboxStatus((dupeLines||[]).concat(lines));
+  historySetManualIntent('Import form-response CSVs','import:csv');
+  const lines=results.map(r=>r.error
+    ?{cls:'err',txt:r.fname.length>40?r.fname.slice(0,40)+'…':r.fname,extra:r.error}
+    :(r.type
+      ?{cls:r.warning?'warn':(r.added?'ok':'warn'),txt:r.fname.length>40?r.fname.slice(0,40)+'…':r.fname,extra:`${r.type}: +${r.added} new`+(r.skipped?`, ${r.skipped} already handled`:'')+(r.rejected?`, ${r.rejected} previously rejected → Rejected tab`:'')+(r.warning?` · ${r.warning}`:'')}
+      :{cls:'err',txt:r.fname.length>40?r.fname.slice(0,40)+'…':r.fname,extra:'unrecognised columns — not one of the three forms'}));
+  results.filter(r=>r.error).forEach(r=>reportIssue('err','CSV import blocked',r.error,r.fname));
+  (dupeLines||[]).forEach(l=>reportIssue('warn','File not imported',l.extra,l.txt));
+  showInbox();setInboxStatus((dupeLines||[]).concat(lines));updateFooter();
 }
 function setInboxStatus(lines){const el=document.getElementById('inboxStatus');if(el)el.innerHTML=lines.map(l=>`<div class="status-line"><span class="pill ${l.cls}">${l.cls==='ok'?'ok':l.cls==='warn'?'note':'error'}</span> <strong>${esc(l.txt)}</strong>${l.extra?' — '+esc(l.extra):''}</div>`).join('');}
 
@@ -978,7 +1252,7 @@ function shortHash(s){let h=5381;for(let i=0;i<s.length;i++)h=((h<<5)+h+s.charCo
 function fragExistingId(id){return !!(id&&findEntry(state.db,{id}));}
 
 function handleFragmentFiles(fileList){
-  if(!state.db){setInboxStatus([{cls:'err',txt:'Load data.json first',extra:'the inbox needs the current data to match updates/comments and assign ids'}]);return;}
+  if(!state.db){const msg='Load data.json first — JSON updates/comments must be matched against the current framework before they can enter the inbox.';setInboxStatus([{cls:'err',txt:'Load data.json first',extra:'the inbox needs the current data to match updates/comments and assign ids'}]);reportIssue('err','JSON import blocked',msg,'Submission inbox');return;}
   const all=[...fileList].filter(f=>/\.json$/i.test(f.name)||/json/i.test(f.type||''));
   if(!all.length){setInboxStatus([{cls:'err',txt:'No JSON files found'}]);return;}
   const loadedNames=new Set(state.csvLoaded.map(f=>(f.name||'').toLowerCase()));
@@ -990,10 +1264,14 @@ function handleFragmentFiles(fileList){
   fresh.forEach(f=>{const r=new FileReader();r.onload=()=>{results.push(ingestFragmentJSON(r.result,f.name));if(--pending===0)afterFragmentIngest(results,dupeLines);};r.readAsText(f);});
 }
 function afterFragmentIngest(results,dupeLines){
+  historySetManualIntent('Import JSON review/update','import:json-fragment');
+  results.filter(r=>r.error).forEach(r=>reportIssue('err','JSON import blocked',r.error,r.fname));
+  results.filter(r=>!r.error&&r.unresolved).forEach(r=>reportIssue('warn','JSON imported with unmatched targets',r.unresolved+' item(s) could not be matched to an existing entry id.',r.fname));
+  (dupeLines||[]).forEach(l=>reportIssue('warn','File not imported',l.extra,l.txt));
   const lines=results.map(r=>r.error
     ?{cls:'err',txt:r.fname.length>40?r.fname.slice(0,40)+'…':r.fname,extra:r.error}
     :{cls:(r.added||r.superseded)?'ok':'warn',txt:r.fname.length>40?r.fname.slice(0,40)+'…':r.fname,extra:`fragment: +${r.added} new`+(r.superseded?`, ${r.superseded} reviewed → folded back into the pending row`:'')+(r.skipped?`, ${r.skipped} already handled`:'')+(r.rejected?`, ${r.rejected} previously rejected → Rejected tab`:'')+(r.unresolved?` · ${r.unresolved} couldn't be matched — check the id`:'')});
-  showInbox();setInboxStatus((dupeLines||[]).concat(lines));
+  showInbox();setInboxStatus((dupeLines||[]).concat(lines));updateFooter();
 }
 function ingestFragmentJSON(text,fname){
   let parsed;
@@ -1033,61 +1311,250 @@ function supersedeInboxSubmission(built,fname){
   const item=built.target,e=built.entry||{};
   if(!item||!item.draft)return false;
   const d=item.draft;
-  if(!d._preAi)d._preAi={name:d.name||'',dimId:d.dimId||'',data:deepClone(d.data||{})};
+
+  // The AI reply is now a PROPOSAL, not a silent replacement.
+  // Freeze the current human version as the baseline for this review round.
+  d._preAi={name:d.name||'',dimId:d.dimId||'',data:deepClone(d.data||{})};
+
   const data=deepClone(e.data||{});ensureEntryShape(data);
-  // if the AI tucked its notes INSIDE data, lift them out — data is what gets saved
   Object.keys(data).forEach(k=>{if(k.charAt(0)==='_')delete data[k];});
-  // a review must never silently drop comments already on the draft
+
+  // Never let a quality review silently drop comments already attached to the draft.
   const incomingHadComments=e.data&&Object.prototype.hasOwnProperty.call(e.data,'comments');
   if(d.data&&Array.isArray(d.data.comments)&&d.data.comments.length&&!incomingHadComments)data.comments=deepClone(d.data.comments);
-  d.data=data;
-  if(e.name)d.name=e.name;
-  const newDim=built.dimId||e.dimId||'';
-  if(newDim)d.dimId=newDim;
+
+  d._aiProposal={
+    name:e.name||d.name||'',
+    dimId:(built.dimId||e.dimId||d.dimId||''),
+    data:data,
+    review:e._review||e.review||null
+  };
   d._review=e._review||e.review||null;
+  d._aiDecisions={};
+  d._scopeOverride=false;
   d._aiReviewed={at:isoToday(),src:fname||''};
+
+  // Leave the editable draft exactly as the human submitted it until each change is accepted.
   item.collapsed=false;
   item.decision=null;
   return true;
 }
-/* which fields the AI changed, vs the version you sent it */
-function aiDraftDiff(d){
-  const p=d&&d._preAi;if(!p)return null;
-  const out=[];
-  if((p.name||'')!==(d.name||''))out.push('name');
-  if((p.dimId||'')!==(d.dimId||''))out.push('dimension');
-  const a=p.data||{},b=d.data||{};
-  [...new Set([...Object.keys(a),...Object.keys(b)])]
-    .filter(k=>!k.startsWith('_')&&k!=='comments')
-    .forEach(k=>{if(!deepEqual(a[k],b[k]))out.push(k);});
+
+function aiAdmission(d){
+  const r=d&&d._review;
+  const a=r&&typeof r==='object'&&r.admission&&typeof r.admission==='object'?r.admission:null;
+  if(!a)return {status:'legacy',failedRule:'',designerLever:'',reason:'This AI reply did not include the framework scope/admission check. It may have been produced with an older rubric or request file.'};
+  const s=String(a.status||'').toLowerCase();
+  return {
+    status:['pass','hold','reject'].includes(s)?s:'legacy',
+    failedRule:String(a.failedRule||a.rule||''),
+    designerLever:String(a.designerLever||a.designLever||''),
+    reason:String(a.reason||a.summary||'')
+  };
+}
+function aiPathGet(obj,path){
+  const ps=String(path||'').split('.');let cur=obj;
+  for(const p of ps){if(cur==null)return undefined;const k=/^\d+$/.test(p)?Number(p):p;cur=cur[k];}
+  return cur;
+}
+function aiPathSet(obj,path,val){
+  const ps=String(path||'').split('.');let cur=obj;
+  for(let i=0;i<ps.length-1;i++){
+    const p=/^\d+$/.test(ps[i])?Number(ps[i]):ps[i];
+    if(cur[p]==null)cur[p]=/^\d+$/.test(ps[i+1])?[]:{};
+    cur=cur[p];
+  }
+  const last=/^\d+$/.test(ps[ps.length-1])?Number(ps[ps.length-1]):ps[ps.length-1];
+  if(val===undefined && !Array.isArray(cur))delete cur[last]; else cur[last]=deepClone(val);
+}
+function aiReadable(v,key){
+  if(v===undefined||v===null||v==='')return '—';
+  if(typeof v==='string')return v;
+  if(typeof v==='boolean')return v?'Yes':'No';
+  if(key==='data.keywords'&&Array.isArray(v))return v.join(', ')||'—';
+  if(key==='data.thresholds'&&Array.isArray(v)){
+    return v.map((b,i)=>((b&&b.rating)||('Band '+(i+1)))+' — '+((b&&b.range)||'—')+'\n'+((b&&b.guidance)||'—')).join('\n\n')||'—';
+  }
+  if(key==='data.alternatives'&&Array.isArray(v)){
+    return v.map((a,i)=>{
+      if(typeof a==='string')return (i+1)+'. '+a;
+      const title=a&&a.title?String(a.title).trim():'';
+      const desc=a&&('description' in a)?a.description:(a&&a.text)||'';
+      return (i+1)+'. '+(title?title+': ':'')+String(desc||'');
+    }).join('\n\n')||'—';
+  }
+  if(key==='data.applicability'&&v&&typeof v==='object'){
+    const bits=[];
+    if(v.appliesWhere)bits.push('Applies where: '+v.appliesWhere);
+    if(Array.isArray(v.checks)&&v.checks.length)bits.push('Checks:\n- '+v.checks.join('\n- '));
+    if(v.note)bits.push('Note: '+v.note);
+    return bits.join('\n\n')||'—';
+  }
+  try{return JSON.stringify(v,null,2);}catch(e){return String(v);}
+}
+const AI_TRACK_LABELS={
+  name:'Entry name',dimId:'Dimension',
+  'data.question':'Design question','data.parameter':'Design parameter','data.background':'Background',
+  'data.thresholds':'Guidance bands','data.alternatives':'Recommended actions',
+  'data.applicability':'Applicability & limitations','data.keywords':'Search keywords',
+  'data.location':'Region / location','data.evidence':'Evidence basis','data.evidenceSupport':'Evidence support',
+  'data.elementType':'Element tags','data.constructionPhase':'Construction phase tags',
+  'data.examples':'Example images','data.supportingImages':'Supporting images',
+  'data.relatedEntries':'Related entries','data.listImage':'Lead image','data.listImageCaption':'Lead image caption',
+  'data.triage':'Triage trigger','data.triageExclude':'Triage suppressor','data.standing':'Standing status',
+  'data.decisionPath':'Decision path','data.workedExample':'Worked example','data.confirmations':'Confirmations'
+};
+function aiChangePush(out,key,label,oldv,newv){
+  if(!deepEqual(oldv,newv))out.push({key:key,label:label||AI_TRACK_LABELS[key]||key,old:deepClone(oldv),neu:deepClone(newv)});
+}
+function aiQualityChanges(d){
+  if(!d||!d._preAi||!d._aiProposal)return [];
+  const a=d._preAi,p=d._aiProposal,out=[];
+  aiChangePush(out,'name','Entry name',a.name||'',p.name||'');
+  aiChangePush(out,'dimId','Dimension',a.dimId||'',p.dimId||'');
+  const ak=a.data||{},pk=p.data||{};
+
+  // Track the fields people most need to judge individually.
+  ['question','parameter','background'].forEach(k=>aiChangePush(out,'data.'+k,AI_TRACK_LABELS['data.'+k],ak[k],pk[k]));
+
+  // Guidance bands: if the band structure is the same, show each change separately.
+  const at=Array.isArray(ak.thresholds)?ak.thresholds:[],pt=Array.isArray(pk.thresholds)?pk.thresholds:[];
+  const sameBandShape=at.length===pt.length&&at.every((b,i)=>String((b||{}).rating||'')===String((pt[i]||{}).rating||''));
+  if(sameBandShape){
+    at.forEach((b,i)=>{
+      const pb=pt[i]||{},rating=(b&&b.rating)||('Band '+(i+1));
+      aiChangePush(out,'data.thresholds.'+i+'.range',rating+' — range / label',(b||{}).range,pb.range);
+      aiChangePush(out,'data.thresholds.'+i+'.guidance',rating+' — guidance',(b||{}).guidance,pb.guidance);
+      aiChangePush(out,'data.thresholds.'+i+'.rating',rating+' — rating',(b||{}).rating,pb.rating);
+    });
+  }else aiChangePush(out,'data.thresholds','Guidance bands',at,pt);
+
+  // Recommended actions: title/description separately when action count is unchanged.
+  const aa=Array.isArray(ak.alternatives)?ak.alternatives:[],pa=Array.isArray(pk.alternatives)?pk.alternatives:[];
+  if(aa.length===pa.length){
+    aa.forEach((x,i)=>{
+      const ox=typeof x==='string'?{title:'',description:x}:(x||{});
+      const nx=typeof pa[i]==='string'?{title:'',description:pa[i]}:(pa[i]||{});
+      aiChangePush(out,'data.alternatives.'+i+'.title','Action '+(i+1)+' — title',ox.title||'',nx.title||'');
+      aiChangePush(out,'data.alternatives.'+i+'.description','Action '+(i+1)+' — description',ox.description||ox.text||'',nx.description||nx.text||'');
+    });
+  }else aiChangePush(out,'data.alternatives','Recommended actions',aa,pa);
+
+  // Applicability fields separately.
+  const ap=ak.applicability||{},pp=pk.applicability||{};
+  ['appliesWhere','checks','note'].forEach(k=>aiChangePush(out,'data.applicability.'+k,
+    k==='appliesWhere'?'Applicability — applies where':k==='checks'?'Applicability — checks':'Applicability — limitations / note',
+    ap[k],pp[k]));
+
+  aiChangePush(out,'data.keywords','Search keywords',ak.keywords,pk.keywords);
+
+  // Anything else changed unexpectedly is surfaced too rather than hidden.
+  const handled=new Set(['question','parameter','background','thresholds','alternatives','applicability','keywords','comments']);
+  [...new Set([...Object.keys(ak),...Object.keys(pk)])].filter(k=>!k.startsWith('_')&&!handled.has(k)).forEach(k=>{
+    aiChangePush(out,'data.'+k,AI_TRACK_LABELS['data.'+k]||k.replace(/([A-Z])/g,' $1'),ak[k],pk[k]);
+  });
   return out;
+}
+function aiDraftDiff(d){return aiQualityChanges(d).map(x=>x.key);}
+
+function aiQualitySet(d,key,v){
+  if(key==='name'){d.name=v||'';return;}
+  if(key==='dimId'){d.dimId=v||'';return;}
+  aiPathSet(d,key,v);
+  ensureEntryShape(d.data);
+}
+function aiQualityDecide(i,key,decision){
+  const it=state.items[i],d=it&&it.draft;if(!d||!d._preAi||!d._aiProposal)return;
+  const ch=aiQualityChanges(d).find(x=>x.key===key);if(!ch)return;
+  historySetManualIntent((decision==='accept'?'Accept AI change: ':'Reject AI change: ')+ch.label,'ai-quality:'+key);
+  d._aiDecisions=d._aiDecisions||{};
+  d._aiDecisions[key]=decision;
+  aiQualitySet(d,key,decision==='accept'?ch.neu:ch.old);
+  recard(i);updateFooter();
+}
+function aiQualityDecideAll(i,decision){
+  const it=state.items[i],d=it&&it.draft;if(!d||!d._preAi||!d._aiProposal)return;
+  const changes=aiQualityChanges(d);
+  historySetManualIntent((decision==='accept'?'Accept all AI changes':'Reject all AI changes'),'ai-quality:all');
+  d._aiDecisions=d._aiDecisions||{};
+  changes.forEach(ch=>{d._aiDecisions[ch.key]=decision;aiQualitySet(d,ch.key,decision==='accept'?ch.neu:ch.old);});
+  recard(i);updateFooter();
+}
+function aiScopeOverride(i,v){
+  const it=state.items[i],d=it&&it.draft;if(!d)return;
+  historySetManualIntent(v?'Override AI scope warning':'Remove AI scope override','ai-scope-override');
+  d._scopeOverride=!!v;recard(i);updateFooter();
+}
+function aiRejectFromScope(i){
+  const it=state.items[i],d=it&&it.draft;if(!it||!d)return;
+  const a=aiAdmission(d);
+  historySetManualIntent('Reject submission from AI scope review','ai-scope-reject');
+  if(!it.rejectReason)it.rejectReason='Out of framework scope: '+(a.reason||a.failedRule||'AI admission check failed');
+  decide(i,'reject');
+}
+function aiScopeHtml(it){
+  const d=it&&it.draft;if(!d||!d._aiReviewed)return '';
+  const a=aiAdmission(d);
+  if(a.status==='pass'){
+    return '<div class="ai-scope pass"><div class="ai-scope-h">✓ Framework scope gate passed</div>'+
+      '<div class="ai-scope-p">'+esc(a.reason||'The submission is within the framework scope.')+'</div>'+
+      (a.designerLever?'<div class="ai-scope-meta"><strong>Designer lever:</strong> '+esc(a.designerLever)+'</div>':'')+
+    '</div>';
+  }
+  if(a.status==='reject'||a.status==='hold'){
+    const reject=a.status==='reject';
+    return '<div class="ai-scope '+a.status+'"><div class="ai-scope-h">'+(reject?'✕ OUT OF SCOPE — AI recommends rejection':'⚠ HOLD — admission gate not yet satisfied')+'</div>'+
+      '<div class="ai-scope-p">'+esc(a.reason||'The submission did not pass the framework admission gate.')+'</div>'+
+      (a.failedRule?'<div class="ai-scope-meta"><strong>Failed rule:</strong> '+esc(a.failedRule)+'</div>':'')+
+      (a.designerLever?'<div class="ai-scope-meta"><strong>Designer lever identified:</strong> '+esc(a.designerLever)+'</div>':'')+
+      '<div class="ai-change-buttons">'+(reject?'<button class="btn small reject" onclick="aiRejectFromScope('+it.id+')">Reject submission</button>':'')+'</div>'+
+      '<label class="ai-scope-override"><input type="checkbox" '+(d._scopeOverride?'checked':'')+' onchange="aiScopeOverride('+it.id+',this.checked)"> <span>I have reviewed this warning and intentionally want to override it. This is required before this submission can be accepted.</span></label>'+
+    '</div>';
+  }
+  return '<div class="ai-scope legacy"><div class="ai-scope-h">⚠ Scope gate missing from this AI reply</div>'+
+    '<div class="ai-scope-p">'+esc(a.reason)+'</div>'+
+    '<div class="ai-scope-meta">Run a fresh Entry Quality review using the updated rubric/request before relying on this review.</div></div>';
+}
+function aiTrackPanel(it){
+  const d=it&&it.draft;if(!d||!d._aiReviewed||!d._preAi||!d._aiProposal)return '';
+  const changes=aiQualityChanges(d),decisions=d._aiDecisions||{};
+  if(!changes.length)return '<div class="ai-track"><div class="ai-track-head"><div><div class="ai-track-title">AI track changes</div><div class="ai-track-sub">The AI returned the entry unchanged.</div></div></div></div>';
+  const rows=changes.map(ch=>{
+    const dec=decisions[ch.key]||'';
+    return '<div class="ai-change">'+
+      '<div class="ai-change-top"><div class="ai-change-label">'+esc(ch.label)+'</div><span class="ai-change-state '+escAttr(dec)+'">'+(dec==='accept'?'accepted':dec==='reject'?'rejected':'undecided')+'</span></div>'+
+      '<div class="ai-change-grid">'+
+        '<div class="ai-before"><div class="ai-change-cap">Before</div><div class="ai-change-value">'+esc(aiReadable(ch.old,ch.key))+'</div></div>'+
+        '<div class="ai-after"><div class="ai-change-cap">AI suggestion</div><div class="ai-change-value">'+esc(aiReadable(ch.neu,ch.key))+'</div></div>'+
+      '</div>'+
+      '<div class="ai-change-buttons"><button class="btn small ai-accept-change" onclick="aiQualityDecide('+it.id+',\''+jsq(ch.key)+'\',\'accept\')">✓ Accept this change</button>'+
+      '<button class="btn small ai-reject-change" onclick="aiQualityDecide('+it.id+',\''+jsq(ch.key)+'\',\'reject\')">✕ Reject this change</button></div>'+
+    '</div>';
+  }).join('');
+  const nA=changes.filter(x=>decisions[x.key]==='accept').length,nR=changes.filter(x=>decisions[x.key]==='reject').length;
+  return '<div class="ai-track"><div class="ai-track-head"><div><div class="ai-track-title">AI track changes — review each suggestion</div>'+
+    '<div class="ai-track-sub">'+changes.length+' proposed change'+(changes.length===1?'':'s')+' · '+nA+' accepted · '+nR+' rejected. The editable entry below changes only when you explicitly accept a suggestion.</div></div>'+
+    '<div class="ai-track-actions"><button class="btn small ai-accept-change" onclick="aiQualityDecideAll('+it.id+',\'accept\')">✓ Accept all</button><button class="btn small ai-reject-change" onclick="aiQualityDecideAll('+it.id+',\'reject\')">✕ Reject all</button></div></div>'+rows+'</div>';
 }
 function aiReviewNotesHtml(rev){
   if(!rev)return '';
+  const clean=(rev&&typeof rev==='object')?Object.fromEntries(Object.entries(rev).filter(([k])=>k!=='admission')):rev;
   const line=t=>'<div class="airv-note">'+esc(String(t))+'</div>';
-  if(typeof rev==='string')return line(rev);
-  if(Array.isArray(rev))return rev.map(n=>typeof n==='string'?line(n):line((n&&(n.note||n.text))||JSON.stringify(n))).join('');
-  if(typeof rev==='object')return Object.keys(rev).map(k=>{
-    const v=rev[k];
+  if(typeof clean==='string')return line(clean);
+  if(Array.isArray(clean))return clean.map(n=>typeof n==='string'?line(n):line((n&&(n.note||n.text))||JSON.stringify(n))).join('');
+  if(clean&&typeof clean==='object')return Object.keys(clean).map(k=>{
+    const v=clean[k];
     return '<div class="airv-note"><span class="airv-k">'+esc(k)+'</span> '+esc(typeof v==='string'?v:JSON.stringify(v))+'</div>';
   }).join('');
   return '';
 }
 function aiReviewBanner(it){
-  const d=it&&it.draft;
-  if(!d||!d._aiReviewed)return '';
-  const diff=aiDraftDiff(d)||[];
-  const moved=diff.indexOf('dimension')>=0;
-  const changed=diff.length
-    ? 'Changed: <strong>'+diff.map(esc).join(', ')+'</strong>.'
-    : 'It returned the entry unchanged.';
-  const notes=aiReviewNotesHtml(d._review);
-  return '<div class="airv">'+
-    '<div class="airv-h">\ud83e\udd16 AI quality review applied <span class="airv-meta">'+esc(d._aiReviewed.at||'')+'</span></div>'+
-    '<div class="airv-sub">'+changed+' Everything below is editable \u2014 nothing is saved until you accept and then export.</div>'+
-    (moved?'<div class="airv-dim">\u26a0 The AI moved this entry to a different <strong>dimension</strong> \u2014 check that before accepting.</div>':'')+
-    (notes?'<div class="airv-notes"><div class="airv-nh">What it changed, and why</div>'+notes+'</div>':'')+
-  '</div>';
+  const d=it&&it.draft;if(!d||!d._aiReviewed)return '';
+  const changes=aiQualityChanges(d),notes=aiReviewNotesHtml(d._review);
+  return '<div class="airv"><div class="airv-h">🤖 AI quality review received <span class="airv-meta">'+esc(d._aiReviewed.at||'')+'</span></div>'+
+    '<div class="airv-sub">'+(changes.length?'<strong>'+changes.length+'</strong> change'+(changes.length===1?'':'s')+' proposed.':'No wording changes proposed.')+' Nothing has been silently applied. Review the scope gate and each change below.</div>'+
+    (notes?'<div class="airv-notes"><div class="airv-nh">AI review notes</div>'+notes+'</div>':'')+
+  '</div>'+aiScopeHtml(it)+aiTrackPanel(it);
 }
 
 /* flatten whatever JSON shape was dropped into change descriptors */
@@ -1197,7 +1664,7 @@ function fragUpdateDiff(ref,incoming){
 /* ---- apply inbox decisions into the dataset ---- */
 function applyInbox(){
   const c=inboxCounts();
-  if(c.accept===0&&c.reject===0){alert('Nothing to apply yet. Accept or reject items in the inbox first.\n\nItems you leave undecided stay in the inbox and reappear next time you load the same CSV.');return;}
+  if(c.accept===0&&c.reject===0){const msg='Nothing to apply yet. Accept or reject at least one inbox item first; undecided items stay in the inbox.';alert(msg);reportIssue('warn','Apply decisions stopped',msg,'Submission inbox');return;}
   const msg=`Apply these decisions?\n\n• ${c.accept} accepted → added to the dataset as DRAFTS (hidden) so you can check and publish them later.\n• ${c.reject} rejected → set aside. The data file remembers them by timestamp (plus any reason you noted); they won't reappear in the inbox, but you can re-review them from the Rejected tab whenever you reload the CSV.\n• Anything still undecided stays in the inbox and reappears next time.\n\nThis updates the in-memory data only — nothing is saved until you export.`;
   if(!confirm(msg))return;
   const report=[],keep=[];
@@ -1273,6 +1740,7 @@ function boxError(spec,files){
   const exts=[...new Set([...files].map(f=>fileExt(f.name)||'?'))];
   const got=exts.map(e=>e==='?'?'an unrecognised file':'a .'+e).join(' / ');
   const el=document.getElementById(spec.errId);
+  reportIssue('err','Wrong file type','This box only takes '+spec.noun+'; you dropped '+got+'. '+spec.hint,'File import');
   if(!el)return;
   el.innerHTML=`<div class="status-line"><span class="pill err">wrong box</span> <strong>This box only takes ${esc(spec.noun)} \u2014 you dropped ${esc(got)}.</strong> ${esc(spec.hint)} <button class="link-x" title="Dismiss" onclick="this.closest('.status-line').remove()">\u00d7</button></div>`;
   if(_errTimers[spec.errId])clearTimeout(_errTimers[spec.errId]);
@@ -1459,8 +1927,8 @@ function tagKey(kind){return kind==='element'?'elementType':'constructionPhase';
 function tagUsage(kind,tag){const key=tagKey(kind);let n=0;state.db.dimensions.forEach(dim=>dim.items.forEach(it=>{const a=(it.data||{})[key]||[];if(a.indexOf(tag)>=0)n++;}));return n;}
 function tagRepoint(kind,oldT,newT){const key=tagKey(kind);state.db.dimensions.forEach(dim=>dim.items.forEach(it=>{const a=(it.data||{})[key];if(Array.isArray(a)){let ch=false;for(let i=0;i<a.length;i++)if(a[i]===oldT){a[i]=newT;ch=true;}if(ch)it.data[key]=a.filter((v,idx)=>a.indexOf(v)===idx);}}));}
 function tagStrip(kind,tag){const key=tagKey(kind);state.db.dimensions.forEach(dim=>dim.items.forEach(it=>{const a=(it.data||{})[key];if(Array.isArray(a)){const f=a.filter(v=>v!==tag);if(f.length)it.data[key]=f;else delete it.data[key];}}));}
-function tagAdd(kind){let v=window.prompt('New '+(kind==='element'?'element':'lifecycle stage')+' tag:');if(v==null)return;v=v.trim();if(!v)return;const arr=vocabArr(kind);if(arr.indexOf(v)>=0){alert('That tag already exists.');return;}arr.push(v);if(typeof updateDirty==='function')updateDirty();renderTagManager();}
-function tagRename(kind,oldT){let v=window.prompt('Rename tag \u201c'+oldT+'\u201d to:',oldT);if(v==null)return;v=v.trim();if(!v||v===oldT){renderTagManager();return;}const arr=vocabArr(kind);if(arr.indexOf(v)>=0){alert('A tag named \u201c'+v+'\u201d already exists.');return;}const n=tagUsage(kind,oldT);if(n>0&&!confirm('\u201c'+oldT+'\u201d is used by '+n+' entr'+(n===1?'y':'ies')+'.\n\nRename to \u201c'+v+'\u201d and update them all?')){renderTagManager();return;}tagRepoint(kind,oldT,v);const i=arr.indexOf(oldT);if(i>=0)arr[i]=v;if(typeof updateDirty==='function')updateDirty();renderTagManager();}
+function tagAdd(kind){let v=window.prompt('New '+(kind==='element'?'element':'lifecycle stage')+' tag:');if(v==null)return;v=v.trim();if(!v)return;const arr=vocabArr(kind);if(arr.indexOf(v)>=0){const msg='That tag already exists.';alert(msg);reportIssue('err','Duplicate tag blocked',msg,'Manage tags');return;}arr.push(v);if(typeof updateDirty==='function')updateDirty();renderTagManager();}
+function tagRename(kind,oldT){let v=window.prompt('Rename tag \u201c'+oldT+'\u201d to:',oldT);if(v==null)return;v=v.trim();if(!v||v===oldT){renderTagManager();return;}const arr=vocabArr(kind);if(arr.indexOf(v)>=0){const msg='A tag named “'+v+'” already exists.';alert(msg);reportIssue('err','Duplicate tag rename blocked',msg,'Manage tags');return;}const n=tagUsage(kind,oldT);if(n>0&&!confirm('\u201c'+oldT+'\u201d is used by '+n+' entr'+(n===1?'y':'ies')+'.\n\nRename to \u201c'+v+'\u201d and update them all?')){renderTagManager();return;}tagRepoint(kind,oldT,v);const i=arr.indexOf(oldT);if(i>=0)arr[i]=v;if(typeof updateDirty==='function')updateDirty();renderTagManager();}
 function tagRemove(kind,tag){const n=tagUsage(kind,tag);let msg='Remove the tag \u201c'+tag+'\u201d?';if(n>0)msg+='\n\nIt is used by '+n+' entr'+(n===1?'y':'ies')+' \u2014 it will be removed from them too.';if(!confirm(msg))return;if(n>0)tagStrip(kind,tag);const arr=vocabArr(kind);const i=arr.indexOf(tag);if(i>=0)arr.splice(i,1);if(typeof updateDirty==='function')updateDirty();renderTagManager();}
 function tagSection(kind,title){
   const arr=vocabArr(kind);
@@ -1476,7 +1944,7 @@ function tagManagerHtml(){
     tagSection('phase','Lifecycle stage tags')+
     '<div class="modal-actions"><button class="btn" onclick="closeTagManager()">Done</button></div>';
 }
-function openTagManager(){if(!state.db){alert('Load data.json first.');return;}const ov=document.createElement('div');ov.className='overlay';ov.id='tagModal';ov.innerHTML='<div class="modal">'+tagManagerHtml()+'</div>';ov.addEventListener('click',e=>{if(e.target===ov)closeTagManager();});document.body.appendChild(ov);}
+function openTagManager(){if(!state.db){const msg='Load data.json before managing tags.';alert(msg);reportIssue('err','Tag manager blocked',msg,'Manage tags');return;}const ov=document.createElement('div');ov.className='overlay';ov.id='tagModal';ov.innerHTML='<div class="modal">'+tagManagerHtml()+'</div>';ov.addEventListener('click',e=>{if(e.target===ov)closeTagManager();});document.body.appendChild(ov);}
 function closeTagManager(){const m=document.getElementById('tagModal');if(m)m.remove();}
 function renderTagManager(){const m=document.getElementById('tagModal');if(m){const inner=m.querySelector('.modal');if(inner)inner.innerHTML=tagManagerHtml();}}
 function tagChips(i,path,selected,vocab){
@@ -1506,27 +1974,50 @@ function siteBandHtml(b){
   const guid=b.guidance?b.guidance:'<span class="ph">guidance…</span>';
   return `<div class="sb-band" style="background:${bv};border:1px solid ${cv}33"><div class="sb-range" style="color:${cv}">${range}</div><div style="flex:1"><div class="sb-rating" style="color:${cv}">${rating}</div><div class="sb-guid">${guid}</div></div></div>`;
 }
-function bandSet(i,prefix,bi,key,val){assignPath(getSub(i,prefix),'data.thresholds.'+bi+'.'+key,val);refreshBand(i,prefix,bi);}
+function bandSet(i,prefix,bi,key,val){
+  const sub=getSub(i,prefix),b=sub.data.thresholds[bi];if(!b)return;
+  if(key==='rating'){setBandRating(i,prefix,bi,val);return;}
+  b[key]=val;refreshBand(i,prefix,bi);
+}
+function usedBandRatings(d,except){return new Set((d.thresholds||[]).filter((_,i)=>i!==except).map(b=>b.rating).filter(Boolean));}
+function ratingSelectHtml(i,prefix,bi,current,d){
+  const used=usedBandRatings(d,bi);
+  return `<select oninput="setBandRating(${i},'${prefix}',${bi},this.value)">${RATING_ORDER.map(r=>`<option value="${r}" ${r===current?'selected':''} ${used.has(r)?'disabled':''}>${r}${used.has(r)?' — already used':''}</option>`).join('')}</select>`;
+}
+function setBandRating(i,prefix,bi,val){
+  const sub=getSub(i,prefix),d=sub.data,b=d.thresholds[bi];if(!b)return;
+  if(!RATING_ORDER.includes(val)){const msg='Threshold rating must be Best practice, Consider, Concern or Action required.';reportIssue('err','Invalid threshold rating blocked',msg,sub.name||'Entry editor');showToast(msg,null,3800);recard(i);return;}
+  if(usedBandRatings(d,bi).has(val)){const msg='Each threshold rating can only be used once in an entry. “'+val+'” is already assigned to another band.';reportIssue('err','Duplicate threshold rating blocked',msg,sub.name||'Entry editor');showToast(msg,null,4200);recard(i);return;}
+  b.rating=val;b.color=RATING_COLOR[val];
+  d.thresholds.sort((a,b)=>RATING_ORDER.indexOf(a.rating)-RATING_ORDER.indexOf(b.rating));
+  recard(i);
+}
 function refreshBand(i,prefix,bi){const b=getSub(i,prefix).data.thresholds[bi];const el=document.getElementById(thBandId(i,prefix,bi));if(el)el.innerHTML=siteBandHtml(b);}
 function thresholdsEditor(i,d,prefix){
   prefix=prefix||'';
   const bands=d.thresholds.map((b,bi)=>{
+    if(RATING_ORDER.includes(b.rating))b.color=RATING_COLOR[b.rating];
     const gid=thGuidId(i,prefix,bi),bp=thBandId(i,prefix,bi);
+    const rangeWarn=!String(b.range||'').trim()?'<div class="inline-warn">⚠ Add the actual value / range / state the reader sees in this band. This is the left-hand heading on the live framework.</div>':'';
+    const guidWarn=!String(b.guidance||'').trim()?'<div class="inline-warn">⚠ Add the guidance for this band.</div>':'';
     return `<div class="band">
       <div class="band-head"><span class="band-rating">${esc(b.rating||'(band)')}</span><button class="btn small reject" onclick="rmBand(${i},'${prefix}',${bi})">Remove</button></div>
       <div class="row2">
-        <div class="field" style="margin-bottom:8px"><label>Rating</label><input type="text" value="${escAttr(b.rating)}" oninput="bandSet(${i},'${prefix}',${bi},'rating',this.value)"></div>
-        <div class="field" style="margin-bottom:8px"><label>Colour</label><select oninput="bandSet(${i},'${prefix}',${bi},'color',this.value)">${['green','yellow','orange','red'].map(c=>`<option value="${c}" ${c===b.color?'selected':''}>${c}</option>`).join('')}</select></div>
+        <div class="field" style="margin-bottom:8px"><label>Rating <span class="hint" style="display:inline">(fixed framework scale — each can be used once)</span></label>${ratingSelectHtml(i,prefix,bi,b.rating,d)}</div>
+        <div class="field" style="margin-bottom:8px"><label>Colour <span class="hint" style="display:inline">(automatic)</span></label><div class="readonly-field" style="color:${colorVar(RATING_COLOR[b.rating]||'green')}">● ${esc(RATING_COLOR[b.rating]||'—')}</div></div>
       </div>
-      <div class="field" style="margin-bottom:8px"><label>Range or label <span class="hint" style="display:inline">(a numeric band or a short label — e.g. ≥ 1200 mm, 2–3 floors, or “No break shown”. Type >= or <= for ≥ ≤; leave blank if the band has no range.)</span></label><input type="text" value="${escAttr(b.range)}" oninput="bandSet(${i},'${prefix}',${bi},'range',prettySym(this.value))"></div>
-      <div class="field" style="margin-bottom:8px"><label>Guidance</label>
+      <div class="field" style="margin-bottom:8px"><label>Range or label <span class="hint" style="display:inline"><strong>(required)</strong> — the band heading the reader scans, e.g. ≥ 1200 mm, 2–3 floors, “Detail shown”, “Purpose-designed connection”. Type >= or <= for ≥ ≤.</span></label><input type="text" value="${escAttr(b.range)}" oninput="bandSet(${i},'${prefix}',${bi},'range',prettySym(this.value))">${rangeWarn}</div>
+      <div class="field" style="margin-bottom:8px"><label>Guidance <span class="hint" style="display:inline"><strong>(required)</strong> — what the designer should understand or do when the parameter is in this state</span></label>
         <div class="rt"><div class="rt-bar"><button type="button" class="rt-btn" title="Bold (Ctrl/⌘+B)" onmousedown="event.preventDefault()" onclick="rtWrap('${gid}','<strong>','</strong>')"><b>B</b></button><button type="button" class="rt-btn" title="Italic (Ctrl/⌘+I)" onmousedown="event.preventDefault()" onclick="rtWrap('${gid}','<em>','</em>')"><i>I</i></button><span class="rt-hint">Type normally · Enter = new line · Ctrl/⌘B = bold</span></div>
-        <textarea id="${gid}" oninput="bandSet(${i},'${prefix}',${bi},'guidance',editToHtml(this.value));autosize(this)" onkeydown="rtKey(event,this)">${esc(htmlToEdit(b.guidance))}</textarea></div>
+        <textarea id="${gid}" oninput="bandSet(${i},'${prefix}',${bi},'guidance',editToHtml(this.value));autosize(this)" onkeydown="rtKey(event,this)">${esc(htmlToEdit(b.guidance))}</textarea></div>${guidWarn}
       </div>
       <div class="siteprev-hd">▸ preview · how this band looks on the site</div>
       <div id="${bp}" class="sb-wrap">${siteBandHtml(b)}</div>
     </div>`;}).join('');
-  return bands+`<button class="btn small" onclick="addBand(${i},'${prefix}')">+ Add band</button>`;
+  const missing=RATING_ORDER.filter(r=>!(d.thresholds||[]).some(b=>b.rating===r));
+  return bands+(missing.length
+    ?`<button class="btn small" onclick="addBand(${i},'${prefix}')">+ Add band (${esc(missing[0])})</button><div class="hint" style="margin-top:5px">Up to four bands. Ratings are fixed and cannot be duplicated.</div>`
+    :'<div class="inline-ok">✓ All four framework ratings are already used.</div>');
 }
 function altPrevId(i,prefix,ai){return 'ap-'+i+'-'+(prefix==='_entry.'?'e':'n')+'-'+ai;}
 function altGuidId(i,prefix,ai){return 'ag-'+i+'-'+(prefix==='_entry.'?'e':'n')+'-'+ai;}
@@ -1623,7 +2114,7 @@ function entryEditor(i,draft){
     <div class="field"><label>Search keywords <span class="hint" style="display:inline">(comma-separated — add synonyms / trade terms not in the text above)</span></label>${kwField('data.keywords',d.keywords)}</div>
     <div class="field"><label>Element(s) <span class="hint" style="display:inline">(structural element the entry concerns — pick any that apply; leave empty for documentation-only entries)</span></label>${tagChips(i,'data.elementType',d.elementType,elementVocab())}<button type="button" class="addtag" onclick="addVocabTag('element',${i},'data.elementType')">+ new tag</button></div>
     <div class="field"><label>Lifecycle stage(s) <span class="hint" style="display:inline">(the stage(s) the entry bites at — pick any that apply)</span></label>${tagChips(i,'data.constructionPhase',d.constructionPhase,phaseVocab())}<button type="button" class="addtag" onclick="addVocabTag('phase',${i},'data.constructionPhase')">+ new tag</button></div>
-    <div class="field"><label>Design guidance — threshold bands</label>${thresholdsEditor(i,d,'')}</div>
+    <div class="field"><label>Design guidance — threshold bands <span class="hint" style="display:inline">(each band needs a fixed rating, a reader-facing range/label, and guidance)</span></label>${thresholdsEditor(i,d,'')}</div>
     <div class="field"><label>Recommended actions</label>${altsEditor(i,d,'')}</div>
     <div class="field"><label>Worked example <span class="hint" style="display:inline">(optional — tables with colour bands, a figure and assumptions, shown on the entry page)</span></label>${workedExampleEditor(i,'')}</div>
     <div class="field"><label>Applicability — applies where</label>${ta(i,'data.applicability.appliesWhere',d.applicability.appliesWhere,'appl')}</div>
@@ -1648,7 +2139,14 @@ function entryEditor(i,draft){
 /* ---------- array mutators re-render the open editor (or inbox card) ---------- */
 function rerenderCard(i){const el=document.getElementById('card-'+i);if(!el)return;const tmp=document.createElement('div');tmp.innerHTML=renderCard(state.items[i]);const fresh=tmp.firstElementChild;el.replaceWith(fresh);autosizeAll(fresh);}
 function recard(i){if(state.mode==='edit')state.editTouched=true;if(state.mode==='inbox')rerenderCard(i);else renderEditBody();}
-function addBand(i,prefix){getSub(i,prefix).data.thresholds.push({rating:'',color:'green',range:'',guidance:''});recard(i);}
+function addBand(i,prefix){
+  const sub=getSub(i,prefix),d=sub.data,used=new Set((d.thresholds||[]).map(b=>b.rating));
+  const rating=RATING_ORDER.find(r=>!used.has(r));
+  if(!rating){const msg='An entry can have at most four threshold bands — one for each framework rating.';reportIssue('warn','Add band blocked',msg,sub.name||'Entry editor');showToast(msg,null,3500);return;}
+  d.thresholds.push({rating,color:RATING_COLOR[rating],range:'',guidance:''});
+  d.thresholds.sort((a,b)=>RATING_ORDER.indexOf(a.rating)-RATING_ORDER.indexOf(b.rating));
+  recard(i);
+}
 function rmBand(i,prefix,bi){getSub(i,prefix).data.thresholds.splice(bi,1);recard(i);}
 function addAlt(i,prefix){getSub(i,prefix).data.alternatives.push({title:'',description:''});recard(i);}
 function rmAlt(i,prefix,ai){getSub(i,prefix).data.alternatives.splice(ai,1);recard(i);}
@@ -1735,7 +2233,7 @@ function renderCard(it){
   }
   let body;
   if(it.type==='submission'){
-    body=aiReviewBanner(it)+`<div class="hint" style="margin-bottom:12px">Fields are pre-filled from the submission. Thresholds have ratings + colours set; you fill the numeric <strong>range</strong> for each. Pick the dimension if it came in as “Not sure”.</div>
+    body=aiReviewBanner(it)+`<div class="hint" style="margin-bottom:12px">Fields are pre-filled from the submission. On the current form, each threshold should arrive with both its <strong>range / label</strong> and its guidance. Legacy CSVs still import, but blank band labels are deliberately flagged for completion. Pick the dimension if it came in as “Not sure”.</div>
       ${entryEditor(i,it.draft)}
       ${ctxBox([['Based on',it.draft._ctx.basedOn],['Example images (Drive)',it.draft._ctx.exampleImages],['— what they show',it.draft._ctx.exampleDesc],['Supporting images (Drive)',it.draft._ctx.supportImages],['— what they show',it.draft._ctx.supportDesc],['Anything else? (submitter)',it.draft._ctx.anythingElse],['Submitter role',it.draft._ctx.role],['Submitter name',it.draft._ctx.name],['Contact email (never published)',it.draft._ctx.email]])}`;
   }else if(it.type==='comment'){
@@ -1797,7 +2295,7 @@ function entryEditorFor(i,draft,base){
     <div class="field"><label>Search keywords (comma-separated)</label>${kwField(base+'.data.keywords',d.keywords)}</div>
     <div class="field"><label>Element(s) (multi-select)</label>${tagChips(i,base+'.data.elementType',d.elementType,elementVocab())}</div>
     <div class="field"><label>Lifecycle stage(s) (multi-select)</label>${tagChips(i,base+'.data.constructionPhase',d.constructionPhase,phaseVocab())}</div>
-    <div class="field"><label>Threshold bands</label>${thresholdsEditor(i,d,'_entry.')}</div>
+    <div class="field"><label>Threshold bands <span class="hint" style="display:inline">(fixed rating + range/label + guidance)</span></label>${thresholdsEditor(i,d,'_entry.')}</div>
     <div class="field"><label>Recommended actions</label>${altsEditor(i,d,'_entry.')}</div>
     <div class="field"><label>Applies where</label>${ta(i,p+'data.applicability.appliesWhere',d.applicability.appliesWhere,'appl')}</div>
     <div class="field"><label>Checks</label>${checksEditorP(i,d,p)}</div>
@@ -1980,11 +2478,27 @@ function acceptIssue(it){
   if(it.type==='submission'){
     if(!d.name||!String(d.name).trim())return {msg:'Give this new entry a name before accepting.',field:'fld-name-'+it.id};
     if(!d.dimId||!String(d.dimId).trim())return {msg:'Pick a dimension before accepting — this new entry came in without one (e.g. “Not sure”). Choose one in the Dimension field below.',field:'fld-dim-'+it.id};
+    if(d._aiReviewed){
+      const adm=aiAdmission(d);
+      if((adm.status==='reject'||adm.status==='hold')&&!d._scopeOverride)
+        return {msg:'The AI admission gate marked this submission '+adm.status.toUpperCase()+'. Review the scope warning above. Reject it, or deliberately tick the override before accepting.',field:null};
+      const ch=aiQualityChanges(d),dec=d._aiDecisions||{},undecided=ch.filter(x=>!dec[x.key]);
+      if(undecided.length)
+        return {msg:'There are '+undecided.length+' undecided AI change'+(undecided.length===1?'':'s')+'. Accept or reject every proposed change (or use Accept all / Reject all) before accepting the submission.',field:null};
+    }
     return null;
   }
   if(it.type==='comment'){if(!d._resolved)return {msg:'This comment isn’t matched to an existing entry, so it can’t be applied. Fix the entry link and reload, or reject it.',field:null};return null;}
-  if(it.type==='update'){if(!d._resolved)return {msg:'This update points at an id that doesn’t match any current entry, so it can’t be applied. Fix the id and reload, or reject it.',field:null};return null;}
-  if(it.type==='edit'){if(!d._resolved)return {msg:'This edit couldn’t be matched to an existing entry, so it can’t be applied. Fix the entry link and reload, or reject it.',field:null};return null;}
+  if(it.type==='update'){
+    if(!d._resolved)return {msg:'This update points at an id that doesn’t match any current entry, so it can’t be applied. Fix the id and reload, or reject it.',field:null};
+    if(d._entry&&d._entry.available!==false){const miss=liveDraftIssues(d._entry);if(miss.length)return {msg:'This update would leave a LIVE entry incomplete or invalid: '+miss.join(', ')+'. Fix it first, or change it to Draft before accepting.',field:null};}
+    return null;
+  }
+  if(it.type==='edit'){
+    if(!d._resolved)return {msg:'This edit couldn’t be matched to an existing entry, so it can’t be applied. Fix the entry link and reload, or reject it.',field:null};
+    if(d._entry&&d._entry.available!==false){const miss=liveDraftIssues(d._entry);if(miss.length)return {msg:'This suggested edit would leave a LIVE entry incomplete or invalid: '+miss.join(', ')+'. Fix it first, or change it to Draft before accepting.',field:null};}
+    return null;
+  }
   return null;
 }
 // Briefly pulse a form field red to draw the eye to what needs fixing.
@@ -2421,8 +2935,8 @@ function triageRepointFact(oldF,newF){
 function triageRenameFact(oldF,newF){
   newF=(newF||'').trim();
   if(!newF||newF===oldF){renderQList();return;}
-  if(!/^[a-z0-9-]+$/.test(newF)){alert('Fact ids use lowercase letters, numbers and hyphens only.');renderQList();return;}
-  if(triageFactMap()[newF]){alert('The fact id \u201c'+newF+'\u201d is already in use.');renderQList();return;}
+  if(!/^[a-z0-9-]+$/.test(newF)){const msg='Fact ids use lowercase letters, numbers and hyphens only.';alert(msg);reportIssue('err','Invalid triage fact id blocked',msg,'Triage questionnaire');renderQList();return;}
+  if(triageFactMap()[newF]){const msg='The fact id “'+newF+'” is already in use.';alert(msg);reportIssue('err','Duplicate triage fact blocked',msg,'Triage questionnaire');renderQList();return;}
   const item=qFind(oldF);if(!item){renderQList();return;}
   const r=triageFactRefs(oldF);const total=r.trig+r.when;
   if(total>0){
@@ -2719,11 +3233,11 @@ function showDrafts(){
     rows.forEach(({idx})=>{groups+=draftRow(dim.id,idx);});
     groups+=`</div>`;
   });
-  const body=drafts.length?groups:`<div class="empty">No drafts — every entry is published.<br>Accepted submissions and new entries land here as hidden drafts until you publish them.</div>`;
-  const publishAll=drafts.length?`<button class="btn primary" onclick="publishAllDrafts()">Publish all ${drafts.length}</button>`:'';
+  const body=drafts.length?groups:`<div class="empty">No drafts — every entry is marked live.<br>Accepted submissions and new entries land here as hidden drafts until you mark them live.</div>`;
+  const publishAll=drafts.length?`<button class="btn primary" onclick="publishAllDrafts()">Mark all live ${drafts.length}</button>`:'';
   document.getElementById('listView').innerHTML=tabBar('drafts')+`<div class="panel">
-    <div class="edit-top"><h2 style="margin-top:0">Drafts — not yet published</h2><div class="edit-btns">${publishAll}</div></div>
-    <p class="desc">Entries marked <strong>draft</strong> are hidden on the live site. Accepted submissions land here. Publish them one at a time or all at once — then export to save. (The Framework Doctor flags drafts that already look complete.)</p>
+    <div class="edit-top"><h2 style="margin-top:0">Drafts — not yet live</h2><div class="edit-btns">${publishAll}</div></div>
+    <p class="desc">Entries marked <strong>draft</strong> are hidden on the live site. Accepted submissions land here. Mark them live one at a time or all at once — then export and push before the public site changes. (The Framework Doctor flags drafts that already look complete.)</p>
     <div id="draftStatus" class="status"></div>
     ${body}</div>`;
   window.scrollTo(0,0);
@@ -2734,24 +3248,38 @@ function draftRow(dimId,idx){
   const miss=draftMissing(it);
   return `<div class="erow">
     <span class="dot off" title="draft"></span>
-    <div class="erow-main"><div class="erow-name">${esc(it.name)}</div><div class="erow-id">${miss.length?`<span class="warntext">still missing: ${esc(miss.join(', '))}</span>`:`<span class="oktext">looks complete — ready to publish</span>`}</div></div>
+    <div class="erow-main"><div class="erow-name">${esc(it.name)}</div><div class="erow-id">${miss.length?`<span class="warntext">still missing: ${esc(miss.join(', '))}</span>`:`<span class="oktext">looks complete — ready to mark live</span>`}</div></div>
     <div class="erow-actions">
       <button class="btn small" onclick="openEdit('${dimId}',${idx})">Edit</button>
-      <button class="btn small accept" onclick="publishOne('${escAttr(it.id)}')">Publish</button>
+      <button class="btn small accept" onclick="publishOne('${escAttr(it.id)}')">Mark live</button>
     </div>
   </div>`;
 }
 function publishOne(id){
   const found=findEntry(state.db,{id});if(!found)return;
+  const miss=draftMissing(found.item);
+  if(miss.length){
+    const msg='Cannot mark “'+found.item.name+'” live yet. Missing: '+miss.join(', ')+'.';
+    reportIssue('err','Mark live blocked',msg,'Drafts');
+    const s=document.getElementById('draftStatus');if(s)s.innerHTML='<div class="status-line"><span class="pill err">blocked</span> <strong>'+esc(msg)+'</strong></div>';
+    return;
+  }
   found.item.available=true;rebuildIndexes();showDrafts();updateFooter();
-  document.getElementById('draftStatus').innerHTML=`<div class="status-line"><span class="pill ok">ok</span> <strong>Published “${esc(found.item.name)}”</strong> — export to save</div>`;
+  document.getElementById('draftStatus').innerHTML=`<div class="status-line"><span class="pill ok">ok</span> <strong>Marked “${esc(found.item.name)}” live</strong> — export and push before the public site changes</div>`;
 }
 function publishAllDrafts(){
   const drafts=draftList();if(!drafts.length)return;
-  if(!confirm('Publish all '+drafts.length+' draft'+(drafts.length===1?'':'s')+'?\n\nThey become visible on the live site after you export. You can still set any back to draft from Browse entries.'))return;
+  const blocked=drafts.map(x=>({it:x.it,miss:draftMissing(x.it)})).filter(x=>x.miss.length);
+  if(blocked.length){
+    const detail=blocked.slice(0,8).map(x=>'“'+x.it.name+'”: '+x.miss.join(', ')).join('\n')+(blocked.length>8?'\n…plus '+(blocked.length-8)+' more.':'');
+    reportIssue('err','Mark all live blocked',blocked.length+' draft'+(blocked.length===1?' is':'s are')+' incomplete.\n'+detail,'Drafts');
+    const s=document.getElementById('draftStatus');if(s)s.innerHTML='<div class="status-line"><span class="pill err">blocked</span> <strong>'+blocked.length+' draft'+(blocked.length===1?' is':'s are')+' incomplete. Open the flagged entries and finish them first.</strong></div>';
+    return;
+  }
+  if(!confirm('Mark all '+drafts.length+' draft'+(drafts.length===1?'':'s')+' live?\n\nThis only changes the current browser session. The public site changes after you export and push the updated data.json. You can still set any back to draft from Browse entries.'))return;
   drafts.forEach(({it})=>it.available=true);
   rebuildIndexes();showDrafts();updateFooter();
-  document.getElementById('draftStatus').innerHTML=`<div class="status-line"><span class="pill ok">ok</span> <strong>Published ${drafts.length} entr${drafts.length===1?'y':'ies'}</strong> — export to save</div>`;
+  document.getElementById('draftStatus').innerHTML=`<div class="status-line"><span class="pill ok">ok</span> <strong>Marked ${drafts.length} entr${drafts.length===1?'y':'ies'} live</strong> — export and push before the public site changes</div>`;
 }
 function restoreRejected(key){
   const idx=state.rejectedView.findIndex(x=>x.key===key);
@@ -2938,11 +3466,10 @@ function moveDim(dimId,idx,newDimId){
 function deleteEntry(dimId,idx){
   const dim=state.db.dimensions.find(d=>d.id===dimId);
   const it=dim.items[idx];
-  const snap={db:deepClone(state.db),inbox:deepClone(state.inbox),rejectedView:deepClone(state.rejectedView)};
   const nm=it.name||it.id;
   dim.items.splice(idx,1);
   rebuildIndexes();filterList();updateFooter();
-  showToast('Deleted “'+nm+'”',function(){restoreSnap(snap);},9000);
+  showToast('Deleted “'+nm+'” — Undo is available below.',null,3200);
 }
 
 /* ---- drag-to-reorder within a dimension (arrows still work too) ---- */
@@ -3069,7 +3596,7 @@ function inboxPreviewData(it){
 function previewInboxItem(i){
   const it=state.items[i];if(!it)return;
   const pd=inboxPreviewData(it);
-  if(!pd){alert('There\'s nothing to preview for this item yet — it isn\'t matched to an entry. Expand the card to see why.');return;}
+  if(!pd){const msg='There is nothing to preview yet because this item is not matched to an entry. Expand the card to see what needs fixing.';alert(msg);reportIssue('warn','Preview unavailable',msg,'Submission inbox');return;}
   openPreviewModal(pd.item,pd.dim,pd.note);
 }
 function _pvEsc(e){if(e.key==='Escape')closePreview();}
@@ -3294,14 +3821,16 @@ function showEdit(title){
   state.mode='edit';
   document.getElementById('listView').innerHTML='';
   document.getElementById('editView').innerHTML=`<div class="panel">
-    <div class="edit-top"><h2>${esc(title)}</h2><div class="edit-btns"><button class="btn" onclick="cancelEdit()">Cancel</button> <button class="btn primary" onclick="saveEntry()">Save entry</button></div></div>
+    <div class="edit-top"><h2>${esc(title)}</h2><div class="edit-btns"><button class="btn" onclick="cancelEdit()">Cancel</button> <button class="btn primary" onclick="saveEntry()" title="Apply these changes to the current browser session. Export data.json later to save them to a file.">Apply changes</button></div></div>
+    <div id="editError"></div>
     <div id="editFormBody"></div>
-    <div class="edit-bottom"><button class="btn" onclick="cancelEdit()">Cancel</button> <button class="btn primary" onclick="saveEntry()">Save entry</button></div>
+    <div class="edit-bottom"><button class="btn" onclick="cancelEdit()">Cancel</button> <button class="btn primary" onclick="saveEntry()">Apply changes</button></div>
   </div>`;
   state.editTouched=false;
   const fb=document.getElementById('editFormBody');
   if(fb){const mark=function(){state.editTouched=true;};fb.addEventListener('input',mark);fb.addEventListener('change',mark);}
   renderEditBody();
+  historySyncCurrent();
   window.scrollTo(0,0);
 }
 function renderEditBody(){
@@ -3309,7 +3838,20 @@ function renderEditBody(){
   b.innerHTML=entryEditor(0,state.items[0].draft);
   autosizeAll(b);
 }
-function cancelEdit(){if(state.editing&&state.editTouched){if(!confirm('Discard your unsaved changes to this entry?'))return;}state.editTouched=false;showList();}
+function cancelEdit(){
+  const touched=!!(state.editing&&state.editTouched);
+  if(touched&& !confirm('Discard your unsaved changes to this entry?'))return;
+  state.editTouched=false;
+  if(!touched){historyWithLock(()=>showList());historySyncCurrent();}
+  else showList();
+}
+function showEditError(title,items){
+  const box=document.getElementById('editError');
+  if(box)box.innerHTML='<div class="action-error"><strong>'+esc(title)+'</strong>'+items.map(x=>'• '+esc(x)).join('<br>')+'</div>';
+  if(box)box.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function clearEditError(){const box=document.getElementById('editError');if(box)box.innerHTML='';}
+function liveDraftIssues(draft){return draftMissing({id:draft.id,name:draft.name,data:draft.data||{}});}
 function saveEntry(){
   const d=state.items[0].draft;
   document.querySelectorAll('#editFormBody input[data-kwpath]').forEach(el=>{assignPath(d,el.getAttribute('data-kwpath'),splitCommas(el.value));});
@@ -3318,7 +3860,9 @@ function saveEntry(){
   if(!d.name||!d.name.trim())errs.push('Enter an entry name.');
   if(!d.id||!d.id.trim())errs.push('Enter a stable id.');
   if(d.id&&idClash(d.id))errs.push('The id "'+d.id+'" is already used by another entry.');
-  if(errs.length){alert('Fix these before saving:\n\n• '+errs.join('\n• '));return;}
+  if(d.available!==false)liveDraftIssues(d).forEach(x=>{const m='Live entry is missing '+x+'.';if(!errs.includes(m))errs.push(m);});
+  if(errs.length){showEditError('Cannot apply these changes',errs);reportIssue('err','Entry changes blocked',errs.join('\n'),d.name||'Entry editor');return;}
+  clearEditError();
   cleanEntryData(d.data);
   // Auto-stamp the last-reviewed date when the entry's content actually changed,
   // so the maintainer never types it. dateAdded is set once and left alone.
@@ -3377,13 +3921,23 @@ function computeDiff(){
 }
 function validate(){
   const problems=[],ids=new Set();
-  state.db.dimensions.forEach(d=>d.items.forEach(it=>{if(ids.has(it.id))problems.push('Duplicate id: '+it.id);ids.add(it.id);}));
+  if(!state.db||!Array.isArray(state.db.dimensions))return ['No framework data is loaded.'];
   state.db.dimensions.forEach(d=>d.items.forEach(it=>{
-    if(!it.name||!it.name.trim())problems.push('Entry "'+it.id+'" has no name.');
-    if(!it.data||!it.data.question||!it.data.question.trim())problems.push('"'+it.name+'" has no design question.');
-    (((it.data||{}).relatedEntries)||[]).forEach(r=>{const rid=typeof r==='string'?r:r.id;if(rid&&!ids.has(rid))problems.push('"'+it.name+'" links to a missing entry id: '+rid);});
+    if(!it.id||!String(it.id).trim())problems.push('An entry has no stable id.');
+    else if(ids.has(it.id))problems.push('Duplicate id: '+it.id);
+    else ids.add(it.id);
   }));
-  return problems;
+  const vocab=new Set(triageFacts().map(f=>f.fact));
+  state.db.dimensions.forEach(d=>d.items.forEach(it=>{
+    const data=it.data||{};
+    if(!it.name||!String(it.name).trim())problems.push('Entry "'+(it.id||'?')+'" has no name.');
+    if(it.available!==false)draftMissing(it).forEach(x=>problems.push('Live entry "'+(it.name||it.id||'?')+'" is missing '+x+'.'));
+    ((data.relatedEntries)||[]).forEach(r=>{const rid=typeof r==='string'?r:r.id;if(rid&&!ids.has(rid))problems.push('“'+(it.name||it.id)+'” links to a missing entry id: '+rid);});
+    if(data.standing===true&&Array.isArray(data.triage)&&data.triage.length)problems.push('“'+(it.name||it.id)+'” is both standing and triggered. Choose one.');
+    const refs=[];(Array.isArray(data.triage)?data.triage:[]).forEach(s=>(s||[]).forEach(f=>refs.push(f)));(data.triageExclude||[]).forEach(f=>refs.push(f));
+    refs.forEach(f=>{if(!vocab.has(f))problems.push('“'+(it.name||it.id)+'” uses an unknown triage fact: '+f);});
+  }));
+  return [...new Set(problems)];
 }
 /* =======================================================================
    BROKEN-LINK RESOLVER · find & bulk repoint/unlink references to dead ids
@@ -3474,7 +4028,7 @@ function linkFixerHtml(){
 function fixRepoint(missingId){
   const el=document.getElementById('fixsel-'+missingId);
   const newId=el?el.value:'';
-  if(!newId){alert('Choose an entry to repoint these links to first.');return;}
+  if(!newId){const msg='Choose a real target entry before repointing broken links.';alert(msg);reportIssue('err','Link repair blocked',msg,'Broken-link resolver');return;}
   repointBrokenLinks(missingId,newId);afterFix();
 }
 function fixUnlink(missingId){
@@ -3751,7 +4305,7 @@ function changelogEditorHtml(value,prefix){
 // --- standalone editor: edit the whole changelog any time (not just at export) ---
 function currentChangelog(){return (state.priorChangelog&&state.priorChangelog.trim())?state.priorChangelog:'# Framework changelog\n';}
 function openChangelogEditor(){
-  if(state.editing){alert('Finish or cancel the entry you\'re editing first.');return;}
+  if(state.editing){const msg='Apply or cancel the entry you are editing first.';alert(msg);reportIssue('err','Action blocked while editing',msg,'Data Manager');return;}
   const ov=document.createElement('div');ov.className='overlay';ov.id='clogModal';
   ov.onclick=e=>{if(e.target===ov)closeClogModal();};
   ov.innerHTML=`<div class="modal clog-wide">
@@ -3787,7 +4341,7 @@ function dlClog(taId,btn){const ta=document.getElementById(taId);if(!ta)return;d
 
 /* ---- export modal ---- */
 function openExport(){
-  if(state.editing){alert('Finish or cancel the entry you\'re editing first.');return;}
+  if(state.editing){const msg='Apply or cancel the entry you are editing first.';alert(msg);reportIssue('err','Action blocked while editing',msg,'Data Manager');return;}
   const diff=computeDiff();
   const snapImgs=imagesInDb(state.snapshot),curImgs=imagesInDb(state.db);
   const toDelete=[...snapImgs].filter(x=>!curImgs.has(x));
@@ -3795,7 +4349,8 @@ function openExport(){
   const problems=validate();
   const log=buildChangelog(diff,toDelete,toAdd);
   const nochange=!diff.added.length&&!diff.edited.length&&!diff.deleted.length;
-  const probHtml=problems.length?`<div class="warnbox"><div class="warnbox-h">⚠ ${problems.length} thing(s) to look at</div>${problems.map(p=>'<div>• '+esc(p)+'</div>').join('')}${hasBrokenLinks()?'<div style="margin-top:9px"><button class="btn small" onclick="openLinkFixer()">Fix broken links…</button></div>':''}</div>`:`<div class="okbox">✓ No validation problems found.</div>`;
+  const probHtml=problems.length?`<div class="warnbox" style="border-color:var(--red);background:var(--red-bg)"><div class="warnbox-h" style="color:var(--red)">⛔ Export blocked — ${problems.length} validation error${problems.length===1?'':'s'}</div>${problems.map(p=>'<div>• '+esc(p)+'</div>').join('')}${hasBrokenLinks()?'<div style="margin-top:9px"><button class="btn small" onclick="openLinkFixer()">Fix broken links…</button></div>':''}</div>`:`<div class="okbox">✓ No blocking validation problems found.</div>`;
+  if(problems.length)reportIssue('err','Export validation failed',problems.join('\n'),'Export');
   const imgHtml=(toDelete.length||toAdd.length)?`<div class="modal-sec"><div class="modal-sec-h">Images</div>${toAdd.length?'<div><span class="ip add">add</span> '+toAdd.map(esc).join(', ')+'</div>':''}${toDelete.length?'<div style="margin-top:5px"><span class="ip del">delete</span> '+toDelete.map(esc).join(', ')+'</div>':''}</div>`:'';
   // informational: undecided inbox items aren't lost — they reappear next load
   const ic=inboxCounts();
@@ -3812,7 +4367,7 @@ function openExport(){
     <div class="modal-actions">
       <button class="btn" onclick="copyChangelog(this)">Copy changelog</button>
       <button class="btn" onclick="dlChangelog(this)">Download changelog.md</button>
-      <button class="btn primary" onclick="dlJson(this)">Download data.json</button>
+      <button class="btn primary" onclick="dlJson(this)" ${problems.length?'disabled title="Export is blocked until the validation errors above are fixed."':''}>${problems.length?'Fix errors before export':'Download data.json'}</button>
       <button class="btn" onclick="finishExport()">Done</button>
     </div>
     <div class="export-hint" id="exportHint">Grab both files before clicking Done — order doesn't matter, and the changelog is only available here.</div>
@@ -3825,6 +4380,8 @@ function openExport(){
 function setHint(txt,cls){const h=document.getElementById('exportHint');if(h){h.textContent=txt;h.className='export-hint '+(cls||'');}}
 function flashBtn(btn,on,off){btn.textContent=on;btn.classList.add('ok');setTimeout(()=>{btn.textContent=off;btn.classList.remove('ok');},1600);}
 function dlJson(btn){
+  const blockers=validate();
+  if(blockers.length){reportIssue('err','Export blocked',blockers.join('\n'),'Export');return;}
   downloadText('data.json',JSON.stringify(state.db,null,2),'application/json');
   state.export.gotJson=true;flashBtn(btn,'Downloaded ✓','Download data.json');
   setHint(state.export.gotLog?'Both files saved — you can click Done.':'data.json saved. Don\'t forget the changelog before Done.', state.export.gotLog?'ok':'warn');
@@ -3859,7 +4416,7 @@ function cleanEntryData(d){
     return (a.title&&a.title.trim())?{title:a.title,description:a.description}:(a.description||'');
   }).filter(a=>typeof a==='string'?a.trim():(a.description&&a.description.trim()));
   if(d.applicability){d.applicability.checks=(d.applicability.checks||[]).filter(c=>(c.title&&c.title.trim())||(c.description&&c.description.trim()));}
-  if(d.thresholds)d.thresholds=d.thresholds.filter(b=>b.guidance&&b.guidance.trim());
+  if(d.thresholds)d.thresholds=d.thresholds.filter(b=>b&&(String(b.rating||'').trim()||String(b.range||'').trim()||String(b.guidance||'').trim())).map(b=>{if(RATING_ORDER.includes(b.rating))b.color=RATING_COLOR[b.rating];return b;});
   if(d.keywords)d.keywords=d.keywords.map(k=>(k||'').trim()).filter(Boolean);
   if(d.elementType){d.elementType=d.elementType.filter(Boolean);if(!d.elementType.length)delete d.elementType;}
   if(d.constructionPhase){d.constructionPhase=d.constructionPhase.filter(Boolean);if(!d.constructionPhase.length)delete d.constructionPhase;}
@@ -3884,14 +4441,148 @@ function cleanEntryData(d){
   }
 }
 /* ===================== work-safety · autosave · health check · shortcuts ===================== */
-function committedDirty(){if(!state.db)return false;return !!(state.inbox.length||!deepEqual(state.db,state.snapshot));}
-function updateDirty(){
+/* ===================== universal in-session undo / redo ===================== */
+const HISTORY_LIMIT=60;
+const historyState={undo:[],redo:[],current:null,lock:false,intent:null};
+const issueState={items:[]};
+function fmtClock(ms){try{return new Date(ms).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit'});}catch(e){return '';}}
+function reportIssue(level,title,detail,context){
+  const sev=level==='warn'?'warn':'err',item={sev,title:String(title||'Blocked action'),detail:String(detail||''),context:String(context||''),at:Date.now()};
+  issueState.items.push(item);if(issueState.items.length>30)issueState.items.shift();historyButtons();refreshHistoryPanel();showIssueToast(item);return item;
+}
+function clearSessionIssues(){issueState.items=[];historyButtons();refreshHistoryPanel();}
+function showIssueToast(item){
+  let t=document.getElementById('issueToast');if(!t){t=document.createElement('div');t.id='issueToast';t.className='issue-toast';document.body.appendChild(t);}
+  t.className='issue-toast show '+(item.sev==='warn'?'warn':'');
+  t.innerHTML=`<div class="issue-toast-h">${item.sev==='warn'?'⚠':'⛔'} <span>${esc(item.title)}</span></div>${item.detail?'<div class="issue-toast-d">'+esc(item.detail)+'</div>':''}<div class="issue-toast-a"><button class="btn small" type="button" onclick="openHistoryPanel();document.getElementById('issueToast').classList.remove('show')">History</button><button class="btn small" type="button" onclick="document.getElementById('issueToast').classList.remove('show')">Dismiss</button></div>`;
+  clearTimeout(showIssueToast._t);showIssueToast._t=setTimeout(()=>{if(t)t.classList.remove('show');},7000);
+}
+function historyTimeline(){const done=historyState.undo.map(x=>Object.assign({status:'done'},x));const undone=[...historyState.redo].reverse().map(x=>Object.assign({status:'undone'},x));return done.concat(undone);}
+function historyPanelHtml(){
+  const timeline=historyTimeline(),applied=historyState.undo.length,undone=historyState.redo.length;
+  const rows=timeline.length?[...timeline].reverse().map(x=>'<div class="history-row '+(x.status==='undone'?'undone':'')+'"><span class="history-icon">'+(x.status==='undone'?'↷':'✓')+'</span><div class="history-main"><div class="history-title">'+esc(x.label)+'</div><div class="history-meta">'+fmtClock(x.at)+'</div></div><span class="history-state '+(x.status==='undone'?'undone':'done')+'">'+(x.status==='undone'?'undone':'applied')+'</span></div>').join(''):'<div class="empty-sm">No data changes yet. As soon as you edit, import, move, accept, reject or apply something, it appears here.</div>';
+  const issues=issueState.items.length?[...issueState.items].reverse().map(x=>'<div class="issue-row '+x.sev+'"><span class="issue-dot"></span><div><div class="issue-title">'+esc(x.title)+'</div><div class="issue-detail">'+esc(x.detail)+(x.context?'\n'+esc(x.context):'')+'</div><div class="history-meta">'+fmtClock(x.at)+'</div></div></div>').join(''):'<div class="empty-sm">No blocked actions or import problems this session.</div>';
+  return '<div class="modal-top"><h2>Session history</h2><button class="lc-x" onclick="closeHistoryPanel()">×</button></div><div class="hint">Tracks the current browser session only. Undo/Redo restores the framework data, inbox, loaded response files and any entry you are currently editing. If you undo and then make a new change, the old Redo branch is deliberately discarded.</div><div class="history-summary"><span class="history-chip good">'+applied+' applied</span><span class="history-chip">'+undone+' undone / redoable</span><span class="history-chip '+(issueState.items.length?'warn':'')+'">'+issueState.items.length+' blocked / warning'+(issueState.items.length===1?'':'s')+'</span></div><div class="modal-sec"><div class="modal-sec-h">Change history</div><div class="history-panel-list">'+rows+'</div></div><div class="modal-sec"><div class="modal-sec-h">Blocked actions & warnings</div><div class="issue-list">'+issues+'</div></div><div class="modal-actions"><button class="btn" '+(historyState.undo.length?'':'disabled')+' onclick="historyUndo();setTimeout(openHistoryPanel,0)">↶ Undo</button><button class="btn" '+(historyState.redo.length?'':'disabled')+' onclick="historyRedo();setTimeout(openHistoryPanel,0)">↷ Redo</button>'+(issueState.items.length?'<button class="btn" onclick="clearSessionIssues()">Clear issue list</button>':'')+'<button class="btn primary" onclick="closeHistoryPanel()">Done</button></div>';
+}
+function openHistoryPanel(){closeHistoryPanel();const ov=document.createElement('div');ov.className='overlay';ov.id='historyModal';ov.onclick=e=>{if(e.target===ov)closeHistoryPanel();};ov.innerHTML='<div class="modal" id="historyModalInner">'+historyPanelHtml()+'</div>';document.body.appendChild(ov);}
+function closeHistoryPanel(){const m=document.getElementById('historyModal');if(m)m.remove();}
+function refreshHistoryPanel(){const inner=document.getElementById('historyModalInner');if(inner)inner.innerHTML=historyPanelHtml();}
+function historyEditor(){
+  if(state.mode!=='edit'||!state.editing||!state.items||!state.items[0])return null;
+  return {item:deepClone(state.items[0]),editing:deepClone(state.editing),editTouched:!!state.editTouched};
+}
+function historyCapture(){
+  return {
+    db:state.db?deepClone(state.db):null,
+    inbox:deepClone(state.inbox||[]),
+    rejectedView:deepClone(state.rejectedView||[]),
+    csvLoaded:deepClone(state.csvLoaded||[]),
+    priorChangelog:state.priorChangelog||'',
+    priorChangelogName:state.priorChangelogName||'',
+    editor:historyEditor(),
+    view:state.mode||'list',
+    search:state.search||''
+  };
+}
+function historyComparable(s){
+  if(!s)return '';
+  const c=deepClone(s);
+  // Navigation/expanded cards are not data edits, so they should never consume Undo.
+  delete c.view;delete c.search;
+  (c.inbox||[]).forEach(x=>{delete x.collapsed;delete x._acceptErr;});
+  (c.rejectedView||[]).forEach(x=>{delete x.collapsed;delete x._acceptErr;});
+  return JSON.stringify(c);
+}
+function historyClear(){historyState.undo=[];historyState.redo=[];historyState.current=null;historyState.intent=null;historyButtons();}
+function historyReset(){historyState.undo=[];historyState.redo=[];historyState.current=historyCapture();historyState.intent=null;issueState.items=[];historyButtons();}
+function historySyncCurrent(){if(historyState.lock)return;historyState.current=historyCapture();historyButtons();}
+function historyWithLock(fn){historyState.lock=true;try{return fn();}finally{historyState.lock=false;}}
+function historyCleanLabel(s){return String(s||'Change').replace(/\s+/g,' ').replace(/^[↶↷✓✕⊙🔍🏷✎🤖+]+\s*/,'').trim().slice(0,72)||'Change';}
+function historyFieldLabel(el){
+  const f=el&&el.closest?el.closest('.field,.subitem,.band'):null;
+  const l=f&&f.querySelector?f.querySelector('label'):null;
+  return historyCleanLabel(l?l.textContent:'Edit field');
+}
+function historyIntentFromEvent(e){
+  if(!e||historyState.lock)return;
+  const t=e.target;if(!t)return;
+  if(t.closest&&t.closest('#undoBtn,#redoBtn,#historyBtn'))return;
+  let label='Change',key='',coalesce=false;
+  if(e.type==='input'||e.type==='change'){
+    if(t.matches&&t.matches('input[type=file]')){label='Load '+((t.files&&t.files[0]&&t.files[0].name)||'file');key='file:'+t.id;}
+    else{label='Edit '+historyFieldLabel(t);key='field:'+(t.dataset&&t.dataset.path||t.id||t.name||historyFieldLabel(t));coalesce=e.type==='input'&&(t.tagName==='TEXTAREA'||(t.tagName==='INPUT'&&(!t.type||['text','search','number','url','email'].includes(t.type))));}
+  }else if(e.type==='click'){
+    const b=t.closest&&t.closest('button');
+    if(b){label=historyCleanLabel(b.textContent||b.title||'Change');key='button:'+(b.id||b.getAttribute('onclick')||label);}
+  }else if(e.type==='drop'){label='Reorder or import';key='drop';}
+  historyState.intent={label,key,coalesce,at:Date.now()};
+}
+function historySetManualIntent(label,key,coalesce){historyState.intent={label:historyCleanLabel(label),key:key||historyCleanLabel(label),coalesce:!!coalesce,at:Date.now()};}
+function historyObserve(forceLabel,forceKey,forceCoalesce){
+  if(historyState.lock||!state.db)return false;
+  const now=historyCapture();
+  if(!historyState.current){historyState.current=now;historyButtons();return false;}
+  const before=historyState.current;
+  if(historyComparable(before)===historyComparable(now)){historyState.current=now;historyButtons();return false;}
+  const intent=historyState.intent&&Date.now()-historyState.intent.at<2500?historyState.intent:null;
+  const label=historyCleanLabel(forceLabel||(intent&&intent.label)||'Change');
+  const key=forceKey||(intent&&intent.key)||label;
+  const coalesce=forceCoalesce!==undefined?forceCoalesce:!!(intent&&intent.coalesce);
+  const top=historyState.undo[historyState.undo.length-1];
+  if(coalesce&&top&&top.key===key&&Date.now()-top.at<1200){top.at=Date.now();top.label=label;}
+  else{historyState.undo.push({snapshot:before,label,key,at:Date.now()});if(historyState.undo.length>HISTORY_LIMIT)historyState.undo.shift();}
+  historyState.redo=[];historyState.current=now;historyState.intent=null;historyButtons();return true;
+}
+function historyButtons(){
+  const u=document.getElementById('undoBtn'),r=document.getElementById('redoBtn'),h=document.getElementById('historyBtn');
+  if(u){const x=historyState.undo[historyState.undo.length-1];u.disabled=!x;u.title=x?'Undo: '+x.label+' · Ctrl/Cmd+Z':'Nothing to undo';u.textContent='↶ Undo';}
+  if(r){const x=historyState.redo[historyState.redo.length-1];r.disabled=!x;r.title=x?'Redo: '+x.label+' · Ctrl/Cmd+Shift+Z or Ctrl+Y':'Nothing to redo';}
+  if(h){const n=historyState.undo.length+historyState.redo.length;h.disabled=!state.db&&!issueState.items.length;h.innerHTML='☰ History'+(n?'<span class="history-badge">'+n+'</span>':'')+(issueState.items.length?'<span class="history-badge" style="background:var(--orange)">!</span>':'');}
+  refreshHistoryPanel();
+}
+function historyRenderSnapshot(s){
+  historyWithLock(()=>{
+    document.querySelectorAll('.overlay').forEach(x=>x.remove());hideToast();
+    state.db=deepClone(s.db);state.inbox=deepClone(s.inbox||[]);state.rejectedView=deepClone(s.rejectedView||[]);state.csvLoaded=deepClone(s.csvLoaded||[]);
+    state.priorChangelog=s.priorChangelog||'';state.priorChangelogName=s.priorChangelogName||'';state.search=s.search||'';
+    reindexInbox();rebuildIndexes();
+    const cb=document.getElementById('clogBtn');if(cb)cb.disabled=!state.db;
+    const ce=document.getElementById('clogStatus');if(ce)ce.innerHTML=state.priorChangelogName?`<span class="pill ok">ok</span> <strong>${esc(state.priorChangelogName)}</strong> — restored by Undo/Redo <button class="link-x" title="Unload changelog" onclick="unloadChangelog()">×</button>`:'';
+    if(s.editor){
+      state.items=[deepClone(s.editor.item)];state.editing=deepClone(s.editor.editing);state.editTouched=!!s.editor.editTouched;
+      showEdit(state.editing&&state.editing.isNew?'Add a new entry':'Edit entry');
+      state.editTouched=!!s.editor.editTouched;
+    }else{
+      state.editing=null;state.items=[];state.editTouched=false;
+      const v=s.view||state.mode||'list';
+      if(v==='inbox')showInbox();else if(v==='drafts')showDrafts();else if(v==='rejected')showRejected();else if(v==='triage')showTriage();else showList();
+    }
+  });
+  updateDirty(true);scheduleAutosave();
+}
+function historyUndo(){
+  if(!historyState.undo.length)return;
+  const step=historyState.undo.pop(),now=historyCapture();
+  historyState.redo.push({snapshot:now,label:step.label,key:step.key,at:Date.now()});if(historyState.redo.length>HISTORY_LIMIT)historyState.redo.shift();
+  historyRenderSnapshot(step.snapshot);historyState.current=historyCapture();historyButtons();showToast('Undid: '+step.label,null,1800);
+}
+function historyRedo(){
+  if(!historyState.redo.length)return;
+  const step=historyState.redo.pop(),now=historyCapture();
+  historyState.undo.push({snapshot:now,label:step.label,key:step.key,at:Date.now()});if(historyState.undo.length>HISTORY_LIMIT)historyState.undo.shift();
+  historyRenderSnapshot(step.snapshot);historyState.current=historyCapture();historyButtons();showToast('Redid: '+step.label,null,1800);
+}
+function historyNativeUndoTarget(el){return !!(el&&el.matches&&el.matches('.clog-ta,.ai-paste,#searchBox,[contenteditable="true"]'));}
+
+function committedDirty(){if(!state.db)return false;return !!(state.inbox.length||!deepEqual(state.db,state.snapshot)||(state.editing&&state.editTouched));}
+function updateDirty(skipHistory){
+  if(!skipHistory)historyObserve();
   const badge=document.getElementById('dirtyBadge');if(!badge)return;
   if(!state.db||!committedDirty()){badge.style.display='none';return;}
-  const d=computeDiff();const n=d.added.length+d.edited.length+d.deleted.length+state.inbox.length;
+  const d=computeDiff();const editN=(state.editing&&state.editTouched)?1:0;const n=d.added.length+d.edited.length+d.deleted.length+state.inbox.length+editN;
   badge.style.display='';
   badge.textContent=n>0?('● '+n+' unsaved'):'● unsaved changes';
-  badge.title=(n>0?(d.added.length+' added · '+d.edited.length+' edited · '+d.deleted.length+' deleted'+(state.inbox.length?' · '+state.inbox.length+' in inbox':'')):'order or other changes since load')+' — export data.json to save';
+  badge.title=(n>0?(d.added.length+' added · '+d.edited.length+' edited · '+d.deleted.length+' deleted'+(state.inbox.length?' · '+state.inbox.length+' in inbox':'')+(editN?' · entry edit in progress':'')):'order or other changes since load')+' — export data.json to save';
 }
 const AUTOSAVE_KEY='fdm-autosave-v1';
 // Detect whether the browser will actually persist localStorage. Opening the
@@ -3905,7 +4596,7 @@ function doAutosave(){
   if(!LS_OK){setAutosaveStatus('off');return;}
   try{
     if(!state.db||!committedDirty()){localStorage.removeItem(AUTOSAVE_KEY);setAutosaveStatus('');return;}
-    const full={v:1,at:Date.now(),db:state.db,snapshot:state.snapshot,inbox:state.inbox,rejectedView:state.rejectedView,priorChangelog:state.priorChangelog,priorChangelogName:state.priorChangelogName};
+    const full={v:2,at:Date.now(),db:state.db,snapshot:state.snapshot,inbox:state.inbox,rejectedView:state.rejectedView,priorChangelog:state.priorChangelog,priorChangelogName:state.priorChangelogName,editor:historyEditor(),view:state.mode||'list',csvLoaded:state.csvLoaded||[]};
     try{localStorage.setItem(AUTOSAVE_KEY,JSON.stringify(full));}
     catch(e){localStorage.setItem(AUTOSAVE_KEY,JSON.stringify(Object.assign({},full,{snapshot:null})));} // quota fallback: drop the baseline copy
     setAutosaveStatus('saved',full.at);
@@ -3920,7 +4611,7 @@ function setAutosaveStatus(kind,at){
   else if(kind==='fail'){el.textContent='⚠ couldn\u2019t auto-save — export to save';el.className='autosave-status warn';el.style.display='';}
   else{el.style.display='none';el.textContent='';}
 }
-function touchState(){updateDirty();scheduleAutosave();}
+function touchState(e){if(e)historyIntentFromEvent(e);historyObserve();updateDirty(true);scheduleAutosave();}
 function autoRestore(){
   if(!LS_OK){setAutosaveStatus('off');return;}
   let raw;try{raw=localStorage.getItem(AUTOSAVE_KEY);}catch(e){return;}
@@ -3928,7 +4619,7 @@ function autoRestore(){
   let p;try{p=JSON.parse(raw);}catch(e){clearAutosave();return;}
   if(!p||!p.db||!p.db.dimensions){clearAutosave();return;}
   try{doRestore(p);showRestoredBar(p.at);}
-  catch(e){alert('Found a recovery copy but couldn\u2019t restore it: '+(e&&e.message||e)+'\n\nLoad your data.json file to continue.');clearAutosave();}
+  catch(e){const msg='Found a recovery copy but could not restore it: '+(e&&e.message||e)+'. Load data.json to continue.';alert(msg);reportIssue('err','Recovery failed',msg,'Recovery');clearAutosave();}
 }
 function showRestoredBar(at){
   const when=at?new Date(at).toLocaleString():'earlier';
@@ -3939,11 +4630,11 @@ function showRestoredBar(at){
   document.getElementById('restoredDiscard').onclick=function(){if(confirm('Discard the recovered session and start from a blank slate? This cannot be undone.')){_discarding=true;clearAutosave();location.reload();}};
 }
 function doRestore(p){
-  if(state.db){alert('Unload the current data.json first (× by its name), then restore.');return;}
+  if(state.db){const msg='Unload the current data.json before restoring a recovery copy.';alert(msg);reportIssue('err','Recovery restore blocked',msg,'Recovery');return;}
   state.db=p.db;state.snapshot=p.snapshot||deepClone(p.db);
-  state.inbox=p.inbox||[];state.rejectedView=p.rejectedView||[];
+  state.inbox=p.inbox||[];state.rejectedView=p.rejectedView||[];state.csvLoaded=p.csvLoaded||[];
   state.priorChangelog=p.priorChangelog||'';state.priorChangelogName=p.priorChangelogName||'';
-  state.editing=null;state.items=[];state.search='';state.mode='list';
+  state.editing=null;state.items=[];state.search='';state.mode=p.view||'list';
   if(!Array.isArray(state.db._processed))state.db._processed=[];
   if(!Array.isArray(state.db._rejected))state.db._rejected=[];
   if(!Array.isArray(state.db._reconsider))state.db._reconsider=[];
@@ -3955,17 +4646,37 @@ function doRestore(p){
   if(state.priorChangelogName){const el=document.getElementById('clogStatus');if(el)el.innerHTML='<span class="pill ok">ok</span> <strong>'+esc(state.priorChangelogName)+'</strong> — restored · new changes added on top at export <button class="link-x" title="Unload changelog" onclick="unloadChangelog()">×</button>';}
   const b=document.getElementById('restoreBanner');if(b)b.remove();
   renderStatus([{cls:'ok',txt:'Session restored',extra:countEntries()+' entries'+(state.inbox.length?' · '+state.inbox.length+' in inbox':'')+' · export when ready',unload:'data'}]);
-  showList();updateFooter();
+  historyWithLock(()=>{
+    if(p.editor&&p.editor.item){state.items=[p.editor.item];state.editing=p.editor.editing||{isNew:false,origId:null,origDimId:null};state.editTouched=!!p.editor.editTouched;showEdit(state.editing&&state.editing.isNew?'Add a new entry':'Edit entry');state.editTouched=!!p.editor.editTouched;}
+    else if(state.mode==='inbox')showInbox();else if(state.mode==='drafts')showDrafts();else if(state.mode==='rejected')showRejected();else if(state.mode==='triage')showTriage();else showList();
+  });
+  historyReset();updateFooter();
 }
-window.addEventListener('beforeunload',function(e){if(_discarding)return;flushAutosave();if(committedDirty()||state.editing){e.preventDefault();e.returnValue='';}});
+window.addEventListener('beforeunload',function(e){if(_discarding)return;flushAutosave();if(committedDirty()){e.preventDefault();e.returnValue='';}});
 window.addEventListener('pagehide',flushAutosave);
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')flushAutosave();});
 document.addEventListener('keydown',function(e){
-  if((e.metaKey||e.ctrlKey)&&!e.altKey&&(e.key==='s'||e.key==='S')){if(state.editing){e.preventDefault();saveEntry();}return;}
+  const cmd=e.metaKey||e.ctrlKey;
+  if(cmd&&!e.altKey&&(e.key==='z'||e.key==='Z')){
+    if(historyNativeUndoTarget(e.target))return;
+    e.preventDefault();if(e.shiftKey)historyRedo();else historyUndo();return;
+  }
+  if(cmd&&!e.altKey&&(e.key==='y'||e.key==='Y')){if(historyNativeUndoTarget(e.target))return;e.preventDefault();historyRedo();return;}
+  if(cmd&&!e.altKey&&(e.key==='s'||e.key==='S')){e.preventDefault();if(state.editing)saveEntry();else if(state.db)openExport();return;}
   if(e.key==='Escape'&&state.editing&&!document.querySelector('.overlay')){e.preventDefault();cancelEdit();}
 });
+// Capture the human-readable action before inline onclick/oninput handlers mutate state.
+document.addEventListener('click',historyIntentFromEvent,true);
+document.addEventListener('input',historyIntentFromEvent,true);
+document.addEventListener('change',historyIntentFromEvent,true);
+document.addEventListener('drop',historyIntentFromEvent,true);
 document.addEventListener('input',touchState);
 document.addEventListener('change',touchState);
+// Some buttons mutate arrays and only re-render their card. This catches those too.
+document.addEventListener('click',function(e){
+  if(e.target&&e.target.closest&&e.target.closest('#undoBtn,#redoBtn,#historyBtn'))return;
+  setTimeout(function(){const changed=historyObserve();if(changed){updateDirty(true);scheduleAutosave();}},0);
+});
 let _toastT=null;
 function showToast(msg,undoFn,ms){
   let t=document.getElementById('fdmToast');
@@ -3975,7 +4686,7 @@ function showToast(msg,undoFn,ms){
   t.classList.add('show');clearTimeout(_toastT);_toastT=setTimeout(hideToast,ms||8000);
 }
 function hideToast(){const t=document.getElementById('fdmToast');if(t)t.classList.remove('show');}
-function restoreSnap(s){state.db=s.db;state.inbox=s.inbox;state.rejectedView=s.rejectedView;rebuildIndexes();showList();updateFooter();showToast('Restored',null,1600);}
+function restoreSnap(s){historySetManualIntent('Restore previous state','restore');state.db=s.db;state.inbox=s.inbox;state.rejectedView=s.rejectedView;rebuildIndexes();showList();updateFooter();showToast('Restored',null,1600);}
 function countInbound(id){let n=0;state.db.dimensions.forEach(dm=>dm.items.forEach(it=>{((it.data&&it.data.relatedEntries)||[]).forEach(r=>{if((typeof r==='string'?r:r.id)===id)n++;});}));return n;}
 function repointInbound(oldId,newId){state.db.dimensions.forEach(dm=>dm.items.forEach(it=>{const rel=it.data&&it.data.relatedEntries;if(Array.isArray(rel))it.data.relatedEntries=rel.map(r=>typeof r==='string'?(r===oldId?newId:r):(r&&r.id===oldId?Object.assign({},r,{id:newId}):r));}));}
 function healthCheck(){
@@ -3984,8 +4695,9 @@ function healthCheck(){
   state.db.dimensions.forEach(dm=>dm.items.forEach(it=>{ids.add(it.id);dup[it.id]=(dup[it.id]||0)+1;}));
   state.db.dimensions.forEach(dm=>dm.items.forEach(it=>{
     const d=it.data||{},add=(sev,msg)=>out.push({id:it.id,name:it.name||it.id,sev:sev,msg:msg});
-    if(!it.name||!it.name.trim())add('err','No entry name.');
-    if(!d.question||!String(d.question).trim())add('err','No design question.');
+    if(!it.name||!it.name.trim())add(it.available!==false?'err':'warn','No entry name.');
+    if(!d.question||!String(d.question).trim())add(it.available!==false?'err':'warn','No design question.');
+    if(it.available!==false){draftMissing(it).forEach(x=>{if(x!=='name'&&x!=='question')add('err','Live entry is missing '+x+'.');});}else{const miss=draftMissing(it);if(miss.length)add('soft','Draft still needs: '+miss.join(', ')+'.');}
     ((d.relatedEntries)||[]).forEach(r=>{const rid=typeof r==='string'?r:r.id;if(rid===it.id)add('warn','Links to itself.');else if(rid&&!ids.has(rid))add('err','Links to a missing id: '+rid);});
     const we=d.workedExample;
     if(we)['','2','3'].forEach(n=>{
@@ -4022,7 +4734,7 @@ function hcJump(id){const found=findEntry(state.db,{id:id});const m=document.get
    rate evidence and propose triage, then import & review its suggestions.
    Nothing touches the data until you accept a suggestion here.
    ======================================================================= */
-const AI_REQUEST_FORMAT='framework-ai-review-request/v1';
+const AI_REQUEST_FORMAT='framework-ai-review-request/v2';
 function aiRubrics(){return (state.db&&state.db.reviewRubrics)||{};}
 function aiRubricText(kind){const r=aiRubrics()[kind];return r&&r.text?r.text:'';}
 function aiCss(){return '<style>'+
@@ -4118,8 +4830,8 @@ function aiCss(){return '<style>'+
   '</style>';}
 
 function openAiReview(){
-  if(!state.db){alert('Load data.json first.');return;}
-  if(state.editing){alert('Finish or cancel the entry you\u2019re editing first.');return;}
+  if(!state.db){const msg='Load data.json before starting a framework review.';alert(msg);reportIssue('err','AI review blocked',msg,'Framework review');return;}
+  if(state.editing){const msg='Apply or cancel the entry you are editing before starting an AI review.';alert(msg);reportIssue('err','AI review blocked',msg,'Evidence & triage review');return;}
   state._aiSel={};triageAllEntries().forEach(o=>{state._aiSel[o.it.id]=true;});
   const ov=document.createElement('div');ov.className='overlay';ov.id='aiModal';
   ov.onclick=e=>{if(e.target===ov)ov.remove();};
@@ -4153,7 +4865,7 @@ function aiRenderRubrics(){
     '</div>';
   };
   host.innerHTML='<div class="ai-sec"><div class="ai-sec-h">1 \u00b7 Rubrics <span class="hint" style="font-weight:400">(saved in data.json)</span></div>'+
-    '<div class="ai-sec-sub">The AI applies these two rubrics. Re-load a file to update the version baked into every export.</div>'+
+    '<div class="ai-sec-sub">The AI applies these two rubrics. Evidence is governed by the Evidence Rating Rubric. Triggers, standing status, exclusions and related-entry routing are governed by the Triage Rubric. Re-load a file to update the version baked into every export.</div>'+
     '<div class="ai-rubrics">'+slot('evidence','Evidence rating rubric')+slot('triage','Triage rating rubric')+'</div></div>';
 }
 /* the entry-quality rubric lives in the same reviewRubrics store, under 'quality' */
@@ -4204,7 +4916,7 @@ function aiRenderExport(){
   const miss=[];if(!aiRubricText('evidence'))miss.push('evidence');if(!aiRubricText('triage'))miss.push('triage');
   const warn=miss.length?'<div class="hint" style="color:var(--orange);margin-top:8px">\u26a0 The '+miss.join(' and ')+' rubric'+(miss.length>1?'s aren\u2019t':' isn\u2019t')+' loaded \u2014 you can still export, but the AI will be rating without '+(miss.length>1?'them':'it')+'.</div>':'';
   host.innerHTML='<div class="ai-sec"><div class="ai-sec-h">2 \u00b7 Entries to review</div>'+
-    '<div class="ai-sec-sub">Each selected entry is sent with its question, bands, current rating and current trigger. The fact vocabulary and both rubrics are bundled in automatically.</div>'+
+    '<div class="ai-sec-sub">Each selected entry is sent with its question, parameter, bands, recommended actions, evidence basis, current rating, current trigger and current related links. A compact catalogue of every framework entry is also bundled so the AI can discover useful routes to entries you did not select for review.</div>'+
     '<div class="ai-selbar"><span id="aiSelCount" class="ai-count">'+aiSelCount()+' selected</span>'+
       '<button class="tlink" onclick="aiSelAll()">all</button>'+
       '<button class="tlink" onclick="aiSelLive()">live only</button>'+
@@ -4231,6 +4943,7 @@ function aiEntryPayload(it,dimName){
     elementType:d.elementType||[],
     constructionPhase:d.constructionPhase||[],
     thresholds:(d.thresholds||[]).map(t=>({range:t.range||'',rating:t.rating||'',guidance:tStripTags(t.guidance||'')})),
+    recommendedActions:(d.alternatives||[]).map(a=>typeof a==='string'?{title:'',description:tStripTags(a)}:{title:tStripTags((a&&a.title)||''),description:tStripTags((a&&a.description)||'')}),
     evidenceBasis:tStripTags(d.evidence||''),
     /* documented real project cases — item 7 in the evidence hierarchy, and usually
        the corroboration leg of a `high`. The rater cannot see the images, so send
@@ -4244,29 +4957,54 @@ function aiEntryPayload(it,dimName){
     /* region the evidence came from — bears on whether a cited standard is on point */
     location:d.location||null,
     currentEvidenceSupport:d.evidenceSupport?{level:d.evidenceSupport.level||'',summary:tStripTags(d.evidenceSupport.summary||'')}:null,
+    currentRelatedEntries:mgrRelated(it.id).map(r=>({id:r.id,name:r.name,dimension:r.dimName,note:tStripTags(r.note||'')})),
     currentTriage:d.triage||[],
-    currentTriageExclude:d.triageExclude||[]
+    currentTriageExclude:d.triageExclude||[],
+    currentStanding:d.standing===true
   };
+}
+function aiFrameworkCatalogue(){
+  return triageAllEntries().map(o=>{
+    const d=o.it.data||{};
+    return {
+      id:o.it.id,
+      name:o.it.name,
+      dimension:o.dim.name,
+      available:o.it.available!==false,
+      question:tStripTags(d.question||''),
+      parameter:tStripTags(d.parameter||''),
+      appliesWhere:d.applicability?tStripTags(d.applicability.appliesWhere||''):'',
+      currentRelatedEntries:mgrRelated(o.it.id).map(r=>({id:r.id,note:tStripTags(r.note||'')}))
+    };
+  });
 }
 function aiBuildRequest(){
   const entries=aiSelectedEntries().map(o=>aiEntryPayload(o.it,o.dim.name));
   return {
     _format:AI_REQUEST_FORMAT,
     generated:isoToday(),
-    instructions:'For EACH entry in `entries`, act as a framework maintainer applying the two rubrics provided in full in `rubrics`. Produce BOTH (1) an evidence-support rating following `rubrics.evidence`, and (2) a triage trigger following `rubrics.triage`. Return ONLY valid JSON matching `outputSchema` exactly \u2014 an object with `newFacts` and `suggestions` \u2014 and no prose outside the JSON. Rules: (a) each suggestion\u2019s `id` must exactly equal the entry\u2019s id. (b) `evidenceSupport.level` must be exactly "established", "directional", "indicative" or "reasoned" \u2014 the four levels defined in `rubrics.evidence`. There is no high/medium/low. (c) `triage` is an array of AND-slots; each slot is an array of fact ids OR\u2019d together \u2014 e.g. [["wall","column"],["exposed-concrete"]] means (wall OR column) AND exposed-concrete. (d) Prefer fact ids already in `triageVocabulary` \u2014 reuse before inventing. If the correct trigger genuinely needs a fact that does not exist yet, you MAY introduce it: add its full definition to the top-level `newFacts` array and reference its `fact` id in the relevant `triage`. A fact that serves several entries is far better than one-offs; only invent when no existing fact fits. (e) A `newFacts` entry needs: `fact` (lowercase-hyphen id, not already in the vocabulary), `type` ("gate" | "question" \u2014 those are the only two), `reason` (2\u20133 word label shown in "Surfaces when"). Gates also take `label` and optional `hint` and `kind` ("presence" or "condition"). Questions also take `prompt`, `when` (array of gate fact ids that reveal the question), and `source` ("drawings" | "geotech" | "site" | "intent"). If one fact id would carry two different meanings a reader could tick it for either of, propose it as two facts. (f) `triageExclude` is optional \u2014 include only to route between genuinely competing entries. (g) Keep `evidenceSupport.summary` to one or two plain sentences. (h) `rationale` is read by a human and is not applied \u2014 briefly justify the evidence call and the trigger call. If `newFacts` is empty, return it as []. (i) EVIDENCE \u2014 grade EVERY source on BOTH axes in `rubrics.evidence`: its GRADE (A/B/C) and its PROXIMITY (on point / adjacent / analogous). A claim is evidenced only by a Grade A or B source that is ON POINT. Adjacent or analogous caps the entry no matter how strong the source. Grade C never evidences a claim \u2014 it only corroborates one. (j) EVIDENCE \u2014 `examples` are the entry\u2019s documented real project cases, tagged `concern` / `recommended`. They are Grade C and are usually the CORROBORATION leg. Read them before you rate. Corroboration must be INDEPENDENT (a source that could have disagreed \u2014 NOT two publications from one body, not Parts I and II of one review, not two jurisdictions under one model law) and must be ON THE SAME CLAIM as the thing the reader acts on. (k) EVIDENCE \u2014 establish the entry\u2019s KIND first (measured / chosen / judged / counted) and apply the matching test. A number off a standard menu (bar spacing, bar diameter, pod depth, FRL) is CHOSEN, not measured \u2014 do not demand cut-off evidence it never needed. Never set a level \u2018for consistency with\u2019 a neighbouring entry. (l) TRIAGE \u2014 apply the RECONSTRUCTION TEST in `rubrics.triage`: name the jobs the entry actually bites on, then find the SMALLEST fact set that reproduces exactly those jobs. `applicability.appliesWhere` is the entry\u2019s own statement of scope \u2014 use it as the STARTING DRAFT of that sentence, not as the answer: it was written by the same person who wrote the trigger, so it agrees with the trigger by construction. Attack it first \u2014 read the BANDS to find where the guidance actually changes what the reader does, then name a job the entry would help on that the sentence excludes. (m) TRIAGE \u2014 there is NO opt-in fact type. Advice is either UNIVERSAL in scope (\u201con every reinforced-concrete job\u201d) \u2014 set `standing:true` and omit `triage` entirely \u2014 or CONDITIONAL, in which case it takes a gate or a question. `standing` means universal in SCOPE, never merely important; if you can name one real RC job where the entry does not apply, it is not standing. Never OR together every element gate to fake a universal trigger. (n) TRIAGE \u2014 a trigger built on a QUESTION inherits that question\u2019s `when` gates as a hidden AND-slot. Check it: on the jobs your scope sentence names, is the question actually asked? A slab entry whose question is `when`-gated on `slab-suspended` alone is silently dark on every ground-slab job, and no validator can see it. If the `when` is too narrow, say so in `rationale`. (o) TRIAGE \u2014 recall and precision are NOT symmetric. A false positive costs one line the reader skims; a false negative loses the entry and the reader never learns it happened. Precision is a property of the RESULT SET, not of one entry \u2014 do not tighten a trigger for its own precision. Audit every AND-slot, question `when` and `triageExclude` against recall specifically. (p) TRIAGE \u2014 `triageExclude` routes between genuinely competing entries only, and every exclude OWES a receiving entry: name, in `rationale`, the entry that picks the reader up on the excluded fact. An exclude with nothing behind it is a silent recall hole. (q) Never announce the level inside `evidenceSupport.summary` \u2014 name what backs the entry, then its main limitation.',
+    instructions:'For EACH entry in `entries`, act as a framework maintainer applying the two rubrics provided in full in `rubrics`. Produce THREE review outputs: (1) an evidence-support rating following `rubrics.evidence`; (2) triage / standing / exclusions following `rubrics.triage`; and (3) related-entry routing following the RELATED-ENTRY section of `rubrics.triage`. Return ONLY valid JSON matching `outputSchema` exactly — an object with `newFacts` and `suggestions` — and no prose outside the JSON. '+
+    'GENERAL: each suggestion id must exactly equal the reviewed entry id. Never rewrite the question, parameter, bands, recommended actions or technical guidance in this review. '+
+    'EVIDENCE: `evidenceSupport.level` must be exactly established, directional, indicative or reasoned. Grade every source on grade AND proximity. Establish the entry kind first. Read `recommendedActions` as part of the claim set. Never announce the level inside the evidence summary. '+
+    'TRIAGE: apply the reconstruction test in `rubrics.triage`: name the jobs the entry actually bites on, then find the smallest fact set that reproduces those jobs. Prefer facts already in `triageVocabulary`; invent a new fact only when the vocabulary genuinely cannot express the scope. There is no opt-in type. A universal entry uses `standing:true` and no trigger. A conditional entry uses `triage`. If you propose `standing:false` for an entry that is currently standing, you MUST also provide a valid conditional `triage` trigger in the same suggestion so the entry cannot become dark. Check question `when` gates for hidden recall failures. `triageExclude` is only for genuine routing between competing entries and every exclude needs a receiving entry. Recall is more important than polishing one entry for precision. '+
+    'RELATED ENTRIES: this is also governed by `rubrics.triage`. A related link is post-surface routing, not a trigger. Compare the reviewed entry against the ENTIRE `frameworkCatalogue`, including entries not selected for review. Propose a relationship only when the target answers a DIFFERENT but directly connected next design question — a companion consequence, handoff, alternative/contrast, or dependency. Do NOT link merely because two entries share a tag, element, phase, material, dimension or broad topic. Zero links is valid. Prefer a few strong routes. Every add or update needs a short reader-facing note explaining why to open that entry next. '+
+    'For related-entry output, return ONLY proposed CHANGES, not the whole final list. Use `action:"add"` only when the pair is not currently related, `action:"update"` only when the pair already exists and its note should change, and `action:"remove"` only when an existing relationship clearly fails the rubric. Do not propose the same pair twice or from both directions; the Data Manager treats the relationship as mutual. Target ids must exist in `frameworkCatalogue` and cannot equal the reviewed entry id. Do not use related links to repair a bad trigger or to encode `decisionPath`. '+
+    'Every suggested change remains a human decision. `rationale` is for the maintainer and is not applied. If no link changes are justified, return `relatedEntries:[]`. If `newFacts` is empty, return it as [].',
     outputSchema:{
       newFacts:[{fact:'new-fact-id',type:'gate | question',reason:'short label',label:'(gate only) full label',hint:'(optional) hint',kind:'(gate only) presence | condition',prompt:'(question only) the question text',when:['(question only) gate-fact-id'],source:'(question only) drawings | geotech | site | intent'}],
       suggestions:[{
         id:'<entry id, unchanged>',
         evidenceSupport:{level:'established | directional | indicative | reasoned',summary:'one or two sentences'},
-        standing:'(optional) true \u2014 ONLY if the entry applies to every RC job; then omit `triage`',
+        standing:'(optional) true — ONLY if the entry applies to every RC job; then omit `triage`',
         triage:[['fact-id','...'],['fact-id']],
         triageExclude:['fact-id (optional)'],
-        rationale:{evidence:'why this level',triage:'why this trigger'}
+        relatedEntries:[{action:'add | update | remove',id:'existing framework entry id',note:'required for add/update; omit for remove',reason:'why this routing change passes the triage rubric'}],
+        rationale:{evidence:'why this level',triage:'why this trigger',links:'overall link-routing reasoning (optional)'}
       }]
     },
     rubrics:{evidence:aiRubricText('evidence'),triage:aiRubricText('triage')},
     triageVocabulary:aiVocab(),
+    frameworkCatalogue:aiFrameworkCatalogue(),
     entries:entries
   };
 }
@@ -4280,7 +5018,7 @@ function aiBuildRequest(){
    review as a diff; an entry still pending in the inbox SUPERSEDES its own row
    (see supersedeInboxSubmission). Nothing is saved until you apply and export.
    ======================================================================= */
-const QUALITY_REQUEST_FORMAT='framework-entry-quality-request/v1';
+const QUALITY_REQUEST_FORMAT='framework-entry-quality-request/v2';
 
 /* the five dimensions, with the descriptions the AI judges dimension-fit against */
 function qrDimVocab(){
@@ -4321,37 +5059,50 @@ function qrWrap(sources){
   return groups;
 }
 function qrInstructions(){
-  return 'You are reviewing framework entries for QUALITY OF FRAMING, using the rubric supplied in full in `rubric`. '+
-  'Return ONLY valid JSON matching `outputSchema` \u2014 no prose, no markdown fences, outside the JSON.\n\n'+
-  'WHAT TO RETURN: the SAME entries, improved, in the SAME `{"dimensions":[{"id":\u2026,"items":[\u2026]}]}` shape you were given. Return the whole entry object each time (id, name, dimId, available, data), not just the parts you changed \u2014 the file you return is imported as a replacement.\n\n'+
+  return 'You are reviewing framework entries for ADMISSION + QUALITY OF FRAMING, using the rubric supplied in full in `rubric`. '+
+  'Return ONLY valid JSON matching `outputSchema` — no prose, no markdown fences, outside the JSON.\n\n'+
+  'CRITICAL ORDER OF WORK: run the ADMISSION GATE FIRST. Only an entry that passes the scope gate may be reframed. If it is HOLD or REJECT, return the entry itself unchanged and explain the admission decision in `_review.admission`.\n\n'+
+  'WHAT TO RETURN: the SAME entries, in the SAME `{"dimensions":[{"id":…,"items":[…]}]}` shape you were given. For PASS entries, return the whole improved entry object (id, name, dimId, available, data). For HOLD/REJECT entries, copy the whole entry through unchanged. The Data Manager will show every proposed change separately and the maintainer decides each one.\n\n'+
   'HARD RULES:\n'+
-  '(a) NEVER change an entry\u2019s `id`. It is how your reply is matched back to the right entry. Copy it through exactly.\n'+
-  '(b) DO NOT RE-AUTHOR THE GUIDANCE. You may reframe; you may not change what the entry claims. Do not move a threshold from 200 mm to 250 mm, do not change what a band means, do not invent evidence, do not add bands that assert new facts. If fixing the framing would require changing the claim, leave it alone and say so in `_review`.\n'+
-  '(c) Apply the rubric: one concrete question (~one sentence, no stacked decisions, and it must not state its own answer); one short actionable parameter (noun phrase, units if numeric, ONE variable not two, never a description of the bands); the parameter must actually answer the question \u2014 where the two diverge, the parameter is usually the honest one and the question gets rewritten to match it; the condition kind framed honestly, and there are FOUR kinds \u2014 measured / chosen / judged / COUNTED (rubric \u00a76). A number off a standard menu (bar spacing 150/200/250/300, bar diameter N12/N16/N20, pod depth) is CHOSEN, not measured \u2014 do not invent ranges to close a "gap" no drawing lands in. A COUNTED parameter ("how many of the three preconditions fail") is legitimate, NOT a composite parameter \u2014 but Background must name every condition it asks the reader to count. Bands are values/ranges/states/counts OF that parameter; band headings 2\u20135 words or clean numeric ranges; as many bands as the reality has \u2014 run BOTH tests in rubric \u00a79, in order: the padding test (are the two worst bands the same VALUE of the parameter, split by a consequence the parameter never names?) and then the missing-band test (can the parameter take a value no band names?). NEVER merge a gradient: a different value of the parameter earns its own band even when the action is the same. Before merging anything, check the parameter is named right \u2014 a padded-looking pair is often a mis-named parameter. Coverage (no gaps/overlaps, closed open ends, endpoints in exactly one band \u2014 `\u2264 600` then `> 600 \u2013 1000`) applies to MEASURED bands only. Depth pushed down into background and evidence; de-identified (strip any project, company, person or site name).\n'+
-  '(d) DIMENSION: `dimensionVocabulary` lists the five dimensions and what each covers. Put the entry under the one whose description actually covers the decision the question makes \u2014 judged by the question, not by the element. If you move it, set the entry\u2019s `dimId` to the new dimension id AND list it under that dimension\u2019s group, and say why in `_review.dimension`. If an entry arrives with an empty dimId, choose the right one.\n'+
-  '(e) KEYWORDS: fill `data.keywords` without being asked. Add trade slang, abbreviations and alternative names a searcher might actually type \u2014 terms NOT already in the entry text. These need no justification.\n'+
-  '(f) `_review` is a sibling of `data` (NOT inside it) and is read by a human, then discarded \u2014 it is never saved. Use it to explain the EDITORIAL changes: a reworded question, a tightened parameter, a renamed or dropped band, a dimension move, anything you deliberately left alone. Keep each note to a sentence. Silent, obvious fixes (keywords, typos, de-identification) need no note.\n'+
-  '(g) Leave a field exactly as you found it if it is already right. A returned entry identical to the one sent is a valid, useful answer.\n'+
-  '(h) Preserve every field you were given, including ones the rubric says nothing about (evidence, evidenceSupport, triage, images, location, related entries). Do not drop them just because you did not touch them.\n'+
-  '(i) RATINGS: every band\u2019s `rating` must be EXACTLY one of "Best practice", "Consider", "Concern", "Action required" \u2014 those four strings, spelled and cased exactly as written. A variant like "Action Required" does not key to its colour or to any rating filter. Bands run best \u2192 worst. A band set may legitimately skip a rating. Remember what the ratings grade: how much action the DESIGNER OWES, not how good the project is \u2014 a band that describes a project fact (`0 fail`, `1 floor`) is not a defect, so do not re-author an entry because a large building lands on "Action required".';
+  '(a) ADMISSION / SCOPE — before editing, apply rubric §0. Explicitly answer: (1) is this already a design-standard/compliance question? (2) what SPECIFIC permanent structural-design lever can the structural designer change in the drawings, specification or design decision to influence the issue? (3) is there a credible evidence path? Put the result in `_review.admission` as `status: "pass" | "hold" | "reject"`, `failedRule`, `designerLever`, and `reason`.\n'+
+  '(b) DESIGNER-INFLUENCE IS A HARD GATE. If the answer is only contractor means-and-methods, general site planning, equipment setup, crane/pump positioning, traffic management, ordinary programming, temporary works choice, or "ask/coordinate/confirm with the contractor", REJECT as out of scope unless the submission itself identifies a permanent design decision the structural designer can alter. Do NOT rescue it by relabelling it Logistics or Construction Methods. Example: "Can a concrete pump reach the pour from a practical setup position?" is contractor-facing as written; without a specific permanent-design lever, reject it.\n'+
+  '(c) If admission status is HOLD or REJECT: DO NOT REFRAME. Return name, dimId, available and `data` exactly as received. Use `_review.admission` and optionally `_review.leftAlone` to explain why.\n'+
+  '(d) NEVER change an entry’s `id`. Copy it through exactly.\n'+
+  '(e) DO NOT RE-AUTHOR THE GUIDANCE. For a PASS entry you may reframe; you may not change what it claims. Do not move a threshold, change what a band means, invent evidence, or add a band that asserts a new fact. If a framing fix requires a new claim, leave it alone and say so in `_review`.\n'+
+  '(f) FRAMING — one concrete question (~one sentence, no stacked decisions, and it must not state its own answer); one short DESIGNER-ACTIONABLE parameter (noun phrase, units if numeric, one variable not two); the parameter must answer the question. Frame the condition honestly as measured / chosen / judged / counted. Bands are values/ranges/states/counts OF that parameter; headings are 2–5 words or clean numeric ranges. Run the padding test then the missing-band test. Never merge a real gradient. Coverage rules apply to measured bands only.\n'+
+  '(g) DIMENSION — choose the dimension whose description covers the DESIGN DECISION that creates the issue. Dimension is assigned only after the admission gate passes. If moved, set `dimId`, group it under that dimension, and explain why.\n'+
+  '(h) BAND LABELS — every retained band needs a short reader-facing `range`/label plus `guidance`. You may distil a concise label from a condition already supplied. Do not invent a numeric boundary or factual state. If you cannot derive an honest label, leave it blank and explain.\n'+
+  '(i) RECOMMENDED ACTIONS — actively review `data.alternatives`. They must be concrete actions a structural designer can take, non-duplicative and consistent with the bands/applicability. If every action is contractor-facing ("select plant", "plan access", "coordinate programme", "ask contractor") with no design change, revisit the admission gate: that is strong evidence the submission is out of scope. You may tighten or title existing actions but may not invent new technical actions.\n'+
+  '(j) KEYWORDS — add only useful non-obvious search terms: trade slang, abbreviations and alternative names not already in the entry text.\n'+
+  '(k) `_review` is a sibling of `data` and is never published. It MUST contain `_review.admission`. Other notes explain editorial changes. Silent typos/keywords need no note.\n'+
+  '(l) Preserve every field you were given. Do not drop evidence, evidenceSupport, triage, images, location, comments or related entries merely because this rubric does not edit them.\n'+
+  '(m) RATINGS — band `rating` must be exactly "Best practice", "Consider", "Concern" or "Action required"; each at most once. Ratings describe how much action the DESIGNER owes, not project severity.\n'+
+  '(n) DE-IDENTIFY — remove project, company, person and site names from publishable entry fields, but do not invent replacement technical content.';
 }
 function qrOutputSchema(){
   return {
     dimensions:[{
-      id:'<dimension id the entry belongs under>',
+      id:'<dimension id the entry belongs under; unchanged if admission is hold/reject>',
       items:[{
         id:'<entry id, copied through UNCHANGED>',
-        name:'<entry name>',
-        dimId:'<same dimension id \u2014 set explicitly, especially if you moved it>',
+        name:'<entry name; unchanged if admission is hold/reject>',
+        dimId:'<dimension id; unchanged if admission is hold/reject>',
         available:'<boolean, unchanged>',
-        data:'<the full entry data object, improved: question, parameter, thresholds, applicability, background, evidence, keywords, \u2026>',
+        data:'<the full entry data object; improve only when admission.status is pass>',
         _review:{
-          summary:'one line: what you changed overall',
+          admission:{
+            status:'pass | hold | reject',
+            failedRule:'none | design-standard | designer-influence | evidence-path',
+            designerLever:'specific structural-design decision the designer can change; blank if none',
+            reason:'one or two sentences explaining the admission decision'
+          },
+          summary:'one line: what you changed overall; or why nothing was changed',
           question:'(only if reworded) why',
           parameter:'(only if tightened) why',
-          bands:'(only if renamed / dropped / reordered) why',
+          bands:'(only if labels/bands were renamed / dropped / reordered, or a label could not be derived) why',
+          actions:'(only if recommended actions were restructured/tightened, or reveal a scope problem) why',
           dimension:'(only if moved) why',
-          leftAlone:'(optional) anything that looked wrong but you could not fix without changing the claim'
+          leftAlone:'(optional) anything you could not change without inventing technical content'
         }
       }]
     }]
@@ -4379,7 +5130,7 @@ function qrExportRow(i){
   const it=state.items[i];
   if(!it||it.type!=='submission'||!it.draft)return;
   const s=qrSourceByKey('inbox:'+it.id);
-  if(!s){alert('Couldn\u2019t read that draft.');return;}
+  if(!s){const msg='Could not read that draft.';alert(msg);reportIssue('err','AI review request blocked',msg,'Entry quality review');return;}
   if(!aiRubricText('quality')&&!confirm('The entry-quality rubric isn\u2019t loaded yet, so the AI will be reframing without it.\n\nExport anyway? (You can load the rubric in \u201cEntry quality review\u201d and it will be remembered in data.json.)'))return;
   qrDownload([s],'entry-quality-review-'+(s.id||'entry')+'.json');
   setInboxStatus([{cls:'ok',txt:'Exported \u201c'+(s.name||'entry')+'\u201d for AI review',extra:'give the .json to an AI, then drop its reply into the JSON fragment box \u2014 it folds back into this same row'}]);
@@ -4387,8 +5138,8 @@ function qrExportRow(i){
 
 /* ---- quality review modal ---- */
 function openQualityReview(){
-  if(!state.db){alert('Load data.json first.');return;}
-  if(state.editing){alert('Finish or cancel the entry you\u2019re editing first.');return;}
+  if(!state.db){const msg='Load data.json before starting an entry-quality review.';alert(msg);reportIssue('err','AI review blocked',msg,'Entry quality review');return;}
+  if(state.editing){const msg='Apply or cancel the entry you are editing before starting an AI review.';alert(msg);reportIssue('err','AI review blocked',msg,'Entry quality review');return;}
   const pend=qrSources().filter(s=>s.origin==='inbox');
   state._qrSel={};
   (pend.length?pend:[]).forEach(s=>{state._qrSel[s.key]=true;});   // default: the pending inbox rows
@@ -4396,8 +5147,8 @@ function openQualityReview(){
   ov.onclick=e=>{if(e.target===ov)ov.remove();};
   ov.innerHTML='<div class="modal clog-wide">'+aiCss()+
     '<div class="modal-top"><h2>Entry quality review \u2014 with an AI</h2><button class="lc-x" onclick="closeQualityReview()">\u00d7</button></div>'+
-    '<div class="ai-lead">A second opinion on how an entry is <strong>framed</strong> \u2014 is the question one clear thing, is the parameter one thing you can act on, do the bands follow, is it under the right dimension. The AI hands back the <strong>improved entry</strong> (keywords filled in, wording tightened) plus a note on what it changed and why. It must <strong>not re-author the guidance</strong> \u2014 no moving thresholds, no new claims. Everything it returns lands in the inbox as an editable draft: you see the diff, you edit it, you accept it. Nothing is saved until you apply and export <code>data.json</code>.</div>'+
-    '<div class="hint" style="margin:2px 0 10px"><strong>How it works:</strong> load the rubric once \u2192 pick entries (pending inbox rows and/or live entries) \u2192 download one request file and give it to any capable AI \u2192 drop its JSON reply back in the last box. A reviewed inbox row is <strong>updated in place</strong>; a reviewed live entry comes back as an <strong>update</strong> you review as a diff.</div>'+
+    '<div class="ai-lead"><strong>First: should this submission be an entry at all?</strong> The AI applies the framework admission gate before it edits anything: design-standard check, designer-influence check and evidence path. Only a PASS submission is reframed. Its suggestions then come back as <strong>track changes</strong>: the original stays untouched until you accept or reject each individual change. The AI must not move thresholds, invent technical guidance or supply evidence.</div>'+
+    '<div class="hint" style="margin:2px 0 10px"><strong>How it works:</strong> load the rubric once \u2192 pick entries \u2192 download the request and give it to an AI \u2192 drop the JSON reply back in. For an inbox submission the original stays as the working version; the AI reply appears above it as a scope decision plus before/after suggestions. You accept or reject each change. A reviewed live entry still comes back as an update for review.</div>'+
     '<div id="qrRubricSec"></div>'+
     '<div id="qrExportSec"></div>'+
     '<div id="qrImportSec"></div>'+
@@ -4463,7 +5214,7 @@ function qrIngestFiles(files){handleFragmentFiles(files);closeQualityReview();sh
 function qrLoadPasted(){
   const t=document.getElementById('qrPaste');
   const txt=t?t.value.trim():'';
-  if(!txt){alert('Paste the AI\u2019s JSON reply first.');return;}
+  if(!txt){const msg='Paste the AI JSON reply first.';alert(msg);reportIssue('warn','AI reply import stopped',msg,'Entry quality review');return;}
   const res=ingestFragmentJSON(txt,'ai-quality-review-'+isoToday()+'.json');
   closeQualityReview();
   afterFragmentIngest([res],[]);
@@ -4510,10 +5261,10 @@ function aiCollectNewFacts(parsed,sugs){
 }
 function aiParseAndReview(text){
   let parsed;
-  try{parsed=JSON.parse(text);}catch(e){alert('That isn\u2019t valid JSON.\n\n'+e.message+'\n\nCopy the AI\u2019s reply exactly \u2014 just the JSON, no backticks or commentary.');return;}
+  try{parsed=JSON.parse(text);}catch(e){const msg='That is not valid JSON. '+e.message+' Copy the AI reply exactly — JSON only, without backticks or commentary.';alert(msg);reportIssue('err','AI reply blocked',msg,'Framework review');return;}
   const sugs=aiNormalizeSuggestions(parsed);
   const newFacts=aiCollectNewFacts(parsed,sugs);
-  if(!sugs.length&&!newFacts.length){alert('No suggestions found. Expected an object with "suggestions" (each having an "id"), and optionally "newFacts".');return;}
+  if(!sugs.length&&!newFacts.length){const msg='No suggestions were found. Expected an object with “suggestions” (each with an id), and optionally “newFacts”.';alert(msg);reportIssue('err','AI reply blocked',msg,'AI review');return;}
   openAiApply(sugs,newFacts);
 }
 function aiValidateTrigger(trig,excl){
@@ -4647,6 +5398,38 @@ function aiTrAddFact(i,si,sel){const f=sel&&sel.value;if(!f)return;const r=(stat
 function aiTrRemoveFact(i,si,f){const r=(state._aiRows||[])[i];if(!r||!r.trNew||!r.trNew[si])return;r.trNew[si]=r.trNew[si].filter(x=>x!==f);if(!r.trNew[si].length)r.trNew.splice(si,1);aiTrAfter(r);}
 function aiTrExclAdd(i,sel){const f=sel&&sel.value;if(!f)return;const r=(state._aiRows||[])[i];if(!r)return;if(r.exNew===null||!Array.isArray(r.exNew))r.exNew=[];if(r.exNew.indexOf(f)<0)r.exNew.push(f);aiTrAfter(r);}
 function aiTrExclRemove(i,f){const r=(state._aiRows||[])[i];if(!r||!Array.isArray(r.exNew))return;r.exNew=r.exNew.filter(x=>x!==f);aiTrAfter(r);}
+function aiNormalizeLinkChange(ownerId,raw){
+  const action=String((raw&&raw.action)||'').toLowerCase().trim();
+  const id=String((raw&&raw.id)||'').trim();
+  const note=String((raw&&raw.note)||'').trim();
+  const reason=String((raw&&raw.reason)||'').trim();
+  const target=entryById(id);
+  const existing=!!(ownerId&&id&&findLinkOwner(ownerId,id));
+  const errors=[];
+  if(!['add','update','remove'].includes(action))errors.push('action must be add, update or remove');
+  if(!id)errors.push('missing target entry id');
+  else if(id===ownerId)errors.push('an entry cannot link to itself');
+  else if(!target)errors.push('target entry id does not exist');
+  if(action==='add'&&existing)errors.push('relationship already exists — use update');
+  if((action==='update'||action==='remove')&&!existing)errors.push('relationship does not currently exist');
+  if((action==='add'||action==='update')&&!note)errors.push('add/update requires a reader-facing link note');
+  return {action,id,note,reason,existing,targetName:target?target.it.name:id,targetDim:target?target.dim.name:'',accept:errors.length===0,errors};
+}
+function aiLinkToggle(ri,li){const r=(state._aiRows||[])[ri],x=r&&r.linkChanges&&r.linkChanges[li];if(!x||x.errors.length)return;x.accept=!x.accept;renderAiApplyBody();}
+function aiLinkNote(ri,li,val){const r=(state._aiRows||[])[ri],x=r&&r.linkChanges&&r.linkChanges[li];if(!x)return;x.note=String(val||'').trim();x.errors=x.errors.filter(e=>e!=='add/update requires a reader-facing link note');if((x.action==='add'||x.action==='update')&&!x.note)x.errors.push('add/update requires a reader-facing link note');if(x.errors.length)x.accept=false;renderAiApplyBody();}
+function aiLinkCard(ri,li,x){
+  const cb=x.errors.length?'<input type="checkbox" disabled>':'<input type="checkbox" '+(x.accept?'checked ':'')+'onchange="aiLinkToggle('+ri+','+li+')">';
+  const oldNote=x.existing?linkNoteVal((state._aiRows||[])[ri].id,x.id):'';
+  let oldTxt,newTxt;
+  if(x.action==='add'){oldTxt='not linked';newTxt=x.targetName+' — '+x.note;}
+  else if(x.action==='update'){oldTxt=oldNote||'(no note)';newTxt=x.note;}
+  else{oldTxt=x.targetName+(oldNote?' — '+oldNote:'');newTxt='unlink';}
+  const badge=x.action==='add'?'ADD':(x.action==='update'?'UPDATE NOTE':'REMOVE');
+  const editor=(x.action==='add'||x.action==='update')?'<label class="ai-nf-l">Reader-facing link note</label><textarea class="ai-edit" onchange="aiLinkNote('+ri+','+li+',this.value)">'+esc(x.note||'')+'</textarea>':'';
+  const errs=x.errors.length?'<div class="ai-err">'+x.errors.map(esc).join('; ')+'</div>':'';
+  const why=x.reason?'<div class="ai-helper"><span class="ai-helper-l">AI’s reasoning</span>'+esc(x.reason)+'</div>':'';
+  return '<div class="ai-part"><div>'+cb+'</div><div><div class="ai-part-h">Related entry · '+badge+' · '+esc(x.targetName)+' <span class="ai-row-dim">'+esc(x.targetDim)+'</span></div><div class="ai-diff"><span class="ai-old"><s>'+esc(oldTxt)+'</s></span><span class="ai-arr">→</span><span class="ai-new">'+esc(newTxt)+'</span></div>'+editor+errs+why+'</div></div>';
+}
 function openAiApply(sugs,newFacts){
   const existing=new Set(triageFacts().map(f=>f.fact));
   /* proposed new facts */
@@ -4659,9 +5442,20 @@ function openAiApply(sugs,newFacts){
   /* rows */
   const rows=sugs.map(sug=>{
     const found=findEntry(state.db,{id:sug.id});
-    const row={id:sug.id,sug,match:!!found,entry:found?found.item:null,dim:found?found.dim:null,evAccept:false,trAccept:false};
+    const row={id:sug.id,sug,match:!!found,entry:found?found.item:null,dim:found?found.dim:null,evAccept:false,trAccept:false,standingAccept:false,linkChanges:[]};
     if(found){
       const d=found.item.data||{};
+      row.standingOld=d.standing===true;
+      row.standingNew=('standing' in sug)?(sug.standing===true):row.standingOld;
+      row.standingChanged=row.standingNew!==row.standingOld;
+      row.standingAccept=row.standingChanged;
+      const seenLinkTargets=new Set();
+      row.linkChanges=(Array.isArray(sug.relatedEntries)?sug.relatedEntries:[]).map(raw=>{
+        const x=aiNormalizeLinkChange(sug.id,raw);
+        if(x.id&&seenLinkTargets.has(x.id)){x.errors.push('duplicate proposal for the same target');x.accept=false;}
+        if(x.id)seenLinkTargets.add(x.id);
+        return x;
+      });
       row.evOld=d.evidenceSupport?{level:(d.evidenceSupport.level||'').toLowerCase(),summary:d.evidenceSupport.summary||''}:null;
       const es=sug.evidenceSupport;
       if(es&&typeof es==='object'){
@@ -4680,7 +5474,9 @@ function openAiApply(sugs,newFacts){
         row.trNew=deepClone(row.trOld);row.exNew=null;
       }
       aiRecomputeTrigger(row);
-      row.trAccept=row.trShape&&row.bogus.length===0&&row.trChanged;
+      row.trAccept=!row.standingNew&&row.trShape&&row.bogus.length===0&&row.trChanged;
+      row.standingValid=!row.standingChanged||row.standingNew||(row.trShape&&row.bogus.length===0);
+      if(row.standingChanged&&!row.standingValid)row.standingAccept=false;
     }
     return row;
   });
@@ -4699,12 +5495,14 @@ function openAiApply(sugs,newFacts){
 }
 function closeAiApply(){const m=document.getElementById('aiApplyModal');if(m)m.remove();}
 function aiNewFactToggle(i){const f=(state._aiNewFacts||[])[i];if(f&&f._valid&&!f._conflict){f.accept=!f.accept;renderAiApplyBody();}}
-function aiRowToggle(i,part){const r=(state._aiRows||[])[i];if(!r)return;if(part==='ev'){r.evAccept=!r.evAccept;}else{r.trAccept=!r.trAccept;}renderAiApplyBody();}
+function aiRowToggle(i,part){const r=(state._aiRows||[])[i];if(!r)return;if(part==='ev')r.evAccept=!r.evAccept;else if(part==='standing'){if(r.standingValid)r.standingAccept=!r.standingAccept;}else r.trAccept=!r.trAccept;renderAiApplyBody();}
 function aiApplyToggleAll(on){
   (state._aiNewFacts||[]).forEach(f=>{if(f._valid&&!f._conflict)f.accept=on;});
   (state._aiRows||[]).forEach(r=>{
     if(r.evNew&&r.evValid&&r.evChanged)r.evAccept=on;
-    if(r.hasTr&&r.trShape&&r.trChanged&&r.bogus.length===0)r.trAccept=on;
+    if(r.standingChanged&&r.standingValid)r.standingAccept=on;
+    if(r.hasTr&&!r.standingNew&&r.trShape&&r.trChanged&&r.bogus.length===0)r.trAccept=on;
+    (r.linkChanges||[]).forEach(x=>{if(!x.errors.length)x.accept=on;});
   });
   renderAiApplyBody();
 }
@@ -4791,8 +5589,16 @@ function aiRowCard(r,i,ctx){
     const rat=(r.sug.rationale&&r.sug.rationale.evidence)?'<div class="ai-helper"><span class="ai-helper-l">AI\u2019s reasoning</span>'+esc(r.sug.rationale.evidence)+'</div>':'';
     parts+='<div class="ai-part"><div>'+cb+'</div><div><div class="ai-part-h">Evidence support</div>'+head+summ+rat+'</div></div>';
   }
+  /* ---- standing status (part of triage) ---- */
+  if(r.standingChanged){
+    const cb=r.standingValid?'<input type="checkbox" '+(r.standingAccept?'checked ':'')+'onchange="aiRowToggle('+i+',\'standing\')">':'<input type="checkbox" disabled>';
+    const oldS=r.standingOld?'Standing · shown on every RC job':'Conditional';
+    const newS=r.standingNew?'Standing · shown on every RC job':'Conditional';
+    const err=!r.standingValid?'<div class="ai-err">Changing a standing entry to conditional requires a valid triage trigger in the same review.</div>':'';
+    parts+='<div class="ai-part"><div>'+cb+'</div><div><div class="ai-part-h">Standing status</div><div class="ai-diff"><span class="ai-old"><s>'+esc(oldS)+'</s></span><span class="ai-arr">→</span><span class="ai-new">'+esc(newS)+'</span></div>'+err+'</div></div>';
+  }
   /* ---- triage ---- */
-  if(r.hasTr){
+  if(r.hasTr&&!r.standingNew){
     const cleanTr=aiTrigClean(r.trNew);
     const oldP=aiPhrase(r.trOld)||'(no trigger)';
     const newP=aiPhrase(cleanTr)||'(none yet)';
@@ -4819,7 +5625,13 @@ function aiRowCard(r,i,ctx){
     });
     parts+='<div class="ai-part"><div>'+cb+'</div><div><div class="ai-part-h">Triage trigger</div>'+diff+editor+err+rat+nfHtml+'</div></div>';
   }
-  if(!parts)parts='<div class="ai-nochange" style="padding:6px 0">no evidence or triage fields in this suggestion</div>';
+  /* ---- related-entry routing (governed by the triage rubric) ---- */
+  if((r.linkChanges||[]).length){
+    parts+='<div class="ai-part"><div></div><div><div class="ai-part-h">Related-entry routing</div><div class="hint" style="margin-top:4px">Each link is independent. Tick only the routes that genuinely help the reader reach a different but connected design decision.</div></div></div>';
+    (r.linkChanges||[]).forEach((x,li)=>{parts+=aiLinkCard(i,li,x);});
+    if(r.sug.rationale&&r.sug.rationale.links)parts+='<div class="ai-helper" style="margin:0 12px 12px"><span class="ai-helper-l">AI’s overall link reasoning</span>'+esc(r.sug.rationale.links)+'</div>';
+  }
+  if(!parts)parts='<div class="ai-nochange" style="padding:6px 0">no evidence, triage or related-entry changes in this suggestion</div>';
   return '<div class="ai-row"><div class="ai-row-top"><span class="tdim-dot" style="background:'+triageDimColor(r.dim.id)+'"></span><span class="ai-row-name">'+esc(r.entry.name)+'</span><span class="ai-row-dim">'+esc(r.dim.name)+'</span></div>'+parts+'</div>';
 }
 function aiApply(){
@@ -4828,12 +5640,17 @@ function aiApply(){
   (state._aiNewFacts||[]).forEach(f=>{if(f._valid&&!f._conflict&&f.accept){aiAddNewFactToConfig(f);addedFacts++;}});
   /* 2 — recompute vocab now that new facts exist */
   const vocab=new Set(triageFacts().map(f=>f.fact));
-  /* 3 — apply evidence + triage */
-  let ev=0,tr=0,skipped=0;const touched=new Set();
+  /* 3 — apply evidence + triage + related-entry routing */
+  let ev=0,tr=0,st=0,links=0,skipped=0;const touched=new Set();
   (state._aiRows||[]).forEach(r=>{
     if(!r.match)return;const d=r.entry.data||(r.entry.data={});let did=false;
     if(r.evAccept&&r.evNew&&r.evValid){d.evidenceSupport={level:r.evNew.level,summary:r.evNew.summary||''};ev++;did=true;}
-    if(r.trAccept&&r.hasTr){
+    if(r.standingAccept&&r.standingChanged&&r.standingValid){
+      if(r.standingNew){d.standing=true;delete d.triage;delete d.triageExclude;}
+      else{delete d.standing;}
+      st++;did=true;
+    }
+    if(r.trAccept&&r.hasTr&&!r.standingNew){
       const clean=aiTrigClean(r.trNew);
       const refs=aiTriggerRefs(clean,r.exNew);
       if(clean.length&&refs.every(f=>vocab.has(f))){
@@ -4842,19 +5659,27 @@ function aiApply(){
         tr++;did=true;
       }else{skipped++;}
     }
+    (r.linkChanges||[]).forEach(x=>{
+      if(!x.accept||x.errors.length)return;
+      if(x.action==='remove')removeLink(r.id,x.id);
+      else createLink(r.id,x.id,x.note);
+      links++;did=true;
+    });
     if(did){d.dateReviewed=isoToday();touched.add(r.id);}
   });
-  if(!ev&&!tr&&!addedFacts){alert('Nothing ticked to apply.');return;}
+  if(!ev&&!tr&&!st&&!links&&!addedFacts){const msg='Nothing is ticked to apply.';alert(msg);reportIssue('warn','AI suggestions not applied',msg,'AI review');return;}
   rebuildIndexes();updateDirty();if(typeof updateFooter==='function')updateFooter();
   if(state.mode==='triage')showTriage();else if(state.mode==='list'&&typeof showList==='function')showList();
   closeAiApply();
-  let msg=touched.size+' entr'+(touched.size===1?'y':'ies')+' updated ('+ev+' evidence, '+tr+' triage).';
+  let msg=touched.size+' entr'+(touched.size===1?'y':'ies')+' updated ('+ev+' evidence, '+tr+' triage, '+st+' standing-status, '+links+' link change'+(links===1?'':'s')+').';
   if(addedFacts)msg+='\n'+addedFacts+' new questionnaire fact'+(addedFacts===1?'':'s')+' added.';
   if(skipped)msg+='\n'+skipped+' trigger'+(skipped===1?'':'s')+' skipped \u2014 a fact they need wasn\u2019t added.';
   msg+='\n\nNothing is saved until you export data.json.';
   alert(msg);
 }
-(function initSafety(){try{autoRestore();}catch(e){}updateDirty();})();
+window.addEventListener('error',function(e){if(!e||!e.message)return;reportIssue('err','Unexpected Data Manager error',e.message+(e.filename?'\n'+e.filename+(e.lineno?':'+e.lineno:''):''),'Internal error');});
+window.addEventListener('unhandledrejection',function(e){const r=e&&e.reason;reportIssue('err','Unexpected Data Manager error',r&&r.message?r.message:String(r||'Unhandled promise rejection'),'Internal error');});
+(function initSafety(){try{autoRestore();}catch(e){reportIssue('warn','Recovery could not be restored',e.message||String(e),'Startup');}if(!state.db)historyClear();else if(!historyState.current)historyReset();updateDirty();historyButtons();})();
 </script>
 <script>
 function applyTheme(t){var theme=t==='light'?'light':'dark';document.documentElement.setAttribute('data-theme',theme);try{localStorage.setItem('theme',theme);}catch(e){}var ic=document.getElementById('theme-toggle-icon');if(ic)ic.textContent=theme==='light'?'☀️':'🌙';}
