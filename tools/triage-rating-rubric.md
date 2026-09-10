@@ -193,7 +193,14 @@ A relationship normally earns its place when it is one of these:
 
 A shared word, tag, dimension, element, material or phase is **not** enough. *"Both are about slabs"*, *"both are formwork"* and *"both sit in Logistics"* are topic similarity, not routing. Search and filters already handle similarity. Related links should carry a reader to a useful next decision.
 
-**Zero links is valid.** Do not manufacture relationships for completeness. Prefer a few strong routes over a dense web of weak ones. If several links are proposed, ask whether each would still be useful if the entry titles were hidden and only the design questions remained.
+**Zero links is valid, but it is not the default assumption.** Do not manufacture relationships for completeness, but actively test the framework for useful onward routes before returning none. Prefer a few strong routes over a dense web of weak ones. If several links are proposed, ask whether each would still be useful if the entry titles were hidden and only the design questions remained.
+
+**A related entry does not have to apply across the whole scope of the source entry.** A partial-scope link is valid when it is genuinely useful on a clear subset of jobs and the reader-facing note says when that route matters. Do not reject a useful pile-specific companion merely because the source entry also applies to walls, columns or beams. The note carries the condition.
+
+Examples:
+
+* Good partial-scope route: *"For pile cages on access-constrained sites, also review whether the piling plant required by the pile detail can reach and operate at the location."*
+* Weak route: *"Also see piling plant."* — no explanation of when or why.
 
 ### The link note
 
@@ -221,7 +228,30 @@ For each reviewed entry, the AI may propose only:
 * **update the note** on an existing relationship; or
 * **remove** an existing relationship that clearly fails the routing test.
 
-Each proposal must name the target entry id and state the reason. Nothing is applied automatically; every link change remains a maintainer decision.
+Before returning **zero link changes**, the AI must perform a visible link audit. It should identify the strongest plausible candidates from the whole framework catalogue — normally at least three where three plausible candidates exist — and state briefly why each candidate passes, partially passes, or fails the routing test. This prevents an empty `relatedEntries` array from being indistinguishable from a skipped link review.
+
+### Three outcomes for a candidate link
+
+Every plausible candidate should be classified as one of these:
+
+* **Strong link** — clearly useful as an onward route. Propose the link and recommend accepting it.
+* **Partial link** — useful only for a recognisable subset of the source entry's jobs, or useful but not strong enough to recommend by default. **Still return it as a selectable proposed link**, with a conditional reader-facing note, but mark it **suggest against** so the maintainer must deliberately choose it.
+* **Reject** — topic similarity, weak association, duplication, or no useful next decision. Show it in the audit, but do not create a selectable link proposal.
+
+A **partial link is not a failed review**. It is a genuine human-judgement case. The whole point of surfacing it is to let the maintainer see:
+
+> *this route may be useful in a narrower situation, but the AI would not add it by default.*
+
+When considering candidates, the AI must:
+
+* test partial-scope routes rather than requiring a target to apply across the source entry's entire scope;
+* prefer an honest conditional note over rejecting an otherwise useful route;
+* distinguish **"strong route"**, **"partial route — human decision"**, and **"not a useful route"**;
+* retain zero accepted links when no strong candidate survives, while still surfacing partial candidates for human choice.
+
+For every **strong** or **partial** candidate, return a matching proposed relationship change. A partial proposal must be marked so the Data Manager can leave it **unticked by default** while still allowing the maintainer to select it.
+
+Each proposed change must name the target entry id and state the reason. Nothing is applied automatically; every link change remains a maintainer decision.
 
 ### Link quality — the self-check
 
