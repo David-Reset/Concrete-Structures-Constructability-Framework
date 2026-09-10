@@ -1,8 +1,8 @@
 # Triage trigger rubric
 
-How to set an entry's **triage trigger** — the `triage` array, any `triageExclude`, the `standing` flag, and the gates and questions behind them — so the entry surfaces on the right jobs, consistently, regardless of who is authoring it.
+How to set an entry's **triage and routing** — the `triage` array, any `triageExclude`, the `standing` flag, the gates and questions behind them, and its `relatedEntries` links — so the entry surfaces on the right jobs and leads the reader to the right next decisions, consistently, regardless of who is authoring it.
 
-This is the rule maintainers follow when building an entry's trigger in the **Triage** tab (the "Surfaces when…" line), and the standard every existing entry is held to when it is reviewed.
+This is the rule maintainers follow when building an entry's trigger in the **Triage** tab (the "Surfaces when…" line) and when deciding which other entries should be linked from it. It is the standard every existing entry is held to when it is reviewed.
 
 ---
 
@@ -17,6 +17,8 @@ Three corollaries fall out, and they cause most real triage defects:
 * **Reader appetite is not a job fact.** "I have read this before and considered it" is true of the reader, not of the job. It must never enter a trigger. If experienced readers should be able to mute standing advice, that is a **display preference**, handled in the results view — not a question in the triage flow. This is why the old default-off universal opt-ins were deleted: they let reader appetite decide whether a Safety in Design entry ever surfaced.
 
 Everything below is machinery for applying this principle evenly.
+
+**Related-entry links use the same routing discipline, but answer a different question.** A trigger asks *"should this entry surface on this job?"* A related-entry link asks *"now that the reader is here, which distinct design decision should they reasonably be taken to next?"* Links do not change triage results and must never be used as substitute triggers. They are routing between entries after an entry has surfaced or been opened.
 
 ---
 
@@ -168,6 +170,64 @@ Hold each finished trigger against this scale. **Record the call and the reason 
 * **Exclude as a patch.** Reserve `triageExclude` for routing between genuinely competing entries; never to silence an entry a sloppy positive trigger over-fires. **And every exclude owes a receiving entry**: name the entry that picks the reader up on the excluded fact, and check its trigger actually fires there. An exclude with nothing behind it is a silent recall hole — the most dangerous defect in the system, and the validator cannot see it. Beware copying an exclude from a sibling: one that correctly routes a *system-choice* entry away will silently kill a *supply* or *detailing* entry that nothing supersedes.
 * **The self-silencing question.** A question whose answer is biased toward hiding the entry — usually because it asks the author to grade their own work. The problem is the bias, not that it's a judgment; the fix is to reframe as an additive "would X help?", not to pretend a real judgment call is an observable fact.
 * **Vocabulary drift.** A trigger referencing a fact not defined in `triageConfig` never fires (flagged as an unknown fact). Add the gate or question first, then build on it.
+* **Topic-similarity links.** Linking entries because they share a tag, element, material, phase or dimension. That duplicates search/filter behaviour and creates a noisy web rather than a useful route.
+* **Duplicate mutual links.** Storing both A→B and B→A even though the Data Manager already treats one authored relationship as mutual. This creates duplicated data and competing notes.
+* **Link as a trigger patch.** Adding a link because an entry is not surfacing where it should. Fix the trigger; links only help after the reader has already reached an entry.
+
+---
+
+## Step 5 — Route onward with related entries
+
+Once an entry has the right scope and trigger, review its **related-entry links**. These are part of triage because they route the reader between constructability decisions. They do **not** affect whether the entry surfaces in guided triage.
+
+Use one test:
+
+> **If the reader has opened this entry, does the other entry answer a different but directly connected design question that materially helps them continue the same constructability review?**
+
+A relationship normally earns its place when it is one of these:
+
+* **Companion** — the same design choice creates a distinct constructability consequence covered by another entry.
+* **Handoff** — resolving this entry naturally exposes the next design decision covered by the other entry.
+* **Alternative / contrast** — two distinct options or issues are likely to be weighed together and the second entry helps make that comparison.
+* **Dependency** — acting on this entry makes another constructability check directly relevant.
+
+A shared word, tag, dimension, element, material or phase is **not** enough. *"Both are about slabs"*, *"both are formwork"* and *"both sit in Logistics"* are topic similarity, not routing. Search and filters already handle similarity. Related links should carry a reader to a useful next decision.
+
+**Zero links is valid.** Do not manufacture relationships for completeness. Prefer a few strong routes over a dense web of weak ones. If several links are proposed, ask whether each would still be useful if the entry titles were hidden and only the design questions remained.
+
+### The link note
+
+Every authored relationship should have a short note answering **why open this next?** The note is reader-facing. It should describe the connection, not merely repeat the target entry title.
+
+Good: *"If larger slab bars are retained, also review whether on-site bending becomes a logistics constraint."*
+
+Weak: *"Related reinforcement entry."*
+
+### Link hygiene
+
+* A related link must point to a real entry id and never to itself.
+* The Data Manager treats a relationship as **mutual**: author the pair once. Do not store both A→B and B→A merely to make each appear on the other entry.
+* Do not use `relatedEntries` to patch a bad trigger or a failed scope decision. A link cannot rescue an entry that should have surfaced but did not.
+* Do not use an ordinary related-entry link to encode the branching **decision path** used by the reactive-ground family. `decisionPath` is a separate routing structure because the branch itself carries meaning.
+* Removing an existing link is an explicit decision. Do not infer removal just because an AI did not suggest the link again.
+
+### AI review of links
+
+An AI reviewing related entries must be given a compact catalogue of the **whole current framework**, not only the entries selected for review. Otherwise it cannot discover a useful relationship to an unselected entry.
+
+For each reviewed entry, the AI may propose only:
+
+* **add** a relationship;
+* **update the note** on an existing relationship; or
+* **remove** an existing relationship that clearly fails the routing test.
+
+Each proposal must name the target entry id and state the reason. Nothing is applied automatically; every link change remains a maintainer decision.
+
+### Link quality — the self-check
+
+* **Well-routed** — every link leads to a distinct, directly useful next design decision; notes explain why; there are no duplicates or self-links.
+* **Acceptable** — the relationship is useful but broad, and the note makes the reason clear enough that a reader can decide whether to continue.
+* **Mis-routed** — the link exists only because of shared topic/tags, duplicates the same pair in both directions, points to an unrelated decision, or is being used to compensate for a trigger or scope defect. Remove or re-route it.
 
 ---
 
@@ -202,6 +262,8 @@ Re-check an entry's trigger when:
 * the entry's **scope changes** (its bands or applicability narrow or widen), which usually moves the recall boundary;
 * the Triage tab's **validation** flags the entry as dark or referencing an unknown fact;
 * readers report it surfacing where it doesn't belong (precision), or *not* surfacing on a job where it clearly applied (recall — take this one seriously).
+
+Re-check an entry's **related links** when its design question changes, when a new entry creates a better handoff or alternative, when an existing linked entry changes scope, or when the link note no longer explains a useful next decision.
 
 Because triggers share a fact vocabulary, editing a gate or question can shift several entries at once — **re-run the simulator after any change to `triageConfig`.**
 
