@@ -2,17 +2,58 @@
 
 How to judge whether an entry is **well-framed** — consistently, regardless of who is reviewing.
 
-This rubric is about the **shape** of an entry, not its content. It asks: does it have the parts it must have, is it under the right dimension, is the question one clear thing, is the parameter one thing you can act on, do the question and parameter answer the same thing, do the bands follow cleanly, and is everything as short as it can be? It does **not** judge whether the guidance is correct or well-supported (that is the [evidence rating rubric](evidence-rating-rubric.md)) or when the entry should surface on a job (that is the [triage rating rubric](triage-rating-rubric.md)).
+This rubric governs **admission and framing**. Before a submission is shaped into an entry, it must first pass the framework's scope gate: it must be a constructability question not already resolved by a design standard, and the structural designer must have a real design-stage lever to influence it. Only then does this rubric ask whether the entry is well framed: does it have the parts it must have, is it under the right dimension, is the question one clear thing, is the parameter one thing the designer can act on, do the question and parameter answer the same thing, do the bands follow cleanly, and is everything as short as it can be?
+
+It does **not** judge whether the guidance is correct or how strongly it is supported (that is the [evidence rating rubric](evidence-rating-rubric.md)) or when the entry should surface on a job (that is the [triage rating rubric](triage-rating-rubric.md)). The scope gate is a prerequisite, not an evidence rating.
 
 ---
 
 ## The core principle
 
-> An entry asks **one concrete design question**, answered by **one design parameter you can act on**, split into **a few clearly-labelled threshold bands**. The question and parameter stay short; the depth goes into **Background** and **Evidence basis**.
+> An entry asks **one concrete design question**, answered by **one design parameter the designer can act on**, split into **a few clearly-labelled threshold bands**. The question and parameter stay short; the depth goes into **Background** and **Evidence basis**.
 
 Almost every framing problem is a version of putting the wrong thing in the wrong field — usually cramming detail into the question or the parameter that belongs in the bands, the background, or the evidence. Keep the top of the entry tight and let the lower fields carry the reasoning.
 
 **Reframing moves text between fields. It does not re-author the guidance.** Don't move a threshold from 200 mm to 250 mm, don't change what a band means, don't invent evidence. Whether a number is *right* is the evidence rubric's job; this rubric only asks whether the entry is *shaped* so a reader can act on it. If a fix would change what the entry actually claims, that is a signal to send it back to the submitter — not to quietly rewrite it.
+
+---
+
+## 0. Admission gate — should this be an entry at all?
+
+**Run this before reframing anything.** A well-written submission can still be outside the framework.
+
+The project applies three exclusion rules before an issue becomes a framework entry:
+
+1. **Design-standard gate — is the question already resolved by a design standard?**  
+   If ordinary structural compliance already supplies the answer, it is a compliance check rather than a constructability entry. Do not duplicate AS 3600, the NCC, or another design standard. A constructability question may still sit beside compliance where the standard permits several compliant options and the framework addresses the construction consequence of that design choice.
+
+2. **Designer-influence gate — can the structural designer actually change the outcome?**  
+   The submission must identify a **real design-stage lever** under the structural designer's control: structural system, geometry, reinforcement/detailing, permanent material or product specification, a construction method that the permanent design assumes, or how design intent / a design-specific hazard is communicated.  
+
+   Ask: **What can the designer change in the drawings, specification or structural design decision that would materially reduce, remove or clarify this constructability issue?**
+
+   If there is no credible answer, the issue belongs to **construction management**, not this framework. Contractor means-and-methods, general site planning, pump or crane setup, traffic management, ordinary work programming, supplier selection that is not driven by a design specification, and temporary works choices are not entries merely because they affect buildability.
+
+   A useful diagnostic is the recommended actions. If the actions amount only to **"ask the contractor", "confirm access", "plan the works", "choose suitable plant" or "coordinate the programme"**, and no permanent design choice changes, the entry fails this gate.
+
+   **Do not rescue an out-of-scope submission by relabelling it as Logistics or Construction Methods.** Dimension assignment happens only after the designer-influence gate is passed. If making it designer-facing would require inventing a new design lever or new technical guidance, return it to the submitter rather than rewriting it.
+
+3. **Evidence-path gate — can the proposed guidance be evidenced or reproducibly derived?**  
+   A practitioner observation may originate the topic, but it is not automatically evidence. There must be a credible path to support the guidance through literature, supplier/product data, first-principles derivation, or a documented de-identified example. If that path is not yet available, **hold for reconsideration** rather than publishing. The evidence rubric later determines the support level.
+
+### Admission outcomes
+
+Use one of three outcomes before the framing review:
+
+- **PASS** — the issue is within scope and there is a real designer-controlled decision to review.
+- **HOLD** — the issue may be within scope, but a prerequisite is unresolved (for example the evidence path or whether a standard already settles it).
+- **REJECT / OUT OF SCOPE** — the issue is contractor-facing, a pure compliance check, or otherwise has no structural-design lever.
+
+**Example — reject as contractor-facing:**  
+*"Can a concrete pump reach the pour from a practical setup position?"* is ordinarily a contractor logistics / means-and-methods question. Unless the submission identifies a specific permanent structural design decision whose alteration changes that constraint, the structural designer is not being asked to make a constructability design decision. Do not turn "coordinate with the pumping contractor" into a framework entry.
+
+**Example — potentially in scope:**  
+*"Does the permanent structural geometry leave a practical concrete placement and compaction path at this congested cast-in plate?"* identifies a detail the structural designer can alter. It may therefore proceed to the framing tests.
 
 ---
 
@@ -56,7 +97,7 @@ That tail is doing real work. It names the default so a designer recognises them
 - **Cut it from the question. Move it to the first line of Background.** Relocate, don't delete.
 - An entry that loses its named failure mode altogether is weaker, not tidier. A reviewer who deletes it has over-applied this rubric.
 
-## 4. The design parameter — one thing you can act on, short
+## 4. The design parameter — one thing the designer can act on, short
 
 - Names the **single thing** the reader measures, counts, selects, or assesses from their drawings, the site, or a supplier.
 - A **short noun phrase**, with units if it's a number. Not a sentence, not a list of options, not an instruction.
@@ -200,11 +241,12 @@ So do not "fix" an entry because a six-storey building comes out as *Action requ
 
 Run this yourself, or paste it to an AI along with the entry:
 
+- [ ] **Admission gate** — not already resolved by a design standard; a specific structural-design lever exists; there is a credible evidence path. If no designer lever exists, reject as construction management rather than reframing it
 - [ ] **Complete** — has a dimension, name, question, parameter, threshold bands, and applicability
 - [ ] **Dimension** — the one whose description covers the decision being made
 - [ ] **Question** — one concrete question, ~one sentence, no stacked decisions, doesn't state its own answer
 - [ ] **Default** — any named failure mode sits in Background, not in the question
-- [ ] **Parameter** — one thing you can act on, short noun phrase, units if numeric, one variable not two, *not* a description of the bands
+- [ ] **Parameter** — one thing the designer can act on, short noun phrase, units if numeric, one variable not two, *not* a description of the bands
 - [ ] **Coherence** — the parameter actually answers the question; where they diverge, the parameter is usually right
 - [ ] **Kind** — measured / chosen / judged / counted is framed honestly. A number off a standard menu (spacing, diameter, pod depth) is *chosen*, not *measured*
 - [ ] **Counted entries list what they count** — if the parameter says "how many of the four", Background names the four, and the question does not contradict the count
@@ -225,4 +267,4 @@ Run this yourself, or paste it to an AI along with the entry:
 
 - It does **not** judge whether the guidance is correct or how well it's supported — that is the **evidence rating rubric**.
 - It does **not** decide when an entry surfaces on a job — that is the **triage rating rubric**.
-- It is purely about how the entry is **framed and shaped**: complete, under the right dimension, one clear question, one parameter you can act on that answers it, clean bands, depth pushed down into background and evidence.
+- After the **admission gate** is passed, it is about how the entry is **framed and shaped**: complete, under the right dimension, one clear question, one designer-actionable parameter that answers it, clean bands, depth pushed down into background and evidence.
