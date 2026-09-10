@@ -404,6 +404,27 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
 /* single-file page switching */
 .section{display:none}
 .subpage{display:none}
+
+/* ---- maintainer launchpad / direct actions ---- */
+.launchpad{margin:26px 0 8px;padding:22px;background:var(--surface);border:1px solid var(--border);border-radius:14px}
+.launchpad h2{margin:0 0 6px;font-size:1.25rem}
+.launchpad>p{margin:0 0 18px;color:var(--text-muted)}
+.action-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(max-width:680px){.action-grid{grid-template-columns:1fr}}
+.action-group{padding:16px;border:1px solid var(--border);border-radius:10px;background:var(--bg)}
+.action-group h3{margin:0 0 4px;font-size:.95rem}
+.action-group p{margin:0 0 12px;font-size:.84rem;color:var(--text-muted);line-height:1.45}
+.action-row{display:flex;flex-wrap:wrap;gap:8px}
+.action-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:8px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface-light);color:var(--text);font-size:.86rem;font-weight:600;cursor:pointer;text-decoration:none}
+.action-btn:hover{border-color:var(--accent);background:var(--accent-glow);color:var(--text)}
+.action-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.action-btn.primary:hover{filter:brightness(1.05);color:#fff}
+.action-btn.small{min-height:34px;padding:6px 10px;font-size:.82rem}
+.action-btn.warn{border-color:var(--orange);color:var(--orange);background:var(--orange-bg)}
+.direct-actions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}
+.download-status{position:fixed;right:18px;bottom:18px;z-index:100;max-width:min(420px,calc(100vw - 36px));padding:11px 14px;border:1px solid var(--border);border-radius:9px;background:var(--surface);box-shadow:0 8px 30px rgba(0,0,0,.25);font-size:.86rem;color:var(--text);display:none}
+.download-status.show{display:block}
+
 </style>
 </head>
 <body>
@@ -438,7 +459,73 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
     <p class="muted" style="max-width:52ch">Every task is a real worked example, start to finish, with a picture of what should be on your screen at each step and exactly what to click next.</p>
     <div class="promise">Everything you need is <strong>in one place</strong>.</div>
   </div>
+
 </header>
+
+<section class="home-sec">
+  <div class="wrap">
+    <p class="sec-label">Maintainer launchpad</p>
+    <h1 style="font-size:1.7rem">Start here — direct links, no hunting through folders</h1>
+    <p>Use these buttons whenever you maintain the framework. The manual can fetch the latest files straight from the repository, and it can launch the latest copy of each standalone tool in a new browser tab.</p>
+
+    <div class="launchpad">
+      <div class="action-grid">
+        <div class="action-group">
+          <h3>Start a maintenance session</h3>
+          <p>Get the current source-of-truth files and open the main tool.</p>
+          <div class="action-row">
+            <button class="action-btn primary" type="button" onclick="openMaintainerTool('tools/framework-data-manager.html','Data Manager')">▶ Open Data Manager</button>
+            <button class="action-btn" type="button" onclick="downloadRepoFile('docs/data.json','data.json')">⬇ Download current data.json</button>
+            <button class="action-btn" type="button" onclick="downloadRepoFile('docs/CHANGELOG.md','CHANGELOG.md')">⬇ Download CHANGELOG.md</button>
+          </div>
+        </div>
+
+        <div class="action-group">
+          <h3>Form responses</h3>
+          <p>Use the owning Google account to reach the response tabs and download the CSVs. The three public forms are also linked here for testing.</p>
+          <div class="action-row">
+            <a class="action-btn primary" href="https://docs.google.com/forms/" target="_blank" rel="noopener">↗ Open Google Forms</a>
+            <a class="action-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdRkltPd-q5WRI_QFTWrsY-EGn0QlG2uf9zQtB_lYyQhSlq-Q/viewform" target="_blank" rel="noopener">New entry form</a>
+            <a class="action-btn" href="https://docs.google.com/forms/d/e/1FAIpQLScAywdw3JvZLIvUXrrGGxKNk60BZGkV3s5Mtx_QsEsZkI0WGw/viewform" target="_blank" rel="noopener">Comment form</a>
+            <a class="action-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdTRRqO41OKp3Lxwz5CqVHL-B7IpAhitqnGqBWXYl1lmtizZA/viewform" target="_blank" rel="noopener">Suggest-change form</a>
+          </div>
+        </div>
+
+        <div class="action-group">
+          <h3>Images and final QA</h3>
+          <p>Prepare images, then run the final read-only check before publishing.</p>
+          <div class="action-row">
+            <button class="action-btn primary" type="button" onclick="openMaintainerTool('tools/framework-image-formatter.html','Image Formatter')">▶ Open Image Formatter</button>
+            <button class="action-btn primary" type="button" onclick="openMaintainerTool('tools/framework-doctor.html','Framework Doctor')">▶ Open Framework Doctor</button>
+            <a class="action-btn" href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework/tree/main/docs/images" target="_blank" rel="noopener">↗ Images folder</a>
+            <a class="action-btn" href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework/archive/refs/heads/main.zip">⬇ Full repository ZIP</a>
+          </div>
+        </div>
+
+        <div class="action-group">
+          <h3>Rubrics</h3>
+          <p>These are the written rules used by the review workflow.</p>
+          <div class="action-row">
+            <button class="action-btn" type="button" onclick="downloadRepoFile('tools/entry-quality-rubric.md','entry-quality-rubric.md')">⬇ Entry Quality</button>
+            <button class="action-btn" type="button" onclick="downloadRepoFile('tools/evidence-rating-rubric.md','evidence-rating-rubric.md')">⬇ Evidence Rating</button>
+            <button class="action-btn" type="button" onclick="downloadRepoFile('tools/triage-rating-rubric.md','triage-rating-rubric.md')">⬇ Triage Rating</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="direct-actions">
+      <a class="action-btn" href="https://david-reset.github.io/Concrete-Structures-Constructability-Framework/" target="_blank" rel="noopener">↗ Live framework</a>
+      <a class="action-btn" href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework" target="_blank" rel="noopener">↗ Repository</a>
+      <a class="action-btn" href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework/tree/main/docs" target="_blank" rel="noopener">↗ Published docs/ folder</a>
+    </div>
+
+    <div class="callout info">
+      <h3>One remaining improvement: direct owner links to the three Forms response pages</h3>
+      <p>The public form URLs are known and linked above. Google does not expose the owner/editor URL from the public form URL, so the manual cannot reliably jump straight into each form's <strong>Responses</strong> tab until those three owner/editor links are supplied. Once they are, these buttons can become one-click “Manage new-entry responses”, “Manage comments” and “Manage suggested changes”.</p>
+    </div>
+  </div>
+</section>
 
 <section class="home-sec">
   <div class="wrap">
@@ -478,56 +565,71 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
 <section class="home-sec">
   <div class="wrap">
     <p class="sec-label">Before you start</p>
-    <h1 style="font-size:1.7rem">Where the files live — and how to get them</h1>
-    <p>Everything you maintain lives in one place: the <strong>GitHub repository</strong> that the live site is served from. That repository is the single source of truth. Your session always starts by taking a copy of a file out of it, and ends by putting an updated copy back.</p>
-    <p>The repo has two folders that matter to you, and they do different jobs:</p>
-    <ul>
-      <li><code>docs/</code> — <strong>this is the published website.</strong> Everything the public sees is served straight out of this folder:
-        <ul style="margin-top:6px">
-          <li><code>docs/data.json</code> — <strong>all</strong> the content: every entry, threshold, comment and rubric. The file you load into the tools and commit back.</li>
-          <li><code>docs/images/</code> — every photograph and drawing the entries point at.</li>
-          <li><code>docs/index.html</code> — the site itself. You never edit this.</li>
-          <li><code>docs/CHANGELOG.md</code> — the running record of what changed and when.</li>
-          <li><code>docs/manual/</code> — this manual.</li>
-        </ul>
-      </li>
-      <li><code>tools/</code> — the three maintainer tools and the three rubrics. <strong>Not inside <code>docs/</code></strong>, because they aren't part of the public site — they're pages you open on your own machine.</li>
-    </ul>
+    <h1 style="font-size:1.7rem">Get the current files directly</h1>
+    <p>You should not have to remember repository paths just to start a maintenance session. Use the buttons below. They fetch the current files directly from the main branch of the framework repository.</p>
 
-    <h2 style="font-size:1.15rem;margin-top:26px">Getting the current data.json</h2>
-    <p>The Data Manager can't fetch anything by itself — it's an offline page, and you hand it the file. So before every session, get a <strong>fresh</strong> copy:</p>
-    <ol class="routine">
-      <li><span class="step-title">Open the repository on GitHub</span><span class="step-detail"><a href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework" target="_blank" rel="noopener">The framework repository</a> — the same repo the live site is published from.</span></li>
-      <li><span class="step-title">Open the <code>docs</code> folder</span><span class="step-detail"><strong><code>data.json</code> is not at the top level.</strong> It's inside <code>docs/</code>, along with the site itself. Click into <code>docs</code> first — then click <code>data.json</code>.</span></li>
-      <li><span class="step-title">Use the download button</span><span class="step-detail">GitHub shows the file as a preview — <strong>don't copy the text out of the page</strong>. Use the <strong>download raw file</strong> button (the ⤓ icon, top-right of the file box) to save the real file. Do the same for <code>docs/CHANGELOG.md</code> if you want your changes appended to it.</span></li>
-    </ol>
-    <p>The direct link, if you'd rather skip the clicking: <a href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework/blob/main/docs/data.json" target="_blank" rel="noopener">docs/data.json on GitHub</a>.</p>
-    <p>If you work with git, <code>git pull</code> in your local clone does the same job and is less fiddly — the file is simply there at <code>docs/data.json</code> on disk.</p>
+    <div class="launchpad">
+      <div class="action-grid">
+        <div class="action-group">
+          <h3>Current framework data</h3>
+          <p>Always start with a fresh copy. This is the source of truth the tools edit.</p>
+          <div class="action-row">
+            <button class="action-btn primary" type="button" onclick="downloadRepoFile('docs/data.json','data.json')">⬇ Download current data.json</button>
+            <button class="action-btn" type="button" onclick="downloadRepoFile('docs/CHANGELOG.md','CHANGELOG.md')">⬇ Download current CHANGELOG.md</button>
+          </div>
+        </div>
 
-    <h2 style="font-size:1.15rem;margin-top:26px">Getting the tools and the rubrics</h2>
-    <p>The same applies to the tools themselves, and they only need doing once. They sit in the repository's <a href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework/tree/main/tools" target="_blank" rel="noopener"><code>tools/</code> folder</a> — outside <code>docs/</code>, so they are <strong>not part of the published site</strong> and there is no URL you can just visit to run one. Open a file on GitHub, use the <strong>download raw file</strong> button (⤓) to save it, and then <strong>double-click the tool</strong> to open it in your browser. Nothing installs; nothing uploads.</p>
-    <ul>
-      <li><a href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework/blob/main/tools/framework-data-manager.html" target="_blank" rel="noopener"><code>framework-data-manager.html</code></a> — the main tool. Form responses in, structured entries out.</li>
-      <li><a href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework/blob/main/tools/framework-doctor.html" target="_blank" rel="noopener"><code>framework-doctor.html</code></a> — read-only health check on <code>docs/</code>. Run it before you commit.</li>
-      <li><a href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework/blob/main/tools/framework-image-formatter.html" target="_blank" rel="noopener"><code>framework-image-formatter.html</code></a> — re-encodes and renames images, and strips GPS and camera metadata.</li>
-    </ul>
-    <p>Beside them are the <strong>three rubrics</strong> — written references, not programs. You drop these into the Data Manager's AI reviews (<a href="#dm-ai-review">chapter&nbsp;5</a>), and you can equally just read them:</p>
-    <ul>
-      <li><a href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework/blob/main/tools/evidence-rating-rubric.md" target="_blank" rel="noopener"><code>evidence-rating-rubric.md</code></a> — how an entry's evidence support is set: Established, Directional, Indicative or Reasoned.</li>
-      <li><a href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework/blob/main/tools/triage-rating-rubric.md" target="_blank" rel="noopener"><code>triage-rating-rubric.md</code></a> — how it's decided which jobs an entry surfaces on (<a href="#dm-triage">chapter&nbsp;8</a>).</li>
-      <li><a href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework/blob/main/tools/entry-quality-rubric.md" target="_blank" rel="noopener"><code>entry-quality-rubric.md</code></a> — how it's judged whether an entry is well framed.</li>
-    </ul>
+        <div class="action-group">
+          <h3>Main maintenance tool</h3>
+          <p>Launch the latest Data Manager straight from the repository, or download a copy to keep locally.</p>
+          <div class="action-row">
+            <button class="action-btn primary" type="button" onclick="openMaintainerTool('tools/framework-data-manager.html','Data Manager')">▶ Open Data Manager</button>
+            <button class="action-btn" type="button" onclick="downloadRepoFile('tools/framework-data-manager.html','framework-data-manager.html')">⬇ Download Data Manager</button>
+          </div>
+        </div>
 
-    <div class="callout"><h3>The tools you keep. <code>data.json</code> you re-download.</h3><p>A tool only changes when someone improves the tool, so a saved copy keeps working — grab a fresh one if you hear it's been updated. <code>data.json</code> is the opposite: <strong>it changes every time anyone publishes anything</strong>, so it must be re-downloaded at the start of every session. The rubrics sit in between — a copy is <em>already saved inside <code>data.json</code></em>, so you only need the <code>.md</code> file when you want to read it, or when it has been edited and you need to re-drop it into the tool.</p></div>
+        <div class="action-group">
+          <h3>Other maintainer tools</h3>
+          <p>No repository browsing required.</p>
+          <div class="action-row">
+            <button class="action-btn" type="button" onclick="openMaintainerTool('tools/framework-image-formatter.html','Image Formatter')">▶ Image Formatter</button>
+            <button class="action-btn" type="button" onclick="openMaintainerTool('tools/framework-doctor.html','Framework Doctor')">▶ Framework Doctor</button>
+          </div>
+        </div>
 
-    <h2 style="font-size:1.15rem;margin-top:26px">The response CSVs</h2>
-    <p>The third kind of file is the one people actually send you: the <strong>form responses</strong>. Each Google Form has a <strong>Responses</strong> tab with a download-as-CSV option, and that file grows forever — response 1 is still in it next to response 137. Download it fresh whenever you sit down to review, and hand the <strong>whole file</strong> to the Data Manager. It is not stored in the repository, and it does not need to be: it is the raw record, and the tool reads it without ever writing to it.</p>
+        <div class="action-group">
+          <h3>Google Form responses</h3>
+          <p>Open Google Forms while signed into the account that owns the forms, then use each form's Responses tab to download its CSV.</p>
+          <div class="action-row">
+            <a class="action-btn primary" href="https://docs.google.com/forms/" target="_blank" rel="noopener">↗ Open Google Forms</a>
+            <a class="action-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdRkltPd-q5WRI_QFTWrsY-EGn0QlG2uf9zQtB_lYyQhSlq-Q/viewform" target="_blank" rel="noopener">Test new-entry form</a>
+            <a class="action-btn" href="https://docs.google.com/forms/d/e/1FAIpQLScAywdw3JvZLIvUXrrGGxKNk60BZGkV3s5Mtx_QsEsZkI0WGw/viewform" target="_blank" rel="noopener">Test comment form</a>
+            <a class="action-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdTRRqO41OKp3Lxwz5CqVHL-B7IpAhitqnGqBWXYl1lmtizZA/viewform" target="_blank" rel="noopener">Test suggest-change form</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <div class="callout warn"><h3>⛔ The CSVs are read-only. Never delete a row.</h3><p>Not the ones you've published, not the ones you rejected, not the duplicates, not the nonsense ones. <strong>Deleting a row undoes nothing</strong> — every decision you have ever made is remembered inside <code>data.json</code>, not in the CSV, so the tool already skips the rows you've handled. All a deletion does is <strong>destroy the only copy of what somebody wrote</strong>: <code>data.json</code> stores <em>what you decided</em>, never the submission itself. Prune a row and you can no longer reinstate that entry, re-read that comment, or answer the person who asks why theirs never appeared. <a href="#dm-inbox">Chapter&nbsp;2</a> explains how the remembering works.</p></div>
+    <h2 style="font-size:1.15rem;margin-top:26px">The only repository links you should normally need</h2>
+    <div class="direct-actions">
+      <a class="action-btn" href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework/tree/main/docs/images" target="_blank" rel="noopener">↗ docs/images/</a>
+      <a class="action-btn" href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework/tree/main/docs" target="_blank" rel="noopener">↗ docs/</a>
+      <a class="action-btn" href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework" target="_blank" rel="noopener">↗ Repository root</a>
+      <a class="action-btn" href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework/archive/refs/heads/main.zip">⬇ Download full repo ZIP</a>
+    </div>
 
-    <div class="callout"><h3>Always start from a fresh copy</h3><p>This is the one mistake that quietly destroys other people's work. The Data Manager exports a <strong>whole, complete <code>data.json</code></strong> — not a patch. If you start from a copy you downloaded last month and someone has published entries since, your export will not merge with theirs; it will <strong>replace</strong> them, silently reverting everything they added. Download <code>data.json</code> again at the start of every session, even if you're sure nothing has changed.</p></div>
+    <h2 style="font-size:1.15rem;margin-top:26px">Rubrics</h2>
+    <div class="direct-actions">
+      <button class="action-btn" type="button" onclick="downloadRepoFile('tools/entry-quality-rubric.md','entry-quality-rubric.md')">⬇ Entry Quality Rubric</button>
+      <button class="action-btn" type="button" onclick="downloadRepoFile('tools/evidence-rating-rubric.md','evidence-rating-rubric.md')">⬇ Evidence Rating Rubric</button>
+      <button class="action-btn" type="button" onclick="downloadRepoFile('tools/triage-rating-rubric.md','triage-rating-rubric.md')">⬇ Triage Rating Rubric</button>
+    </div>
 
-    <div class="callout info"><h3>And where it goes back</h3><p>When you're finished, the updated <code>docs/data.json</code>, any new files in <code>docs/images/</code>, and the updated <code>docs/CHANGELOG.md</code> are committed and pushed back to the same repository — <strong>back into <code>docs/</code>, where they came from</strong>. The live site rebuilds itself from them — there is nothing else to deploy. That's the last step of the loop below.</p></div>
+    <div class="callout"><h3>The tools you keep. data.json you re-download.</h3><p>A saved tool keeps working until the tool itself changes. <code>data.json</code> is different: it changes whenever framework content changes, so start every maintenance session by downloading the current copy above.</p></div>
+
+    <div class="callout warn"><h3>⛔ Keep the form CSVs as the raw archive</h3><p>Download the whole response CSV each time. Do not delete or trim old rows. The Data Manager remembers decisions in <code>data.json</code> and automatically skips submissions already handled.</p></div>
+
+    <div class="callout info"><h3>Publishing still happens through the repository</h3><p>When the session is finished, the exported <code>data.json</code>, updated <code>CHANGELOG.md</code>, and any new files in <code>docs/images/</code> go back into <code>docs/</code>. That is the only point where you need to work in the repository itself.</p></div>
   </div>
 </section>
 
@@ -626,7 +728,10 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
         <h3>Open the Data Manager</h3>
         <p class="goal">Get the tool running in your browser.</p>
         <p class="do">The tool lives at <code>tools/framework-data-manager.html</code>. Open it in your browser — double-clicking works, since it runs entirely offline. <span class="muted">(Opened directly as a file its auto-recovery is off, so be sure to <strong>export</strong> at the end to save your work — chapter 6.)</span></p>
-        <p class="click">👉 <span><b>Open</b> <code>tools/framework-data-manager.html</code></span></p>
+        <div class="direct-actions">
+          <button class="action-btn primary" type="button" onclick="openMaintainerTool('tools/framework-data-manager.html','Data Manager')">▶ Open latest Data Manager</button>
+          <button class="action-btn" type="button" onclick="downloadRepoFile('tools/framework-data-manager.html','framework-data-manager.html')">⬇ Download a local copy</button>
+        </div>
       </div>
       <div class="wstep">
         <h3>Load the current data.json</h3>
@@ -641,7 +746,11 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
           </div>
           <div class="mk-loaded"><div class="row"><span style="border:1px solid var(--green);color:var(--green);border-radius:4px;padding:0 6px;font-size:.68rem;font-family:'JetBrains Mono',monospace">ok</span> <strong>data.json loaded</strong> <span style="opacity:.6">— 41 entries across 5 dimensions</span></div></div>
         </div></div>
-        <p class="click">👉 <span><b>Drop</b> data.json (CHANGELOG.md optional)</span></p>
+        <div class="direct-actions">
+          <button class="action-btn primary" type="button" onclick="downloadRepoFile('docs/data.json','data.json')">⬇ Download current data.json</button>
+          <button class="action-btn" type="button" onclick="downloadRepoFile('docs/CHANGELOG.md','CHANGELOG.md')">⬇ Download CHANGELOG.md</button>
+        </div>
+        <p class="click">👉 <span><b>Then drop</b> data.json into the Data Manager (CHANGELOG.md optional)</span></p>
       </div>
       <div class="wstep">
         <h3>The tabs appear</h3>
@@ -676,7 +785,13 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
             <div class="mk-drop"><div class="lab">Add JSON fragment</div><div class="hint">a new entry, an update, or a comment</div></div>
           </div>
         </div></div>
-        <p class="click">👉 <span><b>Drop</b> the response CSVs in “Add CSV responses”</span></p>
+        <div class="direct-actions">
+          <a class="action-btn primary" href="https://docs.google.com/forms/" target="_blank" rel="noopener">↗ Open Google Forms / Responses</a>
+          <a class="action-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdRkltPd-q5WRI_QFTWrsY-EGn0QlG2uf9zQtB_lYyQhSlq-Q/viewform" target="_blank" rel="noopener">Open new-entry form</a>
+          <a class="action-btn" href="https://docs.google.com/forms/d/e/1FAIpQLScAywdw3JvZLIvUXrrGGxKNk60BZGkV3s5Mtx_QsEsZkI0WGw/viewform" target="_blank" rel="noopener">Open comment form</a>
+          <a class="action-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdTRRqO41OKp3Lxwz5CqVHL-B7IpAhitqnGqBWXYl1lmtizZA/viewform" target="_blank" rel="noopener">Open suggest-change form</a>
+        </div>
+        <p class="click">👉 <span><b>Download</b> the response CSVs, then <b>drop</b> them in “Add CSV responses”</span></p>
       </div>
       <div class="wstep">
         <h3>Decide on each item</h3>
@@ -840,6 +955,12 @@ pre.cb{background:var(--surface); border:1px solid var(--border); border-left:3p
     <p class="lede">An optional second opinion. You hand entries to any AI along with the rubric that defines “good”, and it hands them back improved — or rated. You review everything before it changes a thing.</p>
 
     <p>This is the one part of the tool that involves something outside your browser, so it's worth being clear about how it works. The Data Manager <strong>never talks to an AI itself</strong>. It writes a <code>.json</code> file; you give that file to whatever AI you like; you drop the reply back in. Nothing is uploaded, nothing is automatic, and nothing is saved until you export — exactly like the rest of the tool.</p>
+
+    <div class="direct-actions">
+      <button class="action-btn" type="button" onclick="downloadRepoFile('tools/entry-quality-rubric.md','entry-quality-rubric.md')">⬇ Entry Quality Rubric</button>
+      <button class="action-btn" type="button" onclick="downloadRepoFile('tools/evidence-rating-rubric.md','evidence-rating-rubric.md')">⬇ Evidence Rating Rubric</button>
+      <button class="action-btn" type="button" onclick="downloadRepoFile('tools/triage-rating-rubric.md','triage-rating-rubric.md')">⬇ Triage Rating Rubric</button>
+    </div>
 
     <h2>Two different reviews</h2>
     <p>There are two buttons and they do genuinely different jobs. Don't mix them up:</p>
@@ -1231,6 +1352,12 @@ Then find the smallest set of facts that reproduces exactly that set of jobs.</p
     <p class="page-eyebrow">Supporting tool</p>
     <h1>Image Formatter</h1>
     <p class="lede">Get photos and drawings ready for the framework: consistent format, sensible size, unique names — and, importantly, GPS and camera data stripped out.</p>
+    <div class="direct-actions">
+      <button class="action-btn primary" type="button" onclick="openMaintainerTool('tools/framework-image-formatter.html','Image Formatter')">▶ Open latest Image Formatter</button>
+      <button class="action-btn" type="button" onclick="downloadRepoFile('tools/framework-image-formatter.html','framework-image-formatter.html')">⬇ Download local copy</button>
+      <button class="action-btn" type="button" onclick="downloadRepoFile('docs/data.json','data.json')">⬇ Download current data.json</button>
+      <a class="action-btn" href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework/tree/main/docs/images" target="_blank" rel="noopener">↗ Open images folder</a>
+    </div>
     <p>Why it exists: images that go straight from a phone into the repo are huge, carry embedded location data, and often clash with names already in use. This tool fixes all three in one pass. It runs in your browser and uploads nothing.</p>
 
     <div class="walk">
@@ -1302,6 +1429,12 @@ Then find the smallest set of facts that reproduces exactly that set of jobs.</p
     <p class="page-eyebrow">Supporting tool</p>
     <h1>Framework Doctor</h1>
     <p class="lede">A read-only health check. It reads your <code>data.json</code> and your <code>docs/images/</code> folder and reports everything that will bite you once it's live — broken images, dead cross-references, drafts you forgot to publish, and private notes about to be published.</p>
+    <div class="direct-actions">
+      <button class="action-btn primary" type="button" onclick="openMaintainerTool('tools/framework-doctor.html','Framework Doctor')">▶ Open latest Framework Doctor</button>
+      <button class="action-btn" type="button" onclick="downloadRepoFile('tools/framework-doctor.html','framework-doctor.html')">⬇ Download local copy</button>
+      <button class="action-btn" type="button" onclick="downloadRepoFile('docs/data.json','data.json')">⬇ Download current data.json</button>
+      <a class="action-btn" href="https://github.com/david-reset/Concrete-Structures-Constructability-Framework/archive/refs/heads/main.zip">⬇ Download full repo ZIP</a>
+    </div>
     <p>The Doctor never changes anything. It only reports. Run it as the last step before every commit. It catches a specific class of problem that is invisible locally and obvious to everyone the moment it's deployed.</p>
 
     <div class="walk">
@@ -1496,5 +1629,75 @@ Then find the smallest set of facts that reproduces exactly that set of jobs.</p
   render(location.hash.slice(1)||'home');
 })();
 </script>
+
+<script>
+(function(){
+  const RAW_BASE='https://raw.githubusercontent.com/david-reset/Concrete-Structures-Constructability-Framework/refs/heads/main/';
+  let statusTimer=null;
+
+  function status(msg){
+    let el=document.getElementById('download-status');
+    if(!el){
+      el=document.createElement('div');
+      el.id='download-status';
+      el.className='download-status';
+      document.body.appendChild(el);
+    }
+    el.textContent=msg;
+    el.classList.add('show');
+    clearTimeout(statusTimer);
+    statusTimer=setTimeout(function(){el.classList.remove('show');},4200);
+  }
+
+  async function fetchRepoFile(path){
+    const r=await fetch(RAW_BASE+path+'?t='+Date.now(),{cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    return r.blob();
+  }
+
+  window.downloadRepoFile=async function(path,filename){
+    try{
+      status('Downloading latest '+filename+'…');
+      const blob=await fetchRepoFile(path);
+      const u=URL.createObjectURL(blob);
+      const a=document.createElement('a');
+      a.href=u;
+      a.download=filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(function(){URL.revokeObjectURL(u);},30000);
+      status('Downloaded '+filename+'.');
+    }catch(err){
+      status('Direct download failed — opening the raw repository file instead.');
+      window.open(RAW_BASE+path,'_blank','noopener');
+    }
+  };
+
+  window.openMaintainerTool=async function(path,label){
+    const win=window.open('about:blank','_blank');
+    if(!win){
+      status('Your browser blocked the new tab. Allow pop-ups for this manual and try again.');
+      return;
+    }
+    try{
+      win.document.title='Loading '+label+'…';
+      win.document.body.innerHTML='<div style="font-family:system-ui,sans-serif;padding:32px">Loading latest '+label+'…</div>';
+      status('Loading latest '+label+'…');
+      const blob=await fetchRepoFile(path);
+      const htmlBlob=new Blob([blob],{type:'text/html'});
+      const u=URL.createObjectURL(htmlBlob);
+      win.location.replace(u);
+      status(label+' opened in a new tab.');
+      // Do not revoke immediately: the opened tool needs the blob URL for its session.
+    }catch(err){
+      try{win.close();}catch(e){}
+      status('Could not launch '+label+'. Downloading a local copy instead.');
+      window.downloadRepoFile(path,path.split('/').pop());
+    }
+  };
+})();
+</script>
+
 </body>
 </html>
