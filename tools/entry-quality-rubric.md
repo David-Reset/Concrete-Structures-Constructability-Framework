@@ -27,7 +27,7 @@ An entry is not complete — and the Data Manager will flag it as a draft that c
 - **Threshold bands** — the design guidance, at least the bands themselves.
 - **Applicability — where it applies** — the conditions under which the entry is relevant.
 
-Everything else is **optional** and strengthens the entry rather than being required: Background, Evidence basis, Evidence support (Low / Medium / High), Location (the region the evidence came from), Recommended actions, supporting or example images, search keywords, element and lifecycle-stage tags, and related-entry links.
+Everything else is **optional** and strengthens the entry rather than being required: Background, Evidence basis, Evidence support (Established / Directional / Indicative / Reasoned), Location (the region the evidence came from), Recommended actions, supporting or example images, search keywords, element and lifecycle-stage tags, and related-entry links.
 
 ---
 
