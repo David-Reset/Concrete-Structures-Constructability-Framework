@@ -4832,7 +4832,11 @@ function aiCss(){return '<style>'+
 function openAiReview(){
   if(!state.db){const msg='Load data.json before starting a framework review.';alert(msg);reportIssue('err','AI review blocked',msg,'Framework review');return;}
   if(state.editing){const msg='Apply or cancel the entry you are editing before starting an AI review.';alert(msg);reportIssue('err','AI review blocked',msg,'Evidence & triage review');return;}
-  state._aiSel={};triageAllEntries().forEach(o=>{state._aiSel[o.it.id]=true;});
+  state._aiSel={};
+  const _reviewEntries=triageAllEntries();
+  const _drafts=_reviewEntries.filter(o=>o.it.available===false);
+  if(_drafts.length)_drafts.forEach(o=>{state._aiSel[o.it.id]=true;});
+  else _reviewEntries.forEach(o=>{if(o.it.available!==false)state._aiSel[o.it.id]=true;});
   const ov=document.createElement('div');ov.className='overlay';ov.id='aiModal';
   ov.onclick=e=>{if(e.target===ov)ov.remove();};
   ov.innerHTML='<div class="modal clog-wide">'+aiCss()+
@@ -4898,31 +4902,55 @@ function aiSelCount(){return Object.keys(state._aiSel||{}).filter(k=>state._aiSe
 function aiSelAll(){triageAllEntries().forEach(o=>state._aiSel[o.it.id]=true);aiRenderExport();}
 function aiSelNone(){state._aiSel={};aiRenderExport();}
 function aiSelLive(){state._aiSel={};triageAllEntries().forEach(o=>{if(o.it.available!==false)state._aiSel[o.it.id]=true;});aiRenderExport();}
+function aiSelDrafts(){state._aiSel={};triageAllEntries().forEach(o=>{if(o.it.available===false)state._aiSel[o.it.id]=true;});aiRenderExport();}
 function aiSelToggle(id){state._aiSel[id]=!state._aiSel[id];aiRenderExportCount();}
 function aiRenderExportCount(){const c=document.getElementById('aiSelCount');if(c)c.textContent=aiSelCount()+' selected';const b=document.getElementById('aiDlBtn');if(b)b.disabled=aiSelCount()===0;}
 function aiRenderExport(){
   const host=document.getElementById('aiExportSec');if(!host)return;
-  const byDim={};triageAllEntries().forEach(o=>{(byDim[o.dim.id]=byDim[o.dim.id]||{name:o.dim.name,id:o.dim.id,items:[]}).items.push(o.it);});
+  const all=triageAllEntries();
+  const drafts=all.filter(o=>o.it.available===false);
+  const live=all.filter(o=>o.it.available!==false);
+
   let list='';
+
+  /* Drafts are deliberately first: they are the entries most likely to need a
+     framework review before publication. */
+  if(drafts.length){
+    list+='<div class="ai-seldim" style="margin-top:2px;color:var(--orange)"><span class="tdim-dot" style="background:var(--orange)"></span>Drafts · review first <span class="hint" style="font-weight:400;text-transform:none;letter-spacing:0">('+drafts.length+')</span></div>';
+    drafts.forEach(o=>{
+      const it=o.it,on=!!(state._aiSel||{})[it.id];
+      list+='<label class="ai-selrow"><input type="checkbox"'+(on?' checked':'')+' onchange="aiSelToggle(\''+jsq(it.id)+'\')"> <span>'+esc(it.name)+'</span> <span class="tag draft">draft</span> <span class="hint">· '+esc(o.dim.name)+'</span></label>';
+    });
+    list+='<div style="height:8px"></div>';
+  }
+
+  const byDim={};
+  live.forEach(o=>{(byDim[o.dim.id]=byDim[o.dim.id]||{name:o.dim.name,id:o.dim.id,items:[]}).items.push(o.it);});
   Object.keys(byDim).forEach(did=>{
     const g=byDim[did];
     list+='<div class="ai-seldim"><span class="tdim-dot" style="background:'+triageDimColor(did)+'"></span>'+esc(g.name)+'</div>';
     g.items.forEach(it=>{
       const on=!!(state._aiSel||{})[it.id];
-      const tag=it.available===false?'<span class="tag draft">draft</span>':'';
-      list+='<label class="ai-selrow"><input type="checkbox"'+(on?' checked':'')+' onchange="aiSelToggle(\''+jsq(it.id)+'\')"> <span>'+esc(it.name)+'</span> '+tag+'</label>';
+      list+='<label class="ai-selrow"><input type="checkbox"'+(on?' checked':'')+' onchange="aiSelToggle(\''+jsq(it.id)+'\')"> <span>'+esc(it.name)+'</span></label>';
     });
   });
+
+  if(!drafts.length){
+    list='<div class="hint" style="padding:4px 0 10px">No drafts are currently waiting for review.</div>'+list;
+  }
+
   const miss=[];if(!aiRubricText('evidence'))miss.push('evidence');if(!aiRubricText('triage'))miss.push('triage');
-  const warn=miss.length?'<div class="hint" style="color:var(--orange);margin-top:8px">\u26a0 The '+miss.join(' and ')+' rubric'+(miss.length>1?'s aren\u2019t':' isn\u2019t')+' loaded \u2014 you can still export, but the AI will be rating without '+(miss.length>1?'them':'it')+'.</div>':'';
-  host.innerHTML='<div class="ai-sec"><div class="ai-sec-h">2 \u00b7 Entries to review</div>'+
-    '<div class="ai-sec-sub">Each selected entry is sent with its question, parameter, bands, recommended actions, evidence basis, current rating, current trigger and current related links. A compact catalogue of every framework entry is also bundled so the AI can discover useful routes to entries you did not select for review.</div>'+
+  const warn=miss.length?'<div class="hint" style="color:var(--orange);margin-top:8px">⚠ The '+miss.join(' and ')+' rubric'+(miss.length>1?'s aren’t':' isn’t')+' loaded — you can still export, but the AI will be rating without '+(miss.length>1?'them':'it')+'.</div>':'';
+
+  host.innerHTML='<div class="ai-sec"><div class="ai-sec-h">2 · Entries to review</div>'+
+    '<div class="ai-sec-sub"><strong>Drafts are shown first and selected by default.</strong> They are normally the entries that need review before being marked live. You can still select any live entries below for re-review. Each selected entry is sent with its question, parameter, bands, recommended actions, evidence basis, current rating, current trigger and current related links. A compact catalogue of every framework entry is also bundled so the AI can discover useful routes to entries you did not select for review.</div>'+
     '<div class="ai-selbar"><span id="aiSelCount" class="ai-count">'+aiSelCount()+' selected</span>'+
+      '<button class="tlink" onclick="aiSelDrafts()">drafts</button>'+
       '<button class="tlink" onclick="aiSelAll()">all</button>'+
       '<button class="tlink" onclick="aiSelLive()">live only</button>'+
       '<button class="tlink" onclick="aiSelNone()">none</button></div>'+
     '<div class="ai-sellist">'+list+'</div>'+warn+
-    '<div style="margin-top:11px"><button id="aiDlBtn" class="btn primary"'+(aiSelCount()===0?' disabled':'')+' onclick="aiDownloadRequest()">\u2b07 Download review request (.json)</button></div>'+
+    '<div style="margin-top:11px"><button id="aiDlBtn" class="btn primary"'+(aiSelCount()===0?' disabled':'')+' onclick="aiDownloadRequest()">⬇ Download review request (.json)</button></div>'+
   '</div>';
 }
 function aiSelectedEntries(){return triageAllEntries().filter(o=>(state._aiSel||{})[o.it.id]);}
@@ -4987,9 +5015,9 @@ function aiBuildRequest(){
     'GENERAL: each suggestion id must exactly equal the reviewed entry id. Never rewrite the question, parameter, bands, recommended actions or technical guidance in this review. '+
     'EVIDENCE: `evidenceSupport.level` must be exactly established, directional, indicative or reasoned. Grade every source on grade AND proximity. Establish the entry kind first. Read `recommendedActions` as part of the claim set. Never announce the level inside the evidence summary. '+
     'TRIAGE: apply the reconstruction test in `rubrics.triage`: name the jobs the entry actually bites on, then find the smallest fact set that reproduces those jobs. Prefer facts already in `triageVocabulary`; invent a new fact only when the vocabulary genuinely cannot express the scope. There is no opt-in type. A universal entry uses `standing:true` and no trigger. A conditional entry uses `triage`. If you propose `standing:false` for an entry that is currently standing, you MUST also provide a valid conditional `triage` trigger in the same suggestion so the entry cannot become dark. Check question `when` gates for hidden recall failures. `triageExclude` is only for genuine routing between competing entries and every exclude needs a receiving entry. Recall is more important than polishing one entry for precision. '+
-    'RELATED ENTRIES: this is also governed by `rubrics.triage`. A related link is post-surface routing, not a trigger. Compare the reviewed entry against the ENTIRE `frameworkCatalogue`, including entries not selected for review. Propose a relationship only when the target answers a DIFFERENT but directly connected next design question — a companion consequence, handoff, alternative/contrast, or dependency. Do NOT link merely because two entries share a tag, element, phase, material, dimension or broad topic. Zero links is valid. Prefer a few strong routes. Every add or update needs a short reader-facing note explaining why to open that entry next. '+
+    'RELATED ENTRIES: this is also governed by `rubrics.triage`. A related link is post-surface routing, not a trigger. Compare the reviewed entry against the ENTIRE `frameworkCatalogue`, including entries not selected for review. Propose a relationship when the target answers a DIFFERENT but directly connected next design question — a companion consequence, handoff, alternative/contrast, or dependency. Do NOT link merely because two entries share a tag, element, phase, material, dimension or broad topic. IMPORTANT: a useful link does NOT need to apply across the source entry’s whole scope. A partial-scope route is valid when it is genuinely useful for a clear subset of jobs and the reader-facing note states that condition. Do not reject a pile-specific route just because the source entry also applies to walls or columns. Zero links is valid only after an active candidate audit. Prefer a few strong routes. Every add or update needs a short reader-facing note explaining why and WHEN to open that entry next. '+
     'For related-entry output, return ONLY proposed CHANGES, not the whole final list. Use `action:"add"` only when the pair is not currently related, `action:"update"` only when the pair already exists and its note should change, and `action:"remove"` only when an existing relationship clearly fails the rubric. Do not propose the same pair twice or from both directions; the Data Manager treats the relationship as mutual. Target ids must exist in `frameworkCatalogue` and cannot equal the reviewed entry id. Do not use related links to repair a bad trigger or to encode `decisionPath`. '+
-    'Every suggested change remains a human decision. `rationale` is for the maintainer and is not applied. If no link changes are justified, return `relatedEntries:[]`. If `newFacts` is empty, return it as [].',
+    'Every suggested change remains a human decision. `rationale` is for the maintainer and is not applied. LINK AUDIT IS REQUIRED: for every reviewed entry return `linkAudit.candidates` listing the strongest plausible link candidates you actually tested — normally at least 3 where 3 plausible candidates exist. Each candidate must say `verdict:"link"`, `verdict:"partial"`, `verdict:"keep"`, or `verdict:"reject"` and explain why. `link` means a strong route and requires a matching proposed relationship. `partial` means a narrower or borderline route that may still be useful: it MUST also appear in `relatedEntries`, with `fit:"partial"` and `recommendation:"against"`, so the maintainer can choose it even though the AI recommends leaving it off by default. `reject` appears only in the audit. If no strong links survive, partial proposals must still be returned where they genuinely exist. If no link or partial candidates survive, return `relatedEntries:[]` but still return the candidate audit. If `newFacts` is empty, return it as [].',
     outputSchema:{
       newFacts:[{fact:'new-fact-id',type:'gate | question',reason:'short label',label:'(gate only) full label',hint:'(optional) hint',kind:'(gate only) presence | condition',prompt:'(question only) the question text',when:['(question only) gate-fact-id'],source:'(question only) drawings | geotech | site | intent'}],
       suggestions:[{
@@ -4998,8 +5026,9 @@ function aiBuildRequest(){
         standing:'(optional) true — ONLY if the entry applies to every RC job; then omit `triage`',
         triage:[['fact-id','...'],['fact-id']],
         triageExclude:['fact-id (optional)'],
-        relatedEntries:[{action:'add | update | remove',id:'existing framework entry id',note:'required for add/update; omit for remove',reason:'why this routing change passes the triage rubric'}],
-        rationale:{evidence:'why this level',triage:'why this trigger',links:'overall link-routing reasoning (optional)'}
+        relatedEntries:[{action:'add | update | remove',id:'existing framework entry id',note:'required for add/update; omit for remove',reason:'why this routing change passes or partially passes the triage rubric',fit:'strong | partial',recommendation:'for | against'}],
+        linkAudit:{candidates:[{id:'existing framework entry id',verdict:'link | partial | keep | reject',reason:'why this candidate is strong, partial, already appropriate, or rejected; state any partial-scope condition'}]},
+        rationale:{evidence:'why this level',triage:'why this trigger',links:'overall link-routing reasoning'}
       }]
     },
     rubrics:{evidence:aiRubricText('evidence'),triage:aiRubricText('triage')},
@@ -5403,6 +5432,11 @@ function aiNormalizeLinkChange(ownerId,raw){
   const id=String((raw&&raw.id)||'').trim();
   const note=String((raw&&raw.note)||'').trim();
   const reason=String((raw&&raw.reason)||'').trim();
+  let fit=String((raw&&raw.fit)||'strong').toLowerCase().trim();
+  let recommendation=String((raw&&raw.recommendation)||'for').toLowerCase().trim();
+  if(!['strong','partial'].includes(fit))fit='strong';
+  if(!['for','against'].includes(recommendation))recommendation=fit==='partial'?'against':'for';
+  if(fit==='partial'&&!('recommendation' in (raw||{})))recommendation='against';
   const target=entryById(id);
   const existing=!!(ownerId&&id&&findLinkOwner(ownerId,id));
   const errors=[];
@@ -5413,7 +5447,8 @@ function aiNormalizeLinkChange(ownerId,raw){
   if(action==='add'&&existing)errors.push('relationship already exists — use update');
   if((action==='update'||action==='remove')&&!existing)errors.push('relationship does not currently exist');
   if((action==='add'||action==='update')&&!note)errors.push('add/update requires a reader-facing link note');
-  return {action,id,note,reason,existing,targetName:target?target.it.name:id,targetDim:target?target.dim.name:'',accept:errors.length===0,errors};
+  const defaultAccept=errors.length===0&&recommendation!=='against';
+  return {action,id,note,reason,fit,recommendation,existing,targetName:target?target.it.name:id,targetDim:target?target.dim.name:'',accept:defaultAccept,errors};
 }
 function aiLinkToggle(ri,li){const r=(state._aiRows||[])[ri],x=r&&r.linkChanges&&r.linkChanges[li];if(!x||x.errors.length)return;x.accept=!x.accept;renderAiApplyBody();}
 function aiLinkNote(ri,li,val){const r=(state._aiRows||[])[ri],x=r&&r.linkChanges&&r.linkChanges[li];if(!x)return;x.note=String(val||'').trim();x.errors=x.errors.filter(e=>e!=='add/update requires a reader-facing link note');if((x.action==='add'||x.action==='update')&&!x.note)x.errors.push('add/update requires a reader-facing link note');if(x.errors.length)x.accept=false;renderAiApplyBody();}
@@ -5424,11 +5459,20 @@ function aiLinkCard(ri,li,x){
   if(x.action==='add'){oldTxt='not linked';newTxt=x.targetName+' — '+x.note;}
   else if(x.action==='update'){oldTxt=oldNote||'(no note)';newTxt=x.note;}
   else{oldTxt=x.targetName+(oldNote?' — '+oldNote:'');newTxt='unlink';}
-  const badge=x.action==='add'?'ADD':(x.action==='update'?'UPDATE NOTE':'REMOVE');
+  const actionBadge=x.action==='add'?'ADD':(x.action==='update'?'UPDATE NOTE':'REMOVE');
+  const fitBadge=x.fit==='partial'
+    ? '<span class="pill warn">PARTIAL · HUMAN DECISION</span>'
+    : '<span class="pill ok">STRONG ROUTE</span>';
+  const recBadge=x.recommendation==='against'
+    ? '<span class="pill warn">AI SUGGESTS AGAINST</span>'
+    : '<span class="pill ok">AI SUGGESTS ACCEPT</span>';
   const editor=(x.action==='add'||x.action==='update')?'<label class="ai-nf-l">Reader-facing link note</label><textarea class="ai-edit" onchange="aiLinkNote('+ri+','+li+',this.value)">'+esc(x.note||'')+'</textarea>':'';
   const errs=x.errors.length?'<div class="ai-err">'+x.errors.map(esc).join('; ')+'</div>':'';
   const why=x.reason?'<div class="ai-helper"><span class="ai-helper-l">AI’s reasoning</span>'+esc(x.reason)+'</div>':'';
-  return '<div class="ai-part"><div>'+cb+'</div><div><div class="ai-part-h">Related entry · '+badge+' · '+esc(x.targetName)+' <span class="ai-row-dim">'+esc(x.targetDim)+'</span></div><div class="ai-diff"><span class="ai-old"><s>'+esc(oldTxt)+'</s></span><span class="ai-arr">→</span><span class="ai-new">'+esc(newTxt)+'</span></div>'+editor+errs+why+'</div></div>';
+  const guidance=x.fit==='partial'
+    ? '<div class="hint" style="margin:5px 0 8px"><strong>Partial route:</strong> this may be useful only on part of the source entry’s scope. It is deliberately unticked unless you choose to add it.</div>'
+    : '';
+  return '<div class="ai-part"><div>'+cb+'</div><div><div class="ai-part-h">Related entry · '+actionBadge+' · '+esc(x.targetName)+' <span class="ai-row-dim">'+esc(x.targetDim)+'</span></div><div style="display:flex;gap:6px;flex-wrap:wrap;margin:5px 0 7px">'+fitBadge+recBadge+'</div>'+guidance+'<div class="ai-diff"><span class="ai-old"><s>'+esc(oldTxt)+'</s></span><span class="ai-arr">→</span><span class="ai-new">'+esc(newTxt)+'</span></div>'+editor+errs+why+'</div></div>';
 }
 function openAiApply(sugs,newFacts){
   const existing=new Set(triageFacts().map(f=>f.fact));
@@ -5574,6 +5618,30 @@ function renderAiApplyBody(){
   if(sk.length)html+='<div class="ai-sec"><div class="ai-sec-h">Couldn\u2019t match ('+sk.length+')</div>'+sk.map(r=>'<div class="ai-skip">\u26a0 no entry with id <code>'+esc(r.id)+'</code> \u2014 skipped</div>').join('')+'</div>';
   host.innerHTML=html;
 }
+
+function aiLinkAuditCard(r){
+  const audit=r&&r.sug&&r.sug.linkAudit;
+  const candidates=audit&&Array.isArray(audit.candidates)?audit.candidates:[];
+  if(!candidates.length){
+    return '<div class="ai-part"><div></div><div><div class="ai-part-h">Link audit</div>'+
+      '<div class="ai-err">AI returned no link-candidate audit. That does not prove links were reviewed. Re-run the Framework Review before treating an empty related-entry result as intentional.</div></div></div>';
+  }
+  let rows='';
+  candidates.forEach(c=>{
+    const id=String((c&&c.id)||'').trim();
+    const hit=entryById(id);
+    const name=hit?hit.it.name:id||'(missing id)';
+    const dim=hit?hit.dim.name:'';
+    const verdict=String((c&&c.verdict)||'').toLowerCase();
+    const cls=verdict==='link'?'ok':(verdict==='partial'?'warn':(verdict==='keep'?'info':''));
+    rows+='<div style="padding:7px 0;border-top:1px solid var(--border)">'+
+      '<span class="pill '+cls+'">'+esc((verdict||'reviewed').toUpperCase())+'</span> '+
+      '<strong>'+esc(name)+'</strong>'+(dim?' <span class="ai-row-dim">'+esc(dim)+'</span>':'')+
+      '<div class="hint" style="margin-top:3px">'+esc((c&&c.reason)||'No reason supplied.')+'</div></div>';
+  });
+  return '<div class="ai-part"><div></div><div><div class="ai-part-h">Link audit · '+candidates.length+' candidate'+(candidates.length===1?'':'s')+' checked</div>'+
+    '<div class="hint" style="margin:3px 0 6px">This is the AI’s visible evidence that it actually searched the framework for onward routes. <strong>LINK</strong> is a strong route, <strong>PARTIAL</strong> is a narrower human-decision route shown below as selectable but unticked, and <strong>REJECT</strong> means considered but not linked.</div>'+rows+'</div></div>';
+}
 function aiRowCard(r,i,ctx){
   let parts='';
   /* ---- evidence: you choose the rating and edit the words, right here ---- */
@@ -5626,10 +5694,15 @@ function aiRowCard(r,i,ctx){
     parts+='<div class="ai-part"><div>'+cb+'</div><div><div class="ai-part-h">Triage trigger</div>'+diff+editor+err+rat+nfHtml+'</div></div>';
   }
   /* ---- related-entry routing (governed by the triage rubric) ---- */
+  parts+=aiLinkAuditCard(r);
   if((r.linkChanges||[]).length){
     parts+='<div class="ai-part"><div></div><div><div class="ai-part-h">Related-entry routing</div><div class="hint" style="margin-top:4px">Each link is independent. Tick only the routes that genuinely help the reader reach a different but connected design decision.</div></div></div>';
     (r.linkChanges||[]).forEach((x,li)=>{parts+=aiLinkCard(i,li,x);});
     if(r.sug.rationale&&r.sug.rationale.links)parts+='<div class="ai-helper" style="margin:0 12px 12px"><span class="ai-helper-l">AI’s overall link reasoning</span>'+esc(r.sug.rationale.links)+'</div>';
+  }else{
+    parts+='<div class="ai-part"><div></div><div><div class="ai-nochange">No selectable related-entry changes were proposed after the link audit.</div>'+
+      ((r.sug.rationale&&r.sug.rationale.links)?'<div class="ai-helper"><span class="ai-helper-l">AI’s overall link reasoning</span>'+esc(r.sug.rationale.links)+'</div>':'')+
+      '</div></div>';
   }
   if(!parts)parts='<div class="ai-nochange" style="padding:6px 0">no evidence, triage or related-entry changes in this suggestion</div>';
   return '<div class="ai-row"><div class="ai-row-top"><span class="tdim-dot" style="background:'+triageDimColor(r.dim.id)+'"></span><span class="ai-row-name">'+esc(r.entry.name)+'</span><span class="ai-row-dim">'+esc(r.dim.name)+'</span></div>'+parts+'</div>';
