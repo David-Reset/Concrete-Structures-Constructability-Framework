@@ -47,7 +47,11 @@ This is the heart of the rubric. A source has to clear **both** axes to evidence
 - Direct measurement or field data on the same element or parameter
 - First-principles physical derivation from established component dimensions or mechanics
 - Peer-reviewed research
+- A **doctoral thesis** — examined by independent external examiners, at least one from outside the country
+- A **book confirmed to have been formally peer-reviewed** — the publisher states a peer-review process, or it belongs to a recognised peer-reviewed monograph series. A book whose review status you cannot confirm is **Grade B**, not Grade A
 - A **statutory duty** bearing on how the thing gets built — a WHS Regulation, the duty provisions of a Work Health and Safety Code of Practice, the Design and Building Practitioners Act
+
+> **What every Grade A source has in common — and why it can stand alone.** Each has already cleared *verifiable independent scrutiny* before it reached you: peer review, external doctoral examination, a reproducible first-principles derivation anyone can rerun, or a duty that simply binds. That is the entire reason a single on-point Grade A source reaches `established` on its own (Step 4), where a Grade B source — authoritative, but never put through that gauntlet — still needs a second independent leg. When you promote a book to Grade A you are asserting that scrutiny happened *and can be pointed to*. If you cannot point to it, it is Grade B.
 
 > **Design codes are deliberately not part of the evidence base — do not add them.**
 >
@@ -67,7 +71,7 @@ This is the heart of the rubric. A source has to clear **both** axes to evidence
 - Authoritative industry technical note or guidance (SRIA, CCAA, ACI, CIRIA, Engineering NZ) — a *technical note*, which is a different thing from a design code
 - A **materials or product standard** recording a physical or manufacturing fact (AS/NZS 4671 on which bar sizes the rebend test covers) — again, not a design code
 - Government or agency research synthesis (NCHRP, NBS)
-- Doctoral thesis; established reference textbook
+- Established reference textbook, or a book whose formal peer-review status **cannot be confirmed** (a confirmed peer-reviewed book is Grade A)
 - Primary research conducted for the framework (e.g. a structured supplier-availability review)
 
 **Grade C — can corroborate a claim. It can never evidence one.**
@@ -96,7 +100,7 @@ This is the heart of the rubric. A source has to clear **both** axes to evidence
 
 ## Step 3 — Test independence, and test it on the same claim
 
-`established` needs a second leg. Two rules govern what counts.
+**A Grade B call needs a second, independent leg to reach `established`. A single on-point Grade A call does not** — it stands on the scrutiny it already carries (Step 4). What follows therefore governs **Grade B corroboration**, and the lifting of any `directional` entry to `established`. Two rules govern what counts as a second leg.
 
 **Independence.** Two sources are independent only if they **could have disagreed** — different authors, different evidence base, different organisation.
 
@@ -117,20 +121,23 @@ The following are **one source, not two**:
 
 Work down. The level is set by the **weakest** link, not the strongest source.
 
-### `established` — *evidenced on point, and independently confirmed*
-Everything the reader acts on rests on **on-point Grade A or B** evidence, and is **independently corroborated on the same claim** (by another on-point A or B source, or by an on-point Grade C documented real case).
+### `established` — *evidenced on point; the scrutiny is independent*
+Everything the reader acts on rests on **on-point** evidence, and reaches this level in **either** of two ways:
 
-For a *measured* entry that means **every cut-off**. For *chosen* or *judged*, the call **and its ordering**. For *counted*, **every condition and the breakpoint**.
+- **a single on-point Grade A source** — peer-reviewed research, an externally-examined doctoral thesis, a confirmed peer-reviewed book, a reproducible first-principles derivation, or a binding statutory duty. Grade A carries its independent scrutiny in itself, so it **stands alone**; or
+- **an on-point Grade B source, independently corroborated on the same claim** — by another on-point A or B source, or by an on-point Grade C documented real case.
+
+For a *measured* entry that means **every cut-off**; for *chosen* or *judged*, the call **and its ordering**; for *counted*, **every condition and the breakpoint**. (Coverage is tested in full at Step 5 either way — that is where a single scenario dressed up as a general cut-off fails, on coverage, not here on corroboration.)
 
 This is the strongest evidence the framework carries. The residual uncertainty is about the precision of a single value, or how often the situation arises — not about whether the guidance sits in the right place.
 
-It is **not** an instruction to adopt the numbers unexamined. An engineer's own checks, and their responsibility for the design, are undiminished at this level. What `established` says is narrow and factual: *we could not find the weak link.*
+It is **not** an instruction to adopt the numbers unexamined. An engineer's own checks, and their responsibility for the design, are undiminished at this level. What `established` says is narrow and factual: *the guidance sits on evidence that has itself been independently scrutinised.*
 
 ### `directional` — *the direction is proven; the number is ours*
 **The mechanism and direction are evidenced on point by Grade A or B — but a link is missing.** One or both of:
 
 - **Coverage.** The specific values the reader acts on are *reasoned*: a measured entry's cut-offs, a counted entry's breakpoint, or the gradation between a chosen/judged entry's states. The direction is proven; the number is the framework's.
-- **Corroboration.** The call is fully and directly evidenced by an on-point A or B source, but nothing independent confirms it — a single authority, or a single documented case.
+- **Corroboration (Grade B only).** The call is fully and directly evidenced by a single on-point **Grade B** source, but nothing independent confirms it — a single authority, or a single documented case. **A single on-point Grade A source does not land here** — it reaches `established` on its own (see Step 4). Adding one independent leg lifts a Grade B `directional` to `established`.
 
 **What is evidenced here is the direction. The specific value is the framework's reasoned call** — and that is precisely the part an engineer should expect to weigh against their own job, because it is the part we cannot show them a source for.
 
@@ -207,6 +214,7 @@ Two mechanical rules:
 Set `dateReviewed` whenever you assign or change a level. Re-rate when:
 
 * new evidence moves a value from reasoned to evidenced, or supplies a missing corroboration leg — or vice versa;
+* **a source's grade is reassessed** — recognising a doctoral thesis or a confirmed peer-reviewed book as Grade A can move a Grade-B-corroboration `directional` to `established` with **no new source**, because a single on-point Grade A source no longer needs a second leg;
 * the parameter or band boundaries change;
 * **the entry's *kind* changes** — a reframing from *measured* to *chosen*, or a *counted* parameter named for the first time, changes which test applies and can change the level with no new source at all;
 * an accepted edit suggestion alters the guidance or the supporting evidence.
@@ -219,7 +227,9 @@ A change in level always comes with an updated `summary`, so the two never contr
 
 **Measured → `directional` (coverage fails).** Peer-reviewed research measures edge-formwork labour rising with vertical face depth, and three project cases confirm the response — including a fold that actually failed on site. But the 600 mm boundary comes from contractor consultation (Grade C) and the 1000 mm from that single case (Grade C). The mechanism is Grade A and on point; **neither number the reader acts on is evidenced.** → `directional`, and the summary says: trust the direction, treat 600 as indicative.
 
-**Chosen → `directional` (corroboration fails).** A bar-size hinge is directly and authoritatively backed by an industry technical note — on point, Grade B, full coverage of the call. But every citation is from the same body, and there is no project case. One source, published twice. → `directional`, missing the second leg. *One independent source, or one documented case, would make it `established`.*
+**Chosen → `directional` (corroboration fails, Grade B).** A bar-size hinge is directly and authoritatively backed by an industry technical note — on point, **Grade B**, full coverage of the call. But every citation is from the same body, and there is no project case. One source, published twice. → `directional`, missing the second leg. *One independent source, or one documented case, would make it `established`.* The grade is doing the work here: had that single on-point source been **Grade A**, the entry would be `established` on its own.
+
+**Chosen → `established` (single Grade A leg).** A recommended call and its ordering are directly and on-point evidenced by a single peer-reviewed study (**Grade A**), covering the call in full. No second independent source exists. → `established`. Grade A carries its own independent scrutiny, so a second leg is not required — corroboration would still be welcome (it is what lifts the Grade B case above), but its absence does not cap a Grade A call.
 
 **Chosen → `established` (both legs).** A supplier-availability review conducted for the framework (Grade B, on point) establishes which pod depths are actually stocked, and project drawings using those depths corroborate it on the same claim (Grade C, on point). → `established`.
 
