@@ -35,6 +35,8 @@ Entries come in **four kinds**, defined in section 6 of the [entry quality rubri
 
 > **The trap this table exists to prevent.** A parameter with millimetres in it is **not** automatically *measured*. Bar spacing (150 / 200 / 250 / 300), bar diameter (N12 / N16 / N20), pod depth (225 / 300 / 375) and fire-resistance levels come off a **standard menu** — the quality rubric calls these **chosen**, and so must this one. Asking for cut-off evidence at 260 mm demands a boundary no drawing ever lands on. **A menu value is a call, not a cut-off.**
 
+> **Recognising the awkward one — *judged*.** *Measured* has a number, *chosen* has a menu, *counted* has a tally; *judged* has none of these, which is why it slips. A judged entry's bands are **described states of the design, ordered best to worst**, and the reader decides which description the design matches. Reinforcement-callout clarity is the type case — clean callouts, through a callout missing its laying order, to fully encoded notation — no measurement, no parts to pick. It is **not measured** (nothing sits on a continuum; the quality has no units) and **not chosen** (the bands describe the condition the design is *already in*, not interchangeable options you select between). What gets tested is the **ordering of the states and the call** (Step 5), never a cut-off.
+
 ---
 
 ## Step 2 — Grade every source on two axes
