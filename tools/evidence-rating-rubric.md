@@ -123,6 +123,16 @@ The following are **one source, not two**:
 
 Work down. The level is set by the **weakest** link, not the strongest source.
 
+**Two gates decide the level, in order — and the second one is about your guidance bands.**
+
+**Gate 1 — proximity: is the effect on point?** Is there an on-point Grade A or B source for the effect the entry turns on — the thing the bands sort the design by? *On point* means it addresses the proposition the reader acts on, not a neighbour or an analogy (Step 2, Axis 2). Only adjacent or analogous support → `indicative`, however strong the source; nothing on point at all → `reasoned`. If the effect **is** on point, the entry can reach `established` or `directional` — go to Gate 2.
+
+**Gate 2 — coverage: are the guidance bands themselves evidenced?** Proximity buys a supported *effect*. Coverage asks whether the **bands the reader actually applies** — the boundaries between Best practice / Consider / Concern / Action required — are each backed by that on-point evidence. Band by band: a *measured* entry's numeric cut-offs; a *chosen* entry's recommended option and its ordering; a *judged* entry's ordering of the described states; a *counted* entry's conditions and the count at which the band changes. **Every** boundary evidenced on point (and independently corroborated where the on-point leg is Grade B) → `established`. The effect evidenced on point but **one or more boundaries is the framework's own reasoning** → `directional`.
+
+So a missing band boundary can only drop you from `established` to `directional` — it is a Gate 2 (coverage) matter. It can never take you to `indicative`, which is a Gate 1 (proximity) failure. The two gates fail in different places; judge them in order.
+
+> **Walking both gates — off-form upturn clearance (entry 1).** *Gate 1:* the effect is "you need room behind the form to build it", and the formwork mechanics address exactly that — on point, Grade A/B. Gate 1 passes, so the entry is at least `directional` and `indicative` is off the table. *Gate 2:* the bands are ≥ 1000 / 700 / 350 mm. The formwork-component half of each boundary is first-principles (Grade A) — but the human working-clearance built into every boundary (~300 mm to stand behind the form, ~127 mm hand-and-tool, ~100 mm to work the nut) is practitioner judgement (Grade C), evidenced by nothing on point. The bands the reader applies are therefore **not fully evidenced** → one leg reasoned → **`directional`**, capped by coverage, not proximity. Find on-point evidence for those human working-clearances and every boundary is covered → `established`.
+
 ### `established` — *evidenced on point; the scrutiny is independent*
 Everything the reader acts on rests on **on-point** evidence, and reaches this level in **either** of two ways:
 
