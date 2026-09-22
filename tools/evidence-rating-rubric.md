@@ -88,13 +88,13 @@ This is the heart of the rubric. A source has to clear **both** axes to evidence
 
 - **On point** — it addresses the proposition the reader acts on.
 - **Adjacent** — it addresses a *neighbouring* proposition. A source about a chamfer on a precast cladding joint is adjacent to a claim about a formed in-situ arris. A drafting manual that sets the standard chamfer size corroborates a **drawing convention**, not a **damage claim**.
-- **Analogous** — the right phenomenon, studied in a different domain, applied by inference. Visual-clutter research on general displays, applied to reinforcement callouts. Pipefitting drawing studies, applied to RC structural sets.
+- **Transferred** — the right phenomenon, but studied in a different field and carried across by analogy. Visual-clutter research on general displays, applied to reinforcement callouts. Pipefitting drawing studies, applied to RC structural sets.
 
 ### The rule that does all the work
 
 > **A claim is *evidenced* only by a Grade A or Grade B source that is *on point*.**
 >
-> **Adjacent** or **analogous** caps the entry — however good the source is. A peer-reviewed paper about the wrong thing is still about the wrong thing.
+> **Adjacent** or **transferred** caps the entry — however good the source is. A peer-reviewed paper about the wrong thing is still about the wrong thing.
 >
 > **Grade C never evidences a claim.** It corroborates one that Grade A or B has already established.
 
@@ -112,6 +112,9 @@ The following are **one source, not two**:
 - Two jurisdictions adopting the same model law (a SafeWork NSW and a SafeWork SA code implementing the model WHS Regulations)
 - A thesis and the journal paper drawn from it
 - A source and another source that merely cites it
+- **A supplier, tool or market review — or a consultation — the framework ran itself, offered as its own second leg.** It shares the framework's author and motive and *could not have disagreed* with the entry it supports, so it is not independent of it. It may also be non-exhaustive: a scan that stops at four listings can miss the fifth that breaks the claim.
+
+**A self-conducted review cannot be the leg that lifts an entry to `established`.** Evidence the framework gathered itself — a supplier/tool/market review, a price scan, an author-run contractor consultation — can *inform* an entry and be cited, but it is not independent of it, so it can never be the corroboration that raises a Grade B call from `directional` to `established`. The elevating leg must be **externally verifiable and independent of the framework**: a published standard or manufacturer limit, a second body's guidance, peer-reviewed work, or a genuinely independent documented project case (not the framework's own recommended detail shown in use). A self-conducted review with no such second leg leaves the entry `directional`.
 
 **The corroborating source must be on point — on the same claim.** A second leg that supports a *neighbouring* proposition is not corroboration; it is a second entry's evidence, wearing this one's badge. If the claim is *"a chamfer prevents arris damage,"* a manual specifying that standard chamfers are 20 × 20 does not corroborate it. It corroborates that the convention exists.
 
@@ -125,7 +128,7 @@ Work down. The level is set by the **weakest** link, not the strongest source.
 
 **Two gates decide the level, in order — and the second one is about your guidance bands.**
 
-**Gate 1 — proximity: is the effect on point?** Is there an on-point Grade A or B source for the effect the entry turns on — the thing the bands sort the design by? *On point* means it addresses the proposition the reader acts on, not a neighbour or an analogy (Step 2, Axis 2). Only adjacent or analogous support → `indicative`, however strong the source; nothing on point at all → `reasoned`. If the effect **is** on point, the entry can reach `established` or `directional` — go to Gate 2.
+**Gate 1 — proximity: is the effect on point?** Is there an on-point Grade A or B source for the effect the entry turns on — the thing the bands sort the design by? *On point* means it addresses the proposition the reader acts on, not a neighbour or an analogy (Step 2, Axis 2). Only adjacent or transferred support → `indicative`, however strong the source; nothing on point at all → `reasoned`. If the effect **is** on point, the entry can reach `established` or `directional` — go to Gate 2.
 
 **Gate 2 — coverage: are the guidance bands themselves evidenced?** Proximity buys a supported *effect*. Coverage asks whether the **bands the reader actually applies** — the boundaries between Best practice / Consider / Concern / Action required — are each backed by that on-point evidence. Band by band: a *measured* entry's numeric cut-offs; a *chosen* entry's recommended option and its ordering; a *judged* entry's ordering of the described states; a *counted* entry's conditions and the count at which the band changes. **Every** boundary evidenced on point (and independently corroborated where the on-point leg is Grade B) → `established`. The effect evidenced on point but **one or more boundaries is the framework's own reasoning** → `directional`.
 
@@ -158,12 +161,12 @@ It is **not** an instruction to adopt the numbers unexamined. An engineer's own 
 > **The name is doing a job.** It tells a reader exactly how far to lean: *believe the direction, sanity-check the number.* Do not let a later reviewer rename it back to something that sounds like a grade — it is not a grade, it is an instruction.
 
 ### `indicative` — *plausible, but the evidence is about something else*
-**The evidence base is not on point.** The claim rests on **adjacent** or **analogous** sources — however strong their grade — or the only on-point support is Grade C.
+**The evidence base is not on point.** The claim rests on **adjacent** or **transferred** sources — however strong their grade — or the only on-point support is Grade C.
 
 The direction here is *plausible* rather than proven — that is the line between this level and `directional`. The reasoning is sound, but nothing directly evidences the proposition the reader acts on, so the entry is carried by inference.
 
 ### `reasoned` — *practitioner judgement, published so the gap is visible*
-Rests mainly on **Grade C**: practitioner judgement, trade guidance, or loosely analogous material, with nothing on point to confirm it. The call is essentially asserted.
+Rests mainly on **Grade C**: practitioner judgement, trade guidance, or loosely related material, with nothing on point to confirm it. The call is essentially asserted.
 
 > **A `reasoned` entry can still be published live, and should be.** Publishing it is what makes the gap visible and invites the measurement, source or field experience that would raise it. `reasoned` is an open invitation to supply evidence, not a failing grade and not a bar to release. A maintainer may publish at `reasoned`, or research further and publish higher.
 >
@@ -247,6 +250,6 @@ A change in level always comes with an updated `summary`, so the two never contr
 
 **Counted → `directional` (breakpoint unsourced).** Each of three waffle-pod preconditions traces to on-point guidance and a documented case. But nothing says the system should be reconsidered at *two* failures rather than three. Strong list, judged breakpoint. → `directional`.
 
-**Judged → `indicative` (proximity fails).** Peer-reviewed visual-clutter research shows targets get harder to find as a display grows cluttered, and a real project records extras being missed in a compressed callout. But the research is about **general displays**, not engineering drawings — no study tests how reinforcement callouts are read by steel fixers. Grade A, but **analogous**. → `indicative`. The grade does not rescue the proximity.
+**Judged → `indicative` (proximity fails).** Peer-reviewed visual-clutter research shows targets get harder to find as a display grows cluttered, and a real project records extras being missed in a compressed callout. But the research is about **general displays**, not engineering drawings — no study tests how reinforcement callouts are read by steel fixers. Grade A, but **transferred**. → `indicative`. The grade does not rescue the proximity.
 
 **Judged → `reasoned` (nothing on point).** The literature is borrowed by analogy from a sibling entry, and the two drawing examples illustrate the principle rather than documenting a failure that occurred. → `reasoned`, and the summary should say the on-point study does not exist rather than implying it was not looked for.
