@@ -259,6 +259,40 @@
   .triage-yesno .entry-btn.ns{flex:1.1}
   .triage-yesno .entry-btn.ns:not(.primary){color:var(--text-muted)}
 
+  /* Mobile triage: keep the navigation controls visible while only the gate list scrolls. */
+  @media(max-width:640px){
+    #triageOverlay[data-phase="gates"]{padding:8px;align-items:center}
+    #triageOverlay[data-phase="gates"] .modal{
+      height:calc(100dvh - 16px);
+      max-height:calc(100dvh - 16px);
+      padding:20px 18px 0;
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+    }
+    #triageOverlay[data-phase="gates"] .triage-gate-list{
+      flex:1 1 auto;
+      min-height:0;
+      max-height:none;
+      overflow-y:auto;
+      overscroll-behavior:contain;
+      -webkit-overflow-scrolling:touch;
+      padding-bottom:10px;
+    }
+    #triageOverlay[data-phase="gates"] .triage-actions{
+      flex:0 0 auto;
+      margin:12px -18px 0;
+      padding:12px 18px calc(12px + env(safe-area-inset-bottom));
+      background:var(--surface);
+      border-top:1px solid var(--border);
+      box-shadow:0 -10px 24px rgba(0,0,0,.18);
+    }
+    #triageOverlay[data-phase="gates"] .triage-actions .entry-btn{
+      flex:1;
+      justify-content:center;
+    }
+  }
+
   .examples-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px;margin-bottom:20px}
   .examples-grid.imgs-1{grid-template-columns:1fr}
   .examples-grid.imgs-2{grid-template-columns:repeat(2,1fr)}
@@ -2211,6 +2245,7 @@ function paintTriage(){
     o.innerHTML='<div class="modal" onclick="event.stopPropagation()"></div>';
     document.body.appendChild(o);
   }
+  o.dataset.phase=triage.phase;
   o.querySelector('.modal').innerHTML=triageInner();
 }
 function triageInner(){
@@ -2229,7 +2264,7 @@ function triageGatesHtml(){
     <div class="triage-q">Which of these does the design include?</div>
     <div class="triage-q-sub">Tick all that apply &mdash; you can answer straight from the architect's drawings.</div>
     <ul class="triage-gate-list">${rows}</ul>
-    <div class="modal-actions">
+    <div class="modal-actions triage-actions">
       <button class="entry-btn" onclick="closeTriage()">Cancel</button>
       <button class="entry-btn primary" onclick="triageGatesNext()">Next &rarr;</button>
     </div>`;
