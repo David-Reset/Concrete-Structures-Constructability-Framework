@@ -259,7 +259,7 @@
   .triage-yesno .entry-btn.ns{flex:1.1}
   .triage-yesno .entry-btn.ns:not(.primary){color:var(--text-muted)}
 
-  /* Mobile triage: keep the navigation controls visible while only the gate list scrolls. */
+  /* Mobile triage: keep navigation/action controls visible while the choice/results lists scroll. */
   @media(max-width:640px){
     #triageOverlay[data-phase="gates"]{padding:8px;align-items:center}
     #triageOverlay[data-phase="gates"] .modal{
@@ -288,6 +288,42 @@
       box-shadow:0 -10px 24px rgba(0,0,0,.18);
     }
     #triageOverlay[data-phase="gates"] .triage-actions .entry-btn{
+      flex:1;
+      justify-content:center;
+    }
+
+    /* Suggested entries: Every job + This job share one scroll area; actions stay visible. */
+    #triageResultOverlay{padding:8px;align-items:center}
+    #triageResultOverlay .modal{
+      height:calc(100dvh - 16px);
+      max-height:calc(100dvh - 16px);
+      padding:20px 18px 0;
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+    }
+    #triageResultOverlay .modal-title{flex:0 0 auto}
+    #triageResultOverlay .triage-results-scroll{
+      flex:1 1 auto;
+      min-height:0;
+      overflow-y:auto;
+      overscroll-behavior:contain;
+      -webkit-overflow-scrolling:touch;
+      padding-bottom:12px;
+    }
+    #triageResultOverlay .ra-list{
+      max-height:none;
+      overflow:visible;
+    }
+    #triageResultOverlay .triage-results-actions{
+      flex:0 0 auto;
+      margin:0 -18px;
+      padding:12px 18px calc(12px + env(safe-area-inset-bottom));
+      background:var(--surface);
+      border-top:1px solid var(--border);
+      box-shadow:0 -10px 24px rgba(0,0,0,.18);
+    }
+    #triageResultOverlay .triage-results-actions .entry-btn{
       flex:1;
       justify-content:center;
     }
@@ -2414,15 +2450,17 @@ function showTriageResults(entries,standing,skipped){
       <div class="ra-list">${entries.map(row).join('')}</div>`
       :`<div class="triage-q-sub" style="margin-top:14px">Your answers didn't turn up anything specific to this job beyond the standing entries above.</div>`;
     const skipNote=skipped.length?`<div class="triage-q-sub" style="margin-top:10px">${skipped.length} suggested ${skipped.length===1?'entry is':'entries are'} already on your list and ${skipped.length===1?'was':'were'} left out.</div>`:'';
-    body=`<div class="ra-intro">Untick anything that doesn't apply, then add the rest to your project review list.</div>
-      <div class="ra-toolbar">
-        <label class="ra-selectall"><input type="checkbox" id="trSelectAll" checked onchange="toggleAllTriage(this)"> Select all</label>
-        <span class="ra-count" id="trCount"></span>
+    body=`<div class="triage-results-scroll">
+        <div class="ra-intro">Untick anything that doesn't apply, then add the rest to your project review list.</div>
+        <div class="ra-toolbar">
+          <label class="ra-selectall"><input type="checkbox" id="trSelectAll" checked onchange="toggleAllTriage(this)"> Select all</label>
+          <span class="ra-count" id="trCount"></span>
+        </div>
+        ${standingBlock}
+        ${jobBlock}
+        ${skipNote}
       </div>
-      ${standingBlock}
-      ${jobBlock}
-      ${skipNote}
-      <div class="modal-actions">
+      <div class="modal-actions triage-results-actions">
         <button class="entry-btn" onclick="closeTriageResults()">Cancel</button>
         <button class="entry-btn primary" id="trAddBtn" onclick="confirmTriageAdd()">Add selected</button>
       </div>`;
