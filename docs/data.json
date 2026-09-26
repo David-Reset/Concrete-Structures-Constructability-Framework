@@ -188,7 +188,11 @@
               "formwork reuse",
               "high-rise",
               "tower",
-              "slab type selection"
+              "slab type selection",
+              "sustainability",
+              "sustainable",
+              "material efficiency",
+              "resource efficiency"
             ],
             "elementType": [
               "slab"
@@ -485,7 +489,16 @@
               "curing regime",
               "MPa",
               "drying out",
-              "thin slab strength"
+              "thin slab strength",
+              "sustainability",
+              "sustainable",
+              "environmental",
+              "low-carbon concrete",
+              "green concrete",
+              "blended cement",
+              "fly ash",
+              "slag",
+              "supplementary cementitious materials"
             ],
             "elementType": [
               "slab",
@@ -993,7 +1006,11 @@
               "concrete-filled steel tube",
               "CFST",
               "mixed frame",
-              "material choice"
+              "material choice",
+              "sustainability",
+              "sustainable",
+              "material efficiency",
+              "resource efficiency"
             ],
             "elementType": [
               "column",
@@ -1252,7 +1269,12 @@
               "CFA pile",
               "micropile",
               "mini pile",
-              "pile head connection"
+              "pile head connection",
+              "sustainability",
+              "sustainable",
+              "environmental",
+              "excavation waste",
+              "spoil disposal"
             ],
             "elementType": [
               "pile/pier/shaft"
@@ -1409,7 +1431,14 @@
               "ground slab",
               "pod depth",
               "reactive ground",
-              "375mm pod"
+              "375mm pod",
+              "sustainability",
+              "sustainable",
+              "environmental",
+              "embodied carbon",
+              "embodied energy",
+              "emissions",
+              "material efficiency"
             ],
             "elementType": [
               "slab on ground",
@@ -1622,7 +1651,12 @@
               "uplift anchorage",
               "spoil removal",
               "beam trenching",
-              "flat build platform"
+              "flat build platform",
+              "sustainability",
+              "sustainable",
+              "environmental",
+              "excavation waste",
+              "spoil disposal"
             ],
             "elementType": [
               "pile/pier/shaft",
@@ -1881,7 +1915,12 @@
               "articulation",
               "perimeter detailing",
               "screw pile",
-              "bored pier"
+              "bored pier",
+              "sustainability",
+              "sustainable",
+              "environmental",
+              "excavation waste",
+              "spoil disposal"
             ],
             "elementType": [
               "slab on ground",
@@ -3683,7 +3722,11 @@
               "beam depth consistency",
               "set-down",
               "floor plate repetition",
-              "buildability"
+              "buildability",
+              "sustainability",
+              "sustainable",
+              "material efficiency",
+              "resource efficiency"
             ],
             "elementType": [
               "slab",
